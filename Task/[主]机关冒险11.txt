@@ -1,0 +1,10 @@
+[setup]
+MainTitle = 主线任务
+MainID=11
+IsMain=0
+stepcount = 2
+title = [　]机关冒险
+ID = 11
+stepstitle1 = 　\<color=green 去><机关洞/@@goto 0 机关洞 469,214><color=green 击杀<$TASKVAL(11).I0>/5只怪物>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=200|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle2 = <color=green 已完成任务机关洞击杀5/5只怪物>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>  <点击领取/@XXXXX>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=200|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>
+

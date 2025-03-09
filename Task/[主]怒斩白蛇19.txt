@@ -1,0 +1,10 @@
+[setup]
+MainTitle = 主线任务
+MainID=19
+IsMain=0
+stepcount = 2
+title = [　]怒斩白蛇
+ID = 19
+stepstitle1 = 　\<color=green 前往><蛇魔谷/@@goto 0 蛇魔谷 472,214><color=green 击杀<$TASKVAL(19).I0>/3只白蛇妖>\<color=green 任务奖励：>\　\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=58.0|y=155.0|width=70|height=70|itemid=26900|itemcount=300|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1><ItemShow|x=138.0|y=155.0|width=70|height=70|itemid=951|itemcount=150000|name=经验|showtips=1|bgtype=public/clk.png|scale=1>
+
+stepstitle2 = 　\<color=green 完成主线任务怒斩白蛇>\<color=green 任务奖励：>\　\　\　\<color=graygolden 新手提示：>  <点击领取/@XXXXX>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=58.0|y=130.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1><ItemShow|x=138.0|y=130.0|width=70|height=70|itemid=951|itemcount=150000|name=经验|showtips=1|bgtype=public/clk.png|scale=1>

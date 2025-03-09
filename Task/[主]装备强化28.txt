@@ -1,0 +1,10 @@
+[setup]
+MainTitle = 主线任务
+MainID=28
+IsMain=0
+stepcount = 3
+title = [　]装备强化
+ID = 28
+stepstitle1 = 　\<color=green 打开><锻造/@XXXX><color=green 完成一次装备强化>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle2 = 　\<color=green 打开><锻造/@XXXX><color=green 完成一次装备强化>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle3 = <color=green 已完成将装备强化一次的任务>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>  <点击领取/@XXXXX>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>

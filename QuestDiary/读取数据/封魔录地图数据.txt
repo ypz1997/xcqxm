@@ -1,0 +1,16 @@
+[封魔录]
+nmzw=逆魔古刹
+ttjz=通天台
+txmw=铁血魔殿
+axls=天空之城
+cymz=凌霄天界
+sgyw=上古世纪
+xymz=镇魔神殿
+jmwz=幽暗密林
+myyw=烈焰魔域
+xtzs=战神冢
+xwzl=混沌之境
+wjzz=无间炼狱
+ddxd=地底仙境
+jdzh=绝毒洞窟
+xkgs=破灭虚空

@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=52
+IsMain=0
+stepcount = 2
+title = [　]日积月累
+ID = 52
+stepstitle1 = <color=graygolden 任务描述：>\<color=graygolden 转生等级达到6级>\<color=graygolden 当前等级:><color=green <$CustomValue(42)>/6>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+stepstitle2 = <color=green 任务完成：>\ \　<点击领取奖励/@XXXXX>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>

@@ -1,0 +1,691 @@
+[@MAIN]
+#IF
+TRUE
+#ACT
+GOTO @四象
+
+[@四象]
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$四象属性区分 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$四象属性区分 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$四象属性区分 道术
+
+#IF
+EQUAL $STR(N$元宝抵扣按钮) 0
+#ACT
+MOV N$元宝抵扣按钮 01
+
+#IF
+EQUAL $HUMAN(应神兽升级) 0
+#ACT
+CalcVar Human 应神兽升级 = 1 1
+
+#IF
+EQUAL $HUMAN(应神兽升级) 1
+EQUAL $JOBID 0
+#ACT
+MOV S$神兽名字 白虎
+MOV S$神兽属性描述 攻击
+
+
+#IF
+EQUAL $HUMAN(应神兽升级) 1
+EQUAL $JOBID 1
+#ACT
+MOV S$神兽名字 白虎
+MOV S$神兽属性描述 魔法
+
+
+#IF
+EQUAL $HUMAN(应神兽升级) 1
+EQUAL $JOBID 2
+#ACT
+MOV S$神兽名字 白虎
+MOV S$神兽属性描述 道术
+
+#IF
+EQUAL $HUMAN(应神兽升级) 2
+#ACT
+MOV S$神兽名字 玄武
+MOV S$神兽属性描述 防御
+#IF
+EQUAL $HUMAN(应神兽升级) 3
+#ACT
+MOV S$神兽名字 青龙
+MOV S$神兽属性描述 魔防
+#IF
+EQUAL $HUMAN(应神兽升级) 4
+#ACT
+MOV S$神兽名字 朱雀
+MOV S$神兽属性描述 血量
+
+#IF
+SMALL <$Human(<$STR(S$神兽名字)>等级)> 99
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\神兽<$STR(S$神兽名字)>文本.txt S$神兽下级属性 <$INC.<$Human(<$STR(S$神兽名字)>等级)>.1>
+SPLIT $STR(S$神兽下级属性) | S$神兽下级属性分割
+
+ReadRandomStr ..\QuestDiary\文本读取\神兽白虎文本.txt S$神兽白虎属性 <$Human(白虎等级)>
+SPLIT $STR(S$神兽白虎属性) | N$神兽白虎属性分割
+
+ReadRandomStr ..\QuestDiary\文本读取\神兽玄武文本.txt S$神兽玄武属性 <$Human(玄武等级)>
+SPLIT $STR(S$神兽玄武属性) | N$神兽玄武属性分割
+
+ReadRandomStr ..\QuestDiary\文本读取\神兽青龙文本.txt S$神兽青龙属性 <$Human(青龙等级)>
+SPLIT $STR(S$神兽青龙属性) | N$神兽青龙属性分割
+
+ReadRandomStr ..\QuestDiary\文本读取\神兽朱雀文本.txt S$神兽朱雀属性 <$Human(朱雀等级)>
+SPLIT $STR(S$神兽朱雀属性) | N$神兽朱雀属性分割
+
+#IF
+EQUAL $HUMAN(应神兽升级) 1
+#ACT
+MOV N$神兽升级所需额外碎片 <$DEC.100.$STR(N$神兽白虎属性分割_2)>
+MOV N$神兽升级成功率 <$DEC.100.$STR(N$神兽白虎属性分割_2)>
+
+#IF
+EQUAL $HUMAN(应神兽升级) 2
+#ACT
+MOV N$神兽升级所需额外碎片 <$DEC.100.$STR(N$神兽玄武属性分割_2)>
+MOV N$神兽升级成功率 <$DEC.100.$STR(N$神兽玄武属性分割_2)>
+
+#IF
+EQUAL $HUMAN(应神兽升级) 3
+#ACT
+MOV N$神兽升级所需额外碎片 <$DEC.100.$STR(N$神兽青龙属性分割_2)>
+MOV N$神兽升级成功率 <$DEC.100.$STR(N$神兽青龙属性分割_2)>
+
+#IF
+EQUAL $HUMAN(应神兽升级) 4
+#ACT
+MOV N$神兽升级所需额外碎片 <$DEC.100.$STR(N$神兽青龙属性分割_2)>
+MOV N$神兽升级成功率 <$DEC.100.$STR(N$神兽朱雀属性分割_2)>
+
+
+#IF
+CHECK [200] 0
+#ACT
+MOV N$神兽升级所需额外碎片 0
+MOV N$神兽升级成功率 0
+MOV S$元宝抵扣按钮 01
+#ELSEACT
+MOV S$元宝抵扣按钮 02
+
+#IF
+SMALL <$ITEMCOUNT[神兽碎片]> <$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>
+#ACT
+MOV N$神兽升级_消耗材料1 58
+#ELSEACT
+MOV N$神兽升级_消耗材料1 218
+
+#IF
+SMALL <$MONEY(1)> <$STR(N$神兽白虎属性分割_4)>
+#ACT
+MOV N$神兽升级_消耗材料2 58
+#ELSEACT
+MOV N$神兽升级_消耗材料2 218
+
+#IF
+TRUE
+#SAY
+<Img|id=ss1|children={ss2,ss3,ss4,ss5,ss6,ss7,ss8,ss9,ss10,ss11,ss12,ss13,ss14,ss15,ss16,ss17,ss18,1019,ss20,ss21,ss22,ss23,ss24,ss25,ss26,ss27,ss28,ss29,ss30,ss31,ss32,ss33,ss34,ss35,ss36,ss37}|x=-17.0|y=-5.0|loadDelay=0|scale=1|bg=1|show=5|move=1|esc=1|_localZOrder=-1|img=public/frame_squared_outside.png|link=0>
+<Button|id=ss2|x=804.0|y=-2.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Img|id=ss3|x=21.0|y=45.0|img=private/sixiang/sixiangdiban.png|scale=1|esc=0>
+<Frames|id=ss4|x=387.0|y=182.0|width=210|height=210|rotate=0|count=20|speed=10|blend=1|loop=-1|prefix=private/sixiang/xw_|suffix=.png>
+<Frames|id=ss5|x=209.0|y=46.0|width=210|height=210|rotate=0|count=20|speed=10|blend=1|loop=-1|prefix=private/sixiang/bh_|suffix=.png>
+<Frames|id=ss6|x=28.0|y=173.0|width=210|height=210|rotate=0|count=20|speed=10|blend=1|loop=-1|prefix=private/sixiang/zq_|suffix=.png>
+<Frames|id=ss7|x=212.0|y=293.0|width=210|height=210|rotate=0|count=20|speed=10|blend=1|loop=-1|prefix=private/sixiang/ql_|suffix=.png>
+<Button|id=ss8|x=47.0|y=498.0|pimg=public/btn_duigou_<$STR(S$元宝抵扣按钮)>.png|nimg=public/btn_duigou_<$STR(S$元宝抵扣按钮)>.png|mimg=public/btn_duigou_<$STR(S$元宝抵扣按钮)>.png|size=18|color=255|scale=1|link=@元宝抵扣材料>
+<RText|id=ss9|x=95.0|y=507.0|size=20|color=67|text=<勾选后使用神兽碎片提高成功率/FCOLOR=67>  <拥有神兽碎片：<$ITEMVALSUM(神兽碎片).DURA>/FCOLOR=222>>
+<Text|id=ss10|x=669.0|y=77.0|size=20|color=67|text=总  属  性>
+<Text|id=ss11|x=662.0|y=246.0|size=20|color=67|text=升 级 属 性>
+<Text|id=ss12|x=635.0|y=379.0|size=18|color=67|text=消耗神兽碎片：>
+<RText|id=ss13|x=760.0|y=379.0|color=222|size=18|text= < <$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>/FCOLOR=<$STR(N$神兽升级_消耗材料1)>>>
+<Text|id=ss14|x=635.0|y=421.0|size=18|color=67|text=消耗金币：>
+<RText|id=ss15|x=710.0|y=420.0|color=255|size=18|text=<<$STR(N$神兽<$STR(S$神兽名字)>属性分割_4)>/FCOLOR=<$STR(N$神兽升级_消耗材料2)>>>
+<RText|id=ss16|x=635.0|y=457.0|color=255|size=18|text=<成功率：/FCOLOR=67><<$STR(N$神兽<$STR(S$神兽名字)>属性分割_2)>%/FCOLOR=222>< + <$STR(N$神兽升级成功率)>%/FCOLOR=222>>
+;<Img|id=ss17|x=696.0|y=379.0|width=30|height=30|img=public/1900000651_3.png|scale=1>
+;<Img|id=ss18|x=697.0|y=420.0|width=30|height=30|img=public/1900000651_3.png|scale=1>
+<Button|id=1019|x=652.0|y=483.0|width=120|scale=1|nimg=public/btn_push_03.png|mimg=public/btn_push_03.png|pimg=public/btn_push_03.png|color=67|size=20|text=升  级|link=@神兽<$STR(S$神兽名字)>>
+<RText|id=ss20|x=302.0|y=227.0|color=255|size=18|text=<<$Human(白虎等级)>级/FCOLOR=222>>
+<RText|id=ss21|x=481.0|y=364.0|color=255|size=18|text=<<$Human(玄武等级)>级/FCOLOR=222>>
+<RText|id=ss22|x=298.0|y=460.0|color=255|size=18|text=<<$Human(青龙等级)>级/FCOLOR=222>>
+<RText|id=ss23|x=121.0|y=364.0|color=255|size=18|text=<<$Human(朱雀等级)>级/FCOLOR=222>>
+<Img|id=ss24|x=33|y=65|img=private/sixiang/sixianggaiban.png|scale=1|esc=0>
+<RText|id=ss29|x=645.0|y=118.0|color=255|size=18|text=<<$STR(S$四象属性区分)>：/FCOLOR=95><<$STR(N$神兽白虎属性分割_0)> - <$STR(N$神兽白虎属性分割_1)>/FCOLOR=255>>
+<RText|id=ss30|x=645.0|y=148.0|color=255|size=18|text=<防御：/FCOLOR=95><<$STR(N$神兽玄武属性分割_0)> - <$STR(N$神兽玄武属性分割_1)>/FCOLOR=255>>
+<RText|id=ss31|x=645.0|y=178.0|color=255|size=18|text=<魔防：/FCOLOR=95><<$STR(N$神兽青龙属性分割_0)> - <$STR(N$神兽青龙属性分割_1)>/FCOLOR=255>>
+<RText|id=ss32|x=645.0|y=208.0|color=255|size=18|text=<血量：/FCOLOR=95><<$STR(N$神兽朱雀属性分割_1)>/FCOLOR=255>>
+
+#IF
+!EQUAL $HUMAN(应神兽升级) 4
+#SAY
+<RText|id=ss33|x=645.0|y=310.0|color=255|size=18|text=<<$STR(S$神兽属性描述)>：/FCOLOR=95><<$STR(S$神兽下级属性分割_0)> - <$STR(S$神兽下级属性分割_1)>/FCOLOR=222>>
+#ELSESAY
+<RText|id=ss33|x=645.0|y=310.0|color=255|size=18|text=<<$STR(S$神兽属性描述)>：/FCOLOR=95><<$STR(S$神兽下级属性分割_1)>/FCOLOR=222>>
+
+#IF
+EQUAL <$HUMAN(应神兽升级)> 1
+#SAY
+<Effect|id=ss34|x=315|y=70|effectid=9012|effecttype=0|dir=5|act=0|speed=1|sex=0|scale=1.5>
+
+#IF
+EQUAL <$HUMAN(应神兽升级)> 2
+#SAY
+<Effect|id=ss35|x=492|y=208|effectid=9012|effecttype=0|dir=5|act=0|speed=1|sex=0|scale=1.5>
+
+#IF
+EQUAL <$HUMAN(应神兽升级)> 3
+#SAY
+<Effect|id=ss36|x=315|y=305|effectid=9012|effecttype=0|dir=5|act=0|speed=1|sex=0|scale=1.5>
+
+#IF
+EQUAL <$HUMAN(应神兽升级)> 4
+#SAY
+<Effect|id=ss37|x=135|y=208|effectid=9012|effecttype=0|dir=5|act=0|speed=1|sex=0|scale=1.5>
+
+#IF
+EQUAL P99 1 
+#SAY
+<Frames|id=ss25|x=140.0|y=30.0|width=360|height=180|rotate=0|count=11|speed=10|blend=1|loop=1|prefix=public/<$STR(S$神兽特效前缀)>|suffix=.png>
+#IF
+EQUAL P99 2 
+#SAY
+<Frames|id=ss26|x=322.0|y=168.0|width=360|height=180|rotate=0|count=11|speed=10|blend=1|loop=1|prefix=public/<$STR(S$神兽特效前缀)>|suffix=.png>
+#IF
+EQUAL P99 3 
+#SAY
+<Frames|id=ss27|x=137.0|y=263.0|width=360|height=180|rotate=0|count=11|speed=10|blend=1|loop=1|prefix=public/<$STR(S$神兽特效前缀)>|suffix=.png>
+#IF
+EQUAL P99 4 
+#SAY
+<Frames|id=ss28|x=-45.0|y=167.0|width=360|height=180|rotate=0|count=11|speed=10|blend=1|loop=1|prefix=public/<$STR(S$神兽特效前缀)>|suffix=.png>
+;#IF
+;HasTask 10
+;EQUAL $TASK(10) 1
+;#ACT
+;Navigation 80 1019 激活四象神兽#996#3
+
+#IF
+TRUE
+#ACT
+DelayGoto 1 @特效前缀清除
+BREAK
+
+
+[@神兽白虎]
+#IF
+CHECK [200] 0
+#ACT
+GOTO @白虎不使用材料
+BREAK
+#ELSEACT
+GOTO @白虎使用材料
+BREAK
+
+
+[@白虎不使用材料]
+#IF
+LARGE $Human(白虎等级) 98
+#ACT
+SENDMSG 19 等级达到上限
+BREAK
+
+#IF
+SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+SENDMSG 19 神兽碎片不足<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>个
+BREAK
+
+#IF
+SMALL <$MONEY(1)> <$STR(N$神兽白虎属性分割_4)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#IF
+!SMALL <$MONEY(1)> <$STR(N$神兽白虎属性分割_4)>
+#ACT
+MONEY 1 - <$STR(N$神兽白虎属性分割_4)>
+
+#IF
+!SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+TAKE 神兽碎片 <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+;#IF
+;HasTask 10
+;#ACT
+;GOTO @新手任务10检测
+
+#IF
+RANDOM <$STR(N$神兽白虎属性分割_2)> 100
+#ACT
+CalcVar Human 白虎等级 + 1 1
+CalcVar Human 应神兽升级 = 2 1
+MOV P99 1
+MOV S$神兽特效前缀 sj_
+GOTO @四象
+GOTO @临时属性
+GOTO @会员任务检测
+BREAK
+#ELSEACT
+MOV S$神兽特效前缀 sjsb_
+MOV P99 1
+GOTO @四象
+BREAK
+
+
+[@白虎使用材料]
+#IF
+LARGE $Human(白虎等级) 98
+#ACT
+SENDMSG 19 等级达到上限
+BREAK
+
+#IF
+SMALL <$ITEMCOUNT[神兽碎片]> <$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>
+#ACT
+SENDMSG 19 神兽碎片不足<$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>个
+BREAK
+
+#IF
+SMALL <$MONEY(1)> <$STR(N$神兽白虎属性分割_4)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+#IF
+!SMALL <$MONEY(1)> <$STR(N$神兽白虎属性分割_4)>
+#ACT
+MONEY 1 - <$STR(N$神兽白虎属性分割_4)>
+
+#IF
+!SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+TAKE 神兽碎片 <$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>
+
+;#IF
+;HasTask 10
+;#ACT
+;GOTO @新手任务10检测
+
+#IF
+TRUE
+#ACT
+CalcVar Human 白虎等级 + 1 1
+CalcVar Human 应神兽升级 = 2 1
+MOV P99 1
+MOV S$神兽特效前缀 sj_
+GOTO @四象
+GOTO @临时属性
+GOTO @会员任务检测
+BREAK
+
+
+[@神兽玄武]
+#IF
+CHECK [200] 0
+#ACT
+GOTO @玄武不使用材料
+BREAK
+#ELSEACT
+GOTO @玄武使用材料
+BREAK
+
+
+[@玄武不使用材料]
+#IF
+LARGE $Human(玄武等级) 98
+#ACT
+SENDMSG 19 等级达到上限
+BREAK
+
+#IF
+SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+SENDMSG 19 神兽碎片不足<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>个
+BREAK
+
+#IF
+SMALL <$MONEY(1)> <$STR(N$神兽玄武属性分割_4)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#IF
+!SMALL <$MONEY(1)> <$STR(N$神兽玄武属性分割_4)>
+#ACT
+MONEY 1 - <$STR(N$神兽玄武属性分割_4)>
+
+#IF
+!SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+TAKE 神兽碎片 <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+;#IF
+;HasTask 10
+;#ACT
+;GOTO @新手任务10检测
+
+#IF
+RANDOM $STR(N$神兽玄武属性分割_2) 100
+#ACT
+CalcVar Human 玄武等级 + 1 1
+CalcVar Human 应神兽升级 = 3 1
+MOV P99 2
+MOV S$神兽特效前缀 sj_
+GOTO @四象
+GOTO @临时属性
+GOTO @会员任务检测
+BREAK
+#ELSEACT
+MOV S$神兽特效前缀 sjsb_
+MOV P99 2
+GOTO @四象
+GOTO @会员任务检测
+BREAK
+
+
+[@玄武使用材料]
+#IF
+LARGE $Human(玄武等级) 98
+#ACT
+SENDMSG 19 等级达到上限
+BREAK
+
+
+#IF
+SMALL <$ITEMCOUNT[神兽碎片]> <$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>
+#ACT
+SENDMSG 19 神兽碎片不足<$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>个
+BREAK
+
+#IF
+SMALL <$MONEY(1)> <$STR(N$神兽玄武属性分割_4)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#IF
+!SMALL <$MONEY(1)> <$STR(N$神兽玄武属性分割_4)>
+#ACT
+MONEY 1 - <$STR(N$神兽玄武属性分割_4)>
+
+#IF
+!SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+TAKE 神兽碎片 <$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>
+
+;#IF
+;HasTask 10
+;#ACT
+;GOTO @新手任务10检测
+
+#IF
+TRUE
+#ACT
+CalcVar Human 玄武等级 + 1 1
+CalcVar Human 应神兽升级 = 3 1
+MOV P99 2
+MOV S$神兽特效前缀 sj_
+GOTO @四象
+GOTO @临时属性
+GOTO @会员任务检测
+BREAK
+
+
+[@神兽青龙]
+#IF
+CHECK [200] 0
+#ACT
+GOTO @青龙不使用材料
+BREAK
+#ELSEACT
+GOTO @青龙使用材料
+BREAK
+
+
+[@青龙不使用材料]
+#IF
+LARGE $Human(青龙等级) 98
+#ACT
+SENDMSG 19 等级达到上限
+BREAK
+
+#IF
+SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+SENDMSG 19 神兽碎片不足<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>个
+BREAK
+
+#IF
+SMALL <$MONEY(1)> <$STR(N$神兽青龙属性分割_4)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#IF
+!SMALL <$MONEY(1)> <$STR(N$神兽青龙属性分割_4)>
+#ACT
+MONEY 1 - <$STR(N$神兽青龙属性分割_4)>
+
+#IF
+!SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+TAKE 神兽碎片 <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+;#IF
+;HasTask 10
+;#ACT
+;GOTO @新手任务10检测
+
+#IF
+RANDOM $STR(N$神兽青龙属性分割_2) 100
+#ACT
+CalcVar Human 青龙等级 + 1 1
+CalcVar Human 应神兽升级 = 4 1
+MOV P99 3
+MOV S$神兽特效前缀 sj_
+GOTO @四象
+GOTO @临时属性
+GOTO @会员任务检测
+BREAK
+#ELSEACT
+MOV S$神兽特效前缀 sjsb_
+MOV P99 3
+GOTO @四象
+GOTO @会员任务检测
+BREAK
+
+
+[@青龙使用材料]
+#IF
+LARGE $Human(青龙等级) 98
+#ACT
+SENDMSG 19 等级达到上限
+BREAK
+
+#IF
+SMALL <$ITEMCOUNT[神兽碎片]> <$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>
+#ACT
+SENDMSG 19 神兽碎片不足<$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>个
+BREAK
+
+#IF
+SMALL <$MONEY(1)> <$STR(N$神兽青龙属性分割_4)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#IF
+!SMALL <$MONEY(1)> <$STR(N$神兽青龙属性分割_4)>
+#ACT
+MONEY 1 - <$STR(N$神兽青龙属性分割_4)>
+
+#IF
+!SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+TAKE 神兽碎片 <$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>
+
+;#IF
+;HasTask 10
+;#ACT
+;GOTO @新手任务10检测
+
+#IF
+TRUE
+#ACT
+CalcVar Human 青龙等级 + 1 1
+CalcVar Human 应神兽升级 = 4 1
+MOV P99 3
+MOV S$神兽特效前缀 sj_
+GOTO @四象
+GOTO @临时属性
+GOTO @会员任务检测
+BREAK
+
+
+[@神兽朱雀]
+#IF
+CHECK [200] 0
+#ACT
+GOTO @朱雀不使用材料
+BREAK
+#ELSEACT
+GOTO @朱雀使用材料
+BREAK
+
+
+[@朱雀不使用材料]
+#IF
+LARGE $Human(朱雀等级) 98
+#ACT
+SENDMSG 19 等级达到上限
+BREAK
+#IF
+SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+SENDMSG 19 神兽碎片不足<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>个
+BREAK
+
+#IF
+SMALL <$MONEY(1)> <$STR(N$神兽朱雀属性分割_4)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#IF
+!SMALL <$MONEY(1)> <$STR(N$神兽朱雀属性分割_4)>
+#ACT
+MONEY 1 - <$STR(N$神兽朱雀属性分割_4)>
+
+#IF
+!SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+TAKE 神兽碎片 <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+;#IF
+;HasTask 10
+;#ACT
+;GOTO @新手任务10检测
+
+#IF
+RANDOM <$STR(N$神兽朱雀属性分割_2)> 100
+#ACT
+CalcVar Human 朱雀等级 + 1 1
+CalcVar Human 应神兽升级 = 1 1
+MOV P99 4
+MOV S$神兽特效前缀 sj_
+GOTO @四象
+GOTO @临时属性
+GOTO @会员任务检测
+BREAK
+#ELSEACT
+MOV S$神兽特效前缀 sjsb_
+MOV P99 4
+GOTO @四象
+GOTO @会员任务检测
+BREAK
+
+
+[@朱雀使用材料]
+#IF
+LARGE $Human(朱雀等级) 98
+#ACT
+SENDMSG 19 等级达到上限
+BREAK
+#IF
+SMALL <$ITEMCOUNT[神兽碎片]> <$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>
+#ACT
+SENDMSG 19 神兽碎片不足<$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>个
+BREAK
+
+#IF
+SMALL <$MONEY(1)> <$STR(N$神兽朱雀属性分割_4)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#IF
+!SMALL <$MONEY(1)> <$STR(N$神兽朱雀属性分割_4)>
+#ACT
+MONEY 1 - <$STR(N$神兽朱雀属性分割_4)>
+
+#IF
+!SMALL <$ITEMCOUNT[神兽碎片]> <$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>
+#ACT
+TAKE 神兽碎片 <$INC.<$STR(N$神兽<$STR(S$神兽名字)>属性分割_3)>.<$STR(N$神兽升级所需额外碎片)>>
+
+;#IF
+;HasTask 10
+;#ACT
+;GOTO @新手任务10检测
+
+#IF
+TRUE
+#ACT
+CalcVar Human 朱雀等级 + 1 1
+CalcVar Human 应神兽升级 = 1 1
+MOV P99 4
+MOV S$神兽特效前缀 sj_
+GOTO @四象
+GOTO @临时属性
+GOTO @会员任务检测
+BREAK
+
+[@元宝抵扣材料]
+#IF
+CHECK [200] 1
+#ACT
+MOV N$元宝抵扣按钮 01
+SET [200] 0
+GOTO @四象
+BREAK
+#ELSEACT
+MOV N$元宝抵扣按钮 02
+SET [200] 1
+GOTO @四象
+BREAK
+
+[@特效前缀清除]
+#IF
+TRUE
+#ACT
+MOV S$神兽特效前缀 
+BREAK
+
+;[@新手任务10检测]
+;#IF
+;HasTask 10
+;EQUAL $TASK(10) 1
+;#ACT
+;UpdateTask 10 2
+;Navigation 160 10 点击领取#5056#5 0 0
+;BREAK

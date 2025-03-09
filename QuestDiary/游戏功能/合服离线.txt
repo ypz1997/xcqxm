@@ -1,0 +1,326 @@
+[@离线奖励]
+
+{
+
+;-------------------------------合服BOSS排行 第1名离线奖励
+#IF
+LARGE $HFCOUNT 0
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行离线1.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行离线1.txt
+
+MailGive 绑定元宝 1000
+MailGive 阿修罗神图鉴卡 1 1
+MailGive 赤阳魔尊图鉴卡 1 1
+MailGive 图鉴神御礼包(套) 1 1
+SENDMAIL 44 击杀BOSS奖励 恭喜您在上次合服击杀BOSS排行活动中获得第1名，请点提取获取奖励!
+
+;-------------------------------合服BOSS排行 第2-3名离线奖励
+#IF
+LARGE $HFCOUNT 0
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行离线2.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行离线2.txt
+
+MailGive 绑定元宝 500
+MailGive 阿修罗神图鉴卡 1 1
+MailGive 圣战戒指 1 1
+SENDMAIL 44 击杀BOSS奖励 恭喜您在上次合服击杀BOSS排行活动中获得第2~3名，请点提取获取奖励!
+
+;-------------------------------合服BOSS排行 第4-10名离线奖励
+#IF
+LARGE $HFCOUNT 0
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行离线3.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行离线3.txt
+MailGive 绑定元宝 200
+MailGive 阿修罗神图鉴卡 1 1
+MailGive 图鉴狂怒随机礼包 1 1
+SENDMAIL 44 击杀BOSS奖励 恭喜您在上次合服击杀BOSS排行活动中获得第4~10名，请点提取获取奖励!
+
+;-------------------------------合服BOSS排行 参与奖 离线奖励
+#IF
+LARGE $HFCOUNT 0
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行离线4.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行离线4.txt
+MailGive 图鉴狂怒随机礼包 1 1
+SENDMAIL 44 击杀BOSS奖励 恭喜您在上次合服击杀BOSS排行活动中获得参与奖，请点提取获取奖励!
+
+;============================================================================
+;-------------------------------合服充值排行 第1次合区 第1名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 1
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+MailGive 元宝 3000
+MailGive 法宝精粹 50
+MailGive 七阶装备自选箱 2 1
+MailGive 法宝自选箱 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在上次合服充值排行活动中获得第1名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第2次合区 第1名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 2
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+MailGive 元宝 3000
+MailGive 凶器精粹 50
+MailGive 凶器自选箱 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第1名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第3次合区 第1名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 3
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+MailGive 元宝 3000
+MailGive 传世红人(时装) 1 1
+MailGive 武器时装自选箱 1 1
+MailGive 衣服时装自选箱 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第1名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第4次合区 第1名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 4
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+MailGive 元宝 3000
+MailGive 紫金葫芦 1 1
+MailGive 十二阶装备自选箱 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第1名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第5-7次合区 第1名离线奖励
+#IF
+POS -5-6-7- -<$DEC.$HFCOUNT.1>-
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+MailGive 元宝 3000 1
+MailGive 魔体经验券(10万) 2 1
+MailGive 魔体经验券(30万) 5 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第1名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第8次合区 第1名离线奖励
+#IF
+LARGE $DEC.$HFCOUNT.1 7
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线1.txt
+MailGive 元宝 3000 1
+MailGive 耀阳圣尊 1 1
+MailGive 十五阶装备自选箱 2 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第1名，请点提取获取奖励!
+
+
+;-------------------------------合服充值排行 第1次合区 第2名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 1
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+MailGive 元宝 2500
+MailGive 法宝精粹 50 1
+MailGive 招魂幡 1 1
+MailGive 七阶装备自选箱 1 1
+SENDMAIL 44 击杀BOSS奖励 恭喜您在上次合服击杀BOSS排行活动中获得第2名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第2次合区 第2名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 2
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+MailGive 元宝 2500
+MailGive 凶器精粹 50 1
+MailGive 赤明天帝 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第2名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第3次合区 第2名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 3
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+MailGive 元宝 2000
+MailGive 武器时装自选箱 1 1
+MailGive 传世红人(时装) 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第2名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第4次合区 第2名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 4
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+MailGive 元宝 2000
+MailGive 十一阶装备自选箱 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第2名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第5-7次合区 第2名离线奖励
+#IF
+POS -5-6-7- -<$DEC.$HFCOUNT.1>-
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+MailGive 元宝 2000
+MailGive 魔体经验券(10万) 1 1
+MailGive 魔体经验券(30万) 2 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第2名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第8次合区 第2名离线奖励
+#IF
+LARGE $DEC.$HFCOUNT.1 7
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线2.txt
+MailGive 元宝 2000
+MailGive 十五阶装备自选箱 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第2名，请点提取获取奖励!
+
+
+;-------------------------------合服充值排行 第1次合区 第3名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 1
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+MailGive 元宝 2000
+MailGive 法宝精粹 50 1
+MailGive 无量飞剑 1 1
+SENDMAIL 44 击杀BOSS奖励 恭喜您在上次合服击杀BOSS排行活动中获得第3名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第2次合区 第3名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 2
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+MailGive 元宝 1000
+MailGive 凶器精粹 10 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第3名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第3次合区 第3名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 3
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+MailGive 元宝 1000
+MailGive 传世红人(时装) 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第3名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第4次合区 第3名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 4
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+MailGive 元宝 1000
+MailGive 十阶装备自选箱 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第3名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第5-7次合区 第3名离线奖励
+#IF
+POS -5-6-7- -<$DEC.$HFCOUNT.1>-
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+MailGive 元宝 1000
+MailGive 魔体经验券(10万) 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第3名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第8次合区 第3名离线奖励
+#IF
+LARGE $DEC.$HFCOUNT.1 7
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线3.txt
+MailGive 元宝 1000
+MailGive 十三阶装备自选箱 1 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第3名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第1次合区 第4-10名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 1
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+MailGive 元宝 1000
+MailGive 法宝精粹 30 1
+SENDMAIL 44 击杀BOSS奖励 恭喜您在上次合服击杀BOSS排行活动中获得第4-10名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第2次合区 第4-10名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 2
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+MailGive 绑定元宝 1000
+MailGive 凶器精粹 10 1
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第4-10名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第3次合区 第4-10名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 3
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+MailGive 元宝 1000
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第4-10名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第4次合区 第4-10名离线奖励
+#IF
+EQUAL $DEC.$HFCOUNT.1 4
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+MailGive 元宝 1000
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第4-10名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第5-7次合区 第4-10名离线奖励
+#IF
+POS -5-6-7- -<$DEC.$HFCOUNT.1>-
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+MailGive 元宝 1000
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第4-10名，请点提取获取奖励!
+
+;-------------------------------合服充值排行 第8次合区 第4-10名离线奖励
+#IF
+LARGE $DEC.$HFCOUNT.1 7
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线4.txt
+MailGive 元宝 1000
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第4-10名，请点提取获取奖励!
+
+
+;-------------------------------合服充值排行 第8次合区 参与奖离线奖励
+#IF
+LARGE $HFCOUNT 1
+CHECKVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线5.txt
+#ACT
+DELVARLIST $USERID ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线5.txt
+MailGive 绑定元宝 200
+SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得参与奖，请点提取获取奖励!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

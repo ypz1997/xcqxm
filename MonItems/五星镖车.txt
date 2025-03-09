@@ -1,0 +1,5 @@
+1/1 法宝精粹 1 G $CustomValue(93) < 6
+1/1 法宝精粹 1 G $CustomValue(93) < 6
+1/1 法宝精粹 1 G $CustomValue(93) < 6
+1/1 法宝精粹 1 G $CustomValue(93) < 6
+1/1 法宝精粹 1 G $CustomValue(93) < 6

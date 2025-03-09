@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=27
+IsMain=0
+stepcount = 2
+title = [　]逆魔古刹
+ID = 27
+stepstitle1 = 　\<color=green 前往><逆魔古刹/@@goto 0 逆魔古刹 475,214><color=green 击杀<$TASKVAL(27).I0>/5只怪物>\<color=green 任务奖励：>\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=124.0|width=70|height=70|itemid=26674|itemcount=60|name=玄铁|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle2 = <color=green 已完成击杀5只逆魔古刹怪物的任务>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>  <点击领取/@XXXXX>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26674|itemcount=60|name=玄铁|showtips=1|bgtype=public/clk.png|scale=1>

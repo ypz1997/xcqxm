@@ -1,0 +1,710 @@
+[@×Ô¶¨ÐÐ»á]
+{
+#IF
+TRUE
+#ACT
+MOV N$ÐÐ»á_Ò³Ç©ID 0
+MOV N$ÐÐ»á_Ñ­»·¼Æ´Î 0
+MOV S$ÐÐ»á_ÐÐ»áÁÐ±í×ÓÏî 
+MOV S$ÐÐ»á_AndroidÃæ°åÊý¾Ý  
+MOV S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ
+MOV N$ÐÐ»á_VIPµÈ¼¶ÏÞÖÆ $CustomValue(90)
+#IF
+equal <$CLIENTFLAG> 1
+#ACT
+GOTO @PCÐÐ»áÃæ°å
+
+#IF
+equal <$CLIENTFLAG> 2 
+#ACT
+GOTO @ÐÐ»á_AndroidÐÐ»áÁÐ±íÒ³Ç©
+
+[@ÐÐ»á_AndroidÃæ°å]
+#IF
+TRUE
+#ACT
+split <$STR(S$ÐÐ»á_Ò³Ç©°´Å¥)> | S$ÐÐ»á_Ò³Ç©°´Å¥½ÓÊÜ
+#SAY
+<Button|x=854.0|y=87.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Layout|x=545|y=0|width=80|height=80|_localZOrder=-1|link=@exit>
+<Img|x=268.0|y=92.0|children={hhlb1,hhlb2,hhlb3,hhlb4,hhlb5,hhlb6,hhlb7,hhlb8,hhlb9,hhlb10,hhlb11,hhlb12,hhlb13,hhlb14,hhlb15}|show=0|loadDelay=0|esc=1|bg=1|move=0|img=private/hanghui/hh_bj{$STR(N$ÐÐ»á_Ò³Ç©ID)}.png|_localZOrder=-2|loadDelay=1|reset=1>
+<Img|id=hhlb1|x=25.0|y=45.0|img=public/tab_bg_{$STR(S$ÐÐ»á_Ò³Ç©°´Å¥½ÓÊÜ_0)}.png|esc=0|link=@ÐÐ»á_AndroidÐÐ»áÁÐ±íÒ³Ç©>
+<Img|id=hhlb2|x=25.0|y=45.0|img=private/hanghui/hh_hanghuiliebiao.png|esc=0>
+<Img|id=hhlb3|x=131.0|y=45.0|img=public/tab_bg_{$STR(S$ÐÐ»á_Ò³Ç©°´Å¥½ÓÊÜ_1)}.png|esc=0|link=@ÐÐ»á_AndroidÐÐ»áÕÐÄ¼Ò³Ç©>
+<Img|id=hhlb4|x=131.0|y=45.0|img=private/hanghui/hh_hanghuizhaomu.png|esc=0>
+<Img|id=hhlb5|x=237.0|y=45.0|img=public/tab_bg_{$STR(S$ÐÐ»á_Ò³Ç©°´Å¥½ÓÊÜ_2)}.png|esc=0|link=@ÐÐ»á_AndroidÐÐ»áÍæ·¨Ò³Ç©>
+<Img|id=hhlb6|x=237.0|y=45.0|img=private/hanghui/hh_hanghuiwanfa.png|esc=0>
+<Img|id=hhlb7|x=343.0|y=45.0|img=public/tab_bg_{$STR(S$ÐÐ»á_Ò³Ç©°´Å¥½ÓÊÜ_3)}.png|esc=0|link=@ÐÐ»á_AndroidÎÒµÄÐÐ»áÒ³Ç©>
+<Img|id=hhlb8|x=343.0|y=45.0|img=private/hanghui/hh_wodehanghui.png|esc=0>
+{$STR(S$ÐÐ»á_AndroidÃæ°åÊý¾Ý)}
+{$STR(S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ)}
+{$STR(S$ÐÐ»á_Android²Ö¿âÒ³Ãæ)}
+[@ÐÐ»á_AndroidÐÐ»áÁÐ±íÒ³Ç©]
+#IF
+!EQUAL N$ÐÐ»á_Ò³Ç©ID 0
+#ACT
+MOV N$ÐÐ»á_Ò³Ç©ID 0
+MOV N$ÐÐ»á_Ñ­»·¼Æ´Î 0
+MOV S$ÐÐ»á_AndroidÃæ°åÊý¾Ý  
+MOV S$ÐÐ»á_ÐÐ»áÁÐ±í×ÓÏî
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÐÅÏ¢.txt S$ÐÐ»á_ÐÐ»áÐÅÏ¢ <$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>
+#IF
+POS <$STR(S$ÐÐ»á_ÐÐ»áÐÅÏ¢)> ÊÇ·ñ¿ªÆô×Ô¶¯ÊÕÈË
+#ACT
+split <$STR(S$ÐÐ»á_ÐÐ»áÐÅÏ¢)> | S$ÐÐ»á_ÐÐ»áÐÅÏ¢²ð·Ö
+
+#IF
+PosInlist <$STR(S$ÐÐ»á_ÐÐ»áÐÅÏ¢²ð·Ö_1)>|<$USERNAME> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt
+#ACT
+MOV N$ÐÐ»á_ÉêÇëÐÐ»á°´Å¥ÖÃ»Ò 1
+#ELSEACT
+MOV N$ÐÐ»á_ÉêÇëÐÐ»á°´Å¥ÖÃ»Ò 0
+
+#IF
+POS <$STR(S$ÐÐ»á_ÐÐ»áÐÅÏ¢)> ÊÇ·ñ¿ªÆô×Ô¶¯ÊÕÈË
+#ACT
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhm{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}|children={hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_0,hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_1,hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_2,hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_3,hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_4,hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_5,hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_6}|x=289.0|y=209.0|img=private/hanghui/hh_liebiaobj.png|esc=0>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Button|id=hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_0|x=0.0|y=0|width=160|height=36|pimg=|nimg=|color=255|mimg=|size=18|text={$STR(S$ÐÐ»á_ÐÐ»áÐÅÏ¢²ð·Ö_1)}>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Button|id=hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_1|x=160.0|y=0|width=90|height=36|pimg=|nimg=|color=255|mimg=|size=18|text={$GUILDINFO(S$ÐÐ»á_ÐÐ»áÐÅÏ¢²ð·Ö_1).MEMBERCOUNT}>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Button|id=hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_2|x=248.0|y=0|width=160|height=36|pimg=|nimg=|color=255|mimg=|size=18|text={$STR(S$ÐÐ»á_ÐÐ»áÐÅÏ¢²ð·Ö_0)}>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_3|x=415.0|y=2.0|grey={$STR(N$ÐÐ»á_ÉêÇëÐÐ»á°´Å¥ÖÃ»Ò)}|img=public/btn_bg_4.png|esc=0|link=@ÐÐ»á_ÉêÇë¼ÓÈëÐÐ»á&ÐÐ»á_ÉêÇëÐÐ»áÃû={$STR(S$ÐÐ»á_ÐÐ»áÐÅÏ¢²ð·Ö_1)}>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_4|x=510.0|y=2.0|img=public/btn_bg_4.png|esc=0|link=@ÐÐ»á_ÐÐ»áÐûÕ½&ÐÐ»á_ÐûÕ½ÐÐ»áÃû={$STR(S$ÐÐ»á_ÐÐ»áÐÅÏ¢²ð·Ö_1)}>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_5|x=415.0|y=2.0|img=private/hanghui/hh_shenqing.png|esc=0>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_6|x=510.0|y=2.0|img=private/hanghui/hh_xuanzhan.png|esc=0>
+INC S$ÐÐ»á_ÐÐ»áÁÐ±í×ÓÏî hhm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>,
+
+
+#IF
+SMALL <$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)> <$TXTLINE(..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÐÅÏ¢.txt)>
+#ACT
+INC N$ÐÐ»á_Ñ­»·¼Æ´Î 1
+GOTO @ÐÐ»á_AndroidÐÐ»áÁÐ±íÒ³Ç©
+
+#IF
+TRUE
+#ACT
+MOV S$ÐÐ»á_Ò³Ç©°´Å¥ 1|2|2|2
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhlb12|x=510.0|y=390.0|img=public/btn_bg_3.png|esc=0>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhlb14|x=510.0|y=390.0|img=private/hanghui/hh_chuangjianhanghui.png|esc=0|link=@ÐÐ»á_Android´´½¨ÐÐ»áÒ³Ãæ>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <ListView|id=hhlb10|children={<$STR(S$ÐÐ»á_ÐÐ»áÁÐ±í×ÓÏî)>}|x=20.0|y=115.0|width=605|height=270|loadDelay=0|margin=4>
+GOTO @ÐÐ»á_AndroidÃæ°å
+[@ÐÐ»á_ÉêÇë¼ÓÈëÐÐ»á]
+#IF
+HaveGuild
+#ACT
+sendmsg 19 ÄãÒÑ¾­¼ÓÈëÐÐ»á£¬ÇëÎðÖØ¸´ÉêÇë£¡
+break
+#IF
+TRUE
+#ACT
+ReadConfigFileItem ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÐÅÏ¢.txt ÐÐ»áÐÅÏ¢ <$GUILDINFO(<$STR(S$ÐÐ»á_ÉêÇëÐÐ»áÃû)>).CHIEF>|<$STR(S$ÐÐ»á_ÉêÇëÐÐ»áÃû)>|ÊÇ·ñ¿ªÆô×Ô¶¯ÊÕÈË N$ÐÐ»á_ÊÇ·ñ×Ô¶¯½ÓÊÜ
+#IF
+EQUAL <$STR(N$ÐÐ»á_ÊÇ·ñ×Ô¶¯½ÓÊÜ)> 1
+#ACT
+ChangeGuildMember <$STR(S$ÐÐ»á_ÉêÇëÐÐ»áÃû)> <$USERNAME> 5
+sendmsg 6 ¹§Ï²Äã¼ÓÈë<$STR(S$ÐÐ»á_ÉêÇëÐÐ»áÃû)>ÐÐ»á£¡
+break
+
+#IF
+PosInlist <$STR(S$ÐÐ»á_ÉêÇëÐÐ»áÃû)>|<$USERNAME> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt
+#ACT
+sendmsg 19 ÄãÒÑ¾­ÉêÇë¹ý¸ÃÐÐ»áÁË£¬ÇëÎðÖØ¸´ÉêÇë£¡
+break
+#ELSEACT
+ADDVARLIST <$STR(S$ÐÐ»á_ÉêÇëÐÐ»áÃû)>|<$USERNAME>|<$LEVEL> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt
+#IF
+TRUE
+#ACT
+MOV N$ÐÐ»á_Ò³Ç©ID 7
+GOTO @ÐÐ»á_AndroidÐÐ»áÁÐ±íÒ³Ç©
+
+[@ÐÐ»á_ÐÐ»áÐûÕ½]
+#IF
+!ISGUILDMASTER
+#ACT
+MESSAGEBOX ¡¡Äã²»ÊÇÐÐ»á»á³¤\ÎÞ·¨¶ÔÆäËûÐÐ»áÐûÕ½
+BREAK
+
+#IF
+!EQUAL $STR(S$ÐÐ»á_ÐûÕ½ÐÐ»áÃû) $GUILDNAME
+#ACT
+QueryMsg ¡¡ÄãÈ·¶¨Òª»¨·Ñ100Íò½ð±Ò\¶Ô[<$STR(S$ÐÐ»á_ÐûÕ½ÐÐ»áÃû)>]·¢ÆðÐÐ»áÕ½Âð£¿ @È·¶¨·¢ÆðÐÐ»áÕ½
+BREAK
+#ELSEACT
+MESSAGEBOX ²»ÄÜ¶Ô×Ô¼ºÐÐ»áÐûÕ½
+BREAK
+[@È·¶¨·¢ÆðÐÐ»áÕ½1]
+#IF
+!CheckGold 1000000
+#ACT
+MESSAGEBOX ÄãµÄ½ð±Ò²»×ã
+BREAK
+#ELSEACT
+MONEY ½ð±Ò - 1000000
+GuildWar $STR(S$ÐÐ»á_ÐûÕ½ÐÐ»áÃû) 120
+SENDMSG 19 ³É¹¦¶Ô<$STR(S$ÐÐ»á_ÐûÕ½ÐÐ»áÃû)>ÐÐ»á·¢ÆðÐÐ»áÕ½£¬³ÖÐø2Ð¡Ê±
+SENDMSG 9 <<$GUILDNAME>>¿ªÆôÁËÓë<$STR(S$ÐÐ»á_ÐûÕ½ÐÐ»áÃû)>µÄÐÐ»áÕ½ 249
+BREAK
+
+
+[@ÐÐ»á_×Ô¶¯Í¬ÒâÈë»á]
+#IF
+!IsGuildMaster
+#ACT
+sendmsg 19 Äã²»ÊÇ»á³¤£¬ÎÞ·¨²Ù×÷´ËÏî£¡
+break
+
+#IF
+TRUE
+#ACT
+ReadConfigFileItem ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÐÅÏ¢.txt ÐÐ»áÐÅÏ¢ <$GUILD.CHIEF>|<$GUILD.NAME>|ÊÇ·ñ¿ªÆô×Ô¶¯ÊÕÈË N$ÐÐ»á_×Ô¶¯ÊÕÈË
+
+#IF
+EQUAL <$STR(N$ÐÐ»á_×Ô¶¯ÊÕÈË)> 0
+#ACT
+CALCVAR GUILD ÐÐ»á_×Ô¶¯Í¬ÒâÈë»á = 1 1
+WriteConfigFileItem ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÐÅÏ¢.txt ÐÐ»áÐÅÏ¢ <$GUILD.CHIEF>|<$GUILD.NAME>|ÊÇ·ñ¿ªÆô×Ô¶¯ÊÕÈË 1
+#ELSEACT
+CALCVAR GUILD ÐÐ»á_×Ô¶¯Í¬ÒâÈë»á = 0 1
+WriteConfigFileItem ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÐÅÏ¢.txt ÐÐ»áÐÅÏ¢ <$GUILD.CHIEF>|<$GUILD.NAME>|ÊÇ·ñ¿ªÆô×Ô¶¯ÊÕÈË 0
+[@ÐÐ»á_AndroidÐÐ»áÕÐÄ¼Ò³Ç©]
+#IF
+!IsGuildMaster
+#ACT
+sendmsg 19 Äã²»ÊÇ»á³¤£¬ÎÞ·¨²Ù×÷´ËÏî!
+break
+#IF
+!EQUAL N$ÐÐ»á_Ò³Ç©ID 1
+#ACT
+MOV N$ÐÐ»á_Ò³Ç©ID 1
+MOV N$ÐÐ»á_Ñ­»·¼Æ´Î 0
+MOV S$ÐÐ»á_AndroidÃæ°åÊý¾Ý  
+MOV S$ÐÐ»á_ÐÐ»áÁÐ±í×ÓÏî 
+MOV N$ÐÐ»á_Ò»¼üÍ¨¹ýÑ­»·¼Æ´Î 0
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢ <$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>
+#IF
+POS <$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢)> <$GUILD.NAME>
+#ACT
+split <$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢)> | S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢·Ö¸î
+#IF
+POS <$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢)> <$GUILD.NAME>
+CheckOnLine <$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢·Ö¸î_1)>
+#ACT
+MOV N$ÐÐ»á_ÉêÇëÈË×´Ì¬ÑÕÉ« 218
+MOV S$ÐÐ»á_ÉêÇëÈË×´Ì¬ ÔÚÏß
+#ELSEACT
+MOV N$ÐÐ»á_ÉêÇëÈË×´Ì¬ÑÕÉ« 71
+MOV S$ÐÐ»á_ÉêÇëÈË×´Ì¬ ÀëÏß
+#IF
+POS <$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢)> <$GUILD.NAME>
+#ACT
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhzm{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}|children={hhzm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_0,hhzm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_1,hhzm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_2,hhzm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_3,hhzm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_4,hhzm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_5,hhzm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_6}|x=273.0|y=233.0|img=private/hanghui/hh_liebiaobj.png|esc=0>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Button|id=hhzm{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_0|x=0.0|y=0.0|width=160|height=36|color=255|size=18|nimg=|text={$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢·Ö¸î_1)}>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Button|id=hhzm{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_1|x=160.0|y=0.0|width=90|height=36|color=255|size=18|nimg=|text={$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢·Ö¸î_2)}>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Button|id=hhzm{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_2|x=248.0|y=0.0|width=160|height=36|color={$str(N$ÐÐ»á_ÉêÇëÈË×´Ì¬ÑÕÉ«)}|size=18|nimg=|text={$STR(S$ÐÐ»á_ÉêÇëÈË×´Ì¬)}>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhzm{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_3|x=415.0|y=2.0|img=public/btn_bg_4.png|esc=0|link=@ÐÐ»á_Í¨¹ý¼ÓÈëÉêÇë&ÐÐ»á_ÐÐ»áÉêÇëÈË={$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢·Ö¸î_1)}>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhzm{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_4|x=510.0|y=2.0|img=public/btn_bg_4.png|esc=0|link=@ÐÐ»á_¾Ü¾ø¼ÓÈëÉêÇë&ÐÐ»á_ÐÐ»áÉêÇëÈË={$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢·Ö¸î_1)}>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhzm{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_5|x=415.0|y=2.0|img=private/hanghui/hh_tongguo.png|esc=0>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhzm{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_6|x=510.0|y=2.0|img=private/hanghui/hh_jujue.png|esc=0>
+INC S$ÐÐ»á_ÐÐ»áÁÐ±í×ÓÏî hhzm<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>,
+#IF
+SMALL <$str(N$ÐÐ»á_Ñ­»·¼Æ´Î)> <$TXTLINE(..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt)>
+#ACT
+INC N$ÐÐ»á_Ñ­»·¼Æ´Î 1
+GOTO @ÐÐ»á_AndroidÐÐ»áÕÐÄ¼Ò³Ç©
+#IF
+TRUE
+#ACT
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <ListView|id=hhlb10|children={<$STR(S$ÐÐ»á_ÐÐ»áÁÐ±í×ÓÏî)>}|x=20.0|y=115.0|loadDelay=1|margin=4|width=605|height=270|rotate=0>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhlb11|x=30.0|y=390.0|img=public/btn_bg_3.png|esc=0|link=@ÐÐ»á_AndroidÒ»¼üÕÐÄ¼Ò³Ãæ>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <CheckBox|id=hhlb15|x=240.0|y=392.0|nimg=public/1900000550.png|checkboxid=1|pimg=public/1900000551.png|default={$GUILD(ÐÐ»á_×Ô¶¯Í¬ÒâÈë»á)}|link=@ÐÐ»á_×Ô¶¯Í¬ÒâÈë»á>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhlb12|x=510.0|y=390.0|img=public/btn_bg_3.png|esc=0|link=@ÐÐ»á_AndroidÒ»¼üÍ¨¹ý>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhlb13|x=30.0|y=390.0|img=private/hanghui/hh_yijianzhaomu.png|esc=0>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|id=hhlb14|x=510.0|y=390.0|img=private/hanghui/hh_yijiantongguo.png|esc=0>
+MOV S$ÐÐ»á_Ò³Ç©°´Å¥ 2|1|2|2
+GOTO @ÐÐ»á_AndroidÃæ°å
+[@ÐÐ»á_AndroidÒ»¼üÍ¨¹ý]
+#IF
+EQUAL <$TXTLINE(..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt)> 0
+#ACT
+sendmsg 19 ÔÝÎÞÉêÇëÈË
+#IF
+PosInlist <$GUILD.NAME> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢
+#ACT
+split <$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢)> | S$ÐÐ»á_ÉêÇëÈË
+ChangeGuildMember <$GUILD.NAME> <$STR(S$ÐÐ»á_ÉêÇëÈË_1)> 5
+MOV N$ÐÐ»á_ÇåÀíÁÐ±í¼Æ´Î 0
+MOV S$ÐÐ»á_ÐÐ»áÉêÇëÈË <$STR(S$ÐÐ»á_ÉêÇëÈË_1)>
+LOOPGOTO @ÐÐ»á_ÇåÀíÐÐ»áÉêÇëÁÐ±í <$TXTLINE(..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt)>
+#IF
+SMALL <$STR(N$ÐÐ»á_Ò»¼üÍ¨¹ýÑ­»·¼Æ´Î)> <$TXTLINE(..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt)>
+#ACT
+INC N$ÐÐ»á_Ò»¼üÍ¨¹ýÑ­»·¼Æ´Î 1
+GOTO @ÐÐ»á_AndroidÒ»¼üÍ¨¹ý
+#ELSEACT
+MOV N$ÐÐ»á_Ò³Ç©ID -1
+GOTO @ÐÐ»á_AndroidÐÐ»áÕÐÄ¼Ò³Ç©
+[@ÐÐ»á_¾Ü¾ø¼ÓÈëÉêÇë]
+#IF
+PosInlist <$GUILD.NAME>|<$STR(S$ÐÐ»á_ÐÐ»áÉêÇëÈË)> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢
+#ACT
+MOV N$ÐÐ»á_ÇåÀíÁÐ±í¼Æ´Î 0
+LOOPGOTO @ÐÐ»á_ÇåÀíÐÐ»áÉêÇëÁÐ±í <$TXTLINE(..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt)>
+MOV N$ÐÐ»á_Ò³Ç©ID 0
+GOTO @ÐÐ»á_AndroidÐÐ»áÕÐÄ¼Ò³Ç©
+[@ÐÐ»á_Í¨¹ý¼ÓÈëÉêÇë]
+#IF
+PosInlist <$GUILD.NAME>|<$STR(S$ÐÐ»á_ÐÐ»áÉêÇëÈË)> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢
+#ACT
+ChangeGuildMember <$GUILD.NAME> <$STR(S$ÐÐ»á_ÐÐ»áÉêÇëÈË)> 5
+MOV N$ÐÐ»á_ÇåÀíÁÐ±í¼Æ´Î 0
+LOOPGOTO @ÐÐ»á_ÇåÀíÐÐ»áÉêÇëÁÐ±í <$TXTLINE(..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt)>
+MOV N$ÐÐ»á_Ò³Ç©ID -1
+GOTO @ÐÐ»á_AndroidÐÐ»áÕÐÄ¼Ò³Ç©
+[@ÐÐ»á_ÇåÀíÐÐ»áÉêÇëÁÐ±í]
+#IF
+PosInlist <$STR(S$ÐÐ»á_ÐÐ»áÉêÇëÈË)> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢
+#ACT
+DELVARLIST <$STR(S$ÐÐ»á_ÉêÇëÈËÐÅÏ¢)> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÉêÇëÁÐ±í.txt
+[@ÐÐ»á_Android´´½¨ÐÐ»áÒ³Ãæ]
+#IF
+HaveGuild
+#ACT
+sendmsg 19 ÈçÐè´´½¨ÐÐ»á£¬ÇëÍÑÀëÏÖÓÐÐÐ»á£¡
+break
+#IF
+CHECKMONEY 2 < 1000
+#ACT
+MOV N$ÐÐ»á_´´½¨ÐÐ»áÔª±¦ÑÕÉ« 58
+#ELSEACT
+MOV N$ÐÐ»á_´´½¨ÐÐ»áÔª±¦ÑÕÉ« 218
+#IF
+CheckItem Õ½¶·ºÅ½Ç 1
+#ACT
+MOV N$ÐÐ»á_´´½¨ÐÐ»áºÅ½ÇÑÕÉ« 218
+#ELSEACT
+MOV N$ÐÐ»á_´´½¨ÐÐ»áºÅ½ÇÑÕÉ« 58
+#IF
+TRUE
+#ACT
+MOV S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=445.0|y=107.0|img=private/hanghui/hh_bj4.png|esc=0|link=0>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=511.0|y=257.0|img=public/1900000651_3.png>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=622.0|y=257.0|img=public/1900000651_3.png>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <ItemShow|x=511.0|y=257.0|width=70|height=70|itemid=26930|itemcount=1|name=Ôª±¦|bgtype=1|showtips=1>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <ItemShow|x=622.0|y=257.0|width=70|height=70|itemid=199|itemcount=1|name=Õ½¶·ºÅ½Ç|bgtype=1|showtips=1>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Button|x=490.0|y=326.0|width=110|height=30|color={$STR(N$ÐÐ»á_´´½¨ÐÐ»áÔª±¦ÑÕÉ«)}|size=18|text=1000>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Button|x=603.0|y=327.0|width=110|height=30|color={$STR(N$ÐÐ»á_´´½¨ÐÐ»áºÅ½ÇÑÕÉ«)}|size=18|text=<$ITEMCOUNT[Õ½¶·ºÅ½Ç]>/1>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=551.0|y=485.0|img=public/btn_bg_3.png|esc=0>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=634.0|y=381.0|img=public/btn_bg_4.png|esc=0>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=633.0|y=381.0|img=private/hanghui/hh_ksgm.png|esc=0|link=@ÐÐ»á_¿ìËÙ¹ºÂò>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=551.0|y=485.0|img=private/hanghui/hh_queding.png|esc=0|link=@ÐÐ»á_´´½¨ÐÐ»á>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Button|x=710.0|y=101.0|pimg=public/button/btn_close_01.png|nimg=public/button/btn_close_01.png|color=255|size=18|link=@ÐÐ»á_¹Ø±Õ´´½¨ÐÐ»áÒ³Ãæ>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Input|x=504.0|y=169.0|width=195|height=35|inputid=1|type=0|place=|mincount=10|color=67|maxcount=7|size=18|placecolor=255>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Text|x=514.0|y=429.0|color=67|size=18|text=Çë¼°Ê±ÔÚÐÐ»áÃæ°å¹´Ñ¡>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Text|x=533.0|y=455.0|color=67|size=18|text=¡¾×Ô¶¯Í¬ÒâÈë»á¡¿>
+GOTO @ÐÐ»á_AndroidÃæ°å
+[@ÐÐ»á_¿ìËÙ¹ºÂò]
+#IF
+TRUE
+#ACT
+FUNC 1 @ÉÌ³Ç
+[@ÐÐ»á_´´½¨ÐÐ»á]
+#IF
+!EQUAL <$NPCINPUT(1)>
+#ACT
+MOV s$ÐÐ»á_ÐÐ»áÆðÃû <$NPCINPUT(1)>
+#ELSEACT
+sendmsg 19 ÇëÊäÈëÐÐ»áÃû£¡
+break
+#IFONE
+CHECKMONEY 2 < 1000
+!CheckItem Õ½¶·ºÅ½Ç 1
+#ACT
+sendmsg 19 ²ÄÁÏ²»×ã£¬ÎÞ·¨´´½¨ÐÐ»á£¡
+break
+#IF
+SMALL <$STR(N$ÐÐ»á_VIPµÈ¼¶ÏÞÖÆ)> 5
+#ACT
+sendmsg 19 ´´½¨ÐÐ»áÐèÒªVIPµÈ¼¶²»Ð¡ÓÚ5¼¶£¡
+break
+
+#IF
+large <$GUILDINFO(<$STR(s$ÐÐ»á_ÐÐ»áÆðÃû)>).MEMBERCOUNT> 0
+#ACT
+sendmsg 19 ÐÐ»áÃûÒÑ´æÔÚ£¬Çë¸ü»»ÐÐ»áÃû£¡
+break
+#IF
+TRUE
+#ACT
+TAKE Õ½¶·ºÅ½Ç 1
+Money 2 - 1000
+GmExeCute ½¨Á¢ÐÐ»á <$STR(s$ÐÐ»á_ÐÐ»áÆðÃû)> <$USERNAME>
+CALCVAR GUILD ÐÐ»á_Ã¿ÈÕÕÐÄ¼´ÎÊý = 5 1
+CALCVAR HUMAN ÐÐ»á_¹±Ï×Öµ = 0 1
+ADDVARLIST <$USERNAME>|<$STR(s$ÐÐ»á_ÐÐ»áÆðÃû)>|ÊÇ·ñ¿ªÆô×Ô¶¯ÊÕÈË=0 ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»áÐÅÏ¢.txt
+GOTO @ÐÐ»á_¹Ø±Õ´´½¨ÐÐ»áÒ³Ãæ
+MOV N$ÐÐ»á_Ò³Ç©ID -1
+GOTO @ÐÐ»á_AndroidÐÐ»áÁÐ±íÒ³Ç©
+
+[@ÐÐ»á_AndroidÒ»¼üÕÐÄ¼Ò³Ãæ]
+#IF
+TRUE
+#ACT
+MOV S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=446.0|y=146.0|img=private/hanghui/hh_bj5.png|esc=0>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <ItemShow|x=491.0|y=219.0|width=70|height=70|itemid=26930|itemcount=1|name=Ôª±¦|bgtype=1|showtips=1>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Text|x=550.0|y=240.0|color=67|size=18|text=500>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Text|x=630.0|y=240.0|color=67|size=18|text=´ÎÊý{$GUILD(ÐÐ»á_Ã¿ÈÕÕÐÄ¼´ÎÊý)}/5>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=621.0|y=274.0|img=public/btn_bg_4.png|esc=0>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=551.0|y=395.0|img=public/btn_bg_3.png|esc=0>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Text|x=489.0|y=331.0|color=67|size=18|text=½«»áÏòËùÓÐÔÚÏßÍæ¼Ò·¢ËÍÕÐÄ¼>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Text|x=533.0|y=358.0|color=67|size=18|text=ÓÊ¼þ£¬²¢¹«ÆÁº°»°¡£>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=621.0|y=275.0|img=private/hanghui/hh_kscz.png|esc=0|link=@ÐÐ»áÀ­Æð³äÖµ>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Img|x=551.0|y=395.0|img=private/hanghui/hh_fasong.png|esc=0|link=@ÐÐ»á_·¢ËÍÕÐÄ¼ÐÅÏ¢>
+INC S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ <Button|x=710.0|y=139.0|color=255|size=18|nimg=public/button/btn_close_01.png|link=@ÐÐ»á_¹Ø±Õ´´½¨ÐÐ»áÒ³Ãæ>
+GOTO @ÐÐ»á_AndroidÃæ°å
+
+[@ÐÐ»áÀ­Æð³äÖµ]
+#IF
+TRUE
+#ACT
+FUNC 1 @Ç°Íù³äÖµ
+break
+
+[@ÐÐ»á_·¢ËÍÕÐÄ¼ÐÅÏ¢]
+#IF
+small <$GUILD(ÐÐ»á_Ã¿ÈÕÕÐÄ¼´ÎÊý)> 1
+#ACT
+sendmsg 19 ½ñÈÕ·¢ËÍÕÐÄ¼´ÎÊýÒÑ´ïÉÏÏÞ£¡ÇëÃ÷ÌìÔÙÊÔ£¡
+break
+#IF
+LARGE $MONEY(2) 499
+#ACT
+money 2 - 500
+CALCVAR GUILD ÐÐ»á_Ã¿ÈÕÕÐÄ¼´ÎÊý - 1 1
+sendmsg 9 È«·þ¹«¸æ£º<$GUILD.NAME>ÕÐÈËÀ²£¡³ÏÑû¸÷Â·Ó¢ºÀ¼ÓÈë£¡ 215
+GMEXECUTE ÔÚÏßÌáÎÊ @È«·þ·¢ËÍÓÊ¼þ&ÐÐ»á_·¢ËÍÓÊ¼þÐÐ»áÃû=<$GUILD.NAME>
+GOTO @ÐÐ»á_AndroidÒ»¼üÕÐÄ¼Ò³Ãæ
+#ELSEACT
+sendmsg 19 Ôª±¦²»×ã£¬Çë¼°Ê±³äÖµÔª±¦£¡
+
+[@ÐÐ»á_¹Ø±Õ´´½¨ÐÐ»áÒ³Ãæ]
+#IF
+TRUE
+#ACT
+MOV S$ÐÐ»á_Android¶þ¼¶Ò³Ãæ  
+GOTO @ÐÐ»á_AndroidÃæ°å
+[@ÐÐ»á_AndroidÐÐ»áÍæ·¨Ò³Ç©]
+#IF
+!HaveGuild
+#ACT
+sendmsg 19 ÄãÎ´¼ÓÈëÐÐ»á£¬ÎÞ·¨²Ù×÷´ËÏî!
+break
+#IF
+!EQUAL N$ÐÐ»á_Ò³Ç©ID 2
+#ACT
+MOV N$ÐÐ»á_Ò³Ç©ID 2
+MOV S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» 
+MOV S$ÐÐ»á_AndroidÃæ°åÊý¾Ý  
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Img|x=320.0|y=176.0|img=private/hanghui/hh_cangku.png|esc=0>
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý <Layout|x=697.0|y=428.0|width=150|height=30|color=|link=@ÐÐ»á_AndroidÐÐ»á²Ö¿â½çÃæ>
+#IF
+TRUE
+#ACT
+INC S$ÐÐ»á_AndroidÃæ°åÊý¾Ý 
+#IF
+TRUE
+#ACT   
+MOV S$ÐÐ»á_Ò³Ç©°´Å¥ 2|2|1|2
+GOTO @ÐÐ»á_AndroidÃæ°å
+[@ÐÐ»á_AndroidÐÐ»á²Ö¿â½çÃæ]
+#IF
+EQUAL <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)>  
+#ACT
+MOV S$ÐÐ»á_²Ö¿âÎïÆ·Êý×é 
+MOV N$ÐÐ»á_Ñ­»·¼Æ´Î 0
+FOR N$ÐÐ»á_Ñ­»·¼Æ´Î = 78
+INC S$ÐÐ»á_²Ö¿âÎïÆ·Êý×é 0|0,
+INC N$ÐÐ»á_Ñ­»·¼Æ´Î 1
+ENDFOR
+#ELSEACT
+MOV S$ÐÐ»á_²Ö¿âÎïÆ·Êý×é <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)>
+split <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Êý×é)> , S$ÐÐ»á_²Ö¿âÎïÆ·Ãû N$ÐÐ»á_²Ö¿âÎïÆ·NUM
+MOV N$ÐÐ»á_Ñ­»·¼Æ´Î 0
+FOR N$ÐÐ»á_Ñ­»·¼Æ´Î = <$DEC.78.N$ÐÐ»á_²Ö¿âÎïÆ·NUM>
+INC S$ÐÐ»á_²Ö¿âÎïÆ·Êý×é 0|0,
+INC N$ÐÐ»á_Ñ­»·¼Æ´Î 1
+ENDFOR
+#IF
+TRUE
+#ACT
+split <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Êý×é)> , S$ÐÐ»á_²Ö¿âÎïÆ·Ãû N$ÐÐ»á_²Ö¿âÎïÆ·NUM
+MOV S$ÐÐ»á_Android²Ö¿âÒ³Ãæ 
+MOV N$ÐÐ»á_Ñ­»·¼Æ´Î 0
+MOV S$ÐÐ»á_²Ö¿âchildren  
+FOR N$ÐÐ»á_Ñ­»·¼Æ´Î = 13
+split <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.6>.0>)> | S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|id=ckgz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_0|x=10.0|y=5.0|img=public/fjfqk.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ItemShow|id=ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_0|x=10.0|y=5.0|width=70|height=70|itemid=0|itemcount={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_1)}|bgtype=1|showtips=0|name={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}|link=@ÐÐ»á_²Ö¿âÎïÆ·È¡³ö&ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}>
+split <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.6>.1>)> | S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|id=ckgz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_1|x=92.0|y=5.0|img=public/fjfqk.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ItemShow|id=ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_1|x=92.0|y=5.0|width=70|height=70|itemid=0|itemcount={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_1)}|bgtype=1|showtips=0|name={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}|link=@ÐÐ»á_²Ö¿âÎïÆ·È¡³ö&ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}>
+split <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.6>.2>)> | S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|id=ckgz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_2|x=177.0|y=5.0|img=public/fjfqk.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ItemShow|id=ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_2|x=177.0|y=5.0|width=70|height=70|itemid=0|itemcount={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_1)}|bgtype=1|showtips=0|name={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}|link=@ÐÐ»á_²Ö¿âÎïÆ·È¡³ö&ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}>
+split <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.6>.3>)> | S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|id=ckgz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_3|x=262.0|y=5.0|img=public/fjfqk.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ItemShow|id=ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_3|x=262.0|y=5.0|width=70|height=70|itemid=0|itemcount={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_1)}|bgtype=1|showtips=0|name={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}|link=@ÐÐ»á_²Ö¿âÎïÆ·È¡³ö&ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}>
+split <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.6>.4>)> | S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|id=ckgz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_4|x=347.0|y=5.0|img=public/fjfqk.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ItemShow|id=ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_4|x=347.0|y=5.0|width=70|height=70|itemid=0|itemcount={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_1)}|bgtype=1|showtips=0|name={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}|link=@ÐÐ»á_²Ö¿âÎïÆ·È¡³ö&ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}>
+split <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.6>.5>)> | S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|id=ckgz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_5|x=432.0|y=5.0|img=public/fjfqk.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ItemShow|id=ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_5|x=432.0|y=5.0|width=70|height=70|itemid=0|itemcount={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_1)}|bgtype=1|showtips=0|name={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}|link=@ÐÐ»á_²Ö¿âÎïÆ·È¡³ö&ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû={$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû·Ö½â_0)}>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Layout|id=ckgz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}|children={ckgz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_0,ckgz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_1,ckgz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_2,ckgz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_3,ckgz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_4,ckgz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_5,ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_0,ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_1,ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_2,ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_3,ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_4,ckitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_5}|x=0|y=0|width=500|height=80>
+INC S$ÐÐ»á_²Ö¿âchildren ckgz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>,
+INC N$ÐÐ»á_Ñ­»·¼Æ´Î 1
+ENDFOR
+#IF
+TRUE
+#ACT
+MOV S$ÐÐ»á_±³°üÎïÆ·Êý×é   
+LoopBagItems @ÐÐ»á_±³°üÎïÆ·±éÀú N$ÐÐ»á_±³°üÎïÆ·ID
+#IF
+!EQUAL <$STR(S$ÐÐ»á_±³°üÎïÆ·Êý×é)>
+#ACT
+SPLIT <$STR(S$ÐÐ»á_±³°üÎïÆ·Êý×é)> , S$ÐÐ»á_±³°üÎïÆ·ID N$ÐÐ»á_±³°üÎïÆ·NUM
+MOV N$ÐÐ»á_Ñ­»·¼Æ´Î 0
+FOR N$ÐÐ»á_Ñ­»·¼Æ´Î = <$DEC.4.<$mod.N$ÐÐ»á_±³°üÎïÆ·NUM.4>>
+INC S$ÐÐ»á_±³°üÎïÆ·Êý×é 0,
+INC N$ÐÐ»á_Ñ­»·¼Æ´Î 1
+endfor
+#IF
+!EQUAL <$STR(S$ÐÐ»á_±³°üÎïÆ·Êý×é)>  
+#ACT
+SPLIT <$STR(S$ÐÐ»á_±³°üÎïÆ·Êý×é)> , S$ÐÐ»á_±³°üÎïÆ·ID N$ÐÐ»á_±³°üÎïÆ·NUM
+MOV N$ÐÐ»á_Ñ­»·¼Æ´Î 0
+MOV S$ÐÐ»á_°ü¹üchildren  
+FOR N$ÐÐ»á_Ñ­»·¼Æ´Î = <$DIV.N$ÐÐ»á_±³°üÎïÆ·NUM.4>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|id=bggz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_0|x=0|y=5.0|img=public/clk.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ItemShow|id=bbitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_0|x=0.0|y=5.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1|name={$ITEMINFO[<$STR(S$ÐÐ»á_±³°üÎïÆ·ID_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.4>.0>)>].STDNAME}|link=@ÐÐ»á_±³°üÎïÆ·±»Ñ¡ÖÐ&ÐÐ»á_±³°ü×°±¸Î¨Ò»ID={$STR(S$ÐÐ»á_±³°üÎïÆ·ID_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.4>.0>)}>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|id=bggz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_1|x=70.0|y=5.0|img=public/clk.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ItemShow|id=bbitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_1|x=70.0|y=5.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1|name={$ITEMINFO[<$STR(S$ÐÐ»á_±³°üÎïÆ·ID_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.4>.1>)>].STDNAME}|link=@ÐÐ»á_±³°üÎïÆ·±»Ñ¡ÖÐ&ÐÐ»á_±³°ü×°±¸Î¨Ò»ID={$STR(S$ÐÐ»á_±³°üÎïÆ·ID_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.4>.1>)}>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|id=bggz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_2|x=140.0|y=5.0|img=public/clk.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ItemShow|id=bbitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_2|x=140.0|y=5.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1|name={$ITEMINFO[<$STR(S$ÐÐ»á_±³°üÎïÆ·ID_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.4>.2>)>].STDNAME}|link=@ÐÐ»á_±³°üÎïÆ·±»Ñ¡ÖÐ&ÐÐ»á_±³°ü×°±¸Î¨Ò»ID={$STR(S$ÐÐ»á_±³°üÎïÆ·ID_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.4>.2>)}>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|id=bggz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_3|x=210.0|y=5.0|img=public/clk.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ItemShow|id=bbitem{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}_3|x=210.0|y=5.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1|name={$ITEMINFO[<$STR(S$ÐÐ»á_±³°üÎïÆ·ID_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.4>.3>)>].STDNAME}|link=@ÐÐ»á_±³°üÎïÆ·±»Ñ¡ÖÐ&ÐÐ»á_±³°ü×°±¸Î¨Ò»ID={$STR(S$ÐÐ»á_±³°üÎïÆ·ID_<$INC.<$MULT.N$ÐÐ»á_Ñ­»·¼Æ´Î.4>.3>)}>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Layout|id=bggz{$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)}|children={bggz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_0,bggz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_1,bggz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_2,bggz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_3,bbitem<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_0,bbitem<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_1,bbitem<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_2,bbitem<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>_3}|x=0|y=0|width=500|height=80>
+INC S$ÐÐ»á_°ü¹üchildren bggz<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>,
+INC N$ÐÐ»á_Ñ­»·¼Æ´Î 1
+ENDFOR
+#IF
+TRUE
+#ACT
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|x=186.0|y=58.0|img=private/hanghui/hh_hhckdb.png|esc=0|bj=1|link=0>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Img|x=165.0|y=14.0|img=public/frame_squared_outside.png|esc=0|link=0>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Text|x=421.0|y=111.0|color=67|size=20|text=ÐÐ»á²Ö¿â>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Text|x=591.0|y=20.0|color=67|size=22|text=²Ö¿â>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Text|x=851.0|y=111.0|color=67|size=20|text=±³°ü>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ListView|children={<$STR(S$ÐÐ»á_²Ö¿âchildren)>}|x=210.0|y=162.0|width=500|height=330|img=picpackage/3/9998.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <ListView|children={<$STR(S$ÐÐ»á_°ü¹üchildren)>}|x=735.0|y=150.0|width=280|height=310|img=picpackage/3/9998.png>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Button|x=730.0|y=468.0|nimg=|color=67|size=18|width=280|height=30|text=µ±Ç°¹±Ï×:{$HUMAN(ÐÐ»á_¹±Ï×Öµ)}>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <Button|x=974.0|y=15.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@ÐÐ»á_¹Ø±Õ²Ö¿â>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <$STR(S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½»)>
+INC S$ÐÐ»á_Android²Ö¿âÒ³Ãæ <$STR(S$ÐÐ»á_Android²Ö¿âÈ¡³öÌá½»)>
+GOTO @ÐÐ»á_AndroidÃæ°å
+MOV N$ÐÐ»á_Ñ­»·¼Æ´Î 0
+[@ÐÐ»á_²Ö¿âÎïÆ·È¡³ö]
+#IF
+EQUAL <$STR(S$ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû)> 0
+#ACT
+BREAK
+#IF
+POS <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)> <$STR(S$ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû)> 
+PosInlist <$STR(S$ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû)> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»á²Ö¿â¹±Ï×Öµ.txt S$ÐÐ»á_Õ¼Î»±äÁ¿ N$ÐÐ»á_ÎïÆ·Êý¾ÝÐÐºÅ
+#ACT
+MOV S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Img|x=459.0|y=178.0|width=220|height=300|img=private/npcbj/bg_energy_01.png|bg=1|esc=0|link=0>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Text|x=534.0|y=182.0|color=67|size=18|text=È¡³öÎïÆ·>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Img|x=537.0|y=224.0|width=70|height=68|img=public/fjfqk.png|esc=0>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <ItemShow|x=537|y=224|width=70|height=70|itemid=1|itemcount=1|name={$STR(S$ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû)}|bgtype=1|showtips=1>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Button|x=459.0|y=299.0|width=220|height=30|color=255|size=18|nimg=|text={$STR(S$ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû)}>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Button|x=483.0|y=420.0|width=60|color=67|size=18|nimg=public/btn_bg_4.png|text=È¡³ö|link=@ÐÐ»á_²Ö¿âÎïÆ·È¡³öµ½±³°ü>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Button|x=588.0|y=420.0|width=60|color=67|size=18|nimg=public/btn_bg_4.png|text=¹Ø±Õ|link=@ÐÐ»á_±³°üÎïÆ·´æÈëÈ¡Ïû>
+ReadRandomStr ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»á²Ö¿â¹±Ï×Öµ.txt S$ÐÐ»á_ÎïÆ·Êý¾ÝÌáÈ¡ <$STR(N$ÐÐ»á_ÎïÆ·Êý¾ÝÐÐºÅ)>
+split <$STR(S$ÐÐ»á_ÎïÆ·Êý¾ÝÌáÈ¡)> = S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î
+#IF
+small <$HUMAN(ÐÐ»á_¹±Ï×Öµ)> <$STR(S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î_1)>
+#ACT
+MOV N$ÐÐ»á_È¡³ö½ð¶îÑÕÉ« 58
+#ELSEACT
+MOV N$ÐÐ»á_È¡³ö½ð¶îÑÕÉ« 218
+#IF
+TRUE
+#ACT
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Button|x=460.0|y=371.0|width=220|height=30|color={$STR(N$ÐÐ»á_È¡³ö½ð¶îÑÕÉ«)}|nimg=|size=18|text={$STR(S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î_1)}µã¹±Ï×Öµ>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Button|x=460.0|y=340.0|width=220|height=30|nimg=|color=218|size=18|text=È¡³ö¸ÃÎïÆ·ÐèÒª>
+GOTO @ÐÐ»á_AndroidÐÐ»á²Ö¿â½çÃæ
+[@ÐÐ»á_²Ö¿âÎïÆ·È¡³öµ½±³°ü]
+#IF
+!POS <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)> <$STR(S$ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû)>
+#ACT
+MOV S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» 
+GOTO @ÐÐ»á_AndroidÐÐ»á²Ö¿â½çÃæ
+sendmsg 19 ÊÖÂýÀ²£¬ÎïÆ·ÒÑ±»È¡³ö£¡
+break
+#IF
+small <$HUMAN(ÐÐ»á_¹±Ï×Öµ)> <$STR(S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î_1)>
+#ACT
+MOV S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» 
+GOTO @ÐÐ»á_AndroidÐÐ»á²Ö¿â½çÃæ
+sendmsg 19 ¹±Ï×µã²»×ã£¡
+break
+#IF
+CheckBagSize 1
+#ACT
+#ELSEACT
+sendmsg 19 ±³°üÒÑÂú£¬ÇëÇåÀí±³°üºóÔÙÊÔ£¡
+#IF
+TRUE
+#ACT
+split <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)> , S$ÐÐ»á_²Ö¿âÈ¡³öÎïÆ·Êý¾Ý
+#IF
+!POS <$STR(S$ÐÐ»á_²Ö¿âÈ¡³öÎïÆ·Êý¾Ý_<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>)> <$STR(S$ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû)>
+#ACT
+INC N$ÐÐ»á_Ñ­»·¼Æ´Î 1
+GOTO @ÐÐ»á_²Ö¿âÎïÆ·È¡³öµ½±³°ü
+#ELSEACT
+CALCVAR HUMAN ÐÐ»á_¹±Ï×Öµ - <$STR(S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î_1)> 1
+MOV S$ÐÐ»á_²Ö¿âÎïÆ·Ô­Êý¾Ý <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)>
+split <$STR(S$ÐÐ»á_²Ö¿âÈ¡³öÎïÆ·Êý¾Ý_<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>)> | S$ÐÐ»á_²Ö¿âÈ¡³öÎïÆ·
+ReplaceText S$ÐÐ»á_²Ö¿âÎïÆ·Ô­Êý¾Ý <$STR(S$ÐÐ»á_²Ö¿âÈ¡³öÎïÆ·Êý¾Ý_<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>)> <$STR(S$ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû)>|<$DEC.<$STR(S$ÐÐ»á_²Ö¿âÈ¡³öÎïÆ·_1)>.1>
+ReplaceText S$ÐÐ»á_²Ö¿âÎïÆ·Ô­Êý¾Ý <$STR(S$ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû)>|0,  
+CALCVAR GUILD ÐÐ»á_ÐÐ»á²Ö¿â = $STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ô­Êý¾Ý)> 1
+GIVE <$STR(S$ÐÐ»á_²Ö¿âÈ¡³ö×°±¸Ãû)> 1
+MOV S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» 
+GOTO @ÐÐ»á_AndroidÐÐ»á²Ö¿â½çÃæ
+[@ÐÐ»á_±³°üÎïÆ·±éÀú]
+#IF
+PosInlist <$ITEMINFO[<$STR(N$ÐÐ»á_±³°üÎïÆ·ID)>].STDNAME> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»á²Ö¿â¹±Ï×Öµ.txt
+#ACT
+INC S$ÐÐ»á_±³°üÎïÆ·Êý×é <$STR(N$ÐÐ»á_±³°üÎïÆ·ID)>,
+[@ÐÐ»á_±³°üÎïÆ·±»Ñ¡ÖÐ]
+#IF
+!EQUAL <$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)> 0
+PosInlist <$ITEMINFO[<$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>].STDNAME> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»á²Ö¿â¹±Ï×Öµ.txt S$ÐÐ»á_Õ¼Î»±äÁ¿ N$ÐÐ»á_ÎïÆ·Êý¾ÝÐÐºÅ
+#ACT
+MOV N$ÐÐ»á_Ñ­»·¼Æ´Î 0
+MOV S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Img|x=459.0|y=178.0|width=220|height=300|img=private/npcbj/bg_energy_01.png|bg=1|esc=0|link=0>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Text|x=534.0|y=182.0|color=67|size=18|text=¹±Ï×ÎïÆ·>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Img|x=537.0|y=224.0|width=70|height=68|img=public/fjfqk.png|esc=0>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <ItemShow|x=537|y=224|width=70|height=70|itemid=1|itemcount=1|name={$ITEMINFO[<$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>].STDNAME}|bgtype=1|showtips=1>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Button|x=459.0|y=299.0|width=220|height=30|color=255|size=18|nimg=|text={$ITEMINFO[<$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>].STDNAME}>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Button|x=483.0|y=420.0|width=60|color=67|size=18|nimg=public/btn_bg_4.png|text=Ìá½»|link=@ÐÐ»á_±³°üÎïÆ·´æÈë²Ö¿â>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Button|x=588.0|y=420.0|width=60|color=67|size=18|nimg=public/btn_bg_4.png|text=¹Ø±Õ|link=@ÐÐ»á_±³°üÎïÆ·´æÈëÈ¡Ïû>
+ReadRandomStr ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»á²Ö¿â¹±Ï×Öµ.txt S$ÐÐ»á_ÎïÆ·Êý¾ÝÌáÈ¡ <$STR(N$ÐÐ»á_ÎïÆ·Êý¾ÝÐÐºÅ)>
+split <$STR(S$ÐÐ»á_ÎïÆ·Êý¾ÝÌáÈ¡)> = S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Button|x=460.0|y=371.0|width=220|height=30|color=149|nimg=|size=18|text={$STR(S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î_1)}µã¹±Ï×Öµ>
+INC S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» <Text|x=497.0|y=340.0|color=218|size=18|text=¹±Ï×¸ÃÎïÆ·½«»ñµÃ>
+GOTO @ÐÐ»á_AndroidÐÐ»á²Ö¿â½çÃæ
+[@ÐÐ»á_±³°üÎïÆ·´æÈëÈ¡Ïû]
+#IF
+TRUE
+#ACT
+MOV S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½» 
+GOTO @ÐÐ»á_AndroidÐÐ»á²Ö¿â½çÃæ
+[@ÐÐ»á_±³°üÎïÆ·´æÈë²Ö¿â]
+#IF
+!EQUAL <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)> 
+#ACT
+split <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)> , S$ÐÐ»á_²Ö¿âÎïÆ·Ãû N$ÐÐ»á_²Ö¿âÎïÆ·NUM
+#ELSEACT
+MOV N$ÐÐ»á_²Ö¿âÎïÆ·NUM 0
+#IF
+!small <$STR(N$ÐÐ»á_²Ö¿âÎïÆ·NUM)> 78
+#ACT
+sendmsg 19 ÐÐ»á²Ö¿âÒÑÂú£¬ÇëÁªÏµ»á³¤¼°Ê±ÇåÀíÐÐ»á²Ö¿â£¡
+break
+#IF
+!pos <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)> <$ITEMINFO[<$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>].STDNAME>
+CheckItemID <$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>
+PosInlist <$ITEMINFO[<$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>].STDNAME> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»á²Ö¿â¹±Ï×Öµ.txt S$ÐÐ»á_Õ¼Î»±äÁ¿ N$ÐÐ»á_ÎïÆ·Êý¾ÝÐÐºÅ
+#ACT
+MOV S$ÐÐ»á_Òª´æÈë×°±¸Ãû <$ITEMINFO[<$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>].STDNAME>
+TAKEM <$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>
+CALCVAR GUILD ÐÐ»á_ÐÐ»á²Ö¿â + <$STR(S$ÐÐ»á_Òª´æÈë×°±¸Ãû)>|1, 1
+ReadRandomStr ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»á²Ö¿â¹±Ï×Öµ.txt S$ÐÐ»á_ÎïÆ·Êý¾ÝÌáÈ¡ <$STR(N$ÐÐ»á_ÎïÆ·Êý¾ÝÐÐºÅ)>
+split <$STR(S$ÐÐ»á_ÎïÆ·Êý¾ÝÌáÈ¡)> = S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î
+CALCVAR HUMAN ÐÐ»á_¹±Ï×Öµ + <$STR(S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î_1)> 1
+MOV S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½»  
+GOTO @ÐÐ»á_AndroidÐÐ»á²Ö¿â½çÃæ
+break
+#IF
+pos <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)> <$ITEMINFO[<$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>].STDNAME>
+!pos <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû_<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>)> <$ITEMINFO[<$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>].STDNAME>
+CheckItemID <$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>
+PosInlist <$ITEMINFO[<$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>].STDNAME> ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»á²Ö¿â¹±Ï×Öµ.txt S$ÐÐ»á_Õ¼Î»±äÁ¿ N$ÐÐ»á_ÎïÆ·Êý¾ÝÐÐºÅ
+#ACT
+INC N$ÐÐ»á_Ñ­»·¼Æ´Î 1
+GOTO @ÐÐ»á_±³°üÎïÆ·´æÈë²Ö¿â
+#ELSEACT
+MOV S$ÐÐ»á_Òª´æÈë×°±¸Ãû <$ITEMINFO[<$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>].STDNAME>
+TAKEM <$STR(S$ÐÐ»á_±³°ü×°±¸Î¨Ò»ID)>
+split <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû_<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>)> | S$ÐÐ»á_²ð·Ö²Ö¿âÎïÆ·
+MOV S$ÐÐ»á_²Ö¿âÎïÆ·Ô­Êý¾Ý <$GUILD(ÐÐ»á_ÐÐ»á²Ö¿â)>
+ReplaceText S$ÐÐ»á_²Ö¿âÎïÆ·Ô­Êý¾Ý <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ãû_<$STR(N$ÐÐ»á_Ñ­»·¼Æ´Î)>)> <$STR(S$ÐÐ»á_Òª´æÈë×°±¸Ãû)>|<$INC.<$STR(S$ÐÐ»á_²ð·Ö²Ö¿âÎïÆ·_1)>.1> 1
+CALCVAR GUILD ÐÐ»á_ÐÐ»á²Ö¿â = <$STR(S$ÐÐ»á_²Ö¿âÎïÆ·Ô­Êý¾Ý)> 1
+ReadRandomStr ..\QuestDiary\¶ÁÈ¡Êý¾Ý\ÐÐ»á²Ö¿â¹±Ï×Öµ.txt S$ÐÐ»á_ÎïÆ·Êý¾ÝÌáÈ¡ <$STR(N$ÐÐ»á_ÎïÆ·Êý¾ÝÐÐºÅ)>
+split <$STR(S$ÐÐ»á_ÎïÆ·Êý¾ÝÌáÈ¡)> = S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î
+CALCVAR HUMAN ÐÐ»á_¹±Ï×Öµ + <$STR(S$ÐÐ»á_ÎïÆ·Êý¾Ý·Ö¸î_1)> 1
+#IF
+large <$HUMAN(ÐÐ»á_¹±Ï×Öµ)> 40000000
+#ACT
+CALCVAR HUMAN ÐÐ»á_¹±Ï×Öµ = 40000000 1
+#IF
+TRUE
+#ACT
+MOV S$ÐÐ»á_Android²Ö¿â¶Ò»»Ìá½»  
+GOTO @ÐÐ»á_AndroidÐÐ»á²Ö¿â½çÃæ
+[@ÐÐ»á_¹Ø±Õ²Ö¿â]
+#IF
+TRUE
+#ACT
+MOV S$ÐÐ»á_Android²Ö¿âÒ³Ãæ
+
+GOTO @ÐÐ»á_AndroidÃæ°å
+[@ÐÐ»á_AndroidÎÒµÄÐÐ»áÒ³Ç©]
+#IF
+!HaveGuild
+#ACT
+sendmsg 19 ÄãÎ´¼ÓÈë¹«»á£¬ÎÞ·¨´ò¿ªÃæ°å
+break
+
+#IF
+TRUE
+#ACT
+OPENUI 1202 1
+close
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

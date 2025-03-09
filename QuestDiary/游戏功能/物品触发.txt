@@ -1,0 +1,3991 @@
+[@物品触发]
+{
+
+[@NewStdModeFunc12010]
+#IF
+TRUE
+#ACT
+MOV S$自选装备名字 <$PARAM(2)>
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$自选武器名称 巅峰神武刃
+MOV S$自选衣服名称 巅峰神武甲(<$GENDER>)
+MOV S$自选头盔名称 巅峰神武盔
+MOV S$自选项链名称 巅峰神武坠
+MOV S$自选手镯名称 巅峰神武手
+MOV S$自选戒指名称 巅峰神武戒
+MOV S$自选腰带名称 巅峰神武带
+MOV S$自选靴子名称 巅峰神武靴
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$自选武器名称 巅峰幻魔法杖
+MOV S$自选衣服名称 巅峰幻魔袍(<$GENDER>)
+MOV S$自选头盔名称 巅峰幻魔冠
+MOV S$自选项链名称 巅峰幻魔坠
+MOV S$自选手镯名称 巅峰幻魔腕
+MOV S$自选戒指名称 巅峰幻魔戒
+MOV S$自选腰带名称 巅峰幻魔带
+MOV S$自选靴子名称 巅峰幻魔靴
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$自选武器名称 巅峰天玄剑
+MOV S$自选衣服名称 巅峰天玄衣(<$GENDER>)
+MOV S$自选头盔名称 巅峰天玄道冠
+MOV S$自选项链名称 巅峰天玄道链
+MOV S$自选手镯名称 巅峰天玄护腕
+MOV S$自选戒指名称 巅峰天玄道戒
+MOV S$自选腰带名称 巅峰天玄道带
+MOV S$自选靴子名称 巅峰天玄道靴
+
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 
+MOV S$装备自选物品 
+GOTO @选装备的框
+BREAK
+
+
+[@NewStdModeFunc12009]
+#IF
+TRUE
+#ACT
+MOV S$自选装备名字 <$PARAM(2)>
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$自选武器名称 仙道·鎏金圣阳刃
+MOV S$自选衣服名称 仙道·鎏金圣阳甲(<$GENDER>)
+MOV S$自选头盔名称 仙道·鎏金圣阳冠
+MOV S$自选项链名称 仙道·鎏金圣阳链
+MOV S$自选手镯名称 仙道·鎏金圣阳镯
+MOV S$自选戒指名称 仙道·鎏金圣阳戒
+MOV S$自选腰带名称 仙道·鎏金圣阳带
+MOV S$自选靴子名称 仙道·鎏金圣阳鞋
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$自选武器名称 仙道·鎏金魔月杖
+MOV S$自选衣服名称 仙道·鎏金魔月法袍(<$GENDER>)
+MOV S$自选头盔名称 仙道·鎏金魔月冠
+MOV S$自选项链名称 仙道·鎏金魔月坠
+MOV S$自选手镯名称 仙道·鎏金魔月镯
+MOV S$自选戒指名称 仙道·鎏金魔月戒
+MOV S$自选腰带名称 仙道·鎏金魔月带
+MOV S$自选靴子名称 仙道·鎏金魔月鞋
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$自选武器名称 仙道·鎏金天星剑
+MOV S$自选衣服名称 仙道·鎏金天星衣(<$GENDER>)
+MOV S$自选头盔名称 仙道·鎏金天星冠
+MOV S$自选项链名称 仙道·鎏金天星坠
+MOV S$自选手镯名称 仙道·鎏金天星腕
+MOV S$自选戒指名称 仙道·鎏金天星戒
+MOV S$自选腰带名称 仙道·鎏金天星带
+MOV S$自选靴子名称 仙道·鎏金天星靴
+
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 
+MOV S$装备自选物品 
+GOTO @选装备的框
+BREAK
+
+[@NewStdModeFunc12008]
+#IF
+TRUE
+#ACT
+MOV S$自选装备名字 <$PARAM(2)>
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$自选武器名称 鎏金圣阳刃
+MOV S$自选衣服名称 鎏金圣阳甲(<$GENDER>)
+MOV S$自选头盔名称 鎏金圣阳冠
+MOV S$自选项链名称 鎏金圣阳链
+MOV S$自选手镯名称 鎏金圣阳镯
+MOV S$自选戒指名称 鎏金圣阳戒
+MOV S$自选腰带名称 鎏金圣阳带
+MOV S$自选靴子名称 鎏金圣阳鞋
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$自选武器名称 鎏金魔月杖
+MOV S$自选衣服名称 鎏金魔月法袍(<$GENDER>)
+MOV S$自选头盔名称 鎏金魔月冠
+MOV S$自选项链名称 鎏金魔月坠
+MOV S$自选手镯名称 鎏金魔月镯
+MOV S$自选戒指名称 鎏金魔月戒
+MOV S$自选腰带名称 鎏金魔月带
+MOV S$自选靴子名称 鎏金魔月鞋
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$自选武器名称 鎏金天星剑
+MOV S$自选衣服名称 鎏金天星衣(<$GENDER>)
+MOV S$自选头盔名称 鎏金天星冠
+MOV S$自选项链名称 鎏金天星坠
+MOV S$自选手镯名称 鎏金天星腕
+MOV S$自选戒指名称 鎏金天星戒
+MOV S$自选腰带名称 鎏金天星带
+MOV S$自选靴子名称 鎏金天星靴
+
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 
+MOV S$装备自选物品 
+GOTO @选装备的框
+BREAK
+
+
+[@NewStdModeFunc12007]
+#IF
+TRUE
+#ACT
+MOV S$自选装备名字 <$PARAM(2)>
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$自选武器名称 魔道·盘古开天刃
+MOV S$自选衣服名称 魔道·盘古开天甲(<$GENDER>)
+MOV S$自选头盔名称 魔道·盘古开天冠
+MOV S$自选项链名称 魔道·盘古开天坠
+MOV S$自选手镯名称 魔道·盘古开天腕
+MOV S$自选戒指名称 魔道·盘古开天戒
+MOV S$自选腰带名称 魔道·盘古开天带
+MOV S$自选靴子名称 魔道·盘古开天靴
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$自选武器名称 魔道·伏羲裂地魔杖
+MOV S$自选衣服名称 魔道·伏羲裂地袍(<$GENDER>)
+MOV S$自选头盔名称 魔道·伏羲裂地冠
+MOV S$自选项链名称 魔道·伏羲裂地链
+MOV S$自选手镯名称 魔道·伏羲裂地腕
+MOV S$自选戒指名称 魔道·伏羲裂地戒
+MOV S$自选腰带名称 魔道·伏羲裂地带
+MOV S$自选靴子名称 魔道·伏羲裂地靴
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$自选武器名称 魔道·轩辕人皇剑
+MOV S$自选衣服名称 魔道·轩辕人皇衣(<$GENDER>)
+MOV S$自选头盔名称 魔道·轩辕人皇冠
+MOV S$自选项链名称 魔道·轩辕人皇链
+MOV S$自选手镯名称 魔道·轩辕人皇手
+MOV S$自选戒指名称 魔道·轩辕人皇戒
+MOV S$自选腰带名称 魔道·轩辕人皇带
+MOV S$自选靴子名称 魔道·轩辕人皇靴
+
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 
+MOV S$装备自选物品 
+GOTO @选装备的框
+BREAK
+
+[@NewStdModeFunc12006]
+#IF
+TRUE
+#ACT
+MOV S$自选装备名字 <$PARAM(2)>
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$自选武器名称 仙道·盘古开天刃
+MOV S$自选衣服名称 仙道·盘古开天甲(<$GENDER>)
+MOV S$自选头盔名称 仙道·盘古开天冠
+MOV S$自选项链名称 仙道·盘古开天坠
+MOV S$自选手镯名称 仙道·盘古开天腕
+MOV S$自选戒指名称 仙道·盘古开天戒
+MOV S$自选腰带名称 仙道·盘古开天带
+MOV S$自选靴子名称 仙道·盘古开天靴
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$自选武器名称 仙道·伏羲裂地魔杖
+MOV S$自选衣服名称 仙道·伏羲裂地袍(<$GENDER>)
+MOV S$自选头盔名称 仙道·伏羲裂地冠
+MOV S$自选项链名称 仙道·伏羲裂地链
+MOV S$自选手镯名称 仙道·伏羲裂地腕
+MOV S$自选戒指名称 仙道·伏羲裂地戒
+MOV S$自选腰带名称 仙道·伏羲裂地带
+MOV S$自选靴子名称 仙道·伏羲裂地靴
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$自选武器名称 仙道·轩辕人皇剑
+MOV S$自选衣服名称 仙道·轩辕人皇衣(<$GENDER>)
+MOV S$自选头盔名称 仙道·轩辕人皇冠
+MOV S$自选项链名称 仙道·轩辕人皇链
+MOV S$自选手镯名称 仙道·轩辕人皇手
+MOV S$自选戒指名称 仙道·轩辕人皇戒
+MOV S$自选腰带名称 仙道·轩辕人皇带
+MOV S$自选靴子名称 仙道·轩辕人皇靴
+
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 
+MOV S$装备自选物品 
+GOTO @选装备的框
+BREAK
+
+[@NewStdModeFunc12005]
+#IF
+TRUE
+#ACT
+MOV S$自选装备名字 <$PARAM(2)>
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$自选武器名称 仙道·战魂烈日战刃
+MOV S$自选衣服名称 仙道·战魂烈日甲(<$GENDER>)
+MOV S$自选头盔名称 仙道·战魂烈日王冠
+MOV S$自选项链名称 仙道·战魂烈日吊坠
+MOV S$自选手镯名称 仙道·战魂烈日护腕
+MOV S$自选戒指名称 仙道·战魂烈日戒指
+MOV S$自选腰带名称 仙道·战魂烈日腰带
+MOV S$自选靴子名称 仙道·战魂烈日长靴
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$自选武器名称 仙道·法魂血月魔杖
+MOV S$自选衣服名称 仙道·法魂血月法袍(<$GENDER>)
+MOV S$自选头盔名称 仙道·法魂血月王冠
+MOV S$自选项链名称 仙道·法魂血月吊坠
+MOV S$自选手镯名称 仙道·法魂血月护腕
+MOV S$自选戒指名称 仙道·法魂血月戒指
+MOV S$自选腰带名称 仙道·法魂血月腰带
+MOV S$自选靴子名称 仙道·法魂血月长靴
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$自选武器名称 仙道·道魂辰星道剑
+MOV S$自选衣服名称 仙道·道魂辰星道衣(<$GENDER>)
+MOV S$自选头盔名称 仙道·道魂辰星道冠
+MOV S$自选项链名称 仙道·道魂辰星道链
+MOV S$自选手镯名称 仙道·道魂辰星道手
+MOV S$自选戒指名称 仙道·道魂辰星道戒
+MOV S$自选腰带名称 仙道·道魂辰星道带
+MOV S$自选靴子名称 仙道·道魂辰星道靴
+
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 
+MOV S$装备自选物品 
+GOTO @选装备的框
+BREAK
+
+[@选装备的框]
+#IF
+TRUE
+#SAY
+<Img|children={3,12,4,5,6,7,8,9,10,11,2,13,14,15,16,17,18,19,20}|x=432.0|y=89.0|move=1|img=private/npcbj/bg_energy_01.png|esc=0|scale=1|bg=1|loadDelay=0>
+<Img|id=2|x=103.0|y=14.0|height=16|esc=0|img=public/word_wakeup_choose.png|scale=1>
+<Button|id=3|x=231.0|y=-1.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ItemShow|id=4|x=55.0|y=59.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$自选武器名称)>).LOOKS>|itemcount=1|name=<$STR(S$自选武器名称)>|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选武器>
+<ItemShow|id=5|x=171.0|y=59.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$自选衣服名称)>).LOOKS>|itemcount=1|name=<$STR(S$自选衣服名称)>|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选衣服>
+<ItemShow|id=6|x=55.0|y=139.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$自选头盔名称)>).LOOKS>|itemcount=1|name=<$STR(S$自选头盔名称)>|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选头盔>
+<ItemShow|id=7|x=171.0|y=139.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$自选项链名称)>).LOOKS>|itemcount=1|name=<$STR(S$自选项链名称)>|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选项链>
+<ItemShow|id=8|x=55.0|y=219.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$自选手镯名称)>).LOOKS>|itemcount=1|name=<$STR(S$自选手镯名称)>|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选手镯>
+<ItemShow|id=9|x=171.0|y=219.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$自选戒指名称)>).LOOKS>|itemcount=1|name=<$STR(S$自选戒指名称)>|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选戒指>
+<ItemShow|id=10|x=55.0|y=299.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$自选腰带名称)>).LOOKS>|itemcount=1|name=<$STR(S$自选腰带名称)>|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选腰带>
+<ItemShow|id=11|x=171.0|y=299.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$自选靴子名称)>).LOOKS>|itemcount=1|name=<$STR(S$自选靴子名称)>|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选靴子>
+<Button|id=12|x=74.0|y=382.0|pimg=private/npc/btn_push_01.png|mimg=private/npc/btn_push_01.png|scale=1|color=67|nimg=private/npc/btn_push_01.png|size=22|text=确认|link=@选好装备了>
+<$STR(S$选装备框显示)>
+
+[@我选武器]
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 <Img|id=13|x=56.0|y=60.0|img=private/duanzao/xuanqu2.png|scale=1|esc=0>
+MOV S$装备自选物品 <$STR(S$自选武器名称)>
+GOTO @选装备的框
+BREAK
+
+[@我选衣服]
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 <Img|id=14|x=172.0|y=60.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$装备自选物品 <$STR(S$自选衣服名称)>
+GOTO @选装备的框
+BREAK
+
+[@我选头盔]
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 <Img|id=15|x=56.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$装备自选物品 <$STR(S$自选头盔名称)>
+GOTO @选装备的框
+BREAK
+
+[@我选项链]
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 <Img|id=16|x=172.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$装备自选物品 <$STR(S$自选项链名称)>
+GOTO @选装备的框
+BREAK
+
+[@我选手镯]
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 <Img|id=17|x=56.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$装备自选物品 <$STR(S$自选手镯名称)>
+GOTO @选装备的框
+BREAK
+
+[@我选戒指]
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 <Img|id=18|x=172.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$装备自选物品 <$STR(S$自选戒指名称)>
+GOTO @选装备的框
+BREAK
+
+[@我选腰带]
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 <Img|id=19|x=56.0|y=300.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$装备自选物品 <$STR(S$自选腰带名称)>
+GOTO @选装备的框
+BREAK
+
+[@我选靴子]
+#IF
+TRUE
+#ACT
+MOV S$选装备框显示 <Img|id=20|x=172.0|y=300.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$装备自选物品 <$STR(S$自选靴子名称)>
+GOTO @选装备的框
+BREAK
+
+[@选好装备了]
+#IF
+EQUAL $STR(S$选装备框显示) 
+#ACT
+SENDMSG 19 请选择一件神器
+BREAK
+
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+
+#IF
+CheckItem <$STR(S$自选装备名字)> 1
+#ACT
+TAKE <$STR(S$自选装备名字)> 1
+GIVE $STR(S$装备自选物品) 1 1
+SENDMSG 5 恭喜获得：<$STR(S$装备自选物品)>
+SENDMSG 19 恭喜获得：<$STR(S$装备自选物品)>
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 你没有凶器自选箱
+BREAK
+CLOSE
+
+
+[@NewStdModeFunc12004]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+!CHECKITEMID <$STR(N$使用物品序列号)>
+#ACT
+BREAK
+
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+equal $random(1|5) 1
+#ACT
+ChangeEatItemDura - 1
+GIVE 狂怒头盔图鉴 1 1
+SENDMSG 7 打开礼包获得:狂怒头盔图鉴
+BREAK
+
+#IF
+equal $random(1|5) 2
+#ACT
+ChangeEatItemDura - 1
+GIVE 狂怒项链图鉴 1 1
+SENDMSG 7 打开礼包获得:狂怒项链图鉴
+BREAK
+
+#IF
+equal $random(1|5) 3
+#ACT
+ChangeEatItemDura - 1
+GIVE 狂怒手镯图鉴 1 1
+SENDMSG 7 打开礼包获得:狂怒手镯图鉴
+BREAK
+
+#IF
+equal $random(1|5) 4
+#ACT
+ChangeEatItemDura - 1
+GIVE 狂怒戒指图鉴 1 1
+SENDMSG 7 打开礼包获得:狂怒戒指图鉴
+BREAK
+
+
+
+[@NewStdModeFunc12003]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+!CHECKITEMID <$STR(N$使用物品序列号)>
+#ACT
+BREAK
+
+#IF
+!CheckBagSize 4
+#ACT
+SENDMSG 19 包裹空间不足4个
+BREAK
+
+#IF
+TRUE
+#ACT
+ChangeEatItemDura - 1
+GIVE 神秘头盔图鉴 1 1
+GIVE 神秘项链图鉴 1 1
+GIVE 神秘手镯图鉴 1 1
+GIVE 神秘戒指图鉴 1 1
+SENDMSG 7 打开礼包获得:神秘图鉴1套
+BREAK
+
+
+[@NewStdModeFunc12002]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+!CHECKITEMID <$STR(N$使用物品序列号)>
+#ACT
+BREAK
+
+#IF
+!CheckBagSize 4
+#ACT
+SENDMSG 19 包裹空间不足4个
+BREAK
+
+#IF
+TRUE
+#ACT
+ChangeEatItemDura - 1
+GIVE 神御头盔图鉴 1 1
+GIVE 神御项链图鉴 1 1
+GIVE 神御手镯图鉴 1 1
+GIVE 神御戒指图鉴 1 1
+SENDMSG 7 打开礼包获得:神御图鉴1套
+BREAK
+
+[@NewStdModeFunc12001]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+!CHECKITEMID <$STR(N$使用物品序列号)>
+#ACT
+BREAK
+
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+EQUAL $JOBID 0
+#ACT
+ChangeEatItemDura - 1
+GIVE 翱风斩 1 1
+SENDMSG 7 打开礼包获得:翱风斩*1
+BREAK
+
+#IF
+EQUAL $JOBID 1
+#ACT
+ChangeEatItemDura - 1
+GIVE 纵雷诀 1 1
+SENDMSG 7 打开礼包获得:纵雷诀*1
+BREAK
+
+#IF
+EQUAL $JOBID 2
+#ACT
+ChangeEatItemDura - 1
+GIVE 毒凌波 1 1
+SENDMSG 7 打开礼包获得:毒凌波*1
+BREAK
+
+[@NewStdModeFunc12000]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+!CheckBagSize 2
+#ACT
+SENDMSG 19 包裹空间不足2个
+BREAK
+
+#IF
+!CHECKITEMID <$STR(N$使用物品序列号)>
+#ACT
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+GIVE 特装精粹(攻) 10 1
+GIVE 特装精粹(防) 10 1
+SENDMSG 7 打开礼包获得:特装精粹(攻)*10特装精粹(防)*10
+BREAK
+
+[@NewStdModeFunc1001]
+
+#IF
+TRUE
+#ACT
+MOV N$召唤令_当前小时 <$TIME.HOUR>
+
+#IF
+!Between N$召唤令_当前小时 10 23
+EQUAL $M HJSWYZB
+#ACT
+SENDMSG 19 每日11:00-22:00为活动开放时间
+SENDMSG 6 每日11:00-22:00为活动开放时间
+BREAK
+
+#IF
+EQUAL <$HUMAN(BOSS召唤令使用次数)> 5
+EQUAL $M HJSWYZB
+#ACT
+SENDMSG 19 今日使用次数已达上限
+SENDMSG 6 今日使用次数已达上限
+BREAK
+
+
+
+#IF
+Between N$召唤令_当前小时 10 23
+EQUAL <$HUMAN(BOSS召唤令使用次数)> 5
+!EQUAL $M HJSWYZB
+#ACT
+QueryMsg 今日使用次数已达上限,确定要去四方炼狱吗？ @BOSS召唤令传送
+BREAK
+
+#IF
+!Between N$召唤令_当前小时 10 23
+!EQUAL $M HJSWYZB
+#ACT
+QueryMsg 未到活动开放时间,确定要去四方炼狱吗？ @BOSS召唤令传送
+BREAK
+
+#IF
+!EQUAL $M HJSWYZB
+Between N$召唤令_当前小时 10 23
+#ACT
+QueryMsg 确定要去四方炼狱吗？ @BOSS召唤令传送
+BREAK
+
+#IF
+EQUAL $M HJSWYZB
+!SMALL $TIME.HOUR 11
+SMALL $TIME.HOUR 22
+POS $PARAM(2) 召唤令
+SMALL <$HUMAN(BOSS召唤令使用次数)> 5
+#ACT
+MOV S$BOSS召唤令_物品名字 $PARAM(2)
+ReplaceText S$BOSS召唤令_物品名字 召唤令
+ChangeEatItemDura - 1
+CalcVar Human BOSS召唤令使用次数 + 1
+SaveVar Human BOSS召唤令使用次数
+CalcVar GLOBAL BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数 + 1
+SaveVar GLOBAL BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数
+SENDMSG 9 <$USERNAME>在BOSS空间使用了<$PARAM(2)>重生了<$STR(S$BOSS召唤令_物品名字)>，大家快去抢夺吧。
+SENDMSG 16 <$USERNAME>在BOSS空间使用了<$PARAM(2)>重生了<$STR(S$BOSS召唤令_物品名字)>，大家快去抢夺吧。
+GOTO @BOSS召唤令
+BREAK
+
+
+[@NewStdModeFunc1003]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+!EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].Shape> $JOBID
+#ACT
+SENDMSG 5 非本职业技能
+SENDMSG 19 非本职业技能
+BREAK
+
+#IF
+CHECKMAGIC <$STR(S$使用物品名字)>
+#ACT
+SENDMSG 5 您已经掌握了<$STR(S$使用物品名字)>
+SENDMSG 19 您已经掌握了<$STR(S$使用物品名字)>
+BREAK
+
+#IF
+SMALL $LEVEL <$ITEMINFO[<$STR(N$使用物品序列号)>].DuraMax>
+#ACT
+SENDMSG 5 等级不足
+SENDMSG 19 等级不足
+BREAK
+#ELSEACT
+AddSkill <$STR(S$使用物品名字)>
+GOTO @包裹红点判断
+TAKEM <$STR(N$使用物品序列号)>
+BREAK
+
+[@NewStdModeFunc1004]
+#IF
+TRUE
+#ACT
+MOV S41 $PARAM(2)
+ReplaceText S41 (
+ReplaceText S41 级)
+ReplaceText S41 专家
+ReplaceText S41 大师
+ReplaceText S41 宗师
+ReplaceText S41 权威
+ReplaceText S41 王者
+
+#IF
+!EQUAL $ITEMINFO[$PARAM(0)].Shape $JOBID
+#ACT
+SENDMSG 5 非本职业技能！
+SENDMSG 19 非本职业技能！
+break
+
+#IF
+CHECKSKILL $STR(S41) < $ITEMINFO[$PARAM(0)].AC1
+#ACT
+SENDMSG 5 需要先掌握上一级的<$STR(S41)>
+SENDMSG 19 需要先掌握上一级的<$STR(S41)>
+break
+
+#IF
+!CHECKMAGIC $STR(S41)
+LARGE $ITEMINFO[$PARAM(0)].AC2 3
+#ACT
+SENDMSG 5 需要先掌握上一级的<$STR(S41)>
+SENDMSG 19 需要先掌握上一级的<$STR(S41)>
+break
+
+#IF
+CHECKSKILL $STR(S41) = $ITEMINFO[$PARAM(0)].AC2
+#ACT
+SENDMSG 5 您已掌握了该等级的技能
+SENDMSG 19 您已掌握了该等级的技能
+break
+
+#IF
+CHECKSKILL $STR(S41) > $ITEMINFO[$PARAM(0)].AC2
+#ACT
+SENDMSG 5 您已掌握了更高级的技能
+SENDMSG 19 您已掌握了更高级的技能
+break
+
+#IF
+!CHECKMAGIC $STR(S41)
+EQUAL $ITEMINFO[$PARAM(0)].AC2 3
+#ACT
+ADDSKILL $STR(S41) 3
+CHANGESKILLEXP $STR(S41) = 0
+MOV N$<$ITEMINFO[$PARAM(0)].MAC1> 0
+GOTO @包裹红点判断
+SENDMSG 5 恭喜你掌握了大师级<$STR(S41)>
+SENDMSG 5 恭喜你掌握了大师级<$STR(S41)>
+TAKEM $PARAM(0)
+break
+
+#IF
+CHECKSKILL $STR(S41) = $ITEMINFO[$PARAM(0)].AC1
+#ACT
+SKILLLEVEL $STR(S41) = $ITEMINFO[$PARAM(0)].AC2
+CHANGESKILLEXP $STR(S41) = 0
+MOV N$<$ITEMINFO[$PARAM(0)].MAC1> 0
+GOTO @包裹红点判断
+SENDMSG 5 <$STR(S41)>技能等级跃升成功
+SENDMSG 19 <$STR(S41)>技能等级跃升成功
+TAKEM $PARAM(0)
+break
+
+[@NewStdModeFunc1005]
+#IF
+TRUE
+#ACT
+MOV N$骑战使用物品序列号 <$PARAM(0)>
+MOV S$骑战使用物品名字 <$PARAM(2)>
+
+#IF
+SMALL $LEVEL 48
+#ACT
+SENDMSG 5 角色等级不足
+SENDMSG 19 角色等级不足
+BREAK
+
+#IF
+!EQUAL <$ITEMINFO[<$STR(N$骑战使用物品序列号)>].Shape> <$INC.$JOBID.13>
+#ACT
+SENDMSG 5 非本职业骑战技能
+SENDMSG 19 非本职业骑战技能
+BREAK
+
+#IF
+!CHECKMAGIC <$STR(S$骑战使用物品名字)>
+#ACT
+AddSkill <$STR(S$骑战使用物品名字)>
+TAKEM <$STR(N$骑战使用物品序列号)>
+SENDMSG 5 恭喜你掌握了初级<$STR(S$骑战使用物品名字)>
+SENDMSG 19 恭喜你掌握了初级<$STR(S$骑战使用物品名字)>
+BREAK
+
+#IF
+CHECKSKILL $STR(S$骑战使用物品名字) > 3
+#ACT
+SENDMSG 5 您的<$STR(S$骑战使用物品名字)>已到达最高级
+SENDMSG 19 您的<$STR(S$骑战使用物品名字)>已到达最高级
+BREAK
+#ELSEACT
+SKILLLEVEL $STR(S$骑战使用物品名字) = 4
+CHANGESKILLEXP $STR(S$骑战使用物品名字) = 0
+TAKEM <$STR(N$骑战使用物品序列号)>
+SENDMSG 5 恭喜你掌握了大师级<$STR(S$骑战使用物品名字)>
+SENDMSG 19 恭喜你掌握了大师级<$STR(S$骑战使用物品名字)>
+BREAK
+
+[@NewStdModeFunc65501]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+!CHECKITEMID <$STR(N$使用物品序列号)>
+#ACT
+BREAK
+
+#IF
+POS -纵横之翼-传世之翼-魔焱之翼-恶魔之翼-幻灵凤羽-蓝冰之焱-神武仙翼-神王仙翼- -<$STR(S$使用物品名字)>-
+#ACT
+MOV P44 <$ITEMINFO[<$STR(N$使用物品序列号)>].AC1>
+#ELSEACT
+SENDMSG 19 数据错误
+BREAK
+
+#IF
+EQUAL <$TABLE(Lemon_YY).TS<$STR(P44)>> 1
+#ACT
+SENDMSG 19 你已经拥有了该羽翼
+BREAK
+#ELSEACT
+TAKE <$STR(S$使用物品名字)> 1
+TABLE Lemon_YY TS<$STR(P44)> = 1
+GOTO @包裹红点判断
+GOTO @临时属性
+SENDMSG 19 恭喜你成功获得了<$STR(S$使用物品名字)>
+SENDMSG 16 恭喜<%s>成功获得了羽翼：<$STR(S$使用物品名字)>
+BREAK
+
+
+[@StdModeFunc2289]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+CheckVarList $M ..\QuestDiary\追踪文本\禁止传送地图.txt
+#ACT
+ChangeEatItemDura + 1
+SENDMSG 19 当前地图禁止使用<$STR(S$使用物品名字)>
+BREAK
+
+#IF
+CHECKGROUPCOUNT > 1
+#ACT
+GOTO @队伍召集&召集者地图号=<$M>&召集者地图X=<$X>&召集者地图Y=<$Y>&召集者名字=<$USERNAME>&召集者地图名字=<$MAPNAME> 1
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 你没有加入队伍
+ChangeEatItemDura + 1
+BREAK
+CLOSE
+
+
+[@StdModeFunc2290]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+CheckVarList $M ..\QuestDiary\追踪文本\禁止传送地图.txt
+#ACT
+ChangeEatItemDura + 1
+SENDMSG 19 当前地图禁止使用<$STR(S$使用物品名字)>
+BREAK
+
+#IF
+HaveGuild
+#ACT
+GOTO @行会召集&召集者地图号=<$M>&召集者地图X=<$X>&召集者地图Y=<$Y>&召集者名字=<$USERNAME>&召集者地图名字=<$MAPNAME>&召集者行会名字=<$GUILDNAME> 2
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 你没有加入行会
+ChangeEatItemDura + 1
+BREAK
+CLOSE
+
+[@NewStdModeFunc8201]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+PosInlist <$ITEMINFO[<$STR(N$使用物品序列号)>].NAME> ..\QuestDiary\数据读取\时装触发对应.txt S80
+#ACT
+SPLIT $STR(S80) | S60
+#ELSEACT
+SENDMSG 5 非法操作，请联系管理员
+KICK
+BREAK
+
+#IFONE
+EQUAL $JOBID $STR(S63)
+EQUAL S63 99
+#ACT
+#ELSEACT
+Messagebox 非本职业道具
+BREAK
+
+#IF
+LARGE <$TABLE(SZ_<$STR(S61)>).<$STR(S62)>> 0
+POS $STR(S61) DD
+#ACT
+Messagebox 该顶戴已激活
+BREAK
+
+#IF
+TRUE
+#ACT
+MOV N$索引跳转 3
+
+
+#IF
+!LARGE <$TABLE(SZ_<$STR(S61)>).<$STR(S62)>> 0
+#ACT
+ChangeEatItemDura - 1
+TABLE SZ_<$STR(S61)> $STR(S62) = 1
+SENDMSG 19 激活成功
+GOTO @时装面板
+GOTO @<$STR(S64)>
+GOTO @临时属性
+GOTO @包裹红点判断
+BREAK
+#ELSEACT
+GOTO @时装面板
+GOTO @<$STR(S64)>
+Messagebox 该时装已激活，当前可用于升级该时装
+BREAK
+
+[@NewStdModeFunc21]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_50金币 <$PARAM(0)>
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_50金币)>].STDNAME> 50金币
+#ACT
+Money 金币 + <$MULT^50^<$ITEMINFO[<$STR(N$使用物品序列号_50金币)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_50金币)>].DURA>
+BREAK
+
+[@NewStdModeFunc22]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_100金币 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_100金币)>].STDNAME> 100金币
+#ACT
+Money 金币 + <$MULT^100^<$ITEMINFO[<$STR(N$使用物品序列号_100金币)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_100金币)>].DURA>
+BREAK
+
+[@NewStdModeFunc23]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_200金币 <$PARAM(0)>
+
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_200金币)>].STDNAME> 200金币
+#ACT
+Money 金币 + <$MULT^200^<$ITEMINFO[<$STR(N$使用物品序列号_200金币)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_200金币)>].DURA>
+BREAK
+
+[@NewStdModeFunc24]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_500金币 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_500金币)>].STDNAME> 500金币
+#ACT
+Money 金币 + <$MULT^500^<$ITEMINFO[<$STR(N$使用物品序列号_500金币)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_500金币)>].DURA>
+BREAK
+
+[@NewStdModeFunc25]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_1000金币 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_1000金币)>].STDNAME> 1000金币
+#ACT
+Money 金币 + <$MULT^1000^<$ITEMINFO[<$STR(N$使用物品序列号_1000金币)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_1000金币)>].DURA>
+BREAK
+
+[@NewStdModeFunc26]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_10000金币 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_10000金币)>].STDNAME> 10000金币
+#ACT
+Money 金币 + <$MULT^10000^<$ITEMINFO[<$STR(N$使用物品序列号_10000金币)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_10000金币)>].DURA>
+BREAK
+
+[@NewStdModeFunc27]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_20000金币 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_20000金币)>].STDNAME> 20000金币
+#ACT
+Money 金币 + <$MULT^20000^<$ITEMINFO[<$STR(N$使用物品序列号_20000金币)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_20000金币)>].DURA>
+BREAK
+
+[@NewStdModeFunc28]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_50000金币 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_50000金币)>].STDNAME> 50000金币
+#ACT
+Money 金币 + <$MULT^50000^<$ITEMINFO[<$STR(N$使用物品序列号_50000金币)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_50000金币)>].DURA>
+BREAK
+
+[@NewStdModeFunc29]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 金条
+#ACT
+ChangeEatItemDura - 1
+Money 金币 + 100000
+BREAK
+
+[@NewStdModeFunc30]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 金砖
+#ACT
+ChangeEatItemDura - 1
+Money 金币 + 500000
+BREAK
+
+[@NewStdModeFunc31]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_1元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_1元宝)>].STDNAME> 1元宝
+#ACT
+GAMEGOLD + <$MULT^1^<$ITEMINFO[<$STR(N$使用物品序列号_1元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_1元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc32]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_5元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_5元宝)>].STDNAME> 5元宝
+#ACT
+GAMEGOLD + <$MULT^5^<$ITEMINFO[<$STR(N$使用物品序列号_5元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_5元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc33]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_10元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_10元宝)>].STDNAME> 10元宝
+#ACT
+GAMEGOLD + <$MULT^10^<$ITEMINFO[<$STR(N$使用物品序列号_10元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_10元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc34]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_50元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_50元宝)>].STDNAME> 50元宝
+#ACT
+GAMEGOLD + <$MULT^50^<$ITEMINFO[<$STR(N$使用物品序列号_50元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_50元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc35]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_100元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_100元宝)>].STDNAME> 100元宝
+#ACT
+GAMEGOLD + <$MULT^100^<$ITEMINFO[<$STR(N$使用物品序列号_100元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_100元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc36]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_200元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_200元宝)>].STDNAME> 200元宝
+#ACT
+GAMEGOLD + <$MULT^200^<$ITEMINFO[<$STR(N$使用物品序列号_200元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_200元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc37]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_300元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_300元宝)>].STDNAME> 300元宝
+#ACT
+GAMEGOLD + <$MULT^300^<$ITEMINFO[<$STR(N$使用物品序列号_300元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_300元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc38]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_500元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_500元宝)>].STDNAME> 500元宝
+#ACT
+GAMEGOLD + <$MULT^500^<$ITEMINFO[<$STR(N$使用物品序列号_500元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_500元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc39]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_1000元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_1000元宝)>].STDNAME> 1000元宝
+#ACT
+GAMEGOLD + <$MULT^1000^<$ITEMINFO[<$STR(N$使用物品序列号_1000元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_1000元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc40]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_2000元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_2000元宝)>].STDNAME> 2000元宝
+#ACT
+GAMEGOLD + <$MULT^2000^<$ITEMINFO[<$STR(N$使用物品序列号_2000元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_2000元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc41]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_3000元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_3000元宝)>].STDNAME> 3000元宝
+#ACT
+GAMEGOLD + <$MULT^3000^<$ITEMINFO[<$STR(N$使用物品序列号_3000元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_3000元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc42]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_5000元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_5000元宝)>].STDNAME> 5000元宝
+#ACT
+GAMEGOLD + <$MULT^5000^<$ITEMINFO[<$STR(N$使用物品序列号_5000元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_5000元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc43]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_10000元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_10000元宝)>].STDNAME> 10000元宝
+#ACT
+GAMEGOLD + <$MULT^10000^<$ITEMINFO[<$STR(N$使用物品序列号_10000元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_10000元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc44]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_30000元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_30000元宝)>].STDNAME> 30000元宝
+#ACT
+GAMEGOLD + <$MULT^30000^<$ITEMINFO[<$STR(N$使用物品序列号_30000元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_30000元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc45]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_50000元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_50000元宝)>].STDNAME> 50000元宝
+#ACT
+GAMEGOLD + <$MULT^50000^<$ITEMINFO[<$STR(N$使用物品序列号_50000元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_50000元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc46]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_1绑定元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_1绑定元宝)>].STDNAME> 1绑定元宝
+#ACT
+BINDGAMEGOLD + <$MULT^1^<$ITEMINFO[<$STR(N$使用物品序列号_1绑定元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_1绑定元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc47]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_5绑定元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_5绑定元宝)>].STDNAME> 5绑定元宝
+#ACT
+BINDGAMEGOLD + <$MULT^5^<$ITEMINFO[<$STR(N$使用物品序列号_5绑定元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_5绑定元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc48]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_10绑定元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_10绑定元宝)>].STDNAME> 10绑定元宝
+#ACT
+BINDGAMEGOLD + <$MULT^10^<$ITEMINFO[<$STR(N$使用物品序列号_10绑定元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_10绑定元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc49]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_50绑定元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_50绑定元宝)>].STDNAME> 50绑定元宝
+#ACT
+BINDGAMEGOLD + <$MULT^50^<$ITEMINFO[<$STR(N$使用物品序列号_50绑定元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_50绑定元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc50]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_100绑定元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_100绑定元宝)>].STDNAME> 100绑定元宝
+#ACT
+BINDGAMEGOLD + <$MULT^100^<$ITEMINFO[<$STR(N$使用物品序列号_100绑定元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_100绑定元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc51]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_500绑定元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_500绑定元宝)>].STDNAME> 500绑定元宝
+#ACT
+BINDGAMEGOLD + <$MULT^500^<$ITEMINFO[<$STR(N$使用物品序列号_500绑定元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_500绑定元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc52]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_1000绑定元宝 <$PARAM(0)>
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_1000绑定元宝)>].STDNAME> 1000绑定元宝
+#ACT
+BINDGAMEGOLD + <$MULT^1000^<$ITEMINFO[<$STR(N$使用物品序列号_1000绑定元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_1000绑定元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc53]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_3000绑定元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_3000绑定元宝)>].STDNAME> 3000绑定元宝
+#ACT
+BINDGAMEGOLD + <$MULT^3000^<$ITEMINFO[<$STR(N$使用物品序列号_3000绑定元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_3000绑定元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc54]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号_5000绑定元宝 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号_5000绑定元宝)>].STDNAME> 5000绑定元宝
+#ACT
+BINDGAMEGOLD + <$MULT^5000^<$ITEMINFO[<$STR(N$使用物品序列号_5000绑定元宝)>].DURA>>
+ChangeEatItemDura - <$ITEMINFO[<$STR(N$使用物品序列号_5000绑定元宝)>].DURA>
+BREAK
+
+[@NewStdModeFunc55]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 魔体经验券(5万)
+#ACT
+ChangeEatItemDura - 1
+ChangeCustomValue 2 + 50000
+SENDMSG 19 魔体经验值增加5万
+BREAK
+
+[@NewStdModeFunc56]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 魔体经验券(10万)
+#ACT
+ChangeEatItemDura - 1
+ChangeCustomValue 2 + 100000
+SENDMSG 19 魔体经验值增加10万
+BREAK
+
+[@NewStdModeFunc57]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 魔体经验券(15万)
+#ACT
+ChangeEatItemDura - 1
+ChangeCustomValue 2 + 150000
+SENDMSG 19 魔体经验值增加15万
+BREAK
+
+[@NewStdModeFunc58]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 魔体经验券(20万)
+#ACT
+ChangeEatItemDura - 1
+ChangeCustomValue 2 + 200000
+SENDMSG 19 魔体经验值增加20万
+BREAK
+
+[@NewStdModeFunc59]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 魔体经验券(30万)
+#ACT
+ChangeEatItemDura - 1
+ChangeCustomValue 2 + 300000
+SENDMSG 19 魔体经验值增加30万
+BREAK
+
+[@NewStdModeFunc60]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+MOV S$使用物品名字 <$PARAM(2)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 魔体经验券(50万)
+#ACT
+ChangeEatItemDura - 1
+ChangeCustomValue 2 + 500000
+SENDMSG 19 魔体经验值增加50万
+BREAK
+
+[@NewStdModeFunc61]
+#IF
+TRUE
+#ACT
+CLEARVAR S$代金券的位置光效 10
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_0 68102
+MOV S$当前选中代金券额度  0.1
+MOV S$当前选中 1
+MOV N$当前选中代金券 0
+GOTO @选择0.1米充值代金券
+GOTO @关BAO
+BREAK
+
+[@代金券面板]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券_背景 10
+MOV N$循环计次1 0
+FOR N$循环计次 = 10
+MOV N$代金券背景_<$STR(N$循环计次)> 68101
+INC N$循环计次 1
+ENDFOR
+
+#IF
+TRUE
+#ACT
+ClearVar N$代金券黑白图 10
+
+#IF
+EQUAL <$ITEMCOUNT[0.1米充值代金券]> 0
+#ACT
+MOV N$代金券黑白图_1 1
+
+#IF
+EQUAL <$ITEMCOUNT[0.2米充值代金券]> 0
+#ACT
+MOV N$代金券黑白图_2 1
+
+#IF
+EQUAL <$ITEMCOUNT[0.5米充值代金券]> 0
+#ACT
+MOV N$代金券黑白图_3 1
+
+#IF
+EQUAL <$ITEMCOUNT[1米充值代金券]> 0
+#ACT
+MOV N$代金券黑白图_4 1
+
+#IF
+EQUAL <$ITEMCOUNT[2米充值代金券]> 0
+#ACT
+MOV N$代金券黑白图_5 1
+
+#IF
+EQUAL <$ITEMCOUNT[3米充值代金券]> 0
+#ACT
+MOV N$代金券黑白图_6 1
+
+#IF
+EQUAL <$ITEMCOUNT[5米充值代金券]> 0
+#ACT
+MOV N$代金券黑白图_7 1
+
+#IF
+EQUAL <$ITEMCOUNT[10米充值代金券]> 0
+#ACT
+MOV N$代金券黑白图_8 1
+
+#IF
+EQUAL <$ITEMCOUNT[30米充值代金券]> 0
+#ACT
+MOV N$代金券黑白图_9 1
+
+#IF
+EQUAL <$ITEMCOUNT[50米充值代金券]> 0
+#ACT
+MOV N$代金券黑白图_10 1
+
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\数据读取\VIP代金券数量展示.txt S$VIP使用次数 <$STR(S$当前选中)>
+SPLIT <$STR(S$VIP使用次数)> | S$VIP使用次数展示
+
+#IF
+EQUAL $CustomValue(90) 0
+#ACT
+MOV N$VIP需充值 <$DEC.30.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 1
+#ACT
+MOV N$VIP需充值 <$DEC.30.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 2
+#ACT
+MOV N$VIP需充值 <$DEC.30.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 3
+#ACT
+MOV N$VIP需充值 <$DEC.30.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 4
+#ACT
+MOV N$VIP需充值 <$DEC.30.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 5
+#ACT
+MOV N$VIP需充值 <$DEC.168.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 6
+#ACT
+MOV N$VIP需充值 <$DEC.328.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 7
+#ACT
+MOV N$VIP需充值 <$DEC.648.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 8
+#ACT
+MOV N$VIP需充值 <$DEC.1060.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 9
+#ACT
+MOV N$VIP需充值 <$DEC.3120.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 10
+#ACT
+MOV N$VIP需充值 <$DEC.5180.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 11
+#ACT
+MOV N$VIP需充值 <$DEC.8240.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 12
+#ACT
+MOV N$VIP需充值 <$DEC.10300.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 13
+#ACT
+MOV N$VIP需充值 <$DEC.15360.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 14
+#ACT
+MOV N$VIP需充值 <$DEC.30420.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 15
+#ACT
+MOV N$VIP需充值 <$DEC.50480.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 16
+#ACT
+MOV N$VIP需充值 <$DEC.80540.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 17
+#ACT
+MOV N$VIP需充值 <$DEC.100600.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 18
+#ACT
+MOV N$VIP需充值 <$DEC.150660.<$DIV.<$CustomValue(24)>.100>>
+#IF
+EQUAL $CustomValue(90) 19
+#ACT
+MOV N$VIP需充值 <$DEC.200720.<$DIV.<$CustomValue(24)>.100>>
+#IF
+EQUAL $CustomValue(90) 20
+#ACT
+MOV N$VIP需充值 <$DEC.300780.<$DIV.<$CustomValue(24)>.100>>
+#IF
+EQUAL $CustomValue(90) 21
+#ACT
+MOV N$VIP需充值 <$DEC.400000.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 22
+#ACT
+MOV N$VIP需充值 <$DEC.550000.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 23
+#ACT
+MOV N$VIP需充值 <$DEC.700000.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 24
+#ACT
+MOV N$VIP需充值 <$DEC.850000.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+EQUAL $CustomValue(90) 25
+#ACT
+MOV N$VIP需充值 <$DEC.999999.<$DIV.<$CustomValue(24)>.100>>
+
+#IF
+SMALL N$VIP需充值 0
+#ACT
+MOV N$VIP需充值 0
+
+#IF
+TRUE
+#SAY
+<Img|children={djq1,djq2,djq3,djq4,djq5,djq6,djq7,djq8,djq9,djq10,djq11,djq12}|x=73.0|y=9.0|loadDelay=0|img=private/daijinquan/bg.png|bg=1|scale=1|esc=0|HideMain=all>
+<Button|id=djq1|x=862.0|y=33.0|scale=1|color=255|size=18|nimg=private/daijinquan/68104.png|link=@EXIT>
+<Layout|id=djq2|children={zcwp1,zcwp2,zcwp3,zcwp4,zcwp5,zcwp6,zcwp7,zcwp8,zcwp9,zcwp10}|x=63.0|y=73.0|width=185|height=440>
+
+<Img|id=zcwp1|children={dj11,dj12,dj13}|x=1.0|y=1.0|esc=0|img=private/daijinquan/<$STR(N$代金券背景_0)>.png|grey=<$STR(N$代金券黑白图_1)>|scale=1>
+<Img|id=dj11|x=0|y=0|esc=0|img=private/daijinquan/<$STR(N$代金券选中框_0)>.png|scale=1>
+<ItemShow|id=dj12|x=10.0|y=10.0|width=70|height=70|itemid=<$STDITEM(0.1米充值代金券).LOOKS>|itemcount=<$ITEMCOUNT[0.1米充值代金券]>|name=0.1米充值代金券|showtips=1|bgtype=1>
+<Layout|id=dj13|x=6.0|y=4.0|width=80|height=80|link=@选择0.1米充值代金券&当前选中代金券额度=0.1&当前选中=1>
+
+<Img|id=zcwp2|children={dj21,dj22,dj23}|x=93.0|y=1.0|esc=0|img=private/daijinquan/<$STR(N$代金券背景_1)>.png|grey=<$STR(N$代金券黑白图_2)>|scale=1>
+<Img|id=dj21|x=0|y=0|esc=0|img=private/daijinquan/<$STR(N$代金券选中框_1)>.png|scale=1>
+<ItemShow|id=dj22|x=10.0|y=10.0|width=70|height=70|itemid=<$STDITEM(0.2米充值代金券).LOOKS>|itemcount=<$ITEMCOUNT[0.2米充值代金券]>|name=0.2米充值代金券|showtips=1|bgtype=1>
+<Layout|id=dj23|x=6.0|y=4.0|width=80|height=80|link=@选择0.2米充值代金券&当前选中代金券额度=0.2&当前选中=2>
+
+<Img|id=zcwp3|children={dj31,dj32,dj33}|x=1.0|y=88.0|esc=0|img=private/daijinquan/<$STR(N$代金券背景_2)>.png|grey=<$STR(N$代金券黑白图_3)>|scale=1>
+<Img|id=dj31|x=0|y=0|esc=0|img=private/daijinquan/<$STR(N$代金券选中框_2)>.png|scale=1>
+<ItemShow|id=dj32|x=10.0|y=10.0|width=70|height=70|itemid=<$STDITEM(0.5米充值代金券).LOOKS>|itemcount=<$ITEMCOUNT[0.5米充值代金券]>|name=0.5米充值代金券|showtips=1|bgtype=1>
+<Layout|id=dj33|x=6.0|y=4.0|width=80|height=80|link=@选择0.5米充值代金券&当前选中代金券额度=0.5&当前选中=3>
+
+<Img|id=zcwp4|children={dj41,dj42,dj43}|x=93.0|y=88.0|esc=0|img=private/daijinquan/<$STR(N$代金券背景_3)>.png|grey=<$STR(N$代金券黑白图_4)>|scale=1>
+<Img|id=dj41|x=0|y=0|esc=0|img=private/daijinquan/<$STR(N$代金券选中框_3)>.png|scale=1>
+<ItemShow|id=dj42|x=10.0|y=10.0|width=70|height=70|itemid=<$STDITEM(1米充值代金券).LOOKS>|itemcount=<$ITEMCOUNT[1米充值代金券]>|name=1米充值代金券|showtips=1|bgtype=1>
+<Layout|id=dj43|x=6.0|y=4.0|width=80|height=80|link=@选择1米充值代金券&当前选中代金券额度=1&当前选中=4>
+
+<Img|id=zcwp5|children={dj51,dj52,,dj53}|x=1.0|y=175.0|esc=0|img=private/daijinquan/<$STR(N$代金券背景_4)>.png|grey=<$STR(N$代金券黑白图_5)>|scale=1>
+<Img|id=dj51|x=0|y=0|esc=0|img=private/daijinquan/<$STR(N$代金券选中框_4)>.png|scale=1>
+<ItemShow|id=dj52|x=10.0|y=10.0|width=70|height=70|itemid=<$STDITEM(2米充值代金券).LOOKS>|itemcount=<$ITEMCOUNT[2米充值代金券]>|name=2米充值代金券|showtips=1|bgtype=1>
+<Layout|id=dj53|x=6.0|y=4.0|width=80|height=80|link=@选择2米充值代金券&当前选中代金券额度=2&当前选中=5>
+
+<Img|id=zcwp6|children={dj61,dj62,,dj63}|x=93.0|y=175.0|esc=0|img=private/daijinquan/<$STR(N$代金券背景_5)>.png|grey=<$STR(N$代金券黑白图_6)>|scale=1>
+<Img|id=dj61|x=0|y=0|esc=0|img=private/daijinquan/<$STR(N$代金券选中框_5)>.png|scale=1>
+<ItemShow|id=dj62|x=10.0|y=10.0|width=70|height=70|itemid=<$STDITEM(3米充值代金券).LOOKS>|itemcount=<$ITEMCOUNT[3米充值代金券]>|name=3米充值代金券|showtips=1|bgtype=1>
+<Layout|id=dj63|x=6.0|y=4.0|width=80|height=80|link=@选择3米充值代金券&当前选中代金券额度=3&当前选中=6>
+
+<Img|id=zcwp7|children={dj71,dj72,dj73}|x=1.0|y=262.0|esc=0|img=private/daijinquan/<$STR(N$代金券背景_6)>.png|grey=<$STR(N$代金券黑白图_7)>|scale=1>
+<Img|id=dj71|x=0|y=0|esc=0|img=private/daijinquan/<$STR(N$代金券选中框_6)>.png|scale=1>
+<ItemShow|id=dj72|x=10.0|y=10.0|width=70|height=70|itemid=<$STDITEM(5米充值代金券).LOOKS>|itemcount=<$ITEMCOUNT[5米充值代金券]>|name=5米充值代金券|showtips=1|bgtype=1>
+<Layout|id=dj73|x=6.0|y=4.0|width=80|height=80|link=@选择5米充值代金券&当前选中代金券额度=5&当前选中=7>
+
+<Img|id=zcwp8|children={dj81,dj82,dj83}|x=93.0|y=262.0|esc=0|img=private/daijinquan/<$STR(N$代金券背景_7)>.png|grey=<$STR(N$代金券黑白图_8)>|scale=1>
+<Img|id=dj81|x=0|y=0|esc=0|img=private/daijinquan/<$STR(N$代金券选中框_7)>.png|scale=1>
+<ItemShow|id=dj82|x=10.0|y=10.0|width=70|height=70|itemid=<$STDITEM(10米充值代金券).LOOKS>|itemcount=<$ITEMCOUNT[10米充值代金券]>|name=10米充值代金券|showtips=1|bgtype=1>
+<Layout|id=dj83|x=6.0|y=4.0|width=80|height=80|link=@选择10米充值代金券&当前选中代金券额度=10&当前选中=8>
+
+<Img|id=zcwp9|children={dj91,dj92,dj93}|x=1.0|y=349.0|esc=0|img=private/daijinquan/<$STR(N$代金券背景_8)>.png|grey=<$STR(N$代金券黑白图_9)>|scale=1>
+<Img|id=dj91|x=0|y=0|esc=0|img=private/daijinquan/<$STR(N$代金券选中框_8)>.png|scale=1>
+<ItemShow|id=dj92|x=10.0|y=10.0|width=70|height=70|itemid=<$STDITEM(30米充值代金券).LOOKS>|itemcount=<$ITEMCOUNT[30米充值代金券]>|name=30米充值代金券|showtips=1|bgtype=1>
+<Layout|id=dj93|x=6.0|y=4.0|width=80|height=80|link=@选择30米充值代金券&当前选中代金券额度=30&当前选中=9>
+
+<Img|id=zcwp10|children={dj101,dj102,dj103}|x=93.0|y=349.0|esc=0|img=private/daijinquan/<$STR(N$代金券背景_9)>.png|grey=<$STR(N$代金券黑白图_10)>|scale=1>
+<Img|id=dj101|x=0|y=0|esc=0|img=private/daijinquan/<$STR(N$代金券选中框_9)>.png|scale=1>
+<ItemShow|id=dj102|x=10.0|y=10.0|width=70|height=70|itemid=<$STDITEM(50米充值代金券).LOOKS>|itemcount=<$ITEMCOUNT[50米充值代金券]>|name=50米充值代金券|showtips=1|bgtype=1>
+<Layout|id=dj103|x=6.0|y=4.0|width=80|height=80|link=@选择50米充值代金券&当前选中代金券额度=50&当前选中=10>
+
+<RText|id=djq3|x=178.0|y=519.0|size=18|color=255|text=<<$CustomValue(58)>/FCOLOR=222><.<$CustomValue(59)>元/FCOLOR=222>>
+<RText|id=djq4|x=395.0|y=519.0|size=18|color=255|text=<<$CustomValue(56)>/FCOLOR=222><.<$CustomValue(57)>元/FCOLOR=222>>
+<RText|id=djq5|x=579.0|y=519.0|size=18|color=255|text=<<$STR(N$VIP需充值)>/FCOLOR=222>>
+<Button|id=djq6|x=557.8|y=78.1|width=30|height=30|scale=1|color=149|nimg=public/19678.png|size=18|text=<$STR(S$当前选中代金券额度)>米充值代金券>
+<Button|id=djq7|x=557.5|y=135.0|width=30|height=30|nimg=public/19678.png|scale=1|size=18|color=149|text=使用可获得<$STR(S$当前选中代金券额度)>元现金充值>
+<ListView|id=djq8|children={vipcs1,vipcs2,vipcs3,vipcs4,vipcs5,vipcs6,vipcs7,vipcs8,vipcs9,vipcs10,vipcs11,vipcs12,vipcs13,vipcs14,vipcs15,vipcs16,vipcs17,vipcs18,vipcs19,vipcs20,vipcs21,vipcs22,vipcs23,vipcs24,vipcs25,}|x=262.2|y=219.7|width=640|height=190|colmargin=25|img=public/9998.png|colwidth=20|margin=180|colcount=5|direction=2|colheight=15>
+<RText|id=vipcs1|x=0.0|y=0|size=18|color=255|text=<VIP1可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_1)>次/FCOLOR=218>>
+<RText|id=vipcs2|x=0.0|y=0|size=18|color=255|text=<VIP2可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_2)>次/FCOLOR=218>>
+<RText|id=vipcs3|x=0.0|y=0|size=18|color=255|text=<VIP3可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_3)>次/FCOLOR=218>>
+<RText|id=vipcs4|x=0.0|y=0|size=18|color=255|text=<VIP4可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_4)>次/FCOLOR=218>>
+<RText|id=vipcs5|x=0.0|y=0|size=18|color=255|text=<VIP5可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_5)>次/FCOLOR=218>>
+<RText|id=vipcs6|x=0.0|y=0|size=18|color=255|text=<VIP6可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_6)>次/FCOLOR=218>>
+<RText|id=vipcs7|x=0.0|y=0|size=18|color=255|text=<VIP7可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_7)>次/FCOLOR=218>>
+<RText|id=vipcs8|x=0.0|y=0|size=18|color=255|text=<VIP8可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_8)>次/FCOLOR=218>>
+<RText|id=vipcs9|x=0.0|y=0|size=18|color=255|text=<VIP9可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_9)>次/FCOLOR=218>>
+<RText|id=vipcs10|x=0.0|y=0|size=18|color=255|text=<VIP10可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_10)>次/FCOLOR=218>>
+<RText|id=vipcs11|x=0.0|y=0|size=18|color=255|text=<VIP11可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_11)>次/FCOLOR=218>>
+<RText|id=vipcs12|x=0.0|y=0|size=18|color=255|text=<VIP12可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_12)>次/FCOLOR=218>>
+<RText|id=vipcs13|x=0.0|y=0|size=18|color=255|text=<VIP13可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_13)>次/FCOLOR=218>>
+<RText|id=vipcs14|x=0.0|y=0|size=18|color=255|text=<VIP14可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_14)>次/FCOLOR=218>>
+<RText|id=vipcs15|x=0.0|y=0|size=18|color=255|text=<VIP15可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_15)>次/FCOLOR=218>>
+
+#IF
+!SMALL <$CustomValue(90)> 15
+#SAY
+<RText|id=vipcs16|x=0.0|y=0|size=18|color=255|text=<VIP16可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_16)>次/FCOLOR=218>>
+<RText|id=vipcs17|x=0.0|y=0|size=18|color=255|text=<VIP17可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_17)>次/FCOLOR=218>>
+<RText|id=vipcs18|x=0.0|y=0|size=18|color=255|text=<VIP18可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_18)>次/FCOLOR=218>>
+<RText|id=vipcs19|x=0.0|y=0|size=18|color=255|text=<VIP19可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_19)>次/FCOLOR=218>>
+<RText|id=vipcs20|x=0.0|y=0|size=18|color=255|text=<VIP20可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_20)>次/FCOLOR=218>>
+<RText|id=vipcs21|x=0.0|y=0|size=18|color=255|text=<VIP21可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_21)>次/FCOLOR=218>>
+<RText|id=vipcs22|x=0.0|y=0|size=18|color=255|text=<VIP22可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_22)>次/FCOLOR=218>>
+<RText|id=vipcs23|x=0.0|y=0|size=18|color=255|text=<VIP23可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_23)>次/FCOLOR=218>>
+<RText|id=vipcs24|x=0.0|y=0|size=18|color=255|text=<VIP24可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_24)>次/FCOLOR=218>>
+<RText|id=vipcs25|x=0.0|y=0|size=18|color=255|text=<VIP25可使用次数:/FCOLOR=67>< <$STR(S$VIP使用次数展示_25)>次/FCOLOR=218>>
+
+#IF
+LARGE <$DEC.<$CustomValue(7<$STR(N$当前选中代金券)>)>.<$CustomValue(6<$STR(N$当前选中代金券)>)>> 0
+#ACT
+MOV N$代金券使用颜色 218
+#ELSEACT
+MOV N$代金券使用颜色 58
+
+#IF
+LARGE <$ITEMCOUNT[<$STR(S$当前选中代金券额度)>米充值代金券]> 0
+#ACT
+MOV N$代金券剩余数量颜色 218
+#ELSEACT
+MOV N$代金券剩余数量颜色 58
+
+#IF
+TRUE
+#SAY
+<Button|id=djq9|x=557.9|y=423.0|width=30|height=30|size=18|color=<$STR(N$代金券使用颜色)>|nimg=public/19678.png|scale=1|text=剩余使用次数：<$DEC.<$CustomValue(7<$STR(N$当前选中代金券)>)>.<$CustomValue(6<$STR(N$当前选中代金券)>)>>/<$STR(S$VIP使用次数展示_<$CustomValue(90)>)>>
+<Button|id=djq12|x=757.9|y=423.0|width=30|height=30|size=18|color=<$STR(N$代金券剩余数量颜色)>|nimg=public/19678.png|scale=1|text=当前代金券数量：<$ITEMCOUNT[<$STR(S$当前选中代金券额度)>米充值代金券]>>
+<Img|id=djq10|children={djsy1,djsy2}|x=525.5|y=459.4|esc=0|img=private/daijinquan/common_btn5.png|scale=1>
+<Img|id=djsy1|x=30.2|y=9.5|img=private/daijinquan/68100.png|scale=1|esc=0>
+<Layout|id=djsy2|x=-25.6|y=-15.9|width=150|height=70|link=@点击使用代金券&点击使用代金券额度=<$STR(S$当前选中代金券额度)>>
+<RText|id=djq11|x=493.6|y=189.1|size=18|color=255|text=<当前VIP等级：/FCOLOR=149><VIP<$CustomValue(90)>/FCOLOR=218>>
+
+
+
+[@选择0.1米充值代金券]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_0 68102
+MOV N$当前选中代金券 0
+GOTO @代金券面板
+BREAK
+
+[@选择0.2米充值代金券]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_1 68102
+MOV N$当前选中代金券 1
+GOTO @代金券面板
+BREAK
+
+[@选择0.5米充值代金券]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_2 68102
+MOV N$当前选中代金券 2
+GOTO @代金券面板
+BREAK
+
+[@选择1米充值代金券]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_3 68102
+MOV N$当前选中代金券 3
+GOTO @代金券面板
+BREAK
+
+[@选择2米充值代金券]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_4 68102
+MOV N$当前选中代金券 4
+GOTO @代金券面板
+BREAK
+
+[@选择3米充值代金券]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_5 68102
+MOV N$当前选中代金券 5
+GOTO @代金券面板
+BREAK
+
+[@选择5米充值代金券]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_6 68102
+MOV N$当前选中代金券 6
+GOTO @代金券面板
+BREAK
+
+[@选择10米充值代金券]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_7 68102
+MOV N$当前选中代金券 7
+GOTO @代金券面板
+BREAK
+
+[@选择30米充值代金券]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_8 68102
+MOV N$当前选中代金券 8
+GOTO @代金券面板
+BREAK
+
+[@选择50米充值代金券]
+#IF
+TRUE
+#ACT
+ClearVar N$代金券选中框 10
+MOV N$代金券选中框_9 68102
+MOV N$当前选中代金券 9
+GOTO @代金券面板
+BREAK
+
+
+[@点击使用代金券]
+#IF
+TRUE
+#ACT
+SPLIT 0|10|20|50|100|200|300|500|1000|3000|5000 | S$代金券发放额度
+SPLIT 0|1|2|5|1|2|3|5|10|30|50 | S$代金券本身额度1
+MOV N$代金券今日使用 57
+MOV N$代金券累计使用 59
+
+#IFONE
+EQUAL <$STR(S$当前选中代金券额度)> 1
+EQUAL <$STR(S$当前选中代金券额度)> 2
+EQUAL <$STR(S$当前选中代金券额度)> 3
+EQUAL <$STR(S$当前选中代金券额度)> 5
+EQUAL <$STR(S$当前选中代金券额度)> 10
+EQUAL <$STR(S$当前选中代金券额度)> 30
+EQUAL <$STR(S$当前选中代金券额度)> 50
+#ACT
+MOV N$代金券今日使用 56
+MOV N$代金券累计使用 58
+
+#IF
+!LARGE <$ITEMVALSUM(<$STR(S$点击使用代金券额度)>米充值代金券).DURA> 0
+#ACT
+SENDMSG 19 你包裹中没有<$STR(S$点击使用代金券额度)>米充值代金券
+BREAK
+
+#IF
+SMALL <$DEC.<$CustomValue(7<$STR(N$当前选中代金券)>)>.<$CustomValue(6<$STR(N$当前选中代金券)>)>> 1
+#ACT
+SENDMSG 19 当日使用次数已耗尽
+BREAK
+
+#IF
+CHECKITEM <$STR(S$点击使用代金券额度)>米充值代金券 1
+#ACT
+TAKE <$STR(S$点击使用代金券额度)>米充值代金券 1
+GAMEGOLD + <$STR(S$代金券发放额度_<$STR(S$当前选中)>)>
+ChangeCustomValue 6<$STR(N$当前选中代金券)> + 1
+ChangeCustomValue 24 + <$STR(S$代金券发放额度_<$STR(S$当前选中)>)>
+SENDMSG 19 使用成功，获得<$STR(S$点击使用代金券额度)>米真实充值
+ChangeCustomValue <$STR(N$代金券今日使用)> + <$STR(S$代金券本身额度1_<$STR(S$当前选中)>)>
+GOTO @检测代金券当日够10
+ChangeCustomValue <$STR(N$代金券累计使用)> + <$STR(S$代金券本身额度1_<$STR(S$当前选中)>)>
+GOTO @检测代金券累计够10
+GOTO @当日用过代金券绿色封号任务完成
+GOTO @代金券面板
+BREAK
+#ELSEACT
+SENDMSG 19 你包裹中没有<$STR(S$点击使用代金券额度)>米充值代金券
+BREAK
+
+[@检测代金券当日够10]
+#IF
+EQUAL <$STR(N$代金券今日使用)> 56
+#ACT
+ChangeCustomValue 49 + <$STR(S$代金券本身额度1_<$STR(S$当前选中)>)>
+ChangeCustomValue 51 + <$STR(S$代金券本身额度1_<$STR(S$当前选中)>)>
+
+#IF
+LARGE $CustomValue(57) 9
+#ACT
+ChangeCustomValue 57 - 10
+ChangeCustomValue 56 + 1
+ChangeCustomValue 49 + 1
+BREAK
+
+[@检测代金券累计够10]
+#IF
+LARGE $CustomValue(59) 9
+#ACT
+ChangeCustomValue 59 - 10
+ChangeCustomValue 58 + 1
+ChangeCustomValue 51 + 1
+BREAK
+
+[@关BAO]
+#IF
+TRUE
+#ACT
+OPENUI 2011 2
+OPENUI 2012 2
+OPENUI 2013 2
+BREAK
+
+[@当日用过代金券绿色封号任务完成]
+#IF
+CHECK [115] 0
+#ACT
+SET [115] 1
+GOTO @顶部按钮会员红点
+
+#IF
+CHECK [198] 0
+#ACT
+SET [198] 1
+
+#IF
+!SMALL $CustomValue(49) 6
+EQUAL $CUSTOMVALUE(87) $CUSTOMVALUE(50)
+#ACT
+ChangeCustomValue 50 + 1
+BREAK
+
+
+[@NewStdModeFunc62]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 30米充值2折券
+#ACT
+PullPay 6 1 2
+BREAK
+
+[@NewStdModeFunc63]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 100米充值3折券
+#ACT
+PullPay 30 1 2
+BREAK
+
+[@NewStdModeFunc64]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 648米5折券
+#ACT
+PullPay 324 1 2
+BREAK
+
+[@NewStdModeFunc65]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 1000米7折券
+#ACT
+PullPay 700 1 2
+BREAK
+
+[@NewStdModeFunc66]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 3000米8折券
+#ACT
+PullPay 2400 1 2
+BREAK
+
+[@NewStdModeFunc67]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 5000米充值9折券
+#ACT
+PullPay 4500 1 2
+BREAK
+
+[@NewStdModeFunc68]
+#IF
+TRUE
+#ACT
+MOV N$使用物品序列号 <$PARAM(0)>
+
+#IF
+EQUAL <$ITEMINFO[<$STR(N$使用物品序列号)>].STDNAME> 9米抵98米折扣券
+#ACT
+PullPay 9 1 2
+BREAK
+
+[@NewStdModeFunc69]
+#IF
+TRUE
+#ACT
+MOV S$选神器框显示 
+MOV S$神器自选物品 
+GOTO @选神器的框
+BREAK
+
+[@选神器的框]
+#IF
+TRUE
+#SAY
+<Img|children={3,12,4,5,6,7,8,9,10,11,2,13,14,15,16,17,18,19,20}|x=432.0|y=89.0|move=1|img=private/npcbj/bg_energy_01.png|esc=0|scale=1|bg=1|loadDelay=0>
+<Img|id=2|x=103.0|y=14.0|height=16|esc=0|img=public/word_wakeup_choose.png|scale=1>
+<Button|id=3|x=231.0|y=-1.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ItemShow|id=4|x=55.0|y=59.0|width=70|height=70|itemid=738|itemcount=1|name=赤明天帝|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选赤明天帝>
+<ItemShow|id=5|x=171.0|y=59.0|width=70|height=70|itemid=288|itemcount=1|name=碧海天王|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选碧海天王>
+<ItemShow|id=6|x=55.0|y=139.0|width=70|height=70|itemid=943|itemcount=1|name=紫月圣君|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选紫月圣君>
+<ItemShow|id=7|x=171.0|y=139.0|width=70|height=70|itemid=944|itemcount=1|name=耀阳圣尊|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选耀阳圣尊>
+<ItemShow|id=8|x=55.0|y=219.0|width=70|height=70|itemid=286|itemcount=1|name=鬼炎|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选鬼炎>
+<ItemShow|id=9|x=171.0|y=219.0|width=70|height=70|itemid=284|itemcount=1|name=暗月|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选暗月>
+<ItemShow|id=10|x=55.0|y=299.0|width=70|height=70|itemid=283|itemcount=1|name=撼天|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选撼天>
+<ItemShow|id=11|x=171.0|y=299.0|width=70|height=70|itemid=285|itemcount=1|name=冥日|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选冥日>
+<Button|id=12|x=74.0|y=382.0|pimg=private/npc/btn_push_01.png|mimg=private/npc/btn_push_01.png|scale=1|color=67|nimg=private/npc/btn_push_01.png|size=22|text=确认|link=@选好神器了>
+<$STR(S$选神器框显示)>
+
+[@我选赤明天帝]
+#IF
+TRUE
+#ACT
+MOV S$选神器框显示 <Img|id=13|x=56.0|y=60.0|img=private/duanzao/xuanqu2.png|scale=1|esc=0>
+MOV S$神器自选物品 赤明天帝
+GOTO @选神器的框
+BREAK
+
+[@我选碧海天王]
+#IF
+TRUE
+#ACT
+MOV S$选神器框显示 <Img|id=14|x=172.0|y=60.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$神器自选物品 碧海天王
+GOTO @选神器的框
+BREAK
+
+[@我选紫月圣君]
+#IF
+TRUE
+#ACT
+MOV S$选神器框显示 <Img|id=15|x=56.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$神器自选物品 紫月圣君
+GOTO @选神器的框
+BREAK
+
+[@我选耀阳圣尊]
+#IF
+TRUE
+#ACT
+MOV S$选神器框显示 <Img|id=16|x=172.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$神器自选物品 耀阳圣尊
+GOTO @选神器的框
+BREAK
+
+[@我选鬼炎]
+#IF
+TRUE
+#ACT
+MOV S$选神器框显示 <Img|id=17|x=56.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$神器自选物品 鬼炎
+GOTO @选神器的框
+BREAK
+
+[@我选暗月]
+#IF
+TRUE
+#ACT
+MOV S$选神器框显示 <Img|id=18|x=172.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$神器自选物品 暗月
+GOTO @选神器的框
+BREAK
+
+[@我选撼天]
+#IF
+TRUE
+#ACT
+MOV S$选神器框显示 <Img|id=19|x=56.0|y=300.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$神器自选物品 撼天
+GOTO @选神器的框
+BREAK
+
+[@我选冥日]
+#IF
+TRUE
+#ACT
+MOV S$选神器框显示 <Img|id=20|x=172.0|y=300.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$神器自选物品 冥日
+GOTO @选神器的框
+BREAK
+
+[@选好神器了]
+#IF
+EQUAL $STR(S$选神器框显示) 
+#ACT
+SENDMSG 19 请选择一件神器
+BREAK
+
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+CheckItem 凶器自选箱 1
+#ACT
+TAKE 凶器自选箱 1
+GIVE $STR(S$神器自选物品) 1 1
+SENDMSG 5 恭喜获得神器：<$STR(S$神器自选物品)>
+SENDMSG 19 恭喜获得神器：<$STR(S$神器自选物品)>
+SENDMSG 14 <%s>打开凶器自选箱获得神器：<$STR(S$神器自选物品)>
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 你没有凶器自选箱
+BREAK
+CLOSE
+
+[@NewStdModeFunc9527]
+#IF
+TRUE
+#ACT
+GOTO @法宝系统
+BREAK
+
+[@NewStdModeFunc9528]
+#IF
+TRUE
+#ACT
+GOTO @神器凶器
+BREAK
+
+[@NewStdModeFunc9529]
+#IF
+TRUE
+#ACT
+GOTO @强化主按钮
+BREAK
+
+
+
+
+[@NewStdModeFunc70]
+#IF
+TRUE
+#ACT
+MOV S$选法宝框显示 
+MOV S$法宝自选物品
+GOTO @选法宝的框
+BREAK
+
+[@选法宝的框]
+#IF
+TRUE
+#SAY
+<Img|children={3,12,4,5,6,7,8,9,10,11,2,13,14,15,16,17,18,19,20}|x=432.0|y=89.0|move=1|img=private/npcbj/bg_energy_01.png|esc=0|scale=1|bg=1|loadDelay=0>
+<Img|id=2|x=103.0|y=14.0|height=16|esc=0|img=public/word_wakeup_choose.png|scale=1>
+<Button|id=3|x=231.0|y=-1.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ItemShow|id=4|x=55.0|y=59.0|width=70|height=70|itemid=25900|itemcount=1|name=无量飞剑|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选无量飞剑>
+<ItemShow|id=5|x=171.0|y=59.0|width=70|height=70|itemid=25901|itemcount=1|name=八卦镜|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选八卦镜>
+<ItemShow|id=6|x=55.0|y=139.0|width=70|height=70|itemid=25902|itemcount=1|name=招魂幡|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选招魂幡>
+<ItemShow|id=7|x=171.0|y=139.0|width=70|height=70|itemid=25903|itemcount=1|name=紫金葫芦|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选紫金葫芦>
+<ItemShow|id=8|x=55.0|y=219.0|width=70|height=70|itemid=25904|itemcount=1|name=番天印|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选番天印>
+<ItemShow|id=9|x=171.0|y=219.0|width=70|height=70|itemid=25905|itemcount=1|name=七宝玲珑塔|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选七宝玲珑塔>
+<Button|id=12|x=74.0|y=382.0|pimg=private/npc/btn_push_01.png|mimg=private/npc/btn_push_01.png|scale=1|color=67|nimg=private/npc/btn_push_01.png|size=22|text=确认|link=@选好法宝了>
+<$STR(S$选法宝框显示)>
+
+[@我选无量飞剑]
+#IF
+TRUE
+#ACT
+MOV S$选法宝框显示 <Img|id=13|x=56.0|y=60.0|img=private/duanzao/xuanqu2.png|scale=1|esc=0>
+MOV S$法宝自选物品 无量飞剑
+GOTO @选法宝的框
+BREAK
+
+[@我选八卦镜]
+#IF
+TRUE
+#ACT
+MOV S$选法宝框显示 <Img|id=14|x=172.0|y=60.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$法宝自选物品 八卦镜
+GOTO @选法宝的框
+BREAK
+
+[@我选招魂幡]
+#IF
+TRUE
+#ACT
+MOV S$选法宝框显示 <Img|id=15|x=56.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$法宝自选物品 招魂幡
+GOTO @选法宝的框
+BREAK
+
+[@我选紫金葫芦]
+#IF
+TRUE
+#ACT
+MOV S$选法宝框显示 <Img|id=16|x=172.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$法宝自选物品 紫金葫芦
+GOTO @选法宝的框
+BREAK
+
+[@我选番天印]
+#IF
+TRUE
+#ACT
+MOV S$选法宝框显示 <Img|id=17|x=56.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$法宝自选物品 番天印
+GOTO @选法宝的框
+BREAK
+
+[@我选七宝玲珑塔]
+#IF
+TRUE
+#ACT
+MOV S$选法宝框显示 <Img|id=18|x=172.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$法宝自选物品 七宝玲珑塔
+GOTO @选法宝的框
+BREAK
+
+[@选好法宝了]
+#IF
+EQUAL $STR(S$选法宝框显示) 
+#ACT
+SENDMSG 19 请选择一件法宝
+BREAK
+
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+CheckItem 法宝自选箱 1
+#ACT
+TAKE 法宝自选箱 1
+GIVE $STR(S$法宝自选物品) 1 1
+SENDMSG 5 恭喜获得法宝：<$STR(S$法宝自选物品)>
+SENDMSG 19 恭喜获得法宝：<$STR(S$法宝自选物品)>
+SENDMSG 14 <%s>打开法宝自选箱获得法宝：<$STR(S$法宝自选物品)>
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 你没有法宝自选箱
+BREAK
+CLOSE
+
+
+[@NewStdModeFunc72]
+#IF
+TRUE
+#ACT
+MOV S$选羽翼框显示 
+MOV S$羽翼自选物品 
+GOTO @选羽翼的框
+BREAK
+
+[@选羽翼的框]
+#IF
+TRUE
+#SAY
+<Img|children={3,12,4,5,6,7,8,9,10,11,2,13,14,15,16,17,18,19,20}|x=432.0|y=89.0|move=1|img=private/npcbj/bg_energy_01.png|esc=0|scale=1|bg=1|loadDelay=0>
+<Img|id=2|x=103.0|y=14.0|height=16|esc=0|img=public/word_wakeup_choose.png|scale=1>
+<Button|id=3|x=231.0|y=-1.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ItemShow|id=4|x=55.0|y=59.0|width=70|height=70|itemid=55501|itemcount=1|name=纵横之翼|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选纵横之翼>
+<ItemShow|id=5|x=171.0|y=59.0|width=70|height=70|itemid=55502|itemcount=1|name=传世之翼|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选传世之翼>
+<ItemShow|id=6|x=55.0|y=139.0|width=70|height=70|itemid=55503|itemcount=1|name=魔焱之翼|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选魔焱之翼>
+<ItemShow|id=7|x=171.0|y=139.0|width=70|height=70|itemid=55504|itemcount=1|name=恶魔之翼|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选恶魔之翼>
+<ItemShow|id=8|x=55.0|y=219.0|width=70|height=70|itemid=55505|itemcount=1|name=幻灵凤羽|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选幻灵凤羽>
+<ItemShow|id=9|x=171.0|y=219.0|width=70|height=70|itemid=55506|itemcount=1|name=蓝冰之焱|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选蓝冰之焱>
+<ItemShow|id=10|x=55.0|y=299.0|width=70|height=70|itemid=55507|itemcount=1|name=神武仙翼|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选神武仙翼>
+<ItemShow|id=11|x=171.0|y=299.0|width=70|height=70|itemid=55508|itemcount=1|name=神王仙翼|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选神王仙翼>
+<Button|id=12|x=74.0|y=382.0|pimg=private/npc/btn_push_01.png|mimg=private/npc/btn_push_01.png|scale=1|color=67|nimg=private/npc/btn_push_01.png|size=22|text=确认|link=@选好羽翼了>
+<$STR(S$选羽翼框显示)>
+
+[@我选纵横之翼]
+#IF
+TRUE
+#ACT
+MOV S$选羽翼框显示 <Img|id=13|x=56.0|y=60.0|img=private/duanzao/xuanqu2.png|scale=1|esc=0>
+MOV S$羽翼自选物品 纵横之翼
+GOTO @选羽翼的框
+BREAK
+
+[@我选传世之翼]
+#IF
+TRUE
+#ACT
+MOV S$选羽翼框显示 <Img|id=14|x=172.0|y=60.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$羽翼自选物品 传世之翼
+GOTO @选羽翼的框
+BREAK
+
+[@我选魔焱之翼]
+#IF
+TRUE
+#ACT
+MOV S$选羽翼框显示 <Img|id=15|x=56.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$羽翼自选物品 魔焱之翼
+GOTO @选羽翼的框
+BREAK
+
+[@我选恶魔之翼]
+#IF
+TRUE
+#ACT
+MOV S$选羽翼框显示 <Img|id=16|x=172.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$羽翼自选物品 恶魔之翼
+GOTO @选羽翼的框
+BREAK
+
+[@我选幻灵凤羽]
+#IF
+TRUE
+#ACT
+MOV S$选羽翼框显示 <Img|id=17|x=56.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$羽翼自选物品 幻灵凤羽
+GOTO @选羽翼的框
+BREAK
+
+[@我选蓝冰之焱]
+#IF
+TRUE
+#ACT
+MOV S$选羽翼框显示 <Img|id=18|x=172.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$羽翼自选物品 蓝冰之焱
+GOTO @选羽翼的框
+BREAK
+
+[@我选神武仙翼]
+#IF
+TRUE
+#ACT
+MOV S$选羽翼框显示 <Img|id=19|x=56.0|y=300.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$羽翼自选物品 神武仙翼
+GOTO @选羽翼的框
+BREAK
+
+[@我选神王仙翼]
+#IF
+TRUE
+#ACT
+MOV S$选羽翼框显示 <Img|id=20|x=172.0|y=300.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$羽翼自选物品 神王仙翼
+GOTO @选羽翼的框
+BREAK
+
+[@选好羽翼了]
+#IF
+EQUAL $STR(S$选羽翼框显示) 
+#ACT
+SENDMSG 19 请选择一个羽翼
+BREAK
+
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+CheckItem 羽翼自选箱 1
+#ACT
+TAKE 羽翼自选箱 1
+GIVE $STR(S$羽翼自选物品) 1 1
+SENDMSG 5 恭喜获得羽翼：<$STR(S$羽翼自选物品)>
+SENDMSG 19 恭喜获得羽翼：<$STR(S$羽翼自选物品)>
+SENDMSG 14 <%s>打开羽翼自选箱获得羽翼：<$STR(S$羽翼自选物品)>
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 你没有羽翼自选箱
+BREAK
+CLOSE
+
+
+[@NewStdModeFunc73]
+#IF
+TRUE
+#ACT
+MOV S$选时装衣服框显示 
+MOV S$时装衣服自选物品
+GOTO @选时装衣服的框
+BREAK
+
+[@选时装衣服的框]
+#IF
+TRUE
+#SAY
+<Img|children={3,12,4,5,6,7,8,9,10,11,2,13,14,15,16,17,18,19,20}|x=432.0|y=89.0|move=1|img=private/npcbj/bg_energy_01.png|esc=0|scale=1|bg=1|loadDelay=0>
+<Img|id=2|x=103.0|y=14.0|height=16|esc=0|img=public/word_wakeup_choose.png|scale=1>
+<Button|id=3|x=231.0|y=-1.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ItemShow|id=4|x=55.0|y=59.0|width=70|height=70|itemid=26486|itemcount=1|name=圣甲斗士(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选圣甲斗士(时装)>
+<ItemShow|id=5|x=171.0|y=59.0|width=70|height=70|itemid=5065|itemcount=1|name=剑侠情缘(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选剑侠情缘(时装)>
+<ItemShow|id=6|x=55.0|y=139.0|width=70|height=70|itemid=26998|itemcount=1|name=龙凤婚袍(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选龙凤婚袍(时装)>
+<ItemShow|id=7|x=171.0|y=139.0|width=70|height=70|itemid=25555|itemcount=1|name=神威将军(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选神威将军(时装)>
+<ItemShow|id=8|x=55.0|y=219.0|width=70|height=70|itemid=26997|itemcount=1|name=锦衣华服(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选锦衣华服(时装)>
+<ItemShow|id=9|x=171.0|y=219.0|width=70|height=70|itemid=25554|itemcount=1|name=九五之尊(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选九五之尊(时装)>
+<Button|id=12|x=74.0|y=382.0|pimg=private/npc/btn_push_01.png|mimg=private/npc/btn_push_01.png|scale=1|color=67|nimg=private/npc/btn_push_01.png|size=22|text=确认|link=@选好时装衣服了>
+<$STR(S$选时装衣服框显示)>
+
+[@我选圣甲斗士(时装)]
+#IF
+TRUE
+#ACT
+MOV S$选时装衣服框显示 <Img|id=13|x=56.0|y=60.0|img=private/duanzao/xuanqu2.png|scale=1|esc=0>
+MOV S$时装衣服自选物品 圣甲斗士(时装)
+GOTO @选时装衣服的框
+BREAK
+
+[@我选剑侠情缘(时装)]
+#IF
+TRUE
+#ACT
+MOV S$选时装衣服框显示 <Img|id=14|x=172.0|y=60.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$时装衣服自选物品 剑侠情缘(时装)
+GOTO @选时装衣服的框
+BREAK
+
+[@我选龙凤婚袍(时装)]
+#IF
+TRUE
+#ACT
+MOV S$选时装衣服框显示 <Img|id=15|x=56.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$时装衣服自选物品 龙凤婚袍(时装)
+GOTO @选时装衣服的框
+BREAK
+
+[@我选神威将军(时装)]
+#IF
+TRUE
+#ACT
+MOV S$选时装衣服框显示 <Img|id=16|x=172.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$时装衣服自选物品 神威将军(时装)
+GOTO @选时装衣服的框
+BREAK
+
+[@我选锦衣华服(时装)]
+#IF
+TRUE
+#ACT
+MOV S$选时装衣服框显示 <Img|id=17|x=56.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$时装衣服自选物品 锦衣华服(时装)
+GOTO @选时装衣服的框
+BREAK
+
+[@我选九五之尊(时装)]
+#IF
+TRUE
+#ACT
+MOV S$选时装衣服框显示 <Img|id=18|x=172.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$时装衣服自选物品 九五之尊(时装)
+GOTO @选时装衣服的框
+BREAK
+
+[@选好时装衣服了]
+#IF
+EQUAL $STR(S$选时装衣服框显示) 
+#ACT
+SENDMSG 19 请选择一件时装
+BREAK
+
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+CheckItem 衣服时装自选箱 1
+#ACT
+TAKE 衣服时装自选箱 1
+GIVE $STR(S$时装衣服自选物品) 1 1
+SENDMSG 5 恭喜获得时装：<$STR(S$时装衣服自选物品)>
+SENDMSG 19 恭喜获得时装：<$STR(S$时装衣服自选物品)>
+SENDMSG 14 <%s>打开时装衣服自选箱获得时装：<$STR(S$时装衣服自选物品)>
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 你没有时装衣服自选箱
+BREAK
+CLOSE
+
+[@NewStdModeFunc74]
+#IF
+TRUE
+#ACT
+MOV S$选时装武器框显示 
+MOV S$时装武器自选物品
+GOTO @选时装武器的框
+BREAK
+
+[@选时装武器的框]
+#IF
+EQUAL $JOB 战士
+#ACT
+MOV S$时装的第三把武器名 黄金雷霆怒斩
+MOV N$时装的第三把武器LOOKS 30647
+MOV S$时装的第四把武器名 黄金屠龙刀
+MOV N$时装的第四把武器LOOKS 10130
+MOV S$时装的第五把武器名 黄金无赦
+MOV N$时装的第五把武器LOOKS 26131
+MOV S$时装的第六把武器名 黄金雷裂刀
+MOV N$时装的第六把武器LOOKS 30646
+
+#IF
+EQUAL $JOB 法师
+#ACT
+MOV S$时装的第三把武器名 黄金龙牙利刃
+MOV N$时装的第三把武器LOOKS 8137
+MOV S$时装的第四把武器名 黄金嗜魂
+MOV N$时装的第四把武器LOOKS 5244
+MOV S$时装的第五把武器名 黄金夺魄
+MOV N$时装的第五把武器LOOKS 26132
+MOV S$时装的第六把武器名 黄金霹雳法杖
+MOV N$时装的第六把武器LOOKS 30648
+
+#IF
+EQUAL $JOB 道士
+#ACT
+MOV S$时装的第三把武器名 黄金逍遥无极扇
+MOV N$时装的第三把武器LOOKS 8138
+MOV S$时装的第四把武器名 黄金倚天剑
+MOV N$时装的第四把武器LOOKS 5245
+MOV S$时装的第五把武器名 黄金聚灵
+MOV N$时装的第五把武器LOOKS 26133
+MOV S$时装的第六把武器名 黄金道玄剑
+MOV N$时装的第六把武器LOOKS 30649
+
+
+#IF
+TRUE
+#SAY
+<Img|children={3,12,4,5,6,7,8,9,10,11,2,13,14,15,16,17,18,19,20}|x=432.0|y=89.0|move=1|img=private/npcbj/bg_energy_01.png|esc=0|scale=1|bg=1|loadDelay=0>
+<Img|id=2|x=103.0|y=14.0|height=16|esc=0|img=public/word_wakeup_choose.png|scale=1>
+<Button|id=3|x=231.0|y=-1.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ItemShow|id=4|x=55.0|y=59.0|width=70|height=70|itemid=26486|itemcount=1|name=白玫瑰(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选白玫瑰(时装)>
+<ItemShow|id=5|x=171.0|y=59.0|width=70|height=70|itemid=5065|itemcount=1|name=黄金炙炎(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选黄金炙炎(时装)>
+<ItemShow|id=6|x=55.0|y=139.0|width=70|height=70|itemid=<$STR(N$时装的第三把武器LOOKS)>|itemcount=1|name=<$STR(S$时装的第三把武器名)>(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选时装第三把武器>
+<ItemShow|id=7|x=171.0|y=139.0|width=70|height=70|itemid=<$STR(N$时装的第四把武器LOOKS)>|itemcount=1|name=<$STR(S$时装的第四把武器名)>(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选时装第四把武器>
+<ItemShow|id=8|x=55.0|y=219.0|width=70|height=70|itemid=<$STR(N$时装的第五把武器LOOKS)>|itemcount=1|name=<$STR(S$时装的第五把武器名)>(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选时装第五把武器>
+<ItemShow|id=9|x=171.0|y=219.0|width=70|height=70|itemid=<$STR(N$时装的第六把武器LOOKS)>|itemcount=1|name=<$STR(S$时装的第六把武器名)>(时装)|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选时装第六把武器>
+<Button|id=12|x=74.0|y=382.0|pimg=private/npc/btn_push_01.png|mimg=private/npc/btn_push_01.png|scale=1|color=67|nimg=private/npc/btn_push_01.png|size=22|text=确认|link=@选好时装武器了>
+<$STR(S$选时装武器框显示)>
+
+[@我选白玫瑰(时装)]
+#IF
+TRUE
+#ACT
+MOV S$选时装武器框显示 <Img|id=13|x=56.0|y=60.0|img=private/duanzao/xuanqu2.png|scale=1|esc=0>
+MOV S$时装武器自选物品 白玫瑰(时装)
+GOTO @选时装武器的框
+BREAK
+
+[@我选黄金炙炎(时装)]
+#IF
+TRUE
+#ACT
+MOV S$选时装武器框显示 <Img|id=14|x=172.0|y=60.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$时装武器自选物品 黄金炙炎(时装)
+GOTO @选时装武器的框
+BREAK
+
+[@我选时装第三把武器]
+#IF
+TRUE
+#ACT
+MOV S$选时装武器框显示 <Img|id=15|x=56.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$时装武器自选物品 <$STR(S$时装的第三把武器名)>(时装)
+GOTO @选时装武器的框
+BREAK
+
+[@我选时装第四把武器]
+#IF
+TRUE
+#ACT
+MOV S$选时装武器框显示 <Img|id=16|x=172.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$时装武器自选物品 <$STR(S$时装的第四把武器名)>(时装)
+GOTO @选时装武器的框
+BREAK
+
+[@我选时装第五把武器]
+#IF
+TRUE
+#ACT
+MOV S$选时装武器框显示 <Img|id=17|x=56.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$时装武器自选物品 <$STR(S$时装的第五把武器名)>(时装)
+GOTO @选时装武器的框
+BREAK
+
+[@我选时装第六把武器]
+#IF
+TRUE
+#ACT
+MOV S$选时装武器框显示 <Img|id=18|x=172.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$时装武器自选物品 <$STR(S$时装的第六把武器名)>(时装)
+GOTO @选时装武器的框
+BREAK
+
+[@选好时装武器了]
+#IF
+EQUAL $STR(S$选时装武器框显示) 
+#ACT
+SENDMSG 19 请选择一件时装
+BREAK
+
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+CheckItem 武器时装自选箱 1
+#ACT
+TAKE 武器时装自选箱 1
+GIVE $STR(S$时装武器自选物品) 1 1
+SENDMSG 5 恭喜获得时装：<$STR(S$时装武器自选物品)>
+SENDMSG 19 恭喜获得时装：<$STR(S$时装武器自选物品)>
+SENDMSG 14 <%s>打开时装武器自选箱获得时装：<$STR(S$时装武器自选物品)>
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 你没有时装武器自选箱
+BREAK
+CLOSE
+
+
+[@NewStdModeFunc75]
+#IF
+TRUE
+#ACT
+MOV S$选六阶符石框显示 
+MOV S$六阶符石自选物品
+GOTO @选六阶符石的框
+BREAK
+
+[@选六阶符石的框]
+#IF
+TRUE
+#SAY
+<Img|children={3,12,4,5,6,7,8,9,10,11,2,13,14,15,16,17,18,19,20}|x=432.0|y=89.0|move=1|img=private/npcbj/bg_energy_01.png|esc=0|scale=1|bg=1|loadDelay=0>
+<Img|id=2|x=103.0|y=14.0|height=16|esc=0|img=public/word_wakeup_choose.png|scale=1>
+<Button|id=3|x=231.0|y=-1.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ItemShow|id=4|x=55.0|y=59.0|width=70|height=70|itemid=26486|itemcount=1|name=六阶金符石|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选六阶金符石>
+<ItemShow|id=5|x=171.0|y=59.0|width=70|height=70|itemid=5065|itemcount=1|name=六阶木符石|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选六阶木符石>
+<ItemShow|id=6|x=55.0|y=139.0|width=70|height=70|itemid=26998|itemcount=1|name=六阶水符石|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选六阶水符石>
+<ItemShow|id=7|x=171.0|y=139.0|width=70|height=70|itemid=25555|itemcount=1|name=六阶火符石|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选六阶火符石>
+<ItemShow|id=8|x=55.0|y=219.0|width=70|height=70|itemid=26997|itemcount=1|name=六阶土符石|showtips=1|bgtype=private/npcbj/item_bg1.png|link=@我选六阶土符石>
+<Button|id=12|x=74.0|y=382.0|pimg=private/npc/btn_push_01.png|mimg=private/npc/btn_push_01.png|scale=1|color=67|nimg=private/npc/btn_push_01.png|size=22|text=确认|link=@选好六阶符石了>
+<$STR(S$选六阶符石框显示)>
+
+[@我选六阶金符石]
+#IF
+TRUE
+#ACT
+MOV S$选六阶符石框显示 <Img|id=13|x=56.0|y=60.0|img=private/duanzao/xuanqu2.png|scale=1|esc=0>
+MOV S$六阶符石自选物品 六阶金符石
+GOTO @选六阶符石的框
+BREAK
+
+[@我选六阶木符石]
+#IF
+TRUE
+#ACT
+MOV S$选六阶符石框显示 <Img|id=14|x=172.0|y=60.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$六阶符石自选物品 六阶木符石
+GOTO @选六阶符石的框
+BREAK
+
+[@我选六阶水符石]
+#IF
+TRUE
+#ACT
+MOV S$选六阶符石框显示 <Img|id=15|x=56.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$六阶符石自选物品 六阶水符石
+GOTO @选六阶符石的框
+BREAK
+
+[@我选六阶火符石]
+#IF
+TRUE
+#ACT
+MOV S$选六阶符石框显示 <Img|id=16|x=172.0|y=140.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$六阶符石自选物品 六阶火符石
+GOTO @选六阶符石的框
+BREAK
+
+[@我选六阶土符石]
+#IF
+TRUE
+#ACT
+MOV S$选六阶符石框显示 <Img|id=17|x=56.0|y=220.0|img=private/duanzao/xuanqu2.png|esc=0|scale=1>
+MOV S$六阶符石自选物品 六阶土符石
+GOTO @选六阶符石的框
+BREAK
+
+[@选好六阶符石了]
+#IF
+EQUAL $STR(S$选六阶符石框显示) 
+#ACT
+SENDMSG 19 请选择一种符石
+BREAK
+
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+CheckItem 6阶符石自选箱 1
+#ACT
+TAKE 6阶符石自选箱 1
+GIVE $STR(S$六阶符石自选物品) 1 1
+SENDMSG 5 恭喜获得符石：<$STR(S$六阶符石自选物品)>
+SENDMSG 19 恭喜获得符石：<$STR(S$六阶符石自选物品)>
+SENDMSG 14 <%s>打开6阶符石自选箱获得符石：<$STR(S$六阶符石自选物品)>
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 你没有6阶符石自选箱
+BREAK
+CLOSE
+
+[@NewStdModeFunc76]
+#IF
+LARGE $CustomValue(90) 2
+#ACT
+ChangeEatItemDura - 1
+GIVE 金币 1000000
+Messagebox 已超过3级VIP，自动兑换为100万金币
+BREAK
+
+
+#ELSEACT
+ChangeEatItemDura - 1
+SET [107] 1
+SET [108] 1
+SET [109] 1
+SET [110] 1
+SET [111] 1
+SET [112] 1
+SET [113] 1
+SET [114] 1
+SET [115] 1
+SET [116] 1
+SET [117] 1
+SET [118] 1
+GOTO @顶部按钮会员红点
+GOTO @会员特权
+;------------------------------------------------------------------这里缺个GOTO直接弹出VIP面板的
+SENDMSG 19 VIP等级直升为3级
+BREAK
+
+
+[@NewStdModeFunc77]
+#IF
+!CheckBagSize 2
+#ACT
+SENDMSG 19 包裹空间不足2个
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(10元神兽礼包).DURA 1
+#ACT
+SENDMSG 19 你没有神兽礼包
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+BINDGAMEGOLD + 1500
+GAMEGOLD + 500
+GIVE 仙翎之羽 10 1
+GIVE 灵兽精粹 10 1
+SENDMSG 19 恭喜你获得：仙翎之羽*10、灵兽精粹*10、元宝*500、绑定元宝*1500
+SENDMSG 5 恭喜你获得：仙翎之羽*10、灵兽精粹*10、元宝*500、绑定元宝*1500
+BREAK
+
+[@NewStdModeFunc78]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(30元羽翼礼包).DURA 1
+#ACT
+SENDMSG 19 你没有羽翼礼包
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+GAMEGOLD + 800
+GIVE 仙翎之羽 50 1
+SENDMSG 19 恭喜你获得：仙翎之羽*50、元宝*800
+SENDMSG 5 恭喜你获得：仙翎之羽*50、元宝*800
+BREAK
+
+[@NewStdModeFunc79]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(30元坐骑礼包).DURA 1
+#ACT
+SENDMSG 19 你没有坐骑礼包
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+GAMEGOLD + 800
+GIVE 灵兽精粹 50 1
+SENDMSG 19 恭喜你获得：灵兽精粹*50、元宝*800
+SENDMSG 5 恭喜你获得：灵兽精粹*50、元宝*800
+BREAK
+
+[@NewStdModeFunc80]
+#IF
+!CheckBagSize 2
+#ACT
+SENDMSG 19 包裹空间不足2个
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(68元特戒礼包).DURA 1
+#ACT
+SENDMSG 19 你没有特戒礼包
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+GAMEGOLD + 800
+GIVE 特戒精华 30 1
+GIVE 特戒精粹 30 1
+SENDMSG 19 恭喜你获得：特戒精华*30、特戒精粹*30、元宝*800
+SENDMSG 5 恭喜你获得：特戒精华*30、特戒精粹*30、元宝*800
+BREAK
+
+[@NewStdModeFunc81]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(30元法宝礼包).DURA 1
+#ACT
+SENDMSG 19 你没有法宝礼包
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+GAMEGOLD + 800
+GIVE 法宝精粹 50 1
+SENDMSG 19 恭喜你获得：法宝精粹*50、元宝*800
+SENDMSG 5 恭喜你获得：法宝精粹*50、元宝*800
+BREAK
+
+[@NewStdModeFunc82]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(30元凶器礼包).DURA 1
+#ACT
+SENDMSG 19 你没有凶器礼包
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+GAMEGOLD + 800
+GIVE 凶器精粹 40 1
+SENDMSG 19 恭喜你获得：凶器精粹*40、元宝*800
+SENDMSG 5 恭喜你获得：凶器精粹*40、元宝*800
+BREAK
+
+[@NewStdModeFunc83]
+#IF
+!CheckBagSize 2
+#ACT
+SENDMSG 19 包裹空间不足2个
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(68元附件礼包).DURA 1
+#ACT
+SENDMSG 19 你没有附件礼包
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+GAMEGOLD + 1800
+GIVE 特装精粹(防) 50 1
+GIVE 特装精粹(攻) 50 1
+SENDMSG 19 恭喜你获得：特装精粹(防)*50、特装精粹(攻)*50、元宝*1800
+SENDMSG 5 恭喜你获得：特装精粹(防)*50、特装精粹(攻)*50、元宝*1800
+BREAK
+
+[@NewStdModeFunc84]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(符石宝箱).DURA 1
+#ACT
+SENDMSG 19 你没有符石宝箱
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+RandomStr 一阶金符石,10|一阶木符石,10|一阶水符石,10|一阶火符石,10|一阶土符石,10 S$抽中的一阶符石
+GIVE $STR(S$抽中的一阶符石) 1 1
+SENDMSG 19 恭喜你获得：<$STR(S$抽中的一阶符石)>*1
+SENDMSG 5 恭喜你获得：<$STR(S$抽中的一阶符石)>*1
+BREAK
+
+[@NewStdModeFunc85]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(高级符石宝箱).DURA 1
+#ACT
+SENDMSG 19 你没有高级符石宝箱
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+RandomStr 六阶金符石,10|六阶木符石,10|六阶水符石,10|六阶火符石,10|六阶土符石,10 S$抽中的六阶符石
+GIVE $STR(S$抽中的六阶符石) 1 1
+SENDMSG 19 恭喜你获得：<$STR(S$抽中的六阶符石)>*1
+SENDMSG 5 恭喜你获得：<$STR(S$抽中的六阶符石)>*1
+BREAK
+
+[@NewStdModeFunc86]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足1个
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(3阶符石宝箱).DURA 1
+#ACT
+SENDMSG 19 你没有3阶符石宝箱
+BREAK
+#ELSEACT
+ChangeEatItemDura - 1
+RandomStr 三阶金符石,10|三阶木符石,10|三阶水符石,10|三阶火符石,10|三阶土符石,10 S$抽中的三阶符石
+GIVE $STR(S$抽中的三阶符石) 1 1
+SENDMSG 19 恭喜你获得：<$STR(S$抽中的三阶符石)>*1
+SENDMSG 5 恭喜你获得：<$STR(S$抽中的三阶符石)>*1
+BREAK
+
+[@NewStdModeFunc87]
+#IF
+TRUE
+#ACT
+GOTO @羽翼系统
+BREAK
+
+[@NewStdModeFunc88]
+#IF
+TRUE
+#ACT
+MOV N$是否由特戒材料打开 1
+OPENUI 101 1
+BREAK
+
+[@NewStdModeFunc89]
+#IF
+TRUE
+#ACT
+GOTO @神器凶器
+BREAK
+
+[@NewStdModeFunc90]
+#IF
+TRUE
+#ACT
+GOTO @符石主按钮
+BREAK
+
+[@NewStdModeFunc91]
+#IF
+TRUE
+#ACT
+GOTO @合成
+BREAK
+
+[@NewStdModeFunc92]
+#IF
+TRUE
+#ACT
+GOTO @图鉴系统
+GOTO @拆解首领图鉴
+BREAK
+
+[@NewStdModeFunc93]
+#IF
+TRUE
+#ACT
+GOTO @图鉴系统
+BREAK
+
+[@NewStdModeFunc3022]
+#IF
+TRUE
+#ACT
+QueryMsg 确定消耗1枚背包拓展符将第三页包裹全部打开吗？ @X确定背包拓展
+BREAK
+
+[@X确定背包拓展1]
+#IF
+CheckItem 背包拓展符 1
+#ACT
+BAGSIZE 126
+TAKE 背包拓展符 1
+SENDMSG 19 背包空间拓展成功
+BREAK
+#ELSEACT
+SENDMSG 19 缺少背包拓展符
+BREAK
+
+[@NewStdModeFunc3021]
+#IF
+TRUE
+#ACT
+QueryMsg 确定消耗1枚仓库拓展符来开启一个仓库格子吗？ @X确定仓库拓展
+BREAK
+
+[@X确定仓库拓展1]
+#IF
+CheckItem 仓库拓展符 1
+#ACT
+StorageSize + 1
+TAKE 仓库拓展符 1
+SENDMSG 19 仓库空间拓展成功
+BREAK
+#ELSEACT
+SENDMSG 19 缺少仓库拓展符
+BREAK
+
+[@NewStdModeFunc3023]
+#IF
+TRUE
+#ACT
+QueryMsg 确定消耗1张红名清洗卷清洗100点PK值？ @确清洗卷
+BREAK
+
+[@确清洗卷1]
+#IF
+TRUE
+#ACT
+ChangePKPoint - 100
+TAKE 红名清洗卷 1
+SENDMSG 19 减少100点PK值，当前剩余PK值：<$PKPOINT>
+BREAK
+
+
+[@NewStdModeFunc6801]
+#IF
+CheckItem 月卡抵扣卷 1
+#ACT
+TAKE 月卡抵扣卷 1
+SETPARAM 45 68
+SETPARAM 44 19
+SENDMSG 5 成功开通月卡(有效期30天)
+GOTO @RECHARGE
+BREAK
+
+[@NewStdModeFunc6802]
+#IF
+CheckItem 季卡抵扣卷 1
+#ACT
+TAKE 季卡抵扣卷 1
+SETPARAM 45 108
+SETPARAM 44 20
+SENDMSG 5 成功开通季卡(有效期90天)
+GOTO @RECHARGE
+BREAK
+
+[@NewStdModeFunc6803]
+#IF
+CheckItem 年卡抵扣卷 1
+#ACT
+TAKE 年卡抵扣卷 1
+SETPARAM 45 198
+SETPARAM 44 21
+SENDMSG 5 成功开通年卡(有效期360天)
+GOTO @RECHARGE
+BREAK
+
+[@NewStdModeFunc6804]
+#IF
+CheckItem 战令抵扣卷 1
+#ACT
+TAKE 战令抵扣卷 1
+SETPARAM 45 28
+SETPARAM 44 31
+SENDMSG 5 成功开通高级战令
+GOTO @RECHARGE
+BREAK
+
+[@NewStdModeFunc6805]
+#IF
+CheckItem 投资抵扣卷 1
+#ACT
+TAKE 投资抵扣卷 1
+SETPARAM 45 188
+SETPARAM 44 30
+SENDMSG 5 成功开通新服投资
+GOTO @RECHARGE
+BREAK
+
+[@NewStdModeFunc6806]
+#IF
+CHECK [281] 0
+CheckItem 一日礼包抵扣卷 1
+#ACT
+TAKE 一日礼包抵扣卷 1
+SETPARAM 45 10
+SETPARAM 44 23
+SENDMSG 5 成功开通新服投资
+GOTO @RECHARGE
+BREAK
+#ELSEACT
+TAKE 一日礼包抵扣卷 999
+SENDMSG 19 礼包无需重复购买(没收抵扣券)
+BREAK
+
+
+[@NewStdModeFunc6807]
+#IF
+CHECK [282] 0
+CheckItem 二日礼包抵扣卷 1
+#ACT
+TAKE 二日礼包抵扣卷 1
+SETPARAM 45 30
+SETPARAM 44 24
+SENDMSG 5 成功开通新服投资
+GOTO @RECHARGE
+BREAK
+#ELSEACT
+TAKE 二日礼包抵扣卷 999
+SENDMSG 19 礼包无需重复购买(没收抵扣券)
+BREAK
+
+[@NewStdModeFunc6808]
+#IF
+CHECK [283] 0
+CheckItem 三日礼包抵扣卷 1
+#ACT
+TAKE 三日礼包抵扣卷 1
+SETPARAM 45 30
+SETPARAM 44 25
+SENDMSG 5 成功开通新服投资
+GOTO @RECHARGE
+BREAK
+#ELSEACT
+TAKE 三日礼包抵扣卷 999
+SENDMSG 19 礼包无需重复购买(没收抵扣券)
+BREAK
+
+[@NewStdModeFunc6809]
+#IF
+CHECK [284] 0
+CheckItem 四日礼包抵扣卷 1
+#ACT
+TAKE 四日礼包抵扣卷 1
+SETPARAM 45 68
+SETPARAM 44 26
+SENDMSG 5 成功开通新服投资
+GOTO @RECHARGE
+BREAK
+#ELSEACT
+TAKE 四日礼包抵扣卷 999
+SENDMSG 19 礼包无需重复购买(没收抵扣券)
+BREAK
+
+[@NewStdModeFunc6810]
+#IF
+CHECK [285] 0
+CheckItem 五日礼包抵扣卷 1
+#ACT
+TAKE 五日礼包抵扣卷 1
+SETPARAM 45 30
+SETPARAM 44 27
+SENDMSG 5 成功开通新服投资
+GOTO @RECHARGE
+BREAK
+#ELSEACT
+TAKE 五日礼包抵扣卷 999
+SENDMSG 19 礼包无需重复购买(没收抵扣券)
+BREAK
+
+[@NewStdModeFunc6811]
+#IF
+CHECK [286] 0
+CheckItem 五日礼包抵扣卷 1
+#ACT
+TAKE 五日礼包抵扣卷 1
+SETPARAM 45 30
+SETPARAM 44 28
+SENDMSG 5 成功开通新服投资
+GOTO @RECHARGE
+BREAK
+#ELSEACT
+TAKE 六日礼包抵扣卷 999
+SENDMSG 19 礼包无需重复购买(没收抵扣券)
+BREAK
+
+[@NewStdModeFunc6812]
+#IF
+CHECK [287] 0
+CheckItem 七日礼包抵扣卷 1
+#ACT
+TAKE 七日礼包抵扣卷 1
+SETPARAM 45 68
+SETPARAM 44 29
+SENDMSG 5 成功开通新服投资
+GOTO @RECHARGE
+BREAK
+#ELSEACT
+TAKE 七日礼包抵扣卷 999
+SENDMSG 19 礼包无需重复购买(没收抵扣券)
+BREAK
+
+[@NewStdModeFunc6813]
+#IF
+CheckItem 战天狂狮(坐骑) 1
+EQUAL <$TABLE(LEMON_LS).LS2> 0
+#ACT
+TAKE 战天狂狮(坐骑) 1
+TABLE LEMON_LS LS2 = 1
+SENDMSG 19 激活坐骑战天狂狮
+SENDMSG 7 激活坐骑战天狂狮
+GOTO @灵兽系统
+GOTO @包裹红点判断
+BREAK
+
+#IF
+CheckItem 战天狂狮(坐骑) 1
+EQUAL <$TABLE(LEMON_LS).LS2> 1
+#ACT
+TAKE 战天狂狮(坐骑) 1
+GIVE 坐骑升星石 1 1
+SENDMSG 19 战天狂狮已激活，为你转换为坐骑升星石
+SENDMSG 7 战天狂狮已激活，为你转换为坐骑升星石
+BREAK
+
+[@NewStdModeFunc6814]
+#IF
+CheckItem 暗月妖狼(坐骑) 1
+EQUAL <$TABLE(LEMON_LS).LS3> 0
+#ACT
+TAKE 暗月妖狼(坐骑) 1
+TABLE LEMON_LS LS3 = 1
+SENDMSG 19 激活坐骑暗月妖狼
+SENDMSG 7 激活坐骑暗月妖狼
+GOTO @灵兽系统
+GOTO @包裹红点判断
+BREAK
+
+#IF
+CheckItem 暗月妖狼(坐骑) 1
+EQUAL <$TABLE(LEMON_LS).LS3> 1
+#ACT
+TAKE 暗月妖狼(坐骑) 1
+GIVE 坐骑升星石 1 1
+SENDMSG 19 坐骑暗月妖狼已激活，为你转换为坐骑升星石
+SENDMSG 7 坐骑暗夜月狼已激活，为你转换为坐骑升星石
+BREAK
+
+[@NewStdModeFunc6815]
+#IF
+CheckItem 怒啸神光虎(坐骑) 1
+EQUAL <$TABLE(LEMON_LS).LS4> 0
+#ACT
+TAKE 怒啸神光虎(坐骑) 1
+TABLE LEMON_LS LS4 = 1
+SENDMSG 19 激活坐骑怒啸神光虎
+SENDMSG 7 激活坐骑怒啸神光虎
+GOTO @灵兽系统
+GOTO @包裹红点判断
+BREAK
+
+#IF
+CheckItem 怒啸神光虎(坐骑) 1
+EQUAL <$TABLE(LEMON_LS).LS4> 1
+#ACT
+TAKE 怒啸神光虎(坐骑) 1
+GIVE 坐骑升星石 1 1
+SENDMSG 19 坐骑怒啸神光虎已激活，为你转换为坐骑升星石
+SENDMSG 7 坐骑怒啸神光虎已激活，为你转换为坐骑升星石
+BREAK
+
+[@NewStdModeFunc6816]
+#IF
+CheckItem 黄金圣龙(坐骑) 1
+EQUAL <$TABLE(LEMON_LS).LS5> 0
+#ACT
+TAKE 黄金圣龙(坐骑) 1
+TABLE LEMON_LS LS5 = 1
+SENDMSG 19 激活坐骑黄金圣龙
+SENDMSG 7 激活坐骑黄金圣龙
+GOTO @灵兽系统
+GOTO @包裹红点判断
+BREAK
+
+#IF
+CheckItem 黄金圣龙(坐骑) 1
+EQUAL <$TABLE(LEMON_LS).LS5> 1
+#ACT
+TAKE 黄金圣龙(坐骑) 1
+GIVE 坐骑升星石 1 1
+SENDMSG 19 坐骑黄金圣龙已激活，为你转换为坐骑升星石
+SENDMSG 7 坐骑黄金圣龙已激活，为你转换为坐骑升星石
+BREAK
+
+[@NewStdModeFunc6817]
+#IF
+CheckItem 特戒材料大礼包 1
+#ACT
+TAKE 特戒材料大礼包 1
+GIVE 特戒精华 80 1
+GIVE 特戒精粹 80 1
+GIVE 特戒精魄 80 1
+sendmsg 5 开启大礼包，材料已发放至背包
+BREAK
+
+
+[@BOSS召唤令]
+#IF
+LARGE <$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 5
+#ACT
+CalcVar GLOBAL BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数 = 5 1
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 通天教主
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18821 -230 -190 MON
+BREAK
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 铁血魔王
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18821 -230 -180 MON
+BREAK
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 阿修罗神
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18822 -230 -200 MON
+BREAK
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 赤阳魔尊
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18822 -230 -210 MON
+BREAK
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 上古妖王
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18822 -230 -140 MON
+BREAK
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 血域魔尊
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18823 -230 -180 MON
+BREAK
+
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 巨木王者
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18823 -230 -190 MON
+BREAK
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 魔域妖王
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18823 -230 -190 MON
+BREAK
+
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 刑天真身
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18823 -230 -170 MON
+BREAK
+
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 玄武真灵
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18824 -230 -170 MON
+BREAK
+
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 无间之主
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18824 -230 -150 MON
+BREAK
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 地底仙帝
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18825 -230 -180 MON
+BREAK
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 绝毒蛛后
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18826 -230 -180 MON
+BREAK
+
+#IF
+EQUAL S$BOSS召唤令_物品名字 虚空古神
+#ACT
+MonGenEx $M $X $Y 重生<$STR(S$BOSS召唤令_物品名字)><$GLOBAL(BOSS召唤令<$STR(S$BOSS召唤令_物品名字)>召唤次数)> 2 1 
+ADDFH 0 3 18827 -230 -180 MON
+BREAK
+
+[@BOSS召唤令传送1]
+#IFONE
+!EQUAL $M 0
+CHECKUSERPOSGAP SELF 0 485 230 > 20
+#ACT
+MAPMOVE 0 469 224
+CLOSE
+DelayGoto 50 @BOSS召唤令传送延迟
+#ELSEACT
+GOTO @BOSS召唤令传送延迟
+[@BOSS召唤令传送延迟]
+#IF
+TRUE
+#ACT
+OPENUI 2011 2
+OPENUI 2012 2
+OPENUI 2013 2
+GoNpc 485 230
+
+;---------------------------------------神秘卷轴触发----------------------
+[@NewStdModeFunc10000]
+#IF
+!POS <$M> smkj
+#ACT
+MOV S$神秘卷轴名称 <$PARAM(2)>
+DEC S$神秘卷轴名称 级神秘卷轴
+GOTO @神秘空间&神秘空间等级=<$STR(S$神秘卷轴名称)>
+break
+#IF
+TRUE
+#ACT
+split <$HUMAN(神秘卷轴使用)> | S$神秘卷轴_使用
+mov N$神秘卷轴1_使用 <$STR(S$神秘卷轴_使用_0)>
+mov N$神秘卷轴2_使用 <$STR(S$神秘卷轴_使用_1)>
+mov N$神秘卷轴3_使用 <$STR(S$神秘卷轴_使用_2)>
+mov N$神秘卷轴4_使用 <$STR(S$神秘卷轴_使用_3)>
+#IF
+EQUAL <$PARAM(2)> 1级神秘卷轴
+EQUAL <$M> smkj1
+CHECKITEM 1级神秘卷轴 1
+Large <$STR(S$神秘卷轴_使用_0)> 0
+#ACT
+TAKE 1级神秘卷轴 1
+DEC N$神秘卷轴1_使用 1
+CALCVAR HUMAN 神秘卷轴使用 = <$STR(N$神秘卷轴1_使用)>|<$STR(N$神秘卷轴2_使用)>|<$STR(N$神秘卷轴3_使用)>|<$STR(N$神秘卷轴4_使用)> 1
+INC N$神秘空间计时1 40
+goto @神秘空间倒计时函数
+break
+#IF
+EQUAL <$PARAM(2)> 2级神秘卷轴
+EQUAL <$M> smkj2
+CHECKITEM 2级神秘卷轴 1
+Large <$STR(S$神秘卷轴_使用_1)> 0
+#ACT
+TAKE 2级神秘卷轴
+DEC N$神秘卷轴2_使用 1
+CALCVAR HUMAN 神秘卷轴使用 = <$STR(N$神秘卷轴1_使用)>|<$STR(N$神秘卷轴2_使用)>|<$STR(N$神秘卷轴3_使用)>|<$STR(N$神秘卷轴4_使用)> 1
+INC N$神秘空间计时2 30
+goto @神秘空间倒计时函数
+break
+
+#IF
+EQUAL <$PARAM(2)> 3级神秘卷轴
+EQUAL <$M> smkj3
+CHECKITEM 3级神秘卷轴 1
+Large <$STR(S$神秘卷轴_使用_2)> 0
+#ACT
+TAKE 3级神秘卷轴
+DEC N$神秘卷轴3_使用 1
+CALCVAR HUMAN 神秘卷轴使用 = <$STR(N$神秘卷轴1_使用)>|<$STR(N$神秘卷轴2_使用)>|<$STR(N$神秘卷轴3_使用)>|<$STR(N$神秘卷轴4_使用)> 1
+INC N$神秘空间计时3 30
+goto @神秘空间倒计时函数
+break
+
+#IF
+EQUAL <$PARAM(2)> 4级神秘卷轴
+EQUAL <$M> smkj4
+CHECKITEM 4级神秘卷轴 1
+Large <$STR(S$神秘卷轴_使用_3)> 0
+#ACT
+TAKE 4级神秘卷轴
+DEC N$神秘卷轴4_使用 1
+CALCVAR HUMAN 神秘卷轴使用 = <$STR(N$神秘卷轴1_使用)>|<$STR(N$神秘卷轴2_使用)>|<$STR(N$神秘卷轴3_使用)>|<$STR(N$神秘卷轴4_使用)> 1
+INC N$神秘空间计时4 20
+goto @神秘空间倒计时函数
+break
+
+[@NewStdModeFunc7210]
+#IF
+TRUE
+#ACT
+MOV N$次日礼包序列号 <$PARAM(0)>
+MOV S$次日礼包名字 <$PARAM(2)>
+
+#IF
+CheckVar Human 惊喜礼包 > 7
+#ACT
+TAKE <$STR(S$次日礼包名字)> 1
+
+#IF
+SMALL <$LEVEL> 60
+#ACT
+SENDMSG 5 达到60级可领取惊喜礼包
+SENDMSG 19 达到60级可领取惊喜礼包
+Break
+
+#IF
+CheckVar Human 惊喜礼包领取时间 = <$DATE>
+#ACT
+SENDMSG 5 惊喜礼包每日仅限开启一次
+SENDMSG 19 惊喜礼包每日仅限开启一次
+BREAK
+
+#IF
+CheckVar Human 惊喜礼包 = 1
+#ACT
+MOV N$次日礼包文本 
+CALCVAR HUMAN 惊喜礼包按钮 = lingqu 1
+MOV S$次日礼包展示1 特装精粹(攻)
+MOV S$次日礼包1COUNT 15
+MOV S$次日礼包展示2 特装精粹(防)
+MOV S$次日礼包2COUNT 15
+MOV S$次日礼包展示3 绑定元宝
+MOV S$次日礼包3COUNT 1000
+CALCVAR HUMAN 惊喜礼包额度 = 0 1
+MOV N$次日礼包按钮 1
+Mov S$次日礼包 <Button|x=642.0|y=367.0|color=255|scale=1|size=18|mimg=private/cirilibaoui/btn_libao1.png|pimg=private/cirilibaoui/btn_libao1.png|nimg=private/cirilibaoui/btn_libao1.png><Img|x=739.0|y=390.0|scale=1|img=private/cirilibaoui/wenben_2.png|esc=0><Layout|x=660.0|y=376.0|width=200|height=50|color=0,0,0|link=@cirilibao_<$HUMAN(惊喜礼包按钮)>>
+goto @次日礼包面板
+Break
+
+#IF
+CheckVar Human 惊喜礼包 = 2
+#ACT
+MOV N$次日礼包文本 5
+MOV S$次日礼包展示1 纵横之翼
+MOV S$次日礼包1COUNT 1
+MOV S$次日礼包展示2 仙翎之羽
+MOV S$次日礼包2COUNT 15
+MOV S$次日礼包展示3 绑定元宝
+MOV S$次日礼包3COUNT 2000
+CALCVAR HUMAN 惊喜礼包额度 = 30 1
+goto @次日礼包面板
+Break
+
+#IF
+CheckVar Human 惊喜礼包 = 3
+#ACT
+MOV N$次日礼包文本 6
+MOV S$次日礼包展示1 特装精粹(攻)
+MOV S$次日礼包1COUNT 35
+MOV S$次日礼包展示2 特装精粹(防)
+MOV S$次日礼包2COUNT 35
+MOV S$次日礼包展示3 绑定元宝
+MOV S$次日礼包3COUNT 3000
+CALCVAR HUMAN 惊喜礼包额度 = 0 1
+MOV N$次日礼包按钮 1
+Mov S$次日礼包 <Button|x=642.0|y=367.0|color=255|scale=1|size=18|mimg=private/cirilibaoui/btn_libao1.png|pimg=private/cirilibaoui/btn_libao1.png|nimg=private/cirilibaoui/btn_libao1.png><Img|x=739.0|y=390.0|scale=1|img=private/cirilibaoui/wenben_2.png|esc=0><Layout|x=660.0|y=376.0|width=200|height=50|color=0,0,0|link=@cirilibao_<$HUMAN(惊喜礼包按钮)>>
+goto @次日礼包面板
+Break
+
+#IF
+CheckVar Human 惊喜礼包 = 4
+#ACT
+MOV N$次日礼包文本 7
+MOV S$次日礼包展示1 凶器精粹
+MOV S$次日礼包1COUNT 30
+MOV S$次日礼包展示2 凶器精粹
+MOV S$次日礼包2COUNT 30
+MOV S$次日礼包展示3 绑定元宝
+MOV S$次日礼包3COUNT 4000
+CALCVAR HUMAN 惊喜礼包额度 = 0 1
+MOV N$次日礼包按钮 1
+Mov S$次日礼包 <Button|x=642.0|y=367.0|color=255|scale=1|size=18|mimg=private/cirilibaoui/btn_libao1.png|pimg=private/cirilibaoui/btn_libao1.png|nimg=private/cirilibaoui/btn_libao1.png><Img|x=739.0|y=390.0|scale=1|img=private/cirilibaoui/wenben_2.png|esc=0><Layout|x=660.0|y=376.0|width=200|height=50|color=0,0,0|link=@cirilibao_<$HUMAN(惊喜礼包按钮)>>
+goto @次日礼包面板
+Break
+
+#IF
+CheckVar Human 惊喜礼包 = 5
+#ACT
+MOV N$次日礼包文本 8
+MOV S$次日礼包展示1 暗月
+MOV S$次日礼包1COUNT 1
+MOV S$次日礼包展示2 凶器精粹
+MOV S$次日礼包2COUNT 120
+MOV S$次日礼包展示3 绑定元宝
+MOV S$次日礼包3COUNT 5000
+CALCVAR HUMAN 惊喜礼包额度 = 168 1
+goto @次日礼包面板
+Break
+
+#IF
+CheckVar Human 惊喜礼包 = 6
+#ACT
+MOV N$次日礼包文本 9
+MOV S$次日礼包展示1 灵兽精粹
+MOV S$次日礼包1COUNT 30
+MOV S$次日礼包展示2 灵兽精粹
+MOV S$次日礼包2COUNT 30
+MOV S$次日礼包展示3 绑定元宝
+MOV S$次日礼包3COUNT 6000
+CALCVAR HUMAN 惊喜礼包额度 = 0 1
+MOV N$次日礼包按钮 1
+Mov S$次日礼包 <Button|x=642.0|y=367.0|color=255|scale=1|size=18|mimg=private/cirilibaoui/btn_libao1.png|pimg=private/cirilibaoui/btn_libao1.png|nimg=private/cirilibaoui/btn_libao1.png><Img|x=739.0|y=390.0|scale=1|img=private/cirilibaoui/wenben_2.png|esc=0><Layout|x=660.0|y=376.0|width=200|height=50|color=0,0,0|link=@cirilibao_<$HUMAN(惊喜礼包按钮)>>
+goto @次日礼包面板
+Break
+
+#IF
+CheckVar Human 惊喜礼包 = 7
+#ACT
+MOV N$次日礼包文本 10
+MOV S$次日礼包展示1 暗月妖狼(坐骑)
+MOV S$次日礼包1COUNT 1
+MOV S$次日礼包展示2 灵兽精粹
+MOV S$次日礼包2COUNT 98
+MOV S$次日礼包展示3 绑定元宝
+MOV S$次日礼包3COUNT 7000
+CALCVAR HUMAN 惊喜礼包额度 = 648 1
+goto @次日礼包面板
+Break
+
+[@次日礼包面板]
+#IF
+TRUE
+#ACT
+MOV N$次日礼包按钮 1
+
+#IF
+CheckVar Human 惊喜礼包 = 2
+!SMALL $CustomValue(49) <$Human(惊喜礼包额度)>
+#ACT
+CALCVAR HUMAN 惊喜礼包按钮 = lingqu 1
+MOV N$次日礼包按钮 1
+Mov S$次日礼包 <Button|x=642.0|y=367.0|color=255|scale=1|size=18|mimg=private/cirilibaoui/btn_libao1.png|pimg=private/cirilibaoui/btn_libao1.png|nimg=private/cirilibaoui/btn_libao1.png><Img|x=739.0|y=390.0|scale=1|img=private/cirilibaoui/wenben_2.png|esc=0><Layout|x=660.0|y=376.0|width=200|height=50|color=0,0,0|link=@cirilibao_<$HUMAN(惊喜礼包按钮)>>
+#IF
+CheckVar Human 惊喜礼包 = 2
+small $CustomValue(49)  <$Human(惊喜礼包额度)>
+#ACT
+CALCVAR HUMAN 惊喜礼包按钮 = cz 1
+MOV N$次日礼包按钮 3
+MOV N$次日礼包充值文本 1
+Mov S$次日礼包 <Button|x=642.0|y=356.0|color=255|scale=1|size=18|mimg=private/cirilibaoui/btn_libao1.png|pimg=private/cirilibaoui/btn_libao1.png|nimg=private/cirilibaoui/btn_libao2.png><Img|x=716.0|y=377.0|scale=1|img=private/cirilibaoui/wenben_1.png|esc=0><Layout|x=660.0|y=365.0|width=200|height=50|color=0,0,0|link=@cirilibao_<$HUMAN(惊喜礼包按钮)>><Img|x=639.0|y=415.0|scale=1|img=private/cirilibaoui/wenben_3.png|esc=0><Text|ax=0.5|x=803.7|y=437.4|size=18|color=218|text=<$HUMAN(惊喜礼包额度)>>
+
+#IF
+CheckVar Human 惊喜礼包 = 5
+!SMALL $CustomValue(49) <$Human(惊喜礼包额度)>
+#ACT
+CALCVAR HUMAN 惊喜礼包按钮 = lingqu 1
+MOV N$次日礼包按钮 1
+Mov S$次日礼包 <Button|x=642.0|y=367.0|color=255|scale=1|size=18|mimg=private/cirilibaoui/btn_libao1.png|pimg=private/cirilibaoui/btn_libao1.png|nimg=private/cirilibaoui/btn_libao1.png><Img|x=739.0|y=390.0|scale=1|img=private/cirilibaoui/wenben_2.png|esc=0><Layout|x=660.0|y=376.0|width=200|height=50|color=0,0,0|link=@cirilibao_<$HUMAN(惊喜礼包按钮)>>
+
+#IF
+CheckVar Human 惊喜礼包 = 5
+small $CustomValue(49) <$Human(惊喜礼包额度)>
+#ACT
+CALCVAR HUMAN 惊喜礼包按钮 = cz 1
+MOV N$次日礼包按钮 3
+MOV N$次日礼包充值文本 2
+Mov S$次日礼包 <Button|x=642.0|y=356.0|color=255|scale=1|size=18|mimg=private/cirilibaoui/btn_libao1.png|pimg=private/cirilibaoui/btn_libao1.png|nimg=private/cirilibaoui/btn_libao2.png><Img|x=716.0|y=377.0|scale=1|img=private/cirilibaoui/wenben_1.png|esc=0><Layout|x=660.0|y=365.0|width=200|height=50|color=0,0,0|link=@cirilibao_<$HUMAN(惊喜礼包按钮)>><Img|x=639.0|y=415.0|scale=1|img=private/cirilibaoui/wenben_3.png|esc=0><Text|ax=0.5|x=803.7|y=437.4|size=18|color=218|text=<$HUMAN(惊喜礼包额度)>>
+
+#IF
+CheckVar Human 惊喜礼包 = 7
+!SMALL $CustomValue(49)  <$Human(惊喜礼包额度)>
+#ACT
+CALCVAR HUMAN 惊喜礼包按钮 = lingqu 1
+MOV N$次日礼包按钮 1
+Mov S$次日礼包 <Button|x=642.0|y=367.0|color=255|scale=1|size=18|mimg=private/cirilibaoui/btn_libao1.png|pimg=private/cirilibaoui/btn_libao1.png|nimg=private/cirilibaoui/btn_libao1.png><Img|x=739.0|y=390.0|scale=1|img=private/cirilibaoui/wenben_2.png|esc=0><Layout|x=660.0|y=376.0|width=200|height=50|color=0,0,0|link=@cirilibao_<$HUMAN(惊喜礼包按钮)>>
+
+#IF
+CheckVar Human 惊喜礼包 = 7
+small $CustomValue(49) <$Human(惊喜礼包额度)>
+#ACT
+CALCVAR HUMAN 惊喜礼包按钮 = cz 1
+MOV N$次日礼包按钮 3
+MOV N$次日礼包充值文本 3
+Mov S$次日礼包 <Button|x=642.0|y=356.0|color=255|scale=1|size=18|mimg=private/cirilibaoui/btn_libao1.png|pimg=private/cirilibaoui/btn_libao1.png|nimg=private/cirilibaoui/btn_libao2.png><Img|x=716.0|y=377.0|scale=1|img=private/cirilibaoui/wenben_1.png|esc=0><Layout|x=660.0|y=365.0|width=200|height=50|color=0,0,0|link=@cirilibao_<$HUMAN(惊喜礼包按钮)>><Img|x=639.0|y=415.0|scale=1|img=private/cirilibaoui/wenben_3.png|esc=0><Text|ax=0.5|x=803.7|y=437.4|size=18|color=218|text=<$HUMAN(惊喜礼包额度)>>
+
+#IF
+TRUE
+#SAY
+<Img|id=cirilibaobg|x=154.0|y=24.0|scale=1|bg=1|img=private/cirilibaoui/cirilibaodb.png|esc=0>
+<Button|x=906.0|y=115.0|scale=1|pimg=private/cirilibaoui/x-1.png|mimg=private/cirilibaoui/x-1.png|size=18|nimg=private/cirilibaoui/x-1.png|color=255|link=@EXIT>
+<Button|x=641.0|y=366.0|scale=1|pimg=private/cirilibaoui/btn-3.png|mimg=private/cirilibaoui/btn-3.png|size=18|nimg=private/cirilibaoui/btn-3.png|color=255>
+<Img|x=556.0|y=128.0|scale=1|img=private/cirilibaoui/wenben_4.png|esc=0>
+<Img|x=877.0|y=173.0|scale=1|img=private/cirilibaoui/wenben_<$STR(N$次日礼包文本)>.png|esc=0>
+<$STR(S$次日礼包)>
+<ItemShow|x=655.0|y=275.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$次日礼包展示1)>).LOOKS>|itemcount=<$STR(S$次日礼包1COUNT)>|name=<$STR(S$次日礼包展示1)>|bgtype=1|showtips=1>
+<ItemShow|x=721.0|y=275.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$次日礼包展示2)>).LOOKS>|itemcount=<$STR(S$次日礼包2COUNT)>|name=<$STR(S$次日礼包展示2)>|bgtype=1|showtips=1>
+<ItemShow|x=787.0|y=275.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$次日礼包展示3)>).LOOKS>|itemcount=<$STR(S$次日礼包3COUNT)>|name=<$STR(S$次日礼包展示3)>|bgtype=1|showtips=1>
+
+
+[@cirilibao_cz]
+#IF
+CheckVar Human 惊喜礼包按钮 = cz
+#ACT
+Pullpay <$Human(惊喜礼包额度)> 1 2 400 400
+BREAK
+
+[@cirilibao_lingqu]
+#IF
+!CHECKITEM 惊喜礼包 1
+#ACT
+SENDMSG 19 包裹里没有该礼包！
+close
+BREAK
+
+#IF
+!SMALL <$LEVEL> 60
+CheckVar Human 惊喜礼包 = 1
+#ACT
+CALCVAR HUMAN 惊喜礼包领取时间 = <$DATE> 1
+CALCVAR HUMAN 惊喜礼包 + 1 1
+UPGRADEUSERITEM $STR(N$次日礼包序列号) 173 = 0.
+MailGive <$str(S$次日礼包展示1)> <$str(S$次日礼包1COUNT)> 1
+MailGive <$str(S$次日礼包展示2)> <$str(S$次日礼包2COUNT)> 1
+MailGive <$str(S$次日礼包展示3)> <$str(S$次日礼包3COUNT)> 1
+SendMail 1 惊喜礼包 恭喜获得惊喜礼包奖励，请点击领取
+close
+BREAK
+
+#IF
+SMALL $CustomValue(49) <$Human(惊喜礼包额度)>
+#ACT
+SENDMSG 19 当日充值额度未达到
+BREAK
+
+#IF
+!SMALL <$LEVEL> 60
+!SMALL $CustomValue(49) <$Human(惊喜礼包额度)>
+#ACT
+CALCVAR HUMAN 惊喜礼包领取时间 = <$DATE> 1
+CALCVAR HUMAN 惊喜礼包 + 1 1
+UPGRADEUSERITEM $STR(N$次日礼包序列号) 173 = 0
+MailGive <$str(S$次日礼包展示1)> <$str(S$次日礼包1COUNT)> 1
+MailGive <$str(S$次日礼包展示2)> <$str(S$次日礼包2COUNT)> 1
+MailGive <$str(S$次日礼包展示3)> <$str(S$次日礼包3COUNT)> 1
+SendMail 1 惊喜礼包 恭喜获得惊喜礼包奖励，请点击领取
+GOTO @检测是否收走惊喜礼包
+BREAK
+close
+
+[@检测是否收走惊喜礼包]
+#IF
+CheckVar Human 惊喜礼包 = 8
+#ACT
+TAKE 惊喜礼包 99
+BREAK
+
+
+
+[@StdModeFunc12011]
+#IF
+SMALL $CUSTOMVALUE(17) 10
+#ACT
+CHANGECUSTOMVALUE 18 + 10
+SENDMSG 19 你获得军衔经验10
+GOTO @军衔SJ_0305
+
+#IF
+!SMALL $CUSTOMVALUE(17) 10
+#ACT
+CHANGECUSTOMVALUE 18 = 0
+SENDMSG 19 你的军衔已达顶级,没有获得军衔经验
+
+
+[@StdModeFunc12012]
+#IF
+SMALL $CUSTOMVALUE(17) 10
+#ACT
+CHANGECUSTOMVALUE 18 + 100
+SENDMSG 19 你获得军衔经验100
+GOTO @军衔SJ_0305
+
+#IF
+!SMALL $CUSTOMVALUE(17) 10
+#ACT
+CHANGECUSTOMVALUE 18 = 0
+SENDMSG 19 你的军衔已达顶级,没有获得军衔经验
+
+
+
+
+
+[@StdModeFunc12013]
+#IF
+SMALL $CUSTOMVALUE(17) 10
+#ACT
+CHANGECUSTOMVALUE 18 + 1000
+SENDMSG 19 你获得军衔经验1000
+GOTO @军衔SJ_0305
+
+#IF
+!SMALL $CUSTOMVALUE(17) 10
+#ACT
+CHANGECUSTOMVALUE 18 = 0
+SENDMSG 19 你的军衔已达顶级,没有获得军衔经验
+
+
+
+
+[@StdModeFunc12014]
+#IF
+SMALL $CUSTOMVALUE(17) 10
+#ACT
+CHANGECUSTOMVALUE 18 + 5000
+SENDMSG 19 你获得军衔经验5000
+GOTO @军衔SJ_0305
+
+#IF
+!SMALL $CUSTOMVALUE(17) 10
+#ACT
+CHANGECUSTOMVALUE 18 = 0
+SENDMSG 19 你的军衔已达顶级,没有获得军衔经验
+
+}

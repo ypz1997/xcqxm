@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=31
+IsMain=0
+stepcount = 2
+title = [　]讨伐逆魔
+ID = 31
+stepstitle1 = <color=graygolden 任务描述：>\<color=graygolden 杀死1只【逆魔之王】>\<color=graygolden 任务完成度:><color=green <$TASKVAL(31).I0>/1>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+stepstitle2 = <color=green 任务完成：>\ \　<点击领取奖励/@XXXXX>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>

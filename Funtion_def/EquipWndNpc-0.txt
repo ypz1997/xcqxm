@@ -1,0 +1,3409 @@
+;此脚本为功能脚本，用于实现手游装备栏自定义触发
+#CALL [\游戏功能\临时属性.txt] @临时属性
+[@MAIN]
+#IF
+EQUAL $STR(N$是否由特戒材料打开) 1
+#ACT
+DELAYGOTO 1 @麻痹戒指&麻痹戒指
+
+
+
+#IF
+!EQUAL $CLIENTFLAG 1
+#ACT
+SETEQUIPCFG 01110 1 0 175 15
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$职业攻击 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$职业攻击 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$职业攻击 道术
+
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 2
+#ACT
+MOV N$人物名称X标 370
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 3
+#ACT
+MOV N$人物名称X标 366
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 4
+#ACT
+MOV N$人物名称X标 362
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 5
+#ACT
+MOV N$人物名称X标 358
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 6
+#ACT
+MOV N$人物名称X标 354
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 7
+#ACT
+MOV N$人物名称X标 350
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 8
+#ACT
+MOV N$人物名称X标 346
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 9
+#ACT
+MOV N$人物名称X标 342
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 10
+#ACT
+MOV N$人物名称X标 338
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 11
+#ACT
+MOV N$人物名称X标 334
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 12
+#ACT
+MOV N$人物名称X标 330
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 13
+#ACT
+MOV N$人物名称X标 326
+
+#IF
+EQUAL <$LENGTH.$USERNAME> 14
+#ACT
+MOV N$人物名称X标 322
+
+
+#IF
+TRUE
+#ACT
+GOTO @常规属性面板
+BREAK
+
+
+
+
+
+[@常规属性面板]
+#IF
+TRUE
+#ACT
+MOV N$属性面板切换按钮1 5
+MOV N$属性面板切换按钮2 6
+
+GOTO @F10界面红点判断
+
+#IF
+TRUE
+#SAY
+<Button|x=520.0|y=-5.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@关闭角色面板>
+<Text|x=<$STR(N$人物名称X标)>|y=75.0|color=255|size=16|text=<$USERNAME>>
+<Button|x=13.0|y=37.0|width=93|height=40|pimg=public/btn_push_0<$STR(N$属性面板切换按钮1)>.png|nimg=public/btn_push_0<$STR(N$属性面板切换按钮1)>.png|mimg=public/btn_push_0<$STR(N$属性面板切换按钮1)>.png|color=67|size=18|text=基本属性|link=@XXXX>
+<Button|x=105.0|y=37.0|width=93|height=40|nimg=public/btn_push_0<$STR(N$属性面板切换按钮2)>.png|pimg=public/btn_push_0<$STR(N$属性面板切换按钮2)>.png|mimg=public/btn_push_0<$STR(N$属性面板切换按钮2)>.png|color=67|size=18|text=特殊属性|link=@特殊属性>
+<Img|x=556.0|y=29.0|img=public/btn_push_09.png|esc=0>
+<RText|x=575.0|y=44.0|color=67|size=20|text=<装/FCOLOR=67>\<备/FCOLOR=67>>
+<Layout|x=551.0|y=35.0|width=65|height=75|link=@main>
+; <Img|x=556.0|y=106.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=121.0|color=255|size=20|text=<魔/FCOLOR=67>\<体/FCOLOR=67>>
+; <Layout|x=554.0|y=113.0|width=65|height=75|id=mtan|children={mthd}|loadDelay=0|link=@跳转魔体>
+<$STR(S$F10主界面1)>
+; <Img|x=556.0|y=183.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=198.0|color=255|size=20|text=<特/FCOLOR=67>\<戒/FCOLOR=67>>
+; <Layout|x=554.0|y=191.0|width=65|height=75|id=tjan|children={tjhd}|loadDelay=0|link=@麻痹戒指&麻痹戒指>
+<$STR(S$F10主界面2)>
+
+<Img|id=yczan|children={yczanhd}|x=337.0|y=404.0|scale=0.95|img=private/f10/11745.png|esc=0|link=@羽翼>
+<$STR(S$羽翼主按钮红点)>
+<RText|x=17|y=80.0|color=91|size=16|text=<生命值/FCOLOR=91>>
+<RText|x=17|y=110|color=91|size=16|text=<魔法值/FCOLOR=91>>
+<RText|x=17|y=140|color=91|size=16|text=<防    御/FCOLOR=91>>
+<RText|x=17|y=170|color=91|size=16|text=<魔    防/FCOLOR=91>>
+<RText|x=17|y=200.0|color=91|size=16|text=<攻    击/FCOLOR=91>>
+<RText|x=17|y=230|color=91|size=16|text=<魔    法/FCOLOR=91>>
+<RText|x=17|y=260|color=91|size=16|text=<道    术/FCOLOR=91>>
+<RText|x=17.0|y=290|color=91|size=16|text=<命    中/FCOLOR=91>>
+<RText|x=17.0|y=320|color=91|size=16|text=<躲    避/FCOLOR=91>>
+<RText|x=17.0|y=350|color=91|size=16|text=<幸    运/FCOLOR=91>>
+<Img|x=72.0|y=82.0|width=120|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=72.0|y=112.0|width=120|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=72.0|y=142|width=120|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=72.0|y=172|width=120|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=72.0|y=202|width=120|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=72.0|y=232|width=120|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=72.0|y=262|width=120|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=72.0|y=292|width=120|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=72.0|y=322|width=120|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=72.0|y=352|width=120|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Text|x=77.0|y=82.0|color=67|size=16|text=$STM(HP)/$STM(MAXHP)>
+<Text|x=77.0|y=112|color=67|size=16|text=$STM(MP)/$STM(MAXMP)>
+<Text|x=77.0|y=142|color=67|size=16|text=$STM(AC)-$STM(MAXAC)>
+<Text|x=77.0|y=172|color=67|size=16|text=$STM(MAC)-$STM(MAXMAC)>
+<Text|x=77.0|y=202|color=67|size=16|text=$STM(DC)-$STM(MAXDC)>
+<Text|x=77.0|y=232|color=67|size=16|text=$STM(MC)-$STM(MAXMC)>
+<Text|x=77.0|y=262|color=67|size=16|text=$STM(SC)-$STM(MAXSC)>
+<Text|x=77.0|y=292|color=67|size=16|text=$STM(HIT)>
+<Text|x=77.0|y=322|color=67|size=16|text=$STM(SPD)>
+<Text|x=77.0|y=352|color=67|size=16|text=$STM(LUCK)>
+<Effect|x=106|y=454|effectid=8310|effecttype=0|dir=0|act=0|speed=1|sex=0|scale=1>
+<Button|x=60.0|y=410.0|color=255|scale=1|size=18|mimg=picpackage/3/tunshizhili.png|pimg=picpackage/3/tunshizhili.png|nimg=picpackage/3/tunshizhili.png|link=@吞噬之力>
+
+; #IF
+; ; LARGE <$HFCOUNT> 0
+; TRUE
+; #SAY
+; <Img|x=556.0|y=260.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=275.0|color=255|size=20|text=<境/FCOLOR=67>\<界/FCOLOR=67>>
+; <Layout|x=554.0|y=269.0|width=65|height=75|id=jjan|children={jjhd}|loadDelay=0|link=@跳转转生>
+; <$STR(S$F10主界面3)>
+
+[@吞噬之力]
+#IF
+!EQUAL $CLIENTFLAG 1
+#ACT
+SETEQUIPCFG 01113 1 1 175 15
+ReadExcel ..\QuestDiary\文本读取\吞噬属性.xls $INC.$CustomValue(95).1
+MOV N$吞噬当前属性1 <$996(Excel).0>
+MOV N$吞噬当前属性2 <$996(Excel).1>
+MOV N$吞噬当前属性3 <$996(Excel).2>
+MOV N$吞噬当前属性4 <$996(Excel).3>
+MOV N$吞噬当前属性5 <$996(Excel).4>
+MOV N$吞噬当前属性6 <$996(Excel).5>
+MOV N$吞噬当前属性7 <$996(Excel).6>
+MOV N$吞噬当前属性8 <$996(Excel).7>
+ReadExcel ..\QuestDiary\文本读取\吞噬属性.xls $INC.$CustomValue(95).2
+MOV N$吞噬下级属性1 <$996(Excel).0>
+MOV N$吞噬下级属性2 <$996(Excel).1>
+MOV N$吞噬下级属性3 <$996(Excel).2>
+MOV N$吞噬下级属性4 <$996(Excel).3>
+MOV N$吞噬下级属性5 <$996(Excel).4>
+MOV N$吞噬下级属性6 <$996(Excel).5>
+MOV N$吞噬下级属性7 <$996(Excel).6>
+
+#IF
+TRUE
+#SAY
+<Img|x=0.0|y=0.0|img=picpackage/3/01113.png>
+<Button|x=520.0|y=-5.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@关闭角色面板>
+<Img|x=556.0|y=29.0|img=public/btn_push_09.png|esc=0>
+<RText|x=575.0|y=44.0|color=67|size=20|text=<装/FCOLOR=67>\<备/FCOLOR=67>>
+<Layout|x=551.0|y=35.0|width=65|height=75|link=@main>
+; <Img|x=556.0|y=106.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=121.0|color=255|size=20|text=<魔/FCOLOR=67>\<体/FCOLOR=67>>
+; <Layout|x=554.0|y=113.0|width=65|height=75|id=mtan|children={mthd}|loadDelay=0|link=@跳转魔体>
+<$STR(S$F10主界面1)>
+; <Img|x=556.0|y=183.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=198.0|color=255|size=20|text=<特/FCOLOR=67>\<戒/FCOLOR=67>>
+; <Layout|x=554.0|y=191.0|width=65|height=75|id=tjan|children={tjhd}|loadDelay=0|link=@麻痹戒指&麻痹戒指>
+<$STR(S$F10主界面2)>
+
+<Frames|x=-67.0|y=73.0|count=10|scale=0.8|loop=-1|prefix=private/f10/tunshi/33248_|speed=10|suffix=.png|blend=1>
+<Frames|x=139.0|y=63.0|count=10|scale=0.65|loop=-1|prefix=private/f10/tunshi/33902_|speed=10|suffix=.png>
+<Text|x=50.0|y=105.0|color=67|size=20|text=当前属性>
+<Text|x=426.0|y=105.0|color=67|size=20|text=下级属性>
+; #IF
+; ; LARGE <$HFCOUNT> 0
+; TRUE
+; #SAY
+; <Img|x=556.0|y=260.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=275.0|color=255|size=20|text=<境/FCOLOR=67>\<界/FCOLOR=67>>
+; <Layout|x=554.0|y=269.0|width=65|height=75|id=jjan|children={jjhd}|loadDelay=0|link=@跳转转生>
+<$STR(S$F10主界面3)>
+#IF
+SMALL $CustomValue(95) 10
+#ACT
+COPYTEXT <$CustomValue(95)> 1 1 N$个位抽取
+#SAY
+<Img|x=200.0|y=41.0|scale=1|img=private/f10/tunshi/<$STR(N$个位抽取)>.png|esc=0>
+<Img|x=220.0|y=42.0|scale=1|img=private/f10/tunshi/jtszl.png|esc=0>
+
+#IF
+LARGE $CustomValue(95) 9
+SMALL $CustomValue(95) 100
+#ACT
+COPYTEXT <$CustomValue(95)> 1 1 N$十位抽取
+COPYTEXT <$CustomValue(95)> 2 1 N$个位抽取
+#SAY
+<Img|x=190.0|y=41.0|scale=1|img=private/f10/tunshi/<$STR(N$十位抽取)>.png|esc=0>
+<Img|x=210.0|y=41.0|scale=1|img=private/f10/tunshi/<$STR(N$个位抽取)>.png|esc=0>
+<Img|x=230.0|y=42.0|scale=1|img=private/f10/tunshi/jtszl.png|esc=0>
+
+#IF
+EQUAL $CustomValue(95) 100
+#SAY
+<Img|x=180.0|y=41.0|scale=1|img=private/f10/tunshi/1.png|esc=0>
+<Img|x=200.0|y=41.0|scale=1|img=private/f10/tunshi/0.png|esc=0>
+<Img|x=220.0|y=41.0|scale=1|img=private/f10/tunshi/0.png|esc=0>
+<Img|x=240.0|y=42.0|scale=1|img=private/f10/tunshi/jtszl.png|esc=0>
+
+
+
+#IF
+EQUAL $CustomValue(95) 0
+#SAY
+<Text|x=30.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<RText|x=110.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬当前属性1)>-<$STR(N$吞噬当前属性1)>/FCOLOR=255>>
+<Text|x=404.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=404.0|y=160.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<RText|x=484.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬下级属性1)>-<$STR(N$吞噬下级属性1)>/FCOLOR=255>>
+<RText|x=484.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬下级属性4)>%/FCOLOR=255>>
+
+#IF
+EQUAL $CustomValue(95) 1
+#SAY
+<Text|x=30.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=30.0|y=160.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<RText|x=110.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬当前属性1)>-<$STR(N$吞噬当前属性1)>/FCOLOR=255>>
+<RText|x=110.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬当前属性4)>%/FCOLOR=255>>
+<Text|x=404.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=404.0|y=160.0|color=95|size=18|text=防御>
+<Text|x=404.0|y=185.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<RText|x=484.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬下级属性1)>-<$STR(N$吞噬下级属性1)>/FCOLOR=255>>
+<RText|x=484.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬下级属性2)>-<$STR(N$吞噬下级属性2)>/FCOLOR=255>>
+<RText|x=484.0|y=185.0|color=255|size=18|text=<<$STR(N$吞噬下级属性4)>%/FCOLOR=255>>
+
+#IF
+EQUAL $CustomValue(95) 2
+#SAY
+<Text|x=30.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=30.0|y=160.0|color=95|size=18|text=防御>
+<Text|x=30.0|y=185.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<RText|x=110.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬当前属性1)>-<$STR(N$吞噬当前属性1)>/FCOLOR=255>>
+<RText|x=110.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬当前属性2)>-<$STR(N$吞噬当前属性2)>/FCOLOR=255>>
+<RText|x=110.0|y=185.0|color=255|size=18|text=<<$STR(N$吞噬当前属性4)>%/FCOLOR=255>>
+<Text|x=404.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=404.0|y=160.0|color=95|size=18|text=防御>
+<Text|x=404.0|y=185.0|color=95|size=18|text=魔防>
+<Text|x=404.0|y=210.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<Text|x=404.0|y=235.0|color=95|size=18|text=魔防加成>
+<RText|x=484.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬下级属性1)>-<$STR(N$吞噬下级属性1)>/FCOLOR=255>>
+<RText|x=484.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬下级属性2)>-<$STR(N$吞噬下级属性2)>/FCOLOR=255>>
+<RText|x=484.0|y=185.0|color=255|size=18|text=<<$STR(N$吞噬下级属性3)>-<$STR(N$吞噬下级属性3)>/FCOLOR=255>>
+<RText|x=484.0|y=210.0|color=255|size=18|text=<<$STR(N$吞噬下级属性4)>%/FCOLOR=255>>
+<RText|x=484.0|y=235.0|color=255|size=18|text=<<$STR(N$吞噬下级属性6)>%/FCOLOR=255>>
+
+#IF
+EQUAL $CustomValue(95) 3
+#SAY
+<Text|x=30.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=30.0|y=160.0|color=95|size=18|text=防御>
+<Text|x=30.0|y=185.0|color=95|size=18|text=魔防>
+<Text|x=30.0|y=210.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<Text|x=30.0|y=235.0|color=95|size=18|text=魔防加成>
+<RText|x=110.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬当前属性1)>-<$STR(N$吞噬当前属性1)>/FCOLOR=255>>
+<RText|x=110.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬当前属性2)>-<$STR(N$吞噬当前属性2)>/FCOLOR=255>>
+<RText|x=110.0|y=185.0|color=255|size=18|text=<<$STR(N$吞噬当前属性3)>-<$STR(N$吞噬当前属性3)>/FCOLOR=255>>
+<RText|x=110.0|y=210.0|color=255|size=18|text=<<$STR(N$吞噬当前属性4)>%/FCOLOR=255>>
+<RText|x=110.0|y=235.0|color=255|size=18|text=<<$STR(N$吞噬当前属性6)>%/FCOLOR=255>>
+<Text|x=404.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=404.0|y=160.0|color=95|size=18|text=防御>
+<Text|x=404.0|y=185.0|color=95|size=18|text=魔防>
+<Text|x=404.0|y=210.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<Text|x=404.0|y=235.0|color=95|size=18|text=魔防加成>
+<Text|x=404.0|y=260.0|color=95|size=18|text=生命值>
+<RText|x=484.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬下级属性1)>-<$STR(N$吞噬下级属性1)>/FCOLOR=255>>
+<RText|x=484.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬下级属性2)>-<$STR(N$吞噬下级属性2)>/FCOLOR=255>>
+<RText|x=484.0|y=185.0|color=255|size=18|text=<<$STR(N$吞噬下级属性3)>-<$STR(N$吞噬下级属性3)>/FCOLOR=255>>
+<RText|x=484.0|y=210.0|color=255|size=18|text=<<$STR(N$吞噬下级属性4)>%/FCOLOR=255>>
+<RText|x=484.0|y=235.0|color=255|size=18|text=<<$STR(N$吞噬下级属性6)>%/FCOLOR=255>>
+<RText|x=484.0|y=260.0|color=255|size=18|text=<<$STR(N$吞噬下级属性7)>/FCOLOR=255>>
+
+
+
+#IF
+EQUAL $CustomValue(95) 4
+#SAY
+<Text|x=30.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=30.0|y=160.0|color=95|size=18|text=防御>
+<Text|x=30.0|y=185.0|color=95|size=18|text=魔防>
+<Text|x=30.0|y=210.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<Text|x=30.0|y=235.0|color=95|size=18|text=魔防加成>
+<Text|x=30.0|y=260.0|color=95|size=18|text=生命值>
+<RText|x=110.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬当前属性1)>-<$STR(N$吞噬当前属性1)>/FCOLOR=255>>
+<RText|x=110.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬当前属性2)>-<$STR(N$吞噬当前属性2)>/FCOLOR=255>>
+<RText|x=110.0|y=185.0|color=255|size=18|text=<<$STR(N$吞噬当前属性3)>-<$STR(N$吞噬当前属性3)>/FCOLOR=255>>
+<RText|x=110.0|y=210.0|color=255|size=18|text=<<$STR(N$吞噬当前属性4)>%/FCOLOR=255>>
+<RText|x=110.0|y=235.0|color=255|size=18|text=<<$STR(N$吞噬当前属性6)>%/FCOLOR=255>>
+<RText|x=110.0|y=260.0|color=255|size=18|text=<<$STR(N$吞噬当前属性7)>/FCOLOR=255>>
+<Text|x=404.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=404.0|y=160.0|color=95|size=18|text=防御>
+<Text|x=404.0|y=185.0|color=95|size=18|text=魔防>
+<Text|x=404.0|y=210.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<Text|x=404.0|y=235.0|color=95|size=18|text=防御加成>
+<Text|x=404.0|y=260.0|color=95|size=18|text=魔防加成>
+<Text|x=404.0|y=285.0|color=95|size=18|text=生命值>
+<RText|x=484.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬下级属性1)>-<$STR(N$吞噬下级属性1)>/FCOLOR=255>>
+<RText|x=484.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬下级属性2)>-<$STR(N$吞噬下级属性2)>/FCOLOR=255>>
+<RText|x=484.0|y=185.0|color=255|size=18|text=<<$STR(N$吞噬下级属性3)>-<$STR(N$吞噬下级属性3)>/FCOLOR=255>>
+<RText|x=484.0|y=210.0|color=255|size=18|text=<<$STR(N$吞噬下级属性4)>%/FCOLOR=255>>
+<RText|x=484.0|y=235.0|color=255|size=18|text=<<$STR(N$吞噬下级属性5)>%/FCOLOR=255>>
+<RText|x=484.0|y=260.0|color=255|size=18|text=<<$STR(N$吞噬下级属性6)>%/FCOLOR=255>>
+<RText|x=484.0|y=285.0|color=255|size=18|text=<<$STR(N$吞噬下级属性7)>/FCOLOR=255>>
+
+
+#IF
+LARGE $CustomValue(95) 4
+#SAY
+<Text|x=30.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=30.0|y=160.0|color=95|size=18|text=防御>
+<Text|x=30.0|y=185.0|color=95|size=18|text=魔防>
+<Text|x=30.0|y=210.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<Text|x=30.0|y=235.0|color=95|size=18|text=防御加成>
+<Text|x=30.0|y=260.0|color=95|size=18|text=魔防加成>
+<Text|x=30.0|y=285.0|color=95|size=18|text=生命值>
+<RText|x=110.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬当前属性1)>-<$STR(N$吞噬当前属性1)>/FCOLOR=255>>
+<RText|x=110.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬当前属性2)>-<$STR(N$吞噬当前属性2)>/FCOLOR=255>>
+<RText|x=110.0|y=185.0|color=255|size=18|text=<<$STR(N$吞噬当前属性3)>-<$STR(N$吞噬当前属性3)>/FCOLOR=255>>
+<RText|x=110.0|y=210.0|color=255|size=18|text=<<$STR(N$吞噬当前属性4)>%/FCOLOR=255>>
+<RText|x=110.0|y=235.0|color=255|size=18|text=<<$STR(N$吞噬当前属性5)>%/FCOLOR=255>>
+<RText|x=110.0|y=260.0|color=255|size=18|text=<<$STR(N$吞噬当前属性6)>%/FCOLOR=255>>
+<RText|x=110.0|y=285.0|color=255|size=18|text=<<$STR(N$吞噬当前属性7)>/FCOLOR=255>>
+<Text|x=404.0|y=135.0|color=95|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=404.0|y=160.0|color=95|size=18|text=防御>
+<Text|x=404.0|y=185.0|color=95|size=18|text=魔防>
+<Text|x=404.0|y=210.0|color=95|size=18|text=<$STR(S$职业攻击)>加成>
+<Text|x=404.0|y=235.0|color=95|size=18|text=防御加成>
+<Text|x=404.0|y=260.0|color=95|size=18|text=魔防加成>
+<Text|x=404.0|y=285.0|color=95|size=18|text=生命值>
+<RText|x=484.0|y=135.0|color=255|size=18|text=<<$STR(N$吞噬下级属性1)>-<$STR(N$吞噬下级属性1)>/FCOLOR=255>>
+<RText|x=484.0|y=160.0|color=255|size=18|text=<<$STR(N$吞噬下级属性2)>-<$STR(N$吞噬下级属性2)>/FCOLOR=255>>
+<RText|x=484.0|y=185.0|color=255|size=18|text=<<$STR(N$吞噬下级属性3)>-<$STR(N$吞噬下级属性3)>/FCOLOR=255>>
+<RText|x=484.0|y=210.0|color=255|size=18|text=<<$STR(N$吞噬下级属性4)>%/FCOLOR=255>>
+<RText|x=484.0|y=235.0|color=255|size=18|text=<<$STR(N$吞噬下级属性5)>%/FCOLOR=255>>
+<RText|x=484.0|y=260.0|color=255|size=18|text=<<$STR(N$吞噬下级属性6)>%/FCOLOR=255>>
+<RText|x=484.0|y=285.0|color=255|size=18|text=<<$STR(N$吞噬下级属性7)>/FCOLOR=255>>
+
+#IF
+LARGE $CustomValue(96) <$STR(N$吞噬当前属性8)>
+#ACT
+MOV N$进度条长度 $STR(N$吞噬当前属性8)
+#ELSEACT
+MOV N$进度条长度 $CustomValue(96)
+#IF
+TRUE
+#SAY
+<Img|x=111.0|y=493.0|scale=1|img=private/vip/30870.png|esc=0>
+<LoadingBar|x=149.0|y=492.0|maxLen=<$STR(N$吞噬当前属性8)>|curLen=<$STR(N$进度条长度)>|img=private/vip/30871.png>
+<Text|x=250.0|y=494.0|color=255|size=18|text=<$CustomValue(96)>/<$STR(N$吞噬当前属性8)>>
+
+
+
+
+[@特殊属性]
+#IF
+TRUE
+#ACT
+MOV N$属性面板切换按钮1 6
+MOV N$属性面板切换按钮2 5
+
+#IF
+EQUAL $LENGTH.$STR(D62) 1
+#ACT
+MOV S$经验倍率显示用 1.0<$STR(D62)>
+
+#IF
+EQUAL $LENGTH.$STR(D62) 2
+#ACT
+MOV S$经验倍率显示用 1.<$STR(D62)>
+
+#IF
+EQUAL $LENGTH.$STR(D62) 3
+#ACT
+CopyText <$STR(D62)> 1 1 S$待拷贝1
+CopyText <$STR(D62)> 2 1 S$待拷贝2
+CopyText <$STR(D62)> 3 1 S$待拷贝3
+MOV S$经验倍率显示用 <$STR(S$待拷贝1)>.<$STR(S$待拷贝2)><$STR(S$待拷贝3)>
+
+#IF
+EQUAL $LENGTH.$STR(D63) 1
+#ACT
+MOV S$魔体经验倍率显示用 1.0<$STR(D63)>
+
+#IF
+EQUAL $LENGTH.$STR(D63) 2
+#ACT
+MOV S$魔体经验倍率显示用 1.<$STR(D63)>
+
+#IF
+EQUAL $LENGTH.$STR(D63) 3
+#ACT
+CopyText <$STR(D63)> 1 1 S$魔体经验待拷贝1
+CopyText <$STR(D63)> 2 1 S$魔体经验待拷贝2
+CopyText <$STR(D63)> 3 1 S$魔体经验待拷贝3
+MOV S$魔体经验倍率显示用 <$STR(S$魔体经验待拷贝1)>.<$STR(S$魔体经验待拷贝2)><$STR(S$魔体经验待拷贝3)>
+
+#IF
+TRUE
+#SAY
+<Button|x=520.0|y=-5.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@关闭角色面板>
+<Text|x=<$STR(N$人物名称X标)>|y=75.0|color=255|size=16|text=<$USERNAME>>
+<Button|x=13.0|y=37.0|width=93|height=40|pimg=public/btn_push_0<$STR(N$属性面板切换按钮1)>.png|nimg=public/btn_push_0<$STR(N$属性面板切换按钮1)>.png|mimg=public/btn_push_0<$STR(N$属性面板切换按钮1)>.png|color=67|size=18|text=基本属性|link=@常规属性面板>
+<Button|x=105.0|y=37.0|width=93|height=40|nimg=public/btn_push_0<$STR(N$属性面板切换按钮2)>.png|pimg=public/btn_push_0<$STR(N$属性面板切换按钮2)>.png|mimg=public/btn_push_0<$STR(N$属性面板切换按钮2)>.png|color=67|size=18|text=特殊属性|link=@XXXX>
+<Img|x=556.0|y=29.0|img=public/btn_push_09.png|esc=0>
+<RText|x=575.0|y=44.0|color=67|size=20|text=<装/FCOLOR=67>\<备/FCOLOR=67>>
+<Layout|x=551.0|y=35.0|width=65|height=75|link=@main>
+; <Img|x=556.0|y=106.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=121.0|color=255|size=20|text=<魔/FCOLOR=67>\<体/FCOLOR=67>>
+; <Layout|x=554.0|y=113.0|width=65|height=75|id=mtan|children={mthd}|loadDelay=0|link=@跳转魔体>
+<$STR(S$F10主界面1)>
+; <Img|x=556.0|y=183.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=198.0|color=255|size=20|text=<特/FCOLOR=67>\<戒/FCOLOR=67>>
+; <Layout|x=554.0|y=191.0|width=65|height=75|id=tjan|children={tjhd}|loadDelay=0|link=@麻痹戒指&麻痹戒指>
+<$STR(S$F10主界面2)>
+
+<Img|x=337.0|y=404.0|scale=0.95|img=private/f10/11745.png|esc=0|link=@羽翼>
+<RText|x=17|y=80.0|color=91|size=16|text=<切    割/FCOLOR=91>>
+<RText|x=17|y=110|color=91|size=16|text=<切割抵抗/FCOLOR=91>>
+<RText|x=17|y=140|color=91|size=16|text=<暴 击 率/FCOLOR=91>>
+<RText|x=17|y=170|color=91|size=16|text=<暴击伤害/FCOLOR=91>>
+<RText|x=17|y=200.0|color=91|size=16|text=<暴击抵抗/FCOLOR=91>>
+<RText|x=17|y=230|color=91|size=16|text=<爆伤减免/FCOLOR=91>>
+<RText|x=17|y=260|color=91|size=16|text=<吸血概率/FCOLOR=91>>
+<RText|x=17|y=290|color=91|size=16|text=<吸血比例/FCOLOR=91>>
+<RText|x=17|y=320|color=91|size=16|text=<经验倍率/FCOLOR=91>>
+<RText|x=17|y=350|color=91|size=16|text=<魔体经验倍率/FCOLOR=91>>
+
+<Img|x=92.0|y=82.0|width=100|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=92.0|y=112.0|width=100|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=92.0|y=142|width=100|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=92.0|y=172|width=100|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=92.0|y=202|width=100|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=92.0|y=232|width=100|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=92.0|y=262|width=100|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=92.0|y=292|width=100|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=92.0|y=322|width=100|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Img|x=122.0|y=352|width=70|height=23|img=private/f10/bg_progress_01.png|esc=0>
+<Text|x=97.0|y=82.0|color=67|size=16|text=<$STR(D90)>>
+<Text|x=97.0|y=112|color=67|size=16|text=<$STR(D92)>>
+<Text|x=97.0|y=142|color=67|size=16|text=$STM(THUMPRATE)%>
+<Text|x=97.0|y=172|color=67|size=16|text=<$PROVISIONALABIL(46)>%>
+<Text|x=97.0|y=202|color=67|size=16|text=<$PROVISIONALABIL(45)>%>
+<Text|x=97.0|y=232|color=67|size=16|text=<$PROVISIONALABIL(37)>%>
+<Text|x=97.0|y=262|color=67|size=16|text=<$STR(D54)>%>
+<Text|x=97.0|y=292|color=67|size=16|text=<$STR(D55)>%>
+<Text|x=97.0|y=322|color=67|size=16|text=<$STR(S$经验倍率显示用)>>
+<Text|x=127.0|y=352|color=67|size=16|text=<$STR(S$魔体经验倍率显示用)>>
+<Effect|x=106|y=454|effectid=8310|effecttype=0|dir=0|act=0|speed=1|sex=0|scale=1>
+<Button|x=60.0|y=410.0|color=255|scale=1|size=18|mimg=picpackage/3/tunshizhili.png|pimg=picpackage/3/tunshizhili.png|nimg=picpackage/3/tunshizhili.png|link=@吞噬之力>
+
+; #IF
+; LARGE <$HFCOUNT> 0
+; TRUE
+; #SAY
+; <Img|x=556.0|y=260.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=275.0|color=255|size=20|text=<境/FCOLOR=67>\<界/FCOLOR=67>>
+; <Layout|x=554.0|y=269.0|width=65|height=75|id=jjan|children={jjhd}|loadDelay=0|link=@跳转转生>
+[@跳转转生]
+#IF
+!EQUAL $CLIENTFLAG 1
+#ACT
+SETEQUIPCFG 01112 1 1 175 15
+
+#IF
+TRUE
+#ACT
+GOTO @F10界面红点判断
+#IF
+TRUE
+#ACT
+ReadExcel ..\QuestDiary\文本读取\转生属性.xls <$INC.$CustomValue(42).1>
+MOV N$当前属性1 <$996(Excel).0>
+MOV N$当前属性2 <$996(Excel).1>
+MOV N$当前属性3 <$996(Excel).2>
+MOV N$当前属性4 <$996(Excel).3>
+MOV N$当前属性5 <$996(Excel).4>
+MOV N$当前属性6 <$996(Excel).5>
+MOV N$当前属性7 <$996(Excel).6>
+MOV N$当前属性8 <$996(Excel).7>
+MOV N$当前属性9 <$996(Excel).8>
+ReadExcel ..\QuestDiary\文本读取\转生属性.xls <$INC.$CustomValue(42).2>
+MOV N$下级属性1 <$996(Excel).0>
+MOV N$下级属性2 <$996(Excel).1>
+MOV N$下级属性3 <$996(Excel).2>
+MOV N$下级属性4 <$996(Excel).3>
+MOV N$下级属性5 <$996(Excel).4>
+MOV N$下级属性6 <$996(Excel).5>
+MOV N$下级属性7 <$996(Excel).6>
+
+#IF
+LARGE $LEVEL 114
+LARGE $EXP 30000000
+LARGE $CustomValue(88) 0
+#ACT
+MOV S$转生红点1 <Img|id=dhxwhd|x=115.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$转生红点1 
+
+#IF
+!SMALL <$INC.$MONEY(2).$MONEY(4)> <$STR(N$当前属性9)>
+!SMALL $MONEY(10) <$STR(N$当前属性9)>
+#ACT
+MOV S$转生红点2 <Img|id=kszshd|x=115.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$转生红点2 
+
+
+#IF
+EQUAL $CustomValue(43) 0
+#ACT
+MOV N$转生进度1 6
+MOV N$转生进度2 6
+MOV N$转生进度3 6
+MOV N$转生进度4 6
+MOV N$转生进度5 6
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 1
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 6
+MOV N$转生进度3 6
+MOV N$转生进度4 6
+MOV N$转生进度5 6
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 2
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 6
+MOV N$转生进度4 6
+MOV N$转生进度5 6
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 3
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 6
+MOV N$转生进度5 6
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 4
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 6
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 5
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 7
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 6
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 7
+MOV N$转生进度6 7
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 7
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 7
+MOV N$转生进度6 7
+MOV N$转生进度7 7
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 8
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 7
+MOV N$转生进度6 7
+MOV N$转生进度7 7
+MOV N$转生进度8 7
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 9
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 7
+MOV N$转生进度6 7
+MOV N$转生进度7 7
+MOV N$转生进度8 7
+MOV N$转生进度9 7
+
+#IF
+SMALL $CustomValue(88) 1
+#ACT
+MOV N$兑换次数颜色 249
+#ELSEACT
+MOV N$兑换次数颜色 222
+
+#IF
+SMALL <$INC.$Money(2).$Money(4)> $STR(N$当前属性8)
+#ACT
+MOV N$转生所需元宝颜色 249
+#ELSEACT
+MOV N$转生所需元宝颜色 222
+
+#IF
+TRUE
+#SAY
+
+<Img|x=556.0|y=29.0|img=public/btn_push_08.png|esc=0>
+<RText|x=575.0|y=44.0|color=67|size=20|text=<装/FCOLOR=67>\<备/FCOLOR=67>>
+<Layout|x=551.0|y=35.0|width=65|height=75|link=@main>
+; <Img|x=556.0|y=106.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=121.0|color=255|size=20|text=<魔/FCOLOR=67>\<体/FCOLOR=67>>
+; <Layout|x=554.0|y=113.0|width=65|height=75|id=mtan|children={mthd}|loadDelay=0|link=@跳转魔体>
+<$STR(S$F10主界面1)>
+; <Img|x=556.0|y=183.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=198.0|color=255|size=20|text=<特/FCOLOR=67>\<戒/FCOLOR=67>>
+; <Layout|x=554.0|y=191.0|width=65|height=75|id=tjan|children={tjhd}|loadDelay=0|link=@麻痹戒指&麻痹戒指>
+<$STR(S$F10主界面2)>
+; <Img|x=556.0|y=260.0|img=public/btn_push_09.png|esc=0>
+; <RText|x=575.0|y=275.0|color=255|size=20|text=<境/FCOLOR=67>\<界/FCOLOR=67>>
+; <Layout|x=554.0|y=269.0|width=65|height=75|id=jjan|children={jjhd}|loadDelay=0|link=@跳转转生>
+<$STR(S$F10主界面3)>
+
+<Img|x=0|y=0.0|img=picpackage/3/01112.png>
+<Button|x=520.0|y=-5.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@关闭角色面板>
+<RText|x=80.0|y=128.0|color=255|size=18|text=<<$STR(N$当前属性1)>/FCOLOR=255><-/FCOLOR=255><<$STR(N$当前属性2)>/FCOLOR=255>>
+<RText|x=80.0|y=160.0|color=255|size=18|text=<<$STR(N$当前属性3)>/FCOLOR=255><-/FCOLOR=255><<$STR(N$当前属性4)>/FCOLOR=255>>
+<RText|x=80.0|y=192.0|color=255|size=18|text=<<$STR(N$当前属性5)>/FCOLOR=255><-/FCOLOR=255><<$STR(N$当前属性6)>/FCOLOR=255>>
+<RText|x=80.0|y=224.0|color=255|size=18|text=<<$STR(N$当前属性7)>/FCOLOR=255>>
+<RText|x=470.0|y=128.0|color=255|size=18|text=<<$STR(N$下级属性1)>/FCOLOR=222><-/FCOLOR=222><<$STR(N$下级属性2)>/FCOLOR=222>>
+<RText|x=470.0|y=160.0|color=255|size=18|text=<<$STR(N$下级属性3)>/FCOLOR=222><-/FCOLOR=222><<$STR(N$下级属性4)>/FCOLOR=222>>
+<RText|x=470.0|y=192.0|color=255|size=18|text=<<$STR(N$下级属性5)>/FCOLOR=222><-/FCOLOR=222><<$STR(N$下级属性6)>/FCOLOR=222>>
+<RText|x=470.0|y=224.0|color=255|size=18|text=<<$STR(N$下级属性7)>/FCOLOR=222>>
+<Text|x=32.0|y=128.0|color=67|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=32.0|y=160.0|color=67|size=18|text=防御>
+<Text|x=32.0|y=192.0|color=67|size=18|text=魔防>
+<Text|x=32.0|y=224.0|color=67|size=18|text=生命>
+<Text|x=423.0|y=128.0|color=67|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=423.0|y=160.0|color=67|size=18|text=防御>
+<Text|x=423.0|y=191.0|color=67|size=18|text=魔防>
+<Text|x=423.0|y=224.0|color=67|size=18|text=生命>
+<Img|x=86.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度1)>.png|esc=0>
+<Img|x=131.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度2)>.png|esc=0>
+<Img|x=176.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度3)>.png|esc=0>
+<Img|x=221.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度4)>.png|esc=0>
+<Img|x=266.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度5)>.png|esc=0>
+<Img|x=311.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度6)>.png|esc=0>
+<Img|x=356.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度7)>.png|esc=0>
+<Img|x=401.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度8)>.png|esc=0>
+<Img|x=446.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度9)>.png|esc=0>
+<Frames|x=137.0|y=113.0|count=0|scale=1|loop=-1|prefix=private/f10/99600_|speed=20|suffix=.png|esc=0>
+<Frames|x=149.0|y=<$DEC.157.<$MULT.$CustomValue(42).10>>.0|count=0|scale=0.6|loop=-1|prefix=private/f10/bm01_|speed=20|suffix=.png>
+<Img|x=20.0|y=410.0|width=233|height=28|scale=1|img=private/baoguo/bg_progress_01.png|esc=0>
+<Img|x=290.0|y=410.0|width=267|height=28|scale=1|img=private/baoguo/bg_progress_01.png|esc=0>
+<RText|x=25.0|y=410.0|color=255|size=18|text=<3000万经验可兑换/FCOLOR=67><15万修为/FCOLOR=222>>
+<RText|x=297.0|y=410.0|color=255|size=18|text=<转生消耗修为/FCOLOR=67>>
+<RText|x=415.0|y=410.0|color=255|size=18|text=<<$Money(10)>/<$STR(N$当前属性9)>/FCOLOR=222>>
+<Frames|x=173.0|y=384.0|count=0|scale=1|loop=1|prefix=private/f10/1000<$STR(N$兑换特效)>_|speed=10|suffix=.png>
+<Button|id=dhxw|children={dhxwhd}|x=50.0|y=478.0|width=150|rotate=0|pimg=public/btn_lingshou_01.png|scale=1|nimg=public/btn_lingshou_01.png|color=67|size=20|text=兑换修为|link=@兑换修为>
+<$str(S$转生红点1)>
+<Button|id=kszs|children={kszshd}|x=375.0|y=478.0|width=150|size=20|scale=1|color=67|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=确认转生||link=@开始转生>
+<$str(S$转生红点2)>
+<RText|x=75.0|y=445.0|color=255|size=18|text=<兑换次数:/FCOLOR=67><<$CustomValue(88)>/3/FCOLOR=<$STR(N$兑换次数颜色)>>>
+<RText|x=395.0|y=445.0|color=255|size=18|text=<消耗元宝:/FCOLOR=67><<$STR(N$当前属性8)>/FCOLOR=<$STR(N$转生所需元宝颜色)>>>
+<Img|x=265.0|y=<$DEC.157.<$MULT.$CustomValue(42).10>>.0|scale=1|img=private/f10/<$CustomValue(42)>.png|esc=0>
+<Frames|x=47.0|y=58.0|count=0|scale=1|loop=1|prefix=public/<$STR(N$转生成功特效)>_|speed=20|suffix=.png|esc=0>
+
+
+[@兑换修为]
+#IF
+SMALL $CustomValue(88) 1
+#ACT
+SENDMSG 19 当前兑换次数已用尽
+BREAK
+
+#IF
+SMALL $LEVEL 115
+#ACT
+SENDMSG 19 等级不足115级
+BREAK
+
+#IF
+EQUAL $LEVEL 115
+SMALL $EXP 30000000
+#ACT
+SENDMSG 19 当前经验值不足3000万
+BREAK
+
+#IF
+!SMALL $EXP 30000000
+#ACT
+QueryMsg 是否确认消耗3000万经验值兑换15万修为值？ @确定兑换修为值
+BREAK
+
+#IF
+LARGE $LEVEL 115
+SMALL $EXP 30000000
+#ACT
+QueryMsg 当前等级经验不足\是否通过降级补足所需经验？ @确定降级
+BREAK
+
+[@确定降级1]
+#IF
+LARGE $LEVEL 115
+#ACT
+LOADEXVAR N$上一级最大经验 等级经验 $LEVEL ..\QuestDiary\文本读取\等级经验.txt
+GMEXECUTE 等级 $DEC.$LEVEL.1
+Money 6 = <$DEC.<$INC.$STR(N$上一级最大经验).$EXP>.30000000>
+Money 10 + 150000
+SENDMSG 19 兑换修为成功
+ChangeCustomValue 88 - 1
+MOV N$兑换特效 1
+GOTO @跳转转生
+MOV N$兑换特效 0
+BREAK
+
+[@确定兑换修为值1]
+#IF
+!SMALL $EXP 30000000
+#ACT
+Money 6 - 30000000
+Money 10 + 150000
+SENDMSG 19 兑换修为成功
+ChangeCustomValue 88 - 1
+MOV N$兑换特效 1
+GOTO @跳转转生
+MOV N$兑换特效 0
+BREAK
+
+
+[@开始转生]
+#IF
+SMALL <$INC.$Money(2).$Money(4)> $STR(N$当前属性8)
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+!SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+GOTO @绑元转生
+BREAK
+
+#IF
+SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+GOTO @组合转生
+BREAK
+
+
+[@绑元转生]
+#IF
+SMALL $LEVEL 115
+#ACT
+SENDMSG 19 转生需要115级
+BREAK
+
+#IF
+SMALL $Money(10) $STR(N$当前属性9)
+#ACT
+SENDMSG 19 转生修为值不足
+BREAK
+
+#IF
+!SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+QueryMsg 确认消耗<$STR(N$当前属性9)>修为值转生？ @确定绑元转生
+BREAK
+
+[@确定绑元转生1]
+#IF
+!SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+Money 4 - $STR(N$当前属性8)
+Money 10 - $STR(N$当前属性9)
+
+#IF
+!EQUAL $CustomValue(43) 9
+#ACT
+CHANGECUSTOMVALUE 43 + 1
+SENDMSG 19 转生进度+1
+GOTO @跳转转生
+BREAK
+#ELSEACT
+RenewLevel 1 0 0
+CHANGECUSTOMVALUE 43 = 0
+CHANGECUSTOMVALUE 42 + 1
+SENDMSG 19 转生成功
+MOV N$转生成功特效 45555
+GOTO @临时属性
+GOTO @跳转转生
+GOTO @封魔录_转生
+MOV N$转生成功特效 0
+BREAK
+
+[@组合转生]
+#IF
+SMALL $LEVEL 115
+#ACT
+SENDMSG 19 转生需要115级
+BREAK
+
+#IF
+SMALL $Money(10) $STR(N$当前属性9)
+#ACT
+SENDMSG 19 转生修为值不足
+BREAK
+
+#IF
+SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+QueryMsg 确认消耗<$STR(N$当前属性9)>修为值转生？ @确定组合转生
+BREAK
+
+[@确定组合转生1]
+#IF
+SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+Money 2 - <$DEC.$STR(N$当前属性8).$Money(4)>
+Money 4 - $Money(4)
+Money 10 - $STR(N$当前属性9)
+
+#IF
+!EQUAL $CustomValue(43) 9
+#ACT
+CHANGECUSTOMVALUE 43 + 1
+SENDMSG 19 转生进度+1
+GOTO @跳转转生
+BREAK
+#ELSEACT
+CHANGECUSTOMVALUE 43 = 1
+CHANGECUSTOMVALUE 42 + 1
+SENDMSG 19 转生成功
+MOV N$转生成功特效 45555
+GOTO @临时属性
+GOTO @跳转转生
+GOTO @封魔录_转生
+MOV N$转生成功特效 0
+BREAK
+
+
+
+
+[@羽翼]
+#IF
+TRUE
+#ACT
+FUNC 1 @Lemon羽翼
+OpenUi 101 2
+BREAK
+
+
+[@跳转魔体]
+;---------------------------------------------------------------------------------------变量清理-----------------------------------------------------------------------
+#IF
+TRUE
+#ACT
+SETEQUIPCFG 01110 1 1 175 15
+MOV S$魔体等级图1 
+MOV S$魔体等级图2 
+MOV S$魔体等级图3 
+
+ReadRandomStr ..\QuestDiary\文本读取\魔盾属性.txt S$魔盾属性提取 <$CustomValue(4)>
+SPLIT <$STR(S$魔盾属性提取)> | S$魔盾属性显示
+#IF
+!SMALL $ITEMVALSUM(魔盾精粹).DURA $STR(S$魔盾属性显示_6)
+#ACT
+MOV S$魔体红点 <Img|id=mthd|x=30.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV S$魔体红点1 <Img|id=tzmd|x=50.0|y=10.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$魔体红点
+MOV S$魔体红点1 
+
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\魔体升级经验.txt N$魔体经验1 <$CustomValue(0)>
+ChangeCustomValue 1 = <$STR(N$魔体经验1)>
+ReadRandomStr ..\QuestDiary\文本读取\魔体属性.txt N$魔体值显示 <$CustomValue(0)>
+
+#IF 
+SMALL <$CustomValue(2)> <$DIV.<$CustomValue(1)>.100>
+#ACT
+MOV N$魔体经验值显示 0
+#ELSEACT
+MOV N$魔体经验值显示 <$DIV.<$CustomValue(2)>.<$DIV.<$CustomValue(1)>.100>>
+
+
+;---------------------------------------------------------------------------------------坐标赋值-----------------------------------------------------------------------
+#IF
+SMALL $CustomValue(0) 121
+LARGE $CustomValue(0) 99
+#ACT
+MOV N$魔体图X标 132
+MOV N$魔体图3X标 78
+MOV N$魔体图2X标 44
+MOV N$魔体图1X标 13
+
+
+#IF
+SMALL $CustomValue(0) 100
+LARGE $CustomValue(0) 9
+#ACT
+MOV N$魔体图X标 119
+MOV N$魔体图3X标 65
+MOV N$魔体图2X标 31
+
+;---------------------------------------------------------------------------------------等级图片赋值-----------------------------------------------------------------------
+#IF
+SMALL $CustomValue(0) 10
+#ACT
+MOV S$魔体等级图3 <$CustomValue(0)>
+MOV N$魔体图X标 109
+MOV N$魔体图3X标 55
+
+#IF
+SMALL $CustomValue(0) 100
+LARGE $CustomValue(0) 9
+#ACT
+CopyText <$CustomValue(0)> 2 1 N$魔体个位
+CopyText <$CustomValue(0)> 1 1 N$魔体十位
+
+MOV S$魔体等级图2 <$STR(N$魔体十位)>
+MOV S$魔体等级图3 <$STR(N$魔体个位)>
+
+#IF
+SMALL $CustomValue(0) 121
+LARGE $CustomValue(0) 99
+#ACT
+CopyText <$CustomValue(0)> 3 1 N$魔体个位
+CopyText <$CustomValue(0)> 2 1 N$魔体十位
+CopyText <$CustomValue(0)> 1 1 N$魔体百位
+MOV S$魔体等级图1 <$STR(N$魔体百位)>
+MOV S$魔体等级图2 <$STR(N$魔体十位)>
+MOV S$魔体等级图3 <$STR(N$魔体个位)>
+
+;---------------------------------------------------------------------------------------免伤值赋值-----------------------------------------------------------------------
+#IF
+SMALL $CustomValue(0) 1
+#ACT
+MOV N$魔体免伤值显示 0
+
+#IF
+SMALL $CustomValue(0) 11
+#ACT
+MOV N$魔体免伤值显示 10
+
+#IF
+SMALL $CustomValue(0) 16
+LARGE $CustomValue(0) 10
+#ACT
+MOV N$魔体免伤值显示 11
+
+#IF
+SMALL $CustomValue(0) 26
+LARGE $CustomValue(0) 15
+#ACT
+MOV N$魔体免伤值显示 13
+
+#IF
+SMALL $CustomValue(0) 36
+LARGE $CustomValue(0) 25
+#ACT
+MOV N$魔体免伤值显示 15
+
+#IF
+SMALL $CustomValue(0) 46
+LARGE $CustomValue(0) 35
+#ACT
+MOV N$魔体免伤值显示 17
+
+#IF
+SMALL $CustomValue(0) 56
+LARGE $CustomValue(0) 45
+#ACT
+MOV N$魔体免伤值显示 20
+
+#IF
+SMALL $CustomValue(0) 66
+LARGE $CustomValue(0) 55
+#ACT
+MOV N$魔体免伤值显示 23
+
+#IF
+SMALL $CustomValue(0) 76
+LARGE $CustomValue(0) 65
+#ACT
+MOV N$魔体免伤值显示 27
+
+#IF
+SMALL $CustomValue(0) 91
+LARGE $CustomValue(0) 75
+#ACT
+MOV N$魔体免伤值显示 35
+
+#IF
+SMALL $CustomValue(0) 106
+LARGE $CustomValue(0) 90
+#ACT
+MOV N$魔体免伤值显示 40
+
+#IF
+SMALL $CustomValue(0) 121
+LARGE $CustomValue(0) 105
+#ACT
+MOV N$魔体免伤值显示 45
+
+;---------------------------------------------------------------------------------------盾牌图赋值-----------------------------------------------------------------------
+#IF
+SMALL <$CustomValue(4)> 8
+#ACT
+MOV N$魔体盾牌展示 34387
+
+#IF
+SMALL <$CustomValue(4)> 15
+LARGE <$CustomValue(4)> 7
+#ACT
+MOV N$魔体盾牌展示 34392
+
+#IF
+LARGE <$CustomValue(4)> 14
+#ACT
+MOV N$魔体盾牌展示 34397
+
+
+#IF
+TRUE
+#SAY
+<Img|x=556.0|y=29.0|img=public/btn_push_08.png|esc=0>
+<RText|x=575.0|y=44.0|color=67|size=20|text=<装/FCOLOR=67>\<备/FCOLOR=67>>
+<Layout|x=551.0|y=35.0|width=65|height=75|link=@main>
+; <Img|x=556.0|y=106.0|img=public/btn_push_09.png|esc=0>
+; <RText|x=575.0|y=121.0|color=255|size=20|text=<魔/FCOLOR=67>\<体/FCOLOR=67>>
+; <Layout|x=554.0|y=113.0|width=65|height=75|id=mtan|children={mthd}|loadDelay=0|link=@跳转魔体>
+<$STR(S$F10主界面1)>
+; <Img|x=556.0|y=183.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=198.0|color=255|size=20|text=<特/FCOLOR=67>\<戒/FCOLOR=67>>
+; <Layout|x=554.0|y=191.0|width=65|height=75|id=tjan|children={tjhd}|loadDelay=0|link=@麻痹戒指&麻痹戒指>
+<$STR(S$F10主界面2)>
+
+<Button|id=mt1|x=520.0|y=-5.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@关闭角色面板>
+<Img|id=mt2|x=0.0|y=43.0|img=public/title.png|scale=1|esc=0>
+<RText|id=mt3|x=67.0|y=43.0|size=18|color=67|text=<魔体属性/FCOLOR=67>>
+<Img|id=mt4|x=13.0|y=282.0|width=187|scale=1|img=private/f10/bg_aution_chosen.png|esc=0>
+<Img|id=mt5|x=1.0|y=285.0|img=public/title.png|scale=1|esc=0>
+<RText|id=mt6|x=71.0|y=285.0|size=18|color=255|text=<属性说明/FCOLOR=67>>
+<RText|id=mt7|x=34.0|y=327.0|size=18|color=255|text=<击杀怪物即可增加/FCOLOR=67>\<魔体经验/FCOLOR=67>\<在魔体值存在时受/FCOLOR=67>\<到的伤害优先从魔/FCOLOR=67>\<体值扣除/FCOLOR=67>>
+<Img|id=mt8|x=78.0|y=166.0|width=110|height=27|img=private/f10/bg_progress_01.png|esc=0|scale=1>
+<Img|id=mt9|x=78.0|y=203.0|width=110|height=27|img=private/f10/bg_progress_01.png|esc=0|scale=1>
+<Img|id=mt10|x=78.0|y=240.0|width=110|height=27|img=private/f10/bg_progress_01.png|esc=0|scale=1>
+<RText|id=mt11|x=20.0|y=165.0|size=17|color=255|text=<经验值/FCOLOR=67>>
+<RText|id=mt12|x=20.0|y=202.0|size=18|color=255|text=<魔体值/FCOLOR=67>>
+<RText|id=mt13|x=20.0|y=239.0|size=18|color=255|text=<减伤比/FCOLOR=67>>
+<RText|id=mt11f|x=82|y=166.0|color=255|size=18|text=<<$STR(N$魔体经验值显示)>%/FCOLOR=67>>
+<RText|id=mt12f|x=82|y=203.0|color=255|size=18|text=<<$STR(N$魔体值显示)>/FCOLOR=67>>
+<RText|id=mt13f|x=82|y=240.0|color=255|size=18|text=<<$STR(N$魔体免伤值显示)>%/FCOLOR=67>>
+<Img|id=mt14|x=<$STR(N$魔体图X标)>|y=94.0|img=private/shenxiongqi/word_devildom_02.png|scale=1|esc=0>
+<Img|id=mt15|x=<$STR(N$魔体图3X标)>|y=87.0|img=public/shu<$STR(S$魔体等级图3)>.png|scale=1|esc=0>
+<Img|id=mt16|x=<$STR(N$魔体图2X标)>|y=87.0|img=public/shu<$STR(S$魔体等级图2)>.png|scale=1|esc=0>
+<Img|id=mt16f|x=<$STR(N$魔体图1X标)>|y=87.0|img=public/shu<$STR(S$魔体等级图1)>.png|scale=1|esc=0>
+<Button|id=mt17|children={tzmd}|x=464.0|y=48.0|color=255|mimg=private/f10/moti/modunzhuanhuan.png|scale=1|size=18|pimg=private/f10/moti/modunzhuanhuan.png|nimg=private/f10/moti/modunzhuanhuan.png|link=@魔盾主界面>
+<$STR(S$魔体红点1)>
+<Img|id=mt18|x=296.0|y=124.0|img=private/f10/moti/nanmoti.png|esc=0|scale=1>
+<Frames|id=mt19|x=120.0|y=-4.0|count=0|speed=20|loop=-1|prefix=private/f10/moti/26522_|scale=1|suffix=.png>
+<Frames|id=mt20|x=180.0|y=64.0|width=400|height=400|speed=20|count=10|scale=1|prefix=private/f10/moti/<$STR(N$魔体盾牌展示)>_|loop=-1|suffix=.png>
+
+; #IF
+; ; LARGE <$HFCOUNT> 0
+; TRUE
+; #SAY
+; <Img|x=556.0|y=260.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=275.0|color=255|size=20|text=<境/FCOLOR=67>\<界/FCOLOR=67>>
+; <Layout|x=554.0|y=269.0|width=65|height=75|id=jjan|children={jjhd}|loadDelay=0|link=@跳转转生>
+
+
+[@魔盾主界面]
+#IF
+TRUE
+#ACT
+SETEQUIPCFG 01110 1 1 175 17
+ReadRandomStr ..\QuestDiary\文本读取\魔盾属性.txt S$魔盾属性提取 <$CustomValue(4)>
+SPLIT <$STR(S$魔盾属性提取)> | S$魔盾属性显示
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 3
+#ACT
+MOV N$魔盾材料X标 89
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 4
+#ACT
+MOV N$魔盾材料X标 84
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 5
+#ACT
+MOV N$魔盾材料X标 79
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 6
+#ACT
+MOV N$魔盾材料X标 74
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 7
+#ACT
+MOV N$魔盾材料X标 69
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 8
+#ACT
+MOV N$魔盾材料X标 64
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 9
+#ACT
+MOV N$魔盾材料X标 59
+
+
+
+#IF
+!SMALL $ITEMVALSUM(魔盾精粹).DURA $STR(S$魔盾属性显示_6)
+#ACT
+MOV N$魔盾材料颜色 222
+MOV S$魔盾红点1 <Img|id=mdhd|x=120.0|y=8.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV S$魔盾红点 <Img|id=mthd|x=30.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV N$魔盾材料颜色 249
+MOV S$魔盾红点1 
+MOV S$魔盾红点 
+;---------------------------------------------------------------------------------------盾牌图赋值-----------------------------------------------------------------------
+#IF
+SMALL <$CustomValue(4)> 8
+#ACT
+MOV N$魔盾图片展示 34381
+
+#IF
+SMALL <$CustomValue(4)> 15
+LARGE <$CustomValue(4)> 7
+#ACT
+MOV N$魔盾图片展示 34382
+
+#IF
+LARGE <$CustomValue(4)> 14
+#ACT
+MOV N$魔盾图片展示 34383
+
+#IF
+EQUAL <$CustomValue(4)> 0
+#ACT
+MOV S$魔盾按钮字 激　　活
+#ELSEACT
+MOV S$魔盾按钮字 升　　级
+
+
+#IF
+TRUE
+#SAY
+<Img|x=556.0|y=29.0|img=public/btn_push_08.png|esc=0>
+<RText|x=575.0|y=44.0|color=67|size=20|text=<装/FCOLOR=67>\<备/FCOLOR=67>>
+<Layout|x=551.0|y=35.0|width=65|height=75|link=@main>
+; <Img|x=556.0|y=106.0|img=public/btn_push_09.png|esc=0>
+; <RText|x=575.0|y=121.0|color=255|size=20|text=<魔/FCOLOR=67>\<体/FCOLOR=67>>
+; <Layout|x=554.0|y=113.0|width=65|height=75|id=mtan|children={mthd}|loadDelay=0|link=@跳转魔体>
+<$STR(S$F10主界面1)>
+; <Img|x=556.0|y=183.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=198.0|color=255|size=20|text=<特/FCOLOR=67>\<戒/FCOLOR=67>>
+; <Layout|x=554.0|y=191.0|width=65|height=75|id=tjan|children={tjhd}|loadDelay=0|link=@麻痹戒指&麻痹戒指>
+<$STR(S$F10主界面2)>
+<Img|x=0.0|y=0.0|img=picpackage/3/01111.png|scale=1|esc=0>
+<Button|id=md1|x=520|y=-5.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@关闭角色面板>
+<Img|id=md2|x=0.0|y=43.0|img=public/title.png|scale=1|esc=0>
+<RText|id=md3|x=67.0|y=43.0|size=18|color=67|text=<魔盾属性/FCOLOR=67>>
+<Img|id=md4|x=12.0|y=303.0|width=187|scale=1|img=private/f10/bg_aution_chosen.png|esc=0>
+<Img|id=md5|x=0.0|y=306.0|img=public/title.png|scale=1|esc=0>
+<RText|id=md6|x=67.0|y=306.0|size=18|color=255|text=<升级条件/FCOLOR=67>>
+<Img|id=md7|x=81.0|y=78.0|width=110|height=27|esc=0|img=private/f10/bg_progress_01.png|scale=1>
+<Img|id=md8|x=81.0|y=115.0|width=110|height=27|esc=0|img=private/f10/bg_progress_01.png|scale=1>
+<Img|id=md9|x=81.0|y=152.0|width=110|height=27|esc=0|img=private/f10/bg_progress_01.png|scale=1>
+<Img|id=md10|x=81.0|y=189.0|width=110|height=27|esc=0|img=private/f10/bg_progress_01.png|scale=1>
+<Img|id=md11|x=100.0|y=226.0|width=90|height=27|scale=1|img=private/f10/bg_progress_01.png|esc=0>
+<Img|id=md12|x=101.0|y=263.0|width=90|height=27|scale=1|img=private/f10/bg_progress_01.png|esc=0>
+<RText|id=md13|x=20.0|y=77.0|size=17|color=255|text=<攻　击/FCOLOR=67>>
+<RText|id=md14|x=20.0|y=114.0|size=17|color=255|text=<防　御/FCOLOR=67>>
+<RText|id=md15|x=20.0|y=151.0|size=17|color=255|text=<魔　御/FCOLOR=67>>
+<RText|id=md16|x=20.0|y=188.0|size=17|color=255|text=<格挡cd/FCOLOR=67>>
+<RText|id=md17|x=20.0|y=225.0|size=17|color=255|text=<抵扣比例/FCOLOR=67>>
+<RText|id=md18|x=20.0|y=262.0|size=17|color=255|text=<经验倍数/FCOLOR=67>>
+<RText|id=md13f|x=85|y=78.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_0)>/FCOLOR=67>>
+<RText|id=md14f|x=85|y=116.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_1)>/FCOLOR=67>>
+<RText|id=md15f|x=85|y=153.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_2)>/FCOLOR=67>>
+<RText|id=md16f|x=85|y=190.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_3)>/FCOLOR=67>>
+<RText|id=md17f|x=105.0|y=227.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_4)>%/FCOLOR=67>>
+<RText|id=md18f|x=105|y=264.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_5)>/FCOLOR=67>>
+<Img|id=md19|x=74.0|y=364.0|img=private/f10/bg_roles_02.png|esc=0|scale=1>
+<ItemShow|id=md25|x=71.0|y=360.0|width=70|height=70|itemid=1177|itemcount=1|name=魔盾精粹|bgtype=1|showtips=1>
+<RText|id=md19f|x=<$STR(N$魔盾材料X标)>|y=430.0|color=255|size=18|text=<<$ITEMVALSUM(魔盾精粹).DURA>/<$STR(S$魔盾属性显示_6)>/FCOLOR=<$STR(N$魔盾材料颜色)>>>
+<RText|id=md20|x=45.0|y=470.0|size=18|color=255|text=<魔盾等级：/FCOLOR=67><<$CustomValue(4)>级/FCOLOR=222>>
+<Button|id=md21|x=85.0|y=217.0|mimg=private/f10/att_introduction.png|pimg=private/f10/att_introduction.png|scale=1|size=18|color=255|nimg=private/f10/att_introduction.png>
+<Button|id=md21f|x=85.0|y=254.0|mimg=private/f10/att_introduction.png|pimg=private/f10/att_introduction.png|scale=1|size=18|color=255|nimg=private/f10/att_introduction.png>
+<Button|id=md22|x=464.0|y=48.0|color=255|mimg=private/f10/moti/motizhuanhuan.png|scale=1|size=18|pimg=private/f10/moti/motizhuanhuan.png|nimg=private/f10/moti/motizhuanhuan.png|link=@魔体主界面>
+<Frames|id=md23|x=150.0|y=47.0|count=0|speed=20|loop=-1|prefix=private/f10/moti/<$STR(N$魔盾图片展示)>_|scale=1|suffix=.png>
+<Button|id=md24|children={mdhd}|x=314.0|y=455.0|mimg=public/btn_push_01.png|scale=1|nimg=public/btn_push_01.png|color=67|pimg=public/btn_push_01.png|size=20|text=<$STR(S$魔盾按钮字)>|link=@魔盾升级>
+<$STR(S$魔盾红点1)>
+<RText|id=md26|x=85.0|y=217.0|size=18|color=255|text=<color=~魔体值存在时，可额外#0xffffe600$增加魔体值抵扣比例#0xffffe600$ 　　>>
+<RText|id=md27|x=85.0|y=254.0|size=18|color=255|text=<color=~提升魔盾等级可额外#0xffffe600$获得魔体经验值#0xffffe600$ 　　>>
+
+; #IF
+; ; LARGE <$HFCOUNT> 0
+; TRUE
+; #SAY
+; <Img|x=556.0|y=260.0|img=public/btn_push_08.png|esc=0>
+; <RText|x=575.0|y=275.0|color=255|size=20|text=<境/FCOLOR=67>\<界/FCOLOR=67>>
+; <Layout|x=554.0|y=269.0|width=65|height=75|id=jjan|children={jjhd}|loadDelay=0|link=@跳转转生>
+
+
+[@魔体主界面]
+#IF
+TRUE
+#ACT
+GOTO @跳转魔体
+BREAK
+
+[@魔盾升级]
+#IF
+LARGE <$CustomValue(4)> 19
+#ACT
+SENDMSG 19 魔盾等级已满级，无法提升！
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(魔盾精粹).DURA <$STR(S$魔盾属性显示_6)>
+#ACT
+SENDMSG 19 魔盾精粹不足<$STR(S$魔盾属性显示_6)>个，无法提升！
+BREAK
+#ELSEACT
+TAKE 魔盾精粹 <$STR(S$魔盾属性显示_6)>
+ChangeCustomValue 4 + 1
+GOTO @魔盾主界面
+GOTO @临时属性
+GOTO @F10界面红点判断
+BREAK
+
+
+[@麻痹戒指]
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(5).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用2 <$INC.$CustomValue(6).1>
+SPLIT $STR(S$特戒面板专用2) | N$特戒面板显示2
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用3 <$INC.$CustomValue(7).1>
+SPLIT $STR(S$特戒面板专用3) | N$特戒面板显示3
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用4 <$INC.$CustomValue(8).1>
+SPLIT $STR(S$特戒面板专用4) | N$特戒面板显示4
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用5 <$INC.$CustomValue(9).1>
+SPLIT $STR(S$特戒面板专用5) | N$特戒面板显示5
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用6 <$INC.$CustomValue(10).1>
+SPLIT $STR(S$特戒面板专用6) | N$特戒面板显示6
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用7 <$INC.$CustomValue(11).1>
+SPLIT $STR(S$特戒面板专用7) | N$特戒面板显示7
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用8 <$INC.$CustomValue(12).1>
+SPLIT $STR(S$特戒面板专用8) | N$特戒面板显示8
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用9 <$INC.$CustomValue(13).1>
+SPLIT $STR(S$特戒面板专用9) | N$特戒面板显示9
+
+#IF
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示1_20)>
+#ACT
+MOV S$特戒红点1 <Img|id=mbhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点1 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示2_20)>
+#ACT
+MOV S$特戒红点2 <Img|id=hthd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点2 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示3_20)>
+#ACT
+MOV S$特戒红点3 <Img|id=cshd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点3 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示4_20)>
+#ACT
+MOV S$特戒红点4 <Img|id=sxhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点4 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示5_20)>
+#ACT
+MOV S$特戒红点5 <Img|id=zzhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点5 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示6_20)>
+#ACT
+MOV S$特戒红点6 <Img|id=xnhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点6 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示7_20)>
+#ACT
+MOV S$特戒红点7 <Img|id=pmhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点7 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示8_20)>
+#ACT
+MOV S$特戒红点8 <Img|id=phhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点8 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示9_20)>
+#ACT
+MOV S$特戒红点9 <Img|id=pchd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点9 
+
+
+#IF
+TRUE
+#ACT
+MOV N$是否由特戒材料打开 0
+MOV S$特戒大图 damabi
+MOV S$特戒背景1 xuanzhong
+MOV S$特戒背景2 weixuanzhong
+MOV S$特戒背景3 weixuanzhong
+MOV S$特戒背景4 weixuanzhong
+MOV S$特戒背景5 weixuanzhong
+MOV S$特戒背景6 weixuanzhong
+MOV S$特戒背景7 weixuanzhong
+MOV S$特戒背景8 weixuanzhong
+MOV S$特戒背景9 weixuanzhong
+MOV N$调整特戒等级 5
+MOV S$特戒材料名称 特戒精华
+MOV S$特戒子组件3 
+
+#IF
+EQUAL $CustomValue(5) 0
+#ACT
+MOV N$特戒攻击下限 
+MOV N$特戒攻击上限 
+MOV N$特戒防御下限 
+MOV N$特戒防御上限 
+MOV S$特戒下级攻击下限 0
+MOV S$特戒下级攻击上限 5
+MOV S$特戒下级防御下限 1
+MOV S$特戒下级防御上限 1
+MOV S$特戒升级需求数量 12
+MOV S$按钮字 激　活
+MOV S$特戒子组件1 <RText|id=tj26|x=652.0|y=326.0|size=18|color=255|text=<无特效/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=587.0|y=388.0|size=18|color=255|text=<5%/FCOLOR=224><的几率麻痹对手2秒/FCOLOR=67>>
+
+#IF
+LARGE $CustomValue(5) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用 $CustomValue(5)
+SPLIT $STR(S$特戒面板专用) | N$特戒面板显示
+MOV N$特戒麻痹几率 <$STR(N$特戒面板显示_4)>
+MOV N$特戒攻击下限 <$STR(N$特戒面板显示_21)>
+MOV N$特戒攻击上限 <$STR(N$特戒面板显示_22)>
+MOV N$特戒防御下限 <$STR(N$特戒面板显示_23)>
+MOV N$特戒防御上限 <$STR(N$特戒面板显示_24)>
+
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(5).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+MOV N$特戒下级麻痹几率 <$STR(N$特戒面板显示1_4)>
+MOV S$特戒下级攻击下限 <$STR(N$特戒面板显示1_21)>
+MOV S$特戒下级攻击上限 <$STR(N$特戒面板显示1_22)>
+MOV S$特戒下级防御下限 <$STR(N$特戒面板显示1_23)>
+MOV S$特戒下级防御上限 <$STR(N$特戒面板显示1_24)>
+MOV S$特戒升级需求数量 <$STR(N$特戒面板显示1_20)>
+
+MOV S$按钮字 升　级
+MOV S$特戒子组件1 <RText|id=tj26|x=587.0|y=326.0|size=18|color=255|text=<<$STR(N$特戒麻痹几率)>%的几率麻痹对手<$STR(N$特戒麻痹时间)>秒/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=587.0|y=388.0|size=18|color=255|text=<<$STR(N$特戒下级麻痹几率)>%的几率麻痹对手<$STR(N$特戒麻痹时间)>秒/FCOLOR=67>>
+
+#IF
+LARGE $CustomValue(5) 10
+#ACT
+MOV N$特戒麻痹时间 3
+
+#ELSEACT
+MOV N$特戒麻痹时间 2
+
+#IF
+EQUAL $CustomValue(5) 30
+#ACT
+MOV S$特戒下级攻击下限 
+MOV S$特戒下级攻击上限 已满级
+MOV S$特戒下级防御下限 
+MOV S$特戒下级防御上限 已满级
+MOV S$特戒升级需求数量 已满级
+MOV S$特戒子组件2 <RText|id=tj27|x=650.0|y=388.0|size=18|color=255|text=<已满级/FCOLOR=67>>
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$特戒攻击描述 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$特戒攻击描述 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$特戒攻击描述 道术
+
+
+#IF
+TRUE
+#ACT
+goto @特戒升级主面板
+BREAK
+
+[@关闭特戒面板]
+#IF
+TRUE
+#ACT
+GOTO @main
+BREAK
+
+
+[@特戒升级主面板]
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(5).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用2 <$INC.$CustomValue(6).1>
+SPLIT $STR(S$特戒面板专用2) | N$特戒面板显示2
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用3 <$INC.$CustomValue(7).1>
+SPLIT $STR(S$特戒面板专用3) | N$特戒面板显示3
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用4 <$INC.$CustomValue(8).1>
+SPLIT $STR(S$特戒面板专用4) | N$特戒面板显示4
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用5 <$INC.$CustomValue(9).1>
+SPLIT $STR(S$特戒面板专用5) | N$特戒面板显示5
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用6 <$INC.$CustomValue(10).1>
+SPLIT $STR(S$特戒面板专用6) | N$特戒面板显示6
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用7 <$INC.$CustomValue(11).1>
+SPLIT $STR(S$特戒面板专用7) | N$特戒面板显示7
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用8 <$INC.$CustomValue(12).1>
+SPLIT $STR(S$特戒面板专用8) | N$特戒面板显示8
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用9 <$INC.$CustomValue(13).1>
+SPLIT $STR(S$特戒面板专用9) | N$特戒面板显示9
+
+#IF
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示1_20)>
+#ACT
+MOV S$特戒红点1 <Img|id=mbhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点1 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示2_20)>
+#ACT
+MOV S$特戒红点2 <Img|id=hthd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点2 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示3_20)>
+#ACT
+MOV S$特戒红点3 <Img|id=cshd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点3 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示4_20)>
+#ACT
+MOV S$特戒红点4 <Img|id=sxhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点4 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示5_20)>
+#ACT
+MOV S$特戒红点5 <Img|id=zzhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点5 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示6_20)>
+#ACT
+MOV S$特戒红点6 <Img|id=xnhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点6 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示7_20)>
+#ACT
+MOV S$特戒红点7 <Img|id=pmhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点7 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示8_20)>
+#ACT
+MOV S$特戒红点8 <Img|id=phhd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点8 
+
+#IF
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示9_20)>
+#ACT
+MOV S$特戒红点9 <Img|id=pchd|x=50.0|y=15.0|img=picpackage/3/17173.png|esc=0|scale=1>
+#ELSEACT
+MOV S$特戒红点9 
+
+#IF
+!EQUAL $CLIENTFLAG 1
+#ACT
+SETEQUIPCFG 01117 1 1
+
+#IF
+SMALL <$CustomValue(<$STR(N$调整特戒等级)>)> 10
+#ACT
+MOV S$特戒十位 
+MOV S$特戒个位 <$CustomValue(<$STR(N$调整特戒等级)>)>
+;MOV N$等级底图偏移 383
+
+#IF
+LARGE <$CustomValue(<$STR(N$调整特戒等级)>)> 9
+#ACT
+CopyText <$CustomValue(<$STR(N$调整特戒等级)>)> 1 1 S$特戒十位
+CopyText <$CustomValue(<$STR(N$调整特戒等级)>)> 2 1 S$特戒个位
+;MOV N$等级底图偏移 377
+
+
+#IF
+SMALL <$CustomValue(<$STR(N$调整特戒等级)>)> 11
+#ACT
+MOV S$大图序列帧 tjgyj
+
+#IF
+LARGE <$CustomValue(<$STR(N$调整特戒等级)>)> 10
+SMALL <$CustomValue(<$STR(N$调整特戒等级)>)> 21
+#ACT
+MOV S$大图序列帧 tjgyl
+
+#IF
+LARGE <$CustomValue(<$STR(N$调整特戒等级)>)> 20
+SMALL <$CustomValue(<$STR(N$调整特戒等级)>)> 31
+#ACT
+MOV S$大图序列帧 tjgyz
+
+#IF
+SMALL <$ITEMVALSUM(<$STR(S$特戒材料名称)>).DURA> <$STR(S$特戒升级需求数量)>
+#ACT
+MOV N$特戒材料颜色 249
+#ELSEACT
+MOV N$特戒材料颜色 222
+
+
+#IF
+TRUE
+#SAY
+<Img|id=tj1|children={tj2,tj3,tj4,tj5,tj6,tj7,tj8,tj9,tj10,tj10a,tj11,tjx12,tj12,tj14,tj14a,tj14b,tj14c,tj15,tj16,tj17,tj18,tj19,tj20,tj21,tj22,tj23,tj24,tj24a,tj25,lb1,tj28,tj29,tj30,tj31}|x=-4.0|y=-5.0|loadDelay=0|img=picpackage/3/01117.png|move=0|scale=1|esc=0>
+<Button|id=tj2|x=816.0|y=1.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@关闭特戒面板>
+<Img|id=tj3|x=406.0|y=15.0|img=private/tejie/word_title_specialring.png|scale=1|esc=0>
+<Img|id=tj4|x=575.0|y=130.0|width=220|height=135|esc=0|img=private/tejie/tejiekuang2.png|scale=1>
+<Img|id=tj5|x=575.0|y=277.0|width=220|height=155|esc=0|img=private/tejie/tejiekuang2.png|scale=1>
+<Img|id=tj6|ax=0|x=575.0|y=545.0|width=220|height=100|img=private/tejie/tejiekuang1.png|scale=1|esc=0>
+<Img|id=tj7|x=639.0|y=128.0|img=private/tejie/shuxingjiacheng.png|scale=1|esc=0>
+<Img|id=tj8|x=639.0|y=275.0|img=private/tejie/teshuxiaoguo.png|scale=1|esc=0>
+<Img|id=tj9|x=639.0|y=443.0|img=private/tejie/shengjitiaojian.png|esc=0|scale=1>
+<Img|id=tj10|x=400.0|y=170.0|img=private/tejie/36361_<$STR(S$特戒十位)>.png|scale=1|esc=0>
+<Img|id=tj10a|x=415.0|y=170.0|img=private/tejie/36361_<$STR(S$特戒个位)>.png|scale=1|esc=0>
+<Img|id=tj11|x=435.0|y=168.0|img=private/tejie/36355.png|scale=1|esc=0>
+<Frames|id=tjx12|x=320.0|y=230.0|count=10|loop=-1|scale=1|suffix=.png|prefix=private\tejie\<$STR(S$大图序列帧)>_|speed=10>
+<Img|id=tj12|x=370.0|y=267.0|width=130|height=130|scale=1|img=private/tejie/<$STR(S$特戒大图)>.png|esc=0>
+<Button|id=tj14|x=367.0|y=489.0|scale=1|nimg=public/btn_push_13.png|mimg=public/btn_push_13.png|size=18|color=255|pimg=public/btn_push_13.png>
+<RText|id=tj14a|x=413.0|y=493.0|size=20|color=255|text=<<$STR(S$按钮字)>/FCOLOR=67>>
+<Layout|id=tj14b|x=367.0|y=486.0|width=150|height=41|link=@特戒升级总按钮>
+<Img|id=tj14c|x=483|y=493.0|img=public/icon_reddot_0<$STR(N$特戒红点)>.png|esc=0|scale=1>
+<RText|id=tj15|x=588.0|y=165.0|color=255|size=18|text=<<$STR(S$特戒攻击描述)>：<$STR(N$特戒攻击下限)>-<$STR(N$特戒攻击上限)>/FCOLOR=67>>
+<RText|id=tj16|x=588.0|y=198.0|color=255|size=18|text=<防御：<$STR(N$特戒防御下限)>-<$STR(N$特戒防御上限)>/FCOLOR=67>>
+<RText|id=tj17|x=588.0|y=232.0|color=255|size=18|text=<魔防：<$STR(N$特戒防御下限)>-<$STR(N$特戒防御上限)>/FCOLOR=67>>
+<Img|id=tj18|x=703.0|y=170.0|img=private/tejie/jiantou.png|scale=1|esc=0>
+<Img|id=tj19|x=703.0|y=203.0|img=private/tejie/jiantou.png|scale=1|esc=0>
+<Img|id=tj20|x=703.0|y=237.0|img=private/tejie/jiantou.png|scale=1|esc=0>
+<RText|id=tj21|x=733.0|y=165.0|size=18|color=255|text=<<$STR(S$特戒下级攻击下限)>-<$STR(S$特戒下级攻击上限)>/FCOLOR=67>>
+<RText|id=tj22|x=733.0|y=198.0|size=18|color=255|text=<<$STR(S$特戒下级防御下限)>-<$STR(S$特戒下级防御上限)>/FCOLOR=67>>
+<RText|id=tj23|x=733.0|y=232.0|size=18|color=255|text=<<$STR(S$特戒下级防御下限)>-<$STR(S$特戒下级防御上限)>/FCOLOR=67>>
+<RText|id=tj24|x=646.0|y=485.0|size=18|color=255|text=<<$STR(S$特戒材料名称)>/FCOLOR=67>>
+<Button|id=tj24a|x=610.0|y=510.0|width=150|height=30|scale=1|mimg=public/1900000677.png|pimg=public/1900000677.png|nimg=public/1900000677.png|size=18|color=<$STR(N$特戒材料颜色)>|text=<$ITEMVALSUM(<$STR(S$特戒材料名称)>).DURA>/<$STR(S$特戒升级需求数量)>>
+<Img|id=tj31|x=712.0|y=195.0|rotate=180|height=18|esc=0|img=public/9998.png|scale=1|rotate=90>
+<Img|id=tj25|x=682.0|y=380.0|rotate=180|esc=0|img=private/tejie/jiantou.png|scale=1>
+<$STR(S$特戒子组件1)>
+<Img|id=tj30|x=700.0|y=385.0|rotate=180|height=18|esc=0|img=public/9998.png|scale=1>
+<$STR(S$特戒子组件2)>
+<$STR(S$特戒子组件3)>
+<ListView|id=LB1|children={mabi,huti,chongsheng,shixue,zhuizong,xuenu,poma,pohu,pochong}|x=69.0|y=122.0|width=230|height=420|img=public/9998.png>
+<Layout|id=mabi|children={mabidi,mbhd,mabitu,mabizi}|x=241.0|y=80.0|width=220|height=100|link=@麻痹戒指&麻痹戒指>
+<Img|id=mabidi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景1)>.png|scale=1>
+<$STR(S$特戒红点1)>
+<Img|id=mabitu|x=19.0|y=21.0|img=private/tejie/xiaomabi.png|esc=0|scale=1>
+<Img|id=mabizi|x=74.0|y=36.0|img=private/tejie/mabijiezhi.png|scale=1|esc=0>
+<Layout|id=huti|children={hutidi,hthd,hutitu,hutizi}|x=241.0|y=80.0|width=220|height=100|link=@护体戒指&护体戒指>
+<Img|id=hutidi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景2)>.png|scale=1>
+<$STR(S$特戒红点2)>
+<Img|id=hutitu|x=19.0|y=21.0|img=private/tejie/xiaohuti.png|esc=0|scale=1>
+<Img|id=hutizi|x=74.0|y=36.0|img=private/tejie/hutijiezhi.png|scale=1|esc=0>
+<Layout|id=chongsheng|children={csdi,cshd,cstu,cszi}|x=241.0|y=80.0|width=220|height=100|link=@重生戒指&重生戒指>
+<Img|id=csdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景3)>.png|scale=1>
+<$STR(S$特戒红点3)>
+<Img|id=cstu|x=19.0|y=21.0|img=private/tejie/xiaochongsheng.png|esc=0|scale=1>
+<Img|id=cszi|x=74.0|y=36.0|img=private/tejie/chongshengjiezhi.png|scale=1|esc=0>
+#IF
+;LARGE <$HFCOUNT> 0
+#SAY
+<Layout|id=shixue|children={sxdi,sxhd,sxtu,sxzi}|x=241.0|y=80.0|width=220|height=100|link=@嗜血戒指&嗜血戒指>
+<Img|id=sxdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景4)>.png|scale=1>
+<$STR(S$特戒红点4)>
+<Img|id=sxtu|x=19.0|y=21.0|img=private/tejie/xiaoxixue.png|esc=0|scale=1>
+<Img|id=sxzi|x=74.0|y=36.0|img=private/tejie/shixuejiezhi.png|scale=1|esc=0>
+<Layout|id=zhuizong|children={zzdi,zzhd,zztu,zzzi}|x=241.0|y=80.0|width=220|height=100|link=@追踪戒指&追踪戒指>
+<Img|id=zzdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景5)>.png|scale=1>
+<$STR(S$特戒红点5)>
+<Img|id=zztu|x=19.0|y=21.0|img=private/tejie/xiaozhuizong.png|esc=0|scale=1>
+<Img|id=zzzi|x=74.0|y=36.0|img=private/tejie/zhuizongjiezhi.png|scale=1|esc=0>
+<Layout|id=xuenu|children={xndi,xnhd,xntu,xnzi}|x=241.0|y=80.0|width=220|height=100|link=@血怒戒指&血怒戒指>
+<Img|id=xndi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景6)>.png|scale=1>
+<$STR(S$特戒红点6)>
+<Img|id=xntu|x=19.0|y=21.0|img=private/tejie/xiaoxuenu.png|esc=0|scale=1>
+<Img|id=xnzi|x=74.0|y=36.0|img=private/tejie/xuenujiezhi.png|scale=1|esc=0>
+
+#IF
+LARGE <$HFCOUNT> 0
+LARGE $CustomValue(42) 0
+#SAY
+<Layout|id=poma|children={pmdi,pmhd,pmtu,pmzi}|x=241.0|y=80.0|width=220|height=100|link=@破麻戒指&破麻戒指>
+<Img|id=pmdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景7)>.png|scale=1>
+<$STR(S$特戒红点7)>
+<Img|id=pmtu|x=19.0|y=21.0|img=private/tejie/xiaopoma.png|esc=0|scale=1>
+<Img|id=pmzi|x=74.0|y=36.0|img=private/tejie/pomajiezhi.png|scale=1|esc=0>
+<Layout|id=pohu|children={phdi,phhd,phtu,phzi}|x=241.0|y=80.0|width=220|height=100|link=@破护戒指&破护戒指>
+<Img|id=phdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景8)>.png|scale=1>
+<$STR(S$特戒红点8)>
+<Img|id=phtu|x=19.0|y=21.0|img=private/tejie/xiaopohu.png|esc=0|scale=1>
+<Img|id=phzi|x=74.0|y=36.0|img=private/tejie/pohujiezhi.png|scale=1|esc=0>
+<Layout|id=pochong|children={pcdi,pchd,pctu,pczi}|x=241.0|y=80.0|width=220|height=100|link=@破重戒指&破重戒指>
+<Img|id=pcdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景9)>.png|scale=1>
+<$STR(S$特戒红点9)>
+<Img|id=pctu|x=19.0|y=21.0|img=private/tejie/xiaopochong.png|esc=0|scale=1>
+<Img|id=pczi|x=74.0|y=36.0|img=private/tejie/pochongjiezhi.png|scale=1|esc=0>
+#IF
+TRUE
+#SAY
+<Button|id=tj28|x=774.0|y=62.0|scale=1|nimg=private/tejie/btn_question_02.png|mimg=private/tejie/btn_question_02.png|size=18|color=255|pimg=private/tejie/btn_question_02.png>
+<RText|id=tj29|x=783.0|y=74.0|size=18|color=255|text=<color=~道士法师职业麻痹几率减半#0xffffe600$战士职业不享受护体特效加#0xffffe600$只增加护体特戒的基本属性#0xffffe600$ 　　>>
+<Button|x=430|y=0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Layout|x=545|y=0|width=80|height=80|_localZOrder=-1|link=@exit>
+<Img|show=0|move=0|loadDelay=1|img=public/bg_npc_01.png|reset=1|_localZOrder=-2|bg=1>
+;<Img|x=<$STR(N$等级底图偏移)>.0|y=158.0|width=100|height=35|scale=1|img=private/tejie/frame_mission_chosen.png|esc=0>
+
+
+[@护体戒指]
+#IF
+TRUE
+#ACT
+MOV S$特戒大图 dahuti
+MOV S$特戒背景1 weixuanzhong
+MOV S$特戒背景2 xuanzhong
+MOV S$特戒背景3 weixuanzhong
+MOV S$特戒背景4 weixuanzhong
+MOV S$特戒背景5 weixuanzhong
+MOV S$特戒背景6 weixuanzhong
+MOV S$特戒背景7 weixuanzhong
+MOV S$特戒背景8 weixuanzhong
+MOV S$特戒背景9 weixuanzhong
+MOV N$调整特戒等级 6
+MOV S$特戒材料名称 特戒精华
+MOV S$特戒子组件3 
+
+#IF
+EQUAL $CustomValue(6) 0
+#ACT
+MOV N$特戒攻击下限 
+MOV N$特戒攻击上限 
+MOV N$特戒防御下限 
+MOV N$特戒防御上限 
+MOV S$特戒下级攻击下限 0
+MOV S$特戒下级攻击上限 5
+MOV S$特戒下级防御下限 1
+MOV S$特戒下级防御上限 1
+MOV S$特戒升级需求数量 12
+MOV S$按钮字 激　活
+MOV S$特戒子组件1 <RText|id=tj26|x=652.0|y=326.0|size=18|color=255|text=<无特效/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<魔法值抵消受到伤害的/FCOLOR=67><10%/FCOLOR=224>\<本体魔法值提升/FCOLOR=67><50%/FCOLOR=224>>
+
+
+#IF
+LARGE $CustomValue(6) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用 $CustomValue(6)
+SPLIT $STR(S$特戒面板专用) | N$特戒面板显示
+MOV N$特戒护体几率 <$STR(N$特戒面板显示_7)>
+MOV N$特戒护体加蓝比例 <$STR(N$特戒面板显示_27)>
+MOV N$特戒攻击下限 <$STR(N$特戒面板显示_21)>
+MOV N$特戒攻击上限 <$STR(N$特戒面板显示_22)>
+MOV N$特戒防御下限 <$STR(N$特戒面板显示_23)>
+MOV N$特戒防御上限 <$STR(N$特戒面板显示_24)>
+
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(6).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+MOV N$特戒下级护体几率 <$STR(N$特戒面板显示1_7)>
+MOV N$特戒下级护体加蓝比例 <$STR(N$特戒面板显示1_27)>
+MOV S$特戒下级攻击下限 <$STR(N$特戒面板显示1_21)>
+MOV S$特戒下级攻击上限 <$STR(N$特戒面板显示1_22)>
+MOV S$特戒下级防御下限 <$STR(N$特戒面板显示1_23)>
+MOV S$特戒下级防御上限 <$STR(N$特戒面板显示1_24)>
+MOV S$特戒升级需求数量 <$STR(N$特戒面板显示1_20)>
+
+MOV S$按钮字 升　级
+MOV S$特戒子组件1 <RText|id=tj26|x=580.0|y=311.0|size=18|color=255|text=<魔法值抵消受到伤害的/FCOLOR=67><<$STR(N$特戒护体几率)>%/FCOLOR=224>\<本体魔法值提升/FCOLOR=67><<$STR(N$特戒护体加蓝比例)>%/FCOLOR=224>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<魔法值抵消受到伤害的/FCOLOR=67><<$STR(N$特戒下级护体几率)>%/FCOLOR=224>\<本体魔法值提升/FCOLOR=67><<$STR(N$特戒下级护体加蓝比例)>%/FCOLOR=224>>
+
+#IF
+EQUAL $CustomValue(6) 30
+#ACT
+MOV S$特戒下级攻击下限 
+MOV S$特戒下级攻击上限 已满级
+MOV S$特戒下级防御下限 
+MOV S$特戒下级防御上限 已满级
+MOV S$特戒升级需求数量 已满级
+MOV S$特戒子组件2 <RText|id=tj27|x=650.0|y=388.0|size=18|color=255|text=<已满级/FCOLOR=224>>
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$特戒攻击描述 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$特戒攻击描述 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$特戒攻击描述 道术
+
+#IF
+TRUE
+#ACT
+goto @特戒升级主面板
+break
+
+[@重生戒指]
+#IF
+TRUE
+#ACT
+MOV S$特戒大图 dachongsheng
+MOV S$特戒背景1 weixuanzhong
+MOV S$特戒背景2 weixuanzhong
+MOV S$特戒背景3 xuanzhong
+MOV S$特戒背景4 weixuanzhong
+MOV S$特戒背景5 weixuanzhong
+MOV S$特戒背景6 weixuanzhong
+MOV S$特戒背景7 weixuanzhong
+MOV S$特戒背景8 weixuanzhong
+MOV S$特戒背景9 weixuanzhong
+MOV N$调整特戒等级 7
+MOV S$特戒材料名称 特戒精华
+MOV S$特戒子组件3 
+
+#IF
+EQUAL $CustomValue(7) 0
+#ACT
+MOV N$特戒攻击下限 
+MOV N$特戒攻击上限 
+MOV N$特戒防御下限 
+MOV N$特戒防御上限 
+MOV S$特戒下级攻击下限 0
+MOV S$特戒下级攻击上限 5
+MOV S$特戒下级防御下限 1
+MOV S$特戒下级防御上限 1
+MOV S$特戒升级需求数量 12
+MOV S$按钮字 激　活
+MOV S$特戒子组件1 <RText|id=tj26|x=652.0|y=326.0|size=18|color=255|text=<无特效/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<恢复/FCOLOR=67><35%/FCOLOR=224><生命及魔法原地/FCOLOR=67>\<复活，技能CD：/FCOLOR=67><420秒/FCOLOR=224>>
+
+
+#IF
+LARGE $CustomValue(7) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用 $CustomValue(7)
+SPLIT $STR(S$特戒面板专用) | N$特戒面板显示
+MOV N$特戒重生CD <$STR(N$特戒面板显示_10)>
+MOV N$特戒重生几率 <$STR(N$特戒面板显示_11)>
+MOV N$特戒攻击下限 <$STR(N$特戒面板显示_21)>
+MOV N$特戒攻击上限 <$STR(N$特戒面板显示_22)>
+MOV N$特戒防御下限 <$STR(N$特戒面板显示_23)>
+MOV N$特戒防御上限 <$STR(N$特戒面板显示_24)>
+
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(7).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+MOV N$特戒下级重生CD <$STR(N$特戒面板显示1_10)>
+MOV N$特戒下级重生几率 <$STR(N$特戒面板显示1_11)>
+MOV S$特戒下级攻击下限 <$STR(N$特戒面板显示1_21)>
+MOV S$特戒下级攻击上限 <$STR(N$特戒面板显示1_22)>
+MOV S$特戒下级防御下限 <$STR(N$特戒面板显示1_23)>
+MOV S$特戒下级防御上限 <$STR(N$特戒面板显示1_24)>
+MOV S$特戒升级需求数量 <$STR(N$特戒面板显示1_20)>
+
+MOV S$按钮字 升　级
+MOV S$特戒子组件1 <RText|id=tj26|x=580.0|y=311.0|size=18|color=255|text=<恢复/FCOLOR=67><<$STR(N$特戒重生几率)>%/FCOLOR=224><生命及魔法原地/FCOLOR=67>\<复活，技能CD：/FCOLOR=67><<$STR(N$特戒重生CD)>秒/FCOLOR=224>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<恢复/FCOLOR=67><<$STR(N$特戒下级重生几率)>%/FCOLOR=224><生命及魔法原地/FCOLOR=67>\<复活，技能CD：/FCOLOR=67><<$STR(N$特戒下级重生CD)>秒/FCOLOR=224>>
+
+#IF
+EQUAL $CustomValue(7) 30
+#ACT
+MOV S$特戒下级攻击下限 
+MOV S$特戒下级攻击上限 已满级
+MOV S$特戒下级防御下限 
+MOV S$特戒下级防御上限 已满级
+MOV S$特戒升级需求数量 已满级
+MOV S$特戒子组件2 <RText|id=tj27|x=650.0|y=388.0|size=18|color=255|text=<已满级/FCOLOR=224>>
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$特戒攻击描述 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$特戒攻击描述 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$特戒攻击描述 道术
+
+
+#IF
+TRUE
+#ACT
+goto @特戒升级主面板
+break
+
+[@嗜血戒指]
+#IF
+TRUE
+#ACT
+MOV S$特戒大图 daxixue
+MOV S$特戒背景1 weixuanzhong
+MOV S$特戒背景2 weixuanzhong
+MOV S$特戒背景3 weixuanzhong
+MOV S$特戒背景4 xuanzhong
+MOV S$特戒背景5 weixuanzhong
+MOV S$特戒背景6 weixuanzhong
+MOV S$特戒背景7 weixuanzhong
+MOV S$特戒背景8 weixuanzhong
+MOV S$特戒背景9 weixuanzhong
+MOV N$调整特戒等级 8
+MOV S$特戒材料名称 特戒精粹
+MOV S$特戒子组件3 
+
+#IF
+EQUAL $CustomValue(8) 0
+#ACT
+MOV N$特戒攻击下限 
+MOV N$特戒攻击上限 
+MOV N$特戒防御下限 
+MOV N$特戒防御上限 
+MOV S$特戒下级攻击下限 1
+MOV S$特戒下级攻击上限 1
+MOV S$特戒下级防御下限 2
+MOV S$特戒下级防御上限 3
+MOV S$特戒升级需求数量 12
+MOV S$按钮字 激　活
+MOV S$特戒子组件1 <RText|id=tj26|x=652.0|y=326.0|size=18|color=255|text=<无特效/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<攻击时有/FCOLOR=67><7%/FCOLOR=224><的概率吸取/FCOLOR=67>\<本次攻击值的/FCOLOR=67><20%/FCOLOR=224><生命值/FCOLOR=67>>
+
+
+#IF
+LARGE $CustomValue(8) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用 $CustomValue(8)
+SPLIT $STR(S$特戒面板专用) | N$特戒面板显示
+MOV N$特戒吸血几率 <$STR(N$特戒面板显示_14)>
+MOV N$特戒吸血比例 <$STR(N$特戒面板显示_15)>
+MOV N$特戒攻击下限 <$STR(N$特戒面板显示_23)>
+MOV N$特戒攻击上限 <$STR(N$特戒面板显示_24)>
+MOV N$特戒防御下限 <$STR(N$特戒面板显示_25)>
+MOV N$特戒防御上限 <$STR(N$特戒面板显示_26)>
+
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(8).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+MOV N$特戒下级吸血几率 <$STR(N$特戒面板显示1_14)>
+MOV N$特戒下级吸血比例 <$STR(N$特戒面板显示1_15)>
+MOV S$特戒下级攻击下限 <$STR(N$特戒面板显示1_23)>
+MOV S$特戒下级攻击上限 <$STR(N$特戒面板显示1_24)>
+MOV S$特戒下级防御下限 <$STR(N$特戒面板显示1_25)>
+MOV S$特戒下级防御上限 <$STR(N$特戒面板显示1_26)>
+MOV S$特戒升级需求数量 <$STR(N$特戒面板显示1_20)>
+
+MOV S$按钮字 升　级
+MOV S$特戒子组件1 <RText|id=tj26|x=580.0|y=311.0|size=18|color=255|text=<攻击时有/FCOLOR=67><<$STR(N$特戒吸血几率)>%/FCOLOR=224><的概率吸取/FCOLOR=67>\<本次攻击值的/FCOLOR=67><<$STR(N$特戒吸血比例)>%/FCOLOR=224><生命值/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<攻击时有/FCOLOR=67><<$STR(N$特戒下级吸血几率)>%/FCOLOR=224><的概率吸取/FCOLOR=67>\<本次攻击值的/FCOLOR=67><<$STR(N$特戒下级吸血比例)>%/FCOLOR=224><生命值/FCOLOR=67>>
+
+
+
+#IF
+EQUAL $CustomValue(8) 30
+#ACT
+MOV S$特戒下级攻击下限 
+MOV S$特戒下级攻击上限 已满级
+MOV S$特戒下级防御下限 
+MOV S$特戒下级防御上限 已满级
+MOV S$特戒升级需求数量 已满级
+MOV S$特戒子组件2 <RText|id=tj27|x=650.0|y=393.0|size=18|color=255|text=<已满级/FCOLOR=224>>
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$特戒攻击描述 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$特戒攻击描述 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$特戒攻击描述 道术
+
+
+#IF
+TRUE
+#ACT
+goto @特戒升级主面板
+break
+
+[@追踪戒指]
+#IF
+TRUE
+#ACT
+MOV S$特戒大图 dazhuizong
+MOV S$特戒背景1 weixuanzhong
+MOV S$特戒背景2 weixuanzhong
+MOV S$特戒背景3 weixuanzhong
+MOV S$特戒背景4 weixuanzhong
+MOV S$特戒背景5 xuanzhong
+MOV S$特戒背景6 weixuanzhong
+MOV S$特戒背景7 weixuanzhong
+MOV S$特戒背景8 weixuanzhong
+MOV S$特戒背景9 weixuanzhong
+MOV N$调整特戒等级 9
+MOV S$特戒材料名称 特戒精粹
+
+
+#IF
+EQUAL $CustomValue(9) 0
+#ACT
+MOV N$特戒攻击下限 
+MOV N$特戒攻击上限 
+MOV N$特戒防御下限 
+MOV N$特戒防御上限 
+MOV S$特戒下级攻击下限 1
+MOV S$特戒下级攻击上限 1
+MOV S$特戒下级防御下限 2
+MOV S$特戒下级防御上限 3
+MOV S$特戒升级需求数量 12
+MOV S$按钮字 激　活
+MOV S$特戒子组件1 <RText|id=tj26|x=652.0|y=326.0|size=18|color=255|text=<无特效/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<追踪传送至目标角色1格之/FCOLOR=67>\<　　　内，CD:/FCOLOR=67><180/FCOLOR=224><秒/FCOLOR=67>>
+
+
+#IF
+LARGE $CustomValue(9) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用 $CustomValue(9)
+SPLIT $STR(S$特戒面板专用) | N$特戒面板显示
+MOV N$特戒追踪CD <$STR(N$特戒面板显示_18)>
+MOV N$特戒攻击下限 <$STR(N$特戒面板显示_23)>
+MOV N$特戒攻击上限 <$STR(N$特戒面板显示_24)>
+MOV N$特戒防御下限 <$STR(N$特戒面板显示_25)>
+MOV N$特戒防御上限 <$STR(N$特戒面板显示_26)>
+
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(9).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+MOV N$特戒下级追踪CD <$STR(N$特戒面板显示1_18)>
+MOV S$特戒下级攻击下限 <$STR(N$特戒面板显示1_23)>
+MOV S$特戒下级攻击上限 <$STR(N$特戒面板显示1_24)>
+MOV S$特戒下级防御下限 <$STR(N$特戒面板显示1_25)>
+MOV S$特戒下级防御上限 <$STR(N$特戒面板显示1_26)>
+MOV S$特戒升级需求数量 <$STR(N$特戒面板显示1_20)>
+
+MOV S$按钮字 升　级
+MOV S$特戒子组件1 <RText|id=tj26|x=580.0|y=311.0|size=18|color=255|text=<追踪传送至目标角色1格之/FCOLOR=67>\<　　　内，CD:/FCOLOR=67><<$STR(N$特戒追踪CD)>/FCOLOR=224><秒/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<追踪传送至目标角色1格之/FCOLOR=67>\<　　　内，CD:/FCOLOR=67><<$STR(N$特戒下级追踪CD)>/FCOLOR=224><秒/FCOLOR=67>>
+MOV S$特戒子组件3 <Button|id=tj13|x=504.0|y=361.0|scale=1|pimg=private/tejie/zs_button.png|mimg=private/tejie/zs_button.png|size=18|nimg=private/tejie/zs_button.png|color=255|link=@追踪目标>
+
+
+#IF
+EQUAL $CustomValue(9) 30
+#ACT
+MOV S$特戒下级攻击下限 
+MOV S$特戒下级攻击上限 已满级
+MOV S$特戒下级防御下限 
+MOV S$特戒下级防御上限 已满级
+MOV S$特戒升级需求数量 已满级
+MOV S$特戒子组件2 <RText|id=tj27|x=650.0|y=393.0|size=18|color=255|text=<已满级/FCOLOR=224>>
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$特戒攻击描述 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$特戒攻击描述 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$特戒攻击描述 道术
+
+
+#IF
+TRUE
+#ACT
+goto @特戒升级主面板
+break
+
+[@血怒戒指]
+#IF
+TRUE
+#ACT
+MOV S$特戒大图 daxuenu
+MOV S$特戒背景1 weixuanzhong
+MOV S$特戒背景2 weixuanzhong
+MOV S$特戒背景3 weixuanzhong
+MOV S$特戒背景4 weixuanzhong
+MOV S$特戒背景5 weixuanzhong
+MOV S$特戒背景6 xuanzhong
+MOV S$特戒背景7 weixuanzhong
+MOV S$特戒背景8 weixuanzhong
+MOV S$特戒背景9 weixuanzhong
+MOV N$调整特戒等级 10
+MOV S$特戒材料名称 特戒精粹
+MOV S$特戒子组件3 
+
+#IF
+EQUAL $CustomValue(10) 0
+#ACT
+MOV N$特戒攻击下限 
+MOV N$特戒攻击上限 
+MOV N$特戒防御下限 
+MOV N$特戒防御上限 
+MOV S$特戒下级攻击下限 1
+MOV S$特戒下级攻击上限 1
+MOV S$特戒下级防御下限 2
+MOV S$特戒下级防御上限 3
+MOV S$特戒升级需求数量 12
+MOV S$按钮字 激　活
+MOV S$特戒子组件1 <RText|id=tj26|x=652.0|y=326.0|size=18|color=255|text=<无特效/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<血量低于/FCOLOR=67><25%/FCOLOR=224><,下次攻击造/FCOLOR=67>\<成/FCOLOR=67><1.20/FCOLOR=224><倍伤害,CD:/FCOLOR=67><60/FCOLOR=224><秒。/FCOLOR=67>>
+
+
+#IF
+LARGE $CustomValue(10) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用 $CustomValue(10)
+SPLIT $STR(S$特戒面板专用) | N$特戒面板显示
+MOV N$特戒血怒触发 <$STR(N$特戒面板显示_16)>
+MOV N$特戒血怒伤害 <$STR(N$特戒面板显示_17)>
+MOV N$特戒血怒CD <$STR(N$特戒面板显示_19)>
+MOV N$特戒攻击下限 <$STR(N$特戒面板显示_23)>
+MOV N$特戒攻击上限 <$STR(N$特戒面板显示_24)>
+MOV N$特戒防御下限 <$STR(N$特戒面板显示_25)>
+MOV N$特戒防御上限 <$STR(N$特戒面板显示_26)>
+
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(10).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+MOV N$特戒下级血怒触发 <$STR(N$特戒面板显示1_16)>
+MOV N$特戒下级血怒伤害 <$STR(N$特戒面板显示1_17)>
+MOV N$特戒下级血怒CD <$STR(N$特戒面板显示1_19)>
+MOV S$特戒下级攻击下限 <$STR(N$特戒面板显示1_23)>
+MOV S$特戒下级攻击上限 <$STR(N$特戒面板显示1_24)>
+MOV S$特戒下级防御下限 <$STR(N$特戒面板显示1_25)>
+MOV S$特戒下级防御上限 <$STR(N$特戒面板显示1_26)>
+MOV S$特戒升级需求数量 <$STR(N$特戒面板显示1_20)>
+
+MOV S$按钮字 升　级
+MOV S$特戒子组件1 <RText|id=tj26|x=580.0|y=311.0|size=18|color=255|text=<血量低于/FCOLOR=67><<$STR(N$特戒血怒触发)>%/FCOLOR=224><,下次攻击造/FCOLOR=67>\<成/FCOLOR=67><1.<$STR(N$特戒血怒伤害)>/FCOLOR=224><倍伤害,CD:/FCOLOR=67><<$STR(N$特戒血怒CD)>/FCOLOR=224><秒。/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<血量低于/FCOLOR=67><<$STR(N$特戒下级血怒触发)>%/FCOLOR=224><,下次攻击造/FCOLOR=67>\<成/FCOLOR=67><1.<$STR(N$特戒下级血怒伤害)>/FCOLOR=224><倍伤害,CD:/FCOLOR=67><<$STR(N$特戒下级血怒CD)>/FCOLOR=224><秒。/FCOLOR=67>>
+
+#IF
+EQUAL $CustomValue(10) 30
+#ACT
+MOV S$特戒下级攻击下限 
+MOV S$特戒下级攻击上限 已满级
+MOV S$特戒下级防御下限 
+MOV S$特戒下级防御上限 已满级
+MOV S$特戒升级需求数量 已满级
+MOV S$特戒子组件2 <RText|id=tj27|x=650.0|y=393.0|size=18|color=255|text=<已满级/FCOLOR=224>>
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$特戒攻击描述 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$特戒攻击描述 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$特戒攻击描述 道术
+
+
+#IF
+TRUE
+#ACT
+goto @特戒升级主面板
+break
+
+[@破麻戒指]
+#IF
+TRUE
+#ACT
+MOV S$特戒大图 dapoma
+MOV S$特戒背景1 weixuanzhong
+MOV S$特戒背景2 weixuanzhong
+MOV S$特戒背景3 weixuanzhong
+MOV S$特戒背景4 weixuanzhong
+MOV S$特戒背景5 weixuanzhong
+MOV S$特戒背景6 weixuanzhong
+MOV S$特戒背景7 xuanzhong
+MOV S$特戒背景8 weixuanzhong
+MOV S$特戒背景9 weixuanzhong
+MOV N$调整特戒等级 11
+MOV S$特戒材料名称 特戒精魄
+MOV S$特戒子组件3 
+
+#IF
+EQUAL $CustomValue(11) 0
+#ACT
+MOV N$特戒攻击下限 
+MOV N$特戒攻击上限 
+MOV N$特戒防御下限 
+MOV N$特戒防御上限 
+MOV S$特戒下级攻击下限 1
+MOV S$特戒下级攻击上限 1
+MOV S$特戒下级防御下限 2
+MOV S$特戒下级防御上限 3
+MOV S$特戒升级需求数量 12
+MOV S$按钮字 激　活
+MOV S$特戒子组件1 <RText|id=tj26|x=652.0|y=326.0|size=18|color=255|text=<无特效/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<　减免对手/FCOLOR=67><4/FCOLOR=224><点麻痹概率/FCOLOR=67>\<　　　　CD:/FCOLOR=67><75/FCOLOR=224><秒/FCOLOR=67>>
+
+
+#IF
+LARGE $CustomValue(11) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用 $CustomValue(11)
+SPLIT $STR(S$特戒面板专用) | N$特戒面板显示
+MOV N$特戒破麻概率 <$STR(N$特戒面板显示_5)>
+MOV N$特戒破麻CD <$STR(N$特戒面板显示_6)>
+MOV N$特戒攻击下限 <$STR(N$特戒面板显示_23)>
+MOV N$特戒攻击上限 <$STR(N$特戒面板显示_24)>
+MOV N$特戒防御下限 <$STR(N$特戒面板显示_25)>
+MOV N$特戒防御上限 <$STR(N$特戒面板显示_26)>
+
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(11).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+MOV N$特戒下级破麻概率 <$STR(N$特戒面板显示1_5)>
+MOV N$特戒下级破麻CD <$STR(N$特戒面板显示1_6)>
+MOV S$特戒下级攻击下限 <$STR(N$特戒面板显示1_23)>
+MOV S$特戒下级攻击上限 <$STR(N$特戒面板显示1_24)>
+MOV S$特戒下级防御下限 <$STR(N$特戒面板显示1_25)>
+MOV S$特戒下级防御上限 <$STR(N$特戒面板显示1_26)>
+MOV S$特戒升级需求数量 <$STR(N$特戒面板显示1_20)>
+
+MOV S$按钮字 升　级
+MOV S$特戒子组件1 <RText|id=tj26|x=580.0|y=311.0|size=18|color=255|text=<　减免对手/FCOLOR=67><<$STR(N$特戒破麻概率)>/FCOLOR=224><点麻痹概率/FCOLOR=67>\<　　　　CD:/FCOLOR=67><<$STR(N$特戒破麻CD)>/FCOLOR=224><秒/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=580.0|y=380.0|size=18|color=255|text=<　减免对手/FCOLOR=67><<$STR(N$特戒下级破麻概率)>/FCOLOR=224><点麻痹概率/FCOLOR=67>\<　　　　CD:/FCOLOR=67><<$STR(N$特戒下级破麻CD)>/FCOLOR=224><秒/FCOLOR=67>>
+
+#IF
+EQUAL $CustomValue(11) 30
+#ACT
+MOV S$特戒下级攻击下限 
+MOV S$特戒下级攻击上限 已满级
+MOV S$特戒下级防御下限 
+MOV S$特戒下级防御上限 已满级
+MOV S$特戒升级需求数量 已满级
+MOV S$特戒子组件2 <RText|id=tj27|x=650.0|y=393.0|size=18|color=255|text=<已满级/FCOLOR=224>>
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$特戒攻击描述 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$特戒攻击描述 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$特戒攻击描述 道术
+
+
+#IF
+TRUE
+#ACT
+goto @特戒升级主面板
+break
+
+
+[@破护戒指]
+#IF
+TRUE
+#ACT
+MOV S$特戒大图 dapohu
+MOV S$特戒背景1 weixuanzhong
+MOV S$特戒背景2 weixuanzhong
+MOV S$特戒背景3 weixuanzhong
+MOV S$特戒背景4 weixuanzhong
+MOV S$特戒背景5 weixuanzhong
+MOV S$特戒背景6 weixuanzhong
+MOV S$特戒背景7 weixuanzhong
+MOV S$特戒背景8 xuanzhong
+MOV S$特戒背景9 weixuanzhong
+MOV N$调整特戒等级 12
+MOV S$特戒材料名称 特戒精魄
+MOV S$特戒子组件3 
+
+#IF
+EQUAL $CustomValue(12) 0
+#ACT
+MOV N$特戒攻击下限 
+MOV N$特戒攻击上限 
+MOV N$特戒防御下限 
+MOV N$特戒防御上限 
+MOV S$特戒下级攻击下限 1
+MOV S$特戒下级攻击上限 1
+MOV S$特戒下级防御下限 2
+MOV S$特戒下级防御上限 3
+MOV S$特戒升级需求数量 12
+MOV S$按钮字 激　活
+MOV S$特戒子组件1 <RText|id=tj26|x=652.0|y=326.0|size=18|color=255|text=<无特效/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=577.0|y=380.0|size=18|color=255|text=<　减免对手/FCOLOR=67><20%/FCOLOR=224><护体效果/FCOLOR=67>\<10%/FCOLOR=224><概率双倍扣对方魔法值/FCOLOR=67>>
+
+
+#IF
+LARGE $CustomValue(12) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用 $CustomValue(12)
+SPLIT $STR(S$特戒面板专用) | N$特戒面板显示
+MOV N$特戒破护概率 <$STR(N$特戒面板显示_8)>
+MOV N$特戒破护双倍 <$STR(N$特戒面板显示_9)>
+MOV N$特戒攻击下限 <$STR(N$特戒面板显示_23)>
+MOV N$特戒攻击上限 <$STR(N$特戒面板显示_24)>
+MOV N$特戒防御下限 <$STR(N$特戒面板显示_25)>
+MOV N$特戒防御上限 <$STR(N$特戒面板显示_26)>
+
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(12).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+MOV N$特戒下级破护概率 <$STR(N$特戒面板显示1_8)>
+MOV N$特戒下级破护双倍 <$STR(N$特戒面板显示1_9)>
+MOV S$特戒下级攻击下限 <$STR(N$特戒面板显示1_23)>
+MOV S$特戒下级攻击上限 <$STR(N$特戒面板显示1_24)>
+MOV S$特戒下级防御下限 <$STR(N$特戒面板显示1_25)>
+MOV S$特戒下级防御上限 <$STR(N$特戒面板显示1_26)>
+MOV S$特戒升级需求数量 <$STR(N$特戒面板显示1_20)>
+
+MOV S$按钮字 升　级
+MOV S$特戒子组件1 <RText|id=tj26|x=577.0|y=311.0|size=18|color=255|text=<　减免对手/FCOLOR=67><<$STR(N$特戒破护概率)>%/FCOLOR=224><护体效果/FCOLOR=67>\<<$STR(N$特戒破护双倍)>%/FCOLOR=224><概率双倍扣对方魔法值/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=577.0|y=380.0|size=18|color=255|text=<　减免对手/FCOLOR=67><<$STR(N$特戒下级破护概率)>%/FCOLOR=224><护体效果/FCOLOR=67>\<<$STR(N$特戒下级破护双倍)>%/FCOLOR=224><概率双倍扣对方魔法值/FCOLOR=67>>
+
+#IF
+EQUAL $CustomValue(12) 30
+#ACT
+MOV S$特戒下级攻击下限 
+MOV S$特戒下级攻击上限 已满级
+MOV S$特戒下级防御下限 
+MOV S$特戒下级防御上限 已满级
+MOV S$特戒升级需求数量 已满级
+MOV S$特戒子组件2 <RText|id=tj27|x=650.0|y=393.0|size=18|color=255|text=<已满级/FCOLOR=224>>
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$特戒攻击描述 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$特戒攻击描述 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$特戒攻击描述 道术
+
+
+#IF
+TRUE
+#ACT
+goto @特戒升级主面板
+break
+
+
+[@破重戒指]
+#IF
+TRUE
+#ACT
+MOV S$特戒大图 dapochong
+MOV S$特戒背景1 weixuanzhong
+MOV S$特戒背景2 weixuanzhong
+MOV S$特戒背景3 weixuanzhong
+MOV S$特戒背景4 weixuanzhong
+MOV S$特戒背景5 weixuanzhong
+MOV S$特戒背景6 weixuanzhong
+MOV S$特戒背景7 weixuanzhong
+MOV S$特戒背景8 weixuanzhong
+MOV S$特戒背景9 xuanzhong
+MOV N$调整特戒等级 13
+MOV S$特戒材料名称 特戒精魄
+MOV S$特戒子组件3 
+
+#IF
+EQUAL $CustomValue(13) 0
+#ACT
+MOV N$特戒攻击下限 
+MOV N$特戒攻击上限 
+MOV N$特戒防御下限 
+
+MOV N$特戒防御上限 
+MOV S$特戒下级攻击下限 1
+MOV S$特戒下级攻击上限 1
+MOV S$特戒下级防御下限 2
+MOV S$特戒下级防御上限 3
+MOV S$特戒升级需求数量 12
+MOV S$按钮字 激　活
+MOV S$特戒子组件1 <RText|id=tj26|x=652.0|y=326.0|size=18|color=255|text=<无特效/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=577.0|y=380.0|size=18|color=255|text=<30%/FCOLOR=224><概率无视复活戒指一/FCOLOR=67>\<　击必杀，/FCOLOR=67><CD:/FCOLOR=67><120/FCOLOR=224><秒/FCOLOR=67>>
+
+
+#IF
+LARGE $CustomValue(13) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用 $CustomValue(13)
+SPLIT $STR(S$特戒面板专用) | N$特戒面板显示
+MOV N$特戒破重概率 <$STR(N$特戒面板显示_8)>
+MOV N$特戒破重CD <$STR(N$特戒面板显示_9)>
+MOV N$特戒攻击下限 <$STR(N$特戒面板显示_23)>
+MOV N$特戒攻击上限 <$STR(N$特戒面板显示_24)>
+MOV N$特戒防御下限 <$STR(N$特戒面板显示_25)>
+MOV N$特戒防御上限 <$STR(N$特戒面板显示_26)>
+
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(13).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+MOV N$特戒下级破重概率 <$STR(N$特戒面板显示1_8)>
+MOV N$特戒下级破重CD <$STR(N$特戒面板显示1_9)>
+MOV S$特戒下级攻击下限 <$STR(N$特戒面板显示1_23)>
+MOV S$特戒下级攻击上限 <$STR(N$特戒面板显示1_24)>
+MOV S$特戒下级防御下限 <$STR(N$特戒面板显示1_25)>
+MOV S$特戒下级防御上限 <$STR(N$特戒面板显示1_26)>
+MOV S$特戒升级需求数量 <$STR(N$特戒面板显示1_20)>
+
+MOV S$按钮字 升　级
+MOV S$特戒子组件1 <RText|id=tj26|x=577.0|y=311.0|size=18|color=255|text=<<$STR(N$特戒破重概率)>%/FCOLOR=224><概率无视复活戒指一/FCOLOR=67>\<　击必杀，/FCOLOR=67><CD:/FCOLOR=67><<$STR(N$特戒破重CD)>/FCOLOR=224><秒/FCOLOR=67>>
+MOV S$特戒子组件2 <RText|id=tj27|x=577.0|y=380.0|size=18|color=255|text=<<$STR(N$特戒下级破重概率)>%/FCOLOR=224><概率无视复活戒指一/FCOLOR=67>\<　击必杀，/FCOLOR=67><CD:/FCOLOR=67><<$STR(N$特戒下级破重CD)>/FCOLOR=224><秒/FCOLOR=67>>
+
+#IF
+EQUAL $CustomValue(13) 30
+#ACT
+MOV S$特戒下级攻击下限 
+MOV S$特戒下级攻击上限 已满级
+MOV S$特戒下级防御下限 
+MOV S$特戒下级防御上限 已满级
+MOV S$特戒升级需求数量 已满级
+MOV S$特戒子组件2 <RText|id=tj27|x=650.0|y=393.0|size=18|color=255|text=<已满级/FCOLOR=224>>
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$特戒攻击描述 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$特戒攻击描述 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$特戒攻击描述 道术
+
+
+#IF
+TRUE
+#ACT
+goto @特戒升级主面板
+break
+
+
+[@特戒升级总按钮]
+#IF
+LARGE <$CUSTOMVALUE(<$STR(N$调整特戒等级)>)> 29
+#ACT
+SENDMSG 19 等级已达上限
+BREAK
+
+#IF
+SMALL <$ITEMVALSUM(<$STR(S$特戒材料名称)>).DURA> <$STR(S$特戒升级需求数量)>
+#ACT
+SENDMSG 19 所需升级材料不足
+BREAK
+
+#IF
+!SMALL <$ITEMVALSUM(<$STR(S$特戒材料名称)>).DURA> <$STR(S$特戒升级需求数量)>
+#ACT
+TAKE $STR(S$特戒材料名称) $STR(S$特戒升级需求数量)
+CHANGECUSTOMVALUE $STR(N$调整特戒等级) + 1
+SENDMSG 19 特戒等级提升
+SET [120] 1
+GOTO @顶部按钮会员红点
+FUNC 1 @临时属性
+GOTO @<$SCRIPTPARAM(1)>
+GOTO @F10界面红点判断
+GOTO @顶部七日狂欢红点
+GOTO @顶部按钮会员红点
+BREAK
+
+[@追踪目标]
+
+#IF
+!LARGE $CustomValue(9) 0
+#ACT
+SENDMSG 19 未激活追杀特戒，无法使用！
+break
+
+#IF
+LARGE $CustomValue(9) 0
+#ACT
+ClearNameList ..\QuestDiary\文本读取\追杀名单.txt
+GMEXECUTE 在线提问 @记录人名
+MOV S$追杀显示 
+MOV S$追杀子组件 
+MOV N$追杀读取行数 0
+MOV N$追杀显示行数 0
+#IF
+PosInlist |<$USERNAME>| ..\QuestDiary\文本读取\追杀名单.txt S$删除自己名字
+#ACT
+DELVARLIST $STR(S$删除自己名字) ..\QuestDiary\文本读取\追杀名单.txt
+
+#IF
+TRUE
+#ACT
+LoopGoto @建立追杀戒指面板 <$TXTLINE(..\QuestDiary\文本读取\追杀名单.txt)>
+
+
+[@建立追杀戒指面板]
+#IF
+LARGE <$TXTLINE(..\QuestDiary\文本读取\追杀名单.txt)> 0
+LARGE $CustomValue(9) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\追杀名单.txt S$追杀人名抽取 <$STR(N$追杀读取行数)>
+SPLIT $STR(S$追杀人名抽取) | S$追杀名单分割<$STR(N$追杀显示行数)>
+
+#IF
+LARGE <$TXTLINE(..\QuestDiary\文本读取\追杀名单.txt)> 0
+!SMALL $CustomValue(9) <$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_5)>
+#ACT
+INC S$追杀子组件 JC<$STR(N$追杀显示行数)>,
+INC S$追杀显示 <Layout|id=JC<$STR(N$追杀显示行数)>|children={TU<$STR(N$追杀显示行数)>,AN<$STR(N$追杀显示行数)>-1,AN<$STR(N$追杀显示行数)>-2,XAN<$STR(N$追杀显示行数)>}|x=421.0|y=313.0|width=450|height=40>
+INC S$追杀显示 <Button|id=TU<$STR(N$追杀显示行数)>|y=0.0|width=446|height=40|scale=1|color=255|nimg=public/frame_mission_<$STR(S$选择黄框_<$STR(N$追杀显示行数)>)>.png|pimg=public/frame_mission_<$STR(S$选择黄框_<$STR(N$追杀显示行数)>)>.png|size=18|link=@选择追踪目标&追踪目标行数=<$STR(N$追杀显示行数)>&追杀目标地图号=<$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_2)>&追杀目标地图X=<$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_3)>&追杀目标地图Y=<$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_4)>&追杀目标特戒等级=<$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_5)>>
+INC S$追杀显示 <Button|id=AN<$STR(N$追杀显示行数)>-1|x=0.0|y=3.0|width=160|height=34|color=161|pimg=public/1900000677.png|mimg=public/1900000677.png|scale=1|nimg=public/1900000677.png|size=18|text=<$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_0)>>
+INC S$追杀显示 <Button|id=AN<$STR(N$追杀显示行数)>-2|x=240.0|y=3.0|width=160|height=34|color=215|pimg=public/1900000677.png|mimg=public/1900000677.png|scale=1|nimg=public/1900000677.png|size=18|text=<$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_1)>(<$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_3)>，<$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_4)>)>
+INC N$追杀读取行数 1
+INC N$追杀显示行数 1
+BREAK
+
+#IF
+LARGE <$TXTLINE(..\QuestDiary\文本读取\追杀名单.txt)> 0
+SMALL $CustomValue(9) <$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_5)>
+#ACT
+INC S$追杀子组件 JC<$STR(N$追杀显示行数)>,
+INC S$追杀显示 <Layout|id=JC<$STR(N$追杀显示行数)>|children={TU<$STR(N$追杀显示行数)>,AN<$STR(N$追杀显示行数)>-1,AN<$STR(N$追杀显示行数)>-2,XAN<$STR(N$追杀显示行数)>}|x=421.0|y=313.0|width=450|height=40>
+INC S$追杀显示 <Button|id=TU<$STR(N$追杀显示行数)>|y=0.0|width=446|height=40|scale=1|color=255|nimg=public/frame_mission_<$STR(S$选择黄框_<$STR(N$追杀显示行数)>)>.png|pimg=public/frame_mission_<$STR(S$选择黄框_<$STR(N$追杀显示行数)>)>.png|size=18|link=@选择追踪目标&追踪目标行数=<$STR(N$追杀显示行数)>&追杀目标特戒等级=<$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_5)>>
+INC S$追杀显示 <Button|id=AN<$STR(N$追杀显示行数)>-1|x=0.0|y=3.0|width=160|height=34|color=161|pimg=public/1900000677.png|mimg=public/1900000677.png|scale=1|nimg=public/1900000677.png|size=18|text=<$STR(S$追杀名单分割<$STR(N$追杀显示行数)>_0)>>
+INC S$追杀显示 <Button|id=AN<$STR(N$追杀显示行数)>-2|x=240.0|y=3.0|width=160|height=34|color=215|pimg=public/1900000677.png|mimg=public/1900000677.png|scale=1|nimg=public/1900000677.png|size=18|text=(未，知)>
+INC N$追杀读取行数 1
+INC N$追杀显示行数 1
+BREAK
+
+[@建立追杀戒指面板_END]
+#IF
+TRUE
+#ACT
+GOTO @追杀显示界面
+BREAK
+
+[@追杀显示界面]
+#IF
+LARGE $CustomValue(9) 0
+#SAY
+<Img|id=tj1|children={tj2,tj3,tj4,tj5,tj6,tj7,tj8,tj9,tj10,tj10a,tj11,tjx12,tj12,tj14,tj14a,tj14b,tj14c,tj15,tj16,tj17,tj18,tj19,tj20,tj21,tj22,tj23,tj24,tj24a,tj25,lb1,tj28,tj29,tj30,tj31}|x=-4.0|y=-5.0|loadDelay=0|img=picpackage/3/01117.png|move=0|scale=1|esc=0>
+<Button|id=tj2|x=816.0|y=1.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@关闭特戒面板>
+<Img|id=tj3|x=406.0|y=15.0|img=private/tejie/word_title_specialring.png|scale=1|esc=0>
+<Img|id=tj4|x=575.0|y=130.0|width=220|height=135|esc=0|img=private/tejie/tejiekuang2.png|scale=1>
+<Img|id=tj5|x=575.0|y=277.0|width=220|height=155|esc=0|img=private/tejie/tejiekuang2.png|scale=1>
+<Img|id=tj6|ax=0|x=575.0|y=545.0|width=220|height=100|img=private/tejie/tejiekuang1.png|scale=1|esc=0>
+<Img|id=tj7|x=639.0|y=128.0|img=private/tejie/shuxingjiacheng.png|scale=1|esc=0>
+<Img|id=tj8|x=639.0|y=275.0|img=private/tejie/teshuxiaoguo.png|scale=1|esc=0>
+<Img|id=tj9|x=639.0|y=443.0|img=private/tejie/shengjitiaojian.png|esc=0|scale=1>
+<Img|id=tj10|x=400.0|y=170.0|img=private/tejie/36361_<$STR(S$特戒十位)>.png|scale=1|esc=0>
+<Img|id=tj10a|x=415.0|y=170.0|img=private/tejie/36361_<$STR(S$特戒个位)>.png|scale=1|esc=0>
+<Img|id=tj11|x=435.0|y=168.0|img=private/tejie/36355.png|scale=1|esc=0>
+<Frames|id=tjx12|x=320.0|y=230.0|count=10|loop=-1|scale=1|suffix=.png|prefix=private\tejie\<$STR(S$大图序列帧)>_|speed=10>
+<Img|id=tj12|x=370.0|y=267.0|width=130|height=130|scale=1|img=private/tejie/<$STR(S$特戒大图)>.png|esc=0>
+<Button|id=tj14|x=367.0|y=489.0|scale=1|nimg=public/btn_push_13.png|mimg=public/btn_push_13.png|size=18|color=255|pimg=public/btn_push_13.png>
+<RText|id=tj14a|x=413.0|y=493.0|size=20|color=255|text=<<$STR(S$按钮字)>/FCOLOR=67>>
+<Layout|id=tj14b|x=367.0|y=486.0|width=150|height=41|link=@特戒升级总按钮>
+<Img|id=tj14c|x=483|y=493.0|img=public/icon_reddot_0<$STR(N$特戒红点)>.png|esc=0|scale=1>
+<RText|id=tj15|x=588.0|y=165.0|color=255|size=18|text=<<$STR(S$特戒攻击描述)>：<$STR(N$特戒攻击下限)>-<$STR(N$特戒攻击上限)>/FCOLOR=67>>
+<RText|id=tj16|x=588.0|y=198.0|color=255|size=18|text=<防御：<$STR(N$特戒防御下限)>-<$STR(N$特戒防御上限)>/FCOLOR=67>>
+<RText|id=tj17|x=588.0|y=232.0|color=255|size=18|text=<魔防：<$STR(N$特戒防御下限)>-<$STR(N$特戒防御上限)>/FCOLOR=67>>
+<Img|id=tj18|x=703.0|y=170.0|img=private/tejie/jiantou.png|scale=1|esc=0>
+<Img|id=tj19|x=703.0|y=203.0|img=private/tejie/jiantou.png|scale=1|esc=0>
+<Img|id=tj20|x=703.0|y=237.0|img=private/tejie/jiantou.png|scale=1|esc=0>
+<RText|id=tj21|x=733.0|y=165.0|size=18|color=255|text=<<$STR(S$特戒下级攻击下限)>-<$STR(S$特戒下级攻击上限)>/FCOLOR=67>>
+<RText|id=tj22|x=733.0|y=198.0|size=18|color=255|text=<<$STR(S$特戒下级防御下限)>-<$STR(S$特戒下级防御上限)>/FCOLOR=67>>
+<RText|id=tj23|x=733.0|y=232.0|size=18|color=255|text=<<$STR(S$特戒下级防御下限)>-<$STR(S$特戒下级防御上限)>/FCOLOR=67>>
+<RText|id=tj24|x=646.0|y=485.0|size=18|color=255|text=<<$STR(S$特戒材料名称)>/FCOLOR=67>>
+<Button|id=tj24a|x=610.0|y=510.0|width=150|height=30|scale=1|mimg=public/1900000677.png|pimg=public/1900000677.png|nimg=public/1900000677.png|size=18|color=<$STR(N$特戒材料颜色)>|text=<$ITEMVALSUM(<$STR(S$特戒材料名称)>).DURA>/<$STR(S$特戒升级需求数量)>>
+<Img|id=tj31|x=712.0|y=195.0|rotate=180|height=18|esc=0|img=public/9998.png|scale=1|rotate=90>
+<Img|id=tj25|x=682.0|y=380.0|rotate=180|esc=0|img=private/tejie/jiantou.png|scale=1>
+<$STR(S$特戒子组件1)>
+<Img|id=tj30|x=700.0|y=385.0|rotate=180|height=18|esc=0|img=public/9998.png|scale=1>
+<$STR(S$特戒子组件2)>
+<$STR(S$特戒子组件3)>
+<ListView|id=LB1|children={mabi,huti,chongsheng,shixue,zhuizong,xuenu,poma,pohu,pochong}|x=69.0|y=122.0|width=230|height=420|img=public/9998.png>
+<Layout|id=mabi|children={mabidi,mbhd,mabitu,mabizi}|x=241.0|y=80.0|width=220|height=100|link=@麻痹戒指&麻痹戒指>
+<Img|id=mabidi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景1)>.png|scale=1>
+<$STR(S$特戒红点1)>
+<Img|id=mabitu|x=19.0|y=21.0|img=private/tejie/xiaomabi.png|esc=0|scale=1>
+<Img|id=mabizi|x=74.0|y=36.0|img=private/tejie/mabijiezhi.png|scale=1|esc=0>
+<Layout|id=huti|children={hutidi,hthd,hutitu,hutizi}|x=241.0|y=80.0|width=220|height=100|link=@护体戒指&护体戒指>
+<Img|id=hutidi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景2)>.png|scale=1>
+<$STR(S$特戒红点2)>
+<Img|id=hutitu|x=19.0|y=21.0|img=private/tejie/xiaohuti.png|esc=0|scale=1>
+<Img|id=hutizi|x=74.0|y=36.0|img=private/tejie/hutijiezhi.png|scale=1|esc=0>
+<Layout|id=chongsheng|children={csdi,cshd,cstu,cszi}|x=241.0|y=80.0|width=220|height=100|link=@重生戒指&重生戒指>
+<Img|id=csdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景3)>.png|scale=1>
+<$STR(S$特戒红点3)>
+<Img|id=cstu|x=19.0|y=21.0|img=private/tejie/xiaochongsheng.png|esc=0|scale=1>
+<Img|id=cszi|x=74.0|y=36.0|img=private/tejie/chongshengjiezhi.png|scale=1|esc=0>
+#IF
+;LARGE <$HFCOUNT> 0
+#SAY
+<Layout|id=shixue|children={sxdi,sxhd,sxtu,sxzi}|x=241.0|y=80.0|width=220|height=100|link=@嗜血戒指&嗜血戒指>
+<Img|id=sxdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景4)>.png|scale=1>
+<$STR(S$特戒红点4)>
+<Img|id=sxtu|x=19.0|y=21.0|img=private/tejie/xiaoxixue.png|esc=0|scale=1>
+<Img|id=sxzi|x=74.0|y=36.0|img=private/tejie/shixuejiezhi.png|scale=1|esc=0>
+<Layout|id=zhuizong|children={zzdi,zzhd,zztu,zzzi}|x=241.0|y=80.0|width=220|height=100|link=@追踪戒指&追踪戒指>
+<Img|id=zzdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景5)>.png|scale=1>
+<$STR(S$特戒红点5)>
+<Img|id=zztu|x=19.0|y=21.0|img=private/tejie/xiaozhuizong.png|esc=0|scale=1>
+<Img|id=zzzi|x=74.0|y=36.0|img=private/tejie/zhuizongjiezhi.png|scale=1|esc=0>
+<Layout|id=xuenu|children={xndi,xnhd,xntu,xnzi}|x=241.0|y=80.0|width=220|height=100|link=@血怒戒指&血怒戒指>
+<Img|id=xndi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景6)>.png|scale=1>
+<$STR(S$特戒红点6)>
+<Img|id=xntu|x=19.0|y=21.0|img=private/tejie/xiaoxuenu.png|esc=0|scale=1>
+<Img|id=xnzi|x=74.0|y=36.0|img=private/tejie/xuenujiezhi.png|scale=1|esc=0>
+
+#IF
+LARGE <$HFCOUNT> 0
+LARGE $CustomValue(42) 0
+#SAY
+<Layout|id=poma|children={pmdi,pmhd,pmtu,pmzi}|x=241.0|y=80.0|width=220|height=100|link=@破麻戒指&破麻戒指>
+<Img|id=pmdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景7)>.png|scale=1>
+<$STR(S$特戒红点7)>
+<Img|id=pmtu|x=19.0|y=21.0|img=private/tejie/xiaopoma.png|esc=0|scale=1>
+<Img|id=pmzi|x=74.0|y=36.0|img=private/tejie/pomajiezhi.png|scale=1|esc=0>
+<Layout|id=pohu|children={phdi,phhd,phtu,phzi}|x=241.0|y=80.0|width=220|height=100|link=@破护戒指&破护戒指>
+<Img|id=phdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景8)>.png|scale=1>
+<$STR(S$特戒红点8)>
+<Img|id=phtu|x=19.0|y=21.0|img=private/tejie/xiaopohu.png|esc=0|scale=1>
+<Img|id=phzi|x=74.0|y=36.0|img=private/tejie/pohujiezhi.png|scale=1|esc=0>
+<Layout|id=pochong|children={pcdi,pchd,pctu,pczi}|x=241.0|y=80.0|width=220|height=100|link=@破重戒指&破重戒指>
+<Img|id=pcdi|x=0|y=0|width=210|height=100|esc=0|img=private/tejie/<$STR(S$特戒背景9)>.png|scale=1>
+<$STR(S$特戒红点9)>
+<Img|id=pctu|x=19.0|y=21.0|img=private/tejie/xiaopochong.png|esc=0|scale=1>
+<Img|id=pczi|x=74.0|y=36.0|img=private/tejie/pochongjiezhi.png|scale=1|esc=0>
+#IF
+TRUE
+#SAY
+<Button|id=tj28|x=774.0|y=62.0|scale=1|nimg=private/tejie/btn_question_02.png|mimg=private/tejie/btn_question_02.png|size=18|color=255|pimg=private/tejie/btn_question_02.png>
+<RText|id=tj29|x=783.0|y=74.0|size=18|color=255|text=<color=~道士法师职业麻痹几率减半#0xffffe600$战士职业不享受护体特效加#0xffffe600$只增加护体特戒的基本属性#0xffffe600$ 　　>>
+<Button|x=430|y=0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Layout|x=545|y=0|width=80|height=80|_localZOrder=-1|link=@exit>
+<Img|show=0|move=0|loadDelay=1|img=public/bg_npc_01.png|reset=1|_localZOrder=-2|bg=1>
+
+
+#IF
+TRUE
+#SAY
+<Img|id=3201|children={3202,3203,3204,3205,3206,3207,3208,3209}|x=170.0|y=71.0|scale=1|bg=1|img=private/fushi/fushituijian.png|loadDelay=0|esc=0>
+<Img|id=3202|x=166.0|y=37.0|img=public/title.png|scale=1|esc=0>
+<RText|id=3203|x=225.0|y=35.0|color=67|size=22|text=<在线玩家/FCOLOR=67>>
+<Button|id=3204|x=458.0|y=24.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@追踪戒指>
+<Img|id=3206|x=44.0|y=70.0|width=450|height=30|esc=0|img=public/bg_announce_02.png|scale=1>
+<Text|id=3207|x=85.0|y=72.0|size=20|color=67|text=玩家名字>
+<Text|id=3208|x=320.0|y=72.0|size=20|color=67|text=所在地图>
+<ListView|id=3205|children={$STR(S$追杀子组件)}|x=45.0|y=103.0|width=450|height=280|rotate=0|margin=10|bounce=0|img=public/9998.png>
+<$STR(S$追杀显示)>
+<Button|id=3209|x=200.0|y=376|mimg=public/btn_push_11.png|scale=1|color=67|nimg=public/btn_push_11.png|size=18|text=追  踪|link=@前往追踪目标>
+#IF
+TRUE
+#ACT
+ClearVar S$选择黄框 100
+break
+
+
+[@选择追踪目标]
+#IF
+TRUE
+#ACT
+MOV S$选择黄框_<$STR(S$追踪目标行数)> chosen
+GOTO @追踪目标
+break
+
+
+
+[@前往追踪目标]
+#IF
+PosInlist |<$STR(S$追杀目标地图号)>| ..\QuestDiary\追踪文本\禁止传送地图.txt S$追杀抽取
+#ACT
+SENDMSG 19 追踪目标当前地图禁止追踪
+BREAK
+
+#IF
+PosInlist |<$STR(S$追杀目标地图号)>| ..\QuestDiary\追踪文本\单条件检测地图.txt S$追杀抽取
+#ACT
+SPLIT $STR(S$追杀抽取) | S$追杀条件分割
+GOTO @单条件追踪
+BREAK
+
+#IF
+PosInlist |<$STR(S$追杀目标地图号)>| ..\QuestDiary\追踪文本\需转生等级2条件地图.txt S$追杀抽取
+#ACT
+SPLIT $STR(S$追杀抽取) | S$追杀条件分割
+GOTO @双条件追踪
+BREAK
+
+#IF
+PosInlist |<$STR(S$追杀目标地图号)>| ..\QuestDiary\追踪文本\需转生等级3条件地图.txt S$追杀抽取
+#ACT
+SPLIT $STR(S$追杀抽取) | S$追杀条件分割
+GOTO @三条件追踪
+BREAK
+
+[@单条件追踪]
+#IF
+LARGE $CustomValue(9) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$追杀特戒专用 <$CustomValue(9)>
+SPLIT <$STR(S$追杀特戒专用)> | S$追杀特戒专用1
+MOV N$追杀特戒CD $STR(S$追杀特戒专用1_18)
+
+#IF
+!LARGE $LONGDATE <$CustomValue(22)>
+#ACT
+SENDMSG 5 你的追杀特戒CD正在冷却中，还需等待<$DEC.$CustomValue(22).$LONGDATE>秒！
+break
+
+#IF
+!LARGE $CustomValue(9) $STR(S$追杀目标特戒等级)
+#ACT
+SENDMSG 19 你的追踪戒指不大于目标等级
+BREAK
+
+#IF
+SMALL <<$STR(S$追杀条件分割_1)>> <$STR(S$追杀条件分割_2)>
+#ACT
+SENDMSG 19 等级不足
+BREAK
+
+#IF
+SMALL $INC.$Money(2).$Money(4) <$INC.200.<$MULT.200.$HUMAN(每日追杀次数)>>
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+TRUE
+#ACT
+QueryMsg 确定消费<$INC.200.<$MULT.200.$HUMAN(每日追杀次数)>>元宝继续追杀吗？ @确定前往追杀目标
+BREAK
+
+
+[@双条件追踪]
+#IF
+LARGE $CustomValue(9) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$追杀特戒专用 <$CustomValue(9)>
+SPLIT <$STR(S$追杀特戒专用)> | S$追杀特戒专用1
+MOV N$追杀特戒CD $STR(S$追杀特戒专用1_18)
+#IF
+!LARGE $LONGDATE <$CustomValue(22)>
+#ACT
+SENDMSG 5 你的追杀特戒CD正在冷却中，还需等待<$DEC.$CustomValue(22).$LONGDATE>秒！
+break
+
+#IF
+!LARGE $CustomValue(9) $STR(S$追杀目标特戒等级)
+#ACT
+SENDMSG 19 你的追踪戒指不大于目标等级
+BREAK
+
+#IF
+SMALL <<$STR(S$追杀条件分割_1)>> <$STR(S$追杀条件分割_2)>
+#ACT
+SENDMSG 19 不满足进入条件
+BREAK
+
+#IF
+SMALL <<$STR(S$追杀条件分割_3)>> <$STR(S$追杀条件分割_4)>
+#ACT
+SENDMSG 19 不满足进入条件
+BREAK
+
+#IF
+SMALL $INC.$Money(2).$Money(4) <$INC.200.<$MULT.200.$HUMAN(每日追杀次数)>>
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+TRUE
+#ACT
+QueryMsg 确定消费<$INC.200.<$MULT.200.$HUMAN(每日追杀次数)>>元宝继续追杀吗？ @确定前往追杀目标
+BREAK
+
+
+[@三条件追踪]
+#IF
+LARGE $CustomValue(9) 0
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$追杀特戒专用 <$CustomValue(9)>
+SPLIT <$STR(S$追杀特戒专用)> | S$追杀特戒专用1
+MOV N$追杀特戒CD $STR(S$追杀特戒专用1_18)
+#IF
+!LARGE $LONGDATE <$CustomValue(22)>
+#ACT
+SENDMSG 5 你的追杀特戒CD正在冷却中，还需等待<$DEC.$CustomValue(22).$LONGDATE>秒！
+break
+
+#IF
+!LARGE $CustomValue(9) $STR(S$追杀目标特戒等级)
+#ACT
+SENDMSG 19 你的追踪戒指不大于目标等级
+BREAK
+
+#IF
+SMALL <<$STR(S$追杀条件分割_1)>> <$STR(S$追杀条件分割_2)>
+#ACT
+SENDMSG 19 不满足进入条件
+BREAK
+
+#IF
+SMALL <<$STR(S$追杀条件分割_3)>> <$STR(S$追杀条件分割_4)>
+#ACT
+SENDMSG 19 不满足进入条件
+BREAK
+
+#IF
+SMALL <<$STR(S$追杀条件分割_5)>> <$STR(S$追杀条件分割_6)>
+#ACT
+SENDMSG 19 不满足进入条件
+BREAK
+
+#IF
+SMALL $INC.$Money(2).$Money(4) <$INC.200.<$MULT.200.$HUMAN(每日追杀次数)>>
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+TRUE
+#ACT
+QueryMsg 确定消费<$INC.200.<$MULT.200.$HUMAN(每日追杀次数)>>元宝继续追杀吗？ @确定前往追杀目标
+BREAK
+
+
+
+[@确定前往追杀目标1]
+#IF
+SMALL $INC.$Money(2).$Money(4) <$INC.200.<$MULT.200.$HUMAN(每日追杀次数)>>
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+!SMALL $Money(4) <$INC.200.<$MULT.200.$HUMAN(每日追杀次数)>>
+#ACT
+Money 4 - <$INC.200.<$MULT.200.$HUMAN(每日追杀次数)>>
+#ELSEACT
+Money 2 - <$DEC.<$INC.200.<$MULT.200.$HUMAN(每日追杀次数)>>.$MONEY(4)>
+Money 4 - $MONEY(4)
+
+#IF
+TRUE
+#ACT
+MAPMOVE $STR(S$追杀目标地图号) $STR(S$追杀目标地图X) $STR(S$追杀目标地图Y) 3
+CHANGECUSTOMVALUE 22 = <$INC.$LONGDATE.$STR(N$追杀特戒CD)>
+CalcVar Human 每日追杀次数 + 1 1
+OPENUI 101 2
+BREAK
+
+
+[@关闭角色面板]
+#ACT
+MOV S$角色 关闭
+OpenUi 101 2
+BREAK
+
+[@封魔录_转生]
+#IF
+EQUAL <$TASK(42)> 1
+#ACT
+UpdateTask 42 1
+#IF
+EQUAL <$TASK(44)> 1
+#ACT
+UpdateTask 44 1
+#IF
+EQUAL <$TASK(46)> 1
+#ACT
+UpdateTask 46 1
+#IF
+EQUAL <$TASK(48)> 1
+#ACT
+UpdateTask 48 1
+#IF
+EQUAL <$TASK(50)> 1
+#ACT
+UpdateTask 50 1
+#IF
+EQUAL <$TASK(52)> 1
+#ACT
+UpdateTask 52 1
+#IF
+EQUAL <$TASK(54)> 1
+#ACT
+UpdateTask 54 1
+#IF
+EQUAL <$TASK(56)> 1
+#ACT
+UpdateTask 56 1
+#IF
+EQUAL <$TASK(58)> 1
+#ACT
+UpdateTask 58 1
+#IF
+!SMALL <$CustomValue(42)> 1
+EQUAL <$TASK(42)> 1
+#ACT
+UpdateTask 42 2
+GOTO @封魔录&封魔录_现行任务ID=43
+
+#IF
+!SMALL <$CustomValue(42)> 2
+EQUAL <$TASK(44)> 1
+#ACT
+UpdateTask 44 2
+GOTO @封魔录&封魔录_现行任务ID=45
+
+#IF
+!SMALL <$CustomValue(42)> 3
+EQUAL <$TASK(46)> 1
+#ACT
+UpdateTask 46 2
+GOTO @封魔录&封魔录_现行任务ID=47
+
+#IF
+!SMALL <$CustomValue(42)> 4
+EQUAL <$TASK(48)> 1
+#ACT
+UpdateTask 48 2
+GOTO @封魔录&封魔录_现行任务ID=49
+
+#IF
+!SMALL <$CustomValue(42)> 5
+EQUAL <$TASK(50)> 1
+#ACT
+UpdateTask 50 2
+GOTO @封魔录&封魔录_现行任务ID=51
+
+#IF
+!SMALL <$CustomValue(42)> 6
+EQUAL <$TASK(52)> 1
+#ACT
+UpdateTask 52 2
+GOTO @封魔录&封魔录_现行任务ID=53
+
+#IF
+!SMALL <$CustomValue(42)> 7
+EQUAL <$TASK(54)> 1
+#ACT
+UpdateTask 54 2
+GOTO @封魔录&封魔录_现行任务ID=55
+
+#IF
+!SMALL <$CustomValue(42)> 8
+EQUAL <$TASK(56)> 1
+#ACT
+UpdateTask 56 2
+GOTO @封魔录&封魔录_现行任务ID=57
+
+#IF
+!SMALL <$CustomValue(42)> 9
+EQUAL <$TASK(58)> 1
+#ACT
+UpdateTask 58 2
+GOTO @封魔录&封魔录_现行任务ID=59
+
+
+[@F10界面红点判断]
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\魔盾属性.txt S$魔盾属性提取 <$CustomValue(4)>
+SPLIT <$STR(S$魔盾属性提取)> | S$魔盾属性显示
+#IF
+!SMALL $ITEMVALSUM(魔盾精粹).DURA $STR(S$魔盾属性显示_6)
+#ACT
+MOV S$F10主界面1 <Img|id=mthd|x=30.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$F10主界面1 
+
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(5).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用2 <$INC.$CustomValue(6).1>
+SPLIT $STR(S$特戒面板专用2) | N$特戒面板显示2
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用3 <$INC.$CustomValue(7).1>
+SPLIT $STR(S$特戒面板专用3) | N$特戒面板显示3
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用4 <$INC.$CustomValue(8).1>
+SPLIT $STR(S$特戒面板专用4) | N$特戒面板显示4
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用5 <$INC.$CustomValue(9).1>
+SPLIT $STR(S$特戒面板专用5) | N$特戒面板显示5
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用6 <$INC.$CustomValue(10).1>
+SPLIT $STR(S$特戒面板专用6) | N$特戒面板显示6
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用7 <$INC.$CustomValue(11).1>
+SPLIT $STR(S$特戒面板专用7) | N$特戒面板显示7
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用8 <$INC.$CustomValue(12).1>
+SPLIT $STR(S$特戒面板专用8) | N$特戒面板显示8
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用9 <$INC.$CustomValue(13).1>
+SPLIT $STR(S$特戒面板专用9) | N$特戒面板显示9
+
+#IFONE
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示1_20)>
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示2_20)>
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示3_20)>
+#ACT
+MOV S$特戒红点转生合区1 1
+#ELSEACT
+MOV S$特戒红点转生合区1 0
+
+#IFONE
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示4_20)>
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示5_20)>
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示6_20)>
+#ACT
+MOV S$特戒红点转生合区2 1
+#ELSEACT
+MOV S$特戒红点转生合区2 0
+
+#IFONE
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示7_20)>
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示8_20)>
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示9_20)>
+#ACT
+MOV S$特戒红点转生合区3 1
+#ELSEACT
+MOV S$特戒红点转生合区3 0
+
+#IF
+SMALL <$HFCOUNT> 1
+EQUAL S$特戒红点转生合区2 1
+#ACT
+MOV S$特戒红点转生合区2 0
+
+#IF
+SMALL <$HFCOUNT> 1
+!LARGE $CUSTOMVALUE(42) 1
+EQUAL S$特戒红点转生合区3 1
+#ACT
+MOV S$特戒红点转生合区3 0
+
+
+#IFONE
+EQUAL S$特戒红点转生合区1 1
+EQUAL S$特戒红点转生合区2 1
+EQUAL S$特戒红点转生合区3 1
+#ACT
+MOV S$F10主界面2 <Img|id=tjhd|x=30.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$F10主界面2 
+
+#IF
+TRUE
+#ACT
+ReadExcel ..\QuestDiary\文本读取\转生属性.xls <$INC.$CustomValue(42).1>
+MOV N$当前属性9 <$996(Excel).8>
+
+#IF
+LARGE $LEVEL 114
+LARGE $EXP 30000000
+LARGE $CustomValue(88) 0
+#ACT
+MOV S$转生红点1 1
+#ELSEACT
+MOV S$转生红点1 
+
+#IF
+!SMALL <$INC.$MONEY(2).$MONEY(4)> <$STR(N$当前属性9)>
+!SMALL $MONEY(10) <$STR(N$当前属性9)>
+#ACT
+MOV S$转生红点2 1
+#ELSEACT
+MOV S$转生红点2 
+
+
+#IFONE
+!EQUAL $STR(S$转生红点1) 
+!EQUAL $STR(S$转生红点2) 
+#ACT
+MOV S$F10主界面3 <Img|id=jjhd|x=30.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$F10主界面3 
+
+
+#if
+SMALL $TABLE(Lemon_YY).BM 100
+LARGE <$ITEMCOUNT(仙翎之羽)> 0
+#ACT
+MOV S$羽翼升级红点1 <Img|id=sjhd1|x=105.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV S$羽翼升级红点2 <Img|id=sjhd2|x=105.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼升级红点1 
+MOV S$羽翼升级红点2 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC1 1
+EQUAL $TABLE(Lemon_YY).BM 10
+#ACT
+MOV S$羽翼技能解锁红点1 <Img|id=jshd1|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点1 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC2 1
+EQUAL $TABLE(Lemon_YY).BM 35
+#ACT
+MOV S$羽翼技能解锁红点2 <Img|id=jshd2|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点2 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC3 1
+EQUAL $TABLE(Lemon_YY).BM 55
+#ACT
+MOV S$羽翼技能解锁红点3 <Img|id=jshd3|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点3 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC4 1
+EQUAL $TABLE(Lemon_YY).BM 55
+#ACT
+MOV S$羽翼技能解锁红点4 <Img|id=jshd4|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点4 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS1 0
+CHECKITEM 纵横之翼
+#ACT
+MOV S$特殊羽翼激活红点1 <Img|id=yy1a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点1 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS2 0
+CHECKITEM 传世之翼
+#ACT
+MOV S$特殊羽翼激活红点2 <Img|id=yy2a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点2 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS3 0
+CHECKITEM 魔焱之翼
+#ACT
+MOV S$特殊羽翼激活红点3 <Img|id=yy3a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点3 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS4 0
+CHECKITEM 恶魔之翼
+#ACT
+MOV S$特殊羽翼激活红点4 <Img|id=yy4a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点4 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS5 0
+CHECKITEM 幻灵凤羽
+#ACT
+MOV S$特殊羽翼激活红点5 <Img|id=yy5a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点5 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS6 0
+CHECKITEM 蓝冰之焱
+#ACT
+MOV S$特殊羽翼激活红点6 <Img|id=yy6a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点6 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS7 0
+CHECKITEM 神武仙翼
+#ACT
+MOV S$特殊羽翼激活红点7 <Img|id=yy7a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点7 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS8 0
+CHECKITEM 神王仙翼
+#ACT
+MOV S$特殊羽翼激活红点8 <Img|id=yy8a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点8 
+
+
+#if
+LARGE $TABLE(Lemon_YY).TS1 0
+#ACT
+LOADEXVAR S$升星所需1 羽翼红点 <$TABLE(Lemon_YY).XJ1> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS2 0
+#ACT
+LOADEXVAR S$升星所需2 羽翼红点 <$TABLE(Lemon_YY).XJ2> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS3 0
+#ACT
+LOADEXVAR S$升星所需3 羽翼红点 <$TABLE(Lemon_YY).XJ3> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS4 0
+#ACT
+LOADEXVAR S$升星所需4 羽翼红点 <$TABLE(Lemon_YY).XJ4> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS5 0
+#ACT
+LOADEXVAR S$升星所需5 羽翼红点 <$TABLE(Lemon_YY).XJ5> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS6 0
+#ACT
+LOADEXVAR S$升星所需6 羽翼红点 <$TABLE(Lemon_YY).XJ6> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS7 0
+#ACT
+LOADEXVAR S$升星所需7 羽翼红点 <$TABLE(Lemon_YY).XJ7> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS8 0
+#ACT
+LOADEXVAR S$升星所需8 羽翼红点 <$TABLE(Lemon_YY).XJ8> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+
+#IF
+LARGE $TABLE(Lemon_YY).TS1 0
+CHECKITEM 纵横之翼 <$STR(S$升星所需1)>
+#ACT
+MOV S$特殊羽翼升星红点1 <Img|id=yy1a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点1 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS2 0
+CHECKITEM 传世之翼 <$STR(S$升星所需2)>
+#ACT
+MOV S$特殊羽翼升星红点2 <Img|id=yy2a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点2 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS3 0
+CHECKITEM 魔焱之翼 <$STR(S$升星所需3)>
+#ACT
+MOV S$特殊羽翼升星红点3 <Img|id=yy1a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点3 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS4 0
+CHECKITEM 恶魔之翼 <$STR(S$升星所需4)>
+#ACT
+MOV S$特殊羽翼升星红点4 <Img|id=yy4a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点4 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS5 0
+CHECKITEM 幻灵凤羽 <$STR(S$升星所需5)>
+#ACT
+MOV S$特殊羽翼升星红点5 <Img|id=yy5a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点5 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS6 0
+CHECKITEM 蓝冰之焱 <$STR(S$升星所需6)>
+#ACT
+MOV S$特殊羽翼升星红点6 <Img|id=yy6a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点6 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS7 0
+CHECKITEM 神武仙翼 <$STR(S$升星所需7)>
+#ACT
+MOV S$特殊羽翼升星红点7 <Img|id=yy7a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点7 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS8 0
+CHECKITEM 神王仙翼 <$STR(S$升星所需8)>
+#ACT
+MOV S$特殊羽翼升星红点8 <Img|id=yy8a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点8 
+
+
+
+;--------------------------------------------------------右侧3按钮红点
+#IFONE
+!EQUAL S$羽翼升级红点1 
+!EQUAL S$羽翼升级红点2 
+!EQUAL S$羽翼技能解锁红点1 
+!EQUAL S$羽翼技能解锁红点2 
+!EQUAL S$羽翼技能解锁红点3 
+!EQUAL S$羽翼技能解锁红点4 
+!EQUAL S$特殊羽翼激活红点1 
+!EQUAL S$特殊羽翼激活红点2 
+!EQUAL S$特殊羽翼激活红点3 
+!EQUAL S$特殊羽翼激活红点4 
+!EQUAL S$特殊羽翼激活红点5 
+!EQUAL S$特殊羽翼激活红点6 
+!EQUAL S$特殊羽翼激活红点7 
+!EQUAL S$特殊羽翼激活红点8 
+!EQUAL S$特殊羽翼升星红点1 
+!EQUAL S$特殊羽翼升星红点2 
+!EQUAL S$特殊羽翼升星红点3 
+!EQUAL S$特殊羽翼升星红点4 
+!EQUAL S$特殊羽翼升星红点5 
+!EQUAL S$特殊羽翼升星红点6 
+!EQUAL S$特殊羽翼升星红点7 
+!EQUAL S$特殊羽翼升星红点8 
+#ACT
+MOV S$羽翼主按钮红点 <Img|id=yczanhd|x=55.0|y=5.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼主按钮红点 
+
+#IF
+TRUE
+#ACT
+#CALL [\红点功能\红点判断.txt] @角色按钮红点判断
+BREAK

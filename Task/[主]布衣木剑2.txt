@@ -1,0 +1,8 @@
+[setup]
+MainTitle = 主线任务
+MainID=2
+IsMain=0
+stepcount = 1
+title = [　]布衣木剑
+ID = 2
+stepstitle1 = 　\<color=green 去找><铁匠/@@goto 1 铁匠 226,215><color=green 领取您的专属武器>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\　<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=<$TASKVAL(2).I0>|itemcount=1|name=<$TASKVAL(2).S0>|showtips=1|bgtype=public/clk.png|scale=1>

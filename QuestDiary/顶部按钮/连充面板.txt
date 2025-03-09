@@ -1,0 +1,2744 @@
+[@充值活动面板]
+{
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$连充时装职业区分1 黄金雷霆怒斩
+MOV S$连充时装职业区分2 黄金无赦
+MOV S$连充时装职业区分3 黄金雷裂刀
+MOV S$连充时装looks1 30647
+MOV S$连充时装looks2 26131
+MOV S$连充时装looks3 30646
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$连充时装职业区分1 黄金龙牙利刃
+MOV S$连充时装职业区分2 黄金夺魄
+MOV S$连充时装职业区分3 黄金霹雳法杖
+MOV S$连充时装looks1 8137
+MOV S$连充时装looks2 26132
+MOV S$连充时装looks3 30648
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$连充时装职业区分1 黄金逍遥无极扇
+MOV S$连充时装职业区分2 黄金聚灵
+MOV S$连充时装职业区分3 黄金道玄剑
+MOV S$连充时装looks1 8138
+MOV S$连充时装looks2 26133
+MOV S$连充时装looks3 30649
+
+#IF
+TRUE
+#ACT
+MOV S$每日充值奖励1 
+MOV S$每日充值奖励2 
+MOV S$每日充值奖励3 
+MOV S$每日充值奖励4 
+MOV S$每日充值奖励5 
+MOV S$每日充值奖励6 
+MOV N$累充按钮1 1
+MOV N$累充按钮2 2
+GOTO @累充红点判断
+#IF
+EQUAL G0 0
+#ACT
+MOV S$每日充值奖励1 <Img|id=10|children={10-1,10-2,10-3,10-4,10-5,10-6,10-7,108}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励1 <RText|id=10-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/30元/FCOLOR=67>>
+INC S$每日充值奖励1 <Img|id=10-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=1000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Img|id=10-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-5|x=324.0|y=11.0|width=70|height=70|itemid=1325|itemcount=40|name=仙翎之羽|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Button|id=108|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色1)>|text=<$STR(S$领取奖励文字1)>|link=@开服每日充值1>
+
+MOV S$每日充值奖励2 <Img|id=11|children={11-1,11-2,11-3,11-4,11-5,11-6,11-7,118}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励2 <RText|id=11-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/198元/FCOLOR=67>>
+INC S$每日充值奖励2 <Img|id=11-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=2000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Img|id=11-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-5|x=324.0|y=11.0|width=70|height=70|itemid=1325|itemcount=40|name=仙翎之羽|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Button|id=118|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色2)>|text=<$STR(S$领取奖励文字2)>|link=@开服每日充值2>
+
+MOV S$每日充值奖励3 <Img|id=12|children={12-1,12-2,12-3,12-4,12-5,12-6,12-7,128}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励3 <RText|id=12-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/648元/FCOLOR=67>>
+INC S$每日充值奖励3 <Img|id=12-2|x=210.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-3|x=209.0|y=11.0|width=70|height=70|itemid=26900|itemcount=6000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-4|x=290.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-5|x=289.0|y=11.0|width=70|height=70|itemid=30272|itemcount=60|name=法宝精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-6|x=370.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-7|x=369.0|y=11.0|width=70|height=70|itemid=30919|itemcount=40|name=神兽碎片|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Button|id=128|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色3)>|text=<$STR(S$领取奖励文字3)>|link=@开服每日充值3>
+
+MOV S$每日充值奖励4 <Img|id=13|children={13-1,13-2,13-3,13-4,13-5,13-6,13-7,138}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励4 <RText|id=13-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/1000元/FCOLOR=67>>
+INC S$每日充值奖励4 <Img|id=13-2|x=210.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-3|x=209.0|y=11.0|width=70|height=70|itemid=26900|itemcount=9000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-4|x=290.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-5|x=289.0|y=11.0|width=70|height=70|itemid=491|itemcount=60|name=特戒精华|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-6|x=370.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-7|x=369.0|y=11.0|width=70|height=70|itemid=30919|itemcount=80|name=神兽碎片|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Button|id=138|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色4)>|text=<$STR(S$领取奖励文字4)>|link=@开服每日充值4>
+
+#IF
+EQUAL G0 0
+!SMALL <$CustomValue(49)> 1000
+#ACT
+MOV S$每日充值奖励5 <Img|id=14|children={14-1,14-2,14-3,14-4,14-5,14-6,14-7,148}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励5 <RText|id=14-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/3000元/FCOLOR=67>>
+INC S$每日充值奖励5 <Img|id=14-2|x=210.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-3|x=209.0|y=11.0|width=70|height=70|itemid=26900|itemcount=16000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-4|x=290.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-5|x=289.0|y=11.0|width=70|height=70|itemid=26748|itemcount=200|name=特装精粹(攻)|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-6|x=370.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-7|x=369.0|y=11.0|width=70|height=70|itemid=30919|itemcount=200|name=神兽碎片|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Button|id=148|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色5)>|text=<$STR(S$领取奖励文字5)>|link=@开服每日充值5>
+
+#IF
+EQUAL G0 0
+!SMALL <$CustomValue(49)> 3000
+#ACT
+MOV S$每日充值奖励6 <Img|id=15|children={15-1,15-2,15-3,15-4,15-5,15-6,15-7,158}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励6 <RText|id=15-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/5000元/FCOLOR=67>>
+INC S$每日充值奖励6 <Img|id=15-2|x=210.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-3|x=209.0|y=11.0|width=70|height=70|itemid=26900|itemcount=16000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-4|x=290.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-5|x=289.0|y=11.0|width=70|height=70|itemid=26747|itemcount=200|name=特装精粹(防)|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-6|x=370.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-7|x=369.0|y=11.0|width=70|height=70|itemid=30919|itemcount=400|name=神兽碎片|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Button|id=158|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色6)>|text=<$STR(S$领取奖励文字6)>|link=@开服每日充值6>
+
+
+#IF
+EQUAL G0 1
+#ACT
+MOV S$每日充值奖励1 <Img|id=10|children={10-1,10-2,10-3,10-4,10-5,10-6,10-7,108}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励1 <RText|id=10-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/30元/FCOLOR=67>>
+INC S$每日充值奖励1 <Img|id=10-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=400|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Img|id=10-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-5|x=324.0|y=11.0|width=70|height=70|itemid=1325|itemcount=80|name=仙翎之羽|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Button|id=108|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色1)>|text=<$STR(S$领取奖励文字1)>|link=@开服每日充值1>
+
+MOV S$每日充值奖励2 <Img|id=11|children={11-1,11-2,11-3,11-4,11-5,11-6,11-7,118}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励2 <RText|id=11-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/198元/FCOLOR=67>>
+INC S$每日充值奖励2 <Img|id=11-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=1000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Img|id=11-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-5|x=324.0|y=11.0|width=70|height=70|itemid=1325|itemcount=120|name=仙翎之羽|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Button|id=118|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色2)>|text=<$STR(S$领取奖励文字2)>|link=@开服每日充值2>
+
+MOV S$每日充值奖励3 <Img|id=12|children={12-1,12-2,12-3,12-4,12-5,12-6,12-7,128}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励3 <RText|id=12-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/648元/FCOLOR=67>>
+INC S$每日充值奖励3 <Img|id=12-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=2000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-5|x=324.0|y=11.0|width=70|height=70|itemid=1325|itemcount=200|name=仙翎之羽|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Button|id=128|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色3)>|text=<$STR(S$领取奖励文字3)>|link=@开服每日充值3>
+
+MOV S$每日充值奖励4 <Img|id=13|children={13-1,13-2,13-3,13-4,13-5,13-6,13-7,138}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励4 <RText|id=13-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/1000元/FCOLOR=67>>
+INC S$每日充值奖励4 <Img|id=13-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=4000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-5|x=324.0|y=11.0|width=70|height=70|itemid=1325|itemcount=300|name=仙翎之羽|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Button|id=138|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色4)>|text=<$STR(S$领取奖励文字4)>|link=@开服每日充值4>
+
+#IF
+EQUAL G0 1
+!SMALL <$CustomValue(49)> 1000
+#ACT
+MOV S$每日充值奖励5 <Img|id=14|children={14-1,14-2,14-3,14-4,14-5,14-6,14-7,148}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励5 <RText|id=14-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/3000元/FCOLOR=67>>
+INC S$每日充值奖励5 <Img|id=14-2|x=210.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-3|x=209.0|y=11.0|width=70|height=70|itemid=26900|itemcount=8000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-4|x=290.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-5|x=289.0|y=11.0|width=70|height=70|itemid=1325|itemcount=300|name=仙翎之羽|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-6|x=370.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-7|x=369.0|y=11.0|width=70|height=70|itemid=51083|itemcount=5|name=魔体经验券(30万)|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Button|id=148|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色5)>|text=<$STR(S$领取奖励文字5)>|link=@开服每日充值5>
+
+#IF
+EQUAL G0 1
+!SMALL <$CustomValue(49)> 3000
+#ACT
+MOV S$每日充值奖励6 <Img|id=15|children={15-1,15-2,15-3,15-4,15-5,15-6,15-7,158}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励6 <RText|id=15-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/5000元/FCOLOR=67>>
+INC S$每日充值奖励6 <Img|id=15-2|x=210.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-3|x=209.0|y=11.0|width=70|height=70|itemid=55501|itemcount=1|name=纵横之翼|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-4|x=290.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-5|x=289.0|y=11.0|width=70|height=70|itemid=1325|itemcount=200|name=仙翎之羽|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-6|x=370.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-7|x=369.0|y=11.0|width=70|height=70|itemid=51083|itemcount=6|name=魔体经验券(30万)|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Button|id=158|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色6)>|text=<$STR(S$领取奖励文字6)>|link=@开服每日充值6>
+
+#IF
+EQUAL G0 2
+#ACT
+MOV S$每日充值奖励1 <Img|id=10|children={10-1,10-2,10-3,10-4,10-5,10-6,10-7,108}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励1 <RText|id=10-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/30元/FCOLOR=67>>
+INC S$每日充值奖励1 <Img|id=10-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=400|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Img|id=10-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-5|x=324.0|y=11.0|width=70|height=70|itemid=1493|itemcount=80|name=灵兽精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Button|id=108|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色1)>|text=<$STR(S$领取奖励文字1)>|link=@开服每日充值1>
+
+MOV S$每日充值奖励2 <Img|id=11|children={11-1,11-2,11-3,11-4,11-5,11-6,11-7,118}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励2 <RText|id=11-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/198元/FCOLOR=67>>
+INC S$每日充值奖励2 <Img|id=11-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=1000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Img|id=11-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-5|x=324.0|y=11.0|width=70|height=70|itemid=1493|itemcount=120|name=灵兽精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Button|id=118|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色2)>|text=<$STR(S$领取奖励文字2)>|link=@开服每日充值2>
+
+MOV S$每日充值奖励3 <Img|id=12|children={12-1,12-2,12-3,12-4,12-5,12-6,12-7,128}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励3 <RText|id=12-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/648元/FCOLOR=67>>
+INC S$每日充值奖励3 <Img|id=12-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=2000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-5|x=324.0|y=11.0|width=70|height=70|itemid=1493|itemcount=200|name=灵兽精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Button|id=128|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色3)>|text=<$STR(S$领取奖励文字3)>|link=@开服每日充值3>
+
+MOV S$每日充值奖励4 <Img|id=13|children={13-1,13-2,13-3,13-4,13-5,13-6,13-7,138}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励4 <RText|id=13-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/1000元/FCOLOR=67>>
+INC S$每日充值奖励4 <Img|id=13-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=4000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-5|x=324.0|y=11.0|width=70|height=70|itemid=1493|itemcount=300|name=灵兽精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Button|id=138|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色4)>|text=<$STR(S$领取奖励文字4)>|link=@开服每日充值4>
+
+#IF
+EQUAL G0 2
+!SMALL <$CustomValue(49)> 1000
+#ACT
+MOV S$每日充值奖励5 <Img|id=14|children={14-1,14-2,14-3,14-4,14-5,14-6,14-7,148}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励5 <RText|id=14-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/3000元/FCOLOR=67>>
+INC S$每日充值奖励5 <Img|id=14-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=8000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-5|x=324.0|y=11.0|width=70|height=70|itemid=1493|itemcount=400|name=灵兽精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Button|id=148|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色5)>|text=<$STR(S$领取奖励文字5)>|link=@开服每日充值5>
+
+#IF
+EQUAL G0 2
+!SMALL <$CustomValue(49)> 3000
+#ACT
+MOV S$每日充值奖励6 <Img|id=15|children={15-1,15-2,15-3,15-4,15-5,15-6,15-7,158}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励6 <RText|id=15-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/5000元/FCOLOR=67>>
+INC S$每日充值奖励6 <Img|id=15-2|x=210.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-3|x=209.0|y=11.0|width=70|height=70|itemid=1493|itemcount=200|name=灵兽精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-4|x=290.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-5|x=289.0|y=11.0|width=70|height=70|itemid=51083|itemcount=6|name=魔体经验券(30万)|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-6|x=370.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-7|x=369.0|y=11.0|width=70|height=70|itemid=30525|itemcount=1|name=暗月妖狼(坐骑)|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Button|id=158|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色6)>|text=<$STR(S$领取奖励文字6)>|link=@开服每日充值6>
+
+#IF
+EQUAL G0 3
+#ACT
+MOV S$每日充值奖励1 <Img|id=10|children={10-1,10-2,10-3,10-4,10-5,10-6,10-7,108}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励1 <RText|id=10-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/30元/FCOLOR=67>>
+INC S$每日充值奖励1 <Img|id=10-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=400|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Img|id=10-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-5|x=324.0|y=11.0|width=70|height=70|itemid=491|itemcount=60|name=特戒精华|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Button|id=108|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色1)>|text=<$STR(S$领取奖励文字1)>|link=@开服每日充值1>
+
+MOV S$每日充值奖励2 <Img|id=11|children={11-1,11-2,11-3,11-4,11-5,11-6,11-7,118}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励2 <RText|id=11-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/198元/FCOLOR=67>>
+INC S$每日充值奖励2 <Img|id=11-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=100|name=特戒精华|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Img|id=11-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-5|x=324.0|y=11.0|width=70|height=70|itemid=490|itemcount=60|name=特戒精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Button|id=118|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色2)>|text=<$STR(S$领取奖励文字2)>|link=@开服每日充值2>
+
+MOV S$每日充值奖励3 <Img|id=12|children={12-1,12-2,12-3,12-4,12-5,12-6,12-7,128}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励3 <RText|id=12-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/648元/FCOLOR=67>>
+INC S$每日充值奖励3 <Img|id=12-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=200|name=特戒精华|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-5|x=324.0|y=11.0|width=70|height=70|itemid=490|itemcount=140|name=特戒精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Button|id=128|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色3)>|text=<$STR(S$领取奖励文字3)>|link=@开服每日充值3>
+
+MOV S$每日充值奖励4 <Img|id=13|children={13-1,13-2,13-3,13-4,13-5,13-6,13-7,138}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励4 <RText|id=13-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/1000元/FCOLOR=67>>
+INC S$每日充值奖励4 <Img|id=13-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=300|name=特戒精华|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-5|x=324.0|y=11.0|width=70|height=70|itemid=490|itemcount=200|name=特戒精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Button|id=138|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色4)>|text=<$STR(S$领取奖励文字4)>|link=@开服每日充值4>
+
+#IF
+EQUAL G0 3
+!SMALL <$CustomValue(49)> 1000
+#ACT
+MOV S$每日充值奖励5 <Img|id=14|children={14-1,14-2,14-3,14-4,14-5,14-6,14-7,148}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励5 <RText|id=14-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/3000元/FCOLOR=67>>
+INC S$每日充值奖励5 <Img|id=14-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=400|name=特戒精华|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-5|x=324.0|y=11.0|width=70|height=70|itemid=490|itemcount=300|name=特戒精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Button|id=148|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色5)>|text=<$STR(S$领取奖励文字5)>|link=@开服每日充值5>
+
+#IF
+EQUAL G0 3
+!SMALL <$CustomValue(49)> 3000
+#ACT
+MOV S$每日充值奖励6 <Img|id=15|children={15-1,15-2,15-3,15-4,15-5,15-6,15-7,158}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励6 <RText|id=15-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/5000元/FCOLOR=67>>
+INC S$每日充值奖励6 <Img|id=15-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=600|name=特戒精华|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-5|x=324.0|y=11.0|width=70|height=70|itemid=490|itemcount=460|name=特戒精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Button|id=158|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色6)>|text=<$STR(S$领取奖励文字6)>|link=@开服每日充值6>
+
+#IF
+EQUAL G0 4
+#ACT
+MOV S$每日充值奖励1 <Img|id=10|children={10-1,10-2,10-3,10-4,10-5,10-6,10-7,108}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励1 <RText|id=10-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/30元/FCOLOR=67>>
+INC S$每日充值奖励1 <Img|id=10-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=1000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Img|id=10-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-5|x=324.0|y=11.0|width=70|height=70|itemid=30272|itemcount=30|name=法宝精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Button|id=108|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色1)>|text=<$STR(S$领取奖励文字1)>|link=@开服每日充值1>
+
+MOV S$每日充值奖励2 <Img|id=11|children={11-1,11-2,11-3,11-4,11-5,11-6,11-7,118}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励2 <RText|id=11-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/198元/FCOLOR=67>>
+INC S$每日充值奖励2 <Img|id=11-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=2000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Img|id=11-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-5|x=324.0|y=11.0|width=70|height=70|itemid=30272|itemcount=60|name=法宝精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Button|id=118|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色2)>|text=<$STR(S$领取奖励文字2)>|link=@开服每日充值2>
+
+MOV S$每日充值奖励3 <Img|id=12|children={12-1,12-2,12-3,12-4,12-5,12-6,12-7,128}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励3 <RText|id=12-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/648元/FCOLOR=67>>
+INC S$每日充值奖励3 <Img|id=12-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=3000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-5|x=324.0|y=11.0|width=70|height=70|itemid=30272|itemcount=140|name=法宝精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Button|id=128|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色3)>|text=<$STR(S$领取奖励文字3)>|link=@开服每日充值3>
+
+MOV S$每日充值奖励4 <Img|id=13|children={13-1,13-2,13-3,13-4,13-5,13-6,13-7,138}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励4 <RText|id=13-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/1000元/FCOLOR=67>>
+INC S$每日充值奖励4 <Img|id=13-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-3|x=244.0|y=11.0|width=70|height=70|itemid=25902|itemcount=1|name=招魂幡|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-5|x=324.0|y=11.0|width=70|height=70|itemid=30272|itemcount=200|name=法宝精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Button|id=138|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色4)>|text=<$STR(S$领取奖励文字4)>|link=@开服每日充值4>
+
+#IF
+EQUAL G0 4
+!SMALL <$CustomValue(49)> 1000
+#ACT
+MOV S$每日充值奖励5 <Img|id=14|children={14-1,14-2,14-3,14-4,14-5,14-6,14-7,148}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励5 <RText|id=14-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/3000元/FCOLOR=67>>
+INC S$每日充值奖励5 <Img|id=14-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=8000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-5|x=324.0|y=11.0|width=70|height=70|itemid=30272|itemcount=400|name=法宝精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Button|id=148|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色5)>|text=<$STR(S$领取奖励文字5)>|link=@开服每日充值5>
+
+#IF
+EQUAL G0 4
+!SMALL <$CustomValue(49)> 3000
+#ACT
+MOV S$每日充值奖励6 <Img|id=15|children={15-1,15-2,15-3,15-4,15-5,15-6,15-7,158}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励6 <RText|id=15-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/5000元/FCOLOR=67>>
+INC S$每日充值奖励6 <Img|id=15-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-3|x=244.0|y=11.0|width=70|height=70|itemid=25903|itemcount=1|name=紫金葫芦|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-5|x=324.0|y=11.0|width=70|height=70|itemid=30272|itemcount=460|name=法宝精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Button|id=158|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色6)>|text=<$STR(S$领取奖励文字6)>|link=@开服每日充值6>
+
+#IF
+EQUAL G0 5
+#ACT
+MOV S$每日充值奖励1 <Img|id=10|children={10-1,10-2,10-3,10-4,10-5,10-6,10-7,108}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励1 <RText|id=10-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/30元/FCOLOR=67>>
+INC S$每日充值奖励1 <Img|id=10-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-3|x=244.0|y=11.0|width=70|height=70|itemid=26900|itemcount=800|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Img|id=10-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-5|x=324.0|y=11.0|width=70|height=70|itemid=25898|itemcount=40|name=凶器精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Button|id=108|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色1)>|text=<$STR(S$领取奖励文字1)>|link=@开服每日充值1>
+
+MOV S$每日充值奖励2 <Img|id=11|children={11-1,11-2,11-3,11-4,11-5,11-6,11-7,118}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励2 <RText|id=11-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/198元/FCOLOR=67>>
+INC S$每日充值奖励2 <Img|id=11-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=1600|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Img|id=11-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-5|x=324.0|y=11.0|width=70|height=70|itemid=25898|itemcount=100|name=凶器精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Button|id=118|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色2)>|text=<$STR(S$领取奖励文字2)>|link=@开服每日充值2>
+
+MOV S$每日充值奖励3 <Img|id=12|children={12-1,12-2,12-3,12-4,12-5,12-6,12-7,128}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励3 <RText|id=12-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/648元/FCOLOR=67>>
+INC S$每日充值奖励3 <Img|id=12-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=2000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-5|x=324.0|y=11.0|width=70|height=70|itemid=25898|itemcount=200|name=凶器精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Button|id=128|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色3)>|text=<$STR(S$领取奖励文字3)>|link=@开服每日充值3>
+
+MOV S$每日充值奖励4 <Img|id=13|children={13-1,13-2,13-3,13-4,13-5,13-6,13-7,138}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励4 <RText|id=13-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/1000元/FCOLOR=67>>
+INC S$每日充值奖励4 <Img|id=13-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-3|x=244.0|y=11.0|width=70|height=70|itemid=288|itemcount=1|name=碧海天王|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-5|x=324.0|y=11.0|width=70|height=70|itemid=25898|itemcount=300|name=凶器精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Button|id=138|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色4)>|text=<$STR(S$领取奖励文字4)>|link=@开服每日充值4>
+
+#IF
+EQUAL G0 5
+!SMALL <$CustomValue(49)> 1000
+#ACT
+MOV S$每日充值奖励5 <Img|id=14|children={14-1,14-2,14-3,14-4,14-5,14-6,14-7,148}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励5 <RText|id=14-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/3000元/FCOLOR=67>>
+INC S$每日充值奖励5 <Img|id=14-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=8000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-5|x=324.0|y=11.0|width=70|height=70|itemid=25898|itemcount=400|name=凶器精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Button|id=148|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色5)>|text=<$STR(S$领取奖励文字5)>|link=@开服每日充值5>
+
+#IF
+EQUAL G0 5
+!SMALL <$CustomValue(49)> 3000
+#ACT
+MOV S$每日充值奖励6 <Img|id=15|children={15-1,15-2,15-3,15-4,15-5,15-6,15-7,158}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励6 <RText|id=15-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/5000元/FCOLOR=67>>
+INC S$每日充值奖励6 <Img|id=15-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-3|x=244.0|y=11.0|width=70|height=70|itemid=26486|itemcount=1|name=圣甲斗士(时装)|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-5|x=324.0|y=11.0|width=70|height=70|itemid=25898|itemcount=400|name=凶器精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Button|id=158|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色6)>|text=<$STR(S$领取奖励文字6)>|link=@开服每日充值6>
+
+#IF
+EQUAL G0 6
+#ACT
+MOV S$每日充值奖励1 <Img|id=10|children={10-1,10-2,10-3,10-4,10-5,10-6,10-7,108}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励1 <RText|id=10-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/30元/FCOLOR=67>>
+INC S$每日充值奖励1 <Img|id=10-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-3|x=244.0|y=11.0|width=70|height=70|itemid=26747|itemcount=60|name=特装精粹(防)|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Img|id=10-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-5|x=324.0|y=11.0|width=70|height=70|itemid=26748|itemcount=60|name=特装精粹(攻)|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Button|id=108|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色1)>|text=<$STR(S$领取奖励文字1)>|link=@开服每日充值1>
+
+MOV S$每日充值奖励2 <Img|id=11|children={11-1,11-2,11-3,11-4,11-5,11-6,11-7,118}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励2 <RText|id=11-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/198元/FCOLOR=67>>
+INC S$每日充值奖励2 <Img|id=11-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=1000|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Img|id=11-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-5|x=324.0|y=11.0|width=70|height=70|itemid=26748|itemcount=100|name=特装精粹(攻)|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Button|id=118|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色2)>|text=<$STR(S$领取奖励文字2)>|link=@开服每日充值2>
+
+MOV S$每日充值奖励3 <Img|id=12|children={12-1,12-2,12-3,12-4,12-5,12-6,12-7,128}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励3 <RText|id=12-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/648元/FCOLOR=67>>
+INC S$每日充值奖励3 <Img|id=12-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-3|x=244.0|y=11.0|width=70|height=70|itemid=491|itemcount=1600|name=绑定元宝|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-5|x=324.0|y=11.0|width=70|height=70|itemid=26747|itemcount=200|name=特装精粹(防)|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Button|id=128|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色3)>|text=<$STR(S$领取奖励文字3)>|link=@开服每日充值3>
+
+MOV S$每日充值奖励4 <Img|id=13|children={13-1,13-2,13-3,13-4,13-5,13-6,13-7,138}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励4 <RText|id=13-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/1000元/FCOLOR=67>>
+INC S$每日充值奖励4 <Img|id=13-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-3|x=244.0|y=11.0|width=70|height=70|itemid=26747|itemcount=200|name=特装精粹(防)|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-5|x=324.0|y=11.0|width=70|height=70|itemid=26748|itemcount=200|name=特装精粹(攻)|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Button|id=138|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色4)>|text=<$STR(S$领取奖励文字4)>|link=@开服每日充值4>
+
+#IF
+EQUAL G0 6
+!SMALL <$CustomValue(49)> 1000
+#ACT
+MOV S$每日充值奖励5 <Img|id=14|children={14-1,14-2,14-3,14-4,14-5,14-6,14-7,148}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励5 <RText|id=14-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/3000元/FCOLOR=67>>
+INC S$每日充值奖励5 <Img|id=14-2|x=245.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-3|x=244.0|y=11.0|width=70|height=70|itemid=26747|itemcount=300|name=特装精粹(防)|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-4|x=325.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-5|x=324.0|y=11.0|width=70|height=70|itemid=26748|itemcount=300|name=特装精粹(攻)|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Button|id=148|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色5)>|text=<$STR(S$领取奖励文字5)>|link=@开服每日充值5>
+
+#IF
+EQUAL G0 6
+!SMALL <$CustomValue(49)> 3000
+#ACT
+MOV S$每日充值奖励6 <Img|id=15|children={15-1,15-2,15-3,15-4,15-5,15-6,15-7,158}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励6 <RText|id=15-1|x=32.0|y=32.0|size=18|color=255|text=<已充值/FCOLOR=255><<$CustomValue(49)>/5000元/FCOLOR=67>>
+INC S$每日充值奖励6 <Img|id=15-2|x=210.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-3|x=209.0|y=11.0|width=70|height=70|itemid=26747|itemcount=400|name=特装精粹(防)|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-4|x=290.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-5|x=289.0|y=11.0|width=70|height=70|itemid=26748|itemcount=400|name=特装精粹(攻)|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Img|id=15-6|x=370.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励6 <ItemShow|id=15-7|x=369.0|y=11.0|width=70|height=70|itemid=<$STR(S$连充时装LOOKS1)>|itemcount=1|name=<$STR(S$连充时装职业区分1)>(时装)|showtips=1|bgtype=1>
+INC S$每日充值奖励6 <Button|id=158|x=472.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色6)>|text=<$STR(S$领取奖励文字6)>|link=@开服每日充值6>
+
+#IF
+LARGE G0 6
+#ACT
+MOV S$每日充值奖励1 <Img|id=10|children={10-1,10-2,10-3,10-4,10-5,10-6,10-7,10-8,10-9,108}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励1 <RText|id=10-1|x=25.0|y=16.0|size=18|color=255|text=<已充值/FCOLOR=255>\<<$CustomValue(49)>/30元/FCOLOR=67>>
+INC S$每日充值奖励1 <Img|id=10-2|x=151.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-3|x=150.0|y=11.0|width=70|height=70|itemid=26747|itemcount=30|name=特装精粹(防)|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Img|id=10-4|x=231.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-5|x=230.0|y=11.0|width=70|height=70|itemid=26748|itemcount=30|name=特装精粹(攻)|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Img|id=10-6|x=311.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-7|x=310.0|y=11.0|width=70|height=70|itemid=1325|itemcount=20|name=仙翎之羽|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Img|id=10-8|x=391.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励1 <ItemShow|id=10-9|x=390.0|y=11.0|width=70|height=70|itemid=1493|itemcount=20|name=灵兽精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励1 <Button|id=108|x=477.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色1)>|text=<$STR(S$领取奖励文字1)>|link=@每日累计充值1>
+
+MOV S$每日充值奖励2 <Img|id=11|children={11-1,11-2,11-3,11-4,11-5,11-6,11-7,11-8,11-9,118}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励2 <RText|id=11-1|x=25.0|y=16.0|size=18|color=255|text=<已充值/FCOLOR=255>\<<$CustomValue(49)>/98元/FCOLOR=67>>
+INC S$每日充值奖励2 <Img|id=11-2|x=151.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-3|x=150.0|y=11.0|width=70|height=70|itemid=25898|itemcount=30|name=凶器精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Img|id=11-4|x=231.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-5|x=230.0|y=11.0|width=70|height=70|itemid=30272|itemcount=30|name=法宝精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Img|id=11-6|x=311.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-7|x=310.0|y=11.0|width=70|height=70|itemid=491|itemcount=60|name=特戒精华|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Img|id=11-8|x=391.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励2 <ItemShow|id=11-9|x=390.0|y=11.0|width=70|height=70|itemid=490|itemcount=60|name=特戒精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励2 <Button|id=118|x=477.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色2)>|text=<$STR(S$领取奖励文字2)>|link=@每日累计充值2>
+
+MOV S$每日充值奖励3 <Img|id=12|children={12-1,12-2,12-3,12-4,12-5,12-6,12-7,12-8,12-9,128}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励3 <RText|id=12-1|x=25.0|y=16.0|size=18|color=255|text=<已充值/FCOLOR=255>\<<$CustomValue(49)>/328元/FCOLOR=67>>
+INC S$每日充值奖励3 <Img|id=12-2|x=151.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-3|x=150.0|y=11.0|width=70|height=70|itemid=489|itemcount=40|name=特戒精魄|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-4|x=231.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-5|x=230.0|y=11.0|width=70|height=70|itemid=26748|itemcount=100|name=特装精粹(攻)|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-6|x=311.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-7|x=310.0|y=11.0|width=70|height=70|itemid=26747|itemcount=100|name=特装精粹(防)|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Img|id=12-8|x=391.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励3 <ItemShow|id=12-9|x=390.0|y=11.0|width=70|height=70|itemid=30256|itemcount=10|name=符石宝箱|showtips=1|bgtype=1>
+INC S$每日充值奖励3 <Button|id=128|x=477.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色3)>|text=<$STR(S$领取奖励文字3)>|link=@每日累计充值3>
+
+MOV S$每日充值奖励4 <Img|id=13|children={13-1,13-2,13-3,13-4,13-5,13-6,13-7,13-8,13-9,138}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励4 <RText|id=13-1|x=25.0|y=16.0|size=18|color=255|text=<已充值/FCOLOR=255>\<<$CustomValue(49)>/648元/FCOLOR=67>>
+INC S$每日充值奖励4 <Img|id=13-2|x=151.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-3|x=150.0|y=11.0|width=70|height=70|itemid=1325|itemcount=100|name=仙翎之羽|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-4|x=231.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-5|x=230.0|y=11.0|width=70|height=70|itemid=1493|itemcount=100|name=灵兽精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-6|x=311.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-7|x=310.0|y=11.0|width=70|height=70|itemid=26748|itemcount=140|name=特装精粹(攻)|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Img|id=13-8|x=391.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励4 <ItemShow|id=13-9|x=390.0|y=11.0|width=70|height=70|itemid=30255|itemcount=4|name=高级符石宝箱|showtips=1|bgtype=1>
+INC S$每日充值奖励4 <Button|id=138|x=477.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色4)>|text=<$STR(S$领取奖励文字4)>|link=@每日累计充值4>
+
+MOV S$每日充值奖励5 <Img|id=14|children={14-1,14-2,14-3,14-4,14-5,14-6,14-7,14-8,14-9,148}|x=349.0|y=315.0|esc=0|scale=1|img=private/fulihuodong/leichongfanli.png>
+INC S$每日充值奖励5 <RText|id=14-1|x=25.0|y=16.0|size=18|color=255|text=<已充值/FCOLOR=255>\<<$CustomValue(49)>/1298元/FCOLOR=67>>
+INC S$每日充值奖励5 <Img|id=14-2|x=151.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-3|x=150.0|y=11.0|width=70|height=70|itemid=25898|itemcount=180|name=凶器精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-4|x=231.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-5|x=230.0|y=11.0|width=70|height=70|itemid=30272|itemcount=180|name=法宝精粹|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-6|x=311.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-7|x=310.0|y=11.0|width=70|height=70|itemid=30255|itemcount=10|name=高级符石宝箱|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Img|id=14-8|x=391.0|y=12.0|img=public/fjfqk.png|esc=0|scale=1>
+INC S$每日充值奖励5 <ItemShow|id=14-9|x=390.0|y=11.0|width=70|height=70|itemid=26748|itemcount=1|name=特戒材料大礼包|showtips=1|bgtype=1>
+INC S$每日充值奖励5 <Button|id=148|x=477.0|y=23.0|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|scale=1|size=18|color=<$STR(N$领取奖励颜色5)>|text=<$STR(S$领取奖励文字5)>|link=@每日累计充值5>
+
+#IF
+TRUE
+#say
+<Img|id=2|children={3,6,9,4,5,wzzs}|x=132.0|y=37.0|scale=1|img=public/frame_squared_outside.png|esc=0|bg=1|loadDelay=0>
+<Img|id=3|x=21.0|y=45.0|rotate=0|scale=1|img=private/fulihuodong/leichongfanlimb.png|esc=0>
+<Img|id=4|x=-38.0|y=-22.0|rotate=0|scale=1|img=public/frame_pattern_dragon.png|esc=0>
+<Button|id=5|x=815.0|y=-3.0|pimg=public/btn_close_01.png|nimg=public/btn_close_01.png|scale=1|size=18|color=255|link=@exit>
+<ListView|id=6|children={7,8}|x=24.0|y=48.0|width=185|height=502>
+<Button|id=7|x=0.0|y=0.0|width=184|height=60|color=67|nimg=public/duanzaoanniu<$STR(N$累充按钮1)>.png|scale=1|size=20|pimg=public/duanzaoanniu<$STR(N$累充按钮1)>.png|text=每日累充|link=@xxxxxxxxxx>
+<Button|id=8|x=0.0|y=0.0|width=184|height=60|color=67|nimg=public/duanzaoanniu<$STR(N$累充按钮2)>.png|scale=1|size=20|pimg=public/duanzaoanniu<$STR(N$累充按钮2)>.png|text=累计充值|link=@累计充值面板>
+<ListView|id=9|children={<$STR(S$每日可领取组件)><$STR(S$每日未达成组件)><$STR(S$每日已领取组件)>}|x=230.0|y=166.0|width=608|height=365|loadDelay=0|img=picpackage/3/9998.png>
+<$STR(S$每日充值奖励1)>
+<$STR(S$每日充值奖励2)>
+<$STR(S$每日充值奖励3)>
+<$STR(S$每日充值奖励4)>
+<$STR(S$每日充值奖励5)>
+<$STR(S$每日充值奖励6)>
+<RText|id=wzzs|x=225.0|y=111.0|size=20|color=218|text=<使用代金券也能增加“/FCOLOR=161><每日累充/FCOLOR=218><”和“/FCOLOR=161><累计充值/FCOLOR=218><”额度/FCOLOR=161>>
+
+
+[@开服每日充值1]
+#IF
+CHECK [188] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 30
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+EQUAL G0 0
+#ACT
+SET [188] 1
+GIVE 仙翎之羽 40 1
+MONEY 4 + 1000
+SENDMSG 19 领取每日累充30元礼包
+SENDMSG 5 领取每日累充30元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 1
+#ACT
+SET [188] 1
+GIVE 仙翎之羽 80 1
+MONEY 4 + 400
+SENDMSG 19 领取每日累充30元礼包
+SENDMSG 5 领取每日累充30元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 2
+#ACT
+SET [188] 1
+GIVE 灵兽精粹 80 1
+MONEY 4 + 400
+SENDMSG 19 领取每日累充30元礼包
+SENDMSG 5 领取每日累充30元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 3
+#ACT
+SET [188] 1
+GIVE 特戒精华 60 1
+MONEY 4 + 400
+SENDMSG 19 领取每日累充30元礼包
+SENDMSG 5 领取每日累充30元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 4
+#ACT
+SET [188] 1
+GIVE 法宝精粹 30 1
+MONEY 4 + 1000
+SENDMSG 19 领取每日累充30元礼包
+SENDMSG 5 领取每日累充30元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 5
+#ACT
+SET [188] 1
+GIVE 凶器精粹 40 1
+MONEY 4 + 800
+SENDMSG 19 领取每日累充30元礼包
+SENDMSG 5 领取每日累充30元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 6
+#ACT
+SET [188] 1
+GIVE 特装精粹(防) 60 1
+GIVE 特装精粹(攻) 60 1
+SENDMSG 19 领取每日累充30元礼包
+SENDMSG 5 领取每日累充30元礼包
+GOTO @充值活动面板
+BREAK
+
+
+
+
+[@开服每日充值2]
+#IF
+CHECK [189] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 198
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+EQUAL G0 0
+#ACT
+SET [189] 1
+GIVE 仙翎之羽 40 1
+MONEY 4 + 2000
+SENDMSG 19 领取每日累充198元礼包
+SENDMSG 5 领取每日累充198元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 1
+#ACT
+SET [189] 1
+GIVE 仙翎之羽 120 1
+MONEY 4 + 1000
+SENDMSG 19 领取每日累充198元礼包
+SENDMSG 5 领取每日累充198元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 2
+#ACT
+SET [189] 1
+GIVE 灵兽精粹 120 1
+MONEY 4 + 1000
+SENDMSG 19 领取每日累充198元礼包
+SENDMSG 5 领取每日累充198元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 3
+#ACT
+SET [189] 1
+GIVE 特戒精华 100 1
+GIVE 特戒精粹 60 1
+SENDMSG 19 领取每日累充198元礼包
+SENDMSG 5 领取每日累充198元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 4
+#ACT
+SET [189] 1
+GIVE 法宝精粹 60 1
+MONEY 4 + 2000
+SENDMSG 19 领取每日累充198元礼包
+SENDMSG 5 领取每日累充198元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 5
+#ACT
+SET [189] 1
+GIVE 凶器精粹 100 1
+MONEY 4 + 1600
+SENDMSG 19 领取每日累充198元礼包
+SENDMSG 5 领取每日累充198元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 6
+#ACT
+SET [189] 1
+GIVE 特装精粹(攻) 100 1
+MONEY 4 + 1000
+SENDMSG 19 领取每日累充198元礼包
+SENDMSG 5 领取每日累充198元礼包
+GOTO @充值活动面板
+BREAK
+
+
+[@开服每日充值3]
+#IF
+CHECK [190] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 648
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+EQUAL G0 0
+#ACT
+SET [190] 1
+GIVE 法宝精粹 60 1
+GIVE 神兽碎片 40 1
+MONEY 4 + 6000
+SENDMSG 19 领取每日累充648元礼包
+SENDMSG 5 领取每日累充648元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 1
+#ACT
+SET [190] 1
+GIVE 仙翎之羽 200 1
+MONEY 4 + 2000
+SENDMSG 19 领取每日累充648元礼包
+SENDMSG 5 领取每日累充648元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 2
+#ACT
+SET [190] 1
+GIVE 灵兽精粹 200 1
+MONEY 4 + 2000
+SENDMSG 19 领取每日累充648元礼包
+SENDMSG 5 领取每日累充648元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 3
+#ACT
+SET [190] 1
+GIVE 特戒精华 200 1
+GIVE 特戒精粹 140 1
+SENDMSG 19 领取每日累充648元礼包
+SENDMSG 5 领取每日累充648元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 4
+#ACT
+SET [190] 1
+GIVE 法宝精粹 140 1
+MONEY 4 + 3000
+SENDMSG 19 领取每日累充648元礼包
+SENDMSG 5 领取每日累充648元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 5
+#ACT
+SET [190] 1
+GIVE 凶器精粹 200 1
+MONEY 4 + 2000
+SENDMSG 19 领取每日累充648元礼包
+SENDMSG 5 领取每日累充648元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 6
+#ACT
+SET [190] 1
+GIVE 特装精粹(防) 200 1
+MONEY 4 + 1600
+SENDMSG 19 领取每日累充648元礼包
+SENDMSG 5 领取每日累充648元礼包
+GOTO @充值活动面板
+BREAK
+
+
+[@开服每日充值4]
+#IF
+CHECK [191] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 1000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+EQUAL G0 0
+#ACT
+SET [191] 1
+GIVE 特戒精华 60 1
+GIVE 神兽碎片 80 1
+MONEY 4 + 9000
+SENDMSG 19 领取每日累充1000元礼包
+SENDMSG 5 领取每日累充1000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 1
+#ACT
+SET [191] 1
+GIVE 仙翎之羽 300 1
+MONEY 4 + 4000
+SENDMSG 19 领取每日累充1000元礼包
+SENDMSG 5 领取每日累充1000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 2
+#ACT
+SET [191] 1
+GIVE 灵兽精粹 300 1
+MONEY 4 + 4000
+SENDMSG 19 领取每日累充1000元礼包
+SENDMSG 5 领取每日累充1000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 3
+#ACT
+SET [191] 1
+GIVE 特戒精华 300 1
+GIVE 特戒精粹 200 1
+SENDMSG 19 领取每日累充1000元礼包
+SENDMSG 5 领取每日累充1000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 4
+#ACT
+SET [191] 1
+GIVE 法宝精粹 200 1
+GIVE 招魂幡 1 1
+SENDMSG 19 领取每日累充1000元礼包
+SENDMSG 5 领取每日累充1000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 5
+#ACT
+SET [191] 1
+GIVE 凶器精粹 300 1
+GIVE 碧海天王 1 1
+SENDMSG 19 领取每日累充1000元礼包
+SENDMSG 5 领取每日累充1000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 6
+#ACT
+SET [191] 1
+GIVE 特装精粹(防) 200 1
+GIVE 特装精粹(攻) 200 1
+SENDMSG 19 领取每日累充1000元礼包
+SENDMSG 5 领取每日累充1000元礼包
+GOTO @充值活动面板
+BREAK
+
+
+[@开服每日充值5]
+#IF
+CHECK [192] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 3000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+EQUAL G0 0
+#ACT
+SET [192] 1
+GIVE 特装精粹(攻) 200 1
+GIVE 神兽碎片 200 1
+MONEY 4 + 16000
+SENDMSG 19 领取每日累充3000元礼包
+SENDMSG 5 领取每日累充3000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 1
+#ACT
+SET [192] 1
+GIVE 仙翎之羽 300 1
+GIVE 魔体经验券(30万) 5 1
+MONEY 4 + 8000
+SENDMSG 19 领取每日累充3000元礼包
+SENDMSG 5 领取每日累充3000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 2
+#ACT
+SET [192] 1
+GIVE 灵兽精粹 400 1
+GIVE 暗月妖狼(坐骑) 1 1
+MONEY 4 + 8000
+SENDMSG 19 领取每日累充3000元礼包
+SENDMSG 5 领取每日累充3000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 3
+#ACT
+SET [192] 1
+GIVE 特戒精华 400 1
+GIVE 特戒精粹 300 1
+SENDMSG 19 领取每日累充3000元礼包
+SENDMSG 5 领取每日累充3000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 4
+#ACT
+SET [192] 1
+GIVE 法宝精粹 400 1
+MONEY 4 + 8000
+SENDMSG 19 领取每日累充3000元礼包
+SENDMSG 5 领取每日累充3000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 5
+#ACT
+SET [192] 1
+GIVE 凶器精粹 400 1
+MONEY 4 + 8000
+SENDMSG 19 领取每日累充3000元礼包
+SENDMSG 5 领取每日累充3000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 6
+#ACT
+SET [192] 1
+GIVE 特装精粹(防) 300 1
+GIVE 特装精粹(攻) 300 1
+SENDMSG 19 领取每日累充3000元礼包
+SENDMSG 5 领取每日累充3000元礼包
+GOTO @充值活动面板
+BREAK
+
+
+
+
+[@开服每日充值6]
+#IF
+CHECK [193] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 5000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+EQUAL G0 0
+#ACT
+SET [193] 1
+GIVE 神兽碎片 400 1
+GIVE 特装精粹(防) 200 1
+MONEY 4 + 16000
+SENDMSG 19 领取每日累充5000元礼包
+SENDMSG 5 领取每日累充5000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 1
+#ACT
+SET [193] 1
+GIVE 仙翎之羽 200 1
+GIVE 魔体经验券(30万) 6 1
+GIVE 纵横之翼 1 1
+SENDMSG 19 领取每日累充5000元礼包
+SENDMSG 5 领取每日累充5000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 2
+#ACT
+SET [193] 1
+GIVE 灵兽精粹 200 1
+GIVE 魔体经验券(30万) 6 1
+GIVE 暗月妖狼(坐骑) 1 1
+SENDMSG 19 领取每日累充5000元礼包
+SENDMSG 5 领取每日累充5000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 3
+#ACT
+SET [193] 1
+GIVE 特戒精华 600 1
+GIVE 特戒精粹 460 1
+SENDMSG 19 领取每日累充5000元礼包
+SENDMSG 5 领取每日累充5000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 4
+#ACT
+SET [193] 1
+GIVE 法宝精粹 460 1
+GIVE 紫金葫芦 1 1
+SENDMSG 19 领取每日累充5000元礼包
+SENDMSG 5 领取每日累充5000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 5
+#ACT
+SET [193] 1
+GIVE 凶器精粹 400 1
+GIVE 圣甲斗士(时装) 1 1
+SENDMSG 19 领取每日累充5000元礼包
+SENDMSG 5 领取每日累充5000元礼包
+GOTO @充值活动面板
+BREAK
+
+#IF
+EQUAL G0 6
+#ACT
+SET [193] 1
+GIVE 特装精粹(防) 400 1
+GIVE 特装精粹(攻) 400 1
+GIVE <$STR(S$连充时装职业区分1)>(时装) 1 1
+SENDMSG 19 领取每日累充5000元礼包
+SENDMSG 5 领取每日累充5000元礼包
+GOTO @充值活动面板
+BREAK
+
+
+[@每日累计充值1]
+#IF
+CHECK [188] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 30
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+
+#IF
+LARGE G0 6
+#ACT
+SET [188] 1
+GIVE 特装精粹(防) 30 1
+GIVE 特装精粹(攻) 30 1
+GIVE 仙翎之羽 20 1
+GIVE 灵兽精粹 20 1
+SENDMSG 19 领取每日累充30元礼包
+SENDMSG 5 领取每日累充30元礼包
+GOTO @充值活动面板
+BREAK
+
+[@每日累计充值2]
+#IF
+CHECK [189] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 98
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+LARGE G0 6
+#ACT
+SET [189] 1
+GIVE 凶器精粹 30 1
+GIVE 法宝精粹 30 1
+GIVE 特戒精华 60 1
+GIVE 特戒精粹 60 1
+SENDMSG 19 领取每日累充98元礼包
+SENDMSG 5 领取每日累充98元礼包
+GOTO @充值活动面板
+BREAK
+
+[@每日累计充值3]
+#IF
+CHECK [190] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 328
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+LARGE G0 6
+#ACT
+SET [190] 1
+GIVE 特戒精魄 40 1
+GIVE 特装精粹(攻) 100 1
+GIVE 特装精粹(防) 100 1
+GIVE 符石宝箱 10 1
+SENDMSG 19 领取每日累充328元礼包
+SENDMSG 5 领取每日累充328元礼包
+GOTO @充值活动面板
+BREAK
+
+[@每日累计充值4]
+#IF
+CHECK [191] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 648
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+LARGE G0 6
+#ACT
+SET [191] 1
+GIVE 仙翎之羽 100 1
+GIVE 灵兽精粹 100 1
+GIVE 特装精粹(攻) 140 1
+GIVE 高级符石宝箱 4 1
+SENDMSG 19 领取每日累充648元礼包
+SENDMSG 5 领取每日累充648元礼包
+GOTO @充值活动面板
+BREAK
+
+[@每日累计充值5]
+#IF
+CHECK [192] 1
+#ACT
+SENDMSG 19 奖励已领取
+BREAK
+
+#IF
+SMALL $CustomValue(49) 1298
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+LARGE G0 6
+#ACT
+SET [192] 1
+GIVE 凶器精粹 180 1
+GIVE 法宝精粹 180 1
+GIVE 特戒材料大礼包 1 1
+GIVE 高级符石宝箱 10 1
+SENDMSG 19 领取每日累充1298元礼包
+SENDMSG 5 领取每日累充1298元礼包
+GOTO @充值活动面板
+BREAK
+
+[@累计充值面板]
+#IF
+TRUE
+#ACT
+MOV N$累充按钮1 2
+MOV N$累充按钮2 1
+GOTO @累充红点判断
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$骑战技能名称 翱风斩
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$骑战技能名称 纵雷诀
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$骑战技能名称 毒凌波
+
+
+
+#IF
+TRUE
+#SAY
+<Img|id=2|children={3,4,5,6,9,wzzs}|x=132.0|y=37.0|esc=0|bg=1|img=public/frame_squared_outside.png|loadDelay=0|scale=1>
+<RText|id=wzzs|x=225.0|y=111.0|size=20|color=218|text=<使用代金券也能增加“/FCOLOR=161><每日累充/FCOLOR=218><”和“/FCOLOR=161><累计充值/FCOLOR=218><”额度/FCOLOR=161>>
+<Img|id=3|x=21.0|y=45.0|rotate=0|scale=1|img=private/fulihuodong/leichongfanlimb.png|esc=0>
+<Img|id=4|x=-38.0|y=-22.0|rotate=0|scale=1|img=public/frame_pattern_dragon.png|esc=0>
+<Button|id=5|x=815.0|y=-3.0|pimg=public/btn_close_01.png|nimg=public/btn_close_01.png|scale=1|size=18|color=255|link=@exit>
+<ListView|id=6|children={7,8}|x=24.0|y=48.0|width=185|height=502>
+<Button|id=7|x=0.0|y=0.0|width=184|height=60|color=67|scale=1|nimg=public/duanzaoanniu<$STR(N$累充按钮1)>.png|pimg=public/duanzaoanniu<$STR(N$累充按钮1)>.png|size=20|text=每日累充|link=@充值活动面板>
+<Button|id=8|x=0.0|y=0.0|width=184|height=60|color=67|scale=1|nimg=public/duanzaoanniu<$STR(N$累充按钮2)>.png|pimg=public/duanzaoanniu<$STR(N$累充按钮2)>.png|size=20|text=累计充值|link=@xxxxxxxxx>
+<ListView|id=9|children={<$STR(S$累计可领取组件)><$STR(S$累计未达成组件)><$STR(S$累计已领取组件)>}|x=230.0|y=166.0|width=608|height=365|img=picpackage/3/9998.png|loadDelay=0>
+
+<Img|id=10|children={11,20,21}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=11|children={12,14,16,18}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=12|children={13}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=13|x=-1.0|y=-1.0|width=70|height=70|itemid=1325|itemcount=10|name=仙翎之羽|showtips=1|bgtype=1>
+<Img|id=14|children={15}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=15|x=-1.0|y=-1.0|width=70|height=70|itemid=1493|itemcount=10|name=灵兽精粹|showtips=1|bgtype=1>
+<Img|id=16|children={17}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=17|x=-1.0|y=-1.0|width=70|height=70|itemid=26674|itemcount=20|name=玄铁|showtips=1|bgtype=1>
+<Img|id=18|children={19}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=19|x=-1.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=600|name=绑定元宝|showtips=1|bgtype=1>
+<RText|id=20|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/6元/FCOLOR=67>>
+<Button|id=21|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色1)>|text=<$STR(S$累计充值奖励文字1)>|link=@累计充值奖励领取1>
+
+<Img|id=110|children={111,120,121}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=111|children={112,114,116,118}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=112|children={113}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=113|x=-1.0|y=-1.0|width=70|height=70|itemid=30919|itemcount=20|name=神兽碎片|showtips=1|bgtype=1>
+<Img|id=114|children={115}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=115|x=-1.0|y=-1.0|width=70|height=70|itemid=26747|itemcount=15|name=特装精粹(防)|showtips=1|bgtype=1>
+<Img|id=116|children={117}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=117|x=-1.0|y=-1.0|width=70|height=70|itemid=26674|itemcount=40|name=玄铁|showtips=1|bgtype=1>
+<Img|id=118|children={119}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=119|x=-1.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=3000|name=绑定元宝|showtips=1|bgtype=1>
+<RText|id=120|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/30元/FCOLOR=67>>
+<Button|id=121|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色2)>|text=<$STR(S$累计充值奖励文字2)>|link=@累计充值奖励领取2>
+
+<Img|id=210|children={211,220,221}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=211|children={212,214,216,218}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=212|children={213}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=213|x=-1.0|y=-1.0|width=70|height=70|itemid=491|itemcount=20|name=特戒精华|showtips=1|bgtype=1>
+<Img|id=214|children={215}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=215|x=-1.0|y=-1.0|width=70|height=70|itemid=25898|itemcount=20|name=凶器精粹|showtips=1|bgtype=1>
+<Img|id=216|children={217}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=217|x=-1.0|y=-1.0|width=70|height=70|itemid=30256|itemcount=15|name=符石宝箱|showtips=1|bgtype=1>
+<Img|id=218|children={219}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=219|x=-1.0|y=-1.0|width=70|height=70|itemid=8521|itemcount=1|name=人见人爱(时装)|showtips=1|bgtype=1>
+<RText|id=220|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/98元/FCOLOR=67>>
+<Button|id=221|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色3)>|text=<$STR(S$累计充值奖励文字3)>|link=@累计充值奖励领取3>
+
+<Img|id=310|children={311,320,321}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=311|children={312,314,316,318}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=312|children={313}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=313|x=-1.0|y=-1.0|width=70|height=70|itemid=491|itemcount=30|name=特戒精华|showtips=1|bgtype=1>
+<Img|id=314|children={315}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=315|x=-1.0|y=-1.0|width=70|height=70|itemid=25898|itemcount=30|name=凶器精粹|showtips=1|bgtype=1>
+<Img|id=316|children={317}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=317|x=-1.0|y=-1.0|width=70|height=70|itemid=30256|itemcount=30|name=符石宝箱|showtips=1|bgtype=1>
+<Img|id=318|children={319}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=319|x=-1.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=19800|name=绑定元宝|showtips=1|bgtype=1>
+<RText|id=320|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/198元/FCOLOR=67>>
+<Button|id=321|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色4)>|text=<$STR(S$累计充值奖励文字4)>|link=@累计充值奖励领取4>
+
+<Img|id=410|children={411,420,421}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=411|children={412,414,416,418}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=412|children={413}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=413|x=-1.0|y=-1.0|width=70|height=70|itemid=30919|itemcount=50|name=神兽碎片|showtips=1|bgtype=1>
+<Img|id=414|children={415}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=415|x=-1.0|y=-1.0|width=70|height=70|itemid=26747|itemcount=35|name=特装精粹(防)|showtips=1|bgtype=1>
+<Img|id=416|children={417}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=417|x=-1.0|y=-1.0|width=70|height=70|itemid=26674|itemcount=100|name=玄铁|showtips=1|bgtype=1>
+<Img|id=418|children={419}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=419|x=-1.0|y=-1.0|width=70|height=70|itemid=8514|itemcount=1|name=传世勇者(时装)|showtips=1|bgtype=1>
+<RText|id=420|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/648元/FCOLOR=67>>
+<Button|id=421|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色5)>|text=<$STR(S$累计充值奖励文字5)>|link=@累计充值奖励领取5>
+
+<Img|id=510|children={511,520,521}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=511|children={512,514,516,518}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=512|children={513}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=513|x=-1.0|y=-1.0|width=70|height=70|itemid=491|itemcount=300|name=特戒精华|showtips=1|bgtype=1>
+<Img|id=514|children={515}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=515|x=-1.0|y=-1.0|width=70|height=70|itemid=284|itemcount=1|name=暗月|showtips=1|bgtype=1>
+<Img|id=516|children={517}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=517|x=-1.0|y=-1.0|width=70|height=70|itemid=30919|itemcount=70|name=神兽碎片|showtips=1|bgtype=1>
+<Img|id=518|children={519}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=519|x=-1.0|y=-1.0|width=70|height=70|itemid=55504|itemcount=1|name=恶魔之翼|showtips=1|bgtype=1>
+<RText|id=520|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/1000元/FCOLOR=67>>
+<Button|id=521|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色6)>|text=<$STR(S$累计充值奖励文字6)>|link=@累计充值奖励领取6>
+
+<Img|id=610|children={611,620,621}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=611|children={612,614,616,618}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=612|children={613}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=613|x=-1.0|y=-1.0|width=70|height=70|itemid=30256|itemcount=100|name=符石宝箱|showtips=1|bgtype=1>
+<Img|id=614|children={615}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=615|x=-1.0|y=-1.0|width=70|height=70|itemid=26748|itemcount=100|name=特装精粹(攻)|showtips=1|bgtype=1>
+<Img|id=616|children={617}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=617|x=-1.0|y=-1.0|width=70|height=70|itemid=30919|itemcount=80|name=神兽碎片|showtips=1|bgtype=1>
+<Img|id=618|children={619}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=619|x=-1.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=64800|name=绑定元宝|showtips=1|bgtype=1>
+<RText|id=620|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/2000元/FCOLOR=67>>
+<Button|id=621|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色7)>|text=<$STR(S$累计充值奖励文字7)>|link=@累计充值奖励领取7>
+
+
+<Img|id=710|children={711,720,721}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=711|children={712,714,716,718}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=712|children={713}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=713|x=-1.0|y=-1.0|width=70|height=70|itemid=1493|itemcount=100|name=灵兽精粹|showtips=1|bgtype=1>
+<Img|id=714|children={715}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=715|x=-1.0|y=-1.0|width=70|height=70|itemid=30250|itemcount=20|name=3阶符石宝箱|showtips=1|bgtype=1>
+<Img|id=716|children={717}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=717|x=-1.0|y=-1.0|width=70|height=70|itemid=30525|itemcount=1|name=战天狂狮(坐骑)|showtips=1|bgtype=1>
+<Img|id=718|children={719}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=719|x=-1.0|y=-1.0|width=70|height=70|itemid=8515|itemcount=1|name=玉树临风(时装)|showtips=1|bgtype=1>
+<RText|id=720|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/3000元/FCOLOR=67>>
+<Button|id=721|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色8)>|text=<$STR(S$累计充值奖励文字8)>|link=@累计充值奖励领取8>
+
+#IF
+!SMALL <$CustomValue(51)> 3000
+#SAY
+<Img|id=810|children={811,820,821}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=811|children={812,814,816,818}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=812|children={813}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=813|x=-1.0|y=-1.0|width=70|height=70|itemid=26747|itemcount=200|name=特装精粹(防)|showtips=1|bgtype=1>
+<Img|id=814|children={815}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=815|x=-1.0|y=-1.0|width=70|height=70|itemid=25905|itemcount=1|name=七宝玲珑塔|showtips=1|bgtype=1>
+<Img|id=816|children={817}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=817|x=-1.0|y=-1.0|width=70|height=70|itemid=286|itemcount=1|name=鬼炎|showtips=1|bgtype=1>
+<Img|id=818|children={819}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=819|x=-1.0|y=-1.0|width=70|height=70|itemid=25555|itemcount=1|name=神威将军(时装)|showtips=1|bgtype=1>
+<RText|id=820|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/5000元/FCOLOR=67>>
+<Button|id=821|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色9)>|text=<$STR(S$累计充值奖励文字9)>|link=@累计充值奖励领取9>
+
+#IF
+!SMALL <$CustomValue(51)> 5000
+#SAY
+<Img|id=910|children={911,920,921}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=911|children={912,914,916,918}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=912|children={913}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=913|x=-1.0|y=-1.0|width=70|height=70|itemid=25904|itemcount=1|name=番天印|showtips=1|bgtype=1>
+<Img|id=914|children={915}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=915|x=-1.0|y=-1.0|width=70|height=70|itemid=25898|itemcount=500|name=凶器精粹|showtips=1|bgtype=1>
+<Img|id=916|children={917}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=917|x=-1.0|y=-1.0|width=70|height=70|itemid=30250|itemcount=60|name=3阶符石宝箱|showtips=1|bgtype=1>
+<Img|id=918|children={919}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=919|x=-1.0|y=-1.0|width=70|height=70|itemid=8516|itemcount=1|name=绝代天骄(时装)|showtips=1|bgtype=1>
+<RText|id=920|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/10000元/FCOLOR=67>>
+<Button|id=921|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色10)>|text=<$STR(S$累计充值奖励文字10)>|link=@累计充值奖励领取10>
+
+#IF
+!SMALL <$CustomValue(51)> 10000
+#SAY
+<Img|id=1010|children={1011,1020,1021}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=1011|children={1012,1014,1016,1018}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=1012|children={1013}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1013|x=-1.0|y=-1.0|width=70|height=70|itemid=26748|itemcount=200|name=特装精粹(攻)|showtips=1|bgtype=1>
+<Img|id=1014|children={1015}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1015|x=-1.0|y=-1.0|width=70|height=70|itemid=30272|itemcount=500|name=法宝精粹|showtips=1|bgtype=1>
+<Img|id=1016|children={1017}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1017|x=-1.0|y=-1.0|width=70|height=70|itemid=51064|itemcount=15|name=6阶符石自选箱|showtips=1|bgtype=1>
+<Img|id=1018|children={1019}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1019|x=-1.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=150000|name=绑定元宝|showtips=1|bgtype=1>
+<RText|id=1020|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/20000元/FCOLOR=67>>
+<Button|id=1021|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色11)>|text=<$STR(S$累计充值奖励文字11)>|link=@累计充值奖励领取11>
+
+#IF
+!SMALL <$CustomValue(51)> 20000
+#SAY
+<Img|id=1110|children={1111,1120,1121}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=1111|children={1112,1114,1116,1118}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=1112|children={1113}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1113|x=-1.0|y=-1.0|width=70|height=70|itemid=1493|itemcount=1000|name=灵兽精粹|showtips=1|bgtype=1>
+<Img|id=1114|children={1115}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1115|x=-1.0|y=-1.0|width=70|height=70|itemid=26674|itemcount=5000|name=玄铁|showtips=1|bgtype=1>
+<Img|id=1116|children={1117}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1117|x=-1.0|y=-1.0|width=70|height=70|itemid=1222|itemcount=1|name=<$STR(S$骑战技能名称)>|showtips=1|bgtype=1>
+<Img|id=1118|children={1119}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1119|x=-1.0|y=-1.0|width=70|height=70|itemid=8517|itemcount=1|name=问鼎天下(时装)|showtips=1|bgtype=1>
+<RText|id=1120|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/30000元/FCOLOR=67>>
+<Button|id=1121|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色12)>|text=<$STR(S$累计充值奖励文字12)>|link=@累计充值奖励领取12>
+
+#IF
+!SMALL <$CustomValue(51)> 30000
+#SAY
+<Img|id=1210|children={1211,1224,1225}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=1211|children={1212,1214,1216,1218,1220,1222}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=1212|children={1213}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1213|x=-1.0|y=-1.0|width=70|height=70|itemid=490|itemcount=1000|name=特戒精粹|showtips=1|bgtype=1>
+<Img|id=1214|children={1215}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1215|x=-1.0|y=-1.0|width=70|height=70|itemid=8518|itemcount=1|name=谁与争锋(时装)|showtips=1|bgtype=1>
+<Img|id=1216|children={1217}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1217|x=-1.0|y=-1.0|width=70|height=70|itemid=25457|itemcount=1|name=怒啸神光虎(坐骑)|showtips=1|bgtype=1>
+<Img|id=1218|children={1219}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1219|x=-1.0|y=-1.0|width=70|height=70|itemid=<$STR(S$连充时装LOOKS2)>|itemcount=1|name=<$STR(S$连充时装职业区分2)>(时装)|showtips=1|bgtype=1>
+<Img|id=1220|children={1221}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1221|x=-1.0|y=-1.0|width=70|height=70|itemid=1493|itemcount=600|name=灵兽精粹|showtips=1|bgtype=1>
+<Img|id=1222|children={1223}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1223|x=-1.0|y=-1.0|width=70|height=70|itemid=30919|itemcount=600|name=神兽碎片|showtips=1|bgtype=1>
+<RText|id=1224|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/50000元/FCOLOR=67>>
+<Button|id=1225|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色13)>|text=<$STR(S$累计充值奖励文字13)>|link=@累计充值奖励领取13>
+
+#IF
+!SMALL <$CustomValue(51)> 50000
+#SAY
+<Img|id=1310|children={1311,1324,1325}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=1311|children={1312,1314,1316,1318,1320,1322}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=1312|children={1313}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1313|x=-1.0|y=-1.0|width=70|height=70|itemid=1325|itemcount=1000|name=仙翎之羽|showtips=1|bgtype=1>
+<Img|id=1314|children={1315}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1315|x=-1.0|y=-1.0|width=70|height=70|itemid=55503|itemcount=1|name=魔焱之翼|showtips=1|bgtype=1>
+<Img|id=1316|children={1317}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1317|x=-1.0|y=-1.0|width=70|height=70|itemid=8519|itemcount=1|name=盖世英雄(时装)|showtips=1|bgtype=1>
+<Img|id=1318|children={1319}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1319|x=-1.0|y=-1.0|width=70|height=70|itemid=25554|itemcount=1|name=九五之尊(时装)|showtips=1|bgtype=1>
+<Img|id=1320|children={1321}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1321|x=-1.0|y=-1.0|width=70|height=70|itemid=25898|itemcount=1000|name=凶器精粹|showtips=1|bgtype=1>
+<Img|id=1322|children={1323}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1323|x=-1.0|y=-1.0|width=70|height=70|itemid=30272|itemcount=1000|name=法宝精粹|showtips=1|bgtype=1>
+<RText|id=1324|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/80000元/FCOLOR=67>>
+<Button|id=1325|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色14)>|text=<$STR(S$累计充值奖励文字14)>|link=@累计充值奖励领取14>
+
+#IF
+!SMALL <$CustomValue(51)> 80000
+#SAY
+<Img|id=1410|children={1411,1424,1425}|x=331.0|y=177.0|scale=1|esc=0|img=private/fulihuodong/leichongfanli.png>
+<ListView|id=1411|children={1412,1414,1416,1418,1420,1422}|ay=1|x=155.0|y=11.0|width=288|height=68|img=picpackage/3/9998.png|loadDelay=0|direction=2|margin=5|bounce=0>
+<Img|id=1412|children={1413}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1413|x=-1.0|y=-1.0|width=70|height=70|itemid=26674|itemcount=15000|name=玄铁|showtips=1|bgtype=1>
+<Img|id=1414|children={1415}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1415|x=-1.0|y=-1.0|width=70|height=70|itemid=489|itemcount=1500|name=特戒精魄|showtips=1|bgtype=1>
+<Img|id=1416|children={1417}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1417|x=-1.0|y=-1.0|width=70|height=70|itemid=<$STR(S$连充时装LOOKS3)>|itemcount=1|name=<$STR(S$连充时装职业区分3)>(时装)|showtips=1|bgtype=1>
+<Img|id=1418|children={1419}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1419|x=-1.0|y=-1.0|width=70|height=70|itemid=8520|itemcount=1|name=至尊王者(时装)|showtips=1|bgtype=1>
+<Img|id=1420|children={1421}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1421|x=-1.0|y=-1.0|width=70|height=70|itemid=25898|itemcount=1500|name=凶器精粹|showtips=1|bgtype=1>
+<Img|id=1422|children={1423}|x=465.0|y=306.0|scale=1|esc=0|img=public/fjfqk.png>
+<ItemShow|id=1423|x=-1.0|y=-1.0|width=70|height=70|itemid=30272|itemcount=1500|name=法宝精粹|showtips=1|bgtype=1>
+<RText|id=1424|x=30.0|y=19.0|color=255|size=18|text=<累计充值/FCOLOR=255>\<<$CustomValue(51)>/100000元/FCOLOR=67>>
+<Button|id=1425|x=467.0|y=23.0|scale=1|pimg=public/btn_push_10.png|nimg=public/btn_push_10.png|size=18|color=<$STR(S$累计充值奖励颜色15)>|text=<$STR(S$累计充值奖励文字15)>|link=@累计充值奖励领取15>
+
+
+[@累计充值奖励领取1]
+#IF
+CHECK [642] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 6
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [642] 1
+GIVE 仙翎之羽 10 1
+GIVE 灵兽精粹 10 1
+GIVE 玄铁 20 1
+MONEY 4 + 600
+SENDMSG 19 领取累计充值6元礼包
+SENDMSG 5 领取累计充值6元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取2]
+#IF
+CHECK [643] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 30
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [643] 1
+GIVE 神兽碎片 20 1
+GIVE 特装精粹(防) 15 1
+GIVE 玄铁 40 1
+MONEY 4 + 3000
+SENDMSG 19 领取累计充值30元礼包
+SENDMSG 5 领取累计充值30元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取3]
+#IF
+CHECK [644] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 98
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [644] 1
+GIVE 特戒精华 20 1
+GIVE 凶器精粹 20 1
+GIVE 符石宝箱 15 1
+GIVE 人见人爱(时装) 1 1
+SENDMSG 19 领取累计充值98元礼包
+SENDMSG 5 领取累计充值98元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取4]
+#IF
+CHECK [645] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 198
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [645] 1
+GIVE 特戒精华 30 1
+GIVE 凶器精粹 30 1
+GIVE 符石宝箱 30 1
+MONEY 4 + 19800
+SENDMSG 19 领取累计充值198元礼包
+SENDMSG 5 领取累计充值198元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取5]
+#IF
+CHECK [646] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 648
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [646] 1
+GIVE 神兽碎片 50 1
+GIVE 特装精粹(防) 35 1
+GIVE 玄铁 100 1
+GIVE 传世勇者(时装) 1 1
+SENDMSG 19 领取累计充值648元礼包
+SENDMSG 5 领取累计充值648元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取6]
+#IF
+CHECK [647] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 1000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [647] 1
+GIVE 神兽碎片 70 1
+GIVE 特戒精华 300 1
+GIVE 暗月 1 1
+GIVE 恶魔之翼 1 1
+SENDMSG 19 领取累计充值1000元礼包
+SENDMSG 5 领取累计充值1000元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取7]
+#IF
+CHECK [648] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 2000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [648] 1
+GIVE 符石宝箱 100 1
+GIVE 特装精粹(攻) 100 1
+GIVE 神兽碎片 80 1
+MONEY 4 + 64800
+SENDMSG 19 领取累计充值2000元礼包
+SENDMSG 5 领取累计充值2000元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取8]
+#IF
+CHECK [649] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 3000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [649] 1
+GIVE 灵兽精粹 100 1
+GIVE 3阶符石宝箱 20 1
+GIVE 战天狂狮(坐骑) 1 1
+GIVE 玉树临风(时装) 1 1
+SENDMSG 19 领取累计充值3000元礼包
+SENDMSG 5 领取累计充值3000元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取9]
+#IF
+CHECK [650] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 5000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [650] 1
+GIVE 特装精粹(防) 200 1
+GIVE 鬼炎 1 1
+GIVE 七宝玲珑塔 1 1
+GIVE 神威将军(时装) 1 1
+SENDMSG 19 领取累计充值5000元礼包
+SENDMSG 5 领取累计充值5000元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取10]
+#IF
+CHECK [651] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 10000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [651] 1
+GIVE 番天印 1 1
+GIVE 凶器精粹 500 1
+GIVE 3阶符石宝箱 60 1
+GIVE 绝代天骄(时装) 1 1
+SENDMSG 19 领取累计充值1万元礼包
+SENDMSG 5 领取累计充值1万元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取11]
+#IF
+CHECK [652] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 20000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [652] 1
+GIVE 特装精粹(攻) 200 1
+GIVE 法宝精粹 500 1
+GIVE 6阶符石自选箱 16 1
+MONEY 4 + 150000
+SENDMSG 19 领取累计充值2万元礼包
+SENDMSG 5 领取累计充值2万元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取12]
+#IF
+CHECK [653] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 30000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [653] 1
+GIVE 灵兽精粹 1000 1
+GIVE 玄铁 5000 1
+GIVE <$STR(S$骑战技能名称)> 1 1
+GIVE 问鼎天下(时装) 1 1
+SENDMSG 19 领取累计充值3万元礼包
+SENDMSG 5 领取累计充值3万元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取13]
+#IF
+CHECK [654] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 50000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [654] 1
+GIVE <$STR(S$连充时装职业区分2)>(时装) 1 1
+GIVE 特戒精粹 1000 1
+GIVE 怒啸神光虎(坐骑) 1 1
+GIVE 谁与争锋(时装) 1 1
+GIVE 灵兽精粹 600 1
+GIVE 神兽碎片 600 1
+SENDMSG 19 领取累计充值5万元礼包
+SENDMSG 5 领取累计充值5万元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取14]
+#IF
+CHECK [655] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 80000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [655] 1
+GIVE 魔焱之翼 1 1
+GIVE 凶器精粹 1000 1
+GIVE 九五之尊(时装) 1 1
+GIVE 盖世英雄(时装) 1 1
+GIVE 法宝精粹 1000 1
+GIVE 仙翎之羽 1000 1
+SENDMSG 19 领取累计充值8万元礼包
+SENDMSG 5 领取累计充值8万元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累计充值奖励领取15]
+#IF
+CHECK [656] 1
+#ACT
+SENDMSG 19 已领取过此奖励
+BREAK
+
+#IF
+SMALL $CustomValue(51) 100000
+#ACT
+GOTO @前往充值
+BREAK
+
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+#ELSEACT
+SET [656] 1
+GIVE 玄铁 15000 1
+GIVE 特戒精魄 1500 1
+GIVE <$STR(S$连充时装职业区分3)>(时装) 1 1
+GIVE 至尊王者(时装) 1 1
+GIVE 法宝精粹 1500 1
+GIVE 凶器精粹 1500 1
+SENDMSG 19 领取累计充值10万元礼包
+SENDMSG 5 领取累计充值10万元礼包
+GOTO @累计充值面板
+BREAK
+
+[@累充红点判断]
+#IF
+TRUE
+#ACT
+MOV S$每日未达成组件 
+MOV S$每日可领取组件 
+MOV S$每日已领取组件 
+MOV S$累计未达成组件 
+MOV S$累计可领取组件 
+MOV S$累计已领取组件 
+#IF
+!SMALL G0 7
+SMALL $CustomValue(49) 30
+CHECK [188] 0
+#ACT
+MOV S$领取奖励文字1 前往充值
+MOV N$领取奖励颜色1 10
+INC S$每日未达成组件 10,
+
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 30
+CHECK [188] 0
+#ACT
+MOV S$领取奖励文字1 可领取
+MOV N$领取奖励颜色1 222
+RedDot 5 108 96 14
+RedDot 5 7 168 14
+INC S$每日可领取组件 10,
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 30
+CHECK [188] 1
+#ACT
+MOV S$领取奖励文字1 已领取
+MOV N$领取奖励颜色1 249
+RedDel 5 108
+RedDel 5 7
+INC S$每日已领取组件 10,
+
+#IF
+!SMALL G0 7
+SMALL $CustomValue(49) 98
+CHECK [189] 0
+#ACT
+MOV S$领取奖励文字2 前往充值
+MOV N$领取奖励颜色2 10
+INC S$每日未达成组件 11,
+
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 98
+CHECK [189] 0
+#ACT
+MOV S$领取奖励文字2 可领取
+MOV N$领取奖励颜色2 222
+RedDot 5 118 96 14
+RedDot 5 7 168 14
+INC S$每日可领取组件 11,
+
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 98
+CHECK [189] 1
+#ACT
+MOV S$领取奖励文字2 已领取
+MOV N$领取奖励颜色2 249
+RedDel 5 118
+RedDel 5 7
+INC S$每日已领取组件 11,
+
+#IF
+!SMALL G0 7
+SMALL $CustomValue(49) 328
+CHECK [190] 0
+#ACT
+MOV S$领取奖励文字3 前往充值
+MOV N$领取奖励颜色3 10
+INC S$每日未达成组件 12,
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 328
+CHECK [190] 0
+#ACT
+MOV S$领取奖励文字3 可领取
+MOV N$领取奖励颜色3 222
+RedDot 5 128 96 14
+RedDot 5 7 168 14
+INC S$每日可领取组件 12,
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 328
+CHECK [190] 1
+#ACT
+MOV S$领取奖励文字3 已领取
+MOV N$领取奖励颜色3 249
+RedDel 5 128
+RedDel 5 7
+INC S$每日已领取组件 12,
+
+#IF
+!SMALL G0 7
+SMALL $CustomValue(49) 648
+CHECK [191] 0
+#ACT
+MOV S$领取奖励文字4 前往充值
+MOV N$领取奖励颜色4 10
+INC S$每日未达成组件 13,
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 648
+CHECK [191] 0
+#ACT
+MOV S$领取奖励文字4 可领取
+MOV N$领取奖励颜色4 222
+RedDot 5 138 96 14
+RedDot 5 7 168 14
+INC S$每日可领取组件 13,
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 648
+CHECK [191] 1
+#ACT
+MOV S$领取奖励文字4 已领取
+MOV N$领取奖励颜色4 249
+RedDel 5 138
+RedDel 5 7
+INC S$每日已领取组件 13,
+#IF
+!SMALL G0 7
+SMALL $CustomValue(49) 1298
+CHECK [192] 0
+#ACT
+MOV S$领取奖励文字5 前往充值
+MOV N$领取奖励颜色5 10
+INC S$每日未达成组件 14,
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 1298
+CHECK [192] 0
+#ACT
+MOV S$领取奖励文字5 可领取
+MOV N$领取奖励颜色5 222
+RedDot 5 148 96 143
+RedDot 5 7 168 14
+INC S$每日可领取组件 14,
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 1298
+CHECK [192] 1
+#ACT
+MOV S$领取奖励文字5 已领取
+MOV N$领取奖励颜色5 249
+RedDel 5 148
+RedDel 5 7
+INC S$每日已领取组件 14,
+
+#IF
+SMALL G0 7
+SMALL $CustomValue(49) 30
+CHECK [188] 0
+#ACT
+MOV S$领取奖励文字1 前往充值
+MOV N$领取奖励颜色1 10
+INC S$每日未达成组件 10,
+
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 30
+CHECK [188] 0
+#ACT
+MOV S$领取奖励文字1 可领取
+MOV N$领取奖励颜色1 222
+RedDot 5 108 96 14
+RedDot 5 7 168 14
+INC S$每日可领取组件 10,
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 30
+CHECK [188] 1
+#ACT
+MOV S$领取奖励文字1 已领取
+MOV N$领取奖励颜色1 249
+RedDel 5 108
+RedDel 5 7
+INC S$每日已领取组件 10,
+
+#IF
+SMALL G0 7
+SMALL $CustomValue(49) 198
+CHECK [189] 0
+#ACT
+MOV S$领取奖励文字2 前往充值
+MOV N$领取奖励颜色2 10
+INC S$每日未达成组件 11,
+
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 198
+CHECK [189] 0
+#ACT
+MOV S$领取奖励文字2 可领取
+MOV N$领取奖励颜色2 222
+RedDot 5 118 96 14
+RedDot 5 7 168 14
+INC S$每日可领取组件 11,
+
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 198
+CHECK [189] 1
+#ACT
+MOV S$领取奖励文字2 已领取
+MOV N$领取奖励颜色2 249
+RedDel 5 118
+RedDel 5 7
+INC S$每日已领取组件 11,
+
+#IF
+SMALL G0 7
+SMALL $CustomValue(49) 648
+CHECK [190] 0
+#ACT
+MOV S$领取奖励文字3 前往充值
+MOV N$领取奖励颜色3 10
+INC S$每日未达成组件 12,
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 648
+CHECK [190] 0
+#ACT
+MOV S$领取奖励文字3 可领取
+MOV N$领取奖励颜色3 222
+RedDot 5 128 96 14
+RedDot 5 7 168 14
+INC S$每日可领取组件 12,
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 648
+CHECK [190] 1
+#ACT
+MOV S$领取奖励文字3 已领取
+MOV N$领取奖励颜色3 249
+RedDel 5 128
+RedDel 5 7
+INC S$每日已领取组件 12,
+
+#IF
+SMALL G0 7
+SMALL $CustomValue(49) 1000
+CHECK [191] 0
+#ACT
+MOV S$领取奖励文字4 前往充值
+MOV N$领取奖励颜色4 10
+INC S$每日未达成组件 13,
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 1000
+CHECK [191] 0
+#ACT
+MOV S$领取奖励文字4 可领取
+MOV N$领取奖励颜色4 222
+RedDot 5 138 96 14
+RedDot 5 7 168 14
+INC S$每日可领取组件 13,
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 1000
+CHECK [191] 1
+#ACT
+MOV S$领取奖励文字4 已领取
+MOV N$领取奖励颜色4 249
+RedDel 5 138
+RedDel 5 7
+INC S$每日已领取组件 13,
+#IF
+SMALL G0 7
+SMALL $CustomValue(49) 3000
+CHECK [192] 0
+#ACT
+MOV S$领取奖励文字5 前往充值
+MOV N$领取奖励颜色5 10
+INC S$每日未达成组件 14,
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 3000
+CHECK [192] 0
+#ACT
+MOV S$领取奖励文字5 可领取
+MOV N$领取奖励颜色5 222
+RedDot 5 148 96 143
+RedDot 5 7 168 14
+INC S$每日可领取组件 14,
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 3000
+CHECK [192] 1
+#ACT
+MOV S$领取奖励文字5 已领取
+MOV N$领取奖励颜色5 249
+RedDel 5 148
+RedDel 5 7
+INC S$每日已领取组件 14,
+#IF
+SMALL G0 7
+SMALL $CustomValue(49) 5000
+CHECK [193] 0
+#ACT
+MOV S$领取奖励文字6 前往充值
+MOV N$领取奖励颜色6 10
+INC S$每日未达成组件 15,
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 5000
+CHECK [193] 0
+#ACT
+MOV S$领取奖励文字6 可领取
+MOV N$领取奖励颜色6 222
+RedDot 5 158 96 14
+RedDot 5 7 168 14
+INC S$每日可领取组件 15,
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 5000
+CHECK [193] 1
+#ACT
+MOV S$领取奖励文字6 已领取
+MOV N$领取奖励颜色6 249
+RedDel 5 158
+RedDel 5 7
+INC S$每日已领取组件 15,
+
+#IF
+SMALL $CustomValue(51) 6
+CHECK [642] 0
+#ACT
+MOV S$累计充值奖励文字1 前往充值
+MOV S$累计充值奖励颜色1 10
+INC S$累计未达成组件 10,
+#IF
+!SMALL $CustomValue(51) 6
+CHECK [642] 0
+#ACT
+MOV S$累计充值奖励文字1 可领取
+MOV S$累计充值奖励颜色1 222
+RedDot 5 21 96 14
+RedDot 5 8 168 14
+INC S$累计可领取组件 10,
+#IF
+!SMALL $CustomValue(51) 6
+CHECK [642] 1
+#ACT
+MOV S$累计充值奖励文字1 已领取
+MOV S$累计充值奖励颜色1 249
+INC S$累计已领取组件 10,
+RedDel 5 21
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 30
+CHECK [643] 0
+#ACT
+MOV S$累计充值奖励文字2 前往充值
+MOV S$累计充值奖励颜色2 10
+INC S$累计未达成组件 110,
+#IF
+!SMALL $CustomValue(51) 30
+CHECK [643] 0
+#ACT
+MOV S$累计充值奖励文字2 可领取
+MOV S$累计充值奖励颜色2 222
+RedDot 5 121 96 14
+RedDot 5 8 168 14
+INC S$累计可领取组件 110,
+#IF
+!SMALL $CustomValue(51) 30
+CHECK [643] 1
+#ACT
+MOV S$累计充值奖励文字2 已领取
+MOV S$累计充值奖励颜色2 249
+INC S$累计已领取组件 110,
+RedDel 5 121
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 98
+CHECK [644] 0
+#ACT
+MOV S$累计充值奖励文字3 前往充值
+MOV S$累计充值奖励颜色3 10
+INC S$累计未达成组件 210,
+#IF
+!SMALL $CustomValue(51) 98
+CHECK [644] 0
+#ACT
+MOV S$累计充值奖励文字3 可领取
+MOV S$累计充值奖励颜色3 222
+RedDot 5 221 96 14
+RedDot 5 8 168 14
+INC S$累计可领取组件 210,
+#IF
+!SMALL $CustomValue(51) 98
+CHECK [644] 1
+#ACT
+MOV S$累计充值奖励文字3 已领取
+MOV S$累计充值奖励颜色3 249
+INC S$累计已领取组件 210,
+RedDel 5 221
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 198
+CHECK [645] 0
+#ACT
+MOV S$累计充值奖励文字4 前往充值
+MOV S$累计充值奖励颜色4 10
+INC S$累计未达成组件 310,
+#IF
+!SMALL $CustomValue(51) 198
+CHECK [645] 0
+#ACT
+MOV S$累计充值奖励文字4 可领取
+MOV S$累计充值奖励颜色4 222
+RedDot 5 321 96 14
+RedDot 5 8 168 14
+INC S$累计可领取组件 310,
+#IF
+!SMALL $CustomValue(51) 198
+CHECK [645] 1
+#ACT
+MOV S$累计充值奖励文字4 已领取
+MOV S$累计充值奖励颜色4 249
+INC S$累计已领取组件 310,
+RedDel 5 321
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 648
+CHECK [646] 0
+#ACT
+MOV S$累计充值奖励文字5 前往充值
+MOV S$累计充值奖励颜色5 10
+INC S$累计未达成组件 410,
+#IF
+!SMALL $CustomValue(51) 648
+CHECK [646] 0
+#ACT
+MOV S$累计充值奖励文字5 可领取
+MOV S$累计充值奖励颜色5 222
+RedDot 5 421 96 14
+RedDot 5 8 168 14
+INC S$累计可领取组件 410,
+#IF
+!SMALL $CustomValue(51) 648
+CHECK [646] 1
+#ACT
+MOV S$累计充值奖励文字5 已领取
+MOV S$累计充值奖励颜色5 249
+INC S$累计已领取组件 410,
+RedDel 5 421
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 1000
+CHECK [647] 0
+#ACT
+MOV S$累计充值奖励文字6 前往充值
+MOV S$累计充值奖励颜色6 10
+INC S$累计未达成组件 510,
+#IF
+!SMALL $CustomValue(51) 1000
+CHECK [647] 0
+#ACT
+MOV S$累计充值奖励文字6 可领取
+MOV S$累计充值奖励颜色6 222
+RedDot 5 521 96 14
+RedDot 5 8 168 14
+INC S$累计可领取组件 510,
+#IF
+!SMALL $CustomValue(51) 1000
+CHECK [647] 1
+#ACT
+MOV S$累计充值奖励文字6 已领取
+MOV S$累计充值奖励颜色6 249
+INC S$累计已领取组件 510,
+RedDel 5 521
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 2000
+CHECK [648] 0
+#ACT
+MOV S$累计充值奖励文字7 前往充值
+MOV S$累计充值奖励颜色7 10
+INC S$累计未达成组件 610,
+#IF
+!SMALL $CustomValue(51) 2000
+CHECK [648] 0
+#ACT
+MOV S$累计充值奖励文字7 可领取
+MOV S$累计充值奖励颜色7 222
+RedDot 5 621 96 14
+RedDot 5 8 168 14
+INC S$累计可领取组件 610,
+#IF
+!SMALL $CustomValue(51) 2000
+CHECK [648] 1
+#ACT
+MOV S$累计充值奖励文字7 已领取
+MOV S$累计充值奖励颜色7 249
+INC S$累计已领取组件 610,
+RedDel 5 621
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 3000
+CHECK [649] 0
+#ACT
+MOV S$累计充值奖励文字8 前往充值
+MOV S$累计充值奖励颜色8 10
+INC S$累计未达成组件 710,
+#IF
+!SMALL $CustomValue(51) 3000
+CHECK [649] 0
+#ACT
+MOV S$累计充值奖励文字8 可领取
+MOV S$累计充值奖励颜色8 222
+RedDot 5 721 96 14
+RedDot 5 8 168 14
+INC S$累计可领取组件 710,
+#IF
+!SMALL $CustomValue(51) 3000
+CHECK [649] 1
+#ACT
+MOV S$累计充值奖励文字8 已领取
+MOV S$累计充值奖励颜色8 249
+INC S$累计已领取组件 710,
+RedDel 5 721
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 5000
+CHECK [650] 0
+#ACT
+MOV S$累计充值奖励文字9 前往充值
+MOV S$累计充值奖励颜色9 10
+INC S$累计未达成组件 810,
+#IF
+!SMALL $CustomValue(51) 5000
+CHECK [650] 0
+#ACT
+MOV S$累计充值奖励文字9 可领取
+MOV S$累计充值奖励颜色9 222
+RedDot 5 821 96 14
+RedDot 5 8 168 14
+INC S$累计可领取组件 810,
+#IF
+!SMALL $CustomValue(51) 5000
+CHECK [650] 1
+#ACT
+MOV S$累计充值奖励文字9 已领取
+MOV S$累计充值奖励颜色9 249
+INC S$累计已领取组件 810,
+RedDel 5 821
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 10000
+CHECK [651] 0
+#ACT
+MOV S$累计充值奖励文字10 前往充值
+MOV S$累计充值奖励颜色10 10
+INC S$累计未达成组件 910,
+#IF
+!SMALL $CustomValue(51) 10000
+CHECK [651] 0
+#ACT
+MOV S$累计充值奖励文字10 可领取
+MOV S$累计充值奖励颜色10 222
+RedDot 5 921 96 14
+RedDot 5 8 168 14
+INC S$累计可领取组件 910,
+#IF
+!SMALL $CustomValue(51) 10000
+CHECK [651] 1
+#ACT
+MOV S$累计充值奖励文字10 已领取
+MOV S$累计充值奖励颜色10 249
+INC S$累计已领取组件 910,
+RedDel 5 921
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 20000
+CHECK [652] 0
+#ACT
+MOV S$累计充值奖励文字11 前往充值
+MOV S$累计充值奖励颜色11 10
+INC S$累计未达成组件 1010,
+#IF
+!SMALL $CustomValue(51) 20000
+CHECK [652] 0
+#ACT
+MOV S$累计充值奖励文字11 可领取
+MOV S$累计充值奖励颜色11 222
+INC S$累计可领取组件 1010,
+RedDot 5 1021 96 14
+RedDot 5 8 168 14
+#IF
+!SMALL $CustomValue(51) 20000
+CHECK [652] 1
+#ACT
+MOV S$累计充值奖励文字11 已领取
+MOV S$累计充值奖励颜色11 249
+INC S$累计已领取组件 1010,
+RedDel 5 1021
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 30000
+CHECK [653] 0
+#ACT
+MOV S$累计充值奖励文字12 前往充值
+MOV S$累计充值奖励颜色12 10
+INC S$累计未达成组件 1110,
+#IF
+!SMALL $CustomValue(51) 30000
+CHECK [653] 0
+#ACT
+MOV S$累计充值奖励文字12 可领取
+MOV S$累计充值奖励颜色12 222
+INC S$累计可领取组件 1110,
+RedDot 5 1121 96 14
+RedDot 5 8 168 14
+#IF
+!SMALL $CustomValue(51) 30000
+CHECK [653] 1
+#ACT
+MOV S$累计充值奖励文字12 已领取
+MOV S$累计充值奖励颜色12 249
+INC S$累计已领取组件 1110,
+RedDel 5 1121
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 50000
+CHECK [654] 0
+#ACT
+MOV S$累计充值奖励文字13 前往充值
+MOV S$累计充值奖励颜色13 10
+INC S$累计未达成组件 1210,
+#IF
+!SMALL $CustomValue(51) 50000
+CHECK [654] 0
+#ACT
+MOV S$累计充值奖励文字13 可领取
+MOV S$累计充值奖励颜色13 222
+INC S$累计可领取组件 1210,
+RedDot 5 1225 96 14
+RedDot 5 8 168 14
+#IF
+!SMALL $CustomValue(51) 50000
+CHECK [654] 1
+#ACT
+MOV S$累计充值奖励文字13 已领取
+MOV S$累计充值奖励颜色13 249
+INC S$累计已领取组件 1210,
+RedDel 5 1225
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 80000
+CHECK [655] 0
+#ACT
+MOV S$累计充值奖励文字14 前往充值
+MOV S$累计充值奖励颜色14 10
+INC S$累计未达成组件 1310,
+#IF
+!SMALL $CustomValue(51) 80000
+CHECK [655] 0
+#ACT
+MOV S$累计充值奖励文字14 可领取
+MOV S$累计充值奖励颜色14 222
+INC S$累计可领取组件 1310,
+RedDot 5 1325 96 14
+RedDot 5 8 168 14
+#IF
+!SMALL $CustomValue(51) 80000
+CHECK [655] 1
+#ACT
+MOV S$累计充值奖励文字14 已领取
+MOV S$累计充值奖励颜色14 249
+INC S$累计已领取组件 1310,
+RedDel 5 1325
+RedDel 5 8
+
+#IF
+SMALL $CustomValue(51) 100000
+CHECK [656] 0
+#ACT
+MOV S$累计充值奖励文字15 前往充值
+MOV S$累计充值奖励颜色15 10
+INC S$累计未达成组件 1410,
+#IF
+!SMALL $CustomValue(51) 100000
+CHECK [656] 0
+#ACT
+MOV S$累计充值奖励文字15 可领取
+MOV S$累计充值奖励颜色15 222
+INC S$累计可领取组件 1410,
+RedDot 5 1425 96 14
+RedDot 5 8 168 14
+#IF
+!SMALL $CustomValue(51) 100000
+CHECK [656] 1
+#ACT
+MOV S$累计充值奖励文字15 已领取
+MOV S$累计充值奖励颜色15 249
+INC S$累计已领取组件 1410,
+RedDel 5 1425
+RedDel 5 8
+
+}

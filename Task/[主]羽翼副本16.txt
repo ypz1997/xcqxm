@@ -1,0 +1,10 @@
+[setup]
+MainTitle = 主线任务
+MainID=16
+IsMain=0
+stepcount = 3
+title = [　]羽翼副本
+ID = 16
+stepstitle1 = 　\<color=green 去中州><副本管家/@@goto 0 副本管家 469,230><color=green 通关一次羽翼副本>\<color=green 任务奖励：>\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=125.0|width=70|height=70|itemid=1325|itemcount=20|name=仙翎之羽|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle2 = 　\<color=green 去中州><副本管家/@@goto 0 副本管家 469,230><color=green 通关一次羽翼副本>\<color=green 任务奖励：>\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=125.0|width=70|height=70|itemid=1325|itemcount=20|name=仙翎之羽|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle3 = <color=green 已完成通关一次羽翼副本的任务>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>  <点击领取/@XXXXX>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=1325|itemcount=20|name=仙翎之羽|showtips=1|bgtype=public/clk.png|scale=1>

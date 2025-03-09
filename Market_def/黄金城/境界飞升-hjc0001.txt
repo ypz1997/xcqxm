@@ -1,0 +1,417 @@
+[@MAIN]
+#IF
+TRUE
+#ACT
+GOTO @跳转转生
+
+
+[@跳转转生]
+
+#IF
+TRUE
+#ACT
+GOTO @F10界面红点判断
+#IF
+TRUE
+#ACT
+ReadExcel ..\QuestDiary\文本读取\转生属性.xls <$INC.$CustomValue(42).1>
+MOV N$当前属性1 <$996(Excel).0>
+MOV N$当前属性2 <$996(Excel).1>
+MOV N$当前属性3 <$996(Excel).2>
+MOV N$当前属性4 <$996(Excel).3>
+MOV N$当前属性5 <$996(Excel).4>
+MOV N$当前属性6 <$996(Excel).5>
+MOV N$当前属性7 <$996(Excel).6>
+MOV N$当前属性8 <$996(Excel).7>
+MOV N$当前属性9 <$996(Excel).8>
+ReadExcel ..\QuestDiary\文本读取\转生属性.xls <$INC.$CustomValue(42).2>
+MOV N$下级属性1 <$996(Excel).0>
+MOV N$下级属性2 <$996(Excel).1>
+MOV N$下级属性3 <$996(Excel).2>
+MOV N$下级属性4 <$996(Excel).3>
+MOV N$下级属性5 <$996(Excel).4>
+MOV N$下级属性6 <$996(Excel).5>
+MOV N$下级属性7 <$996(Excel).6>
+
+#IF
+LARGE $LEVEL 114
+LARGE $EXP 30000000
+LARGE $CustomValue(88) 0
+#ACT
+MOV S$转生红点1 <Img|id=dhxwhd|x=115.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$转生红点1 
+
+#IF
+!SMALL <$INC.$MONEY(2).$MONEY(4)> <$STR(N$当前属性9)>
+!SMALL $MONEY(10) <$STR(N$当前属性9)>
+#ACT
+MOV S$转生红点2 <Img|id=kszshd|x=115.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$转生红点2 
+
+
+#IF
+EQUAL $CustomValue(43) 0
+#ACT
+MOV N$转生进度1 6
+MOV N$转生进度2 6
+MOV N$转生进度3 6
+MOV N$转生进度4 6
+MOV N$转生进度5 6
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 1
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 6
+MOV N$转生进度3 6
+MOV N$转生进度4 6
+MOV N$转生进度5 6
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 2
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 6
+MOV N$转生进度4 6
+MOV N$转生进度5 6
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 3
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 6
+MOV N$转生进度5 6
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 4
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 6
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 5
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 7
+MOV N$转生进度6 6
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 6
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 7
+MOV N$转生进度6 7
+MOV N$转生进度7 6
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 7
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 7
+MOV N$转生进度6 7
+MOV N$转生进度7 7
+MOV N$转生进度8 6
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 8
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 7
+MOV N$转生进度6 7
+MOV N$转生进度7 7
+MOV N$转生进度8 7
+MOV N$转生进度9 6
+
+#IF
+EQUAL $CustomValue(43) 9
+#ACT
+MOV N$转生进度1 7
+MOV N$转生进度2 7
+MOV N$转生进度3 7
+MOV N$转生进度4 7
+MOV N$转生进度5 7
+MOV N$转生进度6 7
+MOV N$转生进度7 7
+MOV N$转生进度8 7
+MOV N$转生进度9 7
+
+#IF
+SMALL $CustomValue(88) 1
+#ACT
+MOV N$兑换次数颜色 249
+#ELSEACT
+MOV N$兑换次数颜色 222
+
+#IF
+SMALL <$INC.$Money(2).$Money(4)> $STR(N$当前属性8)
+#ACT
+MOV N$转生所需元宝颜色 249
+#ELSEACT
+MOV N$转生所需元宝颜色 222
+
+#IF
+TRUE
+#SAY
+<Img|img=picpackage/3/01112.png|bg=1|show=5>
+<Text|x=249.0|y=4.0|color=67|size=18|text=境界转生>
+<Button|x=520.0|y=-5.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@EXIT>
+<RText|x=80.0|y=128.0|color=255|size=18|text=<<$STR(N$当前属性1)>/FCOLOR=255><-/FCOLOR=255><<$STR(N$当前属性2)>/FCOLOR=255>>
+<RText|x=80.0|y=160.0|color=255|size=18|text=<<$STR(N$当前属性3)>/FCOLOR=255><-/FCOLOR=255><<$STR(N$当前属性4)>/FCOLOR=255>>
+<RText|x=80.0|y=192.0|color=255|size=18|text=<<$STR(N$当前属性5)>/FCOLOR=255><-/FCOLOR=255><<$STR(N$当前属性6)>/FCOLOR=255>>
+<RText|x=80.0|y=224.0|color=255|size=18|text=<<$STR(N$当前属性7)>/FCOLOR=255>>
+<RText|x=470.0|y=128.0|color=255|size=18|text=<<$STR(N$下级属性1)>/FCOLOR=222><-/FCOLOR=222><<$STR(N$下级属性2)>/FCOLOR=222>>
+<RText|x=470.0|y=160.0|color=255|size=18|text=<<$STR(N$下级属性3)>/FCOLOR=222><-/FCOLOR=222><<$STR(N$下级属性4)>/FCOLOR=222>>
+<RText|x=470.0|y=192.0|color=255|size=18|text=<<$STR(N$下级属性5)>/FCOLOR=222><-/FCOLOR=222><<$STR(N$下级属性6)>/FCOLOR=222>>
+<RText|x=470.0|y=224.0|color=255|size=18|text=<<$STR(N$下级属性7)>/FCOLOR=222>>
+<Text|x=32.0|y=128.0|color=67|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=32.0|y=160.0|color=67|size=18|text=防御>
+<Text|x=32.0|y=192.0|color=67|size=18|text=魔防>
+<Text|x=32.0|y=224.0|color=67|size=18|text=生命>
+<Text|x=423.0|y=128.0|color=67|size=18|text=<$STR(S$职业攻击)>>
+<Text|x=423.0|y=160.0|color=67|size=18|text=防御>
+<Text|x=423.0|y=191.0|color=67|size=18|text=魔防>
+<Text|x=423.0|y=224.0|color=67|size=18|text=生命>
+<Img|x=86.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度1)>.png|esc=0>
+<Img|x=131.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度2)>.png|esc=0>
+<Img|x=176.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度3)>.png|esc=0>
+<Img|x=221.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度4)>.png|esc=0>
+<Img|x=266.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度5)>.png|esc=0>
+<Img|x=311.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度6)>.png|esc=0>
+<Img|x=356.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度7)>.png|esc=0>
+<Img|x=401.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度8)>.png|esc=0>
+<Img|x=446.0|y=350.0|scale=1|img=public/90000066<$STR(N$转生进度9)>.png|esc=0>
+<Frames|x=137.0|y=113.0|count=0|scale=1|loop=-1|prefix=private/f10/99600_|speed=20|suffix=.png|esc=0>
+<Frames|x=149.0|y=<$DEC.157.<$MULT.$CustomValue(42).10>>.0|count=0|scale=0.6|loop=-1|prefix=private/f10/bm01_|speed=20|suffix=.png>
+<Img|x=20.0|y=410.0|width=233|height=28|scale=1|img=private/baoguo/bg_progress_01.png|esc=0>
+<Img|x=290.0|y=410.0|width=267|height=28|scale=1|img=private/baoguo/bg_progress_01.png|esc=0>
+<RText|x=25.0|y=410.0|color=255|size=18|text=<3000万经验可兑换/FCOLOR=67><15万修为/FCOLOR=222>>
+<RText|x=297.0|y=410.0|color=255|size=18|text=<转生消耗修为/FCOLOR=67>>
+<RText|x=415.0|y=410.0|color=255|size=18|text=<<$Money(10)>/<$STR(N$当前属性9)>/FCOLOR=222>>
+<Frames|x=173.0|y=384.0|count=0|scale=1|loop=1|prefix=private/f10/1000<$STR(N$兑换特效)>_|speed=10|suffix=.png>
+<Button|id=dhxw|children={dhxwhd}|x=50.0|y=478.0|width=150|rotate=0|pimg=public/btn_lingshou_01.png|scale=1|nimg=public/btn_lingshou_01.png|color=67|size=20|text=兑换修为|link=@兑换修为>
+<$str(S$转生红点1)>
+<Button|id=kszs|children={kszshd}|x=375.0|y=478.0|width=150|size=20|scale=1|color=67|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=确认转生||link=@开始转生>
+<$str(S$转生红点2)>
+<RText|x=75.0|y=445.0|color=255|size=18|text=<兑换次数:/FCOLOR=67><<$CustomValue(88)>/3/FCOLOR=<$STR(N$兑换次数颜色)>>>
+<RText|x=395.0|y=445.0|color=255|size=18|text=<消耗元宝:/FCOLOR=67><<$STR(N$当前属性8)>/FCOLOR=<$STR(N$转生所需元宝颜色)>>>
+<Img|x=265.0|y=<$DEC.157.<$MULT.$CustomValue(42).10>>.0|scale=1|img=private/f10/<$CustomValue(42)>.png|esc=0>
+<Frames|x=47.0|y=58.0|count=0|scale=1|loop=1|prefix=public/<$STR(N$转生成功特效)>_|speed=20|suffix=.png|esc=0>
+
+
+[@兑换修为]
+#IF
+SMALL $CustomValue(88) 1
+#ACT
+SENDMSG 19 当前兑换次数已用尽
+BREAK
+
+#IF
+SMALL $LEVEL 115
+#ACT
+SENDMSG 19 等级不足115级
+BREAK
+
+#IF
+EQUAL $LEVEL 115
+SMALL $EXP 30000000
+#ACT
+SENDMSG 19 当前经验值不足3000万
+BREAK
+
+#IF
+!SMALL $EXP 30000000
+#ACT
+QueryMsg 是否确认消耗3000万经验值兑换15万修为值？ @确定兑换修为值
+BREAK
+
+#IF
+LARGE $LEVEL 115
+SMALL $EXP 30000000
+#ACT
+QueryMsg 当前等级经验不足\是否通过降级补足所需经验？ @确定降级
+BREAK
+
+[@确定降级1]
+#IF
+LARGE $LEVEL 115
+#ACT
+LOADEXVAR N$上一级最大经验 等级经验 $LEVEL ..\QuestDiary\文本读取\等级经验.txt
+GMEXECUTE 等级 $DEC.$LEVEL.1
+Money 6 = <$DEC.<$INC.$STR(N$上一级最大经验).$EXP>.30000000>
+Money 10 + 150000
+SENDMSG 19 兑换修为成功
+ChangeCustomValue 88 - 1
+MOV N$兑换特效 1
+GOTO @跳转转生
+MOV N$兑换特效 0
+BREAK
+
+[@确定兑换修为值1]
+#IF
+!SMALL $EXP 30000000
+#ACT
+Money 6 - 30000000
+Money 10 + 150000
+SENDMSG 19 兑换修为成功
+ChangeCustomValue 88 - 1
+MOV N$兑换特效 1
+GOTO @跳转转生
+MOV N$兑换特效 0
+BREAK
+
+
+[@开始转生]
+#IF
+SMALL <$INC.$Money(2).$Money(4)> $STR(N$当前属性8)
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+!SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+GOTO @绑元转生
+BREAK
+
+#IF
+SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+GOTO @组合转生
+BREAK
+
+
+[@绑元转生]
+#IF
+SMALL $LEVEL 115
+#ACT
+SENDMSG 19 转生需要115级
+BREAK
+
+#IF
+SMALL $Money(10) $STR(N$当前属性9)
+#ACT
+SENDMSG 19 转生修为值不足
+BREAK
+
+#IF
+!SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+QueryMsg 确认消耗<$STR(N$当前属性9)>修为值转生？ @确定绑元转生
+BREAK
+
+[@确定绑元转生1]
+#IF
+!SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+Money 4 - $STR(N$当前属性8)
+Money 10 - $STR(N$当前属性9)
+
+#IF
+!EQUAL $CustomValue(43) 9
+#ACT
+CHANGECUSTOMVALUE 43 + 1
+SENDMSG 19 转生进度+1
+GOTO @跳转转生
+BREAK
+#ELSEACT
+RenewLevel 1 0 0
+CHANGECUSTOMVALUE 43 = 0
+CHANGECUSTOMVALUE 42 + 1
+SENDMSG 19 转生成功
+MOV N$转生成功特效 45555
+FUNC 1 @临时属性
+GOTO @跳转转生
+GOTO @封魔录_转生
+MOV N$转生成功特效 0
+BREAK
+
+[@组合转生]
+#IF
+SMALL $LEVEL 115
+#ACT
+SENDMSG 19 转生需要115级
+BREAK
+
+#IF
+SMALL $Money(10) $STR(N$当前属性9)
+#ACT
+SENDMSG 19 转生修为值不足
+BREAK
+
+#IF
+SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+QueryMsg 确认消耗<$STR(N$当前属性9)>修为值转生？ @确定组合转生
+BREAK
+
+[@确定组合转生1]
+#IF
+SMALL $Money(4) $STR(N$当前属性8)
+#ACT
+Money 2 - <$DEC.$STR(N$当前属性8).$Money(4)>
+Money 4 - $Money(4)
+Money 10 - $STR(N$当前属性9)
+
+#IF
+!EQUAL $CustomValue(43) 9
+#ACT
+CHANGECUSTOMVALUE 43 + 1
+SENDMSG 19 转生进度+1
+GOTO @跳转转生
+BREAK
+#ELSEACT
+CHANGECUSTOMVALUE 43 = 1
+CHANGECUSTOMVALUE 42 + 1
+SENDMSG 19 转生成功
+MOV N$转生成功特效 45555
+FUNC 1 @临时属性
+GOTO @跳转转生
+GOTO @封魔录_转生
+MOV N$转生成功特效 0
+BREAK

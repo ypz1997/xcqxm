@@ -1,0 +1,18 @@
+[setup]
+MainTitle = 主线任务
+MainID=9
+IsMain=0
+stepcount = 6
+title = [　]了解回收
+ID = 9
+stepstitle1 = 　\<color=green 去找><回收使者/@@goto 0 回收使者 472,230><color=green 回收一次装备>\　\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+
+stepstitle2 = 　\<color=green 点击><color=0xffffff00 包裹按钮><color=green 打开包裹>\　\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+
+stepstitle3 = 　\<color=green 点击><color=0xffffff00 回收装备><color=green 到回收界面>\　\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+
+stepstitle4 = 　\<color=green 勾选><color=0xffffff00 回收品级>\　\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+
+stepstitle5 = 　\<color=green 点击><color=0xffffff00 快速回收><color=green 完成一次回收>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>
+
+stepstitle6 = <color=green 已完成第一次回收的任务>\<color=green 任务奖励：>\　\　\　　　　　　<点击领取/@XXXXX>\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=74.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>

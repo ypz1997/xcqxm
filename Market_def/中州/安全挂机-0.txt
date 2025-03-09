@@ -1,0 +1,149 @@
+[@main]
+
+#IF
+LARGE $LEVEL 69
+#ACT
+MOV S$挂机_地图一解锁 0
+#ELSEACT
+MOV S$挂机_地图一解锁 1
+
+#IF
+LARGE $LEVEL 79
+#ACT
+MOV S$挂机_地图二解锁 0
+#ELSEACT
+MOV S$挂机_地图二解锁 1
+
+#IF
+LARGE $LEVEL 89
+#ACT
+MOV S$挂机_地图三解锁 0
+#ELSEACT
+MOV S$挂机_地图三解锁 1
+
+#IF
+LARGE $LEVEL 99
+#ACT
+MOV S$挂机_地图四解锁 0
+#ELSEACT
+MOV S$挂机_地图四解锁 1
+
+#IF
+TRUE
+#ACT
+MOV S$挂机_地图1
+GOTO @挂机地图面板
+BREAK
+
+[@挂机地图面板]
+#IF
+TRUE
+#SAY
+<Img|id=1|children={2,3,4,5,6,19,20,21,22,7,8,9,10,11,12,13,14,15,16,17,18,23,24,25,26,30,31,32,33,34}|x=132|y=33|scale=1|loadDelay=0|bg=1|img=private/guajifuben/gjmb.png|move=1|esc=0>
+<Button|id=2|x=808|y=-4|mimg=public/button/btn_close_01.png|scale=1|pimg=public/button/btn_close_01.png|color=255|nimg=public/button/btn_close_01.png|size=18|link=@exit>
+<Img|id=3|x=25.0|y=47.0|esc=0|scale=1|img=private/guajifuben/1c.png|link=@挂机地图&挂机_等级要求=70&挂机_地图解锁=<$STR(S$挂机_地图一解锁)>|grey=<$STR(S$挂机_地图一解锁)>>
+<Img|id=4|x=231.0|y=47.0|esc=0|scale=1|img=private/guajifuben/2c.png|link=@挂机地图&挂机_等级要求=80&挂机_地图解锁=<$STR(S$挂机_地图二解锁)>|grey=<$STR(S$挂机_地图二解锁)>>
+<Img|id=5|x=437.0|y=47.0|esc=0|scale=1|img=private/guajifuben/3c.png|link=@挂机地图&挂机_等级要求=90&挂机_地图解锁=<$STR(S$挂机_地图三解锁)>|grey=<$STR(S$挂机_地图三解锁)>>
+<Img|id=6|x=643.0|y=47.0|esc=0|scale=1|img=private/guajifuben/4c.png|link=@挂机地图&挂机_等级要求=100&挂机_地图解锁=<$STR(S$挂机_地图四解锁)>|grey=<$STR(S$挂机_地图四解锁)>>
+<Text|id=7|x=91.0|y=428.0|size=16|color=67|text=挂机地图为强制安全模式>
+<Text|id=8|x=91.0|y=458.0|size=16|color=67|text=挂机地图无物品产出>
+<Text|id=9|x=91.0|y=488.0|size=16|color=67|text=经验1.2倍>
+<Text|id=10|x=91.0|y=518.0|size=16|color=67|text=等级超出地图要求无经验加成>
+<Text|id=30|x=64.0|y=62.0|size=18|color=58|text=产出：修为丹*2>
+<Text|id=31|x=268.0|y=62.0|size=18|color=58|text=产出：修为丹*4>
+<Text|id=32|x=477.0|y=62.0|size=18|color=58|text=产出：修为丹*6>
+<Text|id=33|x=680.0|y=62.0|size=18|color=58|text=产出：修为丹*8>
+<Text|id=34|x=380.0|y=471.0|size=18|color=218|text=进入要求：开启月卡，开启狂暴，骰子*1>
+
+<$STR(S$挂机_地图1)>
+
+
+
+
+
+
+[@挂机地图]
+#IF
+EQUAL S$挂机_地图解锁 1
+#ACT
+SENDMSG 19 等级未达到要求
+SENDMSG 5 等级未达到要求
+BREAK
+
+#IF
+EQUAL S$挂机_等级要求 70
+#ACT
+MOV S$挂机_地图1 <Img|id=19|x=25.0|y=47.0|img=private/guajifuben/gjzz.png|scale=1|esc=0|link=@挂机取消遮罩>
+INC S$挂机_地图1 <Img|id=11|x=72.0|y=210.0|img=public/btn1.png|scale=1|esc=0>
+INC S$挂机_地图1 <Img|id=12|x=108.0|y=221.0|img=public/jinru.png|scale=1|esc=0>
+INC S$挂机_地图1 <Layout|id=23|x=64.0|y=202.0|width=125|height=55|link=@进入挂机地图&挂机_地图号=SWYSL>
+GOTO @挂机地图面板
+BREAK
+
+
+#IF
+EQUAL S$挂机_等级要求 80
+#ACT
+MOV S$挂机_地图1 <Img|id=20|x=231.0|y=47.0|img=private/guajifuben/gjzz.png|scale=1|esc=0|link=@挂机取消遮罩>
+INC S$挂机_地图1 <Img|id=13|x=277.0|y=210.0|img=public/btn1.png|scale=1|esc=0>
+INC S$挂机_地图1 <Img|id=14|x=313.0|y=221.0|img=public/jinru.png|scale=1|esc=0>
+INC S$挂机_地图1 <Layout|id=24|x=270.0|y=202.0|width=125|height=55|link=@进入挂机地图&挂机_地图号=M031>
+GOTO @挂机地图面板
+BREAK
+
+#IF
+EQUAL S$挂机_等级要求 90
+#ACT
+MOV S$挂机_地图1 <Img|id=21|x=437.0|y=47.0|img=private/guajifuben/gjzz.png|scale=1|esc=0|link=@挂机取消遮罩>
+INC S$挂机_地图1 <Img|id=15|x=483.0|y=210.0|img=public/btn1.png|scale=1|esc=0>
+INC S$挂机_地图1 <Img|id=16|x=519.0|y=221.0|img=public/jinru.png|scale=1|esc=0>
+INC S$挂机_地图1 <Layout|id=25|x=475.0|y=202.0|width=125|height=55|link=@进入挂机地图&挂机_地图号=NB001>
+GOTO @挂机地图面板
+BREAK
+
+#IF
+EQUAL S$挂机_等级要求 100
+#ACT
+MOV S$挂机_地图1 <Img|id=22|x=643.0|y=47.0|img=private/guajifuben/gjzz.png|scale=1|esc=0|link=@挂机取消遮罩>
+INC S$挂机_地图1 <Img|id=17|x=688.0|y=210.0|img=public/btn1.png|scale=1|esc=0>
+INC S$挂机_地图1 <Img|id=18|x=724.0|y=221.0|img=public/jinru.png|scale=1|esc=0>
+INC S$挂机_地图1 <Layout|id=26|x=682.0|y=202.0|width=125|height=55|link=@进入挂机地图&挂机_地图号=M032>
+GOTO @挂机地图面板
+BREAK
+
+
+[@挂机取消遮罩]
+#IF
+TRUE
+#ACT
+MOV S$挂机_地图1
+GOTO @挂机地图面板
+BREAK
+
+[@进入挂机地图]
+#IF
+CHECK [224] 0
+#ACT
+SENDMSG 19 未激活月卡
+BREAK
+
+#IF
+!LARGE $CustomValue(98) 0
+#ACT
+SENDMSG 19 未开启狂暴
+BREAK
+
+
+
+#IF
+TRUE
+#ACT
+GmExeCute AttackMode 2
+MAP <$STR(S$挂机_地图号)>
+BREAK
+
+
+
+
+
+

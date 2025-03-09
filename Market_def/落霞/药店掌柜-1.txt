@@ -1,0 +1,48 @@
+[@main]
+#IF
+LARGE $CLIENTFLAG 1
+#ACT
+GOTO @手游端
+#ELSEACT
+GOTO @PC端
+
+
+[@手游端]
+#IF
+HasTask 3
+#SAY
+<Button|x=413.0|y=0.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|show=0|move=0|bg=1|loadDelay=1|img=public/bg_npc_01.png|esc=1|_localZOrder=-2|reset=1>
+<RText|x=25|y=20|text=总在江湖飘哪有不挨刀，老夫这里有上好的\疗伤药赠与少侠！\\>
+<Text|x=25.0|y=80.0|color=215|text=任务奖励：天山雪莲*2  深海灵礁*2  绑定金币*200000>
+<Img|x=25.0|y=120.0|width=10|height=10|img=private/xjty.png|esc=0>
+<RText|id=999|x=45.0|y=110.0|color=251|size=18|text=<领取药品/@领取药品>>
+<Layout|id=1|x=6.1|y=7.1|width=200|height=150|link=@领取药品>
+#ELSESAY
+最早道士们制作毒药还需要去野外寻找\食人花的果实和毒蜘蛛的牙齿,\你们现在的日子幸福多了!
+
+#IF
+HasTask 3
+#ACT
+Navigation 80 999 点击领取#5002#5 0 0
+
+[@领取药品]
+#IF
+CHECK [182] 1
+#ACT
+SENDMSG 19 您已经领取过你的疗伤药了！
+BREAK
+
+#IF
+HasTask 3
+CHECK [182] 0
+#ACT
+SET [182] 1
+GIVE 天山雪莲 2 1
+GIVE 深海灵礁 2 1
+MONEY 1 + 200000
+EndTask 3
+AddTask 4
+GoNpc 250 250
+BREAK
+CLOSE

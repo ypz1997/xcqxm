@@ -1,0 +1,1338 @@
+[@合服活动面板]
+{
+#IF
+TRUE
+#SAY
+<Img|x=138.0|y=1.0|show=0|bg=1|move=0|img=private/hefuhuodong/hefuhuodongdb.png|loadDelay=0>
+<Button|x=946.0|y=49.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=157.0|y=97.0|scale=1|img=private/hefuhuodong/hefulibao.png>
+;===============================================================
+<Button|x=166.0|y=105.0|color=251|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_01.png|pimg=private/hefuhuodong/btn_hefu_01.png|text=合服礼包|link=@合服活动面板>
+<Button|x=166.0|y=165.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=元宝返利|link=@Lemon返利>
+;<Button|x=166.0|y=405.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=沙　城|link=@Lemon攻城|id=1>
+<Button|x=166.0|y=225.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=BOSS击杀榜|link=@Lemon击杀>
+<Button|x=166.0|y=285.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=充值排行|link=@Lemon充值>
+<Button|x=166.0|y=345.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=在线奖励|link=@Lemon在线>
+;===============================================================
+<Text|x=490.0|y=200.0|color=255|size=20|text=全部购买后奖励封号>
+<Img|x=680.0|y=180.0|scale=1|img=picpackage/3/77775.png>
+<RText|x=630.0|y=200.0|color=67|size=20|text=<color=~超级玩家#0xffffff00$攻击0-50#0xffffffff$道术0-50#0xffffffff$魔法0-50#0xffffffff$破敌双防50#0xffffffff$ 　　　　　　　　　　>>
+;===============================================================
+<ListView|children=<lb1,lb2,lb3,lb4,lb5>|x=390.0|y=280.0|width=590|height=350|direction=2|bounce=1|reload=1|margin=10|loadDelay=0|img=picpackage/3/9998.png>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|scale=1|img=private/hefuhuodong/bg_rechargepack_02.png|id=lb1|children=<lb1a1,lb1a2,lb1a3,lb1a4,lb1a5,lb1a6>>
+<Img|x=0.0|y=0.0|scale=1|img=private/hefuhuodong/bg_rechargepack_02.png|id=lb2|children=<lb2a1,lb2a2,lb2a3,lb2a4,lb2a5,lb2a6>>
+<Img|x=0.0|y=0.0|scale=1|img=private/hefuhuodong/bg_rechargepack_02.png|id=lb3|children=<lb3a1,lb3a2,lb3a3,lb3a4,lb3a5,lb3a6>>
+<Img|x=0.0|y=0.0|scale=1|img=private/hefuhuodong/bg_rechargepack_02.png|id=lb4|children=<lb4a1,lb4a2,lb4a3,lb4a4,lb4a5,lb4a6>>
+<Img|x=0.0|y=0.0|scale=1|img=private/hefuhuodong/bg_rechargepack_02.png|id=lb5|children=<lb5a1,lb5a2,lb5a3,lb5a4,lb5a5,lb5a6>>
+;------------------------------------------------------------------------
+<Img|x=60.0|y=45.0|scale=1|img=private/hefuhuodong/lbjg_0.png|id=lb1a1>
+<Img|x=150.0|y=35.0|scale=1|img=private/hefuhuodong/icon_choosebox_01.png|id=lb1a2>
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=198|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb1a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(灵兽精粹).LOOKS>|itemcount=10|name=灵兽精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb1a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(仙翎之羽).LOOKS>|itemcount=10|name=仙翎之羽|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb1a5>
+;------------------------------------------------------------------------
+<Img|x=60.0|y=45.0|scale=1|img=private/hefuhuodong/lbjg_30.png|id=lb2a1>
+<Img|x=150.0|y=35.0|scale=1|img=private/hefuhuodong/icon_choosebox_01.png|id=lb2a2>
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=9000|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb2a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=20|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb2a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=20|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb2a5>
+;------------------------------------------------------------------------
+<Img|x=60.0|y=45.0|scale=1|img=private/hefuhuodong/lbjg_98.png|id=lb3a1>
+<Img|x=150.0|y=35.0|scale=1|img=private/hefuhuodong/icon_choosebox_01.png|id=lb3a2>
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=29400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb3a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(特装大礼包).LOOKS>|itemcount=4|name=特装大礼包|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb3a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(特戒精华).LOOKS>|itemcount=50|name=特戒精华|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb3a5>
+
+;------------------------------------------------------------------------
+<Img|x=60.0|y=45.0|scale=1|img=private/hefuhuodong/lbjg_328.png|id=lb4a1>
+<Img|x=150.0|y=35.0|scale=1|img=private/hefuhuodong/icon_choosebox_01.png|id=lb4a2>
+;------------------------------------------------------------------------
+<Img|x=60.0|y=45.0|scale=1|img=private/hefuhuodong/lbjg_648.png|id=lb5a1>
+<Img|x=150.0|y=35.0|scale=1|img=private/hefuhuodong/icon_choosebox_01.png|id=lb5a2>
+;===============================================================
+
+
+
+;--------------循环1次.8次.15次..........合区
+#IF
+EQUAL $MOD.$HFCOUNT.7 1
+#SAY
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=98400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(特戒精粹).LOOKS>|itemcount=128|name=特戒精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(特戒精魄).LOOKS>|itemcount=68|name=特戒精魄|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a5>
+;---------------------------
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=194400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(特戒精粹).LOOKS>|itemcount=198|name=特戒精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(特戒精魄).LOOKS>|itemcount=108|name=特戒精魄|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a5>
+
+;------------------------------------------------------------------------
+;--------------循环2次.9次.16次..........合区
+#IF
+EQUAL $MOD.$HFCOUNT.7 2
+#SAY
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=98400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(灵兽精粹).LOOKS>|itemcount=300|name=灵兽精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(花影缤纷(时装)).LOOKS>|itemcount=1|name=花影缤纷(时装)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a5>
+;---------------------------
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=194400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(骑战技能礼包).LOOKS>|itemcount=1|name=骑战技能礼包|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(怒啸神光虎(坐骑)).LOOKS>|itemcount=1|name=怒啸神光虎(坐骑)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a5>
+;------------------------------------------------------------------------
+;--------------循环3次.10次.17次..........合区
+#IF
+EQUAL $MOD.$HFCOUNT.7 3
+#SAY
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=98400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=200|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(烈焰灼心(时装)).LOOKS>|itemcount=1|name=烈焰灼心(时装)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a5>
+;---------------------------
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=194400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=80|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(凶器自选箱).LOOKS>|itemcount=1|name=凶器自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a5>
+;------------------------------------------------------------------------
+;--------------循环4次.11次.18次..........合区
+#IF
+EQUAL $MOD.$HFCOUNT.7 4
+#SAY
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=98400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=300|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(雪花飞舞(时装)).LOOKS>|itemcount=1|name=雪花飞舞(时装)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a5>
+;---------------------------
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=194400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=80|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(法宝自选箱).LOOKS>|itemcount=1|name=法宝自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a5>
+;------------------------------------------------------------------------
+;--------------循环5次.12次.19次..........合区
+#IF
+EQUAL $MOD.$HFCOUNT.7 5
+#SAY
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=98400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(特装精粹(攻)).LOOKS>|itemcount=400|name=特装精粹(攻)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(热情似火(时装)).LOOKS>|itemcount=1|name=热情似火(时装)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a5>
+;---------------------------
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=194400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(特装精粹(攻)).LOOKS>|itemcount=100|name=特装精粹(攻)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(武器时装自选箱).LOOKS>|itemcount=1|name=武器时装自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a5>
+;------------------------------------------------------------------------
+;--------------循环6次.13次.20次..........合区
+#IF
+EQUAL $MOD.$HFCOUNT.7 6
+#SAY
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=98400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(特装精粹(防)).LOOKS>|itemcount=400|name=特装精粹(防)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(步步生财(时装)).LOOKS>|itemcount=1|name=步步生财(时装)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a5>
+;---------------------------
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=194400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(特装精粹(防)).LOOKS>|itemcount=100|name=特装精粹(防)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(防具时装自选箱).LOOKS>|itemcount=1|name=防具时装自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a5>
+;------------------------------------------------------------------------
+;--------------循环7次.14次.21次..........合区
+#IF
+EQUAL $MOD.$HFCOUNT.7 0
+#SAY
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=98400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(仙翎之羽).LOOKS>|itemcount=300|name=仙翎之羽|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(心心相印(时装)).LOOKS>|itemcount=1|name=心心相印(时装)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb4a5>
+;---------------------------
+<ItemShow|x=77.0|y=80.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=194400|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a3>
+<ItemShow|x=35.0|y=150.0|itemid=<$STDITEM(仙翎之羽).LOOKS>|itemcount=120|name=仙翎之羽|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a4>
+<ItemShow|x=119.0|y=150.0|itemid=<$STDITEM(羽翼自选箱).LOOKS>|itemcount=1|name=羽翼自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=lb5a5>
+;---------------------------
+
+
+#IF
+CHECK [671] 0
+#SAY
+<Button|x=30.0|y=265.0|scale=1|nimg=private/fulihuodong/goumai.png|pimg=private/fulihuodong/goumai.png|link=@Lemon购买1|id=lb1a6>
+#ELSESAY
+<Button|x=30.0|y=265.0|scale=1|nimg=private/fulihuodong/gsgoumai.png|pimg=private/fulihuodong/gsgoumai.png|id=lb1a6>
+
+#IF
+CHECK [672] 0
+#SAY
+<Button|x=30.0|y=265.0|scale=1|nimg=private/fulihuodong/goumai.png|pimg=private/fulihuodong/goumai.png|link=@Lemon购买2|id=lb2a6>
+#ELSESAY
+<Button|x=30.0|y=265.0|scale=1|nimg=private/fulihuodong/gsgoumai.png|pimg=private/fulihuodong/gsgoumai.png|id=lb2a6>
+
+#IF
+CHECK [673] 0
+#SAY
+<Button|x=30.0|y=265.0|scale=1|nimg=private/fulihuodong/goumai.png|pimg=private/fulihuodong/goumai.png|link=@Lemon购买3|id=lb3a6>
+#ELSESAY
+<Button|x=30.0|y=265.0|scale=1|nimg=private/fulihuodong/gsgoumai.png|pimg=private/fulihuodong/gsgoumai.png|id=lb3a6>
+
+#IF
+CHECK [674] 0
+#SAY
+<Button|x=30.0|y=265.0|scale=1|nimg=private/fulihuodong/goumai.png|pimg=private/fulihuodong/goumai.png|link=@Lemon购买4|id=lb4a6>
+#ELSESAY
+<Button|x=30.0|y=265.0|scale=1|nimg=private/fulihuodong/gsgoumai.png|pimg=private/fulihuodong/gsgoumai.png|id=lb4a6>
+
+#IF
+CHECK [675] 0
+#SAY
+<Button|x=30.0|y=265.0|scale=1|nimg=private/fulihuodong/goumai.png|pimg=private/fulihuodong/goumai.png|link=@Lemon购买5|id=lb5a6>
+#ELSESAY
+<Button|x=30.0|y=265.0|scale=1|nimg=private/fulihuodong/gsgoumai.png|pimg=private/fulihuodong/gsgoumai.png|id=lb5a6>
+
+#IF
+CHECK [671] 1
+CHECK [672] 1
+CHECK [673] 1
+CHECK [674] 1
+CHECK [675] 1
+#SAY
+<Img|x=840.0|y=156.0|scale=1|img=private/hefuhuodong/yihuode.png>
+
+#IF
+CHECK [671] 1
+CHECK [672] 1
+CHECK [673] 1
+CHECK [674] 1
+CHECK [675] 1
+CHECK [670] 0
+#ACT
+SET [670] 1
+MailGIVE 问鼎天下(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您购买全部合服礼包获得:问鼎天下(时装)...恭喜恭喜!
+
+
+;===============================================================
+;---------------------------------沙城红点
+#IF
+ISONCASTLEWAR
+#ACT
+REDDOT 5 1 195 13
+
+
+[@Lemon购买1]
+#IF
+CHECK [671] 1
+#ACT
+SENDMSG 19 你已经购买过了!
+BREAK
+
+#IF
+!CHECKBAGSIZE 3
+#ACT
+SENDMSG 19 包裹位置不足3个!
+BREAK
+#ELSEACT
+SET [671] 1
+BINDGAMEGOLD + 66
+;---------------------------------------免费获得 给予绑定
+GIVE 灵兽精粹 10 1
+GIVE 仙翎之羽 10 1
+SENDMSG 19 领取成功!
+SENDMSG 16 恭喜<%s>成功领取了免费合服礼包...恭喜恭喜!
+GOTO @合服活动面板
+BREAK
+
+[@Lemon购买2]
+#IF
+CHECK [672] 1
+#ACT
+SENDMSG 19 你已经购买过了!
+BREAK
+
+#IF
+!CHECKBAGSIZE 3
+#ACT
+SENDMSG 19 包裹位置不足3个!
+BREAK
+#ELSEACT
+PULLPAY 30 1 32
+DELAYCALL 1 @合服活动面板
+BREAK
+
+
+[@Lemon购买3]
+#IF
+CHECK [673] 1
+#ACT
+SENDMSG 19 你已经购买过了!
+BREAK
+
+#IF
+!CHECKBAGSIZE 3
+#ACT
+SENDMSG 19 包裹位置不足3个!
+BREAK
+#ELSEACT
+PULLPAY 98 1 32
+DELAYCALL 1 @合服活动面板
+BREAK
+
+
+[@Lemon购买4]
+#IF
+CHECK [674] 1
+#ACT
+SENDMSG 19 你已经购买过了!
+BREAK
+
+#IF
+!CHECKBAGSIZE 3
+#ACT
+SENDMSG 19 包裹位置不足3个!
+BREAK
+#ELSEACT
+PULLPAY 328 1 32
+DELAYCALL 1 @合服活动面板
+BREAK
+
+[@Lemon购买5]
+#IF
+CHECK [675] 1
+#ACT
+SENDMSG 19 你已经购买过了!
+BREAK
+
+#IF
+!CHECKBAGSIZE 3
+#ACT
+SENDMSG 19 包裹位置不足3个!
+BREAK
+#ELSEACT
+PULLPAY 648 1 32
+DELAYCALL 1 @合服活动面板
+BREAK
+
+
+
+
+[@Lemon返利]
+#IF
+TRUE
+#SAY
+<Img|x=138.0|y=1.0|show=0|bg=1|move=0|img=private/hefuhuodong/hefuhuodongdb.png|loadDelay=0>
+<Button|x=946.0|y=49.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=157.0|y=97.0|scale=1|img=private/hefuhuodong/hefufanli.png>
+;===============================================================
+<Button|x=166.0|y=105.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=合服礼包|link=@合服活动面板>
+<Button|x=166.0|y=165.0|color=251|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_01.png|pimg=private/hefuhuodong/btn_hefu_01.png|text=元宝返利|link=@Lemon返利>
+;<Button|x=166.0|y=225.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=沙　城|link=@Lemon攻城|id=1>
+<Button|x=166.0|y=225.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=BOSS击杀榜|link=@Lemon击杀>
+<Button|x=166.0|y=285.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=充值排行|link=@Lemon充值>
+<Button|x=166.0|y=345.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=在线奖励|link=@Lemon在线>
+;===============================================================
+<Text|x=660.0|y=180.0|color=249|size=18|text=仅针对购买合服礼包的消费进行返还>
+<Button|x=785.0|y=320.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=222|size=18|text=<$STR(P44)>>
+
+;----------------------沙城红点
+#IF
+ISONCASTLEWAR
+#ACT
+REDDOT 5 1 195 13
+
+#IF
+!LARGE $CUSTOMVALUE(38) 0
+#SAY
+<Button|x=725.0|y=540.0|nimg=private/hefuhuodong/btn_hffl_01.png|pimg=private/hefuhuodong/btn_hffl_01.png|link=@Lemon提取A>
+#ELSESAY
+<Button|x=725.0|y=540.0|nimg=private/hefuhuodong/btn_hffl_02.png|pimg=private/hefuhuodong/btn_hffl_02.png>
+
+#IF
+SMALL $CUSTOMVALUE(38) 100
+#ACT
+MOV P44 $DIV^$MULT.9.10^100
+MULT P44 100
+BREAK
+
+#IF
+SMALL $CUSTOMVALUE(38) 500
+#ACT
+MOV P44 $DEC.$CUSTOMVALUE(38).100
+MOV P44 $DIV^$MULT.$STR(P44).15^100
+MULT P44 100
+INC P44 1000
+BREAK
+
+#IF
+LARGE $CUSTOMVALUE(38) 500
+#ACT
+MOV P44 $DEC.$CUSTOMVALUE(38).500
+MOV P44 $DIV^$MULT.$STR(P44).20^100
+MULT P44 100
+INC P44 7000
+BREAK
+
+
+
+[@Lemon提取A]
+#IF
+SMALL $CUSTOMVALUE(38) 1
+#ACT
+SENDMSG 19 你没有可提取的元宝!
+BREAK
+
+#IF
+SMALL $CUSTOMVALUE(38) 100
+#ACT
+MOV P44 $DIV^$MULT.$CUSTOMVALUE(38).10^100
+MULT P44 100
+CHANGECUSTOMVALUE 38 = 0
+GAMEGOLD + $STR(P44)
+SENDMSG 19 提取成功!
+GOTO @Lemon提取
+BREAK
+
+#IF
+SMALL $CUSTOMVALUE(38) 500
+#ACT
+MOV P44 $DEC.$CUSTOMVALUE(38).100
+MOV P44 $DIV^$MULT.$STR(P44).15^100
+MULT P44 100
+INC P44 1000
+CHANGECUSTOMVALUE 38 = 0
+GAMEGOLD + $STR(P44)
+SENDMSG 19 提取成功!
+GOTO @Lemon提取
+BREAK
+
+#IF
+LARGE $CUSTOMVALUE(38) 500
+#ACT
+MOV P44 $DEC.$CUSTOMVALUE(38).500
+MOV P44 $DIV^$MULT.$STR(P44).20^100
+MULT P44 100
+INC P44 7000
+CHANGECUSTOMVALUE 38 = 0
+GAMEGOLD + $STR(P44)
+SENDMSG 19 提取成功!
+GOTO @Lemon提取
+BREAK
+
+
+
+
+
+[@Lemon击杀]
+#IF
+TRUE
+#SAY
+<Img|x=138.0|y=1.0|show=0|bg=1|move=0|img=private/hefuhuodong/hefuhuodongdb.png|loadDelay=0>
+<Button|x=946.0|y=49.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=157.0|y=97.0|scale=1|img=private/hefuhuodong/paihangbangmb.png>
+<Img|x=400.0|y=95.0|scale=1|img=private/hefuhuodong/bossjinzi.png>
+<Text|x=700.0|y=177.0|color=67|size=20|text=击杀通天教主以上BOSS>
+<Text|x=830.0|y=569.0|color=67|size=20|text=你当前击杀:<$CUSTOMVALUE(40)>只>
+;===============================================================
+<Button|x=166.0|y=105.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=合服礼包|link=@合服活动面板>
+<Button|x=166.0|y=165.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=元宝返利|link=@Lemon返利>
+;<Button|x=166.0|y=225.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=沙　城|link=@Lemon攻城|id=1>
+<Button|x=166.0|y=225.0|color=251|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_01.png|pimg=private/hefuhuodong/btn_hefu_01.png|text=BOSS击杀榜|link=@Lemon击杀>
+<Button|x=166.0|y=285.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=充值排行|link=@Lemon充值>
+<Button|x=166.0|y=345.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=在线奖励|link=@Lemon在线>
+;===============================================================
+<ListView|children=<bs1,bs2,bs3,bs4,bs5,bs6,bs7,bs8,bs9,bs10,bs11>|x=395.0|y=240.0|width=590|height=313|direction=1|bounce=1|reload=1|margin=-5|loadDelay=0|img=picpackage/3/9998.png>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs1|children=<bs1a1,bs1a2,bs1a3,bs1a4,bs1a5,bs1a6,bs1a7,bs1a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs2|children=<bs2a1,bs2a2,bs2a3,bs2a4,bs2a5,bs2a6,bs2a7,bs2a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs3|children=<bs3a1,bs3a2,bs3a3,bs3a4,bs3a5,bs3a6,bs3a7,bs3a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs4|children=<bs4a1,bs4a2,bs4a3,bs4a4,bs4a5,bs4a6,bs4a7,bs4a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs5|children=<bs5a1,bs5a2,bs5a3,bs5a4,bs5a5,bs5a6,bs5a7,bs5a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs6|children=<bs6a1,bs6a2,bs6a3,bs6a4,bs6a5,bs6a6,bs6a7,bs6a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs7|children=<bs7a1,bs7a2,bs7a3,bs7a4,bs7a5,bs7a6,bs7a7,bs7a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs8|children=<bs8a1,bs8a2,bs8a3,bs8a4,bs8a5,bs8a6,bs8a7,bs8a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs9|children=<bs9a1,bs9a2,bs9a3,bs9a4,bs9a5,bs9a6,bs9a7,bs9a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs10|children=<bs10a1,bs10a2,bs10a3,bs10a4,bs10a5,bs10a6,bs10a7,bs10a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=bs11|children=<bs11a1,bs11a2,bs11a3,bs11a4,bs11a5,bs11a6,bs11a7,bs11a8>>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02196.png|id=bs1a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥30只|id=bs1a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=1000|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs1a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(阿修罗神图鉴卡).LOOKS>|itemcount=1|name=阿修罗神图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs1a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(赤阳魔尊图鉴卡).LOOKS>|itemcount=1|name=赤阳魔尊图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs1a5>
+<ItemShow|x=535.0|y=10.0|itemid=<$STDITEM(图鉴神御礼包(套)).LOOKS>|itemcount=1|name=图鉴神御礼包(套)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs1a6>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02197.png|id=bs2a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥20只|id=bs2a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=500|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs2a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(阿修罗神图鉴卡).LOOKS>|itemcount=1|name=阿修罗神图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs2a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(图鉴神秘礼包(套)).LOOKS>|itemcount=1|name=图鉴神秘礼包(套)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs2a5>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02198.png|id=bs3a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥20只|id=bs3a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=500|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs3a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(阿修罗神图鉴卡).LOOKS>|itemcount=1|name=阿修罗神图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs3a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(图鉴神秘礼包(套)).LOOKS>|itemcount=1|name=图鉴神秘礼包(套)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs3a5>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02199.png|id=bs4a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥8只|id=bs4a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=200|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs4a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(阿修罗神图鉴卡).LOOKS>|itemcount=1|name=阿修罗神图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs4a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(图鉴狂怒随机礼包).LOOKS>|itemcount=2|name=图鉴狂怒随机礼包|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs4a5>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02200.png|id=bs5a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥8只|id=bs5a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=200|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs5a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(阿修罗神图鉴卡).LOOKS>|itemcount=1|name=阿修罗神图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs5a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(图鉴狂怒随机礼包).LOOKS>|itemcount=2|name=图鉴狂怒随机礼包|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs5a5>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02201.png|id=bs6a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥8只|id=bs6a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=200|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs6a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(阿修罗神图鉴卡).LOOKS>|itemcount=1|name=阿修罗神图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs6a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(图鉴狂怒随机礼包).LOOKS>|itemcount=2|name=图鉴狂怒随机礼包|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs6a5>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02202.png|id=bs7a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥8只|id=bs7a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=200|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs7a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(阿修罗神图鉴卡).LOOKS>|itemcount=1|name=阿修罗神图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs7a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(图鉴狂怒随机礼包).LOOKS>|itemcount=2|name=图鉴狂怒随机礼包|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs7a5>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02203.png|id=bs8a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥8只|id=bs8a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=200|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs8a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(阿修罗神图鉴卡).LOOKS>|itemcount=1|name=阿修罗神图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs8a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(图鉴狂怒随机礼包).LOOKS>|itemcount=2|name=图鉴狂怒随机礼包|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs8a5>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02204.png|id=bs9a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥8只|id=bs9a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=200|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs9a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(阿修罗神图鉴卡).LOOKS>|itemcount=1|name=阿修罗神图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs9a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(图鉴狂怒随机礼包).LOOKS>|itemcount=2|name=图鉴狂怒随机礼包|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs9a5>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02205.png|id=bs10a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥8只|id=bs10a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=200|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs10a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(阿修罗神图鉴卡).LOOKS>|itemcount=1|name=阿修罗神图鉴卡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs10a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(图鉴狂怒随机礼包).LOOKS>|itemcount=2|name=图鉴狂怒随机礼包|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs10a5>
+;--------------------------------------------------
+<Img|x=5.0|y=35.0|scale=1.4|img=private/hefuhuodong/word_top_11.png|id=bs11a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥3只|id=bs11a2>
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(图鉴狂怒随机礼包).LOOKS>|itemcount=1|name=图鉴狂怒随机礼包|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=bs11a3>
+#ACT
+CLEARVAR S0 99
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行1.txt S1 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行2.txt S2 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S3 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S4 1 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S5 2 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S6 3 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S7 4 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S8 5 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S9 6 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S10 7 0 2 |
+
+#IF
+SMALL G78 $LONGDATE
+#SAY
+<Text|x=400.0|y=568.0|color=222|size=20|text=奖励已结算并邮件发放>
+#ELSESAY
+<TIMETIPS|x=400|y=568.0|color=222|size=20|time=<$DEC.$STR(G78).$LONGDATE>>
+<Text|x=560.0|y=569.0|color=67|size=20|text=后结算并邮件发放奖励>
+
+#IF
+POS $STR(S1) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S12)>|id=bs1a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S13)>|id=bs1a8>
+#ACT
+SPLIT $STR(S1) | S11
+
+#IF
+POS $STR(S2) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S15)>|id=bs2a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S16)>|id=bs2a8>
+#ACT
+SPLIT $STR(S2) | S14
+
+#IF
+POS $STR(S3) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S18)>|id=bs3a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S19)>|id=bs3a8>
+#ACT
+SPLIT $STR(S3) | S17
+
+#IF
+POS $STR(S4) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S21)>|id=bs4a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S22)>|id=bs4a8>
+#ACT
+SPLIT $STR(S4) | S20
+
+#IF
+POS $STR(S5) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S24)>|id=bs5a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S25)>|id=bs5a8>
+#ACT
+SPLIT $STR(S5) | S23
+
+#IF
+POS $STR(S6) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S27)>|id=bs6a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S28)>|id=bs6a8>
+#ACT
+SPLIT $STR(S6) | S26
+
+#IF
+POS $STR(S7) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S30)>|id=bs7a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S31)>|id=bs7a8>
+#ACT
+SPLIT $STR(S7) | S29
+
+#IF
+POS $STR(S8) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S33)>|id=bs8a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S34)>|id=bs8a8>
+#ACT
+SPLIT $STR(S8) | S32
+
+#IF
+POS $STR(S9) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S36)>|id=bs9a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S37)>|id=bs9a8>
+#ACT
+SPLIT $STR(S9) | S35
+
+#IF
+POS $STR(S10) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S39)>|id=bs10a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S40)>|id=bs10a8>
+#ACT
+SPLIT $STR(S10) | S38
+
+;----------------------沙城红点
+#IF
+ISONCASTLEWAR
+#ACT
+REDDOT 5 1 195 13
+
+
+
+[@Lemon充值]
+#IF
+TRUE
+#SAY
+<Img|x=138.0|y=1.0|show=0|bg=1|move=0|img=private/hefuhuodong/hefuhuodongdb.png|loadDelay=0>
+<Button|x=946.0|y=49.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=157.0|y=97.0|scale=1|img=private/hefuhuodong/paihangbangmb.png>
+<Img|x=400.0|y=95.0|scale=1|img=private/hefuhuodong/chongzhijz.png>
+<Text|x=800.0|y=569.0|color=67|size=20|text=你合区后充值:<$CUSTOMVALUE(37)>元>
+;===============================================================
+<Button|x=166.0|y=105.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=合服礼包|link=@合服活动面板>
+<Button|x=166.0|y=165.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=元宝返利|link=@Lemon返利>
+;<Button|x=166.0|y=225.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=沙　城|link=@Lemon攻城|id=1>
+<Button|x=166.0|y=225.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=BOSS击杀榜|link=@Lemon击杀>
+<Button|x=166.0|y=285.0|color=251|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_01.png|pimg=private/hefuhuodong/btn_hefu_01.png|text=充值排行|link=@Lemon充值>
+<Button|x=166.0|y=345.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=在线奖励|link=@Lemon在线>
+;===============================================================
+<ListView|children=<cz1,cz2,cz3,cz4,cz5,cz6,cz7,cz8,cz9,cz10,cz11>|x=395.0|y=240.0|width=590|height=313|direction=1|bounce=1|reload=1|margin=-5|loadDelay=0|img=picpackage/3/9998.png>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz1|children=<cz1a1,cz1a2,cz1a3,cz1a4,cz1a5,cz1a6,cz1a7,cz1a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz2|children=<cz2a1,cz2a2,cz2a3,cz2a4,cz2a5,cz2a6,cz2a7,cz2a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz3|children=<cz3a1,cz3a2,cz3a3,cz3a4,cz3a5,cz3a6,cz3a7,cz3a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz4|children=<cz4a1,cz4a2,cz4a3,cz4a4,cz4a5,cz4a6,cz4a7,cz4a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz5|children=<cz5a1,cz5a2,cz5a3,cz5a4,cz5a5,cz5a6,cz5a7,cz5a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz6|children=<cz6a1,cz6a2,cz6a3,cz6a4,cz6a5,cz6a6,cz6a7,cz6a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz7|children=<cz7a1,cz7a2,cz7a3,cz7a4,cz7a5,cz7a6,cz7a7,cz7a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz8|children=<cz8a1,cz8a2,cz8a3,cz8a4,cz8a5,cz8a6,cz8a7,cz8a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz9|children=<cz9a1,cz9a2,cz9a3,cz9a4,cz9a5,cz9a6,cz9a7,cz9a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz10|children=<cz10a1,cz10a2,cz10a3,cz10a4,cz10a5,cz10a6,cz10a7,cz10a8>>
+<Img|x=0.0|y=0.0|scale=0.95|img=private/fulihuodong/leichongfanli.png|id=cz11|children=<cz11a1,cz11a2,cz11a3,cz11a4,cz11a5,cz11a6,cz11a7,cz11a8>>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02196.png|id=cz1a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥500元|id=cz1a2>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02197.png|id=cz2a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥300元|id=cz2a2>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02198.png|id=cz3a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥100元|id=cz3a2>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02199.png|id=cz4a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥50元|id=cz4a2>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02200.png|id=cz5a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥50元|id=cz5a2>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02201.png|id=cz6a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥50元|id=cz6a2>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02202.png|id=cz7a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥50元|id=cz7a2>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02203.png|id=cz8a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥50元|id=cz8a2>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02204.png|id=cz9a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥50元|id=cz9a2>
+;--------------------------------------------------
+<Img|x=5.0|y=5.0|scale=1|img=private/jishaboss/res.02205.png|id=cz10a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥50元|id=cz10a2>
+;--------------------------------------------------
+<Img|x=5.0|y=35.0|scale=1.4|img=private/hefuhuodong/word_top_11.png|id=cz11a1>
+<Text|x=230.0|y=30.0|color=67|size=20|text=≥10元|id=cz11a2>
+<ItemShow|x=325.0|y=10.0|itemid=0|itemcount=200|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz11a3>
+#ACT
+CLEARVAR S0 99
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行1.txt S1 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行2.txt S2 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行3.txt S3 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S4 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S5 1 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S6 2 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S7 3 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S8 4 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S9 5 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S10 6 0 2 |
+
+#IF
+SMALL G78 $LONGDATE
+#SAY
+<Text|x=400.0|y=568.0|color=222|size=20|text=奖励已结算并邮件发放>
+#ELSESAY
+<TIMETIPS|x=400|y=568.0|color=222|size=20|time=<$DEC.$STR(G78).$LONGDATE>>
+<Text|x=560.0|y=569.0|color=67|size=20|text=后结算并邮件发放奖励>
+
+#IF
+POS $STR(S1) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S12)>|id=cz1a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S13)>|id=cz1a8>
+#ACT
+SPLIT $STR(S1) | S11
+
+#IF
+POS $STR(S2) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S15)>|id=cz2a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S16)>|id=cz2a8>
+#ACT
+SPLIT $STR(S2) | S14
+
+#IF
+POS $STR(S3) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S18)>|id=cz3a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S19)>|id=cz3a8>
+#ACT
+SPLIT $STR(S3) | S17
+
+#IF
+POS $STR(S4) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S21)>|id=cz4a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S22)>|id=cz4a8>
+#ACT
+SPLIT $STR(S4) | S20
+
+#IF
+POS $STR(S5) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S24)>|id=cz5a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S25)>|id=cz5a8>
+#ACT
+SPLIT $STR(S5) | S23
+
+#IF
+POS $STR(S6) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S27)>|id=cz6a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S28)>|id=cz6a8>
+#ACT
+SPLIT $STR(S6) | S26
+
+#IF
+POS $STR(S7) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S30)>|id=cz7a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S31)>|id=cz7a8>
+#ACT
+SPLIT $STR(S7) | S29
+
+#IF
+POS $STR(S8) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S33)>|id=cz8a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S34)>|id=cz8a8>
+#ACT
+SPLIT $STR(S8) | S32
+
+#IF
+POS $STR(S9) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S36)>|id=cz9a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S37)>|id=cz9a8>
+#ACT
+SPLIT $STR(S9) | S35
+
+#IF
+POS $STR(S10) |
+#SAY
+<Button|x=120.0|y=15.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S39)>|id=cz10a7>
+<Button|x=120.0|y=45.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=67|size=20|text=<$STR(S40)>|id=cz10a8>
+#ACT
+SPLIT $STR(S10) | S38
+
+;======================================================================奖励展示
+;---------------------------------------第1次合区
+#IF
+EQUAL $HFCOUNT 1
+#SAY
+;-------------------第1名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=3000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=50|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(七阶装备自选箱).LOOKS>|itemcount=2|name=七阶装备自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a5>
+<ItemShow|x=535.0|y=10.0|itemid=<$STDITEM(法宝自选箱).LOOKS>|itemcount=1|name=法宝自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a6>
+;-------------------第2名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2500|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=50|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(招魂幡).LOOKS>|itemcount=1|name=招魂幡|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a5>
+<ItemShow|x=535.0|y=10.0|itemid=<$STDITEM(七阶装备自选箱).LOOKS>|itemcount=1|name=七阶装备自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a6>
+;-------------------第3名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=50|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(无量飞剑).LOOKS>|itemcount=1|name=无量飞剑|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a5>
+;-------------------第4名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=30|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a5>
+;-------------------第5名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=30|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a5>
+;-------------------第6名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=30|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a5>
+;-------------------第7名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=30|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a5>
+;-------------------第8名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=30|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a5>
+;-------------------第9名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=30|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a5>
+;-------------------第10名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=30|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a5>
+
+;---------------------------------------第2次合区
+#IF
+EQUAL $HFCOUNT 2
+#SAY
+;-------------------第1名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=3000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=50|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(凶器自选箱).LOOKS>|itemcount=1|name=凶器自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a5>
+;<ItemShow|x=535.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a6>
+;-------------------第2名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2500|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=50|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(赤明天帝).LOOKS>|itemcount=1|name=赤明天帝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a5>
+;-------------------第3名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=30|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(撼天).LOOKS>|itemcount=1|name=撼天|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a5>
+;-------------------第4名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=10|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a5>
+;-------------------第5名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=10|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a5>
+;-------------------第6名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=10|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a5>
+;-------------------第7名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=10|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a5>
+;-------------------第8名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=10|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a5>
+;-------------------第9名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=10|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a5>
+;-------------------第10名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=10|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a5>
+
+
+;---------------------------------------第3次合区
+#IF
+EQUAL $HFCOUNT 3
+#SAY
+;-------------------第1名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=3000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(武器时装自选箱).LOOKS>|itemcount=1|name=武器时装自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(衣服时装自选箱).LOOKS>|itemcount=1|name=衣服时装自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a5>
+<ItemShow|x=535.0|y=10.0|itemid=<$STDITEM(传世红人(时装)).LOOKS>|itemcount=1|name=传世红人(时装)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a6>
+;-------------------第2名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(武器时装自选箱).LOOKS>|itemcount=1|name=武器时装自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(传世红人(时装)).LOOKS>|itemcount=1|name=传世红人(时装)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a5>
+;-------------------第3名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(传世红人(时装)).LOOKS>|itemcount=1|name=传世红人(时装)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(传世红人(时装)).LOOKS>|itemcount=1|name=传世红人(时装)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a5>
+;-------------------第4名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a5>
+;-------------------第5名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a5>
+;-------------------第6名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a5>
+;-------------------第7名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a5>
+;-------------------第8名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a5>
+;-------------------第9名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a5>
+;-------------------第10名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a5>
+
+
+;---------------------------------------第4次合区
+#IF
+EQUAL $HFCOUNT 4
+#SAY
+;-------------------第1名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=3000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(紫金葫芦).LOOKS>|itemcount=1|name=紫金葫芦|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(十二阶装备自选箱).LOOKS>|itemcount=2|name=十二阶装备自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a5>
+;<ItemShow|x=535.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a6>
+;-------------------第2名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(十一阶装备自选箱).LOOKS>|itemcount=2|name=十一阶装备自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(十一阶装备自选箱).LOOKS>|itemcount=2|name=十一阶装备自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a5>
+;-------------------第3名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(十阶装备自选箱).LOOKS>|itemcount=2|name=十阶装备自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a5>
+;-------------------第4名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a5>
+;-------------------第5名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a5>
+;-------------------第6名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a5>
+;-------------------第7名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a5>
+;-------------------第8名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a5>
+;-------------------第9名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a5>
+;-------------------第10名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a5>
+
+
+;---------------------------------------第5-7次合区
+#IFONE
+EQUAL $HFCOUNT 5
+EQUAL $HFCOUNT 6
+EQUAL $HFCOUNT 7
+#SAY
+;-------------------第1名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=3000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(魔体经验券(10万)).LOOKS>|itemcount=2|name=魔体经验券(10万)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(魔体经验券(30万)).LOOKS>|itemcount=5|name=魔体经验券(30万)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a5>
+;<ItemShow|x=535.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a6>
+;-------------------第2名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(魔体经验券(10万)).LOOKS>|itemcount=1|name=魔体经验券(10万)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(魔体经验券(30万)).LOOKS>|itemcount=2|name=魔体经验券(30万)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a5>
+;-------------------第3名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(魔体经验券(10万)).LOOKS>|itemcount=1|name=魔体经验券(10万)|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a5>
+;-------------------第4名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a5>
+;-------------------第5名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a5>
+;-------------------第6名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a5>
+;-------------------第7名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a5>
+;-------------------第8名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a5>
+;-------------------第9名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a5>
+;-------------------第10名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a5>
+
+
+;---------------------------------------第8次合区
+#IF
+LARGE $HFCOUNT 7
+#SAY
+;-------------------第1名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=3000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(耀阳圣尊).LOOKS>|itemcount=1|name=耀阳圣尊|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a4>
+<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(十五阶装备自选箱).LOOKS>|itemcount=2|name=十五阶装备自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a5>
+;<ItemShow|x=535.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz1a6>
+;-------------------第2名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(十五阶装备自选箱).LOOKS>|itemcount=1|name=十五阶装备自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz2a5>
+;-------------------第3名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a3>
+<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1|name=十三阶装备自选箱|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz3a5>
+;-------------------第4名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz4a5>
+;-------------------第5名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz5a5>
+;-------------------第6名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz6a5>
+;-------------------第7名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz7a5>
+;-------------------第8名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz8a5>
+;-------------------第9名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz9a5>
+;-------------------第10名奖励
+<ItemShow|x=325.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a3>
+;<ItemShow|x=395.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a4>
+;<ItemShow|x=465.0|y=10.0|itemid=<$STDITEM(元宝).LOOKS>|itemcount=2|name=圣战手镯|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/freme_treasury2_01.png|id=cz10a5>
+
+;----------------------沙城红点
+#IF
+ISONCASTLEWAR
+#ACT
+REDDOT 5 1 195 13
+
+
+
+
+
+
+
+
+
+
+
+[@Lemon在线]
+#IF
+TRUE
+#SAY
+<Img|x=138.0|y=1.0|show=0|bg=1|move=0|img=private/hefuhuodong/hefuhuodongdb.png|loadDelay=0>
+<Button|x=946.0|y=49.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=157.0|y=97.0|scale=1|img=private/hefuhuodong/zaixianshichangmb.png>
+;===============================================================
+<Button|x=166.0|y=105.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=合服礼包|link=@合服活动面板>
+<Button|x=166.0|y=165.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=元宝返利|link=@Lemon返利>
+;<Button|x=166.0|y=225.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=沙　城|link=@Lemon攻城|id=1>
+<Button|x=166.0|y=225.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=BOSS击杀榜|link=@Lemon击杀>
+<Button|x=166.0|y=285.0|color=67|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_02.png|pimg=private/hefuhuodong/btn_hefu_02.png|text=充值排行|link=@Lemon充值>
+<Button|x=166.0|y=345.0|color=251|scale=1|size=22|nimg=private/hefuhuodong/btn_hefu_01.png|pimg=private/hefuhuodong/btn_hefu_01.png|text=在线奖励|link=@Lemon在线>
+;===============================================================
+<ItemShow|x=420.0|y=290.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=100|name=绑定元宝|bgtype=1|showtips=1|scale=1>
+<ItemShow|x=420.0|y=360.0|itemid=<$STDITEM(特戒精华).LOOKS>|itemcount=10|name=特戒精华|bgtype=1|showtips=1|scale=1>
+<ItemShow|x=420.0|y=430.0|itemid=<$STDITEM(金币).LOOKS>|itemcount=20000|name=金币|bgtype=1|showtips=1|scale=1>
+;------------------
+<ItemShow|x=535.0|y=290.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=200|name=绑定元宝|bgtype=1|showtips=1|scale=1>
+<ItemShow|x=535.0|y=360.0|itemid=<$STDITEM(灵兽精粹).LOOKS>|itemcount=15|name=灵兽精粹|bgtype=1|showtips=1|scale=1>
+<ItemShow|x=535.0|y=430.0|itemid=<$STDITEM(金币).LOOKS>|itemcount=50000|name=金币|bgtype=1|showtips=1|scale=1>
+;------------------
+<ItemShow|x=650.0|y=290.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=300|name=绑定元宝|bgtype=1|showtips=1|scale=1>
+<ItemShow|x=650.0|y=360.0|itemid=<$STDITEM(仙翎之羽).LOOKS>|itemcount=15|name=仙翎之羽|bgtype=1|showtips=1|scale=1>
+<ItemShow|x=650.0|y=430.0|itemid=<$STDITEM(金币).LOOKS>|itemcount=80000|name=金币|bgtype=1|showtips=1|scale=1>
+;------------------
+<ItemShow|x=765.0|y=290.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=500|name=绑定元宝|bgtype=1|showtips=1|scale=1>
+<ItemShow|x=765.0|y=360.0|itemid=<$STDITEM(法宝精粹).LOOKS>|itemcount=20|name=法宝精粹|bgtype=1|showtips=1|scale=1>
+<ItemShow|x=765.0|y=430.0|itemid=<$STDITEM(魔体经验券(30万)).LOOKS>|itemcount=1|name=魔体经验券(10万)|bgtype=1|showtips=1|scale=1>
+;------------------
+<ItemShow|x=880.0|y=290.0|itemid=<$STDITEM(绑定元宝).LOOKS>|itemcount=1000|name=绑定元宝|bgtype=1|showtips=1|scale=1>
+<ItemShow|x=880.0|y=360.0|itemid=<$STDITEM(凶器精粹).LOOKS>|itemcount=20|name=凶器精粹|bgtype=1|showtips=1|scale=1>
+<ItemShow|x=880.0|y=430.0|itemid=<$STDITEM(魔体经验券(10万)).LOOKS>|itemcount=2|name=魔体经验券(10万)|bgtype=1|showtips=1|scale=1>
+;================================================================
+<Button|x=405.0|y=557.0|nimg=private/hefuhuodong/<$STR(S1)>.png|pimg=private/hefuhuodong/<$STR(S1)>.png|link=@<$STR(S6)>>
+<Button|x=520.0|y=557.0|nimg=private/hefuhuodong/<$STR(S2)>.png|pimg=private/hefuhuodong/<$STR(S2)>.png|link=@<$STR(S7)>>
+<Button|x=635.0|y=557.0|nimg=private/hefuhuodong/<$STR(S3)>.png|pimg=private/hefuhuodong/<$STR(S3)>.png|link=@<$STR(S8)>>
+<Button|x=750.0|y=557.0|nimg=private/hefuhuodong/<$STR(S4)>.png|pimg=private/hefuhuodong/<$STR(S4)>.png|link=@<$STR(S9)>>
+<Button|x=865.0|y=557.0|nimg=private/hefuhuodong/<$STR(S5)>.png|pimg=private/hefuhuodong/<$STR(S5)>.png|link=@<$STR(S10)>>
+;================================================================
+<Text|x=410.0|y=180.0|color=67|size=18|text=今日在线时间:<$CUSTOMVALUE(39)>分钟>
+#ACT
+MOV S1 btn_zxsj_03
+MOV S2 btn_zxsj_03
+MOV S3 btn_zxsj_03
+MOV S4 btn_zxsj_03
+MOV S5 btn_zxsj_03
+MOV S6 xxx
+MOV S7 xxx
+MOV S8 xxx
+MOV S9 xxx
+MOV S10 xxx
+
+;----------------------沙城红点
+#IF
+ISONCASTLEWAR
+#ACT
+REDDOT 5 1 195 13
+;------------------------------------------------------------------------
+#IF
+!SMALL $CUSTOMVALUE(39) 10
+#ACT
+MOV S1 btn_zxsj_01
+MOV S6 Lemon在线A1
+#IF
+!SMALL $CUSTOMVALUE(39) 30
+#ACT
+MOV S2 btn_zxsj_01
+MOV S7 Lemon在线A2
+#IF
+!SMALL $CUSTOMVALUE(39) 60
+#ACT
+MOV S3 btn_zxsj_01
+MOV S8 Lemon在线A3
+#IF
+!SMALL $CUSTOMVALUE(39) 120
+#ACT
+MOV S4 btn_zxsj_01
+MOV S9 Lemon在线A4
+#IF
+!SMALL $CUSTOMVALUE(39) 240
+#ACT
+MOV S5 btn_zxsj_01
+MOV S10 Lemon在线A5
+;------------------------------------------------------------------------
+#IF
+CHECK [676] 1
+#ACT
+MOV S1 btn_zxsj_02
+MOV S6 xxx
+#IF
+CHECK [677] 1
+#ACT
+MOV S2 btn_zxsj_02
+MOV S7 xxx
+#IF
+CHECK [678] 1
+#ACT
+MOV S3 btn_zxsj_02
+MOV S8 xxx
+#IF
+CHECK [679] 1
+#ACT
+MOV S4 btn_zxsj_02
+MOV S9 xxx
+#IF
+CHECK [680] 1
+#ACT
+MOV S5 btn_zxsj_02
+MOV S10 xxx
+
+
+
+[@Lemon在线A1]
+#IF
+CHECK [676] 1
+#ACT
+SENDMSG 19 今日已领取过了!
+BREAK
+
+#IF
+!CHECKBAGSIZE 3
+#ACT
+SENDMSG 19 需要3个包裹位置!
+BREAK
+
+#IF
+!SMALL $CUSTOMVALUE(39) 10
+#ACT
+SET [676] 1
+BINDGAMEGOLD + 100
+GIVE 金币 20000
+;--------------------------------在线10分钟其他奖励 物品需绑定 防止小号刷材料
+GIVE 特戒精华 10 1
+SENDMSG 16 恭喜<%s>成功领取在线10分钟奖励...恭喜恭喜!!
+GOTO @Lemon在线
+BREAK
+#ELSEACT
+SENDMSG 19 你的在线时间不足!!
+BREAK
+
+[@Lemon在线A2]
+#IF
+CHECK [677] 1
+#ACT
+SENDMSG 19 今日已领取过了!
+BREAK
+
+#IF
+!CHECKBAGSIZE 3
+#ACT
+SENDMSG 19 需要3个包裹位置!
+BREAK
+
+#IF
+!SMALL $CUSTOMVALUE(39) 30
+#ACT
+SET [677] 1
+BINDGAMEGOLD + 200
+GIVE 金币 50000
+;--------------------------------在线30分钟其他奖励 物品需绑定 防止小号刷材料
+GIVE 灵兽精粹 10 1
+SENDMSG 16 恭喜<%s>成功领取在线30分钟奖励...恭喜恭喜!!
+GOTO @Lemon在线
+BREAK
+#ELSEACT
+SENDMSG 19 你的在线时间不足!!
+BREAK
+
+[@Lemon在线A3]
+#IF
+CHECK [678] 1
+#ACT
+SENDMSG 19 今日已领取过了!
+BREAK
+
+#IF
+!CHECKBAGSIZE 3
+#ACT
+SENDMSG 19 需要3个包裹位置!
+BREAK
+
+#IF
+!SMALL $CUSTOMVALUE(39) 60
+#ACT
+SET [678] 1
+BINDGAMEGOLD + 300
+GIVE 金币 80000
+;--------------------------------在线60分钟其他奖励 物品需绑定 防止小号刷材料
+GIVE 仙翎之羽 10 1
+SENDMSG 16 恭喜<%s>成功领取在线60分钟奖励...恭喜恭喜!!
+GOTO @Lemon在线
+BREAK
+#ELSEACT
+SENDMSG 19 你的在线时间不足!!
+BREAK
+
+[@Lemon在线A4]
+#IF
+CHECK [679] 1
+#ACT
+SENDMSG 19 今日已领取过了!
+BREAK
+
+#IF
+!CHECKBAGSIZE 3
+#ACT
+SENDMSG 19 需要3个包裹位置!
+BREAK
+
+#IF
+!SMALL $CUSTOMVALUE(39) 120
+#ACT
+SET [679] 1
+BINDGAMEGOLD + 500
+;--------------------------------在线120分钟其他奖励 物品需绑定 防止小号刷材料
+GIVE 魔体经验券(10万) 1 1
+GIVE 法宝精粹 20 1
+SENDMSG 16 恭喜<%s>成功领取在线120分钟奖励...恭喜恭喜!!
+GOTO @Lemon在线
+BREAK
+#ELSEACT
+SENDMSG 19 你的在线时间不足!!
+BREAK
+
+[@Lemon在线A5]
+#IF
+CHECK [680] 1
+#ACT
+SENDMSG 19 今日已领取过了!
+BREAK
+
+#IF
+!CHECKBAGSIZE 3
+#ACT
+SENDMSG 19 需要3个包裹位置!
+BREAK
+
+#IF
+!SMALL $CUSTOMVALUE(39) 240
+#ACT
+SET [680] 1
+BINDGAMEGOLD + 1000
+;--------------------------------在线240分钟其他奖励 物品需绑定 防止小号刷材料
+GIVE 魔体经验券(10万) 2 1
+GIVE 凶器精粹 20 1
+SENDMSG 16 恭喜<%s>成功领取在线240分钟奖励...恭喜恭喜!!
+GOTO @Lemon在线
+BREAK
+#ELSEACT
+SENDMSG 19 你的在线时间不足!!
+BREAK
+
+
+
+
+}

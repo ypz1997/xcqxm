@@ -1,0 +1,311 @@
+[@main]
+#IF
+TRUE
+#ACT
+GONPC $NPCINFO.X $NPCINFO.Y 0
+
+#IF
+EQUAL $NPCID 1000
+#ACT
+GOTO @Lemon宝箱大
+BREAK
+
+#IF
+!SMALL G$宝箱<$NPCID>复活 $LONGDATE
+#ACT
+SENDMSG 19 宝箱冷却中,请<$DEC.$STR(G$宝箱<$NPCID>复活).$LONGDATE>秒后再来!
+BREAK
+
+#IF
+LARGE G$宝箱<$NPCID>状态 0
+#ACT
+SENDMSG 19 正在采集中,无法重复采集!
+BREAK
+
+#IF
+LARGE $STR(S$Lemon采集ID) 0
+!EQUAL S$Lemon采集ID $NPCID
+#ACT
+MOV G$宝箱<$STR(S$Lemon采集ID)>状态 0
+MOV S$Lemon采集X 
+MOV S$Lemon采集Y 
+MOV N$Lemon采集 0
+MOV S$Lemon采集ID 
+SENDUI 104 
+DELFH 1
+SENDMSG 19 采集被打断...
+BREAK
+
+;-------------------中箱子
+#IF
+SMALL $NPCID 1006
+#ACT
+MOV N$Lemon宝箱积分 4
+MOV N$Lemon宝箱灰色 19
+#ELSEACT
+;-------------------小箱子
+MOV N$Lemon宝箱积分 2
+MOV N$Lemon宝箱灰色 19
+
+#IF
+CHECKUSERGAP < 2
+#ACT
+MOV N$Lemon采集 0
+MOV S$Lemon采集X $X
+MOV S$Lemon采集Y $Y
+MOV G$宝箱<$NPCID>状态 1
+MOV S$Lemon采集ID $NPCID
+;---------------------------------------------------
+MOV S$Lemon活动 <Img|x=460.0|y=70.0|img=private/gonghuizhan/bg_progess_05.png|UiLevel=2>
+INC S$Lemon活动 <LoadingBar|x=462.5|y=72.3|maxLen=10|curLen=<$STR(N$Lemon采集)>|img=private/gonghuizhan/bg_progess_04.png>
+SENDUI 104 $STR(S$Lemon活动)
+ADDFH 1 3 44444 0 10
+;---------------------------------------------------
+DELAYGOTO 500 @Lemon采集JS
+BREAK
+#ELSEACT
+MOV S$Lemon采集X 
+MOV S$Lemon采集Y 
+MOV N$Lemon采集 0
+MOV S$Lemon采集ID 
+SENDUI 104 
+DELFH 1
+BREAK
+
+
+
+[@Lemon采集JS]
+#IFONE
+!EQUAL S$Lemon采集X $X
+!EQUAL S$Lemon采集Y $Y
+#ACT
+DELFH 1
+SENDUI 104 
+MOV G$宝箱<$STR(S$Lemon采集ID)>状态 0
+MOV S$Lemon采集X 
+MOV S$Lemon采集Y 
+MOV N$Lemon采集 0
+MOV S$Lemon采集ID 
+SENDMSG 19 采集被打断...
+BREAK
+
+#IF
+SMALL N$Lemon采集 10
+#ACT
+INC N$Lemon采集 1
+MOV S$Lemon活动 <Img|x=460.0|y=70.0|img=private/gonghuizhan/bg_progess_05.png|UiLevel=2>
+INC S$Lemon活动 <LoadingBar|x=462.5|y=72.3|maxLen=10|curLen=<$STR(N$Lemon采集)>|img=private/gonghuizhan/bg_progess_04.png>
+;------------------------------------------
+SENDUI 104 $STR(S$Lemon活动)
+DELAYGOTO 500 @Lemon采集JS
+BREAK
+
+#IF
+LARGE N$Lemon采集 9
+#ACT
+DELFH 1
+SENDUI 104 
+INC G$工会战积分 $STR(N$Lemon宝箱积分)
+MOV G$宝箱<$STR(S$Lemon采集ID)>状态 0
+MOV G$宝箱<$STR(S$Lemon采集ID)>死亡 1
+MOV G$宝箱<$STR(S$Lemon采集ID)>复活 $INC.$LONGDATE.30
+SETNPCNAME $STR(S$Lemon采集ID) 　　
+SETNPCAPPR $STR(S$Lemon采集ID) 29
+MOV S$Lemon采集X 
+MOV S$Lemon采集Y 
+MOV N$Lemon采集 0
+MOV S$Lemon采集ID 
+SENDMSG 19 采集成功!
+#ELSEACT
+MOV G$宝箱<$STR(S$Lemon采集ID)>状态 0
+MOV S$Lemon采集X 
+MOV S$Lemon采集Y 
+MOV N$Lemon采集 0
+MOV S$Lemon采集ID 
+DELFH 1
+SENDUI 104 
+BREAK
+
+#IF
+SMALL $G宝箱大刷新 1
+#ACT
+SETNPCNAME 1000 　　
+SETNPCAPPR 1000 541
+
+#IF
+!CHECKVARLIST $GUILDNAME ..\QUESTDIARY\游戏数据\工会战行会.txt
+#ACT
+ADDVARLIST $GUILDNAME ..\QUESTDIARY\游戏数据\工会战行会.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+
+#IF
+POSINLIST |<$GUILDNAME>| ..\QUESTDIARY\游戏数据\工会战排行.txt S0
+#ACT
+SPLIT $STR(S0) | S1
+DELVARLIST $STR(S0) ..\QUESTDIARY\游戏数据\工会战排行.txt
+ADDVARLIST |<$GUILDNAME>|<$INC.$STR(S2).$STR(N$Lemon宝箱积分)> ..\QUESTDIARY\游戏数据\工会战排行.txt
+#ELSEACT
+ADDVARLIST |<$GUILDNAME>|<$STR(N$Lemon宝箱积分)> ..\QUESTDIARY\游戏数据\工会战排行.txt
+
+#IF
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt S0
+#ACT
+SPLIT $STR(S0) | S1
+DELVARLIST $STR(S0) ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+ADDVARLIST |<$USERNAME>|<$INC.$STR(S2).$STR(N$Lemon宝箱积分)> ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+#ELSEACT
+ADDVARLIST |<$USERNAME>|<$STR(N$Lemon宝箱积分)> ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+
+
+#IF
+TRUE
+#ACT
+;---------------------------------此处写两行是为了即时刷新排行数据
+GOTO @Lemon工会PH 3
+GOTO @Lemon工会PH 3
+;MAPMOVE $M $X $Y
+;CLOSE
+BREAK
+
+
+
+
+[@Lemon宝箱大]
+#IF
+!EQUAL G$宝箱大刷新 2
+#ACT
+SENDMSG 19 大宝箱暂时无法采集.......
+BREAK
+
+#IF
+!CHECKBAGSIZE 1
+#ACT
+SENDMSG 5 你缺少1个包裹位置!!
+BREAK
+
+#IF
+LARGE G$宝箱<$NPCID>状态 0
+#ACT
+SENDMSG 19 正在采集中,无法重复采集!
+BREAK
+
+#IF
+LARGE $STR(S$Lemon采集ID) 0
+!EQUAL S$Lemon采集ID $NPCID
+#ACT
+MOV G$宝箱<$STR(S$Lemon采集ID)>状态 0
+MOV S$Lemon采集X 
+MOV S$Lemon采集Y 
+MOV N$Lemon采集 0
+MOV S$Lemon采集ID 
+SENDUI 104 
+DELFH 1
+SENDMSG 19 采集被打断...
+BREAK
+
+#IF
+CHECKUSERGAP < 2
+#ACT
+MOV N$Lemon采集 0
+MOV S$Lemon采集X $X
+MOV S$Lemon采集Y $Y
+MOV G$宝箱<$NPCID>状态 1
+MOV S$Lemon采集ID $NPCID
+;---------------------------------------------------
+MOV S$Lemon活动 <Img|x=460.0|y=70.0|img=private/gonghuizhan/bg_progess_05.png|UiLevel=2>
+INC S$Lemon活动 <LoadingBar|x=462.5|y=72.3|maxLen=10|curLen=<$STR(N$Lemon采集)>|img=private/gonghuizhan/bg_progess_04.png>
+SENDUI 104 $STR(S$Lemon活动)
+ADDFH 1 3 44444 0 10
+;---------------------------------------------------
+DELAYGOTO 500 @Lemon采集JS大
+BREAK
+#ELSEACT
+MOV S$Lemon采集X 
+MOV S$Lemon采集Y 
+MOV N$Lemon采集 0
+MOV S$Lemon采集ID 
+SENDUI 104 
+DELFH 1
+BREAK
+
+
+
+[@Lemon采集JS大]
+#IFONE
+!EQUAL S$Lemon采集X $X
+!EQUAL S$Lemon采集Y $Y
+#ACT
+DELFH 1
+SENDUI 104 
+MOV G$宝箱<$STR(S$Lemon采集ID)>状态 0
+MOV S$Lemon采集X 
+MOV S$Lemon采集Y 
+MOV N$Lemon采集 0
+MOV S$Lemon采集ID 
+SENDMSG 19 采集被打断...
+BREAK
+
+#IF
+SMALL N$Lemon采集 10
+#ACT
+INC N$Lemon采集 1
+MOV S$Lemon活动 <Img|x=460.0|y=70.0|img=private/gonghuizhan/bg_progess_05.png|UiLevel=2>
+INC S$Lemon活动 <LoadingBar|x=462.5|y=72.3|maxLen=10|curLen=<$STR(N$Lemon采集)>|img=private/gonghuizhan/bg_progess_04.png>
+;------------------------------------------
+SENDUI 104 $STR(S$Lemon活动)
+sendmsg 5 <$str(N$Lemon采集)>
+DELAYGOTO 500 @Lemon采集JS大
+BREAK
+
+#IF
+LARGE N$Lemon采集 9
+#ACT
+SENDUI 104 
+GIVE 宝箱(大) 1
+ADDFH 1 3 46615 -12 -45
+CHANGEMODE 25 0
+MOV G$宝箱大刷新 3
+SENDMSG 19 采集成功!
+SENDMSG 5 在宝箱的作用下,你无法奔跑!!请前往复活点提交宝箱
+SENDMSG 15 在宝箱的作用下,你无法奔跑!!请前往复活点提交宝箱
+MOV G$宝箱<$STR(S$Lemon采集ID)>状态 0
+SETNPCNAME $STR(S$Lemon采集ID) 　　
+SETNPCAPPR $STR(S$Lemon采集ID) 29
+MOV S$Lemon采集X 
+MOV S$Lemon采集Y 
+MOV N$Lemon采集 0
+MOV S$Lemon采集ID 
+BREAK
+#ELSEACT
+MOV G$宝箱<$STR(S$Lemon采集ID)>状态 0
+MOV S$Lemon采集X 
+MOV S$Lemon采集Y 
+MOV N$Lemon采集 0
+MOV S$Lemon采集ID 
+DELFH 1
+SENDUI 104 
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

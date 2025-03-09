@@ -1,0 +1,70 @@
+[@main]
+#IF
+LARGE $CLIENTFLAG 1
+#ACT
+GOTO @手游端
+#ELSEACT
+GOTO @PC端
+
+
+[@手游端]
+#IF
+CHECKJOB Warrior
+#ACT
+MOV S$新手装备1 铜锤
+
+#IF
+CHECKJOB Wizard
+#ACT
+MOV S$新手装备1 狼牙棒
+
+#IF
+CHECKJOB Taos
+#ACT
+MOV S$新手装备1 银蛇剑
+
+#IF
+HasTask 2
+#SAY
+<Button|x=413.0|y=0.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|show=0|move=0|bg=1|loadDelay=1|img=public/bg_npc_01.png|esc=1|_localZOrder=-2|reset=1>
+<RText|x=25|y=20|text=欢迎来到传奇世界，现在开始您的布衣木剑\闯荡江湖的的传世之路吧！\\>
+<Text|x=25.0|y=80.0|color=215|text=任务奖励：<$STR(S$新手装备1)>*1>
+<Img|x=25.0|y=120.0|width=10|height=10|img=private/xjty.png|esc=0>
+<RText|id=888|x=45.0|y=110.0|color=251|size=18|text=<取回装备/@取回装备>>
+<Layout|id=1|x=6.1|y=7.1|width=200|height=150|link=@取回装备>
+#ELSESAY
+想当年这个村子里人才辈出,\第一位天下第一男战士的武器还是我给打造的呢!
+
+#IF
+HasTask 2
+#ACT
+Navigation 80 888 点击领取#5001#5 0 0
+
+[@取回装备]
+#IF
+HasTask 2
+CHECK [181] 1
+!CheckItemID <$Human(新手任务记录1)>
+#ACT
+SENDMSG 19 请联系客服或重新建立角色
+BREAK
+
+#IF
+HasTask 2
+CHECK [181] 1
+CheckItemID <$Human(新手任务记录1)>
+#ACT
+OPENUI 2011 1
+SENDMSG 19 双击穿戴该武器
+BREAK
+
+#IF
+HasTask 2
+CHECK [181] 0
+#ACT
+SET [181] 1
+GIVE <$STR(S$新手装备1)> 1 1
+CalcVar Human 新手任务记录1 = <$PARAM(10)> 1
+CLOSE
+BREAK

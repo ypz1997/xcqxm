@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=21
+IsMain=0
+stepcount = 2
+title = [　]了解神兵
+ID = 21
+stepstitle1 = 　\<color=green 把时装里的><神兵/@xxxx><color=green 提升一级>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=200|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle2 = 　\<color=green 已完成提升神兵的任务>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>  <点击领取/@XXXXX>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=200|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>

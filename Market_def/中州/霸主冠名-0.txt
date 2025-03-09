@@ -1,0 +1,127 @@
+[@main]
+#if
+;-------------------------------------------------------------------------------------------------判断是否合区
+small <$HFCOUNT> 1
+#act
+mov S$czphann_1 <Button|x=593.0|y=364.0|scale=1|bag=0|mimg=public/button/btn_push_01.png|nimg=public/button/btn_push_01.png|color=255|pimg=public/button/btn_push_01.png|size=18|text=充值排行按钮|link=@czphbann_0224>
+goto @guanmingjiemian_1
+#elseact
+mov S$czphann_1 
+goto @guanmingjiemian_1
+
+
+
+;--------------------------------------------------------------------------------------------------一级界面
+[@guanmingjiemian_1]
+#if
+true
+#say
+<Button|x=733.0|y=141.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Layout|x=718.0|y=120.0|width=80|height=80|_localZOrder=-1|link=@exit>
+<Img|x=279.0|y=141.0|height=290|show=0|loadDelay=1|bg=1|img=public/bg_npc_01.png|_localZOrder=-2|move=0|reset=1>
+<Text|x=458.0|y=174.0|color=255|size=18|text=冠名详细介绍>
+<Text|x=475.0|y=211.0|color=255|size=18|text=冠名称号>
+<RText|x=457.0|y=236.0|color=255|size=18|text=<血量增加:/FCOLOR=255><+10%/FCOLOR=254>>
+<RText|x=457.0|y=259.0|color=255|size=18|text=<攻击提升:/FCOLOR=255><+30/FCOLOR=254>>
+<RText|x=457.0|y=282.0|color=255|size=18|text=<暴击几率:/FCOLOR=255><+3%/FCOLOR=254>>
+<RText|x=457.0|y=305.0|color=255|size=18|text=<暴击抵抗:/FCOLOR=255><+3%/FCOLOR=254>>
+<RText|x=457.0|y=329.0|color=255|size=18|text=<伤害减免:/FCOLOR=255><+3%/FCOLOR=254>>
+<Text|x=291.0|y=369.0|color=255|size=18|text=开服3天后找客服领取:客服联系方式>
+<Button|x=593.0|y=364.0|scale=1|bag=0|mimg=public/button/btn_push_01.png|nimg=public/button/btn_push_01.png|color=255|pimg=public/button/btn_push_01.png|size=18|text=充值排行按钮|link=@czphbann_0224>
+<$STR(S$czphann_1)>
+
+
+
+;--------------------------------------------------------------------------------------------------先查询再排行
+[@czphbann_0224]
+#if
+true
+#act
+READRANDOMSTR ..\QuestDiary\游戏数据\充值排行.txt S10 0 0 1 | ;//由大到小，取第1名
+READRANDOMSTR ..\QuestDiary\游戏数据\充值排行.txt S20 1 0 1 | ;//由大到小，取第2名
+READRANDOMSTR ..\QuestDiary\游戏数据\充值排行.txt S30 2 0 1 | ;//由大到小，取第3名
+READRANDOMSTR ..\QuestDiary\游戏数据\充值排行.txt S40 3 0 1 | ;//由大到小，取第4名
+READRANDOMSTR ..\QuestDiary\游戏数据\充值排行.txt S50 4 0 1 | ;//由大到小，取第5名
+READRANDOMSTR ..\QuestDiary\游戏数据\充值排行.txt S60 5 0 1 | ;//由大到小，取第6名
+READRANDOMSTR ..\QuestDiary\游戏数据\充值排行.txt S70 6 0 1 | ;//由大到小，取第7名
+
+#if
+!equal S10 
+#act
+SPLIT $STR(S10) | S11
+mov S$排行显示1 <Img|id=ui_30|children={ui_33,ui_32,ui_31}|width=487|height=59|loadDelay=0|img=public/1900000678_1.png|reset=1|show=0>
+inc S$排行显示1 <Text|id=ui_33|x=83|y=13|color=255|size=30|text=1>
+inc S$排行显示1 <Text|id=ui_32|x=80|y=36|color=255|size=18|text=———————————————————>
+inc S$排行显示1 <Text|id=ui_31|x=148|y=18|color=255|size=18|text=<$STR(S12)>>
+
+#if
+!equal S20 
+#act
+SPLIT $STR(S20) | S21
+mov S$排行显示2 <Img|id=ui_26|children={ui_29,ui_28,ui_27}|width=487|height=59|loadDelay=0|img=public/1900000678_1.png|reset=1|show=0>
+inc S$排行显示2 <Text|id=ui_29|x=83|y=13|color=255|size=30|text=2>
+inc S$排行显示2 <Text|id=ui_28|x=80|y=36|color=255|size=18|text=———————————————————>
+inc S$排行显示2 <Text|id=ui_27|x=148|y=18|color=255|size=18|text=<$STR(S22)>>
+
+#if
+!equal S30 
+#act
+SPLIT $STR(S30) | S31
+mov S$排行显示3 <Img|id=ui_22|children={ui_25,ui_24,ui_23}|width=487|height=59|loadDelay=0|img=public/1900000678_1.png|reset=1|show=0>
+inc S$排行显示3 <Text|id=ui_25|x=83|y=13|color=255|size=30|text=3>
+inc S$排行显示3 <Text|id=ui_24|x=80|y=36|color=255|size=18|text=———————————————————>
+inc S$排行显示3 <Text|id=ui_23|x=148|y=18|color=255|size=18|text=<$STR(S32)>>
+
+#if
+!equal S40 
+#act
+SPLIT $STR(S40) | S41
+mov S$排行显示4 <Img|id=ui_18|children={ui_21,ui_20,ui_19}|width=487|height=59|loadDelay=0|img=public/1900000678_1.png|reset=1|show=0>
+inc S$排行显示4 <Text|id=ui_21|x=83|y=13|color=255|size=30|text=4>
+inc S$排行显示4 <Text|id=ui_20|x=80|y=36|color=255|size=18|text=———————————————————>
+inc S$排行显示4 <Text|id=ui_19|x=148|y=18|color=255|size=18|text=<$STR(S42)>>
+
+
+#if
+!equal S50 
+#act
+SPLIT $STR(S50) | S51
+mov S$排行显示5 <Img|id=ui_14|children={ui_17,ui_16,ui_15}|width=487|height=59|loadDelay=0|img=public/1900000678_1.png|reset=1|show=0>
+inc S$排行显示5 <Text|id=ui_17|x=83|y=13|color=255|size=30|text=5>
+inc S$排行显示5 <Text|id=ui_16|x=80|y=36|color=255|size=18|text=———————————————————>
+inc S$排行显示5 <Text|id=ui_15|x=148|y=18|color=255|size=18|text=<$STR(S52)>>
+
+#if
+!equal S60 
+#act
+SPLIT $STR(S60) | S61
+mov S$排行显示6 <Img|id=ui_10|children={ui_13,ui_12,ui_11}|width=487|height=59|loadDelay=0|img=public/1900000678_1.png|reset=1|show=0>
+inc S$排行显示6 <Text|id=ui_13|x=83|y=13|color=255|size=30|text=6>
+inc S$排行显示6 <Text|id=ui_12|x=80|y=36|color=255|size=18|text=———————————————————>
+inc S$排行显示6 <Text|id=ui_11|x=148|y=18|color=255|size=18|text=<$STR(S62)>>
+
+#if
+!equal S70 
+#act
+SPLIT $STR(S70) | S71
+mov S$排行显示7 <Img|id=ui_6|children={ui_7,ui_8,ui_9}|width=487|height=59|reset=1|loadDelay=0|img=public/1900000678_1.png|show=0>
+inc S$排行显示7 <Text|id=ui_7|x=83|y=13|color=255|size=30|text=7>
+inc S$排行显示7 <Text|id=ui_8|x=80|y=36|color=255|size=18|text=———————————————————>
+inc S$排行显示7 <Text|id=ui_9|x=148|y=18|color=255|size=18|text=<$STR(S72)>>
+
+#if
+true
+#say
+<Img|id=ui_39|x=279.0|y=141.0|width=546|height=290|show=0|bg=1|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Img|id=ui_3|x=279.0|y=141.0|width=546|height=290|show=0|img=public/bg_npc_01.png|loadDelay=1|move=0|reset=1>
+<Button|id=ui_1|x=733.0|y=141.0|width=0|height=0|nimg=public/button/btn_close_01.png|color=255|size=18|pimg=public/button/btn_close_01.png|link=@exit>
+<Layout|id=ui_2|x=741.0|y=100.0|width=80|height=80|link=@exit>
+<Text|id=ui_5|x=511|y=165|color=255|size=18|text=充值排行>
+<ListView|id=ui_4|children={ui_30,ui_26,ui_22,ui_18,ui_14,ui_10,ui_6}|x=310|y=187|width=486|height=216|direction=1|bounce=0|cantouch=0|margin=1>
+<$STR(S$排行显示1)>
+<$STR(S$排行显示2)>
+<$STR(S$排行显示3)>
+<$STR(S$排行显示4)>
+<$STR(S$排行显示5)>
+<$STR(S$排行显示6)>
+<$STR(S$排行显示7)>

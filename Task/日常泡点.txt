@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 泡点提醒
+MainID=445
+IsMain=0
+stepcount = 1
+title = [　]日常泡点
+ID = 445
+stepstitle1 = 　\免费泡点时间：<COLOR=GREEN <$DIV.$HUMAN(泡点剩余时间).60>分钟>\元宝泡点时间：<COLOR=GREEN <$DIV.$HUMAN(泡点付费剩余时间).60>分钟>\<Img|x=25.0|y=20.0|img=custom/ya.png|esc=0>
+stepDESC1 = 　\免费泡点时间：<COLOR=GREEN <$DIV.$HUMAN(泡点剩余时间).60>分钟>\元宝泡点时间：<COLOR=GREEN <$DIV.$HUMAN(泡点付费剩余时间).60>分钟>\<Img|x=25.0|y=20.0|img=custom/ya.png|esc=0>

@@ -1,0 +1,46 @@
+[@ ±◊∞…Ë÷√]
+{
+
+#IF
+!IsCastleMaster
+!IsCastleGuild
+#ACT
+TABLE SZ_CGDD CGDD15 = 0
+TABLE SZ_CGDD CGDD16 = 0
+
+#IF
+IsCastleMaster
+!EQUAL $TABLE(SZ_CGDD).CGDD15 1
+#ACT
+TABLE SZ_CGDD CGDD15 = 1
+
+#IF
+!IsCastleMaster
+IsCastleGuild
+!EQUAL $TABLE(SZ_CGDD).CGDD16 1
+#ACT
+TABLE SZ_CGDD CGDD16 = 1
+
+#IF
+EQUAL $CustomValue(52) 77790
+!EQUAL $TABLE(SZ_CGDD).CGDD15 1
+#ACT
+ChangeCustomValue 52 = 0
+DELFH 0
+
+#IF
+EQUAL $CustomValue(52) 77791
+!EQUAL $TABLE(SZ_CGDD).CGDD16 1
+#ACT
+ChangeCustomValue 52 = 0
+DELFH 0
+
+#IF
+TRUE
+#ACT
+SETSECRETINFO $USERNAME $CustomValue(54) $CustomValue(53)
+ADDFH 0 3 $CustomValue(52) -67 -45
+CHANGEMODE 45 $CustomValue(55)
+BREAK
+
+}

@@ -1,0 +1,5 @@
+[@MAIN]
+#IF
+TRUE
+#ACT
+#call [..\QuestDiary\游戏功能\天选之人.txt] @天选之人界面

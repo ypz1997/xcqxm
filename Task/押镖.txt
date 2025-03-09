@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 押镖提醒
+MainID=444
+IsMain=0
+stepcount = 1
+title = [　]日常运镖
+ID = 444
+stepstitle1 = 　\每天找<镖师/@xxx>完成<COLOR=GREEN 运镖 <$CUSTOMVALUE(91)>／2>\<Img|x=25.0|y=20.0|img=custom/ya.png|esc=0>
+stepDESC1 = 　\每天找<镖师/@xxx>完成<COLOR=GREEN 运镖 <$CUSTOMVALUE(91)>／2>\<Img|x=25.0|y=20.0|img=custom/ya.png|esc=0>

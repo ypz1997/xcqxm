@@ -1,0 +1,24 @@
+[@main]
+#IF
+TRUE
+#SAY
+<Img|id=1|children={2,3,4,5,6,7,8,9,10,11}|x=132.0|y=33.0|scale=1|loadDelay=0|bg=1|img=private/bosskongjian/bosskongjian.png|move=1|esc=0>
+<Img|id=2|x=716.0|y=362.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=3|x=751.0|y=373.0|img=public/jinru.png|scale=1|esc=0>
+<Button|id=4|x=808.0|y=-4.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Text|id=5|x=91.0|y=436.0|size=18|color=67|text=· BOSS召唤令使用时间为每日11:00-22:00>
+<Text|id=6|x=91.0|y=471.0|size=18|color=67|text=· 召唤令召唤BOSS BOSS血量翻倍>
+<Text|id=7|x=91.0|y=506.0|size=18|color=67|text=· 召唤的BOSS高阶装备掉落率增加10%>
+<Text|id=8|x=483.0|y=436.0|size=18|color=67|text=· 使用召唤令全服通告>
+<Text|id=9|x=483.0|y=471.0|size=18|color=67|text=· 该地图禁止自动一键拾取>
+<Layout|id=10|x=713.0|y=358.0|width=116|height=44|link=@进入四方炼狱>
+<Text|id=11|x=483|y=506|size=18|color=67|text=· 进入地图双击使用召唤令即可召唤>
+
+
+[@进入四方炼狱]
+#IF
+TRUE
+#ACT
+Map HJSWYZB
+Break
+

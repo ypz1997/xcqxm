@@ -1,0 +1,889 @@
+[@MAIN]
+#IF
+TRUE
+#ACT
+GOTO @公共地图
+BREAK
+
+[@捐献地图页面]
+#IF
+!SMALL $CustomValue(17) 7
+#ACT
+MOV S$秘境六层底图 0
+#ELSEACT
+MOV S$秘境六层底图 1
+
+#IF
+!SMALL $CustomValue(17) 6
+#ACT
+MOV S$秘境五层底图 0
+#ELSEACT
+MOV S$秘境五层底图 1
+
+#IF
+!SMALL $CustomValue(17) 5
+#ACT
+MOV S$秘境四层底图 0
+#ELSEACT
+MOV S$秘境四层底图 1
+
+#IF
+!SMALL $CustomValue(17) 4
+#ACT
+MOV S$秘境三层底图 0
+#ELSEACT
+MOV S$秘境三层底图 1
+
+#IF
+!SMALL $CustomValue(17) 3
+#ACT
+MOV S$秘境二层底图 0
+#ELSEACT
+MOV S$秘境二层底图 1
+
+#IF
+!SMALL $CustomValue(17) 2
+#ACT
+MOV S$秘境一层底图 0
+#ELSEACT
+MOV S$秘境一层底图 1
+
+#IF
+EQUAL $STR(A253) $USERID
+#ACT
+MOV S$巅峰勇士底图 0
+#ELSEACT
+MOV S$巅峰勇士底图 1
+
+#IF
+EQUAL $STR(A252) $USERID
+#ACT
+MOV S$巅峰精英底图 0
+#ELSEACT
+MOV S$巅峰精英底图 1
+
+#IF
+EQUAL $STR(A251) $USERID
+#ACT
+MOV S$巅峰霸主底图 0
+#ELSEACT
+MOV S$巅峰霸主底图 1
+
+
+#IF
+TRUE
+#SAY
+<Img|children={JUANXIAN01,JUANXIAN02,JUANXIAN03,JUANXIAN04,JUANXIAN05,JUANXIAN06,JUANXIAN07,JUANXIAN08,JUANXIAN09,JUANXIAN10,JUANXIAN11,JUANXIAN12,JUANXIAN13,JUANXIAN14,JUANXIAN15,JUANXIAN16,JUANXIAN17,JUANXIAN18,JUANXIAN19,JUANXIAN20,JUANXIAN21,JUANXIAN22,JUANXIAN23,JUANXIAN24,JUANXIAN25,JUANXIAN26,JUANXIAN27,JUANXIAN28,JUANXIAN29,JUANXIAN30,JUANXIAN31,JUANXIAN32,JUANXIAN33,JUANXIAN34,JUANXIAN35,JUANXIAN36,JUANXIAN37,JUANXIAN38,JUANXIAN39,JUANXIAN40,JUANXIAN41,JUANXIAN42,JUANXIAN43,JUANXIAN44,JUANXIAN45,JUANXIAN46}|x=123.0|y=34.0|bg=1|loadDelay=0|scale=1|esc=0|img=private/gnditu/bg_gongnengfuben.png>
+<Img|id=JUANXIAN01|x=792.0|y=-3.0|scale=1|esc=0|img=public/btn_close_01.png|link=@EXIT>
+<Img|id=JUANXIAN02|x=355.0|y=6.0|img=private/gnditu/junxiandt/59900.png|esc=0|scale=1>
+<Img|id=JUANXIAN03|x=23.0|y=48.0|img=public/tab<$STR(N$公共地图按钮)>.png|scale=1|esc=0>
+<Img|id=JUANXIAN04|x=35.0|y=60.0|img=private/gnditu/junxiandt/59902.png|scale=1|esc=0>
+<Layout|id=JUANXIAN05|x=23.0|y=44.0|width=105|height=40|link=@公共地图>
+<Img|id=JUANXIAN06|x=131.0|y=48.0|img=public/tab<$STR(N$独享地图按钮)>.png|scale=1|esc=0>
+<Img|id=JUANXIAN07|x=143.0|y=60.0|img=private/gnditu/junxiandt/59901.png|scale=1|esc=0>
+<Layout|id=JUANXIAN08|x=131.0|y=44.0|width=105|height=40|link=@独享地图>
+
+#IF
+TRUE
+#SAY
+<RText|id=JUANXIAN39|x=75.0|y=450.0|size=16|color=255|text=<军衔等级达成对应条件即可进入地图/FCOLOR=67>\<地图内BOSS高阶装备爆率额外+10/FCOLOR=67>\<代金券掉落率额外+50/FCOLOR=67>>
+
+#IF
+EQUAL N$公共地图按钮 1
+#SAY
+<Img|id=JUANXIAN09|grey=<$STR(S$秘境一层底图)>|x=19.0|y=85.0|img=private/gnditu/junxiandt/59903.png|esc=0|scale=1|link=@点击选中秘境一>
+;------------------------
+<Img|id=JUANXIAN14|grey=<$STR(S$秘境二层底图)>|x=157.0|y=85.0|img=private/gnditu/junxiandt/59905.png|esc=0|scale=1|link=@点击选中秘境二>
+;------------------------
+<Img|id=JUANXIAN19|grey=<$STR(S$秘境三层底图)>|x=296.0|y=85.0|img=private/gnditu/junxiandt/59907.png|esc=0|scale=1|link=@点击选中秘境三>
+;------------------------
+<Img|id=JUANXIAN24|grey=<$STR(S$秘境四层底图)>|x=435.0|y=85.0|img=private/gnditu/junxiandt/59909.png|esc=0|scale=1|link=@点击选中秘境四>
+;------------------------
+<Img|id=JUANXIAN29|grey=<$STR(S$秘境五层底图)>|x=574.0|y=85.0|img=private/gnditu/junxiandt/59911.png|esc=0|scale=1|link=@点击选中秘境五>
+;------------------------
+<Img|id=JUANXIAN34|grey=<$STR(S$秘境六层底图)>|x=712.0|y=85.0|img=private/gnditu/junxiandt/59913.png|esc=0|scale=1|link=@点击选中秘境六>
+;------------------------独享地图
+#IF
+EQUAL N$独享地图按钮 1
+#SAY
+<Img|id=JUANXIAN09|grey=<$STR(S$巅峰勇士底图)>|x=21.0|y=88.0|scale=1|esc=0|img=private/gnditu/junxiandt/59920.png|link=@点击选中巅峰勇士>
+;------------------------
+<Img|id=JUANXIAN14|grey=<$STR(S$巅峰精英底图)>|x=299.0|y=88.0|scale=1|esc=0|img=private/gnditu/junxiandt/59922.png|link=@点击选中巅峰精英>
+;------------------------
+<Img|id=JUANXIAN19|grey=<$STR(S$巅峰霸主底图)>|x=577.0|y=88.0|scale=1|esc=0|img=private/gnditu/junxiandt/59924.png|link=@点击选中巅峰霸主>
+;=======================================================公共地图
+#IF
+EQUAL N$点击选择秘境一 1
+EQUAL N$公共地图按钮 1
+#SAY
+<Img|id=JUANXIAN10|x=23.0|y=87.0|img=private/gnditu/junxiandt/59915.png|scale=1|esc=0|link=@取消选中公共地图&返回秘境面板=公共地图>
+<Img|id=JUANXIAN11|x=35.0|y=227.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=JUANXIAN12|x=70.0|y=238.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=JUANXIAN13|x=30.0|y=220.0|width=120|height=50|link=@点击进入&军衔公共地图=DC_ICE001>
+
+#ACT
+MOV N$点击选择秘境一 0
+
+;----------------------
+#IF
+EQUAL N$点击选择秘境二 1
+EQUAL N$公共地图按钮 1
+#SAY
+<Img|id=JUANXIAN15|x=161.0|y=87.0|img=private/gnditu/junxiandt/59915.png|scale=1|esc=0|link=@取消选中公共地图&返回秘境面板=公共地图>
+<Img|id=JUANXIAN16|x=173.0|y=227.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=JUANXIAN17|x=208.0|y=238.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=JUANXIAN18|x=168.0|y=220.0|width=120|height=50|link=@点击进入&军衔公共地图=DC_ICE002>
+
+#ACT
+MOV N$点击选择秘境二 0
+;----------------------
+#IF
+EQUAL N$点击选择秘境三 1
+EQUAL N$公共地图按钮 1
+#SAY
+<Img|id=JUANXIAN20|x=300.0|y=87.0|img=private/gnditu/junxiandt/59915.png|scale=1|esc=0|link=@取消选中公共地图&返回秘境面板=公共地图>
+<Img|id=JUANXIAN21|x=312.0|y=227.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=JUANXIAN22|x=347.0|y=238.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=JUANXIAN23|x=307.0|y=220.0|width=120|height=50|link=@点击进入&军衔公共地图=DC_ICE003>
+
+#ACT
+MOV N$点击选择秘境三 0
+;----------------------
+#IF
+EQUAL N$点击选择秘境四 1
+EQUAL N$公共地图按钮 1
+#SAY
+<Img|id=JUANXIAN25|x=439.0|y=87.0|img=private/gnditu/junxiandt/59915.png|scale=1|esc=0|link=@取消选中公共地图&返回秘境面板=公共地图>
+<Img|id=JUANXIAN26|x=451.0|y=227.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=JUANXIAN27|x=486.0|y=238.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=JUANXIAN28|x=446.0|y=220.0|width=120|height=50|link=@点击进入&军衔公共地图=DC_ICE004>
+
+#ACT
+MOV N$点击选择秘境四 0
+;----------------------
+#IF
+EQUAL N$点击选择秘境五 1
+EQUAL N$公共地图按钮 1
+#SAY
+<Img|id=JUANXIAN30|x=578.0|y=87.0|img=private/gnditu/junxiandt/59915.png|scale=1|esc=0|link=@取消选中公共地图&返回秘境面板=公共地图>
+<Img|id=JUANXIAN31|x=590.0|y=227.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=JUANXIAN32|x=625.0|y=238.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=JUANXIAN33|x=585.0|y=220.0|width=120|height=50|link=@点击进入&军衔公共地图=DC_ICE005>
+
+#ACT
+MOV N$点击选择秘境五 0
+;----------------------
+#IF
+EQUAL N$点击选择秘境六 1
+EQUAL N$公共地图按钮 1
+#SAY
+<Img|id=JUANXIAN35|x=716.0|y=87.0|img=private/gnditu/junxiandt/59915.png|scale=1|esc=0|link=@取消选中公共地图&返回秘境面板=公共地图>
+<Img|id=JUANXIAN36|x=728.0|y=227.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=JUANXIAN37|x=763.0|y=238.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=JUANXIAN38|x=723.0|y=220.0|width=120|height=50|link=@点击进入&军衔公共地图=DC_ICE006>
+
+#ACT
+MOV N$点击选择秘境六 0
+
+;-==========================================独享地图
+#IF
+EQUAL N$点击选中巅峰勇士 1
+EQUAL N$独享地图按钮 1
+#SAY
+<Img|id=JUANXIAN10|x=22.0|y=89.0|esc=0|scale=1|img=private/gnditu/junxiandt/59926.png|link=@取消选中独享地图&返回秘境面板=独享地图>
+<Img|id=JUANXIAN11|x=102.0|y=225.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=JUANXIAN12|x=137.0|y=236.0|img=public/jinru.png|esc=0|scale=1>
+<Layout|id=JUANXIAN13|x=98.0|y=218.0|width=120|height=50|link=@点击进入&军衔独享地图=T015003>
+
+#ACT
+MOV N$点击选中巅峰勇士 0
+;----------------------
+#IF
+EQUAL N$点击选中巅峰精英 1
+EQUAL N$独享地图按钮 1
+#SAY
+<Img|id=JUANXIAN15|x=300.0|y=89.0|esc=0|scale=1|img=private/gnditu/junxiandt/59926.png|link=@取消选中独享地图&返回秘境面板=独享地图>
+<Img|id=JUANXIAN16|x=380.0|y=225.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=JUANXIAN17|x=415.0|y=236.0|img=public/jinru.png|esc=0|scale=1>
+<Layout|id=JUANXIAN18|x=376.0|y=218.0|width=120|height=50|link=@点击进入&军衔独享地图=T015002>
+
+#ACT
+MOV N$点击选中巅峰精英 0
+;----------------------
+#IF
+EQUAL N$点击选中巅峰霸主 1
+EQUAL N$独享地图按钮 1
+#SAY
+<Img|id=JUANXIAN20|x=578.0|y=89.0|esc=0|scale=1|img=private/gnditu/junxiandt/59926.png|link=@取消选中独享地图&返回秘境面板=独享地图>
+<Img|id=JUANXIAN21|x=658.0|y=225.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=JUANXIAN22|x=693.0|y=236.0|img=public/jinru.png|esc=0|scale=1>
+<Layout|id=JUANXIAN23|x=654.0|y=218.0|width=120|height=50|link=@点击进入&军衔独享地图=T015001>
+
+#ACT
+MOV N$点击选中巅峰霸主 0
+
+#IF
+GENDER Man
+CHECKJOB Warrior
+EQUAL N$独享地图按钮 1
+#ACT
+MOV N$性别 6635
+#ELSEACT
+MOV N$性别 6636
+
+#IF
+GENDER Man
+CHECKJOB Wizard
+EQUAL N$独享地图按钮 1
+#ACT
+MOV N$性别 6637
+#ELSEACT
+MOV N$性别 6638
+
+#IF
+GENDER Man
+CHECKJOB Taos
+EQUAL N$独享地图按钮 1
+#ACT
+MOV N$性别 6639
+#ELSEACT
+MOV N$性别 6640
+;--------------------------战
+#IF
+EQUAL N$独享地图按钮 1
+CHECKJOB Warrior
+EQUAL  N$独享面板展示装备 0
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11142|itemcount=1|name=魔道·盘古开天刃|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=魔道·盘古开天甲(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6603|itemcount=1|name=魔道·盘古开天冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6604|itemcount=1|name=魔道·盘古开天坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$独享地图按钮 1
+CHECKJOB Warrior
+EQUAL N$独享面板展示装备 1
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11142|itemcount=1|name=魔道·战魂烈日战刃|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=魔道·战魂烈日甲(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6603|itemcount=1|name=魔道·战魂烈日王冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6604|itemcount=1|name=魔道·战魂烈日吊坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$独享面板展示装备 0
+
+#IF
+EQUAL N$独享地图按钮 1
+CHECKJOB Warrior
+EQUAL N$独享面板展示装备 2
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11142|itemcount=1|name=仙道·战魂烈日战刃|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·战魂烈日甲(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6603|itemcount=1|name=仙道·战魂烈日王冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6604|itemcount=1|name=仙道·战魂烈日吊坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$独享面板展示装备 0
+
+;--------------------------法
+#IF
+EQUAL N$独享地图按钮 1
+CHECKJOB Wizard
+EQUAL  N$独享面板展示装备 0
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11143|itemcount=1|name=魔道·伏羲裂地魔杖|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=魔道·伏羲裂地袍(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6613|itemcount=1|name=魔道·伏羲裂地冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6614|itemcount=1|name=魔道·伏羲裂地链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$独享地图按钮 1
+CHECKJOB Wizard
+EQUAL  N$独享面板展示装备 1
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11143|itemcount=1|name=魔道·法魂血月魔杖|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=魔道·法魂血月法袍(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6613|itemcount=1|name=魔道·法魂血月王冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6614|itemcount=1|name=魔道·法魂血月吊坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$独享面板展示装备 0
+
+
+#IF
+EQUAL N$独享地图按钮 1
+CHECKJOB Wizard
+EQUAL  N$独享面板展示装备 2
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11143|itemcount=1|name=仙道·法魂血月魔杖|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·法魂血月法袍(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6613|itemcount=1|name=仙道·法魂血月王冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6614|itemcount=1|name=仙道·法魂血月吊坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$独享面板展示装备 0
+
+;--------------------------道
+#IF
+EQUAL N$独享地图按钮 1
+CHECKJOB Taos
+EQUAL  N$独享面板展示装备 0
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11144|itemcount=1|name=魔道·轩辕人皇剑|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=魔道·轩辕人皇衣(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6623|itemcount=1|name=魔道·轩辕人皇冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6624|itemcount=1|name=魔道·轩辕人皇链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$独享地图按钮 1
+CHECKJOB Taos
+EQUAL  N$独享面板展示装备 1
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11144|itemcount=1|name=魔道·道魂辰星道剑|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=魔道·道魂辰星道衣(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6623|itemcount=1|name=魔道·道魂辰星道冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6624|itemcount=1|name=魔道·道魂辰星道链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$独享面板展示装备 0
+
+#IF
+EQUAL N$独享地图按钮 1
+CHECKJOB Taos
+EQUAL  N$独享面板展示装备 2
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11144|itemcount=1|name=仙道·道魂辰星道剑|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·道魂辰星道衣(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6623|itemcount=1|name=仙道·道魂辰星道冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6624|itemcount=1|name=仙道·道魂辰星道链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$独享面板展示装备 0
+
+
+#IF
+GENDER Man
+CHECKJOB Warrior
+EQUAL N$公开地图按钮 1
+#ACT
+MOV N$性别 26548
+#ELSEACT
+MOV N$性别 26549
+
+
+#IF
+GENDER Man
+CHECKJOB Wizard
+EQUAL N$公开地图按钮 1
+#ACT
+MOV N$性别 26557
+#ELSEACT
+MOV N$性别 26558
+
+#IF
+GENDER Man
+CHECKJOB Taos
+EQUAL N$公开地图按钮 1
+#ACT
+MOV N$性别 26566
+#ELSEACT
+MOV N$性别 26567
+
+;--------------------------战
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Warrior
+EQUAL N$面板展示装备 0
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26587|itemcount=1|name=仙魔·洪荒破日刃|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙魔·洪荒破日甲(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26551|itemcount=1|name=仙魔·洪荒破日冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26552|itemcount=1|name=仙魔·洪荒破日链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Warrior
+EQUAL N$面板展示装备 1
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11142|itemcount=1|name=盘古开天刃|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=盘古开天甲(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6603|itemcount=1|name=盘古开天冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6604|itemcount=1|name=盘古开天坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$面板展示装备 0
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Warrior
+EQUAL N$面板展示装备 2
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11142|itemcount=1|name=仙道·盘古开天刃|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·盘古开天甲(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6603|itemcount=1|name=仙道·盘古开天冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6604|itemcount=1|name=仙道·盘古开天坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$面板展示装备 0
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Warrior
+EQUAL N$面板展示装备 3
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11142|itemcount=1|name=魔道·盘古开天刃|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=魔道·盘古开天甲(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6603|itemcount=1|name=魔道·盘古开天冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6604|itemcount=1|name=魔道·盘古开天坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$面板展示装备 0
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Warrior
+EQUAL N$面板展示装备 4
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11142|itemcount=1|name=仙道·鎏金圣阳刃|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·鎏金圣阳甲(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6603|itemcount=1|name=仙道·鎏金圣阳冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6604|itemcount=1|name=仙道·鎏金圣阳链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$面板展示装备 0
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Warrior
+EQUAL N$面板展示装备 5
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=11142|itemcount=1|name=仙道·巅峰神武刃|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·巅峰神武甲(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=6603|itemcount=1|name=仙道·巅峰神武盔|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=6604|itemcount=1|name=仙道·巅峰神武坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#ACT
+MOV N$面板展示装备 0
+
+;--------------------------法
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Wizard
+EQUAL N$面板展示装备 0
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26585|itemcount=1|name=仙魔·洪荒吞魔法杖|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙魔·洪荒吞魔法袍(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26560|itemcount=1|name=仙魔·洪荒吞魔法冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26561|itemcount=1|name=仙魔·洪荒吞魔吊坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Wizard
+EQUAL N$面板展示装备 1
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26585|itemcount=1|name=伏羲裂地魔杖|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=伏羲裂地袍(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26560|itemcount=1|name=伏羲裂地冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26561|itemcount=1|name=伏羲裂地链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Wizard
+EQUAL N$面板展示装备 2
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26585|itemcount=1|name=仙道·伏羲裂地魔杖|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·伏羲裂地袍(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26560|itemcount=1|name=仙道·伏羲裂地冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26561|itemcount=1|name=仙道·伏羲裂地链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Wizard
+EQUAL N$面板展示装备 3
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26585|itemcount=1|name=魔道·伏羲裂地魔杖|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=魔道·伏羲裂地袍(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26560|itemcount=1|name=魔道·伏羲裂地冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26561|itemcount=1|name=魔道·伏羲裂地链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Wizard
+EQUAL N$面板展示装备 4
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26585|itemcount=1|name=仙道·鎏金魔月杖|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·鎏金魔月法袍(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26560|itemcount=1|name=仙道·鎏金魔月冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26561|itemcount=1|name=仙道·鎏金魔月坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Wizard
+EQUAL N$面板展示装备 5
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26585|itemcount=1|name=仙道·巅峰幻魔法杖|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·巅峰幻魔袍(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26560|itemcount=1|name=仙道·巅峰幻魔冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26561|itemcount=1|name=仙道·巅峰幻魔坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+;--------------------------道
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Taos
+EQUAL N$面板展示装备 0
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26584|itemcount=1|name=仙魔·洪荒玄冥剑|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙魔·洪荒玄冥衣(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26569|itemcount=1|name=仙魔·洪荒玄冥冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26570|itemcount=1|name=仙魔·洪荒玄冥链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Taos
+EQUAL N$面板展示装备 1
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26584|itemcount=1|name=轩辕人皇剑|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=轩辕人皇衣(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26569|itemcount=1|name=轩辕人皇冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26570|itemcount=1|name=轩辕人皇链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Taos
+EQUAL N$面板展示装备 2
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26584|itemcount=1|name=仙道·轩辕人皇剑|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·轩辕人皇衣(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26569|itemcount=1|name=仙道·轩辕人皇冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26570|itemcount=1|name=仙道·轩辕人皇链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Taos
+EQUAL N$面板展示装备 3
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26584|itemcount=1|name=魔道·轩辕人皇剑|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=魔道·轩辕人皇衣(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26569|itemcount=1|name=魔道·轩辕人皇冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26570|itemcount=1|name=魔道·轩辕人皇链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Taos
+EQUAL N$面板展示装备 4
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26584|itemcount=1|name=仙道·鎏金天星剑|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·鎏金天星衣(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26569|itemcount=1|name=仙道·鎏金天星冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26570|itemcount=1|name=仙道·鎏金天星坠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+
+#IF
+EQUAL N$公共地图按钮 1
+CHECKJOB Taos
+EQUAL N$面板展示装备 5
+#SAY
+<ItemShow|id=JUANXIAN40|x=418.0|y=449.0|width=70|height=70|itemid=26584|itemcount=1|name=仙道·巅峰天玄剑|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN41|x=469.0|y=449.0|width=70|height=70|itemid=<$STR(N$性别)>|itemcount=1|name=仙道·巅峰天玄衣(<$GENDER>)|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN42|x=519.0|y=449.0|width=70|height=70|itemid=26569|itemcount=1|name=仙道·巅峰天玄道冠|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN43|x=571.0|y=449.0|width=70|height=70|itemid=26570|itemcount=1|name=仙道·巅峰天玄道链|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN44|x=621.0|y=449.0|width=70|height=70|itemid=26930|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN45|x=672.0|y=449.0|width=70|height=70|itemid=51048|itemcount=1|name=30米充值代金券|showtips=1|bgtype=1>
+<ItemShow|id=JUANXIAN46|x=724.0|y=449.0|width=70|height=70|itemid=51049|itemcount=1|name=50米充值代金券|showtips=1|bgtype=1>
+[@独享地图]
+#IF
+TRUE
+#ACT
+MOV N$独享地图按钮 1
+MOV N$公共地图按钮 2
+GOTO @捐献地图页面
+BREAK
+
+[@公共地图]
+#IF
+TRUE
+#ACT
+MOV N$独享地图按钮 2
+MOV N$公共地图按钮 1
+GOTO @捐献地图页面
+BREAK
+
+
+[@点击选中秘境一]
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境一层底图 1
+SMALL $CustomValue(17) 2
+#ACT
+SENDMSG 19 军衔等级未达到抚夷校尉！
+BREAK
+
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境一层底图 0
+!SMALL $CustomValue(17) 2
+#ACT
+MOV N$点击选择秘境一 1
+MOV N$面板展示装备 1
+GOTO @捐献地图页面
+BREAK
+
+[@点击选中秘境二]
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境二层底图 1
+SMALL $CustomValue(17) 3
+#ACT
+SENDMSG 19 军衔等级未达到破军都尉！
+BREAK
+
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境二层底图 0
+!SMALL $CustomValue(17) 3
+#ACT
+MOV N$点击选择秘境二 1
+MOV N$面板展示装备 2
+GOTO @捐献地图页面
+BREAK
+
+[@点击选中秘境三]
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境三层底图 1
+SMALL $CustomValue(17) 4
+#ACT
+SENDMSG 19 军衔等级未达到游骑统领！
+BREAK
+
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境三层底图 0
+!SMALL $CustomValue(17) 4
+#ACT
+MOV N$点击选择秘境三 1
+MOV N$面板展示装备 3
+GOTO @捐献地图页面
+BREAK
+
+[@点击选中秘境四]
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境四层底图 1
+SMALL $CustomValue(17) 5
+#ACT
+SENDMSG 19 军衔等级未达到怀远将军！
+BREAK
+
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境四层底图 0
+!SMALL $CustomValue(17) 5
+#ACT
+MOV N$点击选择秘境四 1
+MOV N$面板展示装备 4
+GOTO @捐献地图页面
+BREAK
+
+
+[@点击选中秘境五]
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境五层底图 1
+SMALL $CustomValue(17) 6
+#ACT
+SENDMSG 19 军衔等级未达到骠骑元帅！
+BREAK
+
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境五层底图 0
+!SMALL $CustomValue(17) 6
+#ACT
+MOV N$点击选择秘境五 1
+MOV N$面板展示装备 5
+GOTO @捐献地图页面
+BREAK
+
+[@点击选中秘境六]
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境六层底图 1
+SMALL $CustomValue(17) 7
+#ACT
+SENDMSG 19 军衔等级未达到神武都尉！
+BREAK
+
+#IF
+EQUAL N$公共地图按钮 1
+EQUAL S$秘境六层底图 0
+!SMALL $CustomValue(17) 7
+#ACT
+MOV N$点击选择秘境六 1
+MOV N$面板展示装备 0
+GOTO @捐献地图页面
+BREAK
+
+[@点击选中巅峰勇士]
+#IF
+EQUAL N$独享地图按钮 1
+EQUAL S$巅峰勇士底图 1
+!EQUAL A253 <$USERID>
+#ACT
+SENDMSG 19 未达到捐献榜第三！
+BREAK
+
+#IF
+EQUAL N$独享地图按钮 1
+EQUAL S$巅峰勇士底图 0
+EQUAL A253 <$USERID>
+#ACT
+MOV N$点击选中巅峰勇士 1
+MOV N$独享面板展示装备 2
+GOTO @捐献地图页面
+BREAK
+
+
+[@点击选中巅峰精英]
+#IF
+EQUAL N$独享地图按钮 1
+EQUAL S$巅峰精英底图 1
+!EQUAL A252 <$USERID>
+#ACT
+SENDMSG 19 未达到捐献榜第二！
+BREAK
+
+#IF
+EQUAL N$独享地图按钮 1
+EQUAL S$巅峰精英底图 0
+EQUAL A252 <$USERID>
+#ACT
+MOV N$点击选中巅峰精英 1
+MOV N$独享面板展示装备 1
+GOTO @捐献地图页面
+BREAK
+
+[@点击选中巅峰霸主]
+#IF
+EQUAL N$独享地图按钮 1
+EQUAL S$巅峰霸主底图 1
+!EQUAL A251 <$USERID>
+#ACT
+SENDMSG 19 未达到捐献榜第一！
+BREAK
+
+#IF
+EQUAL N$独享地图按钮 1
+EQUAL S$巅峰霸主底图 0
+EQUAL A251 <$USERID>
+#ACT
+MOV N$点击选中巅峰霸主 1
+MOV N$独享面板展示装备 0
+GOTO @捐献地图页面
+BREAK
+
+[@取消选中公共地图]
+#IF
+TRUE
+#ACT
+GOTO @<$STR(S$返回秘境面板)>
+BREAK
+
+[@取消选中独享地图]
+#IF
+TRUE
+#ACT
+GOTO @<$STR(S$返回秘境面板)>
+BREAK
+
+[@点击进入]
+#IF
+EQUAL N$独享地图按钮 1
+#ACT
+MAP <$STR(S$军衔独享地图)>
+CLOSE
+BREAK
+
+#IF
+EQUAL N$公共地图按钮 1
+#ACT
+MAP <$STR(S$军衔公共地图)>
+CLOSE
+BREAK

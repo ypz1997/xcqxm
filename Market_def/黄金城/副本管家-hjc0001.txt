@@ -1,0 +1,1441 @@
+[@main]
+#IF
+HasTask 14
+!EQUAL $TASK(14) 3
+#ACT
+Navigation 80 1002 选择坐骑副本#5061#7 1 0
+
+#IF
+HasTask 16
+!EQUAL $TASK(16) 3
+#ACT
+Navigation 80 1001 选择羽翼副本#5062#7 1 0
+
+#IF
+HasTask 22
+!EQUAL $TASK(22) 3
+#ACT
+Navigation 80 1004 选择法宝副本#5063#7 1 0
+
+#IF
+HasTask 23
+!EQUAL $TASK(23) 3
+#ACT
+Navigation 80 1005 选择特戒副本#5074#7 1 0
+MOV N$副本容器索引值 4
+goto @特戒副本&副本编号=5&副本通关标识=211&副本前缀=特戒&副本所需等级=58&副本可扫荡标识=218&副本总次数=29
+BREAK
+
+;#IF
+;HasTask 25
+;!EQUAL $TASK(25) 3
+;#ACT
+;Navigation 80 1006 选择凶器副本#5076#7 1 0
+;MOV N$副本容器索引值 4
+;goto @神器副本&副本编号=6&副本通关标识=212&副本前缀=神器&副本所需等级=59&副本可扫荡标识=219&副本总次数=30
+;BREAK
+
+#IF
+TRUE
+#ACT
+goto @羽翼副本&副本编号=2&副本通关标识=208&副本前缀=羽翼&副本所需等级=50&副本可扫荡标识=215&副本总次数=26
+BREAK
+
+
+[@副本主界面]
+#IF
+TRUE
+#SAY
+<Img|id=1|children={2,3,4,5,6,7,8,9}|x=135.0|y=34.0|esc=0|img=private/fubendating/fubendatingmb.png|scale=1|bg=1|loadDelay=0>
+<Button|id=2|x=797.0|y=0.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ListView|id=3|children={1001,1002,1004,1005,1007,1003,1006}|x=29.0|y=49.0|width=802|height=350|rotate=0|loadDelay=0|bounce=0|margin=6|direction=2|loadDelay=0|img=picpackage\3\9998.png|default=<$STR(N$副本容器索引值)>>
+
+#IF
+LARGE $LEVEL 49
+#SAY
+<Layout|id=1001|children={fb11,fb16,fb12,fb13,fb14,fb15}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@羽翼副本&副本编号=2&副本通关标识=208&副本前缀=羽翼&副本所需等级=50&副本可扫荡标识=215&副本总次数=26>
+<Img|id=fb11|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Button|id=fb12|x=29.0|y=58.0|width=137|height=26|color=222|scale=1|mimg=public/01.png|pimg=public/01.png|nimg=public/01.png|size=18|text=今日剩余次数<$DEC.$CustomValue(26).$Human(羽翼副本完成次数)>/<$CustomValue(26)>>
+<Img|id=fb13|x=46.0|y=17.0|img=private/fubendating/yuyi.png|esc=0|scale=1>
+<Effect|id=fb14|x=-26.0|y=125.0|act=0|effecttype=2|dir=4|scale=1|speed=1|sex=0|effectid=142>
+<Img|id=fb15|x=-1.0|y=-4.0|img=private/fubendating/<$STR(S$黄框2)>.png|esc=0|scale=1>
+<Img|id=fb16|x=24.0|y=58.0|img=private/fubendating/fubengz.png|scale=1|esc=0>
+#ELSESAY
+<Layout|id=1001|children={fb11,fb15}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@羽翼副本&副本编号=2&副本通关标识=208&副本前缀=羽翼&副本所需等级=50&副本可扫荡标识=215&副本总次数=26>
+<Img|id=fb11|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Img|id=fb15|x=-1.0|y=-4.0|img=private/fubendating/bg_elitechallenge_cardback.png|esc=0|scale=1>
+
+#IF
+LARGE $LEVEL 49
+#SAY
+<Layout|id=1002|children={fb31,fb36,fb32,fb33,fb34,fb35}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@坐骑副本&副本编号=4&副本通关标识=210&副本前缀=坐骑&副本所需等级=50&副本可扫荡标识=217&副本总次数=28>
+<Img|id=fb31|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Button|id=fb32|x=29.0|y=58.0|width=137|height=26|color=222|scale=1|mimg=public/01.png|pimg=public/01.png|nimg=public/01.png|size=18|text=今日剩余次数<$DEC.$CustomValue(28).$Human(坐骑副本完成次数)>/<$CustomValue(28)>>
+<Img|id=fb33|x=46.0|y=17.0|img=private/fubendating/zuoqi.png|esc=0|scale=1>
+<Effect|id=fb34|x=-26.0|y=85.0|act=0|effecttype=2|dir=4|scale=1|speed=1|sex=0|effectid=233>
+<Img|id=fb35|x=-1.0|y=-4.0|img=private/fubendating/<$STR(S$黄框4)>.png|esc=0|scale=1>
+<Img|id=fb36|x=24.0|y=58.0|img=private/fubendating/fubengz.png|scale=1|esc=0>
+#ELSESAY
+<Layout|id=1002|children={fb31,fb35}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@坐骑副本&副本编号=4&副本通关标识=210&副本前缀=坐骑&副本所需等级=50&副本可扫荡标识=217&副本总次数=28>
+<Img|id=fb31|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Img|id=fb35|x=-1.0|y=-4.0|img=private/fubendating/bg_elitechallenge_cardback.png|esc=0|scale=1>
+
+#IF
+LARGE $LEVEL 79
+#SAY
+<Layout|id=1003|children={fb1,fb6,fb2,fb3,fb4,fb5}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@魔体副本&副本编号=1&副本通关标识=207&副本前缀=魔体&副本所需等级=55&副本可扫荡标识=214&副本总次数=25>
+<Img|id=fb1|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Button|id=fb2|x=29.0|y=58.0|width=137|height=26|color=222|scale=1|mimg=public/01.png|pimg=public/01.png|nimg=public/01.png|size=18|text=今日剩余次数<$DEC.$CustomValue(25).$Human(魔体副本完成次数)>/<$CustomValue(25)>>
+<Img|id=fb3|x=46.0|y=17.0|img=private/fubendating/moti.png|esc=0|scale=1>
+<Effect|id=fb4|x=-26.0|y=101.0|act=0|effecttype=2|dir=4|scale=1|speed=1|sex=0|effectid=196>
+<Img|id=fb5|x=-1.0|y=-4.0|img=private/fubendating/<$STR(S$黄框1)>.png|esc=0|scale=1>
+<Img|id=fb6|x=24.0|y=58.0|img=private/fubendating/fubengz.png|scale=1|esc=0>
+#ELSESAY
+<Layout|id=1003|children={fb1,fb5,fb2}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@魔体副本&副本编号=1&副本通关标识=207&副本前缀=魔体&副本所需等级=55&副本可扫荡标识=214&副本总次数=25>
+<Img|id=fb1|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Img|id=fb5|x=-1.0|y=-4.0|img=private/fubendating/bg_elitechallenge_cardback.png|esc=0|scale=1>
+<Img|id=fb2|x=3.0|y=0.0|img=private/fubendating/weijihuofuben-80.png|scale=1|esc=0>
+
+#IF
+LARGE $LEVEL 57
+#SAY
+<Layout|id=1004|children={fb21,fb26,fb22,fb23,fb24,fb25}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@法宝副本&副本编号=3&副本通关标识=209&副本前缀=法宝&副本所需等级=58&副本可扫荡标识=216&副本总次数=27>
+<Img|id=fb21|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Button|id=fb22|x=29.0|y=58.0|width=137|height=26|color=222|scale=1|mimg=public/01.png|pimg=public/01.png|nimg=public/01.png|size=18|text=今日剩余次数<$DEC.$CustomValue(27).$Human(法宝副本完成次数)>/<$CustomValue(27)>>
+<Img|id=fb23|x=46.0|y=17.0|img=private/fubendating/fabao.png|esc=0|scale=1>
+<Effect|id=fb24|x=-26.0|y=120.0|act=0|effecttype=2|dir=4|scale=1|speed=1|sex=0|effectid=221>
+<Img|id=fb25|x=-1.0|y=-4.0|img=private/fubendating/<$STR(S$黄框3)>.png|esc=0|scale=1>
+<Img|id=fb26|x=24.0|y=58.0|img=private/fubendating/fubengz.png|scale=1|esc=0>
+#ELSESAY
+<Layout|id=1004|children={fb21,fb25,fb22}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@法宝副本&副本编号=3&副本通关标识=209&副本前缀=法宝&副本所需等级=58&副本可扫荡标识=216&副本总次数=27>
+<Img|id=fb21|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Img|id=fb25|x=-1.0|y=-4.0|img=private/fubendating/bg_elitechallenge_cardback.png|esc=0|scale=1>
+<Img|id=fb22|x=3.0|y=0.0|img=private/fubendating/weijihuofuben-58.png|scale=1|esc=0>
+
+#IF
+LARGE $LEVEL 57
+#SAY
+<Layout|id=1005|children={fb41,fb46,fb42,fb43,fb44,fb45}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@特戒副本&副本编号=5&副本通关标识=211&副本前缀=特戒&副本所需等级=58&副本可扫荡标识=218&副本总次数=29>
+<Img|id=fb41|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Button|id=fb42|x=29.0|y=58.0|width=137|height=26|color=222|scale=1|mimg=public/01.png|pimg=public/01.png|nimg=public/01.png|size=18|text=今日剩余次数<$DEC.$CustomValue(29).$Human(特戒副本完成次数)>/<$CustomValue(29)>>
+<Img|id=fb43|x=46.0|y=17.0|img=private/fubendating/tejie.png|esc=0|scale=1>
+<Effect|id=fb44|x=-26.0|y=140.0|act=0|effecttype=2|dir=4|scale=1|speed=1|sex=0|effectid=567>
+<Img|id=fb45|x=-1.0|y=-4.0|img=private/fubendating/<$STR(S$黄框5)>.png|esc=0|scale=1>
+<Img|id=fb46|x=24.0|y=58.0|img=private/fubendating/fubengz.png|scale=1|esc=0>
+#ELSESAY
+<Layout|id=1005|children={fb41,fb45,fb42}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@特戒副本&副本编号=5&副本通关标识=211&副本前缀=特戒&副本所需等级=58&副本可扫荡标识=218&副本总次数=29>
+<Img|id=fb41|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Img|id=fb45|x=-1.0|y=-4.0|img=private/fubendating/bg_elitechallenge_cardback.png|esc=0|scale=1>
+<Img|id=fb42|x=3.0|y=0.0|img=private/fubendating/weijihuofuben-58.png|scale=1|esc=0>
+
+#IF
+LARGE $LEVEL 79
+#SAY
+<Layout|id=1006|children={fb51,fb56,fb52,fb53,fb54,fb55}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@神器副本&副本编号=6&副本通关标识=212&副本前缀=神器&副本所需等级=59&副本可扫荡标识=219&副本总次数=30>
+<Img|id=fb51|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Button|id=fb52|x=29.0|y=58.0|width=137|height=26|color=222|scale=1|mimg=public/01.png|pimg=public/01.png|nimg=public/01.png|size=18|text=今日剩余次数<$DEC.$CustomValue(30).$Human(神器副本完成次数)>/<$CustomValue(30)>>
+<Img|id=fb53|x=46.0|y=17.0|img=private/fubendating/xiongqi.png|esc=0|scale=1>
+<Effect|id=fb54|x=-26.0|y=90.0|act=0|effecttype=2|dir=4|scale=1|speed=1|sex=0|effectid=220>
+<Img|id=fb55|x=-1.0|y=-4.0|img=private/fubendating/<$STR(S$黄框6)>.png|esc=0|scale=1>
+<Img|id=fb56|x=24.0|y=58.0|img=private/fubendating/fubengz.png|scale=1|esc=0>
+#ELSESAY
+<Layout|id=1006|children={fb51,fb55,fb52}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@神器副本&副本编号=6&副本通关标识=212&副本前缀=神器&副本所需等级=59&副本可扫荡标识=219&副本总次数=30>
+<Img|id=fb51|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Img|id=fb55|x=-1.0|y=-4.0|img=private/fubendating/bg_elitechallenge_cardback.png|esc=0|scale=1>
+<Img|id=fb52|x=3.0|y=0.0|img=private/fubendating/weijihuofuben-80.png|scale=1|esc=0>
+
+#IF
+LARGE $LEVEL 59
+#SAY
+<Layout|id=1007|children={fb61,fb66,fb62,fb63,fb64,fb65}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@BOSS副本&副本编号=7&副本通关标识=213&副本前缀=BOSS&副本所需等级=60&副本可扫荡标识=220&副本总次数=31>
+<Img|id=fb61|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Button|id=fb62|x=29.0|y=58.0|width=137|height=26|color=222|scale=1|mimg=public/01.png|pimg=public/01.png|nimg=public/01.png|size=18|text=今日剩余次数<$DEC.$CustomValue(31).$Human(BOSS副本完成次数)>/<$CustomValue(31)>>
+<Img|id=fb63|x=46.0|y=17.0|img=private/fubendating/boss.png|esc=0|scale=1>
+<Effect|id=fb64|x=35.0|y=150.0|act=0|effecttype=2|dir=4|scale=0.5|speed=1|sex=0|effectid=897>
+<Img|id=fb65|x=-1.0|y=-4.0|img=private/fubendating/<$STR(S$黄框7)>.png|esc=0|scale=1>
+<Img|id=fb66|x=24.0|y=58.0|img=private/fubendating/fubengz.png|scale=1|esc=0>
+#ELSESAY
+<Layout|id=1007|children={fb61,fb65,fb62}|ay=1|x=368.0|y=198.0|width=196|height=336|link=@BOSS副本&副本编号=7&副本通关标识=213&副本前缀=BOSS&副本所需等级=60&副本可扫荡标识=220&副本总次数=31>
+<Img|id=fb61|x=1.0|y=0.0|img=private/fubendating/fubendz.png|scale=1|esc=0>
+<Img|id=fb65|x=-1.0|y=-4.0|img=private/fubendating/bg_elitechallenge_cardback.png|esc=0|scale=1>
+<Img|id=fb62|x=3.0|y=0.0|img=private/fubendating/weijihuofuben-60.png|scale=1|esc=0>
+
+#IF
+TRUE
+#SAY
+<ItemShow|id=4|x=67.0|y=443.0|width=70|height=70|itemid=<$STR(N$副本奖励ID)>|itemcount=<$STR(N$副本奖励数量)>|name=<$STR(S$副本奖励物品)>|showtips=1|bgtype=1>
+<Button|id=5|x=179.0|y=449.0|scale=1|color=255|size=18|mimg=private/fubendating/fb_push_02.png|pimg=private/fubendating/fb_push_02.png|nimg=private/fubendating/<$STR(S$领取副本奖励)>.png|link=@领取副本奖励>
+
+<CheckBox|id=6|x=336.0|y=457.0|nimg=public/btn_duigou_01.png|pimg=public/btn_duigou_0<$STR(N$副本双倍领取)>.png|checkboxid=1|default=1|link=@副本双倍领取>
+<RText|id=7|x=393.0|y=464.0|size=18|color=255|text=<<$STR(N$双倍领取消耗)>元宝双倍领取/FCOLOR=67>>
+<Button|id=8|x=669.0|y=411.0|scale=1|color=255|size=18|mimg=private/fubendating/kaishitiaozhanhui.png|pimg=private/fubendating/kaishitiaozhanhui.png|nimg=private/fubendating/<$STR(S$开始挑战按钮)>.png|link=@开始挑战>
+<Button|id=9|x=669.0|y=476.0|scale=1|color=255|size=18|mimg=private/fubendating/yijianshaodanghui.png|pimg=private/fubendating/yijianshaodanghui.png|nimg=private/fubendating/<$STR(S$一键扫荡按钮)>.png|link=@一键扫荡>
+
+
+
+
+[@一键扫荡]
+#IF
+CHECK [<$STR(S$副本可扫荡标识)>] 0
+#ACT
+SENDMSG 19 通关一次后才能扫荡
+BREAK
+
+#IF
+CHECK [<$STR(S$副本通关标识)>] 1
+#ACT
+SENDMSG 19 请先领取奖励
+GOTO @<$STR(S$副本前缀)>副本
+BREAK
+
+#IF
+!LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+SENDMSG 19 副本次数已用完
+GOTO @<$STR(S$副本前缀)>副本
+BREAK
+
+#IF
+!EQUAL $STR(S$副本编号) 3
+!EQUAL $STR(S$副本编号) 6
+CHECK [<$STR(S$副本通关标识)>] 0
+LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+SET [<$STR(S$副本通关标识)>] 1
+CalcVar Human <$STR(S$副本前缀)>副本完成次数 + 1 1
+SENDMSG 19 扫荡完成，请前往领取奖励
+SET [199] 1
+GOTO @<$STR(S$副本前缀)>副本
+
+
+#IF
+EQUAL $STR(S$副本编号) 3
+CHECK [<$STR(S$副本通关标识)>] 0
+LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+SET [<$STR(S$副本通关标识)>] 1
+CalcVar Human <$STR(S$副本前缀)>副本完成次数 + 1 1
+CalcVar HUMAN 法宝副本通关次数 + 1 1
+SENDMSG 19 扫荡完成，请前往领取奖励
+SET [199] 1
+GOTO @<$STR(S$副本前缀)>副本
+
+#IF
+EQUAL $STR(S$副本编号) 6
+CHECK [<$STR(S$副本通关标识)>] 0
+LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+SET [<$STR(S$副本通关标识)>] 1
+CalcVar Human <$STR(S$副本前缀)>副本完成次数 + 1 1
+CalcVar HUMAN 神器副本通关次数 + 1 1
+SENDMSG 19 扫荡完成，请前往领取奖励
+SET [199] 1
+GOTO @<$STR(S$副本前缀)>副本
+
+#IF
+!EQUAL $STR(S$副本编号) 1
+#ACT
+MONEY 6 + 100000
+SENDMSG 19 恭喜完成副本额外获得100000经验
+SENDMSG 7 恭喜完成副本额外获得100000经验
+BREAK
+
+
+[@开始挑战]
+#IF
+HasTask 14
+!EQUAL $TASK(14) 3
+!EQUAL <$STR(S$副本前缀)> 坐骑
+#ACT
+Messagebox 请选择坐骑副本再开始挑战
+BREAK
+
+#IF
+HasTask 16
+!EQUAL $TASK(16) 3
+!EQUAL <$STR(S$副本前缀)> 羽翼
+#ACT
+Messagebox 请选择羽翼副本再开始挑战
+BREAK
+
+#IF
+HasTask 22
+!EQUAL $TASK(22) 3
+!EQUAL <$STR(S$副本前缀)> 法宝
+#ACT
+Messagebox 请选择法宝副本再开始挑战
+BREAK
+
+#IF
+HasTask 23
+!EQUAL $TASK(23) 3
+!EQUAL <$STR(S$副本前缀)> 特戒
+#ACT
+Messagebox 请选择特戒副本再开始挑战
+BREAK
+
+#IF
+SMALL $LEVEL $STR(S$副本所需等级)
+#ACT
+SENDMSG 19 需要<$STR(S$副本所需等级)>级才可进入 
+BREAK
+
+#IF
+SMALL <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 1
+#ACT
+SENDMSG 19 副本次数已用完
+BREAK
+
+#IF
+EQUAL $STR(S$副本编号) 1
+CHECK [207] 1
+#ACT
+SENDMSG 19 请先领取奖励
+BREAK
+
+#IF
+EQUAL $STR(S$副本编号) 1
+CHECK [207] 0
+#ACT
+MapMove MTFB 48 43
+BREAK
+
+#IF
+EQUAL $STR(S$副本编号) 2
+CHECK [208] 1
+#ACT
+SENDMSG 19 请先领取奖励
+BREAK
+#IF
+EQUAL $STR(S$副本编号) 2
+CHECK [208] 0
+#ACT
+MapMove YYFB 48 43
+BREAK
+
+#IF
+EQUAL $STR(S$副本编号) 3
+CHECK [209] 1
+#ACT
+SENDMSG 19 请先领取奖励
+BREAK
+#IF
+EQUAL $STR(S$副本编号) 3
+CHECK [209] 0
+#ACT
+MapMove FBFB 48 43
+BREAK
+
+#IF
+EQUAL $STR(S$副本编号) 4
+CHECK [210] 1
+#ACT
+SENDMSG 19 请先领取奖励
+BREAK
+#IF
+EQUAL $STR(S$副本编号) 4
+CHECK [210] 0
+#ACT
+MapMove ZQFB 48 43
+BREAK
+
+#IF
+EQUAL $STR(S$副本编号) 5
+CHECK [211] 1
+#ACT
+SENDMSG 19 请先领取奖励
+BREAK
+#IF
+EQUAL $STR(S$副本编号) 5
+CHECK [211] 0
+#ACT
+MapMove TJFB 48 43
+BREAK
+
+#IF
+EQUAL $STR(S$副本编号) 6
+CHECK [212] 1
+#ACT
+SENDMSG 19 请先领取奖励
+BREAK
+#IF
+EQUAL $STR(S$副本编号) 6
+CHECK [212] 0
+#ACT
+MapMove SQFB 48 43
+BREAK
+
+#IF
+EQUAL $STR(S$副本编号) 7
+CHECK [213] 1
+#ACT
+SENDMSG 19 请先领取奖励
+BREAK
+#IF
+EQUAL $STR(S$副本编号) 7
+CHECK [213] 0
+#ACT
+MapMove BSFB 48 43
+BREAK
+
+
+[@领取副本奖励]
+#IF
+CHECK [206] 0
+#ACT
+GOTO @单倍领取
+BREAK
+#ELSEACT
+GOTO @双倍领取
+BREAK
+
+
+
+[@单倍领取]
+#IF
+CHECK [<$STR(S$副本通关标识)>] 0
+#ACT
+SENDMSG 19 你没有可领取的奖励
+BREAK
+
+#IF
+!EQUAL $STR(S$副本编号) 1
+!EQUAL $STR(S$副本编号) 7
+CHECK [<$STR(S$副本通关标识)>] 1
+#ACT
+SET [<$STR(S$副本通关标识)>] 0
+MailGIve $STR(S$副本奖励物品) $STR(N$副本奖励数量) 1
+SENDMAIL 1 副本奖励 恭喜您获得本次副本奖励，请点提取
+SENDMSG 19 奖励以发送至你的邮箱
+GOTO @<$STR(S$副本前缀)>副本
+BREAK
+
+#IF
+CHECK [<$STR(S$副本通关标识)>] 1
+EQUAL $STR(S$副本编号) 1
+#ACT
+SET [<$STR(S$副本通关标识)>] 0
+MailGIve $STR(S$副本奖励物品) $STR(N$副本奖励数量) 1
+MailGIve 经验 $STR(N$副本完成奖励经验) 1
+SENDMAIL 1 副本奖励 恭喜您获得本次副本奖励，请点提取
+CHANGECUSTOMVALUE 2 + <$STR(N$副本完成奖励魔体经验)>
+SENDMSG 6 获得<$STR(N$副本完成奖励魔体经验)>魔体经验
+GOTO @<$STR(S$副本前缀)>副本
+BREAK
+
+#IF
+CHECK [213] 1
+EQUAL $STR(S$副本编号) 7
+#ACT
+SET [213] 0
+MailGIve 特装精粹(攻) 15 1
+MailGIve 特装精粹(攻) 15 1
+SET [<$STR(S$副本通关标识)>] 0
+MailGIve $STR(S$副本奖励物品) $STR(N$副本奖励数量) 1
+SENDMAIL 1 副本奖励 恭喜您获得本次副本奖励，请点提取
+SENDMSG 19 奖励以发送至你的邮箱
+GOTO @<$STR(S$副本前缀)>副本
+BREAK
+
+[@双倍领取]
+#IF
+SMALL <$INC.$Money(2).$Money(4)> $STR(N$双倍领取消耗)
+#ACT
+SENDMSG 19 元宝不足，无法双倍领取
+BREAK
+
+#IF
+CHECK [<$STR(S$副本通关标识)>] 0
+#ACT
+SENDMSG 19 你没有可领取的奖励
+BREAK
+
+#IF
+!SMALL $Money(4) $STR(N$双倍领取消耗)
+#ACT
+Money 4 - $STR(N$双倍领取消耗)
+#ELSEACT
+Money 2 - <$DEC.$STR(N$双倍领取消耗).$Money(4)>
+Money 4 - $Money(4)
+
+
+#IF
+!EQUAL $STR(S$副本编号) 1
+!EQUAL $STR(S$副本编号) 7
+CHECK [<$STR(S$副本通关标识)>] 1
+#ACT
+SET [<$STR(S$副本通关标识)>] 0
+MailGIve $STR(S$副本奖励物品) <$MULT.$STR(N$副本奖励数量).2> 1
+SENDMAIL 1 双倍副本奖励 恭喜您获得本次副本双倍奖励，请点提取
+SENDMSG 19 奖励以发送至你的邮箱
+GOTO @<$STR(S$副本前缀)>副本
+BREAK
+
+
+#IF
+CHECK [<$STR(S$副本通关标识)>] 1
+EQUAL $STR(S$副本编号) 1
+#ACT
+SET [<$STR(S$副本通关标识)>] 0
+MailGIve $STR(S$副本奖励物品) <$MULT.$STR(N$副本奖励数量).2> 1
+MailGIve 经验 <$MULT.$STR(N$副本完成奖励经验).2> 1
+SENDMAIL 1 副本奖励 恭喜您获得本次副本奖励，请点提取
+CHANGECUSTOMVALUE 2 + <$MULT.$STR(N$副本完成奖励魔体经验).2>
+SENDMSG 6 获得<$MULT.$STR(N$副本完成奖励魔体经验).2>魔体经验
+GOTO @<$STR(S$副本前缀)>副本
+BREAK
+
+#IF
+CHECK [213] 1
+EQUAL $STR(S$副本编号) 7
+#ACT
+SET [213] 0
+MailGIve 特装精粹(攻) 30 1
+MailGIve 特装精粹(攻) 30 1
+SET [<$STR(S$副本通关标识)>] 0
+MailGIve 绑定元宝 <$MULT.$STR(N$副本奖励数量).2> 1
+SENDMAIL 1 双倍副本奖励 恭喜您获得本次副本双倍奖励，请点提取
+SENDMSG 19 奖励以发送至你的邮箱
+GOTO @<$STR(S$副本前缀)>副本
+BREAK
+
+[@副本双倍领取]
+#IF
+CHECK [206] 0
+#ACT
+SET [206] 1
+MOV N$副本双倍领取 2
+goto @副本主界面
+BREAK
+#ELSEACT
+SET [206] 0
+MOV N$副本双倍领取 1
+goto @副本主界面
+BREAK
+
+
+
+[@魔体副本]
+#IF
+TRUE
+#ACT
+MOV N$副本容器索引值 1
+MOV S$副本前缀 魔体
+#IF
+SMALL $LEVEL 80
+#ACT
+SENDMSG 19 80级开启魔体副本
+BREAK
+
+#IF
+LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+MOV S$开始挑战按钮 kaishitiaozhan
+#ELSEACT
+MOV S$开始挑战按钮 kaishitiaozhanhui
+
+#IF
+CHECK [214] 0
+#ACT
+MOV S$一键扫荡按钮 yijianshaodanghui
+#ELSEACT
+MOV S$一键扫荡按钮 yijianshaodang
+
+#IF
+CHECK [207] 0
+#ACT
+MOV S$领取副本奖励 fb_push_02
+#ELSEACT
+MOV S$领取副本奖励 fb_push_01
+
+#IF
+TRUE
+#ACT
+MOV S$黄框1 fubenhuangkuang
+MOV S$黄框2 
+MOV S$黄框3 
+MOV S$黄框4 
+MOV S$黄框5 
+MOV S$黄框6 
+MOV S$黄框7 
+MOV S$副本奖励物品 魔盾精粹
+MOV N$副本奖励ID 1177
+MOV N$副本奖励数量 0
+MOV N$人物经验倍率 0
+MOV N$人物内功倍率 0
+MOV N$双倍领取消耗 0
+MOV N$副本怪物数量 0
+MOV N$副本刷怪物数 0
+MOV N$副本刷BOSS数 0
+MOV N$副本BOSS数量 0
+#IF
+SMALL $LEVEL 60
+#ACT
+MOV N$副本奖励数量 3
+MOV N$人物经验倍率 300
+MOV N$人物内功倍率 200
+MOV N$双倍领取消耗 800
+MOV N$副本怪物数量 20
+MOV N$副本完成奖励经验 300000
+MOV N$副本完成奖励魔体经验 80000
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 59
+SMALL $LEVEL 70
+#ACT
+MOV N$副本奖励数量 3
+MOV N$人物经验倍率 350
+MOV N$人物内功倍率 220
+MOV N$双倍领取消耗 800
+MOV N$副本怪物数量 30
+MOV N$副本完成奖励经验 525000
+MOV N$副本完成奖励魔体经验 132000
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 69
+SMALL $LEVEL 79
+#ACT
+MOV N$副本奖励数量 4
+MOV N$人物经验倍率 400
+MOV N$人物内功倍率 250
+MOV N$双倍领取消耗 1500
+MOV N$副本怪物数量 40
+MOV N$副本完成奖励经验 800000
+MOV N$副本完成奖励魔体经验 200000
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 79
+SMALL $LEVEL 89
+#ACT
+MOV N$副本奖励数量 4
+MOV N$人物经验倍率 450
+MOV N$人物内功倍率 300
+MOV N$双倍领取消耗 1500
+MOV N$副本怪物数量 50
+MOV N$副本完成奖励经验 1125000
+MOV N$副本完成奖励魔体经验 300000
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 89
+SMALL $LEVEL 95
+#ACT
+MOV N$副本奖励数量 5
+MOV N$人物经验倍率 500
+MOV N$人物内功倍率 350
+MOV N$双倍领取消耗 2000
+MOV N$副本怪物数量 60
+MOV N$副本完成奖励经验 1500000
+MOV N$副本完成奖励魔体经验 420000
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 94
+#ACT
+MOV N$副本奖励数量 5
+MOV N$人物经验倍率 600
+MOV N$人物内功倍率 400
+MOV N$双倍领取消耗 2000
+MOV N$副本怪物数量 70
+MOV N$副本完成奖励经验 2100000
+MOV N$副本完成奖励魔体经验 560000
+goto @副本主界面
+BREAK
+
+[@羽翼副本]
+#IF
+TRUE
+#ACT
+MOV N$副本容器索引值 1
+MOV S$副本前缀 羽翼
+#IF
+LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+MOV S$开始挑战按钮 kaishitiaozhan
+#ELSEACT
+MOV S$开始挑战按钮 kaishitiaozhanhui
+
+#IF
+CHECK [215] 0
+#ACT
+MOV S$一键扫荡按钮 yijianshaodanghui
+#ELSEACT
+MOV S$一键扫荡按钮 yijianshaodang
+
+#IF
+CHECK [208] 0
+#ACT
+MOV S$领取副本奖励 fb_push_02
+#ELSEACT
+MOV S$领取副本奖励 fb_push_01
+
+#IF
+TRUE
+#ACT
+MOV S$黄框1 
+MOV S$黄框2 fubenhuangkuang
+MOV S$黄框3 
+MOV S$黄框4 
+MOV S$黄框5 
+MOV S$黄框6 
+MOV S$黄框7 
+MOV S$副本奖励物品 仙翎之羽
+MOV N$副本奖励ID 1325
+MOV N$副本奖励数量 0
+MOV N$双倍领取消耗 0
+MOV N$副本怪物数量 0
+MOV N$副本刷怪物数 0
+MOV N$副本刷BOSS数 0
+MOV N$副本BOSS数量 0
+
+#IF
+SMALL $LEVEL 65
+#ACT
+MOV N$副本奖励数量 10
+MOV N$双倍领取消耗 500
+MOV N$副本怪物数量 10
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 64
+SMALL $LEVEL 75
+#ACT
+MOV N$副本奖励数量 15
+MOV N$双倍领取消耗 750
+MOV N$副本怪物数量 20
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 74
+SMALL $LEVEL 85
+#ACT
+MOV N$副本奖励数量 20
+MOV N$双倍领取消耗 1000
+MOV N$副本怪物数量 30
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 84
+SMALL $LEVEL 90
+#ACT
+MOV N$副本奖励数量 25
+MOV N$双倍领取消耗 1250
+MOV N$副本怪物数量 40
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 89
+#ACT
+MOV N$副本奖励数量 30
+MOV N$双倍领取消耗 1500
+MOV N$副本怪物数量 50
+goto @副本主界面
+BREAK
+
+
+[@法宝副本]
+#IF
+TRUE
+#ACT
+MOV N$副本容器索引值 1
+MOV S$副本前缀 法宝
+#IF
+SMALL $LEVEL 58
+#ACT
+SENDMSG 19 58级开启法宝副本
+BREAK
+
+#IF
+LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+MOV S$开始挑战按钮 kaishitiaozhan
+#ELSEACT
+MOV S$开始挑战按钮 kaishitiaozhanhui
+
+#IF
+CHECK [216] 0
+#ACT
+MOV S$一键扫荡按钮 yijianshaodanghui
+#ELSEACT
+MOV S$一键扫荡按钮 yijianshaodang
+
+#IF
+CHECK [209] 0
+#ACT
+MOV S$领取副本奖励 fb_push_02
+#ELSEACT
+MOV S$领取副本奖励 fb_push_01
+
+#IF
+TRUE
+#ACT
+MOV S$黄框1 
+MOV S$黄框2 
+MOV S$黄框3 fubenhuangkuang
+MOV S$黄框4 
+MOV S$黄框5 
+MOV S$黄框6 
+MOV S$黄框7 
+MOV S$副本奖励物品 法宝精粹
+MOV N$副本奖励ID 30272
+MOV N$副本奖励数量 0
+MOV N$双倍领取消耗 0
+MOV N$法宝总等级 0
+MOV N$副本怪物数量 0
+MOV N$副本刷怪物数 0
+MOV N$副本刷BOSS数 0
+MOV N$副本BOSS数量 0
+INC N$法宝总等级 $HUMAN(无量飞剑等级)
+INC N$法宝总等级 $HUMAN(八卦镜等级)
+INC N$法宝总等级 $HUMAN(招魂幡等级)
+INC N$法宝总等级 $HUMAN(紫金葫芦等级)
+INC N$法宝总等级 $HUMAN(番天印等级)
+INC N$法宝总等级 $HUMAN(七宝玲珑塔等级)
+
+#IF
+LARGE $LEVEL 99
+LARGE $STR(N$法宝总等级) 39
+#ACT
+MOV N$副本奖励数量 30
+MOV N$双倍领取消耗 3000
+MOV N$副本怪物数量 35
+MOV N$副本BOSS数量 3
+goto @副本主界面
+GOTO @法宝掉落概率计算
+BREAK
+
+#IF
+LARGE $LEVEL 79
+LARGE $STR(N$法宝总等级) 24
+#ACT
+MOV N$副本奖励数量 25
+MOV N$双倍领取消耗 2500
+MOV N$副本怪物数量 30
+MOV N$副本BOSS数量 3
+goto @副本主界面
+GOTO @法宝掉落概率计算
+BREAK
+
+#IF
+LARGE $LEVEL 69
+LARGE $STR(N$法宝总等级) 14
+#ACT
+MOV N$副本奖励数量 20
+MOV N$双倍领取消耗 2000
+MOV N$副本怪物数量 25
+MOV N$副本BOSS数量 2
+goto @副本主界面
+GOTO @法宝掉落概率计算
+BREAK
+
+#IF
+LARGE $LEVEL 64
+LARGE $STR(N$法宝总等级) 9
+#ACT
+MOV N$副本奖励数量 15
+MOV N$双倍领取消耗 1500
+MOV N$副本怪物数量 20
+MOV N$副本BOSS数量 2
+goto @副本主界面
+GOTO @法宝掉落概率计算
+BREAK
+
+#IF
+LARGE $LEVEL 59
+LARGE $STR(N$法宝总等级) 4
+#ACT
+MOV N$副本奖励数量 10
+MOV N$双倍领取消耗 1000
+MOV N$副本怪物数量 15
+MOV N$副本BOSS数量 1
+goto @副本主界面
+GOTO @法宝掉落概率计算
+BREAK
+
+#IF
+LARGE $LEVEL 54
+#ACT
+MOV N$副本奖励数量 5
+MOV N$双倍领取消耗 500
+MOV N$副本怪物数量 10
+MOV N$副本BOSS数量 1
+goto @副本主界面
+GOTO @法宝掉落概率计算
+BREAK
+
+#IF
+TRUE
+#ACT
+goto @副本主界面
+BREAK
+
+[@坐骑副本]
+#IF
+TRUE
+#ACT
+MOV N$副本容器索引值 1
+MOV S$副本前缀 坐骑
+#IF
+LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+MOV S$开始挑战按钮 kaishitiaozhan
+#ELSEACT
+MOV S$开始挑战按钮 kaishitiaozhanhui
+
+#IF
+CHECK [217] 0
+#ACT
+MOV S$一键扫荡按钮 yijianshaodanghui
+#ELSEACT
+MOV S$一键扫荡按钮 yijianshaodang
+
+#IF
+CHECK [210] 0
+#ACT
+MOV S$领取副本奖励 fb_push_02
+#ELSEACT
+MOV S$领取副本奖励 fb_push_01
+
+#IF
+TRUE
+#ACT
+MOV S$黄框1 
+MOV S$黄框2 
+MOV S$黄框3 
+MOV S$黄框4 fubenhuangkuang
+MOV S$黄框5 
+MOV S$黄框6 
+MOV S$黄框7 
+MOV S$副本奖励物品 灵兽精粹
+MOV N$副本奖励ID 1493
+MOV N$副本奖励数量 0
+MOV N$双倍领取消耗 0
+MOV N$副本怪物数量 0
+MOV N$副本刷怪物数 0
+MOV N$副本刷BOSS数 0
+MOV N$副本BOSS数量 0
+
+#IF
+SMALL $LEVEL 65
+#ACT
+MOV N$副本奖励数量 10
+MOV N$双倍领取消耗 500
+MOV N$副本怪物数量 20
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 64
+SMALL $LEVEL 70
+#ACT
+MOV N$副本奖励数量 15
+MOV N$双倍领取消耗 750
+MOV N$副本怪物数量 20
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 69
+SMALL $LEVEL 75
+#ACT
+MOV N$副本奖励数量 20
+MOV N$双倍领取消耗 1000
+MOV N$副本怪物数量 30
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 74
+SMALL $LEVEL 80
+#ACT
+MOV N$副本奖励数量 25
+MOV N$双倍领取消耗 1250
+MOV N$副本怪物数量 30
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 79
+SMALL $LEVEL 90
+#ACT
+MOV N$副本奖励数量 30
+MOV N$双倍领取消耗 1500
+MOV N$副本怪物数量 40
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 89
+#ACT
+MOV N$副本奖励数量 35
+MOV N$双倍领取消耗 1750
+MOV N$副本怪物数量 40
+goto @副本主界面
+BREAK
+
+[@特戒副本]
+#IF
+TRUE
+#ACT
+MOV N$副本容器索引值 4
+MOV S$副本前缀 特戒
+#IF
+SMALL $LEVEL 58
+#ACT
+SENDMSG 19 58级开启特戒副本
+BREAK
+#IF
+LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+MOV S$开始挑战按钮 kaishitiaozhan
+#ELSEACT
+MOV S$开始挑战按钮 kaishitiaozhanhui
+
+#IF
+CHECK [218] 0
+#ACT
+MOV S$一键扫荡按钮 yijianshaodanghui
+#ELSEACT
+MOV S$一键扫荡按钮 yijianshaodang
+
+#IF
+CHECK [211] 0
+#ACT
+MOV S$领取副本奖励 fb_push_02
+#ELSEACT
+MOV S$领取副本奖励 fb_push_01
+
+#IF
+TRUE
+#ACT
+MOV S$黄框1 
+MOV S$黄框2 
+MOV S$黄框3 
+MOV S$黄框4 
+MOV S$黄框5 fubenhuangkuang
+MOV S$黄框6 
+MOV S$黄框7 
+MOV S$副本奖励物品 特戒精华
+MOV N$副本奖励ID 8101
+MOV N$副本奖励数量 0
+MOV N$双倍领取消耗 0
+MOV N$副本怪物数量 0
+MOV N$副本刷怪物数 0
+MOV N$副本刷BOSS数 0
+MOV N$副本BOSS数量 0
+
+#IF
+SMALL $LEVEL 65
+#ACT
+MOV N$副本奖励数量 20
+MOV N$双倍领取消耗 1200
+MOV N$副本怪物数量 20
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 64
+SMALL $LEVEL 70
+#ACT
+MOV N$副本奖励数量 25
+MOV N$双倍领取消耗 1500
+MOV N$副本怪物数量 20
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 69
+SMALL $LEVEL 75
+#ACT
+MOV N$副本奖励数量 30
+MOV N$双倍领取消耗 1800
+MOV N$副本怪物数量 30
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 74
+SMALL $LEVEL 80
+#ACT
+MOV N$副本奖励数量 35
+MOV N$双倍领取消耗 2100
+MOV N$副本怪物数量 30
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 79
+SMALL $LEVEL 90
+#ACT
+MOV N$副本奖励数量 40
+MOV N$双倍领取消耗 2400
+MOV N$副本怪物数量 40
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 89
+#ACT
+MOV N$副本奖励数量 45
+MOV N$双倍领取消耗 2700
+MOV N$副本怪物数量 40
+goto @副本主界面
+BREAK
+
+
+[@神器副本]
+#IF
+TRUE
+#ACT
+MOV N$副本容器索引值 4
+MOV S$副本前缀 神器
+#IF
+SMALL $LEVEL 80
+#ACT
+SENDMSG 19 80级开启凶器副本
+BREAK
+
+#IF
+LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+MOV S$开始挑战按钮 kaishitiaozhan
+#ELSEACT
+MOV S$开始挑战按钮 kaishitiaozhanhui
+
+#IF
+CHECK [219] 0
+#ACT
+MOV S$一键扫荡按钮 yijianshaodanghui
+#ELSEACT
+MOV S$一键扫荡按钮 yijianshaodang
+
+#IF
+CHECK [212] 0
+#ACT
+MOV S$领取副本奖励 fb_push_02
+#ELSEACT
+MOV S$领取副本奖励 fb_push_01
+
+#IF
+TRUE
+#ACT
+MOV S$黄框1 
+MOV S$黄框2 
+MOV S$黄框3 
+MOV S$黄框4 
+MOV S$黄框5 
+MOV S$黄框6 fubenhuangkuang
+MOV S$黄框7 
+MOV S$副本奖励物品 凶器精粹
+MOV N$副本奖励ID 26778
+MOV N$副本奖励数量 0
+MOV N$双倍领取消耗 0
+MOV N$副本怪物数量 0
+MOV N$副本刷怪物数 0
+MOV N$副本刷BOSS数 0
+MOV N$副本BOSS数量 0
+MOV N$神器总等级 0
+INC N$神器总等级 $HUMAN(撼天等级)
+INC N$神器总等级 $HUMAN(暗月等级)
+INC N$神器总等级 $HUMAN(冥日等级)
+INC N$神器总等级 $HUMAN(鬼炎等级)
+INC N$神器总等级 $HUMAN(碧海天王等级)
+INC N$神器总等级 $HUMAN(赤明天帝等级)
+INC N$神器总等级 $HUMAN(紫月圣君等级)
+INC N$神器总等级 $HUMAN(耀阳圣尊等级)
+
+#IF
+LARGE $LEVEL 79
+LARGE $STR(N$神器总等级) 39
+#ACT
+MOV N$副本奖励数量 35
+MOV N$双倍领取消耗 3500
+MOV N$副本怪物数量 35
+MOV N$副本BOSS数量 3
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 69
+LARGE $STR(N$神器总等级) 24
+#ACT
+MOV N$副本奖励数量 30
+MOV N$双倍领取消耗 3000
+MOV N$副本怪物数量 30
+MOV N$副本BOSS数量 3
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 64
+LARGE $STR(N$神器总等级) 14
+#ACT
+MOV N$副本奖励数量 25
+MOV N$双倍领取消耗 2500
+MOV N$副本怪物数量 25
+MOV N$副本BOSS数量 2
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 59
+LARGE $STR(N$神器总等级) 9
+#ACT
+MOV N$副本奖励数量 20
+MOV N$双倍领取消耗 2000
+MOV N$副本怪物数量 20
+MOV N$副本BOSS数量 2
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 54
+LARGE $STR(N$神器总等级) 4
+#ACT
+MOV N$副本奖励数量 15
+MOV N$双倍领取消耗 1500
+MOV N$副本怪物数量 15
+MOV N$副本BOSS数量 1
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 49
+#ACT
+MOV N$副本奖励数量 10
+MOV N$双倍领取消耗 1000
+MOV N$副本怪物数量 10
+MOV N$副本BOSS数量 1
+goto @副本主界面
+BREAK
+
+[@BOSS副本]
+#IF
+TRUE
+#ACT
+MOV N$副本容器索引值 4
+MOV S$副本前缀 BOSS
+#IF
+SMALL $LEVEL 60
+#ACT
+SENDMSG 19 60级开启BOOS副本
+BREAK
+
+#IF
+LARGE <$DEC.<$CustomValue(<$STR(S$副本总次数)>)>.<$Human(<$STR(S$副本前缀)>副本完成次数)>> 0
+#ACT
+MOV S$开始挑战按钮 kaishitiaozhan
+#ELSEACT
+MOV S$开始挑战按钮 kaishitiaozhanhui
+
+#IF
+CHECK [220] 0
+#ACT
+MOV S$一键扫荡按钮 yijianshaodanghui
+#ELSEACT
+MOV S$一键扫荡按钮 yijianshaodang
+
+#IF
+CHECK [213] 0
+#ACT
+MOV S$领取副本奖励 fb_push_02
+#ELSEACT
+MOV S$领取副本奖励 fb_push_01
+
+#IF
+TRUE
+#ACT
+MOV S$黄框1 
+MOV S$黄框2 
+MOV S$黄框3 
+MOV S$黄框4 
+MOV S$黄框5 
+MOV S$黄框6 
+MOV S$黄框7 fubenhuangkuang
+MOV S$副本奖励物品 绑定元宝
+MOV N$副本奖励ID 26900
+MOV N$副本奖励数量 0
+MOV N$双倍领取消耗 0
+MOV N$副本怪物数量 0
+
+#IF
+SMALL $LEVEL 60
+#ACT
+MOV N$副本奖励数量 1000
+MOV N$双倍领取消耗 500
+MOV N$副本怪物数量 5
+MOV N$副本BOSS数量 1
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 59
+SMALL $LEVEL 65
+#ACT
+MOV N$副本奖励数量 1500
+MOV N$双倍领取消耗 750
+MOV N$副本怪物数量 10
+MOV N$副本BOSS数量 1
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 64
+SMALL $LEVEL 75
+#ACT
+MOV N$副本奖励数量 2000
+MOV N$双倍领取消耗 1000
+MOV N$副本怪物数量 15
+MOV N$副本BOSS数量 1
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 74
+SMALL $LEVEL 80
+#ACT
+MOV N$副本奖励数量 2500
+MOV N$双倍领取消耗 1250
+MOV N$副本怪物数量 20
+MOV N$副本BOSS数量 1
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 79
+SMALL $LEVEL 90
+#ACT
+MOV N$副本奖励数量 3000
+MOV N$双倍领取消耗 1500
+MOV N$副本怪物数量 25
+MOV N$副本BOSS数量 1
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 89
+SMALL $LEVEL 100
+#ACT
+MOV N$副本奖励数量 3500
+MOV N$双倍领取消耗 1750
+MOV N$副本怪物数量 30
+MOV N$副本BOSS数量 1
+goto @副本主界面
+BREAK
+
+#IF
+LARGE $LEVEL 99
+#ACT
+MOV N$副本奖励数量 4000
+MOV N$双倍领取消耗 2000
+MOV N$副本怪物数量 35
+MOV N$副本BOSS数量 1
+goto @副本主界面
+BREAK
+
+
+[@法宝掉落概率计算]
+#IF
+LARGE $HUMAN(法宝副本通关次数) 9
+SMALL $HUMAN(法宝副本通关次数) 20
+#ACT
+MOV N$法宝成装掉落概率 1
+
+#IF
+LARGE $HUMAN(法宝副本通关次数) 19
+SMALL $HUMAN(法宝副本通关次数) 30
+#ACT
+MOV N$法宝成装掉落概率 4
+
+#IF
+LARGE $HUMAN(法宝副本通关次数) 29
+SMALL $HUMAN(法宝副本通关次数) 40
+#ACT
+MOV N$法宝成装掉落概率 8
+
+#IF
+LARGE $HUMAN(法宝副本通关次数) 39
+#ACT
+MOV N$法宝成装掉落概率 35
+
+#IF
+TRUE
+#ACT
+ADDVARLIST ~|<$HUMAN(无量飞剑等级)>| ..\QuestDiary\文本读取\法宝排名.txt
+ADDVARLIST ~|<$HUMAN(八卦镜等级)>| ..\QuestDiary\文本读取\法宝排名.txt
+ADDVARLIST ~|<$HUMAN(招魂幡等级)>| ..\QuestDiary\文本读取\法宝排名.txt
+ADDVARLIST ~|<$HUMAN(紫金葫芦等级)>| ..\QuestDiary\文本读取\法宝排名.txt
+ADDVARLIST ~|<$HUMAN(番天印等级)>| ..\QuestDiary\文本读取\法宝排名.txt
+ADDVARLIST ~|<$HUMAN(七宝玲珑塔等级)>| ..\QuestDiary\文本读取\法宝排名.txt
+ReadRandomStr ..\QuestDiary\文本读取\法宝排名.txt S$法宝计算 0 0 1 |
+SPLIT $STR(S$法宝计算) | N$法宝计算分割
+INC N$法宝成装掉落概率 <$MULT.<$DIV.$STR(N$法宝计算分割_1).6>.3>
+ClearNameList ..\QuestDiary\文本读取\法宝排名.txt
+
+#IF
+LARGE $HUMAN(法宝副本通关次数) 44
+#ACT
+MOV N$法宝成装掉落概率 100
+CalcVar HUMAN 法宝副本通关次数 = 0 1
+BREAK
+
+
+[@神器掉落概率计算]
+
+#IF
+LARGE $HUMAN(神器副本通关次数) 9
+SMALL $HUMAN(神器副本通关次数) 20
+#ACT
+MOV N$神器成装掉落概率 1
+
+#IF
+LARGE $HUMAN(神器副本通关次数) 19
+SMALL $HUMAN(神器副本通关次数) 30
+#ACT
+MOV N$神器成装掉落概率 4
+
+#IF
+LARGE $HUMAN(神器副本通关次数) 29
+SMALL $HUMAN(神器副本通关次数) 40
+#ACT
+MOV N$神器成装掉落概率 8
+
+#IF
+LARGE $HUMAN(神器副本通关次数) 39
+#ACT
+MOV N$神器成装掉落概率 35
+
+#IF
+TRUE
+#ACT
+ADDVARLIST ~|<$HUMAN(撼天等级)>| ..\QuestDiary\文本读取\神器排名.txt
+ADDVARLIST ~|<$HUMAN(暗月等级)>| ..\QuestDiary\文本读取\神器排名.txt
+ADDVARLIST ~|<$HUMAN(冥日等级)>| ..\QuestDiary\文本读取\神器排名.txt
+ADDVARLIST ~|<$HUMAN(鬼炎等级)>| ..\QuestDiary\文本读取\神器排名.txt
+ADDVARLIST ~|<$HUMAN(碧海天王等级)>| ..\QuestDiary\文本读取\神器排名.txt
+ADDVARLIST ~|<$HUMAN(赤明天帝等级)>| ..\QuestDiary\文本读取\神器排名.txt
+ADDVARLIST ~|<$HUMAN(紫月圣君等级)>| ..\QuestDiary\文本读取\神器排名.txt
+ADDVARLIST ~|<$HUMAN(耀阳圣尊等级)>| ..\QuestDiary\文本读取\神器排名.txt
+ReadRandomStr ..\QuestDiary\文本读取\神器排名.txt S$神器计算 0 0 1 |
+SPLIT $STR(S$神器计算) | N$神器计算分割
+INC N$神器成装掉落概率 <$MULT.<$DIV.$STR(N$神器计算分割_1).5>.3>
+ClearNameList ..\QuestDiary\文本读取\神器排名.txt
+
+#IF
+LARGE $HUMAN(神器副本通关次数) 44
+#ACT
+MOV N$神器成装掉落概率 100
+CalcVar HUMAN 神器副本通关次数 = 0 1
+BREAK

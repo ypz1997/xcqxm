@@ -1,0 +1,120 @@
+[@main]
+#IF
+LARGE $CLIENTFLAG 1
+#ACT
+GOTO @手游端
+#ELSEACT
+GOTO @PC端
+
+
+[@手游端]
+#IF
+CHECKJOB Warrior
+#ACT
+MOV S$领悟技能 烈火剑法
+MOV S$领悟技能1 突斩
+
+#IF
+CHECKJOB Wizard
+#ACT
+MOV S$领悟技能 冰咆哮
+MOV S$领悟技能1 风影盾
+
+#IF
+CHECKJOB Taos
+#ACT
+MOV S$领悟技能 召唤神兽
+MOV S$领悟技能1 解毒术
+
+#IF
+true
+#SAY
+<Button|x=413.0|y=0.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|show=0|move=0|bg=1|loadDelay=1|img=public/bg_npc_01.png|esc=1|_localZOrder=-2|reset=1>
+<RText|x=25|y=20|text=既然是老朋友推荐来的后起之秀，那我直接\教你领悟一些强力技能吧\\>
+<Text|x=25.0|y=80.0|color=215|text=任务奖励：<$STR(S$领悟技能)>+<$STR(S$领悟技能1)>>
+<Img|x=25.0|y=120.0|width=10|height=10|img=private/xjty.png|esc=0>
+<RText|id=999|x=45.0|y=110.0|color=251|size=18|text=<领悟技能/@领悟技能>>
+<Layout|id=1|x=6.1|y=7.1|width=200|height=150|link=@领悟技能>
+
+#IF
+HasTask 6
+EQUAL $TASK(6) 2
+#ACT
+Navigation 80 999 领悟技能#5054#5 0 0
+
+[@领悟技能]
+#IF
+CHECK [183] 1
+#ACT
+SENDMSG 19 您已经领悟过这些技能了！
+BREAK
+
+#IF
+HasTask 6
+EQUAL $TASK(6) 2
+CHECK [183] 0
+CHECKJOB Warrior
+#ACT
+SET [183] 1
+ADDSKILL 烈火剑法 0
+ADDSKILL 突斩 0
+SetSkillKey 62 52
+SetSkillKey 26 53
+EndTask 6
+AddTask 7
+Messagebox 恭喜你领悟了 烈火剑法+突斩
+Navigation 160 7 点击继续#5054#5 0 0
+BREAK
+CLOSE
+
+#IF
+HasTask 6
+EQUAL $TASK(6) 2
+CHECK [183] 0
+CHECKJOB Wizard
+#ACT
+SET [183] 1
+ADDSKILL 冰咆哮 0
+ADDSKILL 风影盾 0
+SetSkillKey 70 54
+SetSkillKey 33 55
+EndTask 6
+AddTask 7
+Messagebox 恭喜你领悟了 冰咆哮+风影盾
+Navigation 160 7 点击继续#5054#5 0 0
+BREAK
+CLOSE
+
+#IF
+HasTask 6
+EQUAL $TASK(6) 2
+CHECK [183] 0
+CHECKJOB Taos
+#ACT
+SET [183] 1
+ADDSKILL 召唤神兽 0
+ADDSKILL 解毒术 0
+SetSkillKey 65 53
+SetSkillKey 30 54
+RecallMob 初级麒麟 0 9999 0
+BaoBaoBuff 0 = 0 999
+BaoBaoBuff 1 = 0 999
+BaoBaoBuff 2 = 0 999
+BaoBaoBuff 3 = 0 999
+BaoBaoBuff 4 = 0 999
+BaoBaoBuff 5 = 0 999
+BaoBaoBuff 6 = 0 999
+BaoBaoBuff 4 + <$DIV.<$MULT.<$MULT.$SC.100>.40>.10000> 999999
+BaoBaoBuff 5 + <$DIV.<$MULT.<$MULT.$MAXSC.100>.65>.10000> 999999
+BaoBaoBuff 0 + <$DIV.<$MULT.<$MULT.$AC.100>.30>.10000> 999999
+BaoBaoBuff 1 + <$DIV.<$MULT.<$MULT.$MAXAC.100>.30>.10000> 999999
+BaoBaoBuff 2 + <$DIV.<$MULT.<$MULT.$MAC.100>.30>.10000> 999999
+BaoBaoBuff 3 + <$DIV.<$MULT.<$MULT.$MAXMAC.100>.30>.10000> 999999
+BaoBaoBuff 6 + <$DIV.<$MULT.<$MULT.$MAXHP.100>.130>.10000> 999999
+EndTask 6
+AddTask 7
+Messagebox 恭喜你领悟了 召唤神兽+解毒术
+Navigation 160 7 点击继续#5054#5 0 0
+BREAK
+CLOSE

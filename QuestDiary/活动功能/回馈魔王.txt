@@ -1,0 +1,376 @@
+[@回馈魔王]
+{
+
+[@LemonHKYM]
+
+#IF
+TRUE
+#SAY
+<Img|x=180.0|y=30.0|move=0|img=private/jishaboss/jishabossmb.png|loadDelay=0|bg=1|move=2|children=<yd1,yd2,yd3,yd4,yd5,yd6,yd7,yd8,yd9,yd10,yd11,yd12,yd13,yd14,yd15,yd16,yd17,yd18,yd19,yd20,yd21,yd21,yd22,yd23,yd24,yd25,yd26,yd27,yd28,yd29,yd30,yd31,yd32,yd33,yd34,yd35,yd36,yd37,yd38,yd39,yd40,yd41,yd42,yd43,yd44,yd45,yd46,yd47,yd48,yd49,yd50>>
+<Button|x=642.0|y=-5.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit|id=yd1>
+<Text|x=303.0|y=1.0|color=67|size=20|text=回馈BOSS|id=yd3>
+<Text|x=303.0|y=1.0|color=67|size=20|text=回馈BOSS|id=yd4>
+<Text|x=484.0|y=44.0|color=67|size=18|text=玩法简介|id=yd5>
+<Text|x=380.0|y=80.0|color=67|size=18|text=活动时间：每天21:05-21:30|id=yd6>
+<RText|x=380.0|y=120.0|color=67|size=18|text=系统按照玩家对BOSS造成的伤害|id=yd7>
+<Text|x=380.0|y=150.0|color=67|size=18|text=占比发放绑定元宝|id=yd8>
+<Text|x=380.0|y=180.0|color=67|size=18|text=距离BOSS超过2格范围时造成的伤害|id=yd9>
+<Text|x=380.0|y=210.0|color=67|size=18|text=减半|id=yd17>
+<Text|x=424.0|y=237.0|color=67|size=18|text=本次BOSS携带充值额度|id=yd10>
+<Img|x=464.0|y=287.0|img=private/jishaboss/<$STR(G$Lemon回馈)>.png|id=yd11>
+<ItemShow|x=65.0|y=345.0|itemid=0|itemcount=1|name=50米充值代金券|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=yd12>
+<ItemShow|x=157.0|y=345.0|itemid=0|itemcount=1|name=30米充值代金券|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=yd13>
+<ItemShow|x=249.0|y=345.0|itemid=0|itemcount=1|name=10米充值代金券|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=yd14>
+<Button|x=455.0|y=365.0|color=67|scale=0.9|size=20|nimg=public/button/btn_push_01.png|pimg=public/button/btn_push_01.png|text=立即参与|link=@Lemon参与6|id=yd15>
+
+
+[@Lemon参与6]
+#IF
+!EQUAL G$Lemon活动 6
+#ACT
+MESSAGEBOX 活动已结束!
+BREAK
+
+#IF
+SMALL $LEVEL 60
+#ACT
+MESSAGEBOX 等级不足60级,暂时无法参加此活动!
+BREAK
+#ELSEACT
+MAPMOVE HKMW
+SENDMSG 16 勇士<%s>进入了<%m>....
+BREAK
+
+
+
+
+;--------------------------回馈排行榜切换
+[@LemonHKPH]
+#IF
+EQUAL N$Lemon排行 1
+#ACT
+MOV N$Lemon排行 0
+HCALL $USERNAME @Lemon回馈PH
+BREAK
+#ELSEACT
+MOV N$Lemon排行 1
+;-----------------------------------------------此处写两行是为了即时刷新排行数据
+HCALL $USERNAME @Lemon回馈PH
+HCALL $USERNAME @Lemon回馈PH
+BREAK
+
+
+[@Lemon回馈PH]
+
+#IF
+EQUAL N$Lemon排行 0
+#ACT
+MOV S$Lemon活动 <Button|x=-280.0|y=-310.0|pimg=private/jiqingkaohuo/icon_guild_rank.png|nimg=private/jiqingkaohuo/icon_guild_rank.png|link=@LemonHKPH|UiLevel=1>
+SENDUI 105 $STR(S$Lemon活动)
+BREAK
+#ELSEACT
+MOV S$Lemon活动 <Img|x=-567.0|y=-317.0|bg=1|img=private/gonghuizhan/bg_charge_item_06.png|loadDelay=0>
+INC S$Lemon活动 <Text|x=-475.0|y=-307.0|color=67|size=18|text=伤害占比榜>
+INC S$Lemon活动 <Text|x=-545.0|y=-267.0|color=67|size=18|text=名次　玩家　　　伤害占比>
+INC S$Lemon活动 <Button|x=-352.0|y=-72.0|pimg=private/jiqingkaohuo/btn_growbook_01.png|nimg=private/jiqingkaohuo/btn_growbook_01.png|link=@LemonHKPH>
+INC S$Lemon活动 <RText|x=-547.0|y=-62.0|color=67|size=16|text=我的排名#32<<$STR(S34)>/FCOLOR=222>　占比#32<<$STR(S35)>/FCOLOR=222>>
+INC S$Lemon活动 <ListView|children=<ph1,ph2,ph3,ph4,ph5,ph6,ph7,ph8,ph9,ph10>|direction=1|x=-550.0|y=-230.0|width=230|height=145|reload=1|margin=0|loadDelay=0|img=public/9998.png>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02196.png|id=ph1|children=<ph1a1,ph1a2,ph1a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02197.png|id=ph2|children=<ph2a1,ph2a2,ph2a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02198.png|id=ph3|children=<ph3a1,ph3a2,ph3a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02199.png|id=ph4|children=<ph4a1,ph4a2,ph4a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02200.png|id=ph5|children=<ph5a1,ph5a2,ph5a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02201.png|id=ph6|children=<ph6a1,ph6a2,ph6a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02202.png|id=ph7|children=<ph7a1,ph7a2,ph7a3>>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S11)>|id=ph1a1>
+INC S$Lemon活动 <Text|x=175.0|y=10.0|color=255|size=18|text=<$STR(S13)>|id=ph1a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S21)>|id=ph2a1>
+INC S$Lemon活动 <Text|x=175.0|y=10.0|color=255|size=18|text=<$STR(S23)>|id=ph2a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S31)>|id=ph3a1>
+INC S$Lemon活动 <Text|x=175.0|y=10.0|color=255|size=18|text=<$STR(S33)>|id=ph3a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S41)>|id=ph4a1>
+INC S$Lemon活动 <Text|x=175.0|y=10.0|color=255|size=18|text=<$STR(S43)>|id=ph4a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S51)>|id=ph5a1>
+INC S$Lemon活动 <Text|x=175.0|y=10.0|color=255|size=18|text=<$STR(S53)>|id=ph5a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S61)>|id=ph6a1>
+INC S$Lemon活动 <Text|x=175.0|y=10.0|color=255|size=18|text=<$STR(S63)>|id=ph6a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S71)>|id=ph7a1>
+INC S$Lemon活动 <Text|x=175.0|y=10.0|color=255|size=18|text=<$STR(S73)>|id=ph7a2>
+
+CLEARVAR S1 99
+READRANDOMSTR ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S1 0 0 1 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S2 1 0 1 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S3 2 0 1 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S4 3 0 1 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S5 4 0 1 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S6 5 0 1 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S7 6 0 1 |
+
+
+#IF
+POS $STR(S1) |
+#ACT
+SPLIT $STR(S1) | S11
+DEC S11 ~
+#IF
+POS $STR(S2) |
+#ACT
+SPLIT $STR(S2) | S21
+DEC S21 ~
+#IF
+POS $STR(S3) |
+#ACT
+SPLIT $STR(S3) | S31
+DEC S31 ~
+#IF
+POS $STR(S4) |
+#ACT
+SPLIT $STR(S4) | S41
+DEC S41 ~
+#IF
+POS $STR(S5) |
+#ACT
+SPLIT $STR(S5) | S51
+DEC S51 ~
+#IF
+POS $STR(S6) |
+#ACT
+SPLIT $STR(S6) | S61
+DEC S61 ~
+#IF
+POS $STR(S7) |
+#ACT
+SPLIT $STR(S7) | S71
+DEC S71 ~
+
+#IF
+EQUAL S11 $USERNAME
+#ACT
+MOV S34 1
+#IF
+EQUAL S21 $USERNAME
+#ACT
+MOV S34 2
+#IF
+EQUAL S31 $USERNAME
+#ACT
+MOV S34 3
+#IF
+EQUAL S41 $USERNAME
+#ACT
+MOV S34 4
+#IF
+EQUAL S51 $USERNAME
+#ACT
+MOV S34 5
+#IF
+EQUAL S61 $USERNAME
+#ACT
+MOV S34 6
+#IF
+EQUAL S71 $USERNAME
+#ACT
+MOV S34 7
+
+#IF
+!EQUAL S11 $USERNAME
+!EQUAL S21 $USERNAME
+!EQUAL S31 $USERNAME
+!EQUAL S41 $USERNAME
+!EQUAL S51 $USERNAME
+!EQUAL S61 $USERNAME
+!EQUAL S71 $USERNAME
+!EQUAL S81 $USERNAME
+#ACT
+MOV S34 未上榜
+
+#IF
+POSINLIST ~<$USERNAME>| ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S0
+#ACT
+SPLIT $STR(S0) | S81
+MOV S35 $STR(S83)
+#ELSEACT
+MOV S35 0.0%
+
+#IF
+TRUE
+#ACT
+SENDUI 105 $STR(S$Lemon活动)
+
+
+
+
+
+[@Lemon回馈XR]
+
+#IF
+POSINLIST ~<$USERNAME>| ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S0
+#ACT
+DELVARLIST $STR(S0) ..\QUESTDIARY\游戏数据\回馈魔王排行.txt
+SPLIT $STR(S0) | S1
+MOV P66 $STR(S2)
+INC P66 $STR(N$Lemon魔王SH)
+ADDVARLIST ~<$USERNAME>|<$STR(P66)>|<$PERCENT.$STR(P66).$STR(G$Lemon魔王HP)>％ ..\QUESTDIARY\游戏数据\回馈魔王排行.txt
+BREAK
+#ELSEACT
+MOV P66 $STR(N$Lemon魔王SH)
+ADDVARLIST ~<$USERNAME>|<$STR(P66)>|<$PERCENT.$STR(P66).$STR(G$Lemon魔王HP)>％ ..\QUESTDIARY\游戏数据\回馈魔王排行.txt
+BREAK
+
+[@Lemon回馈JS]
+#IF
+!POSINLIST ~<$USERNAME>| ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S0
+#ACT
+BREAK
+
+#IF
+POS -1-3-5- -<$DATE.WEEK>-
+SMALL $MAPMONCOUNT(HKMW).ALL 1
+EQUAL $M HKMW
+#ACT
+DROPITEMDOWN 3000元宝 1 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 1000元宝 2 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 500元宝 4 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 200元宝 8 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 100元宝 14 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 1米充值代金券 10 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 5米充值代金券 3 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 10米充值代金券 1 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 30米充值代金券 1 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 30米充值2折券 1 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+
+#IF
+POS -2-4-6- -<$DATE.WEEK>-
+SMALL $MAPMONCOUNT(HKMW).ALL 1
+EQUAL $M HKMW
+#ACT
+DROPITEMDOWN 3000元宝 1 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 1000元宝 5 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 500元宝 7 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 200元宝 10 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 100元宝 15 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 1米充值代金券 5 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 5米充值代金券 3 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 10米充值代金券 2 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 30米充值代金券 1 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 50米充值代金券 1 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 30米充值2折券 1 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+
+#IF
+EQUAL $DATE.WEEK 7
+SMALL $MAPMONCOUNT(HKMW).ALL 1
+EQUAL $M HKMW
+#ACT
+DROPITEMDOWN 3000元宝 2 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 1000元宝 10 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 500元宝 15 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 200元宝 20 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 100元宝 25 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 1米充值代金券 10 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 5米充值代金券 4 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 10米充值代金券 5 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 30米充值代金券 2 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 50米充值代金券 1 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+DROPITEMDOWN 9米抵98米折扣券 1 <$PARAM(4)>(<$PARAM(7)>,<$PARAM(8)>,6) 30 2
+
+#IF
+LARGE $MAPMONCOUNT(HKMW).ALL 0
+#ACT
+MAPMOVE 0 475 219 3
+SENDMSG 5 海兽来袭活动结束了.海兽未被击杀,本次活动失败!!
+SENDUI 104
+SENDUI 105
+BREAK
+#ELSEACT
+;SENDUI 104
+SENDUI 105
+CLEARVAR S1 99
+
+#IF
+POSINLIST ~<$USERNAME>| ..\QUESTDIARY\游戏数据\回馈魔王排行.txt S0
+#ACT
+SPLIT $STR(S0) | S1
+MOV P44 $PERCENT.$STR(S2).$STR(G$Lemon魔王HP)
+DELVARLIST $STR(S0) ..\QUESTDIARY\游戏数据\回馈魔王排行.txt
+#ELSEACT
+BREAK
+
+#IF
+SMALL P44 3
+#ACT
+BINDGAMEGOLD + 100
+SENDMSG 5 海兽来袭:你在本次活动中伤害占比不足3%,获得绑定元宝+100
+SENDMAIL 44 海兽来袭奖励 你在本次活动中伤害占比不足3%,获得绑定元宝+100,奖励已直接发放!
+BREAK
+#ELSEACT
+BINDGAMEGOLD + $MULT.$STR(P44).$STR(G$Lemon回馈)
+SENDMSG 5 海兽来袭:你在本次活动中伤害占比<$STR(P44)>%,获得绑定元宝+<$MULT.$STR(P44).$STR(G$Lemon回馈)>
+SENDMAIL 44 海兽来袭奖励 你在本次活动中伤害占比<$STR(P44)>%,获得绑定元宝+<$MULT.$STR(P44).$STR(G$Lemon回馈)>,奖励已直接发放!
+BREAK
+
+
+
+
+
+
+
+
+
+;===========================================================================
+
+[@Lemon活动TZ6]
+#IFONE
+!EQUAL G$Lemon活动 6
+SMALL G$回馈时间 $LONGDATE
+EQUAL $M HKMW
+#ACT
+BREAK
+
+#IF
+LARGE $DEC.$STR(G$回馈时间).$LONGDATE 1500
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6624.png|nimg=picpackage/3/6624.png|UiLevel=0|link=@LemonHKZB>
+INC S$Lemon活动 <TIMETIPS|x=315|y=80.0|color=222|size=18|time=<$DEC^$DEC.$STR(G$回馈时间).$LONGDATE^1500>|link=@LemonHKXS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+#ELSEACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6624.png|nimg=picpackage/3/6624.png|link=@LemonHKYM|UiLevel=0>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$回馈时间).$LONGDATE>|link=@LemonHKJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+
+;--------------------------倒计时提示
+[@LemonHKZB]
+#IF
+TRUE
+#ACT
+SENDMSG 19 活动将在计时结束后开始!
+BREAK
+
+;--------------------------海兽来袭活动进行显示
+[@LemonHKXS]
+#IF
+!EQUAL $M HKMW
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6624.png|nimg=picpackage/3/6624.png|link=@LemonHKYM>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$回馈时间).$LONGDATE>|link=@LemonHKJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+
+
+;--------------------------自动关闭海兽来袭战图标
+[@LemonHKJS]
+#IF
+TRUE
+#ACT
+SENDUI 104
+BREAK
+
+
+
+
+
+
+
+
+}

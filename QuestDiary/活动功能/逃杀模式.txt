@@ -1,0 +1,299 @@
+[@逃杀模式]
+{
+
+
+
+[@LemonTSYM]
+#IF
+TRUE
+#SAY
+<Img|x=120.0|y=30.0|move=0|img=public/frame_squared_outside.png|loadDelay=0|bg=1|move=2|children=<yd1,yd2,yd3,yd4,yd5,yd6,yd7,yd8,yd9,yd10,yd11,yd12,yd13,yd14,yd15,yd16,yd17,yd18,yd19,yd20,yd21,yd21,yd22,yd23,yd24,yd25,yd26,yd27,yd28,yd29,yd30,yd31,yd32,yd33,yd34,yd35,yd36,yd37,yd38,yd39,yd40,yd41,yd42,yd43,yd44,yd45,yd46,yd47,yd48,yd49,yd50>>
+<Button|x=807.0|y=0.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit|id=yd1>
+<Img|x=22.0|y=46.0|img=private/dataosha/dataoshamb.png|id=yd2>
+<Text|x=386.0|y=7.0|color=67|size=22|text=大 逃 杀|id=yd3>
+<Text|x=683.0|y=71.0|color=67|size=18|text=活动说明|id=yd5>
+<ItemShow|x=655.0|y=110.0|itemid=26930|itemcount=2000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/dataosha/laminated1.png|id=yd6>
+<ItemShow|x=710.0|y=110.0|itemid=25898|itemcount=10|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/dataosha/laminated1.png|id=yd7>
+<ItemShow|x=765.0|y=110.0|itemid=50020|itemcount=1|name=增益|bgtype=1|showtips=1|scale=0.8|bgtype=private/dataosha/laminated1.png|id=yd8>
+<ItemShow|x=655.0|y=177.0|itemid=26930|itemcount=1500|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/dataosha/laminated1.png|id=yd9>
+<ItemShow|x=710.0|y=177.0|itemid=25898|itemcount=10|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/dataosha/laminated1.png|id=yd10>
+<ItemShow|x=655.0|y=245.0|itemid=26930|itemcount=1000|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/dataosha/laminated1.png|id=yd11>
+<ItemShow|x=710.0|y=245.0|itemid=25898|itemcount=10|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/dataosha/laminated1.png|id=yd12>
+<ItemShow|x=655.0|y=310.0|itemid=25898|itemcount=5|name=凶器精粹|bgtype=1|showtips=1|scale=1|bgtype=private/dataosha/laminated1.png|id=yd13>
+<Text|x=655.0|y=400.0|color=222|size=18|text=获胜条件：|id=yd14>
+<Text|x=655.0|y=430.0|color=222|size=18|text=活动开启2分钟后\地图剩余一人|id=yd15>
+<Text|x=131.0|y=97.0|color=67|size=17|text=恢复最大生命值|id=yd17>
+<Text|x=131.0|y=122.0|color=67|size=17|text=20%的血量|id=yd18>
+<Text|x=264.0|y=117.0|color=67|size=17|text=增加自身双防上|id=yd19>
+<Text|x=264.0|y=142.0|color=67|size=17|text=限10%,持续20s|id=yd20>
+<Text|x=399.0|y=161.0|color=67|size=17|text=除当前玩家外|id=yd21>
+<Text|x=399.0|y=186.0|color=67|size=17|text=全部冰冻3s|id=yd22>
+<Text|x=480.0|y=230.0|color=67|size=17|text=增加自身攻击上|id=yd23>
+<Text|x=480.0|y=255.0|color=67|size=17|text=限10%,持续30s|id=yd24>
+<Text|x=54.0|y=252.0|color=67|size=17|text=所有玩家双防减|id=yd25>
+<Text|x=54.0|y=277.0|color=67|size=17|text=免5%|id=yd26>
+<Text|x=165.0|y=317.0|color=67|size=17|text=所有人攻击提升|id=yd27>
+<Text|x=165.0|y=342.0|color=67|size=17|text=5% 本人提升15%|id=yd28>
+<Text|x=303.0|y=377.0|color=67|size=17|text=除当前玩家外|id=yd29>
+<Text|x=303.0|y=402.0|color=67|size=17|text=全部中毒10s|id=yd30>
+<Text|x=432.0|y=394.0|color=67|size=17|text=下一次攻击必定|id=yd31>
+<Text|x=432.0|y=419.0|color=67|size=17|text=造成暴击|id=yd32>
+<Text|x=43.0|y=467.0|color=67|size=18|text=离开活动地图后不可再次参与|id=yd33>
+<Text|x=43.0|y=497.0|color=67|size=18|text=地图内死亡不会掉落装备，禁用恢复药品，破麻，破护，破重特戒无效|id=yd34>
+
+#IF
+!EQUAL $M DTS
+#SAY
+<Button|x=655.0|y=480.0|color=67|scale=1|size=20|nimg=public/button/btn_push_01.png|pimg=public/button/btn_push_01.png|text=立即参与|link=@Lemon参与5|id=yd16>
+
+
+
+
+[@Lemon参与5]
+#IF
+EQUAL $M DTS
+#ACT
+BREAK
+
+#IFONE
+SMALL G$逃杀时间 $LONGDATE
+!EQUAL G$Lemon活动 5
+#ACT
+MESSAGEBOX 活动已结束!
+BREAK
+
+#IF
+SMALL $LEVEL 60
+#ACT
+MESSAGEBOX 等级不足60级,暂时无法参加此活动!
+BREAK
+
+#IF
+!CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\逃杀进入玩家.txt
+#ACT
+ADDVARLIST $USERNAME ..\QUESTDIARY\游戏数据\逃杀进入玩家.txt
+GMEXECUTE AttackMode 1
+MAPMOVE DTS
+SETSECRETINFO 大逃杀 1 1
+SENDMSG 16 一位神秘的勇士进入了<%m>活动地图....
+MESSAGEBOX 当前为等待时间,攻击无伤害,倒计时结束后逃杀正式开始
+BREAK
+#ELSEACT
+MESSAGEBOX 不能重复进入!!
+BREAK
+
+[@Lemon活动TZ5]
+#IFONE
+!EQUAL G$Lemon活动 5
+CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\逃杀进入玩家.txt
+EQUAL $M DTS
+#ACT
+BREAK
+
+#IF
+LARGE $DEC.$STR(G$逃杀时间).$LONGDATE 60
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6623.png|nimg=picpackage/3/6623.png|link=@LemonTSZB|UiLevel=0>
+INC S$Lemon活动 <TIMETIPS|x=315|y=80.0|color=222|size=18|time=<$DEC^$DEC.$STR(G$逃杀时间).$LONGDATE^60>|link=@LemonTSXS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+
+#IF
+LARGE $STR(G$逃杀时间) $LONGDATE
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6623.png|nimg=picpackage/3/6623.png|link=@LemonTSYM|UiLevel=0>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$逃杀时间).$LONGDATE>|link=@LemonTSJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+
+
+
+
+
+;--------------------------倒计时提示
+[@LemonTSZB]
+#IF
+TRUE
+#ACT
+SENDMSG 19 活动将在计时结束后开始!
+BREAK
+
+;--------------------------大逃杀活1分钟等待显示
+[@LemonTSXS]
+#IF
+TRUE
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6623.png|nimg=picpackage/3/6623.png|link=@LemonTSYM|UiLevel=0>
+INC S$Lemon活动 <TIMETIPS|x=315|y=80.0|color=222|size=18|time=<$DEC.$STR(G$逃杀时间).$LONGDATE>|link=@LemonTSJS>
+SENDUI 104 $STR(S$Lemon活动)
+SENDMSG 7 1分钟等待时间后大逃杀正式开始
+BREAK
+
+;--------------------------自动关闭大逃杀图标
+[@LemonTSJS]
+#IF
+TRUE
+#ACT
+SENDUI 104
+BREAK
+
+
+
+
+;================================大逃杀奖励
+[@Lemon第一TS]
+#IF
+!EQUAL $M DTS
+#ACT
+BREAK
+
+#IF
+SMALL $str(G$大逃杀计时) 60
+#ACT
+INC G$大逃杀计时 1
+
+#IF
+SMALL $str(G$大逃杀计时) 60
+EQUAL $MAPHUMCOUNT(DTS).PLAYER 1
+#ACT
+SENDMSG 5 <$DEC.120.<$MULT.$str(G$大逃杀计时).2>>秒后发放第一名奖励
+SENDMSG 19 <$DEC.120.<$MULT.$str(G$大逃杀计时).2>>秒后发放第一名奖励
+BREAK
+
+#IF
+EQUAL $MAPHUMCOUNT(DTS).PLAYER 1
+CHECK [195] 0
+#ACT
+SET [195] 1
+MAPMOVE 0 475 219 3
+MOV G$Lemon活动 0
+MOV A244 $USERNAME
+MailGive 凶器精粹 10 1
+MailGive 元宝 2000
+SENDMAIL 44 大逃杀奖励 恭喜您在本次大逃杀活动中获得第1名，请点提取获取奖励!
+SENDMSG 7 恭喜你获得本次大逃杀第1名,奖励已通过邮件发放!!!
+SENDMSG 16 恭喜<%s>获得本次大逃杀第1名!!
+SENDMSG 14 恭喜<%s>获得本次大逃杀第1名!!
+GOTO @临时属性
+BREAK
+
+
+
+[@Lemon计算TS]
+#IF
+LARGE G$逃杀时间 $LONGDATE
+#ACT
+BREAK
+
+#IF
+SMALL $MAPHUMCOUNT(DTS).PLAYER 1
+#ACT
+BREAK
+
+#IF
+CHECK [195] 0
+EQUAL $MAPHUMCOUNT(DTS).PLAYER 2
+#ACT
+SET [195] 1
+MailGive 凶器精粹 10 1
+MailGive 元宝 1000
+SENDMAIL 44 大逃杀奖励 恭喜您在本次大逃杀活动中获得第3名，请点提取获取奖励!元宝已实时发放
+SENDMSG 7 恭喜你获得本次大逃杀第3名,奖励已通过邮件发放!!!
+SENDMSG 16 恭喜<%s>获得本次大逃杀第3名!!
+SENDMSG 14 恭喜<%s>获得本次大逃杀第3名!!
+BREAK
+
+#IF
+EQUAL $MAPHUMCOUNT(DTS).PLAYER 1
+CHECK [195] 0
+#ACT
+SET [195] 1
+MailGive 凶器精粹 10 1
+MailGive 元宝 1500
+SENDMAIL 44 大逃杀奖励 恭喜您在本次大逃杀活动中获得第2名，请点提取获取奖励!元宝已实时发放
+SENDMSG 7 恭喜你获得本次大逃杀第2名,奖励已通过邮件发放!!!
+SENDMSG 16 恭喜<%s>获得本次大逃杀第2名!!
+SENDMSG 14 恭喜<%s>获得本次大逃杀第2名!!
+BREAK
+
+#IF
+LARGE $MAPHUMCOUNT(DTS).PLAYER 2
+CHECK [195] 0
+#ACT
+SET [195] 1
+MailGive 凶器精粹 5 1
+SENDMAIL 44 大逃杀奖励 恭喜您在本次大逃杀活动中获得参与奖励，请点提取获取奖励!
+SENDMSG 7 恭喜你获得本次大逃杀参与奖励,奖励已通过邮件发放!!!
+SENDMSG 16 恭喜<%s>获得本次大逃杀参与奖励!!
+SENDMSG 14 恭喜<%s>获得本次大逃杀参与奖励!!
+BREAK
+;=====================================BUFFF
+
+
+[@Lemon逃亡BF1]
+#IF
+EQUAL $USERNAME $SCRIPTPARAM(1)
+#ACT
+BREAK
+#ELSEACT
+GMEXECUTE 烟花 1818
+SENDMSG 5 你被冰冻了,持续3秒!
+SENDMSG 19 你被冰冻了,持续3秒!
+BREAK
+
+[@Lemon逃亡BF2]
+#IF
+EQUAL $USERNAME $SCRIPTPARAM(1)
+#ACT
+BREAK
+#ELSEACT
+GMEXECUTE 烟花 1669
+SENDMSG 5 你中毒了,持续10秒!
+SENDMSG 19 你中毒了,持续10秒!
+BREAK
+
+[@Lemon逃亡BF3]
+#IF
+EQUAL $USERNAME $SCRIPTPARAM(1)
+#ACT
+BREAK
+#ELSEACT
+MOV N$Lemon群BF 1
+GMEXECUTE 烟花 4488
+SENDMSG 5 攻击力提升5%,持续30秒
+SENDMSG 19 攻击力提升5%,持续30秒
+GOTO @临时属性
+DELAYCALL 30 @Lemon群BFJS
+BREAK
+
+[@Lemon逃亡BF4]
+#IF
+EQUAL $USERNAME $SCRIPTPARAM(1)
+#ACT
+BREAK
+#ELSEACT
+GMEXECUTE 烟花 3016
+SENDMSG 5 你的双防减少,持续30秒
+SENDMSG 19 你的双防减少,持续30秒
+BREAK
+
+
+[@Lemon群BFJS]
+#IF
+EQUAL $M DTS
+#ACT
+MOV N$Lemon群BF 0
+GOTO @临时属性
+BREAK
+
+
+[@LemonBFJS]
+#IF
+TRUE
+#ACT
+SENDUI 106
+MOV N$Lemon类型BF 0
+GOTO @临时属性
+BREAK
+
+}

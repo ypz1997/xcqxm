@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=38
+IsMain=0
+stepcount = 2
+title = [　]与日俱增
+ID = 38
+stepstitle1 = <color=graygolden 任务描述：>\<color=graygolden 等级提升至100级>\<color=graygolden 当前等级:><color=green <$LEVEL>/100>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+stepstitle2 = <color=green 任务完成：>\ \　<点击领取奖励/@XXXXX>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>

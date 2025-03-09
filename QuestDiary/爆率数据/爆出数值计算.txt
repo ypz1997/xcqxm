@@ -1,0 +1,1219 @@
+[@爆出数据计算]
+{
+[@初始化分值]
+#IF
+TRUE
+#ACT
+MOV N$初始化分值循环计次 0
+LoopGoto @初始化分值循环函数 14
+[@初始化分值循环函数]
+#IF
+TRUE
+#ACT
+MOV N$头盔分值<$STR(N$初始化分值循环计次)> 0
+MOV N$衣服分值<$STR(N$初始化分值循环计次)> 0
+MOV N$武器分值<$STR(N$初始化分值循环计次)> 0
+MOV N$腰带分值<$STR(N$初始化分值循环计次)> 0
+MOV N$鞋子分值<$STR(N$初始化分值循环计次)> 0
+MOV N$项链分值<$STR(N$初始化分值循环计次)> 0
+MOV N$戒指分值<$STR(N$初始化分值循环计次)> 0
+MOV N$手镯分值<$STR(N$初始化分值循环计次)> 0
+INC N$初始化分值循环计次 1
+[@怪物分值计算]
+;5阶BOSS计算
+#IF
+EQUAL <$ScriptParam(1)> 0
+#ACT
+INC N$头盔分值0 10
+INC N$衣服分值0 10
+INC N$武器分值0 10
+INC N$腰带分值0 10
+INC N$鞋子分值0 10
+INC N$项链分值0 10
+INC N$戒指分值0 10
+INC N$手镯分值0 10
+INC N$头盔分值1 2
+INC N$衣服分值1 2
+INC N$武器分值1 2
+INC N$腰带分值1 2
+INC N$鞋子分值1 2
+INC N$项链分值1 2
+INC N$戒指分值1 2
+INC N$手镯分值1 2
+BREAK
+;6阶BOSS计算
+#IF
+EQUAL <$ScriptParam(1)> 1
+#ACT
+INC N$头盔分值0 5
+INC N$衣服分值0 5
+INC N$武器分值0 5
+INC N$腰带分值0 5
+INC N$鞋子分值0 5
+INC N$项链分值0 5
+INC N$戒指分值0 5
+INC N$手镯分值0 5
+INC N$头盔分值1 10
+INC N$衣服分值1 10
+INC N$武器分值1 10
+INC N$腰带分值1 10
+INC N$鞋子分值1 10
+INC N$项链分值1 10
+INC N$戒指分值1 10
+INC N$手镯分值1 10
+INC N$头盔分值2 2
+INC N$衣服分值2 2
+INC N$武器分值2 2
+INC N$腰带分值2 2
+INC N$鞋子分值2 2
+INC N$项链分值2 2
+INC N$戒指分值2 2
+INC N$手镯分值2 2
+BREAK
+;7阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 2
+#ACT
+INC N$头盔分值1 5
+INC N$衣服分值1 5
+INC N$武器分值1 5
+INC N$腰带分值1 5
+INC N$鞋子分值1 5
+INC N$项链分值1 5
+INC N$戒指分值1 5
+INC N$手镯分值1 5
+INC N$头盔分值2 10
+INC N$衣服分值2 10
+INC N$武器分值2 10
+INC N$腰带分值2 10
+INC N$鞋子分值2 10
+INC N$项链分值2 10
+INC N$戒指分值2 10
+INC N$手镯分值2 10
+INC N$头盔分值3 2
+INC N$衣服分值3 2
+INC N$武器分值3 2
+INC N$腰带分值3 2
+INC N$鞋子分值3 2
+INC N$项链分值3 2
+INC N$戒指分值3 2
+INC N$手镯分值3 2
+BREAK
+;8阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 3
+#ACT
+INC N$头盔分值2 5
+INC N$衣服分值2 5
+INC N$武器分值2 5
+INC N$腰带分值2 5
+INC N$鞋子分值2 5
+INC N$项链分值2 5
+INC N$戒指分值2 5
+INC N$手镯分值2 5
+INC N$头盔分值3 10
+INC N$衣服分值3 10
+INC N$武器分值3 10
+INC N$腰带分值3 10
+INC N$鞋子分值3 10
+INC N$项链分值3 10
+INC N$戒指分值3 10
+INC N$手镯分值3 10
+INC N$头盔分值4 2
+INC N$衣服分值4 2
+INC N$武器分值4 2
+INC N$腰带分值4 2
+INC N$鞋子分值4 2
+INC N$项链分值4 2
+INC N$戒指分值4 2
+INC N$手镯分值4 2
+BREAK
+;9阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 4
+#ACT
+INC N$头盔分值3 5
+INC N$衣服分值3 5
+INC N$武器分值3 5
+INC N$腰带分值3 5
+INC N$鞋子分值3 5
+INC N$项链分值3 5
+INC N$戒指分值3 5
+INC N$手镯分值3 5
+INC N$头盔分值4 10
+INC N$衣服分值4 10
+INC N$武器分值4 10
+INC N$腰带分值4 10
+INC N$鞋子分值4 10
+INC N$项链分值4 10
+INC N$戒指分值4 10
+INC N$手镯分值4 10
+INC N$头盔分值5 2
+INC N$衣服分值5 2
+INC N$武器分值5 2
+INC N$腰带分值5 2
+INC N$鞋子分值5 2
+INC N$项链分值5 2
+INC N$戒指分值5 2
+INC N$手镯分值5 2
+BREAK
+;10阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 5
+#ACT
+INC N$头盔分值4 5
+INC N$衣服分值4 5
+INC N$武器分值4 5
+INC N$腰带分值4 5
+INC N$鞋子分值4 5
+INC N$项链分值4 5
+INC N$戒指分值4 5
+INC N$手镯分值4 5
+INC N$头盔分值5 10
+INC N$衣服分值5 10
+INC N$武器分值5 10
+INC N$腰带分值5 10
+INC N$鞋子分值5 10
+INC N$项链分值5 10
+INC N$戒指分值5 10
+INC N$手镯分值5 10
+INC N$头盔分值6 2
+INC N$衣服分值6 2
+INC N$武器分值6 2
+INC N$腰带分值6 2
+INC N$鞋子分值6 2
+INC N$项链分值6 2
+INC N$戒指分值6 2
+INC N$手镯分值6 2
+INC N$头盔分值7 1
+INC N$衣服分值7 1
+INC N$武器分值7 1
+INC N$腰带分值7 1
+INC N$鞋子分值7 1
+INC N$项链分值7 1
+INC N$戒指分值7 1
+INC N$手镯分值7 1
+BREAK
+;11阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 6
+#ACT
+INC N$头盔分值5 5
+INC N$衣服分值5 5
+INC N$武器分值5 5
+INC N$腰带分值5 5
+INC N$鞋子分值5 5
+INC N$项链分值5 5
+INC N$戒指分值5 5
+INC N$手镯分值5 5
+INC N$头盔分值6 10
+INC N$衣服分值6 10
+INC N$武器分值6 10
+INC N$腰带分值6 10
+INC N$鞋子分值6 10
+INC N$项链分值6 10
+INC N$戒指分值6 10
+INC N$手镯分值6 10
+INC N$头盔分值7 2
+INC N$衣服分值7 2
+INC N$武器分值7 2
+INC N$腰带分值7 2
+INC N$鞋子分值7 2
+INC N$项链分值7 2
+INC N$戒指分值7 2
+INC N$手镯分值7 2
+INC N$头盔分值8 1
+INC N$衣服分值8 1
+INC N$武器分值8 1
+INC N$腰带分值8 1
+INC N$鞋子分值8 1
+INC N$项链分值8 1
+INC N$戒指分值8 1
+INC N$手镯分值8 1
+BREAK
+;12阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 7
+#ACT
+INC N$头盔分值6 5
+INC N$衣服分值6 5
+INC N$武器分值6 5
+INC N$腰带分值6 5
+INC N$鞋子分值6 5
+INC N$项链分值6 5
+INC N$戒指分值6 5
+INC N$手镯分值6 5
+INC N$头盔分值7 10
+INC N$衣服分值7 10
+INC N$武器分值7 10
+INC N$腰带分值7 10
+INC N$鞋子分值7 10
+INC N$项链分值7 10
+INC N$戒指分值7 10
+INC N$手镯分值7 10
+INC N$头盔分值8 2
+INC N$衣服分值8 2
+INC N$武器分值8 2
+INC N$腰带分值8 2
+INC N$鞋子分值8 2
+INC N$项链分值8 2
+INC N$戒指分值8 2
+INC N$手镯分值8 2
+INC N$头盔分值9 1
+INC N$衣服分值9 1
+INC N$武器分值9 1
+INC N$腰带分值9 1
+INC N$鞋子分值9 1
+INC N$项链分值9 1
+INC N$戒指分值9 1
+INC N$手镯分值9 1
+BREAK
+;13阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 8
+#ACT
+INC N$头盔分值7 5
+INC N$衣服分值7 5
+INC N$武器分值7 5
+INC N$腰带分值7 5
+INC N$鞋子分值7 5
+INC N$项链分值7 5
+INC N$戒指分值7 5
+INC N$手镯分值7 5
+INC N$头盔分值8 10
+INC N$衣服分值8 10
+INC N$武器分值8 10
+INC N$腰带分值8 10
+INC N$鞋子分值8 10
+INC N$项链分值8 10
+INC N$戒指分值8 10
+INC N$手镯分值8 10
+INC N$头盔分值9 2
+INC N$衣服分值9 2
+INC N$武器分值9 2
+INC N$腰带分值9 2
+INC N$鞋子分值9 2
+INC N$项链分值9 2
+INC N$戒指分值9 2
+INC N$手镯分值9 2
+INC N$头盔分值10 1
+INC N$衣服分值10 1
+INC N$武器分值10 1
+INC N$腰带分值10 1
+INC N$鞋子分值10 1
+INC N$项链分值10 1
+INC N$戒指分值10 1
+INC N$手镯分值10 1
+BREAK
+;14阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 9
+#ACT
+INC N$头盔分值8 5
+INC N$衣服分值8 5
+INC N$武器分值8 5
+INC N$腰带分值8 5
+INC N$鞋子分值8 5
+INC N$项链分值8 5
+INC N$戒指分值8 5
+INC N$手镯分值8 5
+INC N$头盔分值9 10
+INC N$衣服分值9 10
+INC N$武器分值9 10
+INC N$腰带分值9 10
+INC N$鞋子分值9 10
+INC N$项链分值9 10
+INC N$戒指分值9 10
+INC N$手镯分值9 10
+INC N$头盔分值10 2
+INC N$衣服分值10 2
+INC N$武器分值10 2
+INC N$腰带分值10 2
+INC N$鞋子分值10 2
+INC N$项链分值10 2
+INC N$戒指分值10 2
+INC N$手镯分值10 2
+INC N$头盔分值11 1
+INC N$衣服分值11 1
+INC N$武器分值11 1
+INC N$腰带分值11 1
+INC N$鞋子分值11 1
+INC N$项链分值11 1
+INC N$戒指分值11 1
+INC N$手镯分值11 1
+BREAK
+;15阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 10
+#ACT
+INC N$头盔分值9 5
+INC N$衣服分值9 5
+INC N$武器分值9 5
+INC N$腰带分值9 5
+INC N$鞋子分值9 5
+INC N$项链分值9 5
+INC N$戒指分值9 5
+INC N$手镯分值9 5
+INC N$头盔分值10 10
+INC N$衣服分值10 10
+INC N$武器分值10 10
+INC N$腰带分值10 10
+INC N$鞋子分值10 10
+INC N$项链分值10 10
+INC N$戒指分值10 10
+INC N$手镯分值10 10
+INC N$头盔分值11 2
+INC N$衣服分值11 2
+INC N$武器分值11 2
+INC N$腰带分值11 2
+INC N$鞋子分值11 2
+INC N$项链分值11 2
+INC N$戒指分值11 2
+INC N$手镯分值11 2
+INC N$头盔分值12 1
+INC N$衣服分值12 1
+INC N$武器分值12 1
+INC N$腰带分值12 1
+INC N$鞋子分值12 1
+INC N$项链分值12 1
+INC N$戒指分值12 1
+INC N$手镯分值12 1
+BREAK
+;16阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 11
+#ACT
+INC N$头盔分值10 5
+INC N$衣服分值10 5
+INC N$武器分值10 5
+INC N$腰带分值10 5
+INC N$鞋子分值10 5
+INC N$项链分值10 5
+INC N$戒指分值10 5
+INC N$手镯分值10 5
+INC N$头盔分值11 10
+INC N$衣服分值11 10
+INC N$武器分值11 10
+INC N$腰带分值11 10
+INC N$鞋子分值11 10
+INC N$项链分值11 10
+INC N$戒指分值11 10
+INC N$手镯分值11 10
+INC N$头盔分值12 2
+INC N$衣服分值12 2
+INC N$武器分值12 2
+INC N$腰带分值12 2
+INC N$鞋子分值12 2
+INC N$项链分值12 2
+INC N$戒指分值12 2
+INC N$手镯分值12 2
+INC N$头盔分值13 1
+INC N$衣服分值13 1
+INC N$武器分值13 1
+INC N$腰带分值13 1
+INC N$鞋子分值13 1
+INC N$项链分值13 1
+INC N$戒指分值13 1
+INC N$手镯分值13 1
+BREAK
+;17阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 12
+#ACT
+INC N$头盔分值11 5
+INC N$衣服分值11 5
+INC N$武器分值11 5
+INC N$腰带分值11 5
+INC N$鞋子分值11 5
+INC N$项链分值11 5
+INC N$戒指分值11 5
+INC N$手镯分值11 5
+INC N$头盔分值12 10
+INC N$衣服分值12 10
+INC N$武器分值12 10
+INC N$腰带分值12 10
+INC N$鞋子分值12 10
+INC N$项链分值12 10
+INC N$戒指分值12 10
+INC N$手镯分值12 10
+INC N$头盔分值13 2
+INC N$衣服分值13 2
+INC N$武器分值13 2
+INC N$腰带分值13 2
+INC N$鞋子分值13 2
+INC N$项链分值13 2
+INC N$戒指分值13 2
+INC N$手镯分值13 2
+BREAK
+;18阶BOSS计算
+#IFONE
+EQUAL <$ScriptParam(1)> 13
+#ACT
+INC N$头盔分值12 5
+INC N$衣服分值12 5
+INC N$武器分值12 5
+INC N$腰带分值12 5
+INC N$鞋子分值12 5
+INC N$项链分值12 5
+INC N$戒指分值12 5
+INC N$手镯分值12 5
+INC N$头盔分值13 10
+INC N$衣服分值13 10
+INC N$武器分值13 10
+INC N$腰带分值13 10
+INC N$鞋子分值13 10
+INC N$项链分值13 10
+INC N$戒指分值13 10
+INC N$手镯分值13 10
+BREAK
+[@等级分值计算]
+#IF
+small <$LEVEL> 60
+#ACT
+BREAK
+#IF
+!Small <$LEVEL> 60
+!Large <$LEVEL> 69
+#ACT
+Mov N$等级变量 0
+#IF
+!Small <$LEVEL> 70
+!Large <$LEVEL> 79
+#ACT
+Mov N$等级变量 1
+#IF
+!Small <$LEVEL> 80
+!Large <$LEVEL> 89
+#ACT
+Mov N$等级变量 2
+#IF
+!Small <$LEVEL> 90
+!Large <$LEVEL> 99
+#ACT
+Mov N$等级变量 3
+#IF
+!Small <$LEVEL> 100
+!Large <$LEVEL> 109
+#ACT
+Mov N$等级变量 4
+#IF
+!Small <$LEVEL> 110
+!Large <$LEVEL> 119
+#ACT
+Mov N$等级变量 5
+#IF
+EQUAL $CustomValue(42) 1
+#ACT
+Mov N$等级变量 6
+#IF
+EQUAL $CustomValue(42) 2
+#ACT
+Mov N$等级变量 7
+#IF
+EQUAL $CustomValue(42) 3
+#ACT
+Mov N$等级变量 8
+#IF
+EQUAL $CustomValue(42) 4
+#ACT
+Mov N$等级变量 9
+#IF
+EQUAL $CustomValue(42) 5
+#ACT
+Mov N$等级变量 10
+#IF
+EQUAL $CustomValue(42) 6
+#ACT
+Mov N$等级变量 11
+#IF
+EQUAL $CustomValue(42) 7
+#ACT
+Mov N$等级变量 12
+#IF
+EQUAL $CustomValue(42) 8
+#ACT
+Mov N$等级变量 13
+#IF
+EQUAL $CustomValue(42) 9
+#ACT
+Mov N$等级变量 14
+#IF
+EQUAL $CustomValue(42) 10
+#ACT
+Mov N$等级变量 15
+#IF
+TRUE
+#ACT
+MOV N$循环计次 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+ReadRandomStr ..\QuestDiary\爆率数据\等级对应掉落分值.txt S$结果文本 $STR(N$等级变量)
+SPLIT <$Str(S$结果文本)> | S$结果接受
+FOR N$循环计次 = N$条件数量
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$循环计次)>)> <$STR(S$结果接受_<$STR(S$条件接受_<$STR(N$循环计次)>)>)>
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$循环计次)>)> <$STR(S$结果接受_<$STR(S$条件接受_<$STR(N$循环计次)>)>)>
+INC N$武器分值<$STR(S$条件接受_<$STR(N$循环计次)>)> <$STR(S$结果接受_<$STR(S$条件接受_<$STR(N$循环计次)>)>)>
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$循环计次)>)> <$STR(S$结果接受_<$STR(S$条件接受_<$STR(N$循环计次)>)>)>
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$循环计次)>)> <$STR(S$结果接受_<$STR(S$条件接受_<$STR(N$循环计次)>)>)>
+INC N$项链分值<$STR(S$条件接受_<$STR(N$循环计次)>)> <$STR(S$结果接受_<$STR(S$条件接受_<$STR(N$循环计次)>)>)>
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$循环计次)>)> <$STR(S$结果接受_<$STR(S$条件接受_<$STR(N$循环计次)>)>)>
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$循环计次)>)> <$STR(S$结果接受_<$STR(S$条件接受_<$STR(N$循环计次)>)>)>
+INC N$循环计次 1
+ENDFOR
+[@开服时间分值计算]
+#IF
+Small $STR(G0) 91
+#ACT
+MOV N$开服时间分值计算循环计数 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+ReadRandomStr ..\QuestDiary\爆率数据\开服时间分值.txt S$开服时间分值循环计算_数据 $STR(G0)
+SPLIT <$STR(S$开服时间分值循环计算_数据)> | S$数据接受
+FOR N$开服时间分值计算循环计数 = N$条件数量
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$武器分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$项链分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$开服时间分值计算循环计数 1
+ENDFOR
+#ELSEACT
+MOV N$开服时间分值计算循环计数 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+ReadRandomStr ..\QuestDiary\爆率数据\开服时间分值.txt S$开服时间分值循环计算_数据 91
+SPLIT <$STR(S$开服时间分值循环计算_数据)> | S$数据接受
+FOR N$开服时间分值计算循环计数 = 13
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$武器分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$项链分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)> <$STR(S$数据接受_<$STR(S$条件接受_<$STR(N$开服时间分值计算循环计数)>)>)>
+INC N$开服时间分值计算循环计数 1
+sendmsg 5 $STR(N$开服时间分值计算循环计数)
+ENDFOR
+[@轮转分值加成]
+#IF
+EQUAL <$MOD.$STR(G0).3> 0
+#ACT
+GOTO @轮转分值_第1天&<$ScriptParam(1)>
+BREAK
+#IF
+EQUAL <$MOD.$STR(G0).3> 1
+#ACT
+GOTO @轮转分值_第2天&<$ScriptParam(1)>
+BREAK
+#IF
+EQUAL <$MOD.$STR(G0).3> 2
+#ACT
+GOTO @轮转分值_第3天&<$ScriptParam(1)>
+BREAK
+[@轮转分值_第1天]
+#IF
+HOUR 8 14
+#ACT
+MOV N$轮转分值循环计次 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+FOR N$轮转分值循环计次 = N$条件数量
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$武器分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$项链分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$轮转分值循环计次 1
+EndFor
+BREAK
+#IF
+HOUR 14 19
+#ACT
+MOV N$轮转分值循环计次 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+FOR N$轮转分值循环计次 = N$条件数量
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$武器分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$项链分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$轮转分值循环计次 1
+EndFor
+BREAK
+#IF
+HOUR 19 1
+#ACT
+MOV N$轮转分值循环计次 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+FOR N$轮转分值循环计次 = N$条件数量
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$武器分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$项链分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$轮转分值循环计次 1
+EndFor
+BREAK
+[@轮转分值_第2天]
+#IF
+HOUR 8 14
+#ACT
+MOV N$轮转分值循环计次 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+FOR N$轮转分值循环计次 = N$条件数量
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$武器分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$项链分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$轮转分值循环计次 1
+EndFor
+BREAK
+#IF
+HOUR 14 19
+#ACT
+MOV N$轮转分值循环计次 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+FOR N$轮转分值循环计次 = N$条件数量
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$武器分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$项链分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$轮转分值循环计次 1
+EndFor
+BREAK
+#IF
+HOUR 19 1
+#ACT
+MOV N$轮转分值循环计次 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+FOR N$轮转分值循环计次 = N$条件数量
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$武器分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$项链分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$轮转分值循环计次 1
+EndFor
+BREAK
+[@轮转分值_第3天]
+#IF
+HOUR 8 14
+#ACT
+MOV N$轮转分值循环计次 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+FOR N$轮转分值循环计次 = N$条件数量
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$武器分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$项链分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$轮转分值循环计次 1
+EndFor
+BREAK
+#IF
+HOUR 14 19
+#ACT
+MOV N$轮转分值循环计次 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+FOR N$轮转分值循环计次 = N$条件数量
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$武器分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$项链分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$轮转分值循环计次 1
+EndFor
+BREAK
+#IF
+HOUR 19 1
+#ACT
+MOV N$轮转分值循环计次 0
+SPLIT <$ScriptParam(1)> | S$条件接受 N$条件数量
+FOR N$轮转分值循环计次 = N$条件数量
+INC N$戒指分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$手镯分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$头盔分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$腰带分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$衣服分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 15
+INC N$武器分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$项链分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$鞋子分值<$STR(S$条件接受_<$STR(N$轮转分值循环计次)>)> 5
+INC N$轮转分值循环计次 1
+EndFor
+BREAK
+[@可爆出装备整理]
+#IF
+CHECKTXT  ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+#ACT
+#ELSEACT
+FileCopy ..\QuestDiary\爆率数据\数据临时排序.txt ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+#IF
+TRUE
+#ACT
+ClearNameList ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT <$ScriptParam(1)> | S$可爆出装备条件接受 N$条件数量
+MOV N$装备整理循环计数 0
+#IF
+EQUAL <$JOBID> 0
+#ACT
+LoopGOTO @战士装备整理 $STR(N$条件数量)
+break
+#IF
+EQUAL <$JOBID> 1
+#ACT
+LoopGOTO @法师装备整理 $STR(N$条件数量)
+break
+#IF
+EQUAL <$JOBID> 2
+#ACT
+LoopGOTO @道士装备整理 $STR(N$条件数量)
+break
+[@战士装备整理]
+#IF
+TRUE
+#ACT
+SPLIT 9|14|5&8|15|3&13|6|1&10|2|1&14|5|1&15|4|1&12|7|1&11|3|1 & S$条件接受1
+SPLIT $STR(S$条件接受1_0) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Ring|<$Global(Ring<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$戒指分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Ring>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_1) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Bracelet|<$Global(Bracelet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$手镯分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Bracelet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_2) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Helmet|<$Global(Helmet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$头盔分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Helmet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_3) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Belt|<$Global(Belt<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$腰带分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Belt>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_4) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Clothing|<$Global(Clothing<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$衣服分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Clothing>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_5) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Weapon|<$Global(Weapon<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$武器分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Weapon>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_6) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Necklace|<$Global(Necklace<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$项链分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Necklace>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_7) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Boots|<$Global(Boots<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$鞋子分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Boots>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_0) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Ring|<$Global(Ring<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$戒指分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Ring>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_1) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Bracelet|<$Global(Bracelet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$手镯分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Bracelet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_2) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Helmet|<$Global(Helmet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$头盔分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Helmet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_3) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Belt|<$Global(Belt<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$腰带分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Belt>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_4) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Clothing|<$Global(Clothing<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$衣服分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Clothing>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_5) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Weapon|<$Global(Weapon<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$武器分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Weapon>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_6) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Necklace|<$Global(Necklace<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$项链分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Necklace>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_7) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Boots|<$Global(Boots<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$鞋子分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Boots>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_0) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Ring|<$Global(Ring<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$戒指分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Ring>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_1) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Bracelet|<$Global(Bracelet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$手镯分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Bracelet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_2) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Helmet|<$Global(Helmet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$头盔分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Helmet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_3) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Belt|<$Global(Belt<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$腰带分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Belt>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_4) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Clothing|<$Global(Clothing<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$衣服分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Clothing>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_5) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Weapon|<$Global(Weapon<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$武器分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Weapon>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_6) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Necklace|<$Global(Necklace<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$项链分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Necklace>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_7) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Boots|<$Global(Boots<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$鞋子分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Boots>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+INC N$装备整理循环计数 1
+[@法师装备整理]
+#IF
+TRUE
+#ACT
+SPLIT 9|14|5&8|15|3&13|6|1&10|2|1&14|5|1&15|4|1&12|7|1&11|3|1 & S$条件接受1
+SPLIT $STR(S$条件接受1_0) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Ring|<$Global(Ring<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$戒指分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Ring>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_1) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Bracelet|<$Global(Bracelet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$手镯分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Bracelet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_2) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Helmet|<$Global(Helmet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$头盔分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Helmet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_3) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Belt|<$Global(Belt<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$腰带分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Belt>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_4) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Clothing|<$Global(Clothing<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$衣服分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Clothing>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_5) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Weapon|<$Global(Weapon<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$武器分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Weapon>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_6) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Necklace|<$Global(Necklace<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$项链分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Necklace>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_7) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Boots|<$Global(Boots<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$鞋子分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Boots>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_0) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Ring|<$Global(Ring<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$戒指分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Ring>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_1) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Bracelet|<$Global(Bracelet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$手镯分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Bracelet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_2) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Helmet|<$Global(Helmet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$头盔分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Helmet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_3) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Belt|<$Global(Belt<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$腰带分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Belt>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_4) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Clothing|<$Global(Clothing<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$衣服分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Clothing>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_5) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Weapon|<$Global(Weapon<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$武器分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Weapon>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_6) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Necklace|<$Global(Necklace<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$项链分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Necklace>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_7) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Boots|<$Global(Boots<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$鞋子分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Boots>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_0) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Ring|<$Global(Ring<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$戒指分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Ring>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_1) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Bracelet|<$Global(Bracelet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$手镯分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Bracelet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_2) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Helmet|<$Global(Helmet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$头盔分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Helmet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_3) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Belt|<$Global(Belt<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$腰带分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Belt>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_4) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Clothing|<$Global(Clothing<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$衣服分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Clothing>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_5) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Weapon|<$Global(Weapon<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$武器分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Weapon>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_6) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Necklace|<$Global(Necklace<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$项链分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Necklace>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_7) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Boots|<$Global(Boots<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$鞋子分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Boots>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+INC N$装备整理循环计数 1
+[@道士装备整理]
+#IF
+TRUE
+#ACT
+SPLIT 9|14|5&8|15|3&13|6|1&10|2|1&14|5|1&15|4|1&12|7|1&11|3|1 & S$条件接受1
+SPLIT $STR(S$条件接受1_0) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Ring|<$Global(Ring<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$戒指分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Ring>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_1) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Bracelet|<$Global(Bracelet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$手镯分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Bracelet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_2) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Helmet|<$Global(Helmet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$头盔分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Helmet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_3) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Belt|<$Global(Belt<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$腰带分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Belt>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_4) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Clothing|<$Global(Clothing<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$衣服分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Clothing>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_5) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Weapon|<$Global(Weapon<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$武器分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Weapon>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_6) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Necklace|<$Global(Necklace<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$项链分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Necklace>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_7) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Boots|<$Global(Boots<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|战士|<$RANDOM(2)>|<$INC.<$INC.N$鞋子分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.6>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_0).Boots>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_0) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Ring|<$Global(Ring<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$戒指分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Ring>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_1) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Bracelet|<$Global(Bracelet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$手镯分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Bracelet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_2) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Helmet|<$Global(Helmet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$头盔分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Helmet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_3) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Belt|<$Global(Belt<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$腰带分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Belt>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_4) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Clothing|<$Global(Clothing<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$衣服分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Clothing>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_5) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Weapon|<$Global(Weapon<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$武器分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Weapon>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_6) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Necklace|<$Global(Necklace<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$项链分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Necklace>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_7) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Boots|<$Global(Boots<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|道士|<$RANDOM(2)>|<$INC.<$INC.N$鞋子分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.10>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_2).Boots>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_0) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Ring|<$Global(Ring<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$戒指分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Ring>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_1) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Bracelet|<$Global(Bracelet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$手镯分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Bracelet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_2) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Helmet|<$Global(Helmet<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$头盔分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Helmet>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_3) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Belt|<$Global(Belt<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$腰带分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Belt>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_4) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Clothing|<$Global(Clothing<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$衣服分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Clothing>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_5) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Weapon|<$Global(Weapon<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$武器分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Weapon>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_6) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Necklace|<$Global(Necklace<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$项链分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Necklace>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+SPLIT $STR(S$条件接受1_7) | S$条件接受2
+ADDVARLIST <$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>|Boots|<$Global(Boots<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>)>|法师|<$RANDOM(2)>|<$INC.<$INC.N$鞋子分值<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>.4>.<$STR(S$条件接受2_<$Table(PlayerDailyOutput<$STR(S$可爆出装备条件接受_<$STR(N$装备整理循环计数)>)>_1).Boots>)>> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt
+INC N$装备整理循环计数 1
+[@全局爆出装备筛选]
+#IF
+TRUE
+#ACT
+MOV N$爆出装备循环计次1 0
+SPLIT <$ScriptParam(1)> | S$爆出装备条件接受 N$爆出装备筛选循环次数
+LoopGoTo @全局爆出装备筛选循环1 <$STR(N$爆出装备筛选循环次数)>
+
+[@全局爆出装备筛选循环1]
+#IF
+TRUE
+#ACT
+MOV N$爆出装备循环计次2 0
+LoopGoto @全局爆出装备筛选循环2 3
+INC N$爆出装备循环计次1 1
+[@全局爆出装备筛选循环2]
+#IF
+PosInlist Ring|0 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+PosInlist Bracelet|0 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+PosInlist Helmet|0 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+PosInlist Belt|0 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+PosInlist Clothing|0 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+PosInlist Weapon|0 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+PosInlist Necklace|0 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+PosInlist Boots|0 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+TRUE
+#ACT
+INC N$爆出装备循环计次2 1
+[@vip每日爆出上限筛选]
+#IF
+TRUE
+#ACT
+MOV N$vip每日爆出上限循环计次 0
+SPLIT <$ScriptParam(1)> | S$vip每日爆出上限条件接受 N$vip每日爆出上限循环次数
+LoopGoto @vip每日爆出上限筛选循环1 <$STR(N$vip每日爆出上限循环次数)>
+[@vip每日爆出上限筛选循环1]
+#IF
+TRUE
+#ACT
+LoopGoto @vip每日爆出上限筛选循环2 3
+INC N$vip每日爆出上限循环计次 1
+[@vip每日爆出上限筛选循环2]
+#IF
+EQUAL <$HUMAN(LvItem<$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>)> 0
+PosInlist <$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>|Ring ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$HUMAN(LvItem<$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>)> 0
+PosInlist <$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>|Bracelet ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$HUMAN(LvItem<$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>)> 0
+PosInlist <$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>|Helmet ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$HUMAN(LvItem<$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>)> 0
+PosInlist <$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>|Belt ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$HUMAN(LvItem<$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>)> 0
+PosInlist <$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>|Clothing ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$HUMAN(LvItem<$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>)> 0
+PosInlist <$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>|Weapon ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$HUMAN(LvItem<$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>)> 0
+PosInlist <$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>|Necklace ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$HUMAN(LvItem<$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>)> 0
+PosInlist <$str(S$vip每日爆出上限条件接受_<$str(N$vip每日爆出上限循环计次)>)>|Boots ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+
+[@个人爆出上限筛选]
+#IF
+TRUE
+#ACT
+MOV N$个人爆出上限循环计次 0
+SPLIT <$ScriptParam(1)> | S$个人爆出上限条件接受 N$个人爆出上限循环次数
+LoopGoto @个人爆出上限筛选循环 <$STR(N$个人爆出上限循环次数)>
+[@个人爆出上限筛选循环]
+#IF
+EQUAL <$Table(PlayerALLOutput<$STR(S$个人爆出上限条件接受_<$STR(N$个人爆出上限循环计次)>)>).Ring> 0
+PosInlist <$str(S$个人爆出上限条件接受_<$str(N$个人爆出上限循环计次)>)>|Ring ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$Table(PlayerALLOutput<$STR(S$个人爆出上限条件接受_<$STR(N$个人爆出上限循环计次)>)>).Bracelet> 0
+PosInlist <$str(S$个人爆出上限条件接受_<$str(N$个人爆出上限循环计次)>)>|Bracelet ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$Table(PlayerALLOutput<$STR(S$个人爆出上限条件接受_<$STR(N$个人爆出上限循环计次)>)>).Helmet> 0
+PosInlist <$str(S$个人爆出上限条件接受_<$str(N$个人爆出上限循环计次)>)>|Helmet ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$Table(PlayerALLOutput<$STR(S$个人爆出上限条件接受_<$STR(N$个人爆出上限循环计次)>)>).Belt> 0
+PosInlist <$str(S$个人爆出上限条件接受_<$str(N$个人爆出上限循环计次)>)>|Belt ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$Table(PlayerALLOutput<$STR(S$个人爆出上限条件接受_<$STR(N$个人爆出上限循环计次)>)>).Clothing> 0
+PosInlist <$str(S$个人爆出上限条件接受_<$str(N$个人爆出上限循环计次)>)>|Clothing ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$Table(PlayerALLOutput<$STR(S$个人爆出上限条件接受_<$STR(N$个人爆出上限循环计次)>)>).Weapon> 0
+PosInlist <$str(S$个人爆出上限条件接受_<$str(N$个人爆出上限循环计次)>)>|Weapon ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$Table(PlayerALLOutput<$STR(S$个人爆出上限条件接受_<$STR(N$个人爆出上限循环计次)>)>).Necklace> 0
+PosInlist <$str(S$个人爆出上限条件接受_<$str(N$个人爆出上限循环计次)>)>|Necklace ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+EQUAL <$Table(PlayerALLOutput<$STR(S$个人爆出上限条件接受_<$STR(N$个人爆出上限循环计次)>)>).Boots> 0
+PosInlist <$str(S$个人爆出上限条件接受_<$str(N$个人爆出上限循环计次)>)>|Boots ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$装备筛选整行取出
+#ACT
+DELVARLIST <$STR(S$装备筛选整行取出)> ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+#IF
+TRUE
+#ACT
+INC N$个人爆出上限循环计次 1
+[@开始制造装备]
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt S$排序后的装备信息 0 0 5 |
+#IF
+EQUAL <$STR(S$排序后的装备信息)>  
+#ACT
+BREAK
+#ELSEACT
+SPLIT <$STR(S$排序后的装备信息)> | S$装备产出结果
+#IF
+EQUAL $STR(S$装备产出结果_1) Ring
+#ACT
+MOV N$地面制造装备位 0
+#IF
+EQUAL $STR(S$装备产出结果_1) Bracelet
+#ACT
+MOV N$地面制造装备位 1
+#IF
+EQUAL $STR(S$装备产出结果_1) Helmet
+#ACT
+MOV N$地面制造装备位 2
+#IF
+EQUAL $STR(S$装备产出结果_1) Belt
+#ACT
+MOV N$地面制造装备位 3
+#IF
+EQUAL $STR(S$装备产出结果_1) Clothing
+#ACT
+MOV N$地面制造装备位 4
+#IF
+EQUAL $STR(S$装备产出结果_1) Weapon
+#ACT
+MOV N$地面制造装备位 5
+#IF
+EQUAL $STR(S$装备产出结果_1) Necklace
+#ACT
+MOV N$地面制造装备位 6
+#IF
+EQUAL $STR(S$装备产出结果_1) Boots
+#ACT
+MOV N$地面制造装备位 7
+#IF
+true
+#ACT
+ReadRandomStr ..\QuestDiary\爆率数据\<$STR(S$装备产出结果_3)>装备<$str(S$装备产出结果_4)>.txt s$确认装备产出信息 <$str(S$装备产出结果_0)>
+SPLIT <$STR(S$确认装备产出信息)> | S$确认装备产出
+#IF
+EQUAL <$Global(<$STR(S$装备产出结果_1)><$STR(S$装备产出结果_0)>)> 0
+#ACT
+DELVARLIST S$排序后的装备信息 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+GOTO @开始制造装备
+BREAK
+#IF
+EQUAL <$HUMAN(LvItem<$STR(S$装备产出结果_0)>)> 0
+#ACT
+DELVARLIST S$排序后的装备信息 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+GOTO @开始制造装备
+BREAK
+#IF
+EQUAL <$Table(PlayerALLOutput<$STR(S$装备产出结果_0)>).<$STR(S$装备产出结果_1)>)> 0
+#ACT
+DELVARLIST S$排序后的装备信息 ..\QuestDiary\爆率数据\<$USERID>数据临时排序.txt 1
+GOTO @开始制造装备
+BREAK
+#IF
+TRUE
+#ACT
+CalcVar Global <$STR(S$装备产出结果_1)><$STR(S$装备产出结果_0)> - 1 1
+CalcVar HUMAN LvItem<$STR(S$装备产出结果_0)> - 1 1
+Table PlayerALLOutput<$STR(S$装备产出结果_0)> <$STR(S$装备产出结果_1)> - 1 1
+DROPITEMDOWN <$STR(S$确认装备产出_<$STR(N$地面制造装备位)>)> 1 <$PARAM(4)>(<$Param(7)>,<$Param(8)>,2) 0 1
+#IF
+EQUAL <$STR(S$装备产出结果_3)> 战士
+#ACT
+MOV N$职业ID 0
+#IF
+EQUAL <$STR(S$装备产出结果_3)> 法师
+#ACT
+MOV N$职业ID 1
+#IF
+EQUAL <$STR(S$装备产出结果_3)> 道士
+#ACT
+MOV N$职业ID 2
+#IF
+small <$Table(PlayerDailyOutput<$STR(S$装备产出结果_0)>_<$STR(N$职业ID)>).<$STR(S$装备产出结果_1)>> 2
+#ACT
+Table PlayerDailyOutput<$STR(S$装备产出结果_0)>_<$STR(N$职业ID)> <$STR(S$装备产出结果_1)> + 1
+;#IF
+;TRUE
+;#ACT
+;sendmsg 5 5阶全局装备掉落限制：戒指<$Global(Ring0)>|手镯<$Global(Bracelet0)>|头盔<$Global(Helmet0)>|腰带<$Global(Belt0)>|衣服<$Global(Clothing0)>|武器<$Global(Weapon0)>|项链<$Global(Necklace0)>|靴子<$Global(Boots0)>
+;sendmsg 5 6阶全局装备掉落限制：戒指<$Global(Ring1)>|手镯<$Global(Bracelet1)>|头盔<$Global(Helmet1)>|腰带<$Global(Belt1)>|衣服<$Global(Clothing1)>|武器<$Global(Weapon1)>|项链<$Global(Necklace1)>|靴子<$Global(Boots1)>
+;sendmsg 5 7阶全局装备掉落限制：戒指<$Global(Ring2)>|手镯<$Global(Bracelet2)>|头盔<$Global(Helmet2)>|腰带<$Global(Belt2)>|衣服<$Global(Clothing2)>|武器<$Global(Weapon2)>|项链<$Global(Necklace2)>|靴子<$Global(Boots2)>
+;sendmsg 5 8阶全局装备掉落限制：戒指<$Global(Ring3)>|手镯<$Global(Bracelet3)>|头盔<$Global(Helmet3)>|腰带<$Global(Belt3)>|衣服<$Global(Clothing3)>|武器<$Global(Weapon3)>|项链<$Global(Necklace3)>|靴子<$Global(Boots3)>
+;sendmsg 5 VIP掉落限制:5阶<$HUMAN(LvItem0)>--6阶<$HUMAN(LvItem1)>--7阶<$HUMAN(LvItem2)>--8阶<$HUMAN(LvItem3)>--9阶<$HUMAN(LvItem4)>--10阶<$HUMAN(LvItem5)>--11阶<$HUMAN(LvItem6)>--12阶<$HUMAN(LvItem7)>--13阶<$HUMAN(LvItem8)>--14阶<$HUMAN(LvItem9)>--15阶<$HUMAN(LvItem10)>--16阶<$HUMAN(LvItem11)>--17阶<$HUMAN(LvItem12)>--18阶<$HUMAN(LvItem13)>
+;sendmsg 5 个人产出上限5阶:戒指<$Table(PlayerALLOutput0).Ring>|手镯<$Table(PlayerALLOutput0).Bracelet>|头盔<$Table(PlayerALLOutput0).Helmet>|腰带<$Table(PlayerALLOutput0).Belt>|衣服<$Table(PlayerALLOutput0).Clothing>|武器<$Table(PlayerALLOutput0).Weapon>|项链<$Table(PlayerALLOutput0).Necklace>|靴子<$Table(PlayerALLOutput0).Boots>
+;sendmsg 5 个人产出上限6阶:戒指<$Table(PlayerALLOutput1).Ring>|手镯<$Table(PlayerALLOutput1).Bracelet>|头盔<$Table(PlayerALLOutput1).Helmet>|腰带<$Table(PlayerALLOutput1).Belt>|衣服<$Table(PlayerALLOutput1).Clothing>|武器<$Table(PlayerALLOutput1).Weapon>|项链<$Table(PlayerALLOutput1).Necklace>|靴子<$Table(PlayerALLOutput1).Boots>
+;sendmsg 5 个人产出上限7阶:戒指<$Table(PlayerALLOutput2).Ring>|手镯<$Table(PlayerALLOutput2).Bracelet>|头盔<$Table(PlayerALLOutput2).Helmet>|腰带<$Table(PlayerALLOutput2).Belt>|衣服<$Table(PlayerALLOutput2).Clothing>|武器<$Table(PlayerALLOutput2).Weapon>|项链<$Table(PlayerALLOutput2).Necklace>|靴子<$Table(PlayerALLOutput2).Boots>
+;sendmsg 5 个人产出上限8阶:戒指<$Table(PlayerALLOutput3).Ring>|手镯<$Table(PlayerALLOutput3).Bracelet>|头盔<$Table(PlayerALLOutput3).Helmet>|腰带<$Table(PlayerALLOutput3).Belt>|衣服<$Table(PlayerALLOutput3).Clothing>|武器<$Table(PlayerALLOutput3).Weapon>|项链<$Table(PlayerALLOutput3).Necklace>|靴子<$Table(PlayerALLOutput3).Boots>
+}

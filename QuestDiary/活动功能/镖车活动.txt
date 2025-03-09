@@ -1,0 +1,522 @@
+[@镖车活动]
+
+{
+;--------------------------------任务点击前往执行
+[@Lemon运镖QW1]
+#IF
+TRUE
+#ACT
+MAPMOVE 0 445 242 3
+DELAYGOTO 100 @Lemon运镖QW2
+BREAK
+
+[@Lemon运镖QW2]
+#IF
+TRUE
+#ACT
+GONPC 448 241 0
+BREAK
+
+;------------------------------杀死镖车执行
+[@Lemon砸镖JL]
+#IF
+POS $PARAM(1) 星镖车
+POS $PARAM(1) ]
+#ACT
+SPLIT $PARAM(1) ] S$砸镖
+DEC S$砸镖_0 [
+DEC S$砸镖_1 的
+CHANGECUSTOMVALUE 93 + 1
+CLEARVAR P44 46
+#ELSEACT
+BREAK
+
+#IF
+EQUAL S$砸镖_1 一星镖车
+#ACT
+MOV P44 200
+MOV P45 6
+MOV P46 200000
+#IF
+EQUAL S$砸镖_1 二星镖车
+#ACT
+MOV P44 300
+MOV P45 10
+MOV P46 400000
+#IF
+EQUAL S$砸镖_1 三星镖车
+#ACT
+MOV P44 500
+MOV P45 18
+MOV P46 800000
+#IF
+EQUAL S$砸镖_1 四星镖车
+#ACT
+MOV P44 800
+MOV P45 25
+MOV P46 1600000
+#IF
+EQUAL S$砸镖_1 五星镖车
+#ACT
+MOV P44 1500
+MOV P45 35
+MOV P46 3000000
+
+#IFONE
+SMALL P44 1
+SMALL P45 1
+#ACT
+SENDMSG 5 砸镖数据异常!
+BREAK
+
+#IF
+CHECKONLINE $STR(S$砸镖_0)
+#ACT
+$STR(S$砸镖_0).SET [44] 0
+$STR(S$砸镖_0).CHANGECUSTOMVALUE 92 = 0
+$STR(S$砸镖_0).MailGIve 法宝精粹 $STR(P45) 1
+$STR(S$砸镖_0).MailGIve 经验 $STR(P46)
+$STR(S$砸镖_0).SENDMAIL 44 押镖奖励 你运送的镖车被抢劫，绑元押金已被扣除,其他奖励请点"提取"获取奖励!
+$STR(S$砸镖_0).MOV S$Lemon押镖JS 法宝精粹|<$STR(P45)>|经验|<$STR(P46)>|失败
+$STR(S$砸镖_0).GOTO @Lemon押镖JS
+$STR(S$砸镖_0).DelFunBtn 2 1
+#ELSEACT
+ADDVARLIST ~<$STR(S$砸镖_0)>|法宝精粹|<$STR(P45)>|经验|<$STR(P46)> ..\QUESTDIARY\游戏数据\镖车被砸离线.txt
+
+#IF
+SMALL $CUSTOMVALUE(93) 5
+#ACT
+BINDGAMEGOLD + $DIV^$MULT.$STR(P44).5^10
+SENDMSG 7 恭喜你劫镖成功,获得绑元奖励+<$DIV^$MULT.$STR(P44).5^10>
+SENDMSG 16 恭喜<%s>劫镖成功,获得绑元奖励+<$DIV^$MULT.$STR(P44).5^10>
+BREAK
+
+
+
+
+;------------------------------------------------QM 点击公告触发 执行
+[@Lemon镖车LX]
+;-------------------清除镖车等级
+#IF
+CHECK [44] 1
+LARGE $CUSTOMVALUE(92) 0
+SMALL <$MAPMONCOUNT(0).[<$USERNAME>]的<$NUMTOCHR($CUSTOMVALUE(92))>星镖车> 1
+#ACT
+SET [44] 0
+CHANGECUSTOMVALUE 92 = 0
+
+
+
+#IF
+POSINLIST ~<$USERNAME>| ..\QUESTDIARY\游戏数据\镖车被砸离线.txt S0
+#ACT
+DELVARLIST $STR(S0) ..\QUESTDIARY\游戏数据\镖车被砸离线.txt
+SPLIT $STR(S0) | S1
+MailGIve $STR(S2) $STR(S3) 1
+MailGIve $STR(S4) $STR(S5) 1
+SENDMAIL 44 押镖奖励 你运送的镖车被抢劫，绑元押金已被扣除,其他奖励请点"提取"获取奖励!
+SENDMSG 7 你的镖车被砸,绑元押金已扣除,奖励已通过邮件方式发送!!
+MOV S$Lemon押镖JS <$STR(S2)>|<$STR(S3)>|<$STR(S4)>|<$STR(S5)>|失败
+GOTO @Lemon押镖JS
+CLEARVAR S0 10
+#ELSEACT
+CLEARVAR S0 10
+
+
+#IF
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\镖车离线数据.txt S0
+#ACT
+DELVARLIST $STR(S0) ..\QUESTDIARY\游戏数据\镖车离线数据.txt
+SPLIT $STR(S0) | S1
+#ELSEACT
+BREAK
+
+#IF
+EQUAL $TIME.HOUR 18
+SMALL $TIME.MIN 30
+#ACT
+MOV P44 2
+#ELSEACT
+MOV P44 1
+
+#IF
+EQUAL $TIME.HOUR 12
+SMALL $TIME.MIN 30
+#ACT
+MOV P47 2
+#ELSEACT
+MOV P47 1
+
+#IF
+EQUAL $STR(P44) <$STR(P47)>
+#ACT
+MOV P44 1
+#ELSEACT
+MOV P44 2
+
+#IF
+EQUAL S2 一星镖车
+#ACT
+BINDGAMEGOLD + 200
+MailGIve 法宝精粹 $MULT.6.$STR(P44) 1
+MailGIve 经验 $MULT.200000.$STR(P44)
+SENDMAIL 44 押镖奖励 你的1星镖车已成功到达终点，绑元押金已直接返还,其他奖励请点"提取"获取奖励!
+SENDMSG 7 你的1星镖车到达终点,奖励已通过邮件的方式发放!
+SENDMSG 5 你的1星镖车到达终点,奖励已通过邮件的方式发放!
+MOV S$Lemon押镖JS 法宝精粹|<$MULT.6.$STR(P44)>|经验|<$MULT.200000.$STR(P44)>|成功
+GOTO @Lemon押镖JS
+BREAK
+
+#IF
+EQUAL S2 二星镖车
+#ACT
+BINDGAMEGOLD + 300
+MailGIve 法宝精粹 $MULT.10.$STR(P44) 1
+MailGIve 经验 $MULT.400000.$STR(P44)
+SENDMAIL 44 押镖奖励 你的2星镖车已成功到达终点，绑元押金已直接返还,其他奖励请点"提取"获取奖励!
+SENDMSG 7 你的2星镖车到达终点,奖励已通过邮件的方式发放!
+SENDMSG 5 你的2星镖车到达终点,奖励已通过邮件的方式发放!
+MOV S$Lemon押镖JS 法宝精粹|<$MULT.10.$STR(P44)>|经验|<$MULT.400000.$STR(P44)>|成功
+GOTO @Lemon押镖JS
+BREAK
+
+#IF
+EQUAL S2 三星镖车
+#ACT
+BINDGAMEGOLD + 500
+MailGIve 法宝精粹 $MULT.18.$STR(P44) 1
+MailGIve 经验 $MULT.800000.$STR(P44)
+SENDMAIL 44 押镖奖励 你的3星镖车已成功到达终点，绑元押金已直接返还,其他奖励请点"提取"获取奖励!
+SENDMSG 7 你的3星镖车到达终点,奖励已通过邮件的方式发放!
+SENDMSG 5 你的3星镖车到达终点,奖励已通过邮件的方式发放!
+MOV S$Lemon押镖JS 法宝精粹|<$MULT.18.$STR(P44)>|经验|<$MULT.800000.$STR(P44)>|成功
+GOTO @Lemon押镖JS
+BREAK
+
+#IF
+EQUAL S2 四星镖车
+#ACT
+BINDGAMEGOLD + 800
+MailGIve 法宝精粹 $MULT.25.$STR(P44) 1
+MailGIve 经验 $MULT.1600000.$STR(P44)
+SENDMAIL 44 押镖奖励 你的4星镖车已成功到达终点，绑元押金已直接返还,其他奖励请点"提取"获取奖励!
+SENDMSG 7 你的4星镖车到达终点,奖励已通过邮件的方式发放!
+SENDMSG 5 你的4星镖车到达终点,奖励已通过邮件的方式发放!
+MOV S$Lemon押镖JS 法宝精粹|<$MULT.25.$STR(P44)>|经验|<$MULT.1600000.$STR(P44)>|成功
+GOTO @Lemon押镖JS
+BREAK
+
+#IF
+EQUAL S2 五星镖车
+#ACT
+BINDGAMEGOLD + 1500
+MailGIve 法宝精粹 $MULT.35.$STR(P44) 1
+MailGIve 经验 $MULT.3000000.$STR(P44)
+SENDMAIL 44 押镖奖励 你的5星镖车已成功到达终点，绑元押金已直接返还,其他奖励请点"提取"获取奖励!
+SENDMSG 7 你的5星镖车到达终点,奖励已通过邮件的方式发放!
+SENDMSG 5 你的5星镖车到达终点,奖励已通过邮件的方式发放!
+MOV S$Lemon押镖JS 法宝精粹|<$MULT.35.$STR(P44)>|经验|<$MULT.3000000.$STR(P44)>|成功
+GOTO @Lemon押镖JS
+BREAK
+
+
+
+;----------------------------------机器人镖车触发
+
+
+
+
+
+[@_镖车定时触发]
+#IF
+TRUE
+#ACT
+SENDMSG 16 ◆押镖提示◆：<<$PARAM(1)>>的<<$PARAM(0)>>出现在中州,坐标:<<$PARAM(3)>,<$PARAM(4)>>,血量:<$PARAM(5)>% 250
+SENDMSG 14 ◆押镖提示◆：<<$PARAM(1)>>的<<$PARAM(0)>>出现在中州,坐标:<<$PARAM(3)>,<$PARAM(4)>>,血量:<$PARAM(5)>%
+BREAK
+
+[@_镖车掉血触发]
+#IF
+TRUE
+#ACT
+SENDMSG 16 ◆押镖提示◆：<<$PARAM(1)>>的<<$PARAM(0)>>剩余血量<<$PARAM(5)>%>,当前位置中州,坐标:<<$PARAM(3)>,<$PARAM(4)>> 250
+SENDMSG 14 ◆押镖提示◆：<<$PARAM(1)>>的<<$PARAM(0)>>剩余血量<<$PARAM(5)>%>,当前位置中州,坐标:<<$PARAM(3)>,<$PARAM(4)>>
+BREAK
+
+
+[@_镖车到达终点]
+#IF
+EQUAL $TIME.HOUR 18
+SMALL $TIME.MIN 30
+#ACT
+MOV P44 2
+#ELSEACT
+MOV P44 1
+
+#IF
+EQUAL $TIME.HOUR 12
+SMALL $TIME.MIN 30
+#ACT
+MOV P47 2
+#ELSEACT
+MOV P47 1
+
+#IF
+EQUAL $STR(P44) <$STR(P47)>
+#ACT
+MOV P44 1
+#ELSEACT
+MOV P44 2
+
+#IF
+CHECKONLINE $PARAM(1)
+EQUAL $PARAM(0) 一星镖车
+#ACT
+$PARAM(1).DelFunBtn 2 1  ;删除前往镖车
+$PARAM(1).SET [44] 0
+$PARAM(1).CHANGECUSTOMVALUE 92 = 0
+$PARAM(1).BINDGAMEGOLD + 200
+$PARAM(1).MailGIve 法宝精粹 $MULT.6.$STR(P44) 1
+$PARAM(1).MailGIve 经验 $MULT.200000.$STR(P44)
+$PARAM(1).SENDMAIL 44 押镖奖励 你的一星镖车已成功到达终点，绑元押金已直接返还,其他奖励请点"提取"获取奖励!
+$PARAM(1).SENDMSG 7 你的<$PARAM(0)>到达终点,奖励已通过邮件的方式发放!
+$PARAM(1).SENDMSG 5 你的<$PARAM(0)>到达终点,奖励已通过邮件的方式发放!
+SENDMSG 16 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+SENDMSG 14 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+$PARAM(1).MOV S$Lemon押镖JS 法宝精粹|<$MULT.6.$STR(P44)>|经验|<$MULT.200000.$STR(P44)>|成功
+$PARAM(1).GOTO @Lemon押镖JS
+BREAK
+
+#IF
+CHECKONLINE $PARAM(1)
+EQUAL $PARAM(0) 二星镖车
+#ACT
+$PARAM(1).DelFunBtn 2 1  ;删除前往镖车
+$PARAM(1).SET [44] 0
+$PARAM(1).CHANGECUSTOMVALUE 92 = 0
+$PARAM(1).BINDGAMEGOLD + 300
+$PARAM(1).MailGIve 法宝精粹 $MULT.10.$STR(P44) 1
+$PARAM(1).MailGIve 经验 $MULT.400000.$STR(P44)
+$PARAM(1).SENDMAIL 44 押镖奖励 你的二星镖车已成功到达终点，绑元押金已直接返还,其他奖励请点"提取"获取奖励!
+$PARAM(1).SENDMSG 7 你的<$PARAM(0)>到达终点,奖励已通过邮件的方式发放!
+$PARAM(1).SENDMSG 5 你的<$PARAM(0)>到达终点,奖励已通过邮件的方式发放!
+SENDMSG 16 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+SENDMSG 14 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+$PARAM(1).MOV S$Lemon押镖JS 法宝精粹|<$MULT.10.$STR(P44)>|经验|<$MULT.400000.$STR(P44)>|成功
+$PARAM(1).GOTO @Lemon押镖JS
+BREAK
+
+#IF
+CHECKONLINE $PARAM(1)
+EQUAL $PARAM(0) 三星镖车
+#ACT
+$PARAM(1).DelFunBtn 2 1  ;删除前往镖车
+$PARAM(1).SET [44] 0
+$PARAM(1).CHANGECUSTOMVALUE 92 = 0
+$PARAM(1).BINDGAMEGOLD + 500
+$PARAM(1).MailGIve 法宝精粹 $MULT.18.$STR(P44) 1
+$PARAM(1).MailGIve 经验 $MULT.800000.$STR(P44)
+$PARAM(1).SENDMAIL 44 押镖奖励 你的三星镖车已成功到达终点，绑元押金已直接返还,其他奖励请点"提取"获取奖励!
+$PARAM(1).SENDMSG 7 你的<$PARAM(0)>到达终点,奖励已通过邮件的方式发放!
+$PARAM(1).SENDMSG 5 你的<$PARAM(0)>到达终点,奖励已通过邮件的方式发放!
+SENDMSG 16 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+SENDMSG 14 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+$PARAM(1).MOV S$Lemon押镖JS 法宝精粹|<$MULT.18.$STR(P44)>|经验|<$MULT.800000.$STR(P44)>|成功
+$PARAM(1).GOTO @Lemon押镖JS
+BREAK
+
+#IF
+CHECKONLINE $PARAM(1)
+EQUAL $PARAM(0) 四星镖车
+#ACT
+$PARAM(1).DelFunBtn 2 1  ;删除前往镖车
+$PARAM(1).SET [44] 0
+$PARAM(1).CHANGECUSTOMVALUE 92 = 0
+$PARAM(1).BINDGAMEGOLD + 800
+$PARAM(1).MailGIve 法宝精粹 $MULT.25.$STR(P44) 1
+$PARAM(1).MailGIve 经验 $MULT.1600000.$STR(P44)
+$PARAM(1).SENDMAIL 44 押镖奖励 你的四星镖车已成功到达终点，绑元押金已直接返还,其他奖励请点"提取"获取奖励!
+$PARAM(1).SENDMSG 7 你的<$PARAM(0)>到达终点,奖励已通过邮件的方式发放!
+$PARAM(1).SENDMSG 5 你的<$PARAM(0)>到达终点,奖励已通过邮件的方式发放!
+SENDMSG 16 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+SENDMSG 14 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+$PARAM(1).MOV S$Lemon押镖JS 法宝精粹|<$MULT.25.$STR(P44)>|经验|<$MULT.1600000.$STR(P44)>|成功
+$PARAM(1).GOTO @Lemon押镖JS
+BREAK
+
+#IF
+CHECKONLINE $PARAM(1)
+EQUAL $PARAM(0) 五星镖车
+#ACT
+$PARAM(1).DelFunBtn 2 1  ;删除前往镖车
+$PARAM(1).SET [44] 0
+$PARAM(1).CHANGECUSTOMVALUE 92 = 0
+$PARAM(1).BINDGAMEGOLD + 1500
+$PARAM(1).MailGIve 法宝精粹 $MULT.35.$STR(P44) 1
+$PARAM(1).MailGIve 经验 $MULT.3000000.$STR(P44)
+$PARAM(1).SENDMAIL 44 押镖奖励 你的五星镖车已成功到达终点，绑元押金已直接返还,其他奖励请点"提取"获取奖励!
+$PARAM(1).SENDMSG 7 你的<$PARAM(0)>到达终点,奖励已通过邮件的方式发放!
+$PARAM(1).SENDMSG 5 你的<$PARAM(0)>到达终点,奖励已通过邮件的方式发放!
+SENDMSG 16 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+SENDMSG 14 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+$PARAM(1).MOV S$Lemon押镖JS 法宝精粹|<$MULT.35.$STR(P44)>|经验|<$MULT.3000000.$STR(P44)>|成功
+$PARAM(1).GOTO @Lemon押镖JS
+BREAK
+
+#IF
+!CHECKONLINE $PARAM(1)
+EQUAL $PARAM(0) 一星镖车
+#ACT
+ADDVARLIST |<$PARAM(1)>|一星镖车 ..\QUESTDIARY\游戏数据\镖车离线数据.txt
+SENDMSG 16 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+SENDMSG 14 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+BREAK
+
+#IF
+!CHECKONLINE $PARAM(1)
+EQUAL $PARAM(0) 二星镖车
+#ACT
+ADDVARLIST |<$PARAM(1)>|二星镖车 ..\QUESTDIARY\游戏数据\镖车离线数据.txt
+SENDMSG 16 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+SENDMSG 14 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+BREAK
+
+#IF
+!CHECKONLINE $PARAM(1)
+EQUAL $PARAM(0) 三星镖车
+#ACT
+ADDVARLIST |<$PARAM(1)>|三星镖车 ..\QUESTDIARY\游戏数据\镖车离线数据.txt
+SENDMSG 16 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+SENDMSG 14 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+BREAK
+
+#IF
+!CHECKONLINE $PARAM(1)
+EQUAL $PARAM(0) 四星镖车
+#ACT
+ADDVARLIST |<$PARAM(1)>|四星镖车 ..\QUESTDIARY\游戏数据\镖车离线数据.txt
+SENDMSG 16 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+SENDMSG 14 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+BREAK
+
+#IF
+!CHECKONLINE $PARAM(1)
+EQUAL $PARAM(0) 五星镖车
+#ACT
+ADDVARLIST |<$PARAM(1)>|五星镖车 ..\QUESTDIARY\游戏数据\镖车离线数据.txt
+SENDMSG 16 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+SENDMSG 14 ◆押镖提示◆：恭喜玩家<<$PARAM(1)>>的<<$PARAM(0)>>成功到达终点! 255
+BREAK
+
+
+
+
+[@Lemon押镖JS]
+
+#IF
+!POS $STR(S$Lemon押镖JS) |
+#ACT
+BREAK
+#ELSEACT
+CLEARVAR S1 5
+SPLIT $STR(S$Lemon押镖JS) | S1
+MOV S$Lemon押镖JS 
+
+#IF
+EQUAL S5 成功
+#SAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=280.0|y=126.0|bg=1|loadDelay=0|img=private/zhenyingzhan/bg_recycle_01.png|link=@exit>
+<Button|x=760.0|y=189.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+<Img|x=445.0|y=145.0|img=private/yabiao/word_fubentg_01.png>
+<Img|x=505.0|y=240.0|img=private/yabiao/word_escort_1.png>
+<Img|x=495.0|y=290.0|img=public\icon_props_01.png>
+<Img|x=575.0|y=290.0|img=public\icon_props_01.png>
+<ItemShow|x=495.0|y=290.0|itemid=0|itemcount=<$STR(S2)>|name=<$STR(S1)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png>
+<ItemShow|x=575.0|y=290.0|itemid=0|itemcount=<$STR(S4)>|name=<$STR(S3)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png>
+#ELSESAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=280.0|y=126.0|bg=1|loadDelay=0|img=private/zhenyingzhan/bg_escort_03.png|link=@exit>
+<Button|x=760.0|y=189.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+<Img|x=445.0|y=145.0|img=private/yabiao/word_fubentg_02.png>
+<Img|x=505.0|y=240.0|img=private/yabiao/word_escort_2.png>
+<Img|x=495.0|y=290.0|img=public\icon_props_01.png>
+<Img|x=575.0|y=290.0|img=public\icon_props_01.png>
+<ItemShow|x=495.0|y=290.0|itemid=0|itemcount=<$STR(S2)>|name=<$STR(S1)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png>
+<ItemShow|x=575.0|y=290.0|itemid=0|itemcount=<$STR(S4)>|name=<$STR(S3)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png>
+
+
+;-------------------------------------镖 字 按钮触发
+[@FunBtn_2_1]
+#IF
+SMALL $CUSTOMVALUE(92) 1
+#ACT
+SENDMSG 5 镖车已押送完毕!
+BREAK
+
+#IF
+TRUE
+#SAY
+<Img|x=370.0|y=240.0|height=160|bg=1|move=0|img=private/yabiao/frame_auction_01.png|loadDelay=0>
+<Button|x=709.0|y=233.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Text|x=521.0|y=265.0|color=67|size=20|text=每日押镖>
+<Button|x=400.0|y=320.0|color=67|scale=1|size=20|nimg=public/button/btn_push_01.png|pimg=public/button/btn_push_01.png|text=前往镖车|link=@LemonQW镖车>
+<Button|x=585.0|y=320.0|color=67|scale=1|size=20|nimg=public/button/btn_push_01.png|pimg=public/button/btn_push_01.png|text=放弃镖车|link=@LemonFQ镖车>
+
+
+
+
+[@LemonFQ镖车]
+#IF
+CHECK [44] 0
+#ACT
+MESSAGEBOX 你还没有进行押镖!!
+CLOSE
+BREAK
+#ELSEACT
+QUERYMSG 确认放弃押镖任务吗? @LemonFQ镖车
+BREAK
+
+[@LemonFQ镖车1]
+#IF
+CHECK [44] 0
+#ACT
+MESSAGEBOX 你还没有进行押镖!!
+CLOSE
+BREAK
+#ELSEACT
+GMEXECUTE 清除 0 [<$USERNAME>]的<$NUMTOCHR($CUSTOMVALUE(92))>星镖车 0
+CHANGECUSTOMVALUE 92 = 0
+SET [44] 0
+DelFunBtn 2 1
+SENDMSG 19 你的镖车已放弃!!
+CLOSE
+BREAK
+
+
+[@LemonQW镖车]
+#IF
+CHECK [44] 0
+#ACT
+MESSAGEBOX 你还没有进行押镖!!
+CLOSE
+BREAK
+
+#IF
+CHECKMONPOS [<$USERNAME>]的<$NUMTOCHR($CUSTOMVALUE(92))>星镖车 0
+#ACT
+MAPMOVE 0 $PARAM(31) $PARAM(32) 1
+CLOSE
+BREAK
+#ELSEACT
+MESSAGEBOX 你还没有进行押镖!!
+CLOSE
+BREAK
+
+
+
+
+
+
+
+}

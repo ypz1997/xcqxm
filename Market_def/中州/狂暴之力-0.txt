@@ -1,0 +1,815 @@
+[@main]
+<Img|id=kb1|children={kb2,kb3,kb4,kb5,kb6,kb7,kb8,kb9,kb10,kb11,kb12,kb13,kb14,kb15,kb16,kb17,kb18}|x=86.0|y=0.0|scale=1|bg=1|img=private/kuangbaozhili/kuangbaomb.png|loadDelay=0|esc=0>
+<Button|id=kb2|x=825.0|y=17.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<RText|id=kb3|x=164.0|y=251.0|size=19|color=255|text=<VIP等级≥5/FCOLOR=222>>
+<RText|id=kb4|x=152.0|y=282.0|size=19|color=255|text=<角色等级≥60/FCOLOR=222>>
+<RText|id=kb5|x=145.0|y=403.0|size=19|color=255|text=<BOSS爆率+10%/FCOLOR=222>>
+<RText|id=kb6|x=141.0|y=446.0|size=19|color=255|text=<对怪物伤害+15%/FCOLOR=222>>
+<RText|id=kb7|x=159.0|y=363.0|size=19|color=255|text=<生命值+30%/FCOLOR=222>>
+<RText|id=kb8|x=627.0|y=250.0|size=19|color=255|text=<在狂暴地图击杀的怪物/FCOLOR=222>\<会在BOSS之家重生/FCOLOR=222>\</FCOLOR=222>\</FCOLOR=222>\</FCOLOR=222>\</FCOLOR=222>>
+;<Button|id=kb11|x=736.0|y=483.0|width=110|height=45|color=67|scale=1|nimg=public/btn_push_01.png|pimg=public/btn_push_01.png|size=19|mimg=public/btn_push_01.png|text=许愿进入|link=@狂暴许愿面板>
+<Button|id=kb12|x=675.0|y=483.0|width=110|height=45|pimg=public/btn_push_01.png|mimg=public/btn_push_01.png|scale=1|nimg=public/btn_push_01.png|size=19|color=67|text=进入地图|link=@进入狂暴地图>
+<Frames|id=kb13|x=438.0|y=247.0|count=0|scale=1|speed=20|prefix=picpackage/3/25690_|loop=-1|suffix=.png>
+<Img|id=kb14|x=681.0|y=211.0|img=private/kuangbaozhili/ditushuoming.png|scale=1|esc=0>
+#IF
+!LARGE $CustomValue(98) 0
+#SAY
+<Button|id=kb9|x=97.0|y=483.0|width=110|height=45|pimg=public/btn_push_01.png|mimg=public/btn_push_01.png|scale=1|nimg=public/btn_push_01.png|size=19|color=67|text=1888元宝|link=@元宝买狂暴>
+<Button|id=kb10|x=217.0|y=483.0|width=110|height=45|pimg=public/btn_push_01.png|mimg=public/btn_push_01.png|scale=1|nimg=public/btn_push_01.png|size=19|color=67|text=6888绑元|link=@绑元买狂暴>
+#ELSESAY
+<Button|id=kb9|x=156.0|y=483.0|width=110|height=45|scale=1|pimg=public/btn_push_12.png|mimg=public/btn_push_12.png|nimg=public/btn_push_12.png|size=19|color=67|text=已激活>
+
+
+[@元宝买狂暴]
+
+#IF
+LARGE $CustomValue(98) 0
+#ACT
+SENDMSG 19 已经开启狂暴
+break
+
+#IF
+SMALL $LEVEL 60
+#ACT
+SENDMSG 19 等级不足60级无法开启狂暴功能
+break
+
+#IF
+CHECKGAMEGOLD < 1888
+#ACT
+SENDMSG 19 元宝不足无法开启狂暴功能
+break
+
+#IF
+SMALL $CustomValue(90) 5
+#ACT
+SENDMSG 19 VIP等级不足5级无法开启狂暴功能
+break
+#ELSEACT
+QUERYMSG 你确定要花费1888元宝开启狂暴吗？ @确定元宝买狂暴
+break
+
+
+[@确定元宝买狂暴1]
+#IF
+CHECKGAMEGOLD < 1888
+#ACT
+SENDMSG 19 元宝不足无法开启狂暴功能
+break
+#ELSEACT
+GAMEGOLD - 1888
+ChangeCustomValue 98 = 1888
+ADDFH 2 3 25690 -40 35
+GOTO @MAIN
+FUNC 1 @临时属性
+SENDMSG 14 恭喜%s成功开启狂暴功能，获得超级属性加成
+break
+
+[@绑元买狂暴]
+#IF
+LARGE $CustomValue(98) 0
+#ACT
+SENDMSG 19 已经开启狂暴
+break
+
+#IF
+SMALL $LEVEL 60
+#ACT
+SENDMSG 19 等级不足60级无法开启狂暴功能
+break
+
+#IF
+CHECKBINDGAMEGOLD < 6888
+#ACT
+SENDMSG 19 绑定元宝不足无法开启狂暴功能
+break
+
+#IF
+SMALL $CustomValue(90) 5
+#ACT
+SENDMSG 19 VIP等级不足5级无法开启狂暴功能
+break
+#ELSEACT
+QUERYMSG 你确定要花费6888绑定元宝开启狂暴吗？ @确定绑元买狂暴
+break
+
+
+[@确定绑元买狂暴1]
+#IF
+CHECKBINDGAMEGOLD < 6888
+#ACT
+SENDMSG 19 绑定元宝不足无法开启狂暴功能
+break
+#ELSEACT
+BINDGAMEGOLD - 6888
+ChangeCustomValue 98 = 6888
+ADDFH 2 3 25690 -40 35
+GOTO @MAIN
+FUNC 1 @临时属性
+SENDMSG 14 恭喜%s成功开启狂暴功能，获得超级属性加成
+break
+
+
+[@进入狂暴地图]
+#IFONE
+EQUAL $CustomValue(98) 6888
+EQUAL $CustomValue(98) 1888
+#ACT
+MAPMOVE AS004 159 209 3
+SENDMSG 19 进入狂暴地图！
+break
+#ELSEACT
+SENDMSG 19 你尚未开启狂暴功能，无法进入狂暴地图！
+break
+
+[@狂暴许愿面板]
+#IF
+!EQUAL $CustomValue(98) 6888
+!EQUAL $CustomValue(98) 1888
+#ACT
+SENDMSG 19 你尚未开启狂暴功能，无法使用此功能！
+break
+
+#IF
+TRUE
+#ACT
+MOV N$许愿部位图1 1
+MOV N$许愿部位图2 1
+MOV N$许愿部位图3 1
+MOV N$许愿部位图4 1
+MOV N$许愿部位图5 1
+MOV N$许愿部位图6 1
+MOV N$许愿部位图7 1
+MOV N$许愿部位图8 1
+MOV N$许愿品阶图1 1
+MOV N$许愿品阶图2 1
+MOV N$许愿品阶图3 1
+MOV N$许愿品阶图4 1
+MOV N$许愿品阶图5 1
+MOV N$许愿品阶图6 1
+MOV N$许愿品阶图7 1
+MOV N$许愿品阶图8 1
+MOV N$许愿品阶图9 1
+MOV N$许愿品阶图10 1
+MOV N$许愿品阶图11 1
+MOV N$许愿品阶图12 1
+MOV N$许愿部位图1颜色 255
+MOV N$许愿部位图2颜色 255
+MOV N$许愿部位图3颜色 255
+MOV N$许愿部位图4颜色 255
+MOV N$许愿部位图5颜色 255
+MOV N$许愿部位图6颜色 255
+MOV N$许愿部位图7颜色 255
+MOV N$许愿部位图8颜色 255
+MOV N$许愿品阶图1颜色 255
+MOV N$许愿品阶图2颜色 255
+MOV N$许愿品阶图3颜色 255
+MOV N$许愿品阶图4颜色 255
+MOV N$许愿品阶图5颜色 255
+MOV N$许愿品阶图6颜色 255
+MOV N$许愿品阶图7颜色 255
+MOV N$许愿品阶图8颜色 255
+MOV N$许愿品阶图9颜色 255
+MOV N$许愿品阶图10颜色 255
+MOV N$许愿品阶图11颜色 255
+MOV N$许愿品阶图12颜色 255
+
+#IF
+CHECK [153] 1
+#ACT
+MOV N$许愿部位图1 2
+MOV N$许愿部位图1颜色 222
+
+#IF
+CHECK [154] 1
+#ACT
+MOV N$许愿部位图2 2
+MOV N$许愿部位图2颜色 222
+
+#IF
+CHECK [155] 1
+#ACT
+MOV N$许愿部位图3 2
+MOV N$许愿部位图3颜色 222
+
+#IF
+CHECK [156] 1
+#ACT
+MOV N$许愿部位图4 2
+MOV N$许愿部位图4颜色 222
+
+#IF
+CHECK [157] 1
+#ACT
+MOV N$许愿部位图5 2
+MOV N$许愿部位图5颜色 222
+
+#IF
+CHECK [158] 1
+#ACT
+MOV N$许愿部位图6 2
+MOV N$许愿部位图6颜色 222
+
+#IF
+CHECK [159] 1
+#ACT
+MOV N$许愿部位图7 2
+MOV N$许愿部位图7颜色 222
+
+#IF
+CHECK [160] 1
+#ACT
+MOV N$许愿部位图8 2
+MOV N$许愿部位图8颜色 222
+
+#IF
+CHECK [161] 1
+#ACT
+MOV N$许愿品阶图1 2
+MOV N$许愿品阶图1颜色 222
+
+#IF
+CHECK [162] 1
+#ACT
+MOV N$许愿品阶图2 2
+MOV N$许愿品阶图2颜色 222
+
+#IF
+CHECK [163] 1
+#ACT
+MOV N$许愿品阶图3 2
+MOV N$许愿品阶图3颜色 222
+
+#IF
+CHECK [164] 1
+#ACT
+MOV N$许愿品阶图4 2
+MOV N$许愿品阶图4颜色 222
+
+#IF
+CHECK [165] 1
+#ACT
+MOV N$许愿品阶图5 2
+MOV N$许愿品阶图5颜色 222
+
+#IF
+CHECK [166] 1
+#ACT
+MOV N$许愿品阶图6 2
+MOV N$许愿品阶图6颜色 222
+
+#IF
+CHECK [167] 1
+#ACT
+MOV N$许愿品阶图7 2
+MOV N$许愿品阶图7颜色 222
+
+#IF
+CHECK [168] 1
+#ACT
+MOV N$许愿品阶图8 2
+MOV N$许愿品阶图8颜色 222
+
+#IF
+CHECK [169] 1
+#ACT
+MOV N$许愿品阶图9 2
+MOV N$许愿品阶图9颜色 222
+
+#IF
+CHECK [170] 1
+#ACT
+MOV N$许愿品阶图10 2
+MOV N$许愿品阶图10颜色 222
+
+#IF
+CHECK [171] 1
+#ACT
+MOV N$许愿品阶图11 2
+MOV N$许愿品阶图11颜色 222
+
+#IF
+CHECK [172] 1
+#ACT
+MOV N$许愿品阶图12 2
+MOV N$许愿品阶图12颜色 222
+
+#IF
+TRUE
+#SAY
+<Img|id=kb1|children={kb2,kb3,kb4,kb5,kb6,kb7,kb9,kb11,kb13,kb14,kb15,kb16,kb17,kb18}|x=86.0|y=0.0|scale=1|bg=1|img=private/kuangbaozhili/kuangbaomb.png|loadDelay=0|esc=0>
+<Button|id=kb2|x=825.0|y=17.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<RText|id=kb3|x=164.0|y=251.0|size=19|color=255|text=<VIP等级≥5/FCOLOR=222>>
+<RText|id=kb4|x=152.0|y=282.0|size=19|color=255|text=<角色等级≥60/FCOLOR=222>>
+<RText|id=kb5|x=145.0|y=403.0|size=19|color=255|text=<BOSS爆率+10%/FCOLOR=222>>
+<RText|id=kb6|x=141.0|y=446.0|size=19|color=255|text=<对怪物伤害+15%/FCOLOR=222>>
+<RText|id=kb7|x=159.0|y=363.0|size=19|color=255|text=<生命值+30%/FCOLOR=222>>
+<Button|id=kb9|x=156.0|y=483.0|width=110|height=45|scale=1|pimg=public/btn_push_12.png|mimg=public/btn_push_12.png|nimg=public/btn_push_12.png|size=19|color=67|text=已激活>
+<Button|id=kb11|x=675.0|y=483.0|width=110|height=45|pimg=public/btn_push_01.png|mimg=public/btn_push_01.png|scale=1|nimg=public/btn_push_01.png|size=19|color=67|text=许愿进入|link=@进入狂暴地图>
+<Frames|id=kb13|x=438.0|y=247.0|count=0|scale=1|speed=20|prefix=picpackage/3/25690_|loop=-1|suffix=.png>
+<Img|id=kb14|x=681.0|y=211.0|img=private/kuangbaozhili/xuanzhepinjie.png|scale=1|esc=0>
+<Img|id=kb15|x=604.0|y=291.0|img=private/kuangbaozhili/bg_title_00.png|esc=0|scale=1>
+<Img|id=kb16|x=681.0|y=295.0|img=private/kuangbaozhili/xuanzhebuwei.png|scale=1|esc=0>
+
+<ListView|id=kb17|children={kba,kbb,kbc,kbd,kbe,kbf,kbg,kbh,kbi,kbj,kbk,kbl,}|x=609.0|y=246.0|width=245|height=50|direction=2|img=public/9998.png>
+
+<Layout|id=kba|children={kba1,kba2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kba1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图1)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图1)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图1)>.png|size=18|link=@许愿品阶1>
+<RText|id=kba2|x=49.0|y=8.0|size=19|color=255|text=<7阶/FCOLOR=<$STR(N$许愿品阶图1颜色)>>>
+
+<Layout|id=kbb|children={kbb1,kbb2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbb1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图2)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图2)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图2)>.png|size=18|link=@许愿品阶2>
+<RText|id=kbb2|x=49.0|y=8.0|size=19|color=255|text=<8阶/FCOLOR=<$STR(N$许愿品阶图2颜色)>>>
+
+<Layout|id=kbc|children={kbc1,kbc2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbc1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图3)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图3)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图3)>.png|size=18|link=@许愿品阶3>
+<RText|id=kbc2|x=49.0|y=8.0|size=19|color=255|text=<9阶/FCOLOR=<$STR(N$许愿品阶图3颜色)>>>
+
+<Layout|id=kbd|children={kbd1,kbd2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbd1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图4)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图4)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图4)>.png|size=18|link=@许愿品阶4>
+<RText|id=kbd2|x=49.0|y=8.0|size=19|color=255|text=<10阶/FCOLOR=<$STR(N$许愿品阶图4颜色)>>>
+
+<Layout|id=kbe|children={kbe1,kbe2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbe1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图5)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图5)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图5)>.png|size=18|link=@许愿品阶5>
+<RText|id=kbe2|x=49.0|y=8.0|size=19|color=255|text=<11阶/FCOLOR=<$STR(N$许愿品阶图5颜色)>>>
+
+<Layout|id=kbf|children={kbf1,kbf2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbf1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图6)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图6)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图6)>.png|size=18|link=@许愿品阶6>
+<RText|id=kbf2|x=49.0|y=8.0|size=19|color=255|text=<12阶/FCOLOR=<$STR(N$许愿品阶图6颜色)>>>
+
+<Layout|id=kbg|children={kbg1,kbg2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbg1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图7)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图7)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图7)>.png|size=18|link=@许愿品阶7>
+<RText|id=kbg2|x=49.0|y=8.0|size=19|color=255|text=<13阶/FCOLOR=<$STR(N$许愿品阶图7颜色)>>>
+
+<Layout|id=kbh|children={kbh1,kbh2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbh1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图8)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图8)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图8)>.png|size=18|link=@许愿品阶8>
+<RText|id=kbh2|x=49.0|y=8.0|size=19|color=255|text=<14阶/FCOLOR=<$STR(N$许愿品阶图8颜色)>>>
+
+<Layout|id=kbi|children={kbi1,kbi2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbi1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图9)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图9)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图9)>.png|size=18|link=@许愿品阶9>
+<RText|id=kbi2|x=49.0|y=8.0|size=19|color=255|text=<15阶/FCOLOR=<$STR(N$许愿品阶图9颜色)>>>
+
+<Layout|id=kbj|children={kbj1,kbj2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbj1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图10)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图10)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图10)>.png|size=18|link=@许愿品阶10>
+<RText|id=kbj2|x=49.0|y=8.0|size=19|color=255|text=<16阶/FCOLOR=<$STR(N$许愿品阶图10颜色)>>>
+
+<Layout|id=kbk|children={kbk1,kbk2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbk1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图11)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图11)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图11)>.png|size=18|link=@许愿品阶11>
+<RText|id=kbk2|x=49.0|y=8.0|size=19|color=255|text=<17阶/FCOLOR=<$STR(N$许愿品阶图11颜色)>>>
+
+<Layout|id=kbl|children={kbl1,kbl2}|x=586.0|y=278.0|width=85|height=50>
+<Button|id=kbl1|x=0|y=0|mimg=public/btn_duigou_0<$STR(N$许愿品阶图12)>.png|pimg=public/btn_duigou_0<$STR(N$许愿品阶图12)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿品阶图12)>.png|size=18|link=@许愿品阶12>
+<RText|id=kbl2|x=49.0|y=8.0|size=19|color=255|text=<18阶/FCOLOR=<$STR(N$许愿品阶图12颜色)>>>
+
+<ListView|id=kb18|children={bw,bwa,bwb,bwc,bwd,}|x=606.0|y=326.0|width=250|height=140|img=public/9998.png>
+
+<Layout|id=bw|children={bw1,bw2,bw3,bw4}|x=442.0|y=285.0|width=250|height=50>
+<Button|id=bw1|x=26|y=3|mimg=public/btn_duigou_0<$STR(N$许愿部位图1)>.png|pimg=public/btn_duigou_0<$STR(N$许愿部位图1)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿部位图1)>.png|size=18|link=@许愿部位1>
+<RText|id=bw2|x=82.0|y=10.0|size=19|color=255|text=<武器/FCOLOR=<$STR(N$许愿部位图1颜色)>>>
+<Button|id=bw3|x=140|y=3|mimg=public/btn_duigou_0<$STR(N$许愿部位图2)>.png|pimg=public/btn_duigou_0<$STR(N$许愿部位图2)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿部位图2)>.png|size=18|link=@许愿部位2>
+<RText|id=bw4|x=192.0|y=13.0|size=19|color=255|text=<衣服/FCOLOR=<$STR(N$许愿部位图2颜色)>>>
+
+<Layout|id=bwa|children={bwa1,bwa2,bwa3,bwa4}|x=442.0|y=285.0|width=250|height=50>
+<Button|id=bwa1|x=26|y=3|mimg=public/btn_duigou_0<$STR(N$许愿部位图3)>.png|pimg=public/btn_duigou_0<$STR(N$许愿部位图3)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿部位图3)>.png|size=18|link=@许愿部位3>
+<RText|id=bwa2|x=82.0|y=10.0|size=19|color=255|text=<头盔/FCOLOR=<$STR(N$许愿部位图3颜色)>>>
+<Button|id=bwa3|x=140|y=3|mimg=public/btn_duigou_0<$STR(N$许愿部位图4)>.png|pimg=public/btn_duigou_0<$STR(N$许愿部位图4)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿部位图4)>.png|size=18|link=@许愿部位4>
+<RText|id=bwa4|x=192.0|y=13.0|size=19|color=255|text=<项链/FCOLOR=<$STR(N$许愿部位图4颜色)>>>
+
+<Layout|id=bwb|children={bwb1,bwb2,bwb3,bwb4}|x=442.0|y=285.0|width=250|height=50>
+<Button|id=bwb1|x=26|y=3|mimg=public/btn_duigou_0<$STR(N$许愿部位图5)>.png|pimg=public/btn_duigou_0<$STR(N$许愿部位图5)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿部位图5)>.png|size=18|link=@许愿部位5>
+<RText|id=bwb2|x=82.0|y=10.0|size=19|color=255|text=<戒指/FCOLOR=<$STR(N$许愿部位图5颜色)>>>
+<Button|id=bwb3|x=140|y=3|mimg=public/btn_duigou_0<$STR(N$许愿部位图6)>.png|pimg=public/btn_duigou_0<$STR(N$许愿部位图6)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿部位图6)>.png|size=18|link=@许愿部位6>
+<RText|id=bwb4|x=192.0|y=13.0|size=19|color=255|text=<手镯/FCOLOR=<$STR(N$许愿部位图6颜色)>>>
+
+<Layout|id=bwc|children={bwc1,bwc2,bwc3,bwc4}|x=442.0|y=285.0|width=250|height=50>
+<Button|id=bwc1|x=26|y=3|mimg=public/btn_duigou_0<$STR(N$许愿部位图7)>.png|pimg=public/btn_duigou_0<$STR(N$许愿部位图7)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿部位图7)>.png|size=18|link=@许愿部位7>
+<RText|id=bwc2|x=82.0|y=10.0|size=19|color=255|text=<靴子/FCOLOR=<$STR(N$许愿部位图7颜色)>>>
+<Button|id=bwc3|x=140|y=3|mimg=public/btn_duigou_0<$STR(N$许愿部位图8)>.png|pimg=public/btn_duigou_0<$STR(N$许愿部位图8)>.png|scale=1|color=255|nimg=public/btn_duigou_0<$STR(N$许愿部位图8)>.png|size=18|link=@许愿部位8>
+<RText|id=bwc4|x=192.0|y=13.0|size=19|color=255|text=<腰带/FCOLOR=<$STR(N$许愿部位图8颜色)>>>
+
+[@许愿品阶1]
+#IF
+SMALL $LEVEL 80
+#ACT
+SENDMSG 19 等级小于80级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 1
+SET [162] 0
+SET [163] 0
+SET [164] 0
+SET [165] 0
+SET [166] 0
+SET [167] 0
+SET [168] 0
+SET [169] 0
+SET [170] 0
+SET [171] 0
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶2]
+#IF
+SMALL $LEVEL 90
+#ACT
+SENDMSG 19 等级小于90级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 1
+SET [163] 0
+SET [164] 0
+SET [165] 0
+SET [166] 0
+SET [167] 0
+SET [168] 0
+SET [169] 0
+SET [170] 0
+SET [171] 0
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶3]
+#IF
+SMALL $LEVEL 100
+#ACT
+SENDMSG 19 等级小于100级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 0
+SET [163] 01
+SET [164] 0
+SET [165] 0
+SET [166] 0
+SET [167] 0
+SET [168] 0
+SET [169] 0
+SET [170] 0
+SET [171] 0
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶4]
+#IF
+SMALL $LEVEL 110
+#ACT
+SENDMSG 19 等级小于110级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 0
+SET [163] 0
+SET [164] 1
+SET [165] 0
+SET [166] 0
+SET [167] 0
+SET [168] 0
+SET [169] 0
+SET [170] 0
+SET [171] 0
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶5]
+#IF
+CheckRenewLevel > 1
+#ACT
+SENDMSG 19 转生等级小于1级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 0
+SET [163] 0
+SET [164] 0
+SET [165] 1
+SET [166] 0
+SET [167] 0
+SET [168] 0
+SET [169] 0
+SET [170] 0
+SET [171] 0
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶6]
+#IF
+CheckRenewLevel > 2
+#ACT
+SENDMSG 19 转生等级小于2级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 0
+SET [163] 0
+SET [164] 0
+SET [165] 0
+SET [166] 1
+SET [167] 0
+SET [168] 0
+SET [169] 0
+SET [170] 0
+SET [171] 0
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶7]
+#IF
+CheckRenewLevel > 3
+#ACT
+SENDMSG 19 转生等级小于3级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 0
+SET [163] 0
+SET [164] 0
+SET [165] 0
+SET [166] 0
+SET [167] 1
+SET [168] 0
+SET [169] 0
+SET [170] 0
+SET [171] 0
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶8]
+#IF
+CheckRenewLevel > 4
+#ACT
+SENDMSG 19 转生等级小于4级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 0
+SET [163] 0
+SET [164] 0
+SET [165] 0
+SET [166] 0
+SET [167] 0
+SET [168] 1
+SET [169] 0
+SET [170] 0
+SET [171] 0
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶9]
+#IF
+CheckRenewLevel > 5
+#ACT
+SENDMSG 19 转生等级小于5级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 0
+SET [163] 0
+SET [164] 0
+SET [165] 0
+SET [166] 0
+SET [167] 0
+SET [168] 0
+SET [169] 1
+SET [170] 0
+SET [171] 0
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶10]
+#IF
+CheckRenewLevel > 6
+#ACT
+SENDMSG 19 转生等级小于6级无法许愿该品阶装备！
+break
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 0
+SET [163] 0
+SET [164] 0
+SET [165] 0
+SET [166] 0
+SET [167] 0
+SET [168] 0
+SET [169] 0
+SET [170] 1
+SET [171] 0
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶11]
+#IF
+CheckRenewLevel > 7
+#ACT
+SENDMSG 19 转生等级小于7级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 0
+SET [163] 0
+SET [164] 0
+SET [165] 0
+SET [166] 0
+SET [167] 0
+SET [168] 0
+SET [169] 0
+SET [170] 0
+SET [171] 1
+SET [172] 0
+goto @狂暴许愿面板
+break
+
+[@许愿品阶12]
+#IF
+CheckRenewLevel > 8
+#ACT
+SENDMSG 19 转生等级小于8级无法许愿该品阶装备！
+break
+
+#IF
+TRUE
+#ACT
+SET [161] 0
+SET [162] 0
+SET [163] 0
+SET [164] 0
+SET [165] 0
+SET [166] 0
+SET [167] 0
+SET [168] 0
+SET [169] 0
+SET [170] 0
+SET [171] 0
+SET [172] 1
+goto @狂暴许愿面板
+break
+
+[@许愿部位1]
+#IF
+TRUE
+#ACT
+SET [153] 1
+SET [154] 0
+SET [155] 0
+SET [156] 0
+SET [157] 0
+SET [158] 0
+SET [159] 0
+SET [160] 0
+goto @狂暴许愿面板
+break
+
+[@许愿部位2]
+#IF
+TRUE
+#ACT
+SET [153] 0
+SET [154] 1
+SET [155] 0
+SET [156] 0
+SET [157] 0
+SET [158] 0
+SET [159] 0
+SET [160] 0
+goto @狂暴许愿面板
+break
+
+[@许愿部位3]
+#IF
+TRUE
+#ACT
+SET [153] 0
+SET [154] 0
+SET [155] 1
+SET [156] 0
+SET [157] 0
+SET [158] 0
+SET [159] 0
+SET [160] 0
+goto @main
+break
+
+[@许愿部位4]
+#IF
+TRUE
+#ACT
+SET [153] 0
+SET [154] 0
+SET [155] 0
+SET [156] 1
+SET [157] 0
+SET [158] 0
+SET [159] 0
+SET [160] 0
+goto @狂暴许愿面板
+break
+
+[@许愿部位5]
+#IF
+TRUE
+#ACT
+SET [153] 0
+SET [154] 0
+SET [155] 0
+SET [156] 0
+SET [157] 1
+SET [158] 0
+SET [159] 0
+SET [160] 0
+goto @狂暴许愿面板
+break
+
+[@许愿部位6]
+#IF
+TRUE
+#ACT
+SET [153] 0
+SET [154] 0
+SET [155] 0
+SET [156] 0
+SET [157] 0
+SET [158] 1
+SET [159] 0
+SET [160] 0
+goto @狂暴许愿面板
+break
+
+[@许愿部位7]
+#IF
+TRUE
+#ACT
+SET [153] 0
+SET [154] 0
+SET [155] 0
+SET [156] 0
+SET [157] 0
+SET [158] 0
+SET [159] 1
+SET [160] 0
+goto @狂暴许愿面板
+break
+
+[@许愿部位8]
+#IF
+TRUE
+#ACT
+SET [153] 0
+SET [154] 0
+SET [155] 0
+SET [156] 0
+SET [157] 0
+SET [158] 0
+SET [159] 0
+SET [160] 1
+goto @狂暴许愿面板
+break
+
+
+
+
+
+
+
+

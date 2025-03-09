@@ -1,0 +1,386 @@
+[@main]
+#IF
+SMALL $CUSTOMVALUE(92) 1
+#ACT
+CHANGECUSTOMVALUE 92 = 1
+#IF
+EQUAL $CUSTOMVALUE(92) 1
+#ACT
+MOV N$押镖奖励数量1 6
+MOV N$押镖奖励数量2 200000
+#IF
+EQUAL $CUSTOMVALUE(92) 2
+#ACT
+MOV N$押镖奖励数量1 10
+MOV N$押镖奖励数量2 400000
+#IF
+EQUAL $CUSTOMVALUE(92) 3
+#ACT
+MOV N$押镖奖励数量1 18
+MOV N$押镖奖励数量2 800000
+#IF
+EQUAL $CUSTOMVALUE(92) 4
+#ACT
+MOV N$押镖奖励数量1 25
+MOV N$押镖奖励数量2 1600000
+#IF
+EQUAL $CUSTOMVALUE(92) 5
+#ACT
+MOV N$押镖奖励数量1 35
+MOV N$押镖奖励数量2 3000000
+
+#IF
+EQUAL $CUSTOMVALUE(92) 1
+#ACT
+MOV N$镖车的X坐标 175
+MOV N$镖车的编号 379
+#IF
+EQUAL $CUSTOMVALUE(92) 2
+#ACT
+MOV N$镖车的X坐标 130
+MOV N$镖车的编号 812
+#IF
+EQUAL $CUSTOMVALUE(92) 3
+#ACT
+MOV N$镖车的X坐标 130
+MOV N$镖车的编号 481
+#IF
+EQUAL $CUSTOMVALUE(92) 4
+#ACT
+MOV N$镖车的X坐标 130
+MOV N$镖车的编号 613
+#IF
+EQUAL $CUSTOMVALUE(92) 5
+#ACT
+MOV N$镖车的X坐标 130
+MOV N$镖车的编号 621
+
+#IF
+TRUE
+#SAY
+<Img|x=120.0|y=30.0|move=0|img=public/frame_squared_outside.png|loadDelay=0|bg=1|move=2|children=<yd1,yd2,yd3,yd4,yd5,yd6,yd7,yd8,yd9,yd10,yd11,yd12,yd13,yd14,yd15,yd17,yd18,yd19,yd20,yd21,yd22,yd23,yd24,yd25,yd26,yd27,yd28,yd31,yd32,yd34,yd35,yd36,yd37,yd38,yd39,yd40,yd41,yd42,yd43,yd44,yd45,yd46,yd47,yd48,yd49,yd50,yd51,yd52,yd53,yd16,yd29,yd30,yd33>>
+<Button|x=807.0|y=0.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit|id=yd1>
+<Img|x=22.0|y=46.0|img=private/yabiao/yabiaomb.png|id=yd2>
+<Img|x=400.0|y=12.0|img=private/yabiao/word_title_escort.png|id=yd3>
+;=========================================================
+<Img|x=575.0|y=63.0|img=public/title.png|id=yd4>
+<Img|x=575.0|y=280.0|img=public/title.png|id=yd5>
+;--------------------------------------------------------------------------------------------------
+<Text|x=640.0|y=60.0|color=67|size=18|text=押镖玩法|id=yd6>
+<Text|x=640.0|y=278.0|color=67|size=18|text=劫镖玩法|id=yd7>
+;=========================================================
+<Text|x=500.0|y=95.0|color=67|size=18|text=刷新镖车时不会降星|id=yd8>
+<Text|x=500.0|y=120.0|color=67|size=18|text=押镖需要缴纳绑元押金,绑元不足扣元宝|id=yd9>
+<RText|x=500.0|y=145.0|color=67|size=18|text=押送镖车奖励大量<法宝材料、经验/FCOLOR=222>|id=yd10>
+<RText|x=500.0|y=170.0|color=67|size=18|id=yd11|text=<12:00-12:30/FCOLOR=149><之间押镖/FCOLOR=67><奖励翻倍/FCOLOR=249>\<18:00-18:30/FCOLOR=149><之间押镖/FCOLOR=67><奖励翻倍/FCOLOR=249>>
+<RText|x=500.0|y=220.0|color=67|size=18|text=押镖成功返回押金,返还押金为<绑元/FCOLOR=218>,镖车被|id=yd12>
+<Text|x=500.0|y=245.0|color=67|size=18|text=破坏无法返还押金,只能领取奖励物品|id=yd13>
+
+<Text|x=500.0|y=320.0|color=67|size=18|text=每天前5次击破他人镖车可获得对方镖车|id=yd14>
+<Text|x=500.0|y=345.0|color=67|size=18|text=押金的50%数量的绑元和与镖车星级相同\数量的法宝精粹|id=yd15>
+<Img|x=160.0|y=375.0|width=160|height=25|img=public/bg_aution_chosen.png|id=yd16>
+
+<ItemShow|x=175.0|y=415.0|itemid=30272|itemcount=<$STR(N$押镖奖励数量1)>|name=法宝精粹|bgtype=1|showtips=1|scale=1|bgtype=private\f10\bg_roles_02.png|id=yd51>
+<ItemShow|x=255.0|y=415.0|itemid=951|itemcount=<$STR(N$押镖奖励数量2)>|name=经验|bgtype=1|showtips=1|scale=1|bgtype=private\f10\bg_roles_02.png|id=yd52>
+<Text|x=150.0|y=420.0|color=67|size=18|text=奖\励|id=yd53>
+;=========================================================
+<Img|x=130.0|y=70.0|width=240|img=public/bg_friend_01.png|id=yd18>
+<Img|x=520.0|y=450.0|width=280|img=public/bg_friend_01.png|id=yd19>
+;-------------
+<Img|x=137.0|y=77.0|scale=1|img=public/title.png|id=yd20>
+<Text|x=200.0|y=74.0|color=67|size=20|text=<$NUMTOCHR($CUSTOMVALUE(92))>星镖车|id=yd21>
+;=========================================================
+<Effect|x=<$STR(N$镖车的X坐标)>.0|y=230.0|effectid=<$STR(N$镖车的编号)>|speed=0.5|sex=0|effecttype=2|scale=0.8|dir=6|act=1|id=yd27>
+;=========================================================
+
+<Text|x=170.0|y=375.0|color=67|size=18|text=所需押金|id=yd29>
+<Text|x=280.0|y=375.0|color=<$STR(P36)>|size=18|text=<$STR(P35)>|id=yd30>
+<Text|x=320.0|y=510.0|color=67|size=18|text=刷新价格|id=yd31>
+<Text|x=430.0|y=510.0|color=<$STR(P37)>|size=18|text=<$STR(P34)>|id=yd32>
+<Img|x=250.0|y=380.0|scale=1|img=public/money/icon_currency_ingot_02.png|id=yd33>
+<Img|x=400.0|y=515.0|scale=1|img=public/money/icon_currency_ingot_02.png|id=yd34>
+;=========================================================
+<Button|x=170.0|y=500.0|nimg=public/button/btn_push_11.png|pimg=public/button/btn_push_11.png|color=67|size=18|text=刷新镖车|link=@Lemon刷新|id=yd35>
+<Button|x=600.0|y=500.0|nimg=public/button/btn_push_11.png|pimg=public/button/btn_push_11.png|color=67|size=18|text=开始押镖|link=@Lemon接取|id=yd36>
+#ACT
+CLEARVAR P34 36
+MOV N$押镖P1 $INC.$LONGDATE.28800
+
+#IFONE
+Between N$押镖P1 <$DATETIMETOLONG(<$DATE.YEAR>-<$DATE.MONTH>-<$DATE.DAY>-18:00:00)> <$DATETIMETOLONG(<$DATE.YEAR>-<$DATE.MONTH>-<$DATE.DAY>-18:30:00)>
+Between N$押镖P1 <$DATETIMETOLONG(<$DATE.YEAR>-<$DATE.MONTH>-<$DATE.DAY>-12:00:00)> <$DATETIMETOLONG(<$DATE.YEAR>-<$DATE.MONTH>-<$DATE.DAY>-12:30:00)>
+#SAY
+<Text|x=560.0|y=455.0|color=222|size=18|text=恭喜:当前是双倍押镖时间|id=yd28>
+#ELSESAY
+<Text|x=550.0|y=455.0|color=149|size=18|text=注意:当前不是双倍押镖时间|id=yd28>
+
+#IF
+EQUAL $CUSTOMVALUE(92) 1
+#SAY
+<Img|x=155.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd22>
+<Img|x=190.0|y=120.0|scale=1|img=private/fabao/31054.png|id=yd23>
+<Img|x=225.0|y=120.0|scale=1|img=private/fabao/31054.png|id=yd24>
+<Img|x=260.0|y=120.0|scale=1|img=private/fabao/31054.png|id=yd25>
+<Img|x=295.0|y=120.0|scale=1|img=private/fabao/31054.png|id=yd26>
+#ACT
+MOV P34 200	//刷新元宝
+MOV P35 200	//押金
+#IF
+EQUAL $CUSTOMVALUE(92) 2
+#SAY
+<Img|x=155.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd22>
+<Img|x=190.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd23>
+<Img|x=225.0|y=120.0|scale=1|img=private/fabao/31054.png|id=yd24>
+<Img|x=260.0|y=120.0|scale=1|img=private/fabao/31054.png|id=yd25>
+<Img|x=295.0|y=120.0|scale=1|img=private/fabao/31054.png|id=yd26>
+#ACT
+MOV P34 200	//刷新元宝
+MOV P35 300	//押金
+#IF
+EQUAL $CUSTOMVALUE(92) 3
+#SAY
+<Img|x=155.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd22>
+<Img|x=190.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd23>
+<Img|x=225.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd24>
+<Img|x=260.0|y=120.0|scale=1|img=private/fabao/31054.png|id=yd25>
+<Img|x=295.0|y=120.0|scale=1|img=private/fabao/31054.png|id=yd26>
+#ACT
+MOV P34 200	//刷新元宝
+MOV P35 500	//押金
+#IF
+EQUAL $CUSTOMVALUE(92) 4
+#SAY
+<Img|x=155.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd22>
+<Img|x=190.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd23>
+<Img|x=225.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd24>
+<Img|x=260.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd25>
+<Img|x=295.0|y=120.0|scale=1|img=private/fabao/31054.png|id=yd26>
+#ACT
+MOV P34 200	//刷新元宝
+MOV P35 800	//押金
+
+#IF
+EQUAL $CUSTOMVALUE(92) 5
+#SAY
+<Img|x=155.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd22>
+<Img|x=190.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd23>
+<Img|x=225.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd24>
+<Img|x=260.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd25>
+<Img|x=295.0|y=120.0|scale=1|img=private/fabao/31055.png|id=yd26>
+#ACT
+MOV P35 1500	//押金
+
+
+#IF
+SMALL <$INC.<$GAMEGOLD>.<$BINDGAMEGOLD>> $STR(P35)
+#ACT
+MOV P36 249
+#ELSEACT
+MOV P36 222
+
+#IF
+SMALL <$INC.<$GAMEGOLD>.<$BINDGAMEGOLD>> $STR(P34)
+#ACT
+MOV P37 249
+#ELSEACT
+MOV P37 222
+
+
+
+[@Lemon刷新]
+#IF
+SMALL $LEVEL 60
+#ACT
+MESSAGEBOX 等级不足60级
+BREAK
+
+#IF
+CHECK [44] 1
+#ACT
+MESSAGEBOX 你的镖车已经在运送中了
+BREAK
+
+#IF
+!SMALL $CUSTOMVALUE(92) 5
+#ACT
+MESSAGEBOX 你的镖车已经是五星镖车了
+BREAK
+#ELSEACT
+MOV P44 200
+MOV P45 80
+
+#IF
+EQUAL $CUSTOMVALUE(92) 1
+#ACT
+MOV P44 200	//刷新元宝
+MOV P45 80	//成功率
+#IF
+EQUAL $CUSTOMVALUE(92) 2
+#ACT
+MOV P44 200	//刷新元宝
+MOV P45 60	//成功率
+#IF
+EQUAL $CUSTOMVALUE(92) 3
+#ACT
+MOV P44 200	//刷新元宝
+MOV P45 40	//成功率
+#IF
+EQUAL $CUSTOMVALUE(92) 4
+#ACT
+MOV P44 200	//刷新元宝
+MOV P45 20	//成功率
+
+#IF
+SMALL <$INC.<$GAMEGOLD>.<$BINDGAMEGOLD>> $STR(P44)
+#ACT
+MESSAGEBOX 你的元宝不足<$STR(P44)>
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+MOV N$镖师_元宝计算 <$DEC.<$STR(P44)>.<$BINDGAMEGOLD>>
+
+#IF
+SMALL N$镖师_元宝计算 1
+#ACT
+MOV N$镖师_绑元扣除 <$STR(P44)>
+MOV N$镖师_元宝扣除 0
+#ELSEACT
+MOV N$镖师_绑元扣除 <$BINDGAMEGOLD>
+MOV N$镖师_元宝扣除 <$STR(N$镖师_元宝计算)>
+
+#IF
+RANDOM $STR(P45) 100
+#ACT
+GAMEGOLD - <$STR(N$镖师_元宝扣除)>
+BINDGAMEGOLD - <$STR(N$镖师_绑元扣除)>
+CHANGECUSTOMVALUE 92 + 1
+SENDMSG 19 镖车等级提升
+GOTO @MAIN
+BREAK
+#ELSEACT
+GAMEGOLD - <$STR(N$镖师_元宝扣除)>
+BINDGAMEGOLD - <$STR(N$镖师_绑元扣除)>
+SENDMSG 5 很遗憾，本次刷新失败了
+SENDMSG 19 很遗憾，本次刷新失败了
+BREAK
+
+
+
+
+
+[@Lemon接取]
+#IF
+SMALL $LEVEL 60
+#ACT
+MESSAGEBOX 等级不足60级
+BREAK
+
+#IF
+CHECK [44] 1
+#ACT
+MESSAGEBOX 你已经有镖车在运送的路上了
+BREAK
+
+#IF
+!SMALL $CUSTOMVALUE(91) 2
+#ACT
+MESSAGEBOX 没有足够的剩余押镖次数
+BREAK
+
+#IF
+TRUE
+#ACT
+QUERYMSG 注意:开始运镖后将无法再进行镖车刷新!\你确定要进行押镖吗? @Lemon接取
+BREAK
+
+
+
+[@Lemon接取1]
+#IF
+SMALL $LEVEL 60
+#ACT
+MESSAGEBOX 等级不足60级
+BREAK
+
+#IF
+CHECK [44] 1
+#ACT
+MESSAGEBOX 你已经有镖车在运送的路上了
+BREAK
+
+#IF
+!SMALL $CUSTOMVALUE(91) 2	
+#ACT
+MESSAGEBOX 没有足够的剩余押镖次数
+BREAK
+#ELSEACT
+MOV P44 200
+
+#IF
+EQUAL $CUSTOMVALUE(92) 1
+#ACT
+MOV P44 200	//押金元宝
+
+#IF
+EQUAL $CUSTOMVALUE(92) 2
+#ACT
+MOV P44 300	//押金元宝
+
+#IF
+EQUAL $CUSTOMVALUE(92) 3
+#ACT
+MOV P44 500	//押金元宝
+
+#IF
+EQUAL $CUSTOMVALUE(92) 4
+#ACT
+MOV P44 800	//押金元宝
+
+#IF
+EQUAL $CUSTOMVALUE(92) 5
+#ACT
+MOV P44 1500	//押金元宝
+
+#IF
+SMALL <$INC.<$GAMEGOLD>.<$BINDGAMEGOLD>> $STR(P44)
+#ACT
+MESSAGEBOX 需要<$STR(P44)>元宝的押金
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+MOV N$镖师_元宝计算 <$DEC.<$STR(P44)>.<$BINDGAMEGOLD>>
+
+#IF
+SMALL N$镖师_元宝计算 1
+#ACT
+MOV N$镖师_绑元扣除 <$STR(P44)>
+MOV N$镖师_元宝扣除 0
+#ELSEACT
+MOV N$镖师_绑元扣除 <$BINDGAMEGOLD>
+MOV N$镖师_元宝扣除 <$STR(N$镖师_元宝计算)>
+
+
+#IF
+RANDOM 1
+#ACT
+SET [44] 1
+GAMEGOLD - <$STR(N$镖师_元宝扣除)>
+BINDGAMEGOLD - <$STR(N$镖师_绑元扣除)>
+CHANGECUSTOMVALUE 91 + 1
+MISSION 0 392 578
+PARAM1 445
+PARAM2 244
+PARAM3 1
+PARAM4 2
+MOBPLACE <$NUMTOCHR($CUSTOMVALUE(92))>星镖车 [<$USERNAME>]的<$NUMTOCHR($CUSTOMVALUE(92))>星镖车 $USERNAME 0
+SENDMSG 19 接取成功,祝您好运!
+SENDMSG 16 ◆押镖提示◆：玩家<%s>接取了<<$NUMTOCHR($CUSTOMVALUE(92))>星镖车>,送达终点将会获得高额奖励,劫镖有惊喜哦...
+SENDMSG 14 ◆押镖提示◆：玩家<%s>接取了<<$NUMTOCHR($CUSTOMVALUE(92))>星镖车>,送达终点将会获得高额奖励,劫镖有惊喜哦...
+AddFunBtn 2 1 8015 0 "" 0 0  ;前往镖车
+UpdateTask 444 1
+GOTO @MAIN
+BREAK

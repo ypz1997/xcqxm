@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=1
+IsMain=0
+stepcount = 1
+title = [　]江湖小侠
+ID = 1
+stepstitle1 = 　\<color=green 去找><服装店掌柜/@@goto 1 服装店掌柜 218,230><color=green 领取行走江湖的铠甲>\<color=green 任务奖励：>\　\<color=graygolden 新手提示：>\　<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=129.0|width=70|height=70|itemid=<$TASKVAL(1).I0>|itemcount=1|name=<$TASKVAL(1).S0>|showtips=1|bgtype=public/clk.png|scale=1>
+

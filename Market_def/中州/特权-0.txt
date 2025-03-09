@@ -1,0 +1,194 @@
+[@MAIN]
+#IF
+TRUE
+#SAY
+<Img|x=204.0|y=35.0|show=0|bg=1|move=0|img=private/vip/vipditu/bg_pet_01.png|loadDelay=0>
+<Button|x=838.0|y=32.0|pimg=public/btn_close_01.png|nimg=public/btn_close_01.png|link=@exit>
+;====================================================================
+<Text|x=435.0|y=312.0|color=67|size=18|text=<$DEC.$CUSTOMVALUE(20).$CUSTOMVALUE(48)> / <$CUSTOMVALUE(20)>>
+<Button|x=315.0|y=450.0|nimg=public/btn_push_13.png|pimg=public/btn_push_13.png|size=18|color=67|text=投掷骰子|link=@Lemon投掷>
+;====================================================================
+<Button|x=645.0|y=450.0|nimg=public/btn_push_13.png|pimg=public/btn_push_13.png|size=18|color=67|text=召唤BOSS|link=@Lemon召唤>
+
+#IF
+!SMALL $CUSTOMVALUE(47) 1
+#SAY
+<Text|x=626.0|y=355.0|color=67|size=18|text=投掷骰子后可改变BOSS>
+
+#IF
+EQUAL N$Lemon骰子DS 0
+#ACT
+MOV N$Lemon骰子DS 6
+
+#IF
+!EQUAL N$Lemon骰子KG 0
+#SAY
+<Frames|x=333.0|y=178.0|speed=10|count=23|prefix=private/vip/vipditu/<$INC.29293.$STR(N$Lemon骰子DS)>_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon骰子KG 0
+DELAYGOTO 1400 @MAIN
+BREAK
+#ELSESAY
+<Img|x=333.0|y=178.0|scale=1|img=private/vip/vipditu/<$INC.29293.$STR(N$Lemon骰子DS)>_22.png>
+
+#IF
+SMALL $CUSTOMVALUE(47) 1
+#SAY
+<Img|x=690.0|y=150.0|scale=1|img=private/vip/vipditu/btn_question_03.png>
+<Img|x=670.0|y=286.0|scale=1|img=private/vip/vipditu/a0.png>
+<Text|x=665.0|y=355.0|color=67|size=18|text=请先投掷骰子>
+#ELSESAY
+<Img|x=555.0|y=73.0|scale=1|img=private/vip/vipditu/<$CUSTOMVALUE(47)>.png>
+<Img|x=669.0|y=286.0|scale=1|img=private/vip/vipditu/a<$CUSTOMVALUE(47)>.png>
+
+
+
+[@Lemon召唤]
+#IF
+LARGE N$Lemon骰子CD $LONGDATE
+#ACT
+SENDMSG 5 骰子转动中,请稍后!
+BREAK
+
+#IF
+SMALL $CUSTOMVALUE(47) 1
+#ACT
+SENDMSG 19 请先投掷骰子,在进行召唤BOSS
+BREAK
+#ELSEACT
+MAPMOVE TQBD 17 32 1
+LOADEXVAR S1 特权BOSS $CUSTOMVALUE(47) ..\QUESTDIARY\数据文件\特权BOSS数据.txt
+MONGENEX SELF 26 31 $STR(S1) 5 1
+CHANGECUSTOMVALUE 47 = 0
+SENDMSG 5 BOSS已刷新,祝你好运!
+BREAK
+
+[@Lemon投掷]
+#IF
+LARGE N$Lemon骰子CD $LONGDATE
+#ACT
+SENDMSG 5 骰子转动中,请勿重复投掷!
+BREAK
+
+#IF
+SMALL $LEVEL 70
+#ACT
+SENDMSG 19 等级不足70级,无法使用此功能!
+BREAK
+
+#IF
+LARGE $CUSTOMVALUE(20) $CUSTOMVALUE(48)
+#ACT
+CHANGECUSTOMVALUE 48 + 1
+MOV N$Lemon骰子CD $INC.$LONGDATE.2
+MOV N$Lemon骰子KG 1
+MOV P44 $RANDOM(1|7)
+MOV N$Lemon骰子DS $STR(P44)
+MOV P45 $INC.$MULT^$STR(P44)^5.$LEVEL
+#ELSEACT
+SENDMSG 19 你的骰子不足1个!
+BREAK
+
+#IF
+SMALL P45 100
+#ACT
+CHANGECUSTOMVALUE 47 = 1
+GOTO @MAIN
+BREAK
+#IF
+SMALL P45 110
+#ACT
+CHANGECUSTOMVALUE 47 = 2
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 120
+#ACT
+CHANGECUSTOMVALUE 47 = 3
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 130
+#ACT
+CHANGECUSTOMVALUE 47 = 4
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 140
+#ACT
+CHANGECUSTOMVALUE 47 = 4
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 150
+#ACT
+CHANGECUSTOMVALUE 47 = 5
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 160
+#ACT
+CHANGECUSTOMVALUE 47 = 5
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 170
+#ACT
+CHANGECUSTOMVALUE 47 = 6
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 180
+#ACT
+CHANGECUSTOMVALUE 47 = 6
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 190
+#ACT
+CHANGECUSTOMVALUE 47 = 7
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 200
+#ACT
+CHANGECUSTOMVALUE 47 = 7
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 210
+#ACT
+CHANGECUSTOMVALUE 47 = 8
+GOTO @MAIN
+BREAK
+
+#IF
+SMALL P45 220
+#ACT
+CHANGECUSTOMVALUE 47 = 8
+GOTO @MAIN
+BREAK
+
+#IF
+!SMALL P45 230
+#ACT
+CHANGECUSTOMVALUE 47 = $RANDOM(9|19)
+GOTO @MAIN
+BREAK
+
+
+
+
+
+
+

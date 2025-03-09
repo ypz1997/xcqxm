@@ -1,0 +1,12 @@
+(@Storage @getback @FastStorge)
+%100
+[@main]
+东西保管在我这里，保证无事！\
+　\
+　\
+
+<快捷存取/@FastStorge>
+
+
+[@FastStorge]
+#CALL [\商人\仓库.txt] @快捷存取

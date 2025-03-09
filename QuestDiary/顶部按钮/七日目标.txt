@@ -1,0 +1,2693 @@
+{
+[@七日狂欢面板]
+#IF
+TRUE
+#ACT
+MOV S$七日目标标题 djdcjl
+MOV S$七日目标标语 djhz
+MOV N$七日目标按钮1 2
+MOV N$七日目标按钮2 1
+MOV N$七日目标按钮3 1
+MOV N$七日目标按钮4 1
+MOV N$七日目标按钮5 1
+MOV N$七日目标按钮6 1
+MOV N$七日目标按钮7 1
+GOTO @顶部七日狂欢红点
+#IF
+CHECK [601] 0
+#ACT
+MOV N$目标领取按钮1 1
+MOV S$目标领取名字1 领取奖励
+MOV N$目标字体颜色1 67
+#ELSEACT
+MOV N$目标字体颜色1 255
+MOV N$目标领取按钮1 2
+MOV S$目标领取名字1 已领取
+
+#IF
+CHECK [602] 0
+#ACT
+MOV N$目标领取按钮2 1
+MOV S$目标领取名字2 领取奖励
+MOV N$目标字体颜色2 67
+#ELSEACT
+MOV N$目标字体颜色2 255
+MOV N$目标领取按钮2 2
+MOV S$目标领取名字2 已领取
+
+#IF
+CHECK [603] 0
+#ACT
+MOV N$目标领取按钮3 1
+MOV S$目标领取名字3 领取奖励
+MOV N$目标字体颜色3 67
+#ELSEACT
+MOV N$目标字体颜色3 255
+MOV N$目标领取按钮3 2
+MOV S$目标领取名字3 已领取
+
+#IF
+CHECK [604] 0
+#ACT
+MOV N$目标领取按钮4 1
+MOV S$目标领取名字4 领取奖励
+MOV N$目标字体颜色4 67
+#ELSEACT
+MOV N$目标字体颜色4 255
+MOV N$目标领取按钮4 2
+MOV S$目标领取名字4 已领取
+
+#IF
+CHECK [605] 0
+#ACT
+MOV N$目标领取按钮5 1
+MOV S$目标领取名字5 领取奖励
+MOV N$目标字体颜色5 67
+#ELSEACT
+MOV N$目标字体颜色5 255
+MOV N$目标领取按钮5 2
+MOV S$目标领取名字5 已领取
+
+
+#IF
+CHECK [601] 0
+LARGE $LEVEL 59
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV S$七日等级目标1 <Img|id=qrmb1|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日等级目标1 
+
+#IF
+CHECK [602] 0
+LARGE $LEVEL 64
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV S$七日等级目标2 <Img|id=qrmb2|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日等级目标2 
+
+#IF
+CHECK [603] 0
+LARGE $LEVEL 69
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV S$七日等级目标3 <Img|id=qrmb3|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日等级目标3 
+
+#IF
+CHECK [604] 0
+LARGE $LEVEL 74
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV S$七日等级目标4 <Img|id=qrmb4|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日等级目标4 
+
+#IF
+CHECK [605] 0
+LARGE $LEVEL 79
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV S$七日等级目标5 <Img|id=qrmb5|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日等级目标5 
+
+#IFONE
+!EQUAL S$七日等级目标1 
+!EQUAL S$七日等级目标2 
+!EQUAL S$七日等级目标3 
+!EQUAL S$七日等级目标4 
+!EQUAL S$七日等级目标5 
+#ACT
+MOV S$七日目标按钮1 <Img|id=qrmban1|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮1 
+
+
+#IF
+TRUE
+#SAY
+<Img|id=01|children={03,02,04,05,06,07,08,09,10}|x=138.0|y=28.0|scale=1|img=private/mubiaojiangli/bangdi.png|esc=0|bg=1|loadDelay=0>
+<ListView|id=03|children={lb1,lb2,lb3,lb4,lb5,lb6,lb7}|x=20.0|y=46.0|width=180|height=496|rotate=0|bounce=0|loadDelay=0>
+<Button|id=lb1|children={qrmban1}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|text=等级目标|link=@七日狂欢面板>
+<$str(S$七日目标按钮1)>
+<Button|id=lb2|children={qrmban2}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|text=羽翼目标|link=@羽翼目标>
+<$str(S$七日目标按钮2)>
+<Button|id=lb3|children={qrmban3}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|text=坐骑目标|link=@坐骑目标>
+<$str(S$七日目标按钮3)>
+<Button|id=lb4|children={qrmban4}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|text=特戒目标|link=@特戒目标>
+<$str(S$七日目标按钮4)>
+<Button|id=lb5|children={qrmban5}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|text=法宝目标|link=@法宝目标>
+<$str(S$七日目标按钮5)>
+<Button|id=lb6|children={qrmban6}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|text=凶器目标|link=@神器目标>
+<$str(S$七日目标按钮6)>
+<Button|id=lb7|children={qrmban7}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|text=附件目标|link=@附件目标>
+<$str(S$七日目标按钮7)>
+<Button|id=02|x=809.0|y=-4.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Img|id=04|x=385.0|y=13.0|img=private/mubiaojiangli/<$STR(S$七日目标标题)>.png|scale=1|esc=0>
+<Img|id=05|x=266.0|y=69.0|img=private/mubiaojiangli/<$STR(S$七日目标标语)>.png|scale=1|esc=0>
+<Text|id=06|x=264.0|y=138.0|size=18|color=67|text=目标>
+<Text|id=07|x=508.0|y=138.0|color=67|size=18|text=奖励>
+<Text|id=08|x=739.0|y=138.0|color=67|size=18|text=操作>
+#IF
+!LARGE $STR(G20) $LONGDATE
+#SAY
+<Text|id=09|x=680.0|y=107.0|color=222|size=18|text=活动已结束>
+#ELSESAY
+<TIMETIPS|id=09|x=680|y=107|color=250|size=18|time=<$DEC.$STR(G20).$LONGDATE>|link=@七日倒计时礼包结束>
+#IF
+TRUE
+#SAY
+<ListView|id=10|children={jl1-1,jl2-1,jl3-1,jl4-1,jl5-1}|x=223.0|y=168.0|width=602|height=356|bounce=0|loadDelay=0>
+<Layout|id=jl1-1|children={jl1-2,jl1-3,jl1-4,jl1-5,jl1-6,jl1-7,jl1-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl1-2|x=23.0|y=22.0|size=18|color=67|text=等级达到60级>
+<Img|id=jl1-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl1-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl1-5|children={qrmb1}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|color=<$STR(N$目标字体颜色1)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|size=18|text=<$STR(S$目标领取名字1)>|link=@领取60级奖励>
+<$str(s$七日等级目标1)>
+<Img|id=jl1-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl1-7|x=232.0|y=-1.0|width=70|height=70|itemid=950|itemcount=500000|name=金币|showtips=1|bgtype=1>
+<ItemShow|id=jl1-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=200|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl2-1|children={jl2-2,jl2-3,jl2-4,jl2-5,jl2-6,jl2-7,jl2-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl2-2|x=23.0|y=22.0|size=18|color=67|text=等级达到65级>
+<Img|id=jl2-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl2-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl2-5|children={qrmb2}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|color=<$STR(N$目标字体颜色2)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|size=18|text=<$STR(S$目标领取名字2)>|link=@领取65级奖励>
+<$str(s$七日等级目标2)>
+<Img|id=jl2-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl2-7|x=232.0|y=-1.0|width=70|height=70|itemid=26674|itemcount=20|name=玄铁|showtips=1|bgtype=1>
+<ItemShow|id=jl2-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=400|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl3-1|children={jl3-2,jl3-3,jl3-4,jl3-5,jl3-6,jl3-7,jl3-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl3-2|x=23.0|y=22.0|size=18|color=67|text=等级达到70级>
+<Img|id=jl3-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl3-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl3-5|children={qrmb3}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|color=<$STR(N$目标字体颜色3)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|size=18|text=<$STR(S$目标领取名字3)>|link=@领取70级奖励>
+<$str(s$七日等级目标3)>
+<Img|id=jl3-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl3-7|x=232.0|y=-1.0|width=70|height=70|itemid=51083|itemcount=1|name=魔体经验券(10万)|showtips=1|bgtype=1>
+<ItemShow|id=jl3-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=800|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl4-1|children={jl4-2,jl4-3,jl4-4,jl4-5,jl4-6,jl4-7,jl4-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl4-2|x=23.0|y=22.0|size=18|color=67|text=等级达到75级>
+<Img|id=jl4-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl4-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl4-5|children={qrmb4}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|color=<$STR(N$目标字体颜色4)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|size=18|text=<$STR(S$目标领取名字4)>|link=@领取75级奖励>
+<$str(s$七日等级目标4)>
+<Img|id=jl4-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl4-7|x=232.0|y=-1.0|width=70|height=70|itemid=51083|itemcount=1|name=魔体经验券(10万)|showtips=1|bgtype=1>
+<ItemShow|id=jl4-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=1000|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl5-1|children={jl5-2,jl5-3,jl5-4,jl5-5,jl5-6,jl5-7,jl5-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl5-2|x=23.0|y=22.0|size=18|color=67|text=等级达到80级>
+<Img|id=jl5-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl5-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl5-5|children={qrmb5}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|color=<$STR(N$目标字体颜色5)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|size=18|text=<$STR(S$目标领取名字5)>|link=@领取80级奖励>
+<$str(s$七日等级目标5)>
+<Img|id=jl5-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl5-7|x=232.0|y=-1.0|width=70|height=70|itemid=51083|itemcount=1|name=魔体经验券(10万)|showtips=1|bgtype=1>
+<ItemShow|id=jl5-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=2000|name=绑定元宝|showtips=1|bgtype=1>
+
+
+
+[@领取60级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $LEVEL 60
+#ACT
+SENDMSG 19 等级不足60级
+BREAK
+
+#IF
+CHECK [601] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $LEVEL 59
+CHECK [601] 0
+#ACT
+SET [601] 1
+GIVE 金币 500000
+MONEY 4 + 200
+SENDMSG 19 领取成功
+GOTO @七日狂欢面板
+BREAK
+
+[@领取65级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $LEVEL 65
+#ACT
+SENDMSG 19 等级不足65级
+BREAK
+
+#IF
+CHECK [602] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $LEVEL 64
+CHECK [602] 0
+#ACT
+SET [602] 1
+GIVE 玄铁 20 1
+MONEY 4 + 400
+SENDMSG 19 领取成功
+GOTO @七日狂欢面板
+BREAK
+
+[@领取70级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $LEVEL 70
+#ACT
+SENDMSG 19 等级不足70级
+BREAK
+
+#IF
+CHECK [603] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $LEVEL 69
+CHECK [603] 0
+#ACT
+SET [603] 1
+GIVE 魔体经验券(10万) 1 1
+MONEY 4 + 800
+SENDMSG 19 领取成功
+GOTO @七日狂欢面板
+BREAK
+
+[@领取75级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $LEVEL 75
+#ACT
+SENDMSG 19 等级不足75级
+BREAK
+
+#IF
+CHECK [604] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $LEVEL 74
+CHECK [604] 0
+#ACT
+SET [604] 1
+GIVE 魔体经验券(10万) 1 1
+MONEY 4 + 1000
+SENDMSG 19 领取成功
+GOTO @七日狂欢面板
+BREAK
+
+[@领取80级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $LEVEL 80
+#ACT
+SENDMSG 19 等级不足80级
+BREAK
+
+#IF
+CHECK [605] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $LEVEL 74
+CHECK [605] 0
+#ACT
+SET [605] 1
+GIVE 魔体经验券(10万) 1 1
+MONEY 4 + 2000
+SENDMSG 19 领取成功
+GOTO @七日狂欢面板
+BREAK
+
+[@羽翼目标]
+
+#IF
+TRUE
+#ACT
+MOV S$七日目标标题 yydjjl
+MOV S$七日目标标语 yyhz
+MOV N$七日目标按钮1 1
+MOV N$七日目标按钮2 2
+MOV N$七日目标按钮3 1
+MOV N$七日目标按钮4 1
+MOV N$七日目标按钮5 1
+MOV N$七日目标按钮6 1
+MOV N$七日目标按钮7 1
+GOTO @顶部七日狂欢红点
+#IF
+CHECK [606] 0
+#ACT
+MOV N$目标领取按钮1 1
+MOV S$目标领取名字1 领取奖励
+MOV N$目标字体颜色1 67
+#ELSEACT
+MOV N$目标字体颜色1 255
+MOV N$目标领取按钮1 2
+MOV S$目标领取名字1 已领取
+
+#IF
+CHECK [607] 0
+#ACT
+MOV N$目标领取按钮2 1
+MOV S$目标领取名字2 领取奖励
+MOV N$目标字体颜色2 67
+#ELSEACT
+MOV N$目标字体颜色2 255
+MOV N$目标领取按钮2 2
+MOV S$目标领取名字2 已领取
+
+#IF
+CHECK [608] 0
+#ACT
+MOV N$目标领取按钮3 1
+MOV S$目标领取名字3 领取奖励
+MOV N$目标字体颜色3 67
+#ELSEACT
+MOV N$目标字体颜色3 255
+MOV N$目标领取按钮3 2
+MOV S$目标领取名字3 已领取
+
+#IF
+CHECK [609] 0
+#ACT
+MOV N$目标领取按钮4 1
+MOV S$目标领取名字4 领取奖励
+MOV N$目标字体颜色4 67
+#ELSEACT
+MOV N$目标字体颜色4 255
+MOV N$目标领取按钮4 2
+MOV S$目标领取名字4 已领取
+
+#IF
+CHECK [610] 0
+#ACT
+MOV N$目标领取按钮5 1
+MOV S$目标领取名字5 领取奖励
+MOV N$目标字体颜色5 67
+#ELSEACT
+MOV N$目标字体颜色5 255
+MOV N$目标领取按钮5 2
+MOV S$目标领取名字5 已领取
+
+
+#IF
+CHECK [606] 0
+!SMALL <$TABLE(Lemon_YY).BM> 5
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV s$七日羽翼目标1 <Img|id=qryymb1|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日羽翼目标1 
+
+#IF
+CHECK [607] 0
+!SMALL <$TABLE(Lemon_YY).BM> 10
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV s$七日羽翼目标2 <Img|id=qryymb2|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日羽翼目标2 
+
+#IF
+CHECK [608] 0
+!SMALL <$TABLE(Lemon_YY).BM> 15
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV s$七日羽翼目标3 <Img|id=qryymb3|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日羽翼目标3 
+
+#IF
+CHECK [609] 0
+!SMALL <$TABLE(Lemon_YY).BM> 20
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV s$七日羽翼目标4 <Img|id=qryymb4|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日羽翼目标4 
+
+#IF
+CHECK [610] 0
+!SMALL <$TABLE(Lemon_YY).BM> 30
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV s$七日羽翼目标5 <Img|id=qryymb5|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日羽翼目标5 
+
+#IFONE
+!EQUAL $STR(S$七日羽翼目标1) 
+!EQUAL $STR(S$七日羽翼目标2) 
+!EQUAL $STR(S$七日羽翼目标3) 
+!EQUAL $STR(S$七日羽翼目标4) 
+!EQUAL $STR(S$七日羽翼目标5) 
+#ACT
+MOV S$七日目标按钮2 <Img|id=qrmban2|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮2 
+
+#IF
+TRUE
+#SAY
+<Img|id=01|children={03,02,04,05,06,07,08,09,10}|x=138.0|y=28.0|scale=1|img=private/mubiaojiangli/bangdi.png|esc=0|bg=1|loadDelay=0>
+<ListView|id=03|children={lb1,lb2,lb3,lb4,lb5,lb6,lb7}|x=20.0|y=46.0|width=180|height=496|rotate=0|bounce=0|loadDelay=0>
+<Button|id=lb1|children={qrmban1}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|text=等级目标|link=@七日狂欢面板>
+<$str(S$七日目标按钮1)>
+<Button|id=lb2|children={qrmban2}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|text=羽翼目标|link=@羽翼目标>
+<$str(S$七日目标按钮2)>
+<Button|id=lb3|children={qrmban3}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|text=坐骑目标|link=@坐骑目标>
+<$str(S$七日目标按钮3)>
+<Button|id=lb4|children={qrmban4}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|text=特戒目标|link=@特戒目标>
+<$str(S$七日目标按钮4)>
+<Button|id=lb5|children={qrmban5}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|text=法宝目标|link=@法宝目标>
+<$str(S$七日目标按钮5)>
+<Button|id=lb6|children={qrmban6}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|text=凶器目标|link=@神器目标>
+<$str(S$七日目标按钮6)>
+<Button|id=lb7|children={qrmban7}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|text=附件目标|link=@附件目标>
+<$str(S$七日目标按钮7)><Button|id=02|x=809.0|y=-4.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Img|id=04|x=385.0|y=13.0|img=private/mubiaojiangli/<$STR(S$七日目标标题)>.png|scale=1|esc=0>
+<Img|id=05|x=266.0|y=69.0|img=private/mubiaojiangli/<$STR(S$七日目标标语)>.png|scale=1|esc=0>
+<Text|id=06|x=264.0|y=138.0|size=18|color=67|text=目标>
+<Text|id=07|x=508.0|y=138.0|color=67|size=18|text=奖励>
+<Text|id=08|x=739.0|y=138.0|color=67|size=18|text=操作>
+#IF
+!LARGE $STR(G20) $LONGDATE
+#SAY
+<Text|id=09|x=680.0|y=107.0|color=222|size=18|text=活动已结束>
+#ELSESAY
+<TIMETIPS|id=09|x=680|y=107|color=250|size=18|time=<$DEC.$STR(G20).$LONGDATE>|link=@七日倒计时礼包结束>
+#IF
+TRUE
+#SAY
+<ListView|id=10|children={jl1-1,jl2-1,jl3-1,jl4-1,jl5-1}|x=223.0|y=168.0|width=602|height=356|bounce=0|loadDelay=0>
+<Layout|id=jl1-1|children={jl1-2,jl1-3,jl1-4,jl1-5,jl1-6,jl1-7,jl1-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl1-2|x=23.0|y=22.0|size=18|color=67|text=羽翼达到5级>
+<Img|id=jl1-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl1-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl1-5|children={qryymb1}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|color=<$STR(N$目标字体颜色1)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|size=18|text=<$STR(S$目标领取名字1)>|link=@领取羽翼5级奖励>
+<$STR(s$七日羽翼目标1)>
+<Img|id=jl1-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl1-7|x=232.0|y=-1.0|width=70|height=70|itemid=1325|itemcount=15|name=仙翎之羽|showtips=1|bgtype=1>
+<ItemShow|id=jl1-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=200|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl2-1|children={jl2-2,jl2-3,jl2-4,jl2-5,jl2-6,jl2-7,jl2-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl2-2|x=23.0|y=22.0|size=18|color=67|text=羽翼达到10级>
+<Img|id=jl2-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl2-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl2-5|children={qryymb2}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|color=<$STR(N$目标字体颜色2)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|size=18|text=<$STR(S$目标领取名字2)>|link=@领取羽翼10级奖励>
+<$STR(s$七日羽翼目标2)>
+<Img|id=jl2-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl2-7|x=232.0|y=-1.0|width=70|height=70|itemid=1325|itemcount=25|name=仙翎之羽|showtips=1|bgtype=1>
+<ItemShow|id=jl2-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=400|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl3-1|children={jl3-2,jl3-3,jl3-4,jl3-5,jl3-6,jl3-7,jl3-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl3-2|x=23.0|y=22.0|size=18|color=67|text=羽翼达到15级>
+<Img|id=jl3-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl3-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl3-5|children={qryymb3}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|color=<$STR(N$目标字体颜色3)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|size=18|text=<$STR(S$目标领取名字3)>|link=@领取羽翼15级奖励>
+<$STR(s$七日羽翼目标3)>
+<Img|id=jl3-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl3-7|x=232.0|y=-1.0|width=70|height=70|itemid=1325|itemcount=35|name=仙翎之羽|showtips=1|bgtype=1>
+<ItemShow|id=jl3-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=600|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl4-1|children={jl4-2,jl4-3,jl4-4,jl4-5,jl4-6,jl4-7,jl4-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl4-2|x=23.0|y=22.0|size=18|color=67|text=羽翼达到20级>
+<Img|id=jl4-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl4-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl4-5|children={qryymb4}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|color=<$STR(N$目标字体颜色4)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|size=18|text=<$STR(S$目标领取名字4)>|link=@领取羽翼20级奖励>
+<$STR(s$七日羽翼目标4)>
+<Img|id=jl4-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl4-7|x=232.0|y=-1.0|width=70|height=70|itemid=1325|itemcount=50|name=仙翎之羽|showtips=1|bgtype=1>
+<ItemShow|id=jl4-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=800|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl5-1|children={jl5-2,jl5-3,jl5-4,jl5-5,jl5-6,jl5-7,jl5-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl5-2|x=23.0|y=22.0|size=18|color=67|text=羽翼达到30级>
+<Img|id=jl5-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl5-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl5-5|children={qryymb5}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|color=<$STR(N$目标字体颜色5)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|size=18|text=<$STR(S$目标领取名字5)>|link=@领取羽翼30级奖励>
+<$STR(s$七日羽翼目标5)>
+<Img|id=jl5-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl5-7|x=232.0|y=-1.0|width=70|height=70|itemid=1325|itemcount=65|name=仙翎之羽|showtips=1|bgtype=1>
+<ItemShow|id=jl5-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=1000|name=绑定元宝|showtips=1|bgtype=1>
+
+
+[@领取羽翼5级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL <$TABLE(Lemon_YY).BM> 5
+#ACT
+SENDMSG 19 羽翼等级不足5级
+BREAK
+
+#IF
+CHECK [606] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+
+
+#IF
+LARGE <$TABLE(Lemon_YY).BM> 4
+CHECK [606] 0
+#ACT
+SET [606] 1
+GIVE 仙翎之羽 15 1
+Money 4 + 200
+SENDMSG 19 领取成功
+GOTO @羽翼目标
+BREAK
+
+[@领取羽翼10级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL <$TABLE(Lemon_YY).BM> 10
+#ACT
+SENDMSG 19 羽翼等级不足10级
+BREAK
+
+#IF
+CHECK [607] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE <$TABLE(Lemon_YY).BM> 9
+CHECK [607] 0
+#ACT
+SET [607] 1
+GIVE 仙翎之羽 25 1
+Money 4 + 400
+SENDMSG 19 领取成功
+GOTO @羽翼目标
+BREAK
+
+[@领取羽翼15级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+
+#IF
+SMALL <$TABLE(Lemon_YY).BM> 15
+#ACT
+SENDMSG 19 羽翼等级不足15级
+BREAK
+
+#IF
+CHECK [608] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE <$TABLE(Lemon_YY).BM> 14
+CHECK [608] 0
+#ACT
+SET [608] 1
+GIVE 仙翎之羽 35 1
+Money 4 + 600
+SENDMSG 19 领取成功
+GOTO @羽翼目标
+BREAK
+
+[@领取羽翼20级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+
+#IF
+SMALL <$TABLE(Lemon_YY).BM> 20
+#ACT
+SENDMSG 19 羽翼等级不足20级
+BREAK
+
+#IF
+CHECK [609] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE <$TABLE(Lemon_YY).BM> 19
+CHECK [609] 0
+#ACT
+SET [609] 1
+GIVE 仙翎之羽 50 1
+Money 4 + 800
+SENDMSG 19 领取成功
+GOTO @羽翼目标
+BREAK
+
+[@领取羽翼30级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL <$TABLE(Lemon_YY).BM> 30
+#ACT
+SENDMSG 19 羽翼等级不足30级
+BREAK
+
+#IF
+CHECK [610] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE <$TABLE(Lemon_YY).BM> 29
+CHECK [610] 0
+#ACT
+SET [610] 1
+GIVE 仙翎之羽 65 1
+Money 4 + 1000
+SENDMSG 19 领取成功
+GOTO @羽翼目标
+BREAK
+
+
+[@坐骑目标]
+
+#IF
+TRUE
+#ACT
+MOV S$七日目标标题 zqtzjl
+MOV S$七日目标标语 zqhz
+MOV N$七日目标按钮1 1
+MOV N$七日目标按钮2 1
+MOV N$七日目标按钮3 2
+MOV N$七日目标按钮4 1
+MOV N$七日目标按钮5 1
+MOV N$七日目标按钮6 1
+MOV N$七日目标按钮7 1
+GOTO @顶部七日狂欢红点
+#IF
+CHECK [611] 0
+#ACT
+MOV N$目标领取按钮1 1
+MOV S$目标领取名字1 领取奖励
+MOV N$目标字体颜色1 67
+#ELSEACT
+MOV N$目标字体颜色1 255
+MOV N$目标领取按钮1 2
+MOV S$目标领取名字1 已领取
+
+#IF
+CHECK [612] 0
+#ACT
+MOV N$目标领取按钮2 1
+MOV S$目标领取名字2 领取奖励
+MOV N$目标字体颜色2 67
+#ELSEACT
+MOV N$目标字体颜色2 255
+MOV N$目标领取按钮2 2
+MOV S$目标领取名字2 已领取
+
+#IF
+CHECK [613] 0
+#ACT
+MOV N$目标领取按钮3 1
+MOV S$目标领取名字3 领取奖励
+MOV N$目标字体颜色3 67
+#ELSEACT
+MOV N$目标字体颜色3 255
+MOV N$目标领取按钮3 2
+MOV S$目标领取名字3 已领取
+
+#IF
+CHECK [614] 0
+#ACT
+MOV N$目标领取按钮4 1
+MOV S$目标领取名字4 领取奖励
+MOV N$目标字体颜色4 67
+#ELSEACT
+MOV N$目标字体颜色4 255
+MOV N$目标领取按钮4 2
+MOV S$目标领取名字4 已领取
+
+#IF
+CHECK [615] 0
+#ACT
+MOV N$目标领取按钮5 1
+MOV S$目标领取名字5 领取奖励
+MOV N$目标字体颜色5 67
+#ELSEACT
+MOV N$目标字体颜色5 255
+MOV N$目标领取按钮5 2
+MOV S$目标领取名字5 已领取
+
+#IF
+CHECK [611] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL <$TABLE(Lemon_LS2).ZB1> 5
+!SMALL <$TABLE(Lemon_LS2).ZB2> 5
+!SMALL <$TABLE(Lemon_LS2).ZB3> 5
+!SMALL <$TABLE(Lemon_LS2).ZB4> 5
+#ACT
+MOV s$七日灵兽目标1 <Img|id=qrlsmb1|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日灵兽目标1 
+
+#IF
+CHECK [612] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL <$TABLE(Lemon_LS2).ZB1>10
+!SMALL <$TABLE(Lemon_LS2).ZB2> 10
+!SMALL <$TABLE(Lemon_LS2).ZB3> 10
+!SMALL <$TABLE(Lemon_LS2).ZB4> 10
+#ACT
+MOV s$七日灵兽目标2 <Img|id=qrlsmb2|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日灵兽目标2 
+
+#IF
+CHECK [613] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL <$TABLE(Lemon_LS2).ZB1> 15
+!SMALL <$TABLE(Lemon_LS2).ZB2> 15
+!SMALL <$TABLE(Lemon_LS2).ZB3> 15
+!SMALL <$TABLE(Lemon_LS2).ZB4> 15
+#ACT
+MOV s$七日灵兽目标3 <Img|id=qrlsmb3|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日灵兽目标3 
+
+#IF
+CHECK [614] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL <$TABLE(Lemon_LS2).ZB1> 20
+!SMALL <$TABLE(Lemon_LS2).ZB2> 20
+!SMALL <$TABLE(Lemon_LS2).ZB3> 20
+!SMALL <$TABLE(Lemon_LS2).ZB4> 20
+#ACT
+MOV s$七日灵兽目标4 <Img|id=qrlsmb4|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日灵兽目标4 
+
+#IF
+CHECK [615] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL <$TABLE(Lemon_LS2).ZB1> 25
+!SMALL <$TABLE(Lemon_LS2).ZB2> 25
+!SMALL <$TABLE(Lemon_LS2).ZB3> 25
+!SMALL <$TABLE(Lemon_LS2).ZB4> 25
+#ACT
+MOV s$七日灵兽目标5 <Img|id=qrlsmb5|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日灵兽目标5 
+
+#IFONE
+!EQUAL s$七日灵兽目标1 
+!EQUAL s$七日灵兽目标2 
+!EQUAL s$七日灵兽目标3 
+!EQUAL s$七日灵兽目标4 
+!EQUAL s$七日灵兽目标5 
+#ACT
+MOV S$七日目标按钮3 <Img|id=qrmban3|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮3 
+
+
+#IF
+TRUE
+#SAY
+<Img|id=01|children={03,02,04,05,06,07,08,09,10}|x=138.0|y=28.0|scale=1|img=private/mubiaojiangli/bangdi.png|esc=0|bg=1|loadDelay=0>
+<ListView|id=03|children={lb1,lb2,lb3,lb4,lb5,lb6,lb7}|x=20.0|y=46.0|width=180|height=496|rotate=0|bounce=0|loadDelay=0>
+<Button|id=lb1|children={qrmban1}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|text=等级目标|link=@七日狂欢面板>
+<$str(S$七日目标按钮1)>
+<Button|id=lb2|children={qrmban2}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|text=羽翼目标|link=@羽翼目标>
+<$str(S$七日目标按钮2)>
+<Button|id=lb3|children={qrmban3}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|text=坐骑目标|link=@坐骑目标>
+<$str(S$七日目标按钮3)>
+<Button|id=lb4|children={qrmban4}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|text=特戒目标|link=@特戒目标>
+<$str(S$七日目标按钮4)>
+<Button|id=lb5|children={qrmban5}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|text=法宝目标|link=@法宝目标>
+<$str(S$七日目标按钮5)>
+<Button|id=lb6|children={qrmban6}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|text=凶器目标|link=@神器目标>
+<$str(S$七日目标按钮6)>
+<Button|id=lb7|children={qrmban7}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|text=附件目标|link=@附件目标>
+<$str(S$七日目标按钮7)><Button|id=02|x=809.0|y=-4.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Img|id=04|x=385.0|y=13.0|img=private/mubiaojiangli/<$STR(S$七日目标标题)>.png|scale=1|esc=0>
+<Img|id=05|x=266.0|y=69.0|img=private/mubiaojiangli/<$STR(S$七日目标标语)>.png|scale=1|esc=0>
+<Text|id=06|x=264.0|y=138.0|size=18|color=67|text=目标>
+<Text|id=07|x=508.0|y=138.0|color=67|size=18|text=奖励>
+<Text|id=08|x=739.0|y=138.0|color=67|size=18|text=操作>
+#IF
+!LARGE $STR(G20) $LONGDATE
+#SAY
+<Text|id=09|x=680.0|y=107.0|color=222|size=18|text=活动已结束>
+#ELSESAY
+<TIMETIPS|id=09|x=680|y=107|color=250|size=18|time=<$DEC.$STR(G20).$LONGDATE>|link=@七日倒计时礼包结束>
+#IF
+TRUE
+#SAY
+<ListView|id=10|children={jl1-1,jl2-1,jl3-1,jl4-1,jl5-1}|x=223.0|y=168.0|width=602|height=356|bounce=0|loadDelay=0>
+<Layout|id=jl1-1|children={jl1-2,jl1-3,jl1-4,jl1-5,jl1-6,jl1-7,jl1-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl1-2|x=23.0|y=22.0|size=18|color=67|text=4件坐骑装备全部达到5级>
+<Img|id=jl1-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl1-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl1-5|children={qrlsmb1}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|color=<$STR(N$目标字体颜色1)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|size=18|text=<$STR(S$目标领取名字1)>|link=@领取坐骑5级奖励>
+<$STR(s$七日灵兽目标1)>
+<Img|id=jl1-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl1-7|x=232.0|y=-1.0|width=70|height=70|itemid=1493|itemcount=30|name=灵兽精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl1-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=300|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl2-1|children={jl2-2,jl2-3,jl2-4,jl2-5,jl2-6,jl2-7,jl2-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl2-2|x=23.0|y=22.0|size=18|color=67|text=4件坐骑装备全部达到10级>
+<Img|id=jl2-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl2-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl2-5|children={qrlsmb2}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|color=<$STR(N$目标字体颜色2)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|size=18|text=<$STR(S$目标领取名字2)>|link=@领取坐骑10级奖励>
+<$STR(s$七日灵兽目标2)>
+<Img|id=jl2-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl2-7|x=232.0|y=-1.0|width=70|height=70|itemid=1493|itemcount=45|name=灵兽精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl2-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=350|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl3-1|children={jl3-2,jl3-3,jl3-4,jl3-5,jl3-6,jl3-7,jl3-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl3-2|x=23.0|y=22.0|size=18|color=67|text=4件坐骑装备全部达到15级>
+<Img|id=jl3-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl3-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl3-5|children={qrlsmb3}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|color=<$STR(N$目标字体颜色3)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|size=18|text=<$STR(S$目标领取名字3)>|link=@领取坐骑15级奖励>
+<$STR(s$七日灵兽目标3)>
+<Img|id=jl3-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl3-7|x=232.0|y=-1.0|width=70|height=70|itemid=1493|itemcount=60|name=灵兽精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl3-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl4-1|children={jl4-2,jl4-3,jl4-4,jl4-5,jl4-6,jl4-7,jl4-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl4-2|x=23.0|y=22.0|size=18|color=67|text=4件坐骑装备全部达到20级>
+<Img|id=jl4-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl4-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl4-5|children={qrlsmb4}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|color=<$STR(N$目标字体颜色4)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|size=18|text=<$STR(S$目标领取名字4)>|link=@领取坐骑20级奖励>
+<$STR(s$七日灵兽目标4)>
+<Img|id=jl4-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl4-7|x=232.0|y=-1.0|width=70|height=70|itemid=1493|itemcount=70|name=灵兽精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl4-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=800|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl5-1|children={jl5-2,jl5-3,jl5-4,jl5-5,jl5-6,jl5-7,jl5-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl5-2|x=23.0|y=22.0|size=18|color=67|text=4件坐骑装备全部达到25级>
+<Img|id=jl5-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl5-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl5-5|children={qrlsmb5}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|color=<$STR(N$目标字体颜色5)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|size=18|text=<$STR(S$目标领取名字5)>|link=@领取坐骑25级奖励>
+<$STR(s$七日灵兽目标5)>
+<Img|id=jl5-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl5-7|x=232.0|y=-1.0|width=70|height=70|itemid=1493|itemcount=100|name=灵兽精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl5-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=1000|name=绑定元宝|showtips=1|bgtype=1>
+
+
+[@领取坐骑5级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IFONE
+SMALL <$TABLE(Lemon_LS2).ZB1> 5
+SMALL <$TABLE(Lemon_LS2).ZB2> 5
+SMALL <$TABLE(Lemon_LS2).ZB3> 5
+SMALL <$TABLE(Lemon_LS2).ZB4> 5
+#ACT
+SENDMSG 19 尚未达到领取条件
+BREAK
+
+#IF
+CHECK [611] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+#ELSEACT
+SET [611] 1
+GIVE 灵兽精粹 30 1
+Money 4 + 300
+SENDMSG 19 领取成功
+GOTO @坐骑目标
+BREAK
+
+[@领取坐骑10级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IFONE
+SMALL <$TABLE(Lemon_LS2).ZB1> 10
+SMALL <$TABLE(Lemon_LS2).ZB2> 10
+SMALL <$TABLE(Lemon_LS2).ZB3> 10
+SMALL <$TABLE(Lemon_LS2).ZB4> 10
+#ACT
+SENDMSG 19 尚未达到领取条件
+BREAK
+
+#IF
+CHECK [612] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+#ELSEACT
+SET [612] 1
+GIVE 灵兽精粹 45 1
+Money 4 + 350
+SENDMSG 19 领取成功
+GOTO @坐骑目标
+BREAK
+
+[@领取坐骑15级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IFONE
+SMALL <$TABLE(Lemon_LS2).ZB1> 15
+SMALL <$TABLE(Lemon_LS2).ZB2> 15
+SMALL <$TABLE(Lemon_LS2).ZB3> 15
+SMALL <$TABLE(Lemon_LS2).ZB4> 15
+#ACT
+SENDMSG 19 尚未达到领取条件
+BREAK
+
+#IF
+CHECK [613] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+#ELSEACT
+SET [613] 1
+GIVE 灵兽精粹 60 1
+Money 4 + 500
+SENDMSG 19 领取成功
+GOTO @坐骑目标
+BREAK
+
+[@领取坐骑20级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IFONE
+SMALL <$TABLE(Lemon_LS2).ZB1> 20
+SMALL <$TABLE(Lemon_LS2).ZB2> 20
+SMALL <$TABLE(Lemon_LS2).ZB3> 20
+SMALL <$TABLE(Lemon_LS2).ZB4> 20
+#ACT
+SENDMSG 19 尚未达到领取条件
+BREAK
+
+#IF
+CHECK [614] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+#ELSEACT
+SET [614] 1
+GIVE 灵兽精粹 70 1
+Money 4 + 800
+SENDMSG 19 领取成功
+GOTO @坐骑目标
+BREAK
+
+[@领取坐骑25级奖励]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IFONE
+SMALL <$TABLE(Lemon_LS2).ZB1> 25
+SMALL <$TABLE(Lemon_LS2).ZB2> 25
+SMALL <$TABLE(Lemon_LS2).ZB3> 25
+SMALL <$TABLE(Lemon_LS2).ZB4> 25
+#ACT
+SENDMSG 19 尚未达到领取条件
+BREAK
+
+#IF
+CHECK [615] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+#ELSEACT
+SET [615] 1
+GIVE 灵兽精粹 100 1
+Money 4 + 1000
+SENDMSG 19 领取成功
+GOTO @坐骑目标
+BREAK
+
+
+
+
+[@特戒目标]
+#IF
+TRUE
+#ACT
+MOV N$特戒总等级 $CustomValue(5)
+INC N$特戒总等级 $CustomValue(6)
+INC N$特戒总等级 $CustomValue(7)
+INC N$特戒总等级 $CustomValue(8)
+INC N$特戒总等级 $CustomValue(9)
+INC N$特戒总等级 $CustomValue(10)
+INC N$特戒总等级 $CustomValue(11)
+INC N$特戒总等级 $CustomValue(12)
+INC N$特戒总等级 $CustomValue(13)
+GOTO @顶部七日狂欢红点
+#IF
+TRUE
+#ACT
+MOV S$七日目标标题 tjdjjl
+MOV S$七日目标标语 tjhz
+MOV N$七日目标按钮1 1
+MOV N$七日目标按钮2 1
+MOV N$七日目标按钮3 1
+MOV N$七日目标按钮4 2
+MOV N$七日目标按钮5 1
+MOV N$七日目标按钮6 1
+MOV N$七日目标按钮7 1
+
+#IF
+CHECK [616] 0
+#ACT
+MOV N$目标领取按钮1 1
+MOV S$目标领取名字1 领取奖励
+MOV N$目标字体颜色1 67
+#ELSEACT
+MOV N$目标字体颜色1 255
+MOV N$目标领取按钮1 2
+MOV S$目标领取名字1 已领取
+
+#IF
+CHECK [617] 0
+#ACT
+MOV N$目标领取按钮2 1
+MOV S$目标领取名字2 领取奖励
+MOV N$目标字体颜色2 67
+#ELSEACT
+MOV N$目标字体颜色2 255
+MOV N$目标领取按钮2 2
+MOV S$目标领取名字2 已领取
+
+#IF
+CHECK [618] 0
+#ACT
+MOV N$目标领取按钮3 1
+MOV S$目标领取名字3 领取奖励
+MOV N$目标字体颜色3 67
+#ELSEACT
+MOV N$目标字体颜色3 255
+MOV N$目标领取按钮3 2
+MOV S$目标领取名字3 已领取
+
+#IF
+CHECK [619] 0
+#ACT
+MOV N$目标领取按钮4 1
+MOV S$目标领取名字4 领取奖励
+MOV N$目标字体颜色4 67
+#ELSEACT
+MOV N$目标字体颜色4 255
+MOV N$目标领取按钮4 2
+MOV S$目标领取名字4 已领取
+
+#IF
+CHECK [620] 0
+#ACT
+MOV N$目标领取按钮5 1
+MOV S$目标领取名字5 领取奖励
+MOV N$目标字体颜色5 67
+#ELSEACT
+MOV N$目标字体颜色5 255
+MOV N$目标领取按钮5 2
+MOV S$目标领取名字5 已领取
+
+#IF
+CHECK [616] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL D73 9
+#ACT
+MOV s$七日特戒目标1 <Img|id=qrtjmb1|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日特戒目标1 
+
+#IF
+CHECK [617] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL D73 15
+#ACT
+MOV s$七日特戒目标2 <Img|id=qrtjmb2|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日特戒目标2 
+
+#IF
+CHECK [618] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL D73 21
+#ACT
+MOV s$七日特戒目标3 <Img|id=qrtjmb3|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日特戒目标3 
+
+#IF
+CHECK [619] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL D73 27
+#ACT
+MOV s$七日特戒目标4 <Img|id=qrtjmb4|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日特戒目标4 
+
+#IF
+CHECK [620] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL D73 33
+#ACT
+MOV s$七日特戒目标5 <Img|id=qrtjmb5|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日特戒目标5 
+
+#IFONE
+!EQUAL s$七日特戒目标1 
+!EQUAL s$七日特戒目标2 
+!EQUAL s$七日特戒目标3 
+!EQUAL s$七日特戒目标4 
+!EQUAL s$七日特戒目标5 
+#ACT
+MOV S$七日目标按钮4 <Img|id=qrmban4|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮4 
+
+#IF
+TRUE
+#SAY
+<Img|id=01|children={03,02,04,05,06,07,08,09,10}|x=138.0|y=28.0|scale=1|img=private/mubiaojiangli/bangdi.png|esc=0|bg=1|loadDelay=0>
+<ListView|id=03|children={lb1,lb2,lb3,lb4,lb5,lb6,lb7}|x=20.0|y=46.0|width=180|height=496|rotate=0|bounce=0|loadDelay=0>
+<Button|id=lb1|children={qrmban1}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|text=等级目标|link=@七日狂欢面板>
+<$str(S$七日目标按钮1)>
+<Button|id=lb2|children={qrmban2}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|text=羽翼目标|link=@羽翼目标>
+<$str(S$七日目标按钮2)>
+<Button|id=lb3|children={qrmban3}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|text=坐骑目标|link=@坐骑目标>
+<$str(S$七日目标按钮3)>
+<Button|id=lb4|children={qrmban4}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|text=特戒目标|link=@特戒目标>
+<$str(S$七日目标按钮4)>
+<Button|id=lb5|children={qrmban5}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|text=法宝目标|link=@法宝目标>
+<$str(S$七日目标按钮5)>
+<Button|id=lb6|children={qrmban6}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|text=凶器目标|link=@神器目标>
+<$str(S$七日目标按钮6)>
+<Button|id=lb7|children={qrmban7}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|text=附件目标|link=@附件目标>
+<$str(S$七日目标按钮7)><Button|id=02|x=809.0|y=-4.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Img|id=04|x=385.0|y=13.0|img=private/mubiaojiangli/<$STR(S$七日目标标题)>.png|scale=1|esc=0>
+<Img|id=05|x=266.0|y=69.0|img=private/mubiaojiangli/<$STR(S$七日目标标语)>.png|scale=1|esc=0>
+<Text|id=06|x=264.0|y=138.0|size=18|color=67|text=目标>
+<Text|id=07|x=508.0|y=138.0|color=67|size=18|text=奖励>
+<Text|id=08|x=739.0|y=138.0|color=67|size=18|text=操作>
+#IF
+!LARGE $STR(G20) $LONGDATE
+#SAY
+<Text|id=09|x=680.0|y=107.0|color=222|size=18|text=活动已结束>
+#ELSESAY
+<TIMETIPS|id=09|x=680|y=107|color=250|size=18|time=<$DEC.$STR(G20).$LONGDATE>|link=@七日倒计时礼包结束>
+#IF
+TRUE
+#SAY
+<ListView|id=10|children={jl1-1,jl2-1,jl3-1,jl4-1,jl5-1}|x=223.0|y=168.0|width=602|height=356|bounce=0|loadDelay=0>
+<Layout|id=jl1-1|children={jl1-2,jl1-3,jl1-4,jl1-5,jl1-6,jl1-7,jl1-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl1-2|x=23.0|y=22.0|size=18|color=67|text=特戒总等级达到9级>
+<Img|id=jl1-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl1-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl1-5|children={qrtjmb1}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|color=<$STR(N$目标字体颜色1)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|size=18|text=<$STR(S$目标领取名字1)>|link=@领取特戒奖励1>
+<$STR(s$七日特戒目标1)>
+<Img|id=jl1-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl1-7|x=232.0|y=-1.0|width=70|height=70|itemid=491|itemcount=15|name=特戒精华|showtips=1|bgtype=1>
+<ItemShow|id=jl1-8|x=307.0|y=-1.0|width=70|height=70|itemid=490|itemcount=10|name=特戒精粹|showtips=1|bgtype=1>
+
+<Layout|id=jl2-1|children={jl2-2,jl2-3,jl2-4,jl2-5,jl2-6,jl2-7,jl2-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl2-2|x=23.0|y=22.0|size=18|color=67|text=特戒总等级达到15级>
+<Img|id=jl2-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl2-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl2-5|children={qrtjmb2}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|color=<$STR(N$目标字体颜色2)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|size=18|text=<$STR(S$目标领取名字2)>|link=@领取特戒奖励2>
+<$STR(s$七日特戒目标2)>
+<Img|id=jl2-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl2-7|x=232.0|y=-1.0|width=70|height=70|itemid=491|itemcount=20|name=特戒精华|showtips=1|bgtype=1>
+<ItemShow|id=jl2-8|x=307.0|y=-1.0|width=70|height=70|itemid=490|itemcount=15|name=特戒精粹|showtips=1|bgtype=1>
+
+<Layout|id=jl3-1|children={jl3-2,jl3-3,jl3-4,jl3-5,jl3-6,jl3-7,jl3-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl3-2|x=23.0|y=22.0|size=18|color=67|text=特戒总等级达到21级>
+<Img|id=jl3-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl3-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl3-5|children={qrtjmb3}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|color=<$STR(N$目标字体颜色3)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|size=18|text=<$STR(S$目标领取名字3)>|link=@领取特戒奖励3>
+<$STR(s$七日特戒目标3)>
+<Img|id=jl3-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl3-7|x=232.0|y=-1.0|width=70|height=70|itemid=491|itemcount=40|name=特戒精华|showtips=1|bgtype=1>
+<ItemShow|id=jl3-8|x=307.0|y=-1.0|width=70|height=70|itemid=490|itemcount=25|name=特戒精粹|showtips=1|bgtype=1>
+
+<Layout|id=jl4-1|children={jl4-2,jl4-3,jl4-4,jl4-5,jl4-6,jl4-7,jl4-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl4-2|x=23.0|y=22.0|size=18|color=67|text=特戒总等级达到27级>
+<Img|id=jl4-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl4-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl4-5|children={qrtjmb4}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|color=<$STR(N$目标字体颜色4)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|size=18|text=<$STR(S$目标领取名字4)>|link=@领取特戒奖励4>
+<$STR(s$七日特戒目标4)>
+<Img|id=jl4-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl4-7|x=232.0|y=-1.0|width=70|height=70|itemid=491|itemcount=80|name=特戒精华|showtips=1|bgtype=1>
+<ItemShow|id=jl4-8|x=307.0|y=-1.0|width=70|height=70|itemid=490|itemcount=55|name=特戒精粹|showtips=1|bgtype=1>
+
+<Layout|id=jl5-1|children={jl5-2,jl5-3,jl5-4,jl5-5,jl5-6,jl5-7,jl5-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl5-2|x=23.0|y=22.0|size=18|color=67|text=特戒总等级达到33级>
+<Img|id=jl5-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl5-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl5-5|children={qrtjmb5}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|color=<$STR(N$目标字体颜色5)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|size=18|text=<$STR(S$目标领取名字5)>|link=@领取特戒奖励5>
+<$STR(s$七日特戒目标5)>
+<Img|id=jl5-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl5-7|x=232.0|y=-1.0|width=70|height=70|itemid=491|itemcount=100|name=特戒精华|showtips=1|bgtype=1>
+<ItemShow|id=jl5-8|x=307.0|y=-1.0|width=70|height=70|itemid=490|itemcount=75|name=特戒精粹|showtips=1|bgtype=1>
+
+
+
+[@领取特戒奖励1]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$特戒总等级) 9
+#ACT
+SENDMSG 19 特戒总等级不足9级
+BREAK
+
+#IF
+CHECK [616] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$特戒总等级) 8
+CHECK [616] 0
+#ACT
+SET [616] 1
+GIVE 特戒精华 15 1
+GIVE 特戒精粹 10 1
+SENDMSG 19 领取成功
+GOTO @特戒目标
+BREAK
+
+
+[@领取特戒奖励2]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$特戒总等级) 15
+#ACT
+SENDMSG 19 特戒总等级不足15级
+BREAK
+
+#IF
+CHECK [617] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$特戒总等级) 14
+CHECK [617] 0
+#ACT
+SET [617] 1
+GIVE 特戒精华 20 1
+GIVE 特戒精粹 15 1
+SENDMSG 19 领取成功
+GOTO @特戒目标
+BREAK
+
+
+[@领取特戒奖励3]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+
+#IF
+SMALL $STR(N$特戒总等级) 21
+#ACT
+SENDMSG 19 特戒总等级不足21级
+BREAK
+
+#IF
+CHECK [618] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$特戒总等级) 20
+CHECK [618] 0
+#ACT
+SET [618] 1
+GIVE 特戒精华 40 1
+GIVE 特戒精粹 25 1
+SENDMSG 19 领取成功
+GOTO @特戒目标
+BREAK
+
+
+[@领取特戒奖励4]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$特戒总等级) 27
+#ACT
+SENDMSG 19 特戒总等级不足27级
+BREAK
+
+#IF
+CHECK [619] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$特戒总等级) 26
+CHECK [619] 0
+#ACT
+SET [619] 1
+GIVE 特戒精华 80 1
+GIVE 特戒精粹 55 1
+SENDMSG 19 领取成功
+GOTO @特戒目标
+BREAK
+
+[@领取特戒奖励5]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$特戒总等级) 33
+#ACT
+SENDMSG 19 特戒总等级不足33级
+BREAK
+
+#IF
+CHECK [620] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$特戒总等级) 32
+CHECK [620] 0
+#ACT
+SET [620] 1
+GIVE 特戒精华 100 1
+GIVE 特戒精粹 75 1
+SENDMSG 19 领取成功
+GOTO @特戒目标
+BREAK
+
+
+[@法宝目标]
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(无量飞剑等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(无量飞剑等级)
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(八卦镜等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(八卦镜等级)
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(招魂幡等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(招魂幡等级)
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(紫金葫芦等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(紫金葫芦等级)
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(番天印等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(番天印等级)
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(七宝玲珑塔等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(七宝玲珑塔等级)
+
+
+#IF
+TRUE
+#ACT
+MOV S$七日目标标题 fbdjjl
+MOV S$七日目标标语 fbhz
+MOV N$七日目标按钮1 1
+MOV N$七日目标按钮2 1
+MOV N$七日目标按钮3 1
+MOV N$七日目标按钮4 1
+MOV N$七日目标按钮5 2
+MOV N$七日目标按钮6 1
+MOV N$七日目标按钮7 1
+GOTO @顶部七日狂欢红点
+#IF
+CHECK [621] 0
+#ACT
+MOV N$目标领取按钮1 1
+MOV S$目标领取名字1 领取奖励
+MOV N$目标字体颜色1 67
+#ELSEACT
+MOV N$目标字体颜色1 255
+MOV N$目标领取按钮1 2
+MOV S$目标领取名字1 已领取
+
+#IF
+CHECK [622] 0
+#ACT
+MOV N$目标领取按钮2 1
+MOV S$目标领取名字2 领取奖励
+MOV N$目标字体颜色2 67
+#ELSEACT
+MOV N$目标字体颜色2 255
+MOV N$目标领取按钮2 2
+MOV S$目标领取名字2 已领取
+
+#IF
+CHECK [623] 0
+#ACT
+MOV N$目标领取按钮3 1
+MOV S$目标领取名字3 领取奖励
+MOV N$目标字体颜色3 67
+#ELSEACT
+MOV N$目标字体颜色3 255
+MOV N$目标领取按钮3 2
+MOV S$目标领取名字3 已领取
+
+#IF
+CHECK [624] 0
+#ACT
+MOV N$目标领取按钮4 1
+MOV S$目标领取名字4 领取奖励
+MOV N$目标字体颜色4 67
+#ELSEACT
+MOV N$目标字体颜色4 255
+MOV N$目标领取按钮4 2
+MOV S$目标领取名字4 已领取
+
+#IF
+CHECK [625] 0
+#ACT
+MOV N$目标领取按钮5 1
+MOV S$目标领取名字5 领取奖励
+MOV N$目标字体颜色5 67
+#ELSEACT
+MOV N$目标字体颜色5 255
+MOV N$目标领取按钮5 2
+MOV S$目标领取名字5 已领取
+
+
+#IF
+CHECK [621] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$法宝最高等级 10
+#ACT
+MOV s$七日法宝目标1 <Img|id=qrfbmb1|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日法宝目标1 
+
+#IF
+CHECK [622] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$法宝最高等级 15
+#ACT
+MOV s$七日法宝目标2 <Img|id=qrfbmb2|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日法宝目标2 
+
+#IF
+CHECK [623] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$法宝最高等级 20
+#ACT
+MOV s$七日法宝目标3 <Img|id=qrfbmb3|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日法宝目标3 
+
+#IF
+CHECK [624] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$法宝最高等级 25
+#ACT
+MOV s$七日法宝目标4 <Img|id=qrfbmb4|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日法宝目标4 
+
+#IF
+CHECK [625] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$法宝最高等级 30
+#ACT
+MOV s$七日法宝目标5 <Img|id=qrfbmb5|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日法宝目标5 
+
+#IFONE
+!EQUAL s$七日法宝目标1 
+!EQUAL s$七日法宝目标2 
+!EQUAL s$七日法宝目标3 
+!EQUAL s$七日法宝目标4 
+!EQUAL s$七日法宝目标5 
+#ACT
+MOV S$七日目标按钮5 <Img|id=qrmban5|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮5 
+
+#IF
+TRUE
+#SAY
+<Img|id=01|children={03,02,04,05,06,07,08,09,10}|x=138.0|y=28.0|scale=1|img=private/mubiaojiangli/bangdi.png|esc=0|bg=1|loadDelay=0>
+<ListView|id=03|children={lb1,lb2,lb3,lb4,lb5,lb6,lb7}|x=20.0|y=46.0|width=180|height=496|rotate=0|bounce=0|loadDelay=0>
+<Button|id=lb1|children={qrmban1}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|text=等级目标|link=@七日狂欢面板>
+<$str(S$七日目标按钮1)>
+<Button|id=lb2|children={qrmban2}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|text=羽翼目标|link=@羽翼目标>
+<$str(S$七日目标按钮2)>
+<Button|id=lb3|children={qrmban3}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|text=坐骑目标|link=@坐骑目标>
+<$str(S$七日目标按钮3)>
+<Button|id=lb4|children={qrmban4}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|text=特戒目标|link=@特戒目标>
+<$str(S$七日目标按钮4)>
+<Button|id=lb5|children={qrmban5}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|text=法宝目标|link=@法宝目标>
+<$str(S$七日目标按钮5)>
+<Button|id=lb6|children={qrmban6}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|text=凶器目标|link=@神器目标>
+<$str(S$七日目标按钮6)>
+<Button|id=lb7|children={qrmban7}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|text=附件目标|link=@附件目标>
+<$str(S$七日目标按钮7)><Button|id=02|x=809.0|y=-4.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Img|id=04|x=385.0|y=13.0|img=private/mubiaojiangli/<$STR(S$七日目标标题)>.png|scale=1|esc=0>
+<Img|id=05|x=266.0|y=69.0|img=private/mubiaojiangli/<$STR(S$七日目标标语)>.png|scale=1|esc=0>
+<Text|id=06|x=264.0|y=138.0|size=18|color=67|text=目标>
+<Text|id=07|x=508.0|y=138.0|color=67|size=18|text=奖励>
+<Text|id=08|x=739.0|y=138.0|color=67|size=18|text=操作>
+#IF
+!LARGE $STR(G20) $LONGDATE
+#SAY
+<Text|id=09|x=680.0|y=107.0|color=222|size=18|text=活动已结束>
+#ELSESAY
+<TIMETIPS|id=09|x=680|y=107|color=250|size=18|time=<$DEC.$STR(G20).$LONGDATE>|link=@七日倒计时礼包结束>
+#IF
+TRUE
+#SAY
+<ListView|id=10|children={jl1-1,jl2-1,jl3-1,jl4-1,jl5-1}|x=223.0|y=168.0|width=602|height=356|bounce=0|loadDelay=0>
+<Layout|id=jl1-1|children={jl1-2,jl1-3,jl1-4,jl1-5,jl1-6,jl1-7,jl1-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl1-2|x=23.0|y=22.0|size=18|color=67|text=法宝最高等级达到10级>
+<Img|id=jl1-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl1-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl1-5|children={qrfbmb1}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|color=<$STR(N$目标字体颜色1)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|size=18|text=<$STR(S$目标领取名字1)>|link=@领取法宝奖励1>
+<$str(s$七日法宝目标1)>
+<Img|id=jl1-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl1-7|x=232.0|y=-1.0|width=70|height=70|itemid=30272|itemcount=40|name=法宝精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl1-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=100|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl2-1|children={jl2-2,jl2-3,jl2-4,jl2-5,jl2-6,jl2-7,jl2-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl2-2|x=23.0|y=22.0|size=18|color=67|text=法宝最高等级达到15级>
+<Img|id=jl2-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl2-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl2-5|children={qrfbmb2}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|color=<$STR(N$目标字体颜色2)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|size=18|text=<$STR(S$目标领取名字2)>|link=@领取法宝奖励2>
+<$str(s$七日法宝目标2)>
+<Img|id=jl2-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl2-7|x=232.0|y=-1.0|width=70|height=70|itemid=30272|itemcount=60|name=法宝精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl2-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=300|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl3-1|children={jl3-2,jl3-3,jl3-4,jl3-5,jl3-6,jl3-7,jl3-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl3-2|x=23.0|y=22.0|size=18|color=67|text=法宝最高等级达到20级>
+<Img|id=jl3-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl3-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl3-5|children={qrfbmb3}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|color=<$STR(N$目标字体颜色3)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|size=18|text=<$STR(S$目标领取名字3)>|link=@领取法宝奖励3>
+<$str(s$七日法宝目标3)>
+<Img|id=jl3-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl3-7|x=232.0|y=-1.0|width=70|height=70|itemid=30272|itemcount=80|name=法宝精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl3-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl4-1|children={jl4-2,jl4-3,jl4-4,jl4-5,jl4-6,jl4-7,jl4-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl4-2|x=23.0|y=22.0|size=18|color=67|text=法宝最高等级达到25级>
+<Img|id=jl4-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl4-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl4-5|children={qrfbmb4}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|color=<$STR(N$目标字体颜色4)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|size=18|text=<$STR(S$目标领取名字4)>|link=@领取法宝奖励4>
+<$str(s$七日法宝目标4)>
+<Img|id=jl4-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl4-7|x=232.0|y=-1.0|width=70|height=70|itemid=30272|itemcount=130|name=法宝精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl4-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=700|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl5-1|children={jl5-2,jl5-3,jl5-4,jl5-5,jl5-6,jl5-7,jl5-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl5-2|x=23.0|y=22.0|size=18|color=67|text=法宝最高等级达到30级>
+<Img|id=jl5-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl5-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl5-5|children={qrfbmb5}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|color=<$STR(N$目标字体颜色5)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|size=18|text=<$STR(S$目标领取名字5)>|link=@领取法宝奖励5>
+<$str(s$七日法宝目标5)>
+<Img|id=jl5-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl5-7|x=232.0|y=-1.0|width=70|height=70|itemid=30272|itemcount=150|name=法宝精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl5-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=1000|name=绑定元宝|showtips=1|bgtype=1>
+
+
+
+[@领取法宝奖励1]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$法宝最高等级) 10
+#ACT
+SENDMSG 19 法宝等级不足10级
+BREAK
+
+#IF
+CHECK [621] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$法宝最高等级) 9
+CHECK [621] 0
+#ACT
+SET [621] 1
+GIVE 法宝精粹 40 1
+Money 4 + 100
+SENDMSG 19 领取成功
+GOTO @法宝目标
+BREAK
+
+[@领取法宝奖励2]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$法宝最高等级) 15
+#ACT
+SENDMSG 19 法宝等级不足15级
+BREAK
+
+#IF
+CHECK [622] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$法宝最高等级) 14
+CHECK [622] 0
+#ACT
+SET [622] 1
+GIVE 法宝精粹 60 1
+Money 4 + 300
+SENDMSG 19 领取成功
+GOTO @法宝目标
+BREAK
+
+[@领取法宝奖励3]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$法宝最高等级) 20
+#ACT
+SENDMSG 19 法宝等级不足20级
+BREAK
+
+#IF
+CHECK [623] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$法宝最高等级) 19
+CHECK [623] 0
+#ACT
+SET [623] 1
+GIVE 法宝精粹 80 1
+Money 4 + 500
+SENDMSG 19 领取成功
+GOTO @法宝目标
+BREAK
+
+[@领取法宝奖励4]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$法宝最高等级) 25
+#ACT
+SENDMSG 19 法宝等级不足25级
+BREAK
+
+#IF
+CHECK [624] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$法宝最高等级) 24
+CHECK [624] 0
+#ACT
+SET [624] 1
+GIVE 法宝精粹 130 1
+Money 4 + 700
+SENDMSG 19 领取成功
+GOTO @法宝目标
+BREAK
+
+[@领取法宝奖励5]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$法宝最高等级) 30
+#ACT
+SENDMSG 19 法宝等级不足30级
+BREAK
+
+#IF
+CHECK [625] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$法宝最高等级) 29
+CHECK [625] 0
+#ACT
+SET [625] 1
+GIVE 法宝精粹 150 1
+Money 4 + 1000
+SENDMSG 19 领取成功
+GOTO @法宝目标
+BREAK
+
+
+[@神器目标]
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(撼天等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(撼天等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(暗月等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(暗月等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(冥日等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(冥日等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(鬼炎等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(鬼炎等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(碧海天王等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(碧海天王等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(赤明天帝等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(赤明天帝等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(紫月圣君等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(紫月圣君等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(耀阳圣尊等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(耀阳圣尊等级)
+
+#IF
+TRUE
+#ACT
+MOV S$七日目标标题 sqdjjl
+MOV S$七日目标标语 sqhz
+MOV N$七日目标按钮1 1
+MOV N$七日目标按钮2 1
+MOV N$七日目标按钮3 1
+MOV N$七日目标按钮4 1
+MOV N$七日目标按钮5 1
+MOV N$七日目标按钮6 2
+MOV N$七日目标按钮7 1
+GOTO @顶部七日狂欢红点
+#IF
+CHECK [626] 0
+#ACT
+MOV N$目标领取按钮1 1
+MOV S$目标领取名字1 领取奖励
+MOV N$目标字体颜色1 67
+#ELSEACT
+MOV N$目标字体颜色1 255
+MOV N$目标领取按钮1 2
+MOV S$目标领取名字1 已领取
+
+#IF
+CHECK [627] 0
+#ACT
+MOV N$目标领取按钮2 1
+MOV S$目标领取名字2 领取奖励
+MOV N$目标字体颜色2 67
+#ELSEACT
+MOV N$目标字体颜色2 255
+MOV N$目标领取按钮2 2
+MOV S$目标领取名字2 已领取
+
+#IF
+CHECK [628] 0
+#ACT
+MOV N$目标领取按钮3 1
+MOV S$目标领取名字3 领取奖励
+MOV N$目标字体颜色3 67
+#ELSEACT
+MOV N$目标字体颜色3 255
+MOV N$目标领取按钮3 2
+MOV S$目标领取名字3 已领取
+
+#IF
+CHECK [629] 0
+#ACT
+MOV N$目标领取按钮4 1
+MOV S$目标领取名字4 领取奖励
+MOV N$目标字体颜色4 67
+#ELSEACT
+MOV N$目标字体颜色4 255
+MOV N$目标领取按钮4 2
+MOV S$目标领取名字4 已领取
+
+#IF
+CHECK [630] 0
+#ACT
+MOV N$目标领取按钮5 1
+MOV S$目标领取名字5 领取奖励
+MOV N$目标字体颜色5 67
+#ELSEACT
+MOV N$目标字体颜色5 255
+MOV N$目标领取按钮5 2
+MOV S$目标领取名字5 已领取
+
+
+#IF
+CHECK [626] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$神器最高等级 5
+#ACT
+MOV s$七日神器目标1 <Img|id=qrsqmb1|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日神器目标1 
+
+#IF
+CHECK [627] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$神器最高等级 7
+#ACT
+MOV s$七日神器目标2 <Img|id=qrsqmb2|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日神器目标2 
+
+#IF
+CHECK [628] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$神器最高等级 9
+#ACT
+MOV s$七日神器目标3 <Img|id=qrsqmb3|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日神器目标3 
+
+#IF
+CHECK [629] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$神器最高等级 11
+#ACT
+MOV s$七日神器目标4 <Img|id=qrsqmb4|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日神器目标4 
+
+#IF
+CHECK [630] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$神器最高等级 13
+#ACT
+MOV s$七日神器目标5 <Img|id=qrsqmb5|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日神器目标5 
+
+#IFONE
+!EQUAL s$七日神器目标1 
+!EQUAL s$七日神器目标2 
+!EQUAL s$七日神器目标3 
+!EQUAL s$七日神器目标4 
+!EQUAL s$七日神器目标5 
+#ACT
+MOV S$七日目标按钮6 <Img|id=qrmban6|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮6 
+
+#IF
+TRUE
+#SAY
+<Img|id=01|children={03,02,04,05,06,07,08,09,10}|x=138.0|y=28.0|scale=1|img=private/mubiaojiangli/bangdi.png|esc=0|bg=1|loadDelay=0>
+<ListView|id=03|children={lb1,lb2,lb3,lb4,lb5,lb6,lb7}|x=20.0|y=46.0|width=180|height=496|rotate=0|bounce=0|loadDelay=0>
+<Button|id=lb1|children={qrmban1}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|text=等级目标|link=@七日狂欢面板>
+<$str(S$七日目标按钮1)>
+<Button|id=lb2|children={qrmban2}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|text=羽翼目标|link=@羽翼目标>
+<$str(S$七日目标按钮2)>
+<Button|id=lb3|children={qrmban3}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|text=坐骑目标|link=@坐骑目标>
+<$str(S$七日目标按钮3)>
+<Button|id=lb4|children={qrmban4}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|text=特戒目标|link=@特戒目标>
+<$str(S$七日目标按钮4)>
+<Button|id=lb5|children={qrmban5}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|text=法宝目标|link=@法宝目标>
+<$str(S$七日目标按钮5)>
+<Button|id=lb6|children={qrmban6}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|text=凶器目标|link=@神器目标>
+<$str(S$七日目标按钮6)>
+<Button|id=lb7|children={qrmban7}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|text=附件目标|link=@附件目标>
+<$str(S$七日目标按钮7)><Button|id=02|x=809.0|y=-4.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Img|id=04|x=385.0|y=13.0|img=private/mubiaojiangli/<$STR(S$七日目标标题)>.png|scale=1|esc=0>
+<Img|id=05|x=266.0|y=69.0|img=private/mubiaojiangli/<$STR(S$七日目标标语)>.png|scale=1|esc=0>
+<Text|id=06|x=264.0|y=138.0|size=18|color=67|text=目标>
+<Text|id=07|x=508.0|y=138.0|color=67|size=18|text=奖励>
+<Text|id=08|x=739.0|y=138.0|color=67|size=18|text=操作>
+#IF
+!LARGE $STR(G20) $LONGDATE
+#SAY
+<Text|id=09|x=680.0|y=107.0|color=222|size=18|text=活动已结束>
+#ELSESAY
+<TIMETIPS|id=09|x=680|y=107|color=250|size=18|time=<$DEC.$STR(G20).$LONGDATE>|link=@七日倒计时礼包结束>
+#IF
+TRUE
+#SAY
+<ListView|id=10|children={jl1-1,jl2-1,jl3-1,jl4-1,jl5-1}|x=223.0|y=168.0|width=602|height=356|bounce=0|loadDelay=0>
+<Layout|id=jl1-1|children={jl1-2,jl1-3,jl1-4,jl1-5,jl1-6,jl1-7,jl1-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl1-2|x=23.0|y=22.0|size=18|color=67|text=凶器最高等级达到5级>
+<Img|id=jl1-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl1-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl1-5|children={qrsqmb1}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|color=<$STR(N$目标字体颜色1)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|size=18|text=<$STR(S$目标领取名字1)>|link=@领取神器奖励1>
+<$STR(s$七日神器目标1)>
+<Img|id=jl1-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl1-7|x=232.0|y=-1.0|width=70|height=70|itemid=25898|itemcount=15|name=凶器精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl1-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=100|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl2-1|children={jl2-2,jl2-3,jl2-4,jl2-5,jl2-6,jl2-7,jl2-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl2-2|x=23.0|y=22.0|size=18|color=67|text=凶器最高等级达到7级>
+<Img|id=jl2-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl2-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl2-5|children={qrsqmb2}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|color=<$STR(N$目标字体颜色2)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|size=18|text=<$STR(S$目标领取名字2)>|link=@领取神器奖励2>
+<$STR(s$七日神器目标2)>
+<Img|id=jl2-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl2-7|x=232.0|y=-1.0|width=70|height=70|itemid=25898|itemcount=30|name=凶器精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl2-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=300|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl3-1|children={jl3-2,jl3-3,jl3-4,jl3-5,jl3-6,jl3-7,jl3-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl3-2|x=23.0|y=22.0|size=18|color=67|text=凶器最高等级达到9级>
+<Img|id=jl3-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl3-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl3-5|children={qrsqmb3}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|color=<$STR(N$目标字体颜色3)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|size=18|text=<$STR(S$目标领取名字3)>|link=@领取神器奖励3>
+<$STR(s$七日神器目标3)>
+<Img|id=jl3-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl3-7|x=232.0|y=-1.0|width=70|height=70|itemid=25898|itemcount=60|name=凶器精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl3-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl4-1|children={jl4-2,jl4-3,jl4-4,jl4-5,jl4-6,jl4-7,jl4-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl4-2|x=23.0|y=22.0|size=18|color=67|text=凶器最高等级达到11级>
+<Img|id=jl4-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl4-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl4-5|children={qrsqmb4}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|color=<$STR(N$目标字体颜色4)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|size=18|text=<$STR(S$目标领取名字4)>|link=@领取神器奖励4>
+<$STR(s$七日神器目标4)>
+<Img|id=jl4-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl4-7|x=232.0|y=-1.0|width=70|height=70|itemid=25898|itemcount=120|name=凶器精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl4-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=700|name=绑定元宝|showtips=1|bgtype=1>
+
+<Layout|id=jl5-1|children={jl5-2,jl5-3,jl5-4,jl5-5,jl5-6,jl5-7,jl5-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl5-2|x=23.0|y=22.0|size=18|color=67|text=凶器最高等级达到13级>
+<Img|id=jl5-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl5-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl5-5|children={qrsqmb5}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|color=<$STR(N$目标字体颜色5)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|size=18|text=<$STR(S$目标领取名字5)>|link=@领取神器奖励5>
+<$STR(s$七日神器目标5)>
+<Img|id=jl5-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl5-7|x=232.0|y=-1.0|width=70|height=70|itemid=25898|itemcount=200|name=凶器精粹|showtips=1|bgtype=1>
+<ItemShow|id=jl5-8|x=307.0|y=-1.0|width=70|height=70|itemid=26900|itemcount=1000|name=绑定元宝|showtips=1|bgtype=1>
+
+[@领取神器奖励1]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$神器最高等级) 5
+#ACT
+SENDMSG 19 凶器等级不足5级
+BREAK
+
+#IF
+CHECK [626] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$神器最高等级) 4
+CHECK [626] 0
+#ACT
+SET [626] 1
+GIVE 凶器精粹 15 1
+Money 4 + 100
+SENDMSG 19 领取成功
+GOTO @神器目标
+BREAK
+
+[@领取神器奖励2]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$神器最高等级) 7
+#ACT
+SENDMSG 19 凶器等级不足7级
+BREAK
+
+#IF
+CHECK [627] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$神器最高等级) 6
+CHECK [627] 0
+#ACT
+SET [627] 1
+GIVE 凶器精粹 30 1
+Money 4 + 300
+SENDMSG 19 领取成功
+GOTO @神器目标
+BREAK
+
+[@领取神器奖励3]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$神器最高等级) 9
+#ACT
+SENDMSG 19 凶器等级不足9级
+BREAK
+
+#IF
+CHECK [628] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$神器最高等级) 8
+CHECK [628] 0
+#ACT
+SET [628] 1
+GIVE 凶器精粹 60 1
+Money 4 + 500
+SENDMSG 19 领取成功
+GOTO @神器目标
+BREAK
+
+[@领取神器奖励4]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$神器最高等级) 11
+#ACT
+SENDMSG 19 凶器等级不足11级
+BREAK
+
+#IF
+CHECK [629] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$神器最高等级) 10
+CHECK [629] 0
+#ACT
+SET [629] 1
+GIVE 凶器精粹 120 1
+Money 4 + 700
+SENDMSG 19 领取成功
+GOTO @神器目标
+BREAK
+
+[@领取神器奖励5]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$神器最高等级) 13
+#ACT
+SENDMSG 19 凶器等级不足13级
+BREAK
+
+#IF
+CHECK [630] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$神器最高等级) 12
+CHECK [630] 0
+#ACT
+SET [630] 1
+GIVE 凶器精粹 200 1
+Money 4 + 1000
+SENDMSG 19 领取成功
+GOTO @神器目标
+BREAK
+
+
+[@附件目标]
+#IF
+CHECKUSEITEM 2
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(2)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(2)].GC1>
+
+#IF
+CHECKUSEITEM 11
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(11)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(11)].GC1>
+
+#IF
+CHECKUSEITEM 12
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(12)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(12)].GC1>
+
+#IF
+CHECKUSEITEM 13
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(13)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(13)].GC1>
+
+#IF
+CHECKUSEITEM 14
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(14)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(14)].GC1>
+
+#IF
+CHECKUSEITEM 19
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(19)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(19)].GC1>
+
+#IF
+TRUE
+#ACT
+MOV S$七日目标标题 fjtzjl
+MOV S$七日目标标语 fjhz
+MOV N$七日目标按钮1 1
+MOV N$七日目标按钮2 1
+MOV N$七日目标按钮3 1
+MOV N$七日目标按钮4 1
+MOV N$七日目标按钮5 1
+MOV N$七日目标按钮6 1
+MOV N$七日目标按钮7 2
+GOTO @顶部七日狂欢红点
+#IF
+CHECK [631] 0
+#ACT
+MOV N$目标领取按钮1 1
+MOV S$目标领取名字1 领取奖励
+MOV N$目标字体颜色1 67
+#ELSEACT
+MOV N$目标字体颜色1 255
+MOV N$目标领取按钮1 2
+MOV S$目标领取名字1 已领取
+
+#IF
+CHECK [632] 0
+#ACT
+MOV N$目标领取按钮2 1
+MOV S$目标领取名字2 领取奖励
+MOV N$目标字体颜色2 67
+#ELSEACT
+MOV N$目标字体颜色2 255
+MOV N$目标领取按钮2 2
+MOV S$目标领取名字2 已领取
+
+#IF
+CHECK [633] 0
+#ACT
+MOV N$目标领取按钮3 1
+MOV S$目标领取名字3 领取奖励
+MOV N$目标字体颜色3 67
+#ELSEACT
+MOV N$目标字体颜色3 255
+MOV N$目标领取按钮3 2
+MOV S$目标领取名字3 已领取
+
+#IF
+CHECK [634] 0
+#ACT
+MOV N$目标领取按钮4 1
+MOV S$目标领取名字4 领取奖励
+MOV N$目标字体颜色4 67
+#ELSEACT
+MOV N$目标字体颜色4 255
+MOV N$目标领取按钮4 2
+MOV S$目标领取名字4 已领取
+
+#IF
+CHECK [635] 0
+#ACT
+MOV N$目标领取按钮5 1
+MOV S$目标领取名字5 领取奖励
+MOV N$目标字体颜色5 67
+#ELSEACT
+MOV N$目标字体颜色5 255
+MOV N$目标领取按钮5 2
+MOV S$目标领取名字5 已领取
+
+
+#IF
+CHECK [631] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$附件最高等级 3
+#ACT
+MOV s$七日附件目标1 <Img|id=qrfjmb1|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日附件目标1 
+
+#IF
+CHECK [632] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$附件最高等级 4
+#ACT
+MOV s$七日附件目标2 <Img|id=qrfjmb2|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日附件目标2 
+
+#IF
+CHECK [633] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$附件最高等级 5
+#ACT
+MOV s$七日附件目标3 <Img|id=qrfjmb3|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日附件目标3 
+
+#IF
+CHECK [634] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$附件最高等级 6
+#ACT
+MOV s$七日附件目标4 <Img|id=qrfjmb4|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日附件目标4 
+
+#IF
+CHECK [635] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$附件最高等级 7
+#ACT
+MOV s$七日附件目标5 <Img|id=qrfjmb5|x=95.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$七日附件目标5 
+
+#IFONE
+!EQUAL s$七日附件目标1 
+!EQUAL s$七日附件目标2 
+!EQUAL s$七日附件目标3 
+!EQUAL s$七日附件目标4 
+!EQUAL s$七日附件目标5 
+#ACT
+MOV S$七日目标按钮7 <Img|id=qrmban7|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮7 
+
+#IF
+TRUE
+#SAY
+<Img|id=01|children={03,02,04,05,06,07,08,09,10}|x=138.0|y=28.0|scale=1|img=private/mubiaojiangli/bangdi.png|esc=0|bg=1|loadDelay=0>
+<ListView|id=03|children={lb1,lb2,lb3,lb4,lb5,lb6,lb7}|x=20.0|y=46.0|width=180|height=496|rotate=0|bounce=0|loadDelay=0>
+<Button|id=lb1|children={qrmban1}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮1)>.png|text=等级目标|link=@七日狂欢面板>
+<$str(S$七日目标按钮1)>
+<Button|id=lb2|children={qrmban2}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮2)>.png|text=羽翼目标|link=@羽翼目标>
+<$str(S$七日目标按钮2)>
+<Button|id=lb3|children={qrmban3}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮3)>.png|text=坐骑目标|link=@坐骑目标>
+<$str(S$七日目标按钮3)>
+<Button|id=lb4|children={qrmban4}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮4)>.png|text=特戒目标|link=@特戒目标>
+<$str(S$七日目标按钮4)>
+<Button|id=lb5|children={qrmban5}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮5)>.png|text=法宝目标|link=@法宝目标>
+<$str(S$七日目标按钮5)>
+<Button|id=lb6|children={qrmban6}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮6)>.png|text=凶器目标|link=@神器目标>
+<$str(S$七日目标按钮6)>
+<Button|id=lb7|children={qrmban7}|x=0.0|y=-1.0|width=180|scale=1|nimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|mimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|color=67|size=18|pimg=public/btn_chosen_0<$STR(N$七日目标按钮7)>.png|text=附件目标|link=@附件目标>
+<$str(S$七日目标按钮7)><Button|id=02|x=809.0|y=-4.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Img|id=04|x=385.0|y=13.0|img=private/mubiaojiangli/<$STR(S$七日目标标题)>.png|scale=1|esc=0>
+<Img|id=05|x=266.0|y=69.0|img=private/mubiaojiangli/<$STR(S$七日目标标语)>.png|scale=1|esc=0>
+<Text|id=06|x=264.0|y=138.0|size=18|color=67|text=目标>
+<Text|id=07|x=508.0|y=138.0|color=67|size=18|text=奖励>
+<Text|id=08|x=739.0|y=138.0|color=67|size=18|text=操作>
+#IF
+!LARGE $STR(G20) $LONGDATE
+#SAY
+<Text|id=09|x=680.0|y=107.0|color=222|size=18|text=活动已结束>
+#ELSESAY
+<TIMETIPS|id=09|x=680|y=107|color=250|size=18|time=<$DEC.$STR(G20).$LONGDATE>|link=@七日倒计时礼包结束>
+#IF
+TRUE
+#SAY
+<ListView|id=10|children={jl1-1,jl2-1,jl3-1,jl4-1,jl5-1}|x=223.0|y=168.0|width=602|height=356|bounce=0|loadDelay=0>
+<Layout|id=jl1-1|children={jl1-2,jl1-3,jl1-4,jl1-5,jl1-6,jl1-7,jl1-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl1-2|x=23.0|y=22.0|size=18|color=67|text=附件最高等级达到3级>
+<Img|id=jl1-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl1-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl1-5|children={qrfjmb1}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|color=<$STR(N$目标字体颜色1)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮1)>.png|size=18|text=<$STR(S$目标领取名字1)>|link=@领取附件奖励1>
+<$STR(s$七日附件目标1)>
+<Img|id=jl1-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl1-7|x=232.0|y=-1.0|width=70|height=70|itemid=26748|itemcount=105|name=特装精粹(攻)|showtips=1|bgtype=1>
+<ItemShow|id=jl1-8|x=307.0|y=-1.0|width=70|height=70|itemid=26747|itemcount=105|name=特装精粹(防)|showtips=1|bgtype=1>
+
+<Layout|id=jl2-1|children={jl2-2,jl2-3,jl2-4,jl2-5,jl2-6,jl2-7,jl2-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl2-2|x=23.0|y=22.0|size=18|color=67|text=附件最高等级达到4级>
+
+<Img|id=jl2-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl2-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl2-5|children={qrfjmb2}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|color=<$STR(N$目标字体颜色2)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮2)>.png|size=18|text=<$STR(S$目标领取名字2)>|link=@领取附件奖励2>
+<$STR(s$七日附件目标2)>
+<Img|id=jl2-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl2-7|x=232.0|y=-1.0|width=70|height=70|itemid=26748|itemcount=180|name=特装精粹(攻)|showtips=1|bgtype=1>
+<ItemShow|id=jl2-8|x=307.0|y=-1.0|width=70|height=70|itemid=26747|itemcount=180|name=特装精粹(防)|showtips=1|bgtype=1>
+
+<Layout|id=jl3-1|children={jl3-2,jl3-3,jl3-4,jl3-5,jl3-6,jl3-7,jl3-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl3-2|x=23.0|y=22.0|size=18|color=67|text=附件最高等级达到5级>
+<Img|id=jl3-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl3-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl3-5|children={qrfjmb3}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|color=<$STR(N$目标字体颜色3)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮3)>.png|size=18|text=<$STR(S$目标领取名字3)>|link=@领取附件奖励3>
+<$STR(s$七日附件目标3)>
+<Img|id=jl3-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl3-7|x=232.0|y=-1.0|width=70|height=70|itemid=26748|itemcount=450|name=特装精粹(攻)|showtips=1|bgtype=1>
+<ItemShow|id=jl3-8|x=307.0|y=-1.0|width=70|height=70|itemid=26747|itemcount=450|name=特装精粹(防)|showtips=1|bgtype=1>
+
+<Layout|id=jl4-1|children={jl4-2,jl4-3,jl4-4,jl4-5,jl4-6,jl4-7,jl4-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl4-2|x=23.0|y=22.0|size=18|color=67|text=附件最高等级达到6级>
+<Img|id=jl4-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl4-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl4-5|children={qrfjmb4}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|color=<$STR(N$目标字体颜色4)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮4)>.png|size=18|text=<$STR(S$目标领取名字4)>|link=@领取附件奖励4>
+<$STR(s$七日附件目标4)>
+<Img|id=jl4-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl4-7|x=232.0|y=-1.0|width=70|height=70|itemid=26748|itemcount=650|name=特装精粹(攻)|showtips=1|bgtype=1>
+<ItemShow|id=jl4-8|x=307.0|y=-1.0|width=70|height=70|itemid=26747|itemcount=650|name=特装精粹(防)|showtips=1|bgtype=1>
+
+<Layout|id=jl5-1|children={jl5-2,jl5-3,jl5-4,jl5-5,jl5-6,jl5-7,jl5-8}|x=362.0|y=196.0|width=600|height=71|rotate=0>
+<Text|id=jl5-2|x=23.0|y=22.0|size=18|color=67|text=附件最高等级达到7级>
+<Img|id=jl5-3|x=237.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Img|id=jl5-4|x=312.0|y=3.0|img=public/clk.png|esc=0|scale=1>
+<Button|id=jl5-5|children={qrfjmb5}|x=478.0|y=11.0|scale=1|mimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|pimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|color=<$STR(N$目标字体颜色5)>|nimg=private/mubiaojiangli/btn_channe<$STR(N$目标领取按钮5)>.png|size=18|text=<$STR(S$目标领取名字5)>|link=@领取附件奖励5>
+<$STR(s$七日附件目标5)>
+<Img|id=jl5-6|x=0.0|y=66.0|img=private/mubiaojiangli/xian.png|esc=0|scale=1>
+<ItemShow|id=jl5-7|x=232.0|y=-1.0|width=70|height=70|itemid=26748|itemcount=850|name=特装精粹(攻)|showtips=1|bgtype=1>
+<ItemShow|id=jl5-8|x=307.0|y=-1.0|width=70|height=70|itemid=26747|itemcount=850|name=特装精粹(防)|showtips=1|bgtype=1>
+
+
+
+
+[@领取附件奖励1]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$附件最高等级) 3
+#ACT
+SENDMSG 19 附件最高等级未达到3级
+BREAK
+
+#IF
+CHECK [631] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$附件最高等级) 2
+CHECK [631] 0
+#ACT
+SET [631] 1
+GIVE 特装精粹(攻) 105 1
+GIVE 特装精粹(防) 105 1
+SENDMSG 19 领取成功
+GOTO @附件目标
+BREAK
+
+[@领取附件奖励2]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$附件最高等级) 4
+#ACT
+SENDMSG 19 附件最高等级未达到4级
+BREAK
+
+#IF
+CHECK [632] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$附件最高等级) 3
+CHECK [632] 0
+#ACT
+SET [632] 1
+GIVE 特装精粹(攻) 180 1
+GIVE 特装精粹(防) 180 1
+SENDMSG 19 领取成功
+GOTO @附件目标
+BREAK
+
+[@领取附件奖励3]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$附件最高等级) 5
+#ACT
+SENDMSG 19 附件最高等级未达到5级
+BREAK
+
+#IF
+CHECK [633] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$附件最高等级) 4
+CHECK [633] 0
+#ACT
+SET [633] 1
+GIVE 特装精粹(攻) 450 1
+GIVE 特装精粹(防) 450 1
+SENDMSG 19 领取成功
+GOTO @附件目标
+BREAK
+
+[@领取附件奖励4]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$附件最高等级) 6
+#ACT
+SENDMSG 19 附件最高等级未达到5级
+BREAK
+
+#IF
+CHECK [634] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$附件最高等级) 5
+CHECK [634] 0
+#ACT
+SET [634] 1
+GIVE 特装精粹(攻) 650 1
+GIVE 特装精粹(防) 650 1
+SENDMSG 19 领取成功
+GOTO @附件目标
+BREAK
+
+[@领取附件奖励5]
+#IF
+!LARGE $STR(G20) $LONGDATE
+#ACT
+SENDMSG 19 活动已结束
+BREAK
+
+#IF
+SMALL $STR(N$附件最高等级) 7
+#ACT
+SENDMSG 19 附件最高等级未达到5级
+BREAK
+
+#IF
+CHECK [635] 1
+#ACT
+SENDMSG 19 你已经领取过此奖励
+BREAK
+
+#IF
+LARGE $STR(N$附件最高等级) 6
+CHECK [635] 0
+#ACT
+SET [635] 1
+GIVE 特装精粹(攻) 850 1
+GIVE 特装精粹(防) 850 1
+SENDMSG 19 领取成功
+GOTO @附件目标
+BREAK
+
+
+
+
+
+
+}
+
+
+
+
+
+

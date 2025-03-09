@@ -1,0 +1,363 @@
+[@首充面板]
+{
+#IF
+RANDOM 1
+#ACT
+NEWREADCSV ..\Data\shouchong\cfg_shouchong.csv
+GOTO @首充_初始化
+
+[@首充_初始化]
+#IF
+RANDOM 1
+#ACT
+MOV N$首充_当前所选挡位 1
+MOV N$首充_当前所选日期 0
+GOTO @首充_更新全部
+
+[@首充_更新全部]
+#IF
+RANDOM 1
+#ACT
+GOTO @顶部首冲按钮红点
+GOTO @首充_更新数据
+GOTO @首充_更新界面
+
+[@首充_更新数据]
+#IF
+RANDOM 1
+#ACT
+MOV S$首充_当前选中挡位按钮显示图片1 xx
+MOV S$首充_当前选中挡位按钮显示图片2 xx
+MOV S$首充_当前选中挡位按钮显示图片3 xx
+MOV S$首充_当前选中挡位按钮显示图片<$STR(N$首充_当前所选挡位)> bg_firstgive_04
+
+MOV S$首充_当前选中日期按钮显示图片0 xx
+MOV S$首充_当前选中日期按钮显示图片1 xx
+MOV S$首充_当前选中日期按钮显示图片2 xx
+MOV S$首充_当前选中日期按钮显示图片<$STR(N$首充_当前所选日期)> img_xuanzhong
+
+MOV S$首充_奖励数组字符串 <$cfg_shouchong(<$STR(N$首充_当前所选挡位)>_<$INC.<$JOBID>.1>)>
+SPLIT <$STR(S$首充_奖励数组字符串)> | S$首充_奖励数组
+MOV S$首充_当前奖励数组字符串 <$STR(S$首充_奖励数组_<$STR(N$首充_当前所选日期)>)>
+SPLIT <$STR(S$首充_当前奖励数组字符串)> & S$首充_当前奖励数组
+SPLIT <$STR(S$首充_当前奖励数组_0)> * S$首充_当前奖励1
+SPLIT <$STR(S$首充_当前奖励数组_1)> * S$首充_当前奖励2
+SPLIT <$STR(S$首充_当前奖励数组_2)> * S$首充_当前奖励3
+SPLIT <$STR(S$首充_当前奖励数组_3)> * S$首充_当前奖励4
+
+
+MOV N$首充_当前挡位所需充值金额 <$cfg_shouchong(<$STR(N$首充_当前所选挡位)>_0)>
+
+#IF
+EQUAL <$HUMAN(首充_领取数据<$STR(N$首充_当前所选挡位)>)> 
+#ACT
+MOV S$首充_当前挡位最后领取时间 
+MOV N$首充_当前挡位领取次数 0
+#ELSEACT
+SPLIT <$HUMAN(首充_领取数据<$STR(N$首充_当前所选挡位)>)> | S$首充_领取数据
+MOV S$首充_当前挡位最后领取时间 <$STR(S$首充_领取数据_0)>
+MOV N$首充_当前挡位领取次数 <$STR(S$首充_领取数据_1)>
+
+#IF
+!SMALL N$首充_当前挡位领取次数 <$INC.N$首充_当前所选日期.1>
+#ACT
+MOV S$首充_已领取图标显示图片 1900000679
+#ELSEACT
+MOV S$首充_已领取图标显示图片 xx
+
+[@首充_更新界面]
+#IF
+RANDOM 1
+#SAY
+<Img|children={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,41,42,43,44,45,46,99}|show=5|esc=0|bg=1|img=private/shouchong/bg_firstgive_01.png|loadDelay=0|scale=1>
+<Button|id=99|x=726.0|y=21.0|nimg=public/btn_fitstpay_close.png|size=18|link=@exit>
+<Img|id=2|x=186.0|y=118.0|img=private/shouchong/tab1.png|scale=1|esc=0|link=@首充_切换挡位&首充_参数_挡位=1>
+<Img|id=3|x=336.0|y=118.0|img=private/shouchong/tab2.png|scale=1|esc=0|link=@首充_切换挡位&首充_参数_挡位=2>
+<Img|id=4|x=486.0|y=118.0|img=private/shouchong/tab3.png|scale=1|esc=0|link=@首充_切换挡位&首充_参数_挡位=3>
+
+<Img|id=5|x=181.0|y=112.0|img=private/shouchong/<$STR(S$首充_当前选中挡位按钮显示图片1)>.png|scale=1|esc=0>
+<Img|id=6|x=331.0|y=112.0|img=private/shouchong/<$STR(S$首充_当前选中挡位按钮显示图片2)>.png|scale=1|esc=0>
+<Img|id=7|x=481.0|y=112.0|img=private/shouchong/<$STR(S$首充_当前选中挡位按钮显示图片3)>.png|scale=1|esc=0>
+
+<Img|id=41|x=325.0|y=113.0|img=public/<$STR(S$首充红点_红点显示图片1)>.png|scale=1|esc=0>
+<Img|id=42|x=475.0|y=113.0|img=public/<$STR(S$首充红点_红点显示图片2)>.png|scale=1|esc=0>
+<Img|id=43|x=625.0|y=113.0|img=public/<$STR(S$首充红点_红点显示图片3)>.png|scale=1|esc=0>
+
+<Img|id=8|x=352.0|y=288.0|img=private/shouchong/btn_sr.png|link=@首充_切换日期&首充_参数_日期=0>
+<Img|id=9|x=468.0|y=288.0|img=private/shouchong/btn_cr.png|link=@首充_切换日期&首充_参数_日期=1>
+<Img|id=10|x=584.0|y=288.0|img=private/shouchong/btn_3r.png|link=@首充_切换日期&首充_参数_日期=2>
+
+<Img|id=11|x=347.0|y=283.0|img=private/shouchong/<$STR(S$首充_当前选中日期按钮显示图片0)>.png|scale=1|esc=0>
+<Img|id=12|x=463.0|y=283.0|img=private/shouchong/<$STR(S$首充_当前选中日期按钮显示图片1)>.png|scale=1|esc=0>
+<Img|id=13|x=579.0|y=283.0|img=private/shouchong/<$STR(S$首充_当前选中日期按钮显示图片2)>.png|scale=1|esc=0>
+
+<Img|id=44|x=435.0|y=282.0|img=public/<$STR(S$首充红点_红点显示图片<$STR(N$首充_当前所选挡位)>_1)>.png|scale=1|esc=0>
+<Img|id=45|x=551.0|y=282.0|img=public/<$STR(S$首充红点_红点显示图片<$STR(N$首充_当前所选挡位)>_2)>.png|scale=1|esc=0>
+<Img|id=46|x=627.0|y=282.0|img=public/<$STR(S$首充红点_红点显示图片<$STR(N$首充_当前所选挡位)>_3)>.png|scale=1|esc=0>
+
+<Img|id=14|x=371.0|y=335.0|img=private/shouchong/img_wenzi.png|scale=1|esc=0>
+
+
+<Button|id=15|x=338.0|y=390.0|nimg=private/shouchong/btn_charge_02.png|size=18|link=@前往充值>
+<Button|id=16|x=562.0|y=389.0|nimg=private/shouchong/btn_charge_01.png|size=18|link=@首充_领取奖励>
+
+<Img|id=17|x=368.0|y=204.0|img=public/clk.png|scale=1|esc=0>
+<Img|id=18|x=446.0|y=204.0|img=public/clk.png|scale=1|esc=0>
+<Img|id=19|x=524.0|y=204.0|img=public/clk.png|scale=1|esc=0>
+<Img|id=20|x=601.0|y=204.0|img=public/clk.png|scale=1|esc=0>
+
+<ItemShow|id=21|x=363.0|y=199.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$首充_当前奖励1_0)>).Looks>|itemcount=<$STR(S$首充_当前奖励1_1)>|name=<$STR(S$首充_当前奖励1_0)>|showtips=1|bgtype=1>
+<ItemShow|id=22|x=441.0|y=199.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$首充_当前奖励2_0)>).Looks>|itemcount=<$STR(S$首充_当前奖励2_1)>|name=<$STR(S$首充_当前奖励2_0)>|showtips=1|bgtype=1>
+<ItemShow|id=23|x=519.0|y=199.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$首充_当前奖励3_0)>).Looks>|itemcount=<$STR(S$首充_当前奖励3_1)>|name=<$STR(S$首充_当前奖励3_0)>|showtips=1|bgtype=1>
+<ItemShow|id=24|x=597.0|y=199.0|width=70|height=70|itemid=<$STDITEM(<$STR(S$首充_当前奖励4_0)>).Looks>|itemcount=<$STR(S$首充_当前奖励4_1)>|name=<$STR(S$首充_当前奖励4_0)>|showtips=1|bgtype=1>
+<Img|id=25|x=368.0|y=204.0|img=public/<$STR(S$首充_已领取图标显示图片)>.png|scale=1|esc=0>
+<Img|id=26|x=446.0|y=204.0|img=public/<$STR(S$首充_已领取图标显示图片)>.png|scale=1|esc=0>
+<Img|id=27|x=524.0|y=204.0|img=public/<$STR(S$首充_已领取图标显示图片)>.png|scale=1|esc=0>
+<Img|id=28|x=601.0|y=204.0|img=public/<$STR(S$首充_已领取图标显示图片)>.png|scale=1|esc=0>
+#IF
+EQUAL <$JOBID> 0
+#SAY
+<Img|id=29|x=-32.0|y=123.0|esc=0|scale=1|img=private/shouchong/wuqi0.png>
+<Frames|id=30|x=55.0|y=104.0|rotate=0|blend=1|speed=25|scale=1|loop=-1|count=10|prefix=private/shouchong/42600_|suffix=.png>
+
+#IF
+EQUAL <$JOBID> 1
+#SAY
+<Img|id=29|x=-70.0|y=80.0|esc=0|scale=1|img=private/shouchong/wuqi1.png>
+<Frames|id=30|x=-40|y=101.0|rotate=0|count=10|speed=25|scale=0.9|loop=-1|blend=1|prefix=private/shouchong/06246_|suffix=.png>
+
+#IF
+EQUAL <$JOBID> 2
+#SAY
+<Img|id=29|x=-62.0|y=123.0|esc=0|scale=1|img=private/shouchong/wuqi2.png>
+<Frames|id=30|x=-55|y=124.0|rotate=0|count=10|speed=25|scale=1|loop=-1|blend=1|prefix=private/shouchong/06247_|suffix=.png>
+
+;首充_参数_挡位
+[@首充_切换挡位]
+#IF
+RANDOM 1
+#ACT
+MOV N$首充_当前所选挡位 <$STR(S$首充_参数_挡位)>
+GOTO @首充_更新全部
+
+;首充_参数_日期
+[@首充_切换日期]
+#IF
+RANDOM 1
+#ACT
+MOV N$首充_当前所选日期 <$STR(S$首充_参数_日期)>
+GOTO @首充_更新全部
+
+[@首充_领取奖励]
+#IF
+SMALL <$CustomValue(51)> <$STR(N$首充_当前挡位所需充值金额)>
+#ACT
+SENDMSG 5 充值金额未达到<$STR(N$首充_当前挡位所需充值金额)>米,还需<$DEC.N$首充_当前挡位所需充值金额.<$CustomValue(51)>>米
+SENDMSG 19 充值金额未达到<$STR(N$首充_当前挡位所需充值金额)>米,还需<$DEC.N$首充_当前挡位所需充值金额.<$CustomValue(51)>>米
+BREAK
+
+#IF
+!SMALL N$首充_当前挡位领取次数 <$INC.N$首充_当前所选日期.1>
+#ACT
+SENDMSG 5 已经领取过奖励了
+SENDMSG 19 已经领取过奖励了
+BREAK
+
+#IF
+EQUAL S$首充_当前挡位最后领取时间 <$DATE>
+#ACT
+SENDMSG 5 今天已经领取过了，明天再来吧
+SENDMSG 19 今天已经领取过了，明天再来吧
+BREAK
+
+#IF
+!EQUAL N$首充_当前挡位领取次数 <$STR(N$首充_当前所选日期)>
+#ACT
+SENDMSG 5 请先领取上一日的奖励
+SENDMSG 19 请先领取上一日的奖励
+BREAK
+
+#IF
+!CheckBagSize 4
+#ACT
+SENDMSG 5 背包空间不足,需要4个空间
+SENDMSG 19 背包空间不足,需要4个空间
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+GIVE <$STR(S$首充_当前奖励1_0)> <$STR(S$首充_当前奖励1_1)> 1
+GIVE <$STR(S$首充_当前奖励2_0)> <$STR(S$首充_当前奖励2_1)> 1
+GIVE <$STR(S$首充_当前奖励3_0)> <$STR(S$首充_当前奖励3_1)> 1
+Money 4 + <$STR(S$首充_当前奖励4_1)>
+INC N$首充_当前挡位领取次数 1
+MOV S$首充_当前挡位最后领取时间 <$DATE>
+CALCVAR HUMAN 首充_领取数据<$STR(N$首充_当前所选挡位)> = <$STR(S$首充_当前挡位最后领取时间)>|<$STR(N$首充_当前挡位领取次数)> 1
+GOTO @首充_更新全部
+SENDMSG 14 恭喜%s成功领取首冲奖励，获得大量珍贵物品和特权
+SENDMSG 5 领取成功
+SENDMSG 19 领取成功
+
+
+ [@前往充值]
+<Img|id=2|children={3,4,5,6,7,8,9,10,11,12,13}|x=131.0|y=28.0|scale=1|bg=1|img=public/frame_squared_outside.png|loadDelay=0|esc=0>
+<Img|id=3|x=21.0|y=45.0|img=public/bg_content_01.png|scale=1|esc=0>
+<Img|id=4|children={4-1,4-2,4-3,4-5,4-6,4-7,4-8}|x=27.0|y=46.0|esc=0|scale=1|img=private/shouchong/bg_charge_item_02.png>
+<Text|id=4-1|x=70.0|y=14.0|rotate=0|size=18|color=67|text=1000>
+<Img|id=4-2|x=115.0|y=17.0|img=private/shouchong/icon_gold_01.png|scale=1|esc=0>
+<Img|id=4-3|x=28.0|y=70.0|img=private/shouchong/icon_charge_01.png|scale=1|esc=0>
+<Img|id=4-5|x=4.0|y=209.0|width=194|height=30|esc=0|img=private/shouchong/bg_charge_price.png|scale=1>
+<Text|id=4-6|x=80.0|y=211.0|size=18|color=255|text=￥10>
+<Layout|id=4-8|x=4.0|y=5.0|width=194|height=242|rotate=0|link=@拉起10元充值>
+
+<Img|id=5|children={5-1,5-2,5-3,5-5,5-6,5-7,5-8}|x=232.0|y=46.0|esc=0|scale=1|img=private/shouchong/bg_charge_item_02.png>
+<Text|id=5-1|x=70.0|y=14.0|rotate=0|size=18|color=67|text=5000>
+<Img|id=5-2|x=115.0|y=17.0|img=private/shouchong/icon_gold_01.png|scale=1|esc=0>
+<Img|id=5-3|x=28.0|y=70.0|img=private/shouchong/icon_charge_02.png|scale=1|esc=0>
+<Img|id=5-5|x=4.0|y=209.0|width=194|height=30|esc=0|img=private/shouchong/bg_charge_price.png|scale=1>
+<Text|id=5-6|x=80.0|y=211.0|size=18|color=255|text=￥50>
+<Layout|id=5-8|x=4.0|y=5.0|width=194|height=242|rotate=0|link=@拉起50元充值>
+
+<Img|id=6|children={6-1,6-2,6-3,6-5,6-6,6-7,6-8}|x=438.0|y=46.0|esc=0|scale=1|img=private/shouchong/bg_charge_item_02.png>
+<Text|id=6-1|x=70.0|y=14.0|rotate=0|size=18|color=67|text=9800>
+<Img|id=6-2|x=115.0|y=17.0|img=private/shouchong/icon_gold_01.png|scale=1|esc=0>
+<Img|id=6-3|x=28.0|y=70.0|img=private/shouchong/icon_charge_03.png|scale=1|esc=0>
+<Img|id=6-5|x=4.0|y=209.0|width=194|height=30|esc=0|img=private/shouchong/bg_charge_price.png|scale=1>
+<Text|id=6-6|x=80.0|y=211.0|size=18|color=255|text=￥98>
+<Layout|id=6-8|x=4.0|y=5.0|width=194|height=242|rotate=0|link=@拉起98元充值>
+
+<Img|id=7|children={7-1,7-2,7-3,7-5,7-6,7-7,7-8}|x=643.0|y=46.0|esc=0|scale=1|img=private/shouchong/bg_charge_item_02.png>
+<Text|id=7-1|x=65.0|y=14.0|rotate=0|size=18|color=67|text=16800>
+<Img|id=7-2|x=120.0|y=17.0|img=private/shouchong/icon_gold_01.png|scale=1|esc=0>
+<Img|id=7-3|x=28.0|y=70.0|img=private/shouchong/icon_charge_04.png|scale=1|esc=0>
+<Img|id=7-5|x=4.0|y=209.0|width=194|height=30|esc=0|img=private/shouchong/bg_charge_price.png|scale=1>
+<Text|id=7-6|x=75.0|y=211.0|size=18|color=255|text=￥168>
+<Layout|id=7-8|x=4.0|y=5.0|width=194|height=242|rotate=0|link=@拉起168元充值>
+
+<Img|id=8|children={8-1,8-2,8-3,8-5,8-6,8-7,8-8}|x=27.0|y=300.0|esc=0|scale=1|img=private/shouchong/bg_charge_item_02.png>
+<Text|id=8-1|x=65.0|y=14.0|rotate=0|size=18|color=67|text=32800>
+<Img|id=8-2|x=120.0|y=17.0|img=private/shouchong/icon_gold_01.png|scale=1|esc=0>
+<Img|id=8-3|x=28.0|y=70.0|img=private/shouchong/icon_charge_05.png|scale=1|esc=0>
+<Img|id=8-5|x=4.0|y=209.0|width=194|height=30|esc=0|img=private/shouchong/bg_charge_price.png|scale=1>
+<Text|id=8-6|x=75.0|y=211.0|size=18|color=255|text=￥328>
+<Layout|id=8-8|x=4.0|y=5.0|width=194|height=242|rotate=0|link=@拉起328元充值>
+
+<Img|id=9|children={9-1,9-2,9-3,9-5,9-6,9-7,9-8}|x=232.0|y=300.0|esc=0|scale=1|img=private/shouchong/bg_charge_item_02.png>
+<Text|id=9-1|x=65.0|y=14.0|rotate=0|size=18|color=67|text=64800>
+<Img|id=9-2|x=120.0|y=17.0|img=private/shouchong/icon_gold_01.png|scale=1|esc=0>
+<Img|id=9-3|x=28.0|y=70.0|img=private/shouchong/icon_charge_06.png|scale=1|esc=0>
+<Img|id=9-5|x=4.0|y=209.0|width=194|height=30|esc=0|img=private/shouchong/bg_charge_price.png|scale=1>
+<Text|id=9-6|x=75.0|y=211.0|size=18|color=255|text=￥648>
+<Layout|id=9-8|x=4.0|y=5.0|width=194|height=242|rotate=0|link=@拉起648元充值>
+
+<Img|id=10|children={10-1,10-2,10-3,10-5,10-6,10-7,10-8}|x=438.0|y=300.0|esc=0|scale=1|img=private/shouchong/bg_charge_item_02.png>
+<Text|id=10-1|x=60.0|y=14.0|rotate=0|size=18|color=67|text=100000>
+<Img|id=10-2|x=125.0|y=17.0|img=private/shouchong/icon_gold_01.png|scale=1|esc=0>
+<Img|id=10-3|x=28.0|y=70.0|img=private/shouchong/icon_charge_07.png|scale=1|esc=0>
+<Img|id=10-5|x=4.0|y=209.0|width=194|height=30|esc=0|img=private/shouchong/bg_charge_price.png|scale=1>
+<Text|id=10-6|x=70.0|y=211.0|size=18|color=255|text=￥1000>
+<Layout|id=10-8|x=4.0|y=5.0|width=194|height=242|rotate=0|link=@拉起1000元充值>
+
+<Img|id=11|children={11-1,11-2,11-3,11-5,11-6,11-7,11-8}|x=643.0|y=300.0|esc=0|scale=1|img=private/shouchong/bg_charge_item_02.png>
+<Text|id=11-1|x=60.0|y=14.0|rotate=0|size=18|color=67|text=300000>
+<Img|id=11-2|x=125.0|y=17.0|img=private/shouchong/icon_gold_01.png|scale=1|esc=0>
+<Img|id=11-3|x=28.0|y=70.0|img=private/shouchong/icon_charge_08.png|scale=1|esc=0>
+<Img|id=11-5|x=4.0|y=209.0|width=194|height=30|esc=0|img=private/shouchong/bg_charge_price.png|scale=1>
+<Text|id=11-6|x=70.0|y=211.0|size=18|color=255|text=￥3000>
+<Layout|id=11-8|x=4.0|y=4.0|width=194|height=242|rotate=0|link=@拉起3000元充值>
+
+<Button|id=12|x=815.0|y=-4.0|mimg=public/btn_close_01.png|color=255|scale=1|pimg=public/btn_close_01.png|size=18|nimg=public/btn_close_01.png|link=@exit>
+<Text|id=13|x=339.0|y=10.0|size=18|color=100|text=充值比例：1元=100元宝>
+
+#if
+CHECK [10] 0
+#SAY
+<Img|id=4-7|x=0.0|y=0.0|width=190|height=200|img=private/shouchong/shouzeng.png|scale=1|esc=0>
+#if
+CHECK [11] 0
+#SAY
+<Img|id=5-7|x=0.0|y=-0.0|width=190|height=200|img=private/shouchong/shouzeng.png|scale=1|esc=0>
+#if
+CHECK [12] 0
+#SAY
+<Img|id=6-7|x=0.0|y=-0.0|width=190|height=200|img=private/shouchong/shouzeng.png|scale=1|esc=0>
+#if
+CHECK [13] 0
+#SAY
+<Img|id=7-7|x=0.0|y=0.0|width=190|height=200|img=private/shouchong/shouzeng.png|scale=1|esc=0>
+#if
+CHECK [14] 0
+#SAY
+<Img|id=8-7|x=0.0|y=0.0|width=190|height=200|img=private/shouchong/shouzeng.png|scale=1|esc=0>
+#if
+CHECK [15] 0
+#SAY
+<Img|id=9-7|x=0.0|y=0.0|width=190|height=200|img=private/shouchong/shouzeng.png|scale=1|esc=0>
+#if
+CHECK [16] 0
+#SAY
+<Img|id=10-7|x=0.0|y=0.0|width=190|height=200|img=private/shouchong/shouzeng.png|scale=1|esc=0>
+#if
+CHECK [17] 0
+#SAY
+<Img|id=11-7|x=0.0|y=0.0|width=190|height=200|img=private/shouchong/shouzeng.png|scale=1|esc=0>
+
+
+[@拉起10元充值]
+#IF
+TRUE
+#ACT
+PULLPAY 10 1 2 400 400
+BREAK
+
+[@拉起50元充值]
+#IF
+TRUE
+#ACT
+PULLPAY 50 1 2 400 400
+BREAK
+
+[@拉起98元充值]
+#IF
+TRUE
+#ACT
+PULLPAY 98 1 2 400 400
+BREAK
+
+[@拉起168元充值]
+#IF
+TRUE
+#ACT
+PULLPAY 168 1 2 400 400
+BREAK
+
+[@拉起328元充值]
+#IF
+TRUE
+#ACT
+PULLPAY 328 1 2 400 400
+BREAK
+
+[@拉起648元充值]
+#IF
+TRUE
+#ACT
+PULLPAY 648 1 2 400 400
+BREAK
+
+[@拉起1000元充值]
+#IF
+TRUE
+#ACT
+PULLPAY 1000 1 2 400 400
+BREAK
+
+[@拉起3000元充值]
+#IF
+TRUE
+#ACT
+PULLPAY 3000 1 2 400 400
+BREAK
+
+}

@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=39
+IsMain=0
+stepcount = 2
+title = [　]天界煞星
+ID = 39
+stepstitle1 = <color=graygolden 任务描述：>\<color=graygolden 杀死1只【赤阳魔尊】>\<color=graygolden 任务完成度:><color=green <$TASKVAL(39).I0>/1>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+stepstitle2 = <color=green 任务完成：>\ \　<点击领取奖励/@XXXXX>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>

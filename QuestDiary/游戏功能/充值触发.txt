@@ -1,0 +1,1406 @@
+[@充值触发]
+{
+[@ReCharge]
+
+;=====================================================三卡补发区域
+
+#IF
+EQUAL $PARAM(44) 19
+EQUAL $PARAM(45) 38
+EQUAL N$月卡判定 1
+CHECK [224] 0
+#ACT
+SET [224] 1
+MOV N$月卡判定 0
+CHANGECUSTOMVALUE 34 = <$INC.<$INC.$LONGDATE.28800>.2592000>
+MailGIve 绑定元宝 3800
+SENDMAIL 1 系统消息 购买月卡成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(34)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+#IF
+EQUAL $PARAM(44) 20
+EQUAL $PARAM(45) 88
+EQUAL N$月卡判定 1
+CHECK [225] 0
+#ACT
+SET [225] 1
+MOV N$季卡判定 0
+CHANGECUSTOMVALUE 35 = <$INC.<$INC.$LONGDATE.28800>.7776000>
+MailGIve 绑定元宝 8800
+SENDMAIL 1 系统消息 购买季卡成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(35)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+
+#IF
+EQUAL $PARAM(44) 21
+EQUAL $PARAM(45) 168
+EQUAL N$年卡判定 1
+CHECK [226] 0
+#ACT
+SET [226] 1
+MOV N$年卡判定 0
+CHANGECUSTOMVALUE 36 = <$INC.<$INC.$LONGDATE.28800>.31536000>
+MailGIve 绑定元宝 16800
+SENDMAIL 1 系统消息 购买年卡成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(36)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+;=====================================================
+
+
+#IF
+EQUAL $CUSTOMVALUE(87) $CUSTOMVALUE(50)
+#ACT
+CHANGECUSTOMVALUE 50 + 1
+#IF
+RANDOM 1
+#ACT
+ADDBTN 8 6615 6615 6615 0 0 　 0 0   ;充值返利
+
+#IF
+LARGE $PARAM(45) 0
+#ACT
+CHANGECUSTOMVALUE 51 + $PARAM(45)
+CHANGECUSTOMVALUE 49 + $PARAM(45)
+CHANGECUSTOMVALUE 24 + <$MULT.$PARAM(45).100>
+GOTO @计算充值抽奖次数
+GOTO @顶部累充红点
+GOTO @顶部按钮会员红点
+GOTO @顶部首冲按钮红点
+
+
+#IF
+LARGE $PARAM(45) 0
+LARGE <$HFCOUNT> 0
+!SMALL G78 $LONGDATE
+#ACT
+CHANGECUSTOMVALUE 37 + $PARAM(45)
+CHANGECUSTOMVALUE 38 + $PARAM(45)
+GOTO @Lemon合服FH
+
+
+;=====================================================五一活动礼包1
+;技能礼包1
+#IF
+EQUAL $PARAM(44) 19
+EQUAL $PARAM(45) 69
+#ACT
+MAILGIVE 书页 688 1
+MAILGIVE 月光宝盒(小) 2 1
+SENDMAIL 5101 五一活动礼包 恭喜您成功购买技能礼包一，请点提取！
+BREAK
+
+;技能礼包2
+#IF
+EQUAL $PARAM(44) 19
+EQUAL $PARAM(45) 129
+#ACT
+MAILGIVE 书页 1288 1
+MAILGIVE 月光宝盒(大) 2 1
+SENDMAIL 5102 五一活动礼包 恭喜您成功购买技能礼包二，请点提取！
+BREAK
+
+;时装礼包1
+#IF
+EQUAL $PARAM(44) 19
+EQUAL $PARAM(45) 649
+#ACT
+MAILGIVE 武器时装自选箱 1 1
+MAILGIVE 心心相印(时装) 1 1
+MAILGIVE 绑定元宝 64900
+SENDMAIL 5103 五一活动礼包 恭喜您成功购买时装礼包一，请点提取！
+BREAK
+
+;时装礼包2
+#IF
+EQUAL $PARAM(44) 20
+EQUAL $PARAM(45) 649
+#ACT
+MAILGIVE 衣服时装自选箱 1 1
+MAILGIVE 花影缤纷(时装) 1 1
+MAILGIVE 绑定元宝 64900
+SENDMAIL 5104 五一活动礼包 恭喜您成功购买时装礼包二，请点提取！
+BREAK
+
+;购买鹤嘴锄
+#IF
+EQUAL $PARAM(44) 20
+EQUAL $PARAM(45) 69
+#ACT
+SET [20] 1
+MAILGIVE 鹤嘴锄(卓越) 1 1
+SENDMAIL 5104 矿工礼包 恭喜您成功购买矿工礼包，请点提取！
+BREAK
+
+;坐骑礼包1
+#IF
+EQUAL $PARAM(44) 21
+EQUAL $PARAM(45) 69
+#ACT
+MAILGIVE 灵兽精粹 688 1
+MAILGIVE 月光宝盒(小) 1 1
+SENDMAIL 5104 五一活动礼包 恭喜您成功购买坐骑礼包一，请点提取！
+BREAK
+
+;坐骑礼包2
+#IF
+EQUAL $PARAM(44) 21
+EQUAL $PARAM(45) 649
+#ACT
+MAILGIVE 衣服时装自选箱 1 1
+MAILGIVE 花影缤纷(时装) 1 1
+MAILGIVE 绑定元宝 64900
+SENDMAIL 5104 五一活动礼包 恭喜您成功购买坐骑礼包一，请点提取！
+BREAK
+
+
+
+#IF
+CHECK [10] 0
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 10
+#ACT
+SET [10] 1
+MAILGIVE 绑定元宝 500
+SENDMAIL 1 首次充值奖励 恭喜您完成10元首冲，额外获得500绑定元宝，请点提取！
+GOTO @前往充值
+BREAK
+
+#IF
+CHECK [11] 0
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 50
+#ACT
+SET [11] 1
+MAILGIVE 绑定元宝 2500
+SENDMAIL 1 首次充值奖励 恭喜您完成50元首冲，额外获得2500绑定元宝，请点提取！
+GOTO @前往充值
+BREAK
+
+#IF
+CHECK [12] 0
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 98
+#ACT
+SET [12] 1
+MAILGIVE 绑定元宝 4900
+SENDMAIL 1 首次充值奖励 恭喜您完成98元首冲，额外获得4900绑定元宝，请点提取！
+GOTO @前往充值
+BREAK
+
+#IF
+CHECK [13] 0
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 168
+#ACT
+SET [13] 1
+MAILGIVE 绑定元宝 8400
+SENDMAIL 1 首次充值奖励 恭喜您完成168元首冲，额外获得8400绑定元宝，请点提取！
+GOTO @前往充值
+BREAK
+
+#IF
+CHECK [14] 0
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 328
+#ACT
+SET [14] 1
+MAILGIVE 绑定元宝 16400
+SENDMAIL 1 首次充值奖励 恭喜您完成328元首冲，额外获得16400绑定元宝，请点提取！
+GOTO @前往充值
+BREAK
+
+#IF
+CHECK [15] 0
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 648
+#ACT
+SET [15] 1
+MAILGIVE 绑定元宝 32400
+SENDMAIL 1 首次充值奖励 恭喜您完成648元首冲，额外获得32400绑定元宝，请点提取！
+GOTO @前往充值
+BREAK
+
+#IF
+CHECK [16] 0
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 1000
+#ACT
+SET [16] 1
+MAILGIVE 绑定元宝 50000
+SENDMAIL 1 首次充值奖励 恭喜您完成1000元首冲，额外获得50000绑定元宝，请点提取！
+GOTO @前往充值
+BREAK
+
+#IF
+CHECK [17] 0
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 3000
+#ACT
+SET [17] 1
+MAILGIVE 绑定元宝 150000
+SENDMAIL 1 首次充值奖励 恭喜您完成3000元首冲，额外获得150000绑定元宝，请点提取！
+GOTO @前往充值
+BREAK
+
+#IF
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 6
+CheckItem 30米充值2折券 1
+#ACT
+TAKE 30米充值2折券 1
+GAMEGOLD + 2400
+CHANGECUSTOMVALUE 51 + 24
+CHANGECUSTOMVALUE 49 + 24
+CHANGECUSTOMVALUE 24 + 2400
+GOTO @计算充值抽奖次数
+BREAK
+
+#IF
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 30
+CheckItem 100米充值3折券 1
+#ACT
+TAKE 100米充值3折券 1
+GAMEGOLD + 7000
+CHANGECUSTOMVALUE 51 + 70
+CHANGECUSTOMVALUE 49 + 70
+CHANGECUSTOMVALUE 24 + 7000
+GOTO @计算充值抽奖次数
+BREAK
+
+#IF
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 324
+CheckItem 648米5折券 1
+#ACT
+TAKE 648米5折券 1
+GAMEGOLD + 32400
+CHANGECUSTOMVALUE 51 + 324
+CHANGECUSTOMVALUE 49 + 324
+CHANGECUSTOMVALUE 24 + 32400
+GOTO @计算充值抽奖次数
+BREAK
+
+#IF
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 700
+CheckItem 1000米7折券 1
+#ACT
+TAKE 1000米7折券 1
+GAMEGOLD + 30000
+CHANGECUSTOMVALUE 51 + 300
+CHANGECUSTOMVALUE 49 + 300
+CHANGECUSTOMVALUE 24 + 30000
+GOTO @计算充值抽奖次数
+BREAK
+
+#IF
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 2400
+CheckItem 3000米8折券 1
+#ACT
+TAKE 3000米8折券 1
+GAMEGOLD + 60000
+CHANGECUSTOMVALUE 51 + 600
+CHANGECUSTOMVALUE 49 + 600
+CHANGECUSTOMVALUE 24 + 60000
+GOTO @计算充值抽奖次数
+BREAK
+
+#IF
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 4500
+CheckItem 5000米充值9折券 1
+#ACT
+TAKE 5000米充值9折券 1
+GAMEGOLD + 50000
+CHANGECUSTOMVALUE 51 + 500
+CHANGECUSTOMVALUE 49 + 500
+CHANGECUSTOMVALUE 24 + 50000
+GOTO @计算充值抽奖次数
+BREAK
+
+#IF
+EQUAL $PARAM(44) 2
+EQUAL $PARAM(45) 9
+CheckItem 9米抵98米折扣券 1
+#ACT
+TAKE 9米抵98米折扣券 1
+GAMEGOLD + 8900
+CHANGECUSTOMVALUE 51 + 89
+CHANGECUSTOMVALUE 49 + 89
+CHANGECUSTOMVALUE 24 + 8900
+GOTO @计算充值抽奖次数
+BREAK
+
+#IF
+EQUAL $PARAM(44) 31
+EQUAL $PARAM(45) 28
+#ACT
+SET [223] 1
+SENDMSG 19 成功购买高级战令
+SENDMSG 5 成功购买高级战令
+BREAK
+
+
+;----------------------------------------------------------------合服活动
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 30
+#ACT
+SET [672] 1
+;---------------------------------------30购买材料,自行替换!
+MailGIVE 绑定元宝 9000
+MailGIVE 法宝精粹 20 1
+MailGIVE 凶器精粹 20 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了30元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 98
+#ACT
+SET [673] 1
+;---------------------------------------98购买材料,自行替换!
+MailGIVE 绑定元宝 29400
+MailGIVE 特戒精华 50 1
+MailGIVE 特装大礼包 4 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了98元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 328
+EQUAL $MOD.$HFCOUNT.7 1
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 特戒精粹 128 1
+MailGIVE 特戒精魄 68 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 648
+EQUAL $MOD.$HFCOUNT.7 1
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 特戒精粹 198 1
+MailGIVE 特戒精魄 108 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 328
+EQUAL $MOD.$HFCOUNT.7 2
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 灵兽精粹 300 1
+MailGIVE 花影缤纷(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 648
+EQUAL $MOD.$HFCOUNT.7 2
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 骑战技能礼包 1 1
+MailGIVE 怒啸神光虎(坐骑) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 328
+EQUAL $MOD.$HFCOUNT.7 3
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 凶器精粹 200 1
+MailGIVE 烈焰灼心(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 648
+EQUAL $MOD.$HFCOUNT.7 3
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 凶器精粹 80 1
+MailGIVE 凶器自选箱 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 328
+EQUAL $MOD.$HFCOUNT.7 4
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 法宝精粹 300 1
+MailGIVE 雪花飞舞(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 648
+EQUAL $MOD.$HFCOUNT.7 4
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 法宝精粹 80 1
+MailGIVE 法宝自选箱 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 328
+EQUAL $MOD.$HFCOUNT.7 5
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 特装精粹(攻) 400 1
+MailGIVE 热情似火(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 648
+EQUAL $MOD.$HFCOUNT.7 5
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 特装精粹(攻) 100 1
+MailGIVE 武器时装自选箱 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 328
+EQUAL $MOD.$HFCOUNT.7 6
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 特装精粹(防) 400 1
+MailGIVE 步步生财(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 648
+EQUAL $MOD.$HFCOUNT.7 6
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 特装精粹(防) 100 1
+MailGIVE 防具时装自选箱 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 328
+EQUAL $MOD.$HFCOUNT.7 7
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 仙翎之羽 300 1
+MailGIVE 心心相印(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(44) 32
+EQUAL $PARAM(45) 648
+EQUAL $MOD.$HFCOUNT.7 7
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 仙翎之羽 120 1
+MailGIVE 羽翼自选箱 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+;----------------------------------------------------------------------------------------------------------------------------------------------月卡购买
+#IF
+EQUAL $PARAM(44) 19
+EQUAL $PARAM(45) 38
+CHECK [224] 1
+#ACT
+CHANGECUSTOMVALUE 34 + 2592000
+MailGIve 绑定元宝 3800
+SENDMAIL 1 系统消息 月卡续期成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(34)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+#IF
+EQUAL $PARAM(44) 19
+EQUAL $PARAM(45) 38
+CHECK [224] 0
+#ACT
+SET [224] 1
+CHANGECUSTOMVALUE 34 = <$INC.<$INC.$LONGDATE.28800>.2592000>
+MailGIve 绑定元宝 3800
+SENDMAIL 1 系统消息 购买月卡成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(34)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+
+
+;---------------------------------------------------------------------------------------------------------------------------------------------季卡购买
+#IF
+EQUAL $PARAM(44) 20
+EQUAL $PARAM(45) 88
+CHECK [225] 1
+#ACT
+CHANGECUSTOMVALUE 35 + 7776000
+MailGIve 绑定元宝 8800
+SENDMAIL 1 系统消息 购买季卡成功季卡续期成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(35)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+#IF
+EQUAL $PARAM(44) 20
+EQUAL $PARAM(45) 88
+CHECK [225] 0
+#ACT
+SET [225] 1
+CHANGECUSTOMVALUE 35 = <$INC.<$INC.$LONGDATE.28800>.7776000>
+MailGIve 绑定元宝 8800
+SENDMAIL 1 系统消息 购买季卡成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(35)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+;-------------------------------------------------------------------------------------------------------------------------------------------年卡购买
+#IF
+EQUAL $PARAM(44) 21
+EQUAL $PARAM(45) 168
+CHECK [226] 1
+#ACT
+CHANGECUSTOMVALUE 36 + 31536000
+MailGIve 绑定元宝 16800
+SENDMAIL 1 系统消息 购买年卡成功年卡续期成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(36)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+#IF
+EQUAL $PARAM(44) 21
+EQUAL $PARAM(45) 168
+CHECK [226] 0
+#ACT
+SET [226] 1
+CHANGECUSTOMVALUE 36 = <$INC.<$INC.$LONGDATE.28800>.31536000>
+MailGIve 绑定元宝 16800
+SENDMAIL 1 系统消息 购买年卡成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(36)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+
+
+
+;-------------------------------------------------------------------------------------------------------------------------------------------------------------------投资返利购买
+#IF
+EQUAL $PARAM(44) 30
+EQUAL $PARAM(45) 98
+#ACT
+SET [277] 1
+SENDMSG 19 成功投资
+BREAK
+
+;--------------------------------------------------------------------------------------------------------------------------------------------------------------------开服礼包
+#IF
+EQUAL $PARAM(44) 23
+EQUAL $PARAM(45) 10
+#ACT
+SET [281] 1
+GIVE 10元神兽礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(44) 24
+EQUAL $PARAM(45) 30
+#ACT
+SET [282] 1
+GIVE 30元羽翼礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(44) 25
+EQUAL $PARAM(45) 30
+#ACT
+SET [283] 1
+GIVE 30元坐骑礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(44) 26
+EQUAL $PARAM(45) 68
+#ACT
+SET [284] 1
+GIVE 68元特戒礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(44) 27
+EQUAL $PARAM(45) 30
+#ACT
+SET [285] 1
+GIVE 30元法宝礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(44) 28
+EQUAL $PARAM(45) 30
+#ACT
+SET [286] 1
+GIVE 30元凶器礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(44) 29
+EQUAL $PARAM(45) 68
+#ACT
+SET [287] 1
+GIVE 68元附件礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+;-----------------------------------------------------------------------------------------------------------------------------------------月卡季卡年卡全部购买
+#IF
+EQUAL $PARAM(44) 22
+EQUAL $PARAM(45) 198
+CHECK [224] 1
+#ACT
+CHANGECUSTOMVALUE 34 + 2592000
+
+#IF
+EQUAL $PARAM(44) 22
+EQUAL $PARAM(45) 198
+CHECK [224] 0
+#ACT
+SET [224] 1
+CHANGECUSTOMVALUE 34 = <$INC.<$INC.$LONGDATE.28800>.2592000>
+
+#IF
+EQUAL $PARAM(44) 22
+EQUAL $PARAM(45) 198
+CHECK [225] 1
+#ACT
+CHANGECUSTOMVALUE 35 + 7776000
+
+#IF
+EQUAL $PARAM(44) 22
+EQUAL $PARAM(45) 198
+CHECK [225] 0
+#ACT
+SET [225] 1
+CHANGECUSTOMVALUE 35 = <$INC.<$INC.$LONGDATE.28800>.7776000>
+
+#IF
+EQUAL $PARAM(44) 22
+EQUAL $PARAM(45) 198
+CHECK [226] 1
+#ACT
+CHANGECUSTOMVALUE 36 + 31536000
+
+#IF
+EQUAL $PARAM(44) 22
+EQUAL $PARAM(45) 198
+CHECK [226] 0
+#ACT
+SET [226] 1
+CHANGECUSTOMVALUE 36 = <$INC.<$INC.$LONGDATE.28800>.31536000>
+
+#IF
+EQUAL $PARAM(44) 22
+EQUAL $PARAM(45) 198
+#ACT
+MailGIve 绑定元宝 19800
+SENDMAIL 1 系统消息 恭购买成功，年卡到期时间<$LONGTODATETIME(<$CUSTOMVALUE(36)>)>，季卡到期时间<$LONGTODATETIME(<$CUSTOMVALUE(35)>)>，月卡到期时间<$LONGTODATETIME(<$CUSTOMVALUE(34)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+
+
+
+;----------------------------------------------------------------------------------------------------------------------------------------------抽奖次数
+[@计算充值抽奖次数]
+#IF
+LARGE $CUSTOMVALUE(51) 9
+EQUAL $CUSTOMVALUE(89) 0
+#ACT
+CHANGECUSTOMVALUE 94 + 1
+CHANGECUSTOMVALUE 89 + 1
+
+#IF
+LARGE $CUSTOMVALUE(51) 49
+EQUAL $CUSTOMVALUE(89) 1
+#ACT
+CHANGECUSTOMVALUE 94 + 1
+CHANGECUSTOMVALUE 89 + 1
+
+#IF
+LARGE $CUSTOMVALUE(51) 299
+EQUAL $CUSTOMVALUE(89) 2
+#ACT
+CHANGECUSTOMVALUE 94 + 1
+CHANGECUSTOMVALUE 89 + 1
+
+#IF
+LARGE $CUSTOMVALUE(51) 599
+EQUAL $CUSTOMVALUE(89) 3
+#ACT
+CHANGECUSTOMVALUE 94 + 1
+CHANGECUSTOMVALUE 89 + 1
+
+#IF
+LARGE $CUSTOMVALUE(51) 1999
+EQUAL $CUSTOMVALUE(89) 4
+#ACT
+CHANGECUSTOMVALUE 94 + 1
+CHANGECUSTOMVALUE 89 + 1
+
+#IF
+LARGE $CUSTOMVALUE(51) 3499
+EQUAL $CUSTOMVALUE(89) 5
+#ACT
+CHANGECUSTOMVALUE 94 + 1
+CHANGECUSTOMVALUE 89 + 1
+
+#IF
+LARGE $CUSTOMVALUE(51) 4999
+EQUAL $CUSTOMVALUE(89) 6
+#ACT
+CHANGECUSTOMVALUE 94 + 1
+CHANGECUSTOMVALUE 89 + 1
+
+
+
+
+
+
+
+;================================================================大额充值
+[@BigCharge]
+#IF
+EQUAL $CUSTOMVALUE(87) $CUSTOMVALUE(50)
+#ACT
+CHANGECUSTOMVALUE 50 + 1
+
+#IF
+LARGE $PARAM(45) 0
+#ACT
+CHANGECUSTOMVALUE 51 + $PARAM(45)
+CHANGECUSTOMVALUE 49 + $PARAM(45)
+CHANGECUSTOMVALUE 24 + <$MULT.$PARAM(45).100>
+GOTO @计算充值抽奖次数
+GOTO @顶部累充红点
+GOTO @顶部按钮会员红点
+GOTO @顶部首冲按钮红点
+
+;================================================================扶持充值
+[@FcCharge]
+
+#IF
+EQUAL $CUSTOMVALUE(87) $CUSTOMVALUE(50)
+#ACT
+CHANGECUSTOMVALUE 50 + 1
+
+#IF
+EQUAL $PARAM(47) 2
+LARGE $DIV.$PARAM(48).100 0
+#ACT
+CHANGECUSTOMVALUE 51 + $DIV.$PARAM(48).100
+CHANGECUSTOMVALUE 49 + $DIV.$PARAM(48).100
+CHANGECUSTOMVALUE 24 + $PARAM(48)
+GOTO @计算充值抽奖次数
+GOTO @顶部累充红点
+GOTO @顶部按钮会员红点
+GOTO @顶部首冲按钮红点
+
+#IF
+!EQUAL $PARAM(47) 2
+LARGE $PARAM(48) 0
+#ACT
+CHANGECUSTOMVALUE 51 + $PARAM(48)
+CHANGECUSTOMVALUE 49 + $PARAM(48)
+CHANGECUSTOMVALUE 24 + $MULT.$PARAM(48).100
+GOTO @计算充值抽奖次数
+GOTO @顶部累充红点
+GOTO @顶部按钮会员红点
+GOTO @顶部首冲按钮红点
+
+
+#IF
+EQUAL $PARAM(47) 2
+LARGE $DIV.$PARAM(48).100 0
+LARGE <$HFCOUNT> 0
+!SMALL G78 $LONGDATE
+#ACT
+CHANGECUSTOMVALUE 37 + $DIV.$PARAM(48).100
+CHANGECUSTOMVALUE 38 + $DIV.$PARAM(48).100
+GOTO @Lemon合服FH
+
+#IF
+!EQUAL $PARAM(47) 2
+LARGE $PARAM(48) 0
+LARGE <$HFCOUNT> 0
+!SMALL G78 $LONGDATE
+#ACT
+CHANGECUSTOMVALUE 37 + $PARAM(48)
+CHANGECUSTOMVALUE 38 + $PARAM(48)
+GOTO @Lemon合服FH
+
+
+#IF
+CHECK [10] 0
+EQUAL $PARAM(47) 2
+EQUAL $DIV.$PARAM(48).100 10
+#ACT
+SET [10] 1
+MAILGIVE 绑定元宝 500
+SENDMAIL 1 首次充值奖励 恭喜您完成10元首冲，额外获得500绑定元宝，请点提取！
+GOTO @前往充值
+
+#IF
+CHECK [11] 0
+EQUAL $PARAM(47) 2
+EQUAL $DIV.$PARAM(48).100 50
+#ACT
+SET [11] 1
+MAILGIVE 绑定元宝 2500
+SENDMAIL 1 首次充值奖励 恭喜您完成50元首冲，额外获得2500绑定元宝，请点提取！
+GOTO @前往充值
+
+#IF
+CHECK [12] 0
+EQUAL $PARAM(47) 2
+EQUAL $DIV.$PARAM(48).100 98
+#ACT
+SET [12] 1
+MAILGIVE 绑定元宝 4900
+SENDMAIL 1 首次充值奖励 恭喜您完成98元首冲，额外获得4900绑定元宝，请点提取！
+GOTO @前往充值
+
+#IF
+CHECK [13] 0
+EQUAL $PARAM(47) 2
+EQUAL $DIV.$PARAM(48).100 168
+#ACT
+SET [13] 1
+MAILGIVE 绑定元宝 8400
+SENDMAIL 1 首次充值奖励 恭喜您完成168元首冲，额外获得8400绑定元宝，请点提取！
+GOTO @前往充值
+
+#IF
+CHECK [14] 0
+EQUAL $PARAM(47) 2
+EQUAL $DIV.$PARAM(48).100 328
+#ACT
+SET [14] 1
+MAILGIVE 绑定元宝 16400
+SENDMAIL 1 首次充值奖励 恭喜您完成328元首冲，额外获得16400绑定元宝，请点提取！
+GOTO @前往充值
+
+#IF
+CHECK [15] 0
+EQUAL $PARAM(47) 2
+EQUAL $DIV.$PARAM(48).100 648
+#ACT
+SET [15] 1
+MAILGIVE 绑定元宝 32400
+SENDMAIL 1 首次充值奖励 恭喜您完成648元首冲，额外获得32400绑定元宝，请点提取！
+GOTO @前往充值
+
+#IF
+CHECK [16] 0
+EQUAL $PARAM(47) 2
+EQUAL $DIV.$PARAM(48).100 1000
+#ACT
+SET [16] 1
+MAILGIVE 绑定元宝 50000
+SENDMAIL 1 首次充值奖励 恭喜您完成1000元首冲，额外获得50000绑定元宝，请点提取！
+GOTO @前往充值
+
+#IF
+CHECK [17] 0
+EQUAL $PARAM(47) 2
+EQUAL $DIV.$PARAM(48).100 3000
+#ACT
+SET [17] 1
+MAILGIVE 绑定元宝 150000
+SENDMAIL 1 首次充值奖励 恭喜您完成3000元首冲，额外获得150000绑定元宝，请点提取！
+GOTO @前往充值
+
+#IF
+EQUAL $PARAM(47) 31
+EQUAL $DIV.$PARAM(48).100 28
+#ACT
+SET [223] 1
+SENDMSG 19 成功购买高级战令
+SENDMSG 5 成功购买高级战令
+BREAK
+
+
+;----------------------------------------------------------------合服活动
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 30
+#ACT
+SET [672] 1
+;---------------------------------------30购买材料,自行替换!
+MailGIVE 绑定元宝 9000
+MailGIVE 法宝精粹 20 1
+MailGIVE 凶器精粹 20 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了30元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 98
+#ACT
+SET [673] 1
+;---------------------------------------98购买材料,自行替换!
+MailGIVE 绑定元宝 29400
+MailGIVE 特戒精华 50 1
+MailGIVE 特装大礼包 4 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了98元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 328
+EQUAL $MOD.$HFCOUNT.7 1
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 特戒精粹 128 1
+MailGIVE 特戒精魄 68 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 648
+EQUAL $MOD.$HFCOUNT.7 1
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 特戒精粹 198 1
+MailGIVE 特戒精魄 108 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 328
+EQUAL $MOD.$HFCOUNT.7 2
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 灵兽精粹 300 1
+MailGIVE 花影缤纷(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 648
+EQUAL $MOD.$HFCOUNT.7 2
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 骑战技能礼包 1 1
+MailGIVE 怒啸神光虎(坐骑) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 328
+EQUAL $MOD.$HFCOUNT.7 3
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 凶器精粹 200 1
+MailGIVE 烈焰灼心(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 648
+EQUAL $MOD.$HFCOUNT.7 3
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 凶器精粹 80 1
+MailGIVE 凶器自选箱 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 328
+EQUAL $MOD.$HFCOUNT.7 4
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 法宝精粹 300 1
+MailGIVE 雪花飞舞(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 648
+EQUAL $MOD.$HFCOUNT.7 4
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 法宝精粹 80 1
+MailGIVE 法宝自选箱 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 328
+EQUAL $MOD.$HFCOUNT.7 5
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 特装精粹(攻) 400 1
+MailGIVE 热情似火(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 648
+EQUAL $MOD.$HFCOUNT.7 5
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 特装精粹(攻) 100 1
+MailGIVE 武器时装自选箱 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 328
+EQUAL $MOD.$HFCOUNT.7 6
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 特装精粹(防) 400 1
+MailGIVE 步步生财(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 648
+EQUAL $MOD.$HFCOUNT.7 6
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 特装精粹(防) 100 1
+MailGIVE 防具时装自选箱 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 328
+EQUAL $MOD.$HFCOUNT.7 7
+#ACT
+SET [674] 1
+;---------------------------------------328购买材料,自行替换!
+MailGIVE 绑定元宝 98400
+MailGIVE 仙翎之羽 300 1
+MailGIVE 心心相印(时装) 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了328元合服礼包...恭喜恭喜!
+BREAK
+
+#IF
+EQUAL $PARAM(47) 32
+EQUAL $PARAM(48) 648
+EQUAL $MOD.$HFCOUNT.7 7
+#ACT
+SET [675] 1
+;---------------------------------------648购买材料,自行替换!
+MailGIVE 绑定元宝 194400
+MailGIVE 仙翎之羽 120 1
+MailGIVE 羽翼自选箱 1 1
+SENDMAIL 10101 合服礼包 恭喜您成功购买了648元合服礼包...恭喜恭喜!
+BREAK
+
+;----------------------------------------------------------------------------------------------------------------------------------------------月卡购买
+#IF
+EQUAL $PARAM(47) 19
+EQUAL $PARAM(48) 38
+CHECK [224] 1
+#ACT
+CHANGECUSTOMVALUE 34 + 2592000
+MailGIve 绑定元宝 3800
+SENDMAIL 1 系统消息 月卡续期成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(34)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+#IF
+EQUAL $PARAM(47) 19
+EQUAL $PARAM(48) 38
+CHECK [224] 0
+#ACT
+SET [224] 1
+CHANGECUSTOMVALUE 34 = <$INC.<$INC.$LONGDATE.28800>.2592000>
+MailGIve 绑定元宝 3800
+SENDMAIL 1 系统消息 购买月卡成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(34)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+
+
+;---------------------------------------------------------------------------------------------------------------------------------------------季卡购买
+#IF
+EQUAL $PARAM(47) 20
+EQUAL $PARAM(48) 88
+CHECK [225] 1
+#ACT
+CHANGECUSTOMVALUE 35 + 7776000
+MailGIve 绑定元宝 8800
+SENDMAIL 1 系统消息 季卡续期成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(35)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+#IF
+EQUAL $PARAM(47) 20
+EQUAL $PARAM(48) 88
+CHECK [225] 0
+#ACT
+SET [225] 1
+CHANGECUSTOMVALUE 35 = <$INC.<$INC.$LONGDATE.28800>.7776000>
+MailGIve 绑定元宝 8800
+SENDMAIL 1 系统消息 购买季卡成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(35)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+;-------------------------------------------------------------------------------------------------------------------------------------------年卡购买
+#IF
+EQUAL $PARAM(47) 21
+EQUAL $PARAM(48) 168
+CHECK [226] 1
+#ACT
+CHANGECUSTOMVALUE 36 + 31536000
+MailGIve 绑定元宝 16800
+SENDMAIL 1 系统消息 购买年卡成功年卡续期成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(36)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+#IF
+EQUAL $PARAM(47) 21
+EQUAL $PARAM(48) 168
+CHECK [226] 0
+#ACT
+SET [226] 1
+CHANGECUSTOMVALUE 36 = <$INC.<$INC.$LONGDATE.28800>.31536000>
+MailGIve 绑定元宝 16800
+SENDMAIL 1 系统消息 购买年卡成功，到期时间<$LONGTODATETIME(<$CUSTOMVALUE(36)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+
+
+
+;-------------------------------------------------------------------------------------------------------------------------------------------------------------------投资返利购买
+#IF
+EQUAL $PARAM(47) 30
+EQUAL $PARAM(48) 98
+#ACT
+SET [277] 1
+SENDMSG 19 成功投资
+BREAK
+
+;--------------------------------------------------------------------------------------------------------------------------------------------------------------------开服礼包
+#IF
+EQUAL $PARAM(47) 23
+EQUAL $PARAM(48) 10
+#ACT
+SET [281] 1
+GIVE 10元神兽礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(47) 24
+EQUAL $PARAM(48) 30
+#ACT
+SET [282] 1
+GIVE 30元羽翼礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(47) 25
+EQUAL $PARAM(48) 30
+#ACT
+SET [283] 1
+GIVE 30元坐骑礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(47) 26
+EQUAL $PARAM(48) 68
+#ACT
+SET [284] 1
+GIVE 68元特戒礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(47) 27
+EQUAL $PARAM(48) 30
+#ACT
+SET [285] 1
+GIVE 30元法宝礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(47) 28
+EQUAL $PARAM(48) 30
+#ACT
+SET [286] 1
+GIVE 30元凶器礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+#IF
+EQUAL $PARAM(47) 29
+EQUAL $PARAM(48) 68
+#ACT
+SET [287] 1
+GIVE 68元附件礼包 1 1
+SENDMSG 19 购买成功
+BREAK
+
+;-----------------------------------------------------------------------------------------------------------------------------------------月卡季卡年卡全部购买
+#IF
+EQUAL $PARAM(47) 22
+EQUAL $PARAM(48) 198
+CHECK [224] 1
+#ACT
+CHANGECUSTOMVALUE 34 + 2592000
+
+#IF
+EQUAL $PARAM(47) 22
+EQUAL $PARAM(48) 198
+CHECK [224] 0
+#ACT
+SET [224] 1
+CHANGECUSTOMVALUE 34 = <$INC.<$INC.$LONGDATE.28800>.2592000>
+
+#IF
+EQUAL $PARAM(47) 22
+EQUAL $PARAM(48) 198
+CHECK [225] 1
+#ACT
+CHANGECUSTOMVALUE 35 + 7776000
+
+#IF
+EQUAL $PARAM(47) 22
+EQUAL $PARAM(48) 198
+CHECK [225] 0
+#ACT
+SET [225] 1
+CHANGECUSTOMVALUE 35 = <$INC.<$INC.$LONGDATE.28800>.7776000>
+
+#IF
+EQUAL $PARAM(47) 22
+EQUAL $PARAM(48) 198
+CHECK [226] 1
+#ACT
+CHANGECUSTOMVALUE 36 + 31536000
+
+#IF
+EQUAL $PARAM(47) 22
+EQUAL $PARAM(48) 198
+CHECK [226] 0
+#ACT
+SET [226] 1
+CHANGECUSTOMVALUE 36 = <$INC.<$INC.$LONGDATE.28800>.31536000>
+
+#IF
+EQUAL $PARAM(47) 22
+EQUAL $PARAM(48) 198
+#ACT
+MailGIve 绑定元宝 19800
+SENDMAIL 1 系统消息 恭购买成功，年卡到期时间<$LONGTODATETIME(<$CUSTOMVALUE(36)>)>，季卡到期时间<$LONGTODATETIME(<$CUSTOMVALUE(35)>)>，月卡到期时间<$LONGTODATETIME(<$CUSTOMVALUE(34)>)>，请点提取
+GOTO @临时属性
+BREAK
+
+
+}

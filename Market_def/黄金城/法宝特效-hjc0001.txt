@@ -1,0 +1,611 @@
+[@MAIN]
+#IF
+TRUE
+#ACT
+GOTO @法宝特效面板
+
+;=====================================================================================法宝特效主界面=====================================================================================
+[@法宝特效面板]
+#IF
+TRUE
+#ACT
+MOV S$法宝特效面板红点 
+MOV S$法宝特效升星红点 
+
+;-------------------------------------------------------------------------------------红点优先进入-----------------------------------------------------------------------------------------
+#IF
+CHECKITEM 无量飞剑 1
+CHECK [100] 1
+#ACT
+MOV N$名称图片 31100
+MOV N$法宝特效序列帧 31101
+MOV S$特效当前法宝 无量飞剑
+GOTO @法宝特效
+break
+
+#IF
+CHECKITEM 八卦镜 1
+CHECK [101] 1
+#ACT
+MOV N$名称图片 31102
+MOV N$法宝特效序列帧 31103
+MOV S$特效当前法宝 八卦镜
+GOTO @法宝特效
+break
+
+#IF
+CHECKITEM 招魂幡 1
+CHECK [102] 1
+#ACT
+MOV N$名称图片 31104
+MOV N$法宝特效序列帧 31105
+MOV S$特效当前法宝 招魂幡
+GOTO @法宝特效
+break
+
+#IF
+CHECKITEM 紫金葫芦 1
+CHECK [103] 1
+#ACT
+MOV N$名称图片 31106
+MOV N$法宝特效序列帧 31107
+MOV S$特效当前法宝 紫金葫芦
+GOTO @法宝特效
+break
+
+#IF
+CHECKITEM 番天印 1
+CHECK [104] 1
+#ACT
+MOV N$名称图片 31108
+MOV N$法宝特效序列帧 31109
+MOV S$特效当前法宝 番天印
+GOTO @法宝特效
+break
+
+#IF
+CHECKITEM 七宝玲珑塔 1
+CHECK [105] 1
+#ACT
+MOV N$名称图片 31110
+MOV N$法宝特效序列帧 31111
+MOV S$特效当前法宝 七宝玲珑塔
+GOTO @法宝特效
+break
+
+;------------------------------------------------------------------------------------正常进入界面---------------------------------------------------------------------
+#IF
+CheckVar Human 当前佩戴法宝 = 
+CHECK [100] 0
+#ACT
+MOV N$名称图片 31100
+MOV N$法宝特效序列帧 41101
+MOV S$特效当前法宝 无量飞剑
+GOTO @法宝特效
+break
+
+#IF
+CheckVar Human 当前佩戴法宝 = 
+CHECK [100] 1
+#ACT
+MOV N$名称图片 31100
+MOV N$法宝特效序列帧 31101
+MOV S$特效当前法宝 无量飞剑
+GOTO @法宝特效
+break
+
+#IF
+Check [100] 1
+CheckVar Human 当前佩戴法宝 = 无量飞剑
+#ACT
+MOV N$名称图片 31100
+MOV N$法宝特效序列帧 31101
+MOV S$特效当前法宝 无量飞剑
+GOTO @法宝特效
+break
+
+#IF
+Check [101] 1
+CheckVar Human 当前佩戴法宝 = 八卦镜
+#ACT
+MOV N$名称图片 31102
+MOV N$法宝特效序列帧 31103
+MOV S$特效当前法宝 八卦镜
+GOTO @法宝特效
+break
+
+#IF
+Check [102] 1
+CheckVar Human 当前佩戴法宝 = 招魂幡
+#ACT
+MOV N$名称图片 31104
+MOV N$法宝特效序列帧 31105
+MOV S$特效当前法宝 招魂幡
+GOTO @法宝特效
+break
+
+#IF
+Check [103] 1
+CheckVar Human 当前佩戴法宝 = 紫金葫芦
+#ACT
+MOV N$名称图片 31106
+MOV N$法宝特效序列帧 31107
+MOV S$特效当前法宝 紫金葫芦
+GOTO @法宝特效
+break
+
+#IF
+Check [104] 1
+CheckVar Human 当前佩戴法宝 = 番天印
+#ACT
+MOV N$名称图片 31108
+MOV N$法宝特效序列帧 31109
+MOV S$特效当前法宝 番天印
+GOTO @法宝特效
+break
+
+#IF
+Check [105] 1
+CheckVar Human 当前佩戴法宝 = 七宝玲珑塔
+#ACT
+MOV N$名称图片 31110
+MOV N$法宝特效序列帧 31111
+MOV S$特效当前法宝 七宝玲珑塔
+GOTO @法宝特效
+break
+
+[@法宝特效]
+#IF
+TRUE
+#ACT
+MOV N$法宝星图片1 31054
+MOV N$法宝星图片2 31054
+MOV N$法宝星图片3 31054
+MOV N$法宝星图片4 31054
+MOV N$法宝星图片5 31054
+MOV N$法宝星图片6 31054
+MOV S$法宝特效面板红点 
+MOV S$法宝特效升星红点 
+MOV S$专属特效描述 
+MOV S$特效升星描述 
+MOV S$特效升星条件描述 
+MOV N$有没有该法宝 58
+MOV N$法宝特效出不出火焰 0
+#IF
+CheckVar Human <$STR(S$特效当前法宝)>星级 > 0
+#ACT
+MOV N$法宝星图片1 31055
+
+#IF
+CheckVar Human <$STR(S$特效当前法宝)>星级 > 1
+#ACT
+MOV N$法宝星图片2 31055
+
+#IF
+CheckVar Human <$STR(S$特效当前法宝)>星级 > 2
+#ACT
+MOV N$法宝星图片3 31055
+
+#IF
+CheckVar Human <$STR(S$特效当前法宝)>星级 > 3
+#ACT
+MOV N$法宝星图片4 31055
+
+#IF
+CheckVar Human <$STR(S$特效当前法宝)>星级 > 4
+#ACT
+MOV N$法宝星图片5 31055
+
+#IF
+CheckVar Human <$STR(S$特效当前法宝)>星级 > 5
+#ACT
+MOV N$法宝星图片6 31055
+
+#IF
+SMALL $HUMAN(无量飞剑星级) 6
+CHECKITEM 无量飞剑 1
+CHECK [100] 1
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+
+#IF
+SMALL $HUMAN(无量飞剑星级) 6
+CHECKITEM 无量飞剑 1
+CHECK [100] 1
+EQUAL S$特效当前法宝 无量飞剑
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+MOV S$法宝特效升星红点 icon_reddot_01
+MOV N$有没有该法宝 218
+
+#IF
+SMALL $HUMAN(八卦镜星级) 6
+CHECKITEM 八卦镜 1
+CHECK [101] 1
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+
+#IF
+SMALL $HUMAN(八卦镜星级) 6
+CHECKITEM 八卦镜 1
+CHECK [101] 1
+EQUAL S$特效当前法宝 八卦镜
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+MOV S$法宝特效升星红点 icon_reddot_01
+MOV N$有没有该法宝 218
+
+#IF
+SMALL $HUMAN(招魂幡星级) 6
+CHECKITEM 招魂幡 1
+CHECK [102] 1
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+
+#IF
+SMALL $HUMAN(招魂幡星级) 6
+CHECKITEM 招魂幡 1
+CHECK [102] 1
+EQUAL S$特效当前法宝 招魂幡
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+MOV S$法宝特效升星红点 icon_reddot_01
+MOV N$有没有该法宝 218
+
+#IF
+SMALL $HUMAN(紫金葫芦星级) 6
+CHECKITEM 紫金葫芦 1
+CHECK [103] 1
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+
+#IF
+SMALL $HUMAN(紫金葫芦星级) 6
+CHECKITEM 紫金葫芦 1
+CHECK [103] 1
+EQUAL S$特效当前法宝 紫金葫芦
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+MOV S$法宝特效升星红点 icon_reddot_01
+MOV N$有没有该法宝 218
+
+#IF
+SMALL $HUMAN(番天印星级) 6
+CHECKITEM 番天印 1
+CHECK [104] 1
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+
+#IF
+SMALL $HUMAN(番天印星级) 6
+CHECKITEM 番天印 1
+CHECK [104] 1
+EQUAL S$特效当前法宝 番天印
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+MOV S$法宝特效升星红点 icon_reddot_01
+MOV N$有没有该法宝 218
+
+#IF
+SMALL $HUMAN(七宝玲珑塔星级) 6
+CHECKITEM 七宝玲珑塔 1
+CHECK [105] 1
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+
+#IF
+SMALL $HUMAN(七宝玲珑塔星级) 6
+CHECKITEM 七宝玲珑塔 1
+CHECK [105] 1
+EQUAL S$特效当前法宝 七宝玲珑塔
+#ACT
+MOV S$法宝特效面板红点 icon_reddot_01
+MOV S$法宝特效升星红点 icon_reddot_01
+MOV N$有没有该法宝 218
+
+#IF
+EQUAL S$特效当前法宝 无量飞剑
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=45.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=71><自身血量低于70%，攻击时有概率瞬/FCOLOR=71>\<　　　　　间回复15%的生命值和魔法值/FCOLOR=71>>
+
+#IF
+EQUAL S$特效当前法宝 八卦镜
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=53.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=71><触发时无视目标20%双防(持续5秒)/FCOLOR=71>>
+
+#IF
+EQUAL S$特效当前法宝 招魂幡
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=43.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=71><触发时必定发挥最大攻击力(持续10秒)/FCOLOR=71>>
+
+#IF
+EQUAL S$特效当前法宝 紫金葫芦
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=53.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=71><触发时提升除血量外所有属性10%/FCOLOR=71>\<　　　　　(持续15秒)/FCOLOR=71>>
+
+#IF
+EQUAL S$特效当前法宝 番天印
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=89.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=71><触发时可造成双倍伤害/FCOLOR=71>>
+
+#IF
+EQUAL S$特效当前法宝 七宝玲珑塔
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=65.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=71><触发时免疫当次受到的魔法伤害/FCOLOR=71>>
+
+
+
+
+#IF
+EQUAL S$特效当前法宝 无量飞剑
+CHECK [100] 1
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=45.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=67><自身血量低于70%，攻击时有概率瞬/FCOLOR=222>\<　　　　　间回复15%的生命值和魔法值/FCOLOR=222>>
+MOV S$特效升星描述 <RText|id=fbsx17|x=510.0|y=229.0|color=67|size=18|text=<当前法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.5>%/FCOLOR=255>><RText|id=fbsx18|x=510.0|y=269.0|color=67|size=18|text=<所有法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>><RText|id=fbsx19|x=510.0|y=309.0|color=67|size=18|text=<专属特效触发概率：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>>
+MOV S$特效升星条件描述 <Text|id=fbsx23|x=511.0|y=413.0|color=67|size=18|text=消耗：><ItemShow|id=fbsx24|x=557.0|y=390.0|width=70|height=70|itemid=<$StdItem[<$STR(S$特效当前法宝)>].LOOKS>|itemcount=<$ITEMINFO[<$STR(S$特效当前法宝)>].Dura>|name=<$STR(S$特效当前法宝)>|showtips=1|bgtype=1><Text|id=fbsx25|x=627.0|y=414.0|rotate=0|size=18|color=<$STR(N$有没有该法宝)>|text=1>
+MOV N$法宝特效出不出火焰 30760
+#IF
+EQUAL S$特效当前法宝 八卦镜
+CHECK [101] 1
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=53.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=67><触发时无视目标20%双防(持续5秒)/FCOLOR=222>>
+MOV S$特效升星描述 <RText|id=fbsx17|x=510.0|y=229.0|color=67|size=18|text=<当前法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.5>%/FCOLOR=255>><RText|id=fbsx18|x=510.0|y=269.0|color=67|size=18|text=<所有法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>><RText|id=fbsx19|x=510.0|y=309.0|color=67|size=18|text=<专属特效触发概率：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>>
+MOV S$特效升星条件描述 <Text|id=fbsx23|x=511.0|y=413.0|color=67|size=18|text=消耗：><ItemShow|id=fbsx24|x=557.0|y=390.0|width=70|height=70|itemid=<$StdItem[<$STR(S$特效当前法宝)>].LOOKS>|itemcount=<$ITEMINFO[<$STR(S$特效当前法宝)>].Dura>|name=<$STR(S$特效当前法宝)>|showtips=1|bgtype=1><Text|id=fbsx25|x=627.0|y=414.0|rotate=0|size=18|color=<$STR(N$有没有该法宝)>|text=1>
+MOV N$法宝特效出不出火焰 30760
+#IF
+EQUAL S$特效当前法宝 招魂幡
+CHECK [102] 1
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=43.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=67><触发时必定发挥最大攻击力(持续10秒)/FCOLOR=222>>
+MOV S$特效升星描述 <RText|id=fbsx17|x=510.0|y=229.0|color=67|size=18|text=<当前法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.5>%/FCOLOR=255>><RText|id=fbsx18|x=510.0|y=269.0|color=67|size=18|text=<所有法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>><RText|id=fbsx19|x=510.0|y=309.0|color=67|size=18|text=<专属特效触发概率：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>>
+MOV S$特效升星条件描述 <Text|id=fbsx23|x=511.0|y=413.0|color=67|size=18|text=消耗：><ItemShow|id=fbsx24|x=557.0|y=390.0|width=70|height=70|itemid=<$StdItem[<$STR(S$特效当前法宝)>].LOOKS>|itemcount=<$ITEMINFO[<$STR(S$特效当前法宝)>].Dura>|name=<$STR(S$特效当前法宝)>|showtips=1|bgtype=1><Text|id=fbsx25|x=627.0|y=414.0|rotate=0|size=18|color=<$STR(N$有没有该法宝)>|text=1>
+MOV N$法宝特效出不出火焰 30760
+#IF
+EQUAL S$特效当前法宝 紫金葫芦
+CHECK [103] 1
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=53.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=67><触发时提升除血量外所有属性10%/FCOLOR=222>\<　　　　　(持续15秒)/FCOLOR=222>>
+MOV S$特效升星描述 <RText|id=fbsx17|x=510.0|y=229.0|color=67|size=18|text=<当前法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.5>%/FCOLOR=255>><RText|id=fbsx18|x=510.0|y=269.0|color=67|size=18|text=<所有法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>><RText|id=fbsx19|x=510.0|y=309.0|color=67|size=18|text=<专属特效触发概率：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>>
+MOV S$特效升星条件描述 <Text|id=fbsx23|x=511.0|y=413.0|color=67|size=18|text=消耗：><ItemShow|id=fbsx24|x=557.0|y=390.0|width=70|height=70|itemid=<$StdItem[<$STR(S$特效当前法宝)>].LOOKS>|itemcount=<$ITEMINFO[<$STR(S$特效当前法宝)>].Dura>|name=<$STR(S$特效当前法宝)>|showtips=1|bgtype=1><Text|id=fbsx25|x=627.0|y=414.0|rotate=0|size=18|color=<$STR(N$有没有该法宝)>|text=1>
+MOV N$法宝特效出不出火焰 30760
+#IF
+EQUAL S$特效当前法宝 番天印
+CHECK [104] 1
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=89.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=67><触发时可造成双倍伤害/FCOLOR=222>>
+MOV S$特效升星描述 <RText|id=fbsx17|x=510.0|y=229.0|color=67|size=18|text=<当前法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.5>%/FCOLOR=255>><RText|id=fbsx18|x=510.0|y=269.0|color=67|size=18|text=<所有法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>><RText|id=fbsx19|x=510.0|y=309.0|color=67|size=18|text=<专属特效触发概率：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>>
+MOV S$特效升星条件描述 <Text|id=fbsx23|x=511.0|y=413.0|color=67|size=18|text=消耗：><ItemShow|id=fbsx24|x=557.0|y=390.0|width=70|height=70|itemid=<$StdItem[<$STR(S$特效当前法宝)>].LOOKS>|itemcount=<$ITEMINFO[<$STR(S$特效当前法宝)>].Dura>|name=<$STR(S$特效当前法宝)>|showtips=1|bgtype=1><Text|id=fbsx25|x=627.0|y=414.0|rotate=0|size=18|color=<$STR(N$有没有该法宝)>|text=1>
+MOV N$法宝特效出不出火焰 30760
+#IF
+EQUAL S$特效当前法宝 七宝玲珑塔
+CHECK [105] 1
+#ACT
+MOV S$专属特效描述 <RText|id=fbsx29|x=65.0|y=496.0|size=18|color=255|text=<攻击特效：/FCOLOR=67><触发时免疫当次受到的魔法伤害/FCOLOR=222>>
+MOV S$特效升星描述 <RText|id=fbsx17|x=510.0|y=229.0|color=67|size=18|text=<当前法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.5>%/FCOLOR=255>><RText|id=fbsx18|x=510.0|y=269.0|color=67|size=18|text=<所有法宝属性：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>><RText|id=fbsx19|x=510.0|y=309.0|color=67|size=18|text=<专属特效触发概率：/FCOLOR=95><+<$MULT.<$human(<$STR(S$特效当前法宝)>星级)>.1>%/FCOLOR=255>>
+MOV S$特效升星条件描述 <Text|id=fbsx23|x=511.0|y=413.0|color=67|size=18|text=消耗：><ItemShow|id=fbsx24|x=557.0|y=390.0|width=70|height=70|itemid=<$StdItem[<$STR(S$特效当前法宝)>].LOOKS>|itemcount=<$ITEMINFO[<$STR(S$特效当前法宝)>].Dura>|name=<$STR(S$特效当前法宝)>|showtips=1|bgtype=1><Text|id=fbsx25|x=627.0|y=414.0|rotate=0|size=18|color=<$STR(N$有没有该法宝)>|text=1>
+MOV N$法宝特效出不出火焰 30760
+#IF
+TRUE
+#SAY
+<Img|id=fbsx1|children={fbsx2,fbsx3,fbsx4,fbsx5,fbsx6,fbsx7,fbsx8,fbsx9,fbsx10,fbsx11,fbsx12,fbsx13,fbsx14,fbsx15,fbsx16,fbsx17,fbsx18,fbsx19,fbsx20,fbsx21,fbsx26a,fbsx22,fbsx23,fbsx24,fbsx25,fbsx26,fbsx25a,fbsx27,fbsx28,fbsx29,fbsx30,}|x=6.0|y=-6.0|loadDelay=0|scale=1|bg=1|show=5|move=0|esc=1|img=private/fabao/fabaoshengxing.png|link=1>
+<Button|id=fbsx2|x=711.7|y=-5.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Img|id=fbsx3|x=-116.0|y=-5.0|img=private/fabao/fabaobian.png|scale=1|esc=0>
+<Button|id=fbsx4|x=36.1|y=40.1|pimg=public/btn_push_06.png|mimg=public/btn_push_06.png|scale=1|color=67|nimg=public/btn_push_05.png|size=18|text=特效>
+; <Button|id=fbsx5|x=129.3|y=40.1|pimg=public/btn_push_05.png|mimg=public/btn_push_05.png|scale=1|color=67|nimg=public/btn_push_05.png|size=18|text=特效|link=@法宝特效面板>
+; <Button|id=fbsx6|x=222.7|y=40.1|pimg=public/btn_push_06.png|mimg=public/btn_push_06.png|scale=1|color=67|nimg=public/btn_push_06.png|size=18|text=闯关|link=@法宝闯关面板>
+<Img|id=fbsx27|x=107.0|y=51.0|img=public/<$STR(S$法宝升级面板红点)>.png|scale=1|esc=0>
+<Img|id=fbsx28|x=201.0|y=51.0|img=public/<$STR(S$法宝特效面板红点)>.png|scale=1|esc=0>
+<Frames|id=fbsx7|x=121.0|y=55.0|count=10|scale=0.5|speed=20|prefix=private/fabao/<$STR(N$法宝特效序列帧)>_|loop=-1|suffix=.png>
+<Img|id=fbsx8|x=68.0|y=109.0|img=private/fabao/<$STR(N$名称图片)>.png|esc=0|scale=1>
+<Text|id=fbsx9|x=547.0|y=91.0|size=20|color=67|text=当前星级>
+<Img|id=fbsx10|x=485.0|y=146.0|img=private/fabao/<$STR(N$法宝星图片1)>.png|scale=1|esc=0>
+<Img|id=fbsx11|x=521.0|y=146.0|img=private/fabao/<$STR(N$法宝星图片2)>.png|scale=1|esc=0>
+<Img|id=fbsx12|x=557.0|y=146.0|img=private/fabao/<$STR(N$法宝星图片3)>.png|scale=1|esc=0>
+<Img|id=fbsx13|x=593.0|y=146.0|img=private/fabao/<$STR(N$法宝星图片4)>.png|scale=1|esc=0>
+<Img|id=fbsx14|x=629.0|y=146.0|img=private/fabao/<$STR(N$法宝星图片5)>.png|scale=1|esc=0>
+<Img|id=fbsx15|x=665.0|y=146.0|img=private/fabao/<$STR(N$法宝星图片6)>.png|scale=1|esc=0>
+<Text|id=fbsx16|x=548.0|y=189.0|size=20|color=67|text=升星属性>
+<ItemShow|id=fbsx20|x=201.0|y=313.0|width=70|height=70|itemid=<$StdItem[<$STR(S$特效当前法宝)>].LOOKS>|itemcount=<$ITEMINFO[<$STR(S$特效当前法宝)>].Dura>|name=<$STR(S$特效当前法宝)>|showtips=1|bgtype=1>
+<Text|id=fbsx21|x=550.0|y=356.0|size=20|color=67|text=升星条件>
+
+<Frames|id=fbsx26a|x=-60.0|y=52.0|count=11|loop=-1|scale=1|suffix=.png|prefix=private/fabao/<$STR(N$法宝特效出不出火焰)>_|speed=15|blend=1>
+
+<Button|id=fbsx22|x=168.0|y=444.0|scale=1|mimg=public/btn_push_11.png|pimg=public/btn_push_11.png|color=67|nimg=public/btn_push_11.png|size=20|text=切    换|link=@切换法宝>
+<Img|id=fbsx30|x=633.0|y=490.0|img=public/<$STR(S$法宝特效升星红点)>.png|scale=1|esc=0>
+<$STR(S$专属特效描述)>
+<$STR(S$特效升星描述)>
+<Frames|id=fbsx25a|x=61.0|y=275.0|count=0|speed=7|loop=1|prefix=public/<$STR(S98)>_|scale=1|suffix=.png>
+
+#IF
+SMALL <$HUMAN(<$STR(S$特效当前法宝)>星级)> 6
+#say
+<$STR(S$特效升星条件描述)>
+<Button|id=fbsx26|x=536.0|y=480.0|scale=1|mimg=public/btn_push_11.png|pimg=public/btn_push_11.png|color=67|nimg=public/btn_push_11.png|size=20|text=升    星|link=@法宝升星>
+
+[@切换法宝]
+#IF
+EQUAL S$特效当前法宝 无量飞剑
+Check [101] 1
+#ACT
+MOV N$名称图片 31102
+MOV N$法宝特效序列帧 31103
+MOV S$特效当前法宝 八卦镜
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 无量飞剑
+Check [101] 0
+#ACT
+MOV N$名称图片 31102
+MOV N$法宝特效序列帧 41103
+MOV S$特效当前法宝 八卦镜
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 八卦镜
+Check [102] 1
+#ACT
+MOV N$名称图片 31104
+MOV N$法宝特效序列帧 31105
+MOV S$特效当前法宝 招魂幡
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 八卦镜
+Check [102] 0
+#ACT
+MOV N$名称图片 31104
+MOV N$法宝特效序列帧 41105
+MOV S$特效当前法宝 招魂幡
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 招魂幡
+Check [103] 1
+#ACT
+MOV N$名称图片 31106
+MOV N$法宝特效序列帧 31107
+MOV S$特效当前法宝 紫金葫芦
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 招魂幡
+Check [103] 0
+#ACT
+MOV N$名称图片 31106
+MOV N$法宝特效序列帧 41107
+MOV S$特效当前法宝 紫金葫芦
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 紫金葫芦
+Check [104] 1
+#ACT
+MOV N$名称图片 31108
+MOV N$法宝特效序列帧 31109
+MOV S$特效当前法宝 番天印
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 紫金葫芦
+Check [104] 0
+#ACT
+MOV N$名称图片 31108
+MOV N$法宝特效序列帧 41109
+MOV S$特效当前法宝 番天印
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 番天印
+Check [105] 1
+#ACT
+MOV N$名称图片 31110
+MOV N$法宝特效序列帧 31111
+MOV S$特效当前法宝 七宝玲珑塔
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 番天印
+Check [105] 0
+#ACT
+MOV N$名称图片 31110
+MOV N$法宝特效序列帧 41111
+MOV S$特效当前法宝 七宝玲珑塔
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 七宝玲珑塔
+Check [100] 1
+#ACT
+MOV N$名称图片 31100
+MOV N$法宝特效序列帧 31101
+MOV S$特效当前法宝 无量飞剑
+GOTO @法宝特效
+break
+
+#IF
+EQUAL S$特效当前法宝 七宝玲珑塔
+Check [100] 0
+#ACT
+MOV N$名称图片 31100
+MOV N$法宝特效序列帧 41101
+MOV S$特效当前法宝 无量飞剑
+GOTO @法宝特效
+break
+
+[@法宝升星]
+#IF
+EQUAL S$特效当前法宝 无量飞剑
+Check [100] 0
+#ACT
+sendmsg 19 <$STR(S$特效当前法宝)>尚未激活，无法升星
+break
+
+#IF
+EQUAL S$特效当前法宝 八卦镜
+Check [101] 0
+#ACT
+sendmsg 19 <$STR(S$特效当前法宝)>尚未激活，无法升星
+break
+
+#IF
+EQUAL S$特效当前法宝 招魂幡
+Check [102] 0
+#ACT
+sendmsg 19 <$STR(S$特效当前法宝)>尚未激活，无法升星
+break
+
+#IF
+EQUAL S$特效当前法宝 紫金葫芦
+Check [103] 0
+#ACT
+sendmsg 19 <$STR(S$特效当前法宝)>尚未激活，无法升星
+break
+
+#IF
+EQUAL S$特效当前法宝 番天印
+Check [104] 0
+#ACT
+sendmsg 19 <$STR(S$特效当前法宝)>尚未激活，无法升星
+break
+
+#IF
+EQUAL S$特效当前法宝 七宝玲珑塔
+Check [105] 0
+#ACT
+sendmsg 19 <$STR(S$特效当前法宝)>尚未激活，无法升星
+break
+
+#IF
+LARGE <$HUMAN(<$STR(S$特效当前法宝)>星级)> 5
+#ACT
+SENDMSG 19 <$STR(S$特效当前法宝)>的星级已满
+break
+
+#IF
+!CHECKITEM <$STR(S$特效当前法宝)> 1
+#ACT
+SENDMSG 19 <$STR(S$特效当前法宝)>不足1个
+break
+
+#IF
+CHECKITEM <$STR(S$特效当前法宝)> 1
+#ACT
+TAKE <$STR(S$特效当前法宝)> 1
+CalcVar Human <$STR(S$特效当前法宝)>星级 + 1 1
+SENDMSG 19 你的<$STR(S$特效当前法宝)>升级为<$HUMAN(<$STR(S$特效当前法宝)>星级)>星
+MOV S98 7758
+GOTO @法宝特效
+GOTO @临时属性
+CLEARVAR S98
+break

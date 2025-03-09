@@ -1,0 +1,1829 @@
+[@羽翼系统]
+{
+#IF
+TRUE
+#ACT
+GOTO @羽翼界面红点判断
+
+#IF
+LARGE $TABLE(Lemon_YY).BM 1
+CHECK [117] 0
+#ACT
+SET [117] 1
+GOTO @顶部按钮会员红点
+
+#IF
+TRUE
+#SAY
+<Img|x=132.0|y=-6.0|show=0|bg=1|move=0|img=private/hefuhuodong/hefuhuodongdb.png|loadDelay=0|reset=1>
+<Button|x=951.0|y=36.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=154.0|y=90.0|scale=1|img=private/yuyi/yuyibeijing.png>
+<Img|x=437.0|y=50.0|scale=1|img=private/yuyi/yuyibiaoti.png>
+<Text|x=312.0|y=102.0|color=67|size=20|text=本命羽翼>
+;==========================================================================
+<Button|x=985.0|y=90.0|nimg=private/yuyi/fenlei1.png|pimg=private/yuyi/fenlei1.png|id=ycbmyy|children={ycyyhd}>
+; <Button|x=985.0|y=244.0|nimg=private/yuyi/fenlei2.png|pimg=private/yuyi/fenlei2.png|id=yctsyy|children={yctshd}>
+; <Button|x=985.0|y=398.0|nimg=private/yuyi/fenlei2.png|pimg=private/yuyi/fenlei2.png|id=ycyyjn|children={ycjnhd}>
+<$STR(S$羽翼右侧按钮红点1)>
+<$STR(S$羽翼右侧按钮红点2)>
+;<Img|id=ycjnhd|x=30.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+;-------------------------------
+<RText|x=1003.0|y=110.0|color=67|size=20|text=本\命\羽\翼>
+; <RText|x=1003.0|y=265.0|color=67|size=20|text=特\殊\羽\翼>
+; <RText|x=1003.0|y=420.0|color=67|size=20|text=羽\翼\技\能>
+;-------------------------------
+<Layout|x=994.0|y=92.0|width=40|height=150|rotate=0|link=@XXX>
+; <Layout|x=994.0|y=247.0|width=40|height=150|rotate=0|link=@Lemon羽翼TS>
+; <Layout|x=994.0|y=402.0|width=40|height=150|rotate=0|link=@Lemon羽翼JN>
+
+;==========================================================================
+<Img|id=jnjs1|children={jshd1}|x=180.0|y=375.0|scale=1|img=private/F10/bg_roles_02.png>
+<Img|id=jnjs2|children={jshd2}|x=470.0|y=375.0|scale=1|img=private/F10/bg_roles_02.png>
+<Img|id=jnjs3|children={jshd3}|x=180.0|y=490.0|scale=1|img=private/F10/bg_roles_02.png>
+<Img|id=jnjs4|children={jshd4}|x=470.0|y=490.0|scale=1|img=private/F10/bg_roles_02.png>
+<$STR(S$羽翼技能解锁红点1)>
+<$STR(S$羽翼技能解锁红点2)>
+<$STR(S$羽翼技能解锁红点3)>
+<$STR(S$羽翼技能解锁红点4)>
+;==========================================================================
+<Img|x=566.0|y=280.0|width=420|scale=1|img=public/bg_friend_01.png>
+<Img|x=570.0|y=400.0|width=420|scale=1|img=public/bg_friend_01.png>
+<Img|x=666.0|y=283.0|scale=1|img=public/title.png>
+<Img|x=666.0|y=403.0|scale=1|img=public/title.png>
+<Img|x=720.0|y=283.0|scale=1|img=private/yuyi/teshushuxing.png>
+<Img|x=720.0|y=403.0|scale=1|img=private/shizhuang/sz_sj.png>
+;==========================================================================
+<Img|x=160.0|y=190.0|scale=1|img=private/yuyi/<$INC.11851.$STR(P34)>.png>
+<Frames|x=120.0|y=160.0|speed=20|count=10|prefix=private/yuyi/bm<$INC.2.$STR(P35)>j_|loop=-1|suffix=.png|blend=1>
+<Text|x=328.0|y=410.0|color=222|size=20|text=<$TABLE(Lemon_YY).BM>级>
+<Button|x=285.0|y=540.0|color=67|scale=1|size=20|nimg=public/btn_push_01.png|pimg=public/btn_push_01.png|text=<$STR(S$Lemon穿戴状态)>羽翼|link=@Lemon<$STR(S$Lemon穿戴状态)>&1>
+;==========================================================================
+<Text|x=584.0|y=133.0|color=67|size=18|text=<$STR(S0)>>
+<Text|x=584.0|y=168.0|color=67|size=18|text=防御>
+<Text|x=584.0|y=203.0|color=67|size=18|text=魔防>
+<Text|x=584.0|y=238.0|color=67|size=18|text=切割>
+;-----------
+<Img|x=765.0|y=170.0|scale=1|img=public/jiantou.png>
+;-----------
+<Img|x=635.0|y=134.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+<Img|x=635.0|y=168.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+<Img|x=635.0|y=204.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+<Img|x=635.0|y=240.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+;-----------
+<Img|x=840.0|y=134.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+<Img|x=840.0|y=168.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+<Img|x=840.0|y=204.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+<Img|x=840.0|y=240.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+;-----------
+<Text|x=640.0|y=133.0|color=67|size=18|text=<$STR(P1)>-<$STR(P2)>>
+<Text|x=640.0|y=168.0|color=67|size=18|text=<$STR(P3)>-<$STR(P4)>>
+<Text|x=640.0|y=203.0|color=67|size=18|text=<$STR(P3)>-<$STR(P4)>>
+<Text|x=640.0|y=238.0|color=67|size=18|text=<$STR(P5)>>
+;-----------
+<Text|x=845.0|y=133.0|color=67|size=18|text=<$STR(P21)>-<$STR(P22)>>
+<Text|x=845.0|y=168.0|color=67|size=18|text=<$STR(P23)>-<$STR(P24)>>
+<Text|x=845.0|y=203.0|color=67|size=18|text=<$STR(P23)>-<$STR(P24)>>
+<Text|x=845.0|y=238.0|color=67|size=18|text=<$STR(P25)>>
+;-----------
+<Button|x=752.0|y=322.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S$Lemon特殊属性2)>>
+<Button|x=752.0|y=354.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S$Lemon特殊属性1)>>
+;==========================================================================
+#ACT
+MOV N$Lemon特殊羽翼 1
+CLEARVAR P0 40
+CLEARVAR S0 40
+READEXCEL ..\QUESTDIARY\数据文件\羽翼升级数据.XLS <$INC.<$TABLE(Lemon_YY).BM>.1>
+MOV P1 $996(EXCEL).1
+MOV P2 $996(EXCEL).2
+MOV P3 $996(EXCEL).3
+MOV P4 $996(EXCEL).4
+MOV P5 $996(EXCEL).5
+MOV P6 $996(EXCEL).6
+MOV P7 $996(EXCEL).7
+MOV P8 $996(EXCEL).8
+MOV P9 $996(EXCEL).9
+MOV P10 $996(EXCEL).10
+MOV P11 $996(EXCEL).11
+MOV P12 $996(EXCEL).12
+READEXCEL ..\QUESTDIARY\数据文件\羽翼升级数据.XLS <$INC.<$TABLE(Lemon_YY).BM>.2>
+MOV P21 $996(EXCEL).1
+MOV P22 $996(EXCEL).2
+MOV P23 $996(EXCEL).3
+MOV P24 $996(EXCEL).4
+MOV P25 $996(EXCEL).5
+MOV P26 $996(EXCEL).6
+MOV P27 $996(EXCEL).7
+MOV P28 $996(EXCEL).8
+MOV P29 $996(EXCEL).9
+MOV P30 $996(EXCEL).10
+MOV P31 $996(EXCEL).11
+MOV P32 $996(EXCEL).12
+MOV P33 $996(EXCEL).13
+MOV S$Lemon特殊属性1 
+MOV S$Lemon特殊属性2 
+
+#IF
+EQUAL $JOB 战士
+#ACT
+MOV S0 攻击
+#IF
+EQUAL $JOB 法师
+#ACT
+MOV S0 魔法
+#IF
+EQUAL $JOB 道士
+#ACT
+MOV S0 道术
+;----------------------------------
+#IF
+LARGE $TABLE(Lemon_YY).CD 0
+#ACT
+MOV S$Lemon穿戴状态 卸下
+#ELSEACT
+MOV S$Lemon穿戴状态 穿戴
+
+#IF
+!SMALL $TABLE(Lemon_YY).BM 100
+#SAY
+<Img|x=710.0|y=485.0|scale=0.9|img=private/fabao/yimanji.png>
+#ACT
+MOV P34 4
+MOV P35 3
+
+#IF
+SMALL $TABLE(Lemon_YY).BM 100
+#SAY
+<Img|x=610.0|y=450.0|scale=1|img=private/yuyi/29279.png>
+<LoadingBar|x=645.0|y=460.0|maxLen=100|curLen=<$PERCENT.<$TABLE(Lemon_YY).JY>.$STR(P33)>|img=private/yuyi/29280.png>
+<Button|x=745.0|y=452.0|color=255|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$TABLE(Lemon_YY).JY>/<$STR(P33)>>
+<Button|x=745.0|y=502.0|color=222|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=拥有仙翎之羽:<$ITEMCOUNT(仙翎之羽)>>
+<Button|id=sjan1|children={sjhd1}|x=600.0|y=550.0|color=67|scale=1|size=20|nimg=public/btn_push_11.png|pimg=public/btn_push_11.png|text=升级羽翼|link=@Lemon升级A&<$STR(P33)>>
+<Button|id=sjan2|children={sjhd2}|x=805.0|y=550.0|color=67|scale=1|size=20|nimg=public/btn_push_11.png|pimg=public/btn_push_11.png|text=一键升级|link=@Lemon升级B&<$STR(P33)>>
+<$str(S$羽翼升级红点1)>
+<$str(S$羽翼升级红点2)>
+#ACT
+MOV P34 $DIV^$TABLE(Lemon_YY).BM^20
+MOV P35 $DEC^$TABLE(Lemon_YY).BM^20
+DIV P35 20
+;========================================================
+#IF
+LARGE P6 0
+#ACT
+INC S$Lemon特殊属性2 HP+<$STR(P6)>%
+#IF
+LARGE P10 0
+#ACT
+INC S$Lemon特殊属性2 　MP+<$STR(P10)>%
+#IF
+LARGE P11 0
+#ACT
+INC S$Lemon特殊属性2 　防御上限+<$STR(P11)>%
+#IF
+LARGE P12 0
+#ACT
+INC S$Lemon特殊属性2 　反伤+<$STR(P12)>%
+
+#IF
+LARGE P7 0
+#ACT
+INC S$Lemon特殊属性1 魔法躲避+<$STR(P7)>%
+#IF
+LARGE P8 0
+#ACT
+INC S$Lemon特殊属性1 　攻击上限+<$STR(P8)>%
+#IF
+LARGE P9 0
+#ACT
+INC S$Lemon特殊属性1 　物理躲避+<$STR(P9)>%
+;========================================================
+#IF
+SMALL $TABLE(Lemon_YY).CC1 2
+#SAY
+<Img|x=195.0|y=387.0|scale=1|img=private/yuyi/<$TABLE(Lemon_YY).CC1>.png|link=@Lemon_YYJN&1>
+#ELSESAY
+<ItemShow|x=179.0|y=375.0|itemid=0|itemcount=0|name=<$STR(S1)>·抵抗术(<$STR(S2)>)|bgtype=1|showtips=1|scale=1>
+<Img|x=215.0|y=410.0|scale=0.8|img=private/yuyi/kang.png>
+#ELSEACT
+LOADEXVAR S1 羽翼技能名称 $TABLE(Lemon_YY).CC1 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+LOADEXVAR S2 羽翼技能等级 $TABLE(Lemon_YY).CCLV1 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+
+#IF
+SMALL $TABLE(Lemon_YY).CC2 2
+#SAY
+<Img|x=485.0|y=387.0|scale=1|img=private/yuyi/<$TABLE(Lemon_YY).CC2>.png|link=@Lemon_YYJN&2>
+#ELSESAY
+<ItemShow|x=469.0|y=375.0|itemid=0|itemcount=0|name=<$STR(S3)>·抵抗术(<$STR(S4)>)|bgtype=1|showtips=1|scale=1>
+<Img|x=505.0|y=410.0|scale=0.8|img=private/yuyi/kang.png>
+#ELSEACT
+LOADEXVAR S3 羽翼技能名称 $TABLE(Lemon_YY).CC2 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+LOADEXVAR S4 羽翼技能等级 $TABLE(Lemon_YY).CCLV2 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+
+#IF
+SMALL $TABLE(Lemon_YY).CC3 2
+#SAY
+<Img|x=195.0|y=503.0|scale=1|img=private/yuyi/<$TABLE(Lemon_YY).CC3>.png|link=@Lemon_YYJN&3>
+#ELSESAY
+<ItemShow|x=179.0|y=490.0|itemid=0|itemcount=0|name=<$STR(S5)>·抵抗术(<$STR(S6)>)|bgtype=1|showtips=1|scale=1>
+<Img|x=215.0|y=525.0|scale=0.8|img=private/yuyi/kang.png>
+#ELSEACT
+LOADEXVAR S5 羽翼技能名称 $TABLE(Lemon_YY).CC3 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+LOADEXVAR S6 羽翼技能等级 $TABLE(Lemon_YY).CCLV3 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+
+#IF
+SMALL $TABLE(Lemon_YY).CC4 2
+#SAY
+<Img|x=485.0|y=503.0|scale=1|img=private/yuyi/<$TABLE(Lemon_YY).CC4>.png|link=@Lemon_YYJN&4>
+#ELSESAY
+<ItemShow|x=469.0|y=490.0|itemid=0|itemcount=0|name=<$STR(S7)>·抵抗术(<$STR(S8)>)|bgtype=1|showtips=1|scale=1>
+<Img|x=505.0|y=525.0|scale=0.8|img=private/yuyi/kang.png>
+#ELSEACT
+LOADEXVAR S7 羽翼技能名称 $TABLE(Lemon_YY).CC4 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+LOADEXVAR S8 羽翼技能等级 $TABLE(Lemon_YY).CCLV4 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+;-----------------------------------------------------------------------------------
+#IF
+EQUAL $TABLE(Lemon_YY).CC1 0
+#SAY
+<Text|x=175.0|y=440.0|color=251|size=18|text=10级解锁>
+#IF
+EQUAL $TABLE(Lemon_YY).CC2 0
+#SAY
+<Text|x=463.0|y=440.0|color=251|size=18|text=35级解锁>
+#IF
+EQUAL $TABLE(Lemon_YY).CC3 0
+#SAY
+<Text|x=175.0|y=556.0|color=251|size=18|text=55级解锁>
+#IF
+EQUAL $TABLE(Lemon_YY).CC4 0
+#SAY
+<Text|x=463.0|y=556.0|color=251|size=18|text=75级解锁>
+;======================================================================================
+#IF
+EQUAL N$Lemon升级成功 1
+#SAY
+<Frames|x=100.0|y=170.0|speed=10|count=11|prefix=public/sj_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon升级成功 0
+
+#IF
+EQUAL N$Lemon插槽成功 1
+#SAY
+<Frames|x=142.0|y=335.0|scale=1.1|speed=10|count=11|prefix=private/yuyi/34072_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon插槽成功 0
+#IF
+EQUAL N$Lemon插槽成功 2
+#SAY
+<Frames|x=432.0|y=335.0|scale=1.1|speed=10|count=11|prefix=private/yuyi/34072_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon插槽成功 0
+#IF
+EQUAL N$Lemon插槽成功 3
+#SAY
+<Frames|x=142.0|y=450.0|scale=1.1|speed=10|count=11|prefix=private/yuyi/34072_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon插槽成功 0
+#IF
+EQUAL N$Lemon插槽成功 4
+#SAY
+<Frames|x=432.0|y=450.0|scale=1.1|speed=10|count=11|prefix=private/yuyi/34072_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon插槽成功 0
+;========================================================
+
+
+
+[@Lemon羽翼JN]
+#IF
+!EQUAL $TABLE(Lemon_YY).RQ $DATE
+#ACT
+TABLE Lemon_YY RQ = $DATE
+TABLE Lemon_YY XL = 1
+
+#IF
+TRUE
+#SAY
+<Img|x=132.0|y=-6.0|show=0|bg=1|move=0|img=private/hefuhuodong/hefuhuodongdb.png|loadDelay=0|reset=1>
+<Button|x=951.0|y=36.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=153.0|y=90.0|scale=1|img=private/yuyi/yuyijineng/yuyijinengmb.png>
+<Img|x=437.0|y=50.0|scale=1|img=private/yuyi/yuyibiaoti.png>
+;==========================================================================
+<Button|x=985.0|y=90.0|nimg=private/yuyi/fenlei2.png|pimg=private/yuyi/fenlei2.png|id=ycbmyy|children={ycyyhd}>
+<Button|x=985.0|y=244.0|nimg=private/yuyi/fenlei2.png|pimg=private/yuyi/fenlei2.png|id=yctsyy|children={yctshd}>
+<Button|x=985.0|y=398.0|nimg=private/yuyi/fenlei1.png|pimg=private/yuyi/fenlei1.png|id=ycyyjn|children={ycjnhd}>
+<$STR(S$羽翼右侧按钮红点1)>
+<$STR(S$羽翼右侧按钮红点2)>
+;-------------------------------
+<RText|x=1003.0|y=110.0|color=67|size=20|text=本\命\羽\翼>
+<RText|x=1003.0|y=265.0|color=67|size=20|text=特\殊\羽\翼>
+<RText|x=1003.0|y=420.0|color=67|size=20|text=羽\翼\技\能>
+
+
+;-------------------------------
+<Layout|x=994.0|y=92.0|width=40|height=150|rotate=0|link=@羽翼系统>
+<Layout|x=994.0|y=247.0|width=40|height=150|rotate=0|link=@Lemon羽翼TS>
+<Layout|x=994.0|y=402.0|width=40|height=150|rotate=0|link=@XXX>
+;==========================================================================
+<Button|x=200.0|y=540.0|color=67|scale=1|size=20|nimg=public/btn_push_11.png|pimg=public/btn_push_11.png|text=洗  练|link=@Lemon洗练&1>
+<Button|x=400.0|y=540.0|color=67|scale=1|size=20|nimg=public/btn_push_11.png|pimg=public/btn_push_11.png|text=洗  练|link=@Lemon洗练&2>
+<Button|x=600.0|y=540.0|color=67|scale=1|size=20|nimg=public/btn_push_11.png|pimg=public/btn_push_11.png|text=洗  练|link=@Lemon洗练&3>
+<Button|x=800.0|y=540.0|color=67|scale=1|size=20|nimg=public/btn_push_11.png|pimg=public/btn_push_11.png|text=洗  练|link=@Lemon洗练&4>
+#ACT
+MOV N$Lemon特殊羽翼 1
+CLEARVAR S0 99
+CLEARVAR P0 99
+
+#IF
+LARGE $TABLE(Lemon_YY).XL 0
+#SAY
+<RText|x=480.0|y=505.0|color=67|size=20|text=剩余免费洗练次数:<1/FCOLOR=222>>
+#ELSESAY
+<Img|x=225.0|y=495.0|scale=1|img=private/baoguo/26930.png>
+<Text|x=260.0|y=500.0|color=<$STR(P1)>|size=18|text=800>
+;-----------
+<Img|x=425.0|y=495.0|scale=1|img=private/baoguo/26930.png>
+<Text|x=460.0|y=500.0|color=<$STR(P2)>|size=18|text=1500>
+;-----------
+<Img|x=625.0|y=495.0|scale=1|img=private/baoguo/26930.png>
+<Text|x=660.0|y=500.0|color=<$STR(P3)>|size=18|text=2000>
+;-----------
+<Img|x=825.0|y=495.0|scale=1|img=private/baoguo/26930.png>
+<Text|x=860.0|y=500.0|color=<$STR(P4)>|size=18|text=3000>
+
+#IF
+!SMALL $GAMEGOLD 800
+#ACT
+MOV P1 222
+#ELSEACT
+MOV P1 249
+#IF
+!SMALL $GAMEGOLD 1500
+#ACT
+MOV P2 222
+#ELSEACT
+MOV P2 249
+#IF
+!SMALL $GAMEGOLD 2000
+#ACT
+MOV P3 222
+#ELSEACT
+MOV P3 249
+#IF
+!SMALL $GAMEGOLD 3000
+#ACT
+MOV P4 222
+#ELSEACT
+MOV P4 249
+;==========================================================
+#IF
+EQUAL $TABLE(Lemon_YY).CC1 0
+#SAY
+<Img|x=223.0|y=290.0|scale=1|img=private/yuyi/yuyijineng/icon_storm_21.png>
+<Img|x=186.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/jiesuodengji.png>
+<Img|x=266.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/10ji.png>
+
+#IF
+EQUAL $TABLE(Lemon_YY).CC2 0
+#SAY
+<Img|x=423.0|y=290.0|scale=1|img=private/yuyi/yuyijineng/icon_storm_21.png>
+<Img|x=386.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/jiesuodengji.png>
+<Img|x=466.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/35ji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CC3 0
+#SAY 
+<Img|x=623.0|y=290.0|scale=1|img=private/yuyi/yuyijineng/icon_storm_21.png>
+<Img|x=586.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/jiesuodengji.png>
+<Img|x=666.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/55ji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CC4 0
+#SAY
+<Img|x=823.0|y=290.0|scale=1|img=private/yuyi/yuyijineng/icon_storm_21.png>
+<Img|x=786.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/jiesuodengji.png>
+<Img|x=866.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/75ji.png>
+;==========================================================
+#IF
+EQUAL $TABLE(Lemon_YY).CC1 1
+#SAY
+<Img|x=248.0|y=300.0|scale=1|img=private/yuyi/1.png>
+<Img|x=218.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/shangweixilian.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CC2 1
+#SAY
+<Img|x=448.0|y=300.0|scale=1|img=private/yuyi/1.png>
+<Img|x=418.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/shangweixilian.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CC3 1
+#SAY 
+<Img|x=648.0|y=300.0|scale=1|img=private/yuyi/1.png>
+<Img|x=618.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/shangweixilian.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CC4 1
+#SAY
+<Img|x=848.0|y=300.0|scale=1|img=private/yuyi/1.png>
+<Img|x=818.0|y=400.0|scale=1|img=private/yuyi/yuyijineng/shangweixilian.png>
+;==========================================================
+#IF
+LARGE $TABLE(Lemon_YY).CC1 1
+#SAY
+<Img|x=227.0|y=280.0|scale=1|img=private/yuyi/yuyijineng/<$TABLE(Lemon_YY).CC1>.png>
+<Img|x=265.0|y=320.0|scale=1|img=private/yuyi/kang.png>
+<Button|x=250.0|y=365.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S1)>　抵抗术>
+<Button|x=250.0|y=395.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=抵抗<$STR(S1)>　　>
+<Button|x=250.0|y=395.0|color=222|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S5)><$STR(S11)>%>
+<Button|x=250.0|y=425.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=的伤害<$STR(S6)>>
+#ACT
+LOADEXVAR S1 羽翼技能名称 $TABLE(Lemon_YY).CC1 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+LOADEXVAR S11 羽翼技能数据 <$STR(S1)><$TABLE(Lemon_YY).CCLV1> ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+
+#IF
+LARGE $TABLE(Lemon_YY).CC2 1
+#SAY
+<Img|x=427.0|y=280.0|scale=1|img=private/yuyi/yuyijineng/<$TABLE(Lemon_YY).CC2>.png>
+<Img|x=465.0|y=320.0|scale=1|img=private/yuyi/kang.png>
+<Button|x=450.0|y=365.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S2)>　抵抗术>
+<Button|x=450.0|y=395.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=抵抗<$STR(S2)>　　>
+<Button|x=450.0|y=395.0|color=222|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S15)><$STR(S12)>%>
+<Button|x=450.0|y=425.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=的伤害<$STR(S16)>>
+#ACT
+LOADEXVAR S2 羽翼技能名称 $TABLE(Lemon_YY).CC2 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+LOADEXVAR S12 羽翼技能数据 <$STR(S2)><$TABLE(Lemon_YY).CCLV2> ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+
+#IF
+LARGE $TABLE(Lemon_YY).CC3 1
+#SAY
+<Img|x=627.0|y=280.0|scale=1|img=private/yuyi/yuyijineng/<$TABLE(Lemon_YY).CC3>.png>
+<Img|x=665.0|y=320.0|scale=1|img=private/yuyi/kang.png>
+<Button|x=650.0|y=365.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S3)>　抵抗术>
+<Button|x=650.0|y=395.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=抵抗<$STR(S3)>　　>
+<Button|x=650.0|y=395.0|color=222|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S25)><$STR(S13)>%>
+<Button|x=650.0|y=425.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=的伤害<$STR(S26)>>
+#ACT
+LOADEXVAR S3 羽翼技能名称 $TABLE(Lemon_YY).CC3 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+LOADEXVAR S13 羽翼技能数据 <$STR(S3)><$TABLE(Lemon_YY).CCLV3> ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+
+#IF
+LARGE $TABLE(Lemon_YY).CC4 1
+#SAY
+<Img|x=827.0|y=280.0|scale=1|img=private/yuyi/yuyijineng/<$TABLE(Lemon_YY).CC4>.png>
+<Img|x=865.0|y=320.0|scale=1|img=private/yuyi/kang.png>
+<Button|x=850.0|y=365.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S4)>　抵抗术>
+<Button|x=850.0|y=395.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=抵抗<$STR(S4)>　　>
+<Button|x=850.0|y=395.0|color=222|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S35)><$STR(S14)>%>
+<Button|x=850.0|y=425.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=的伤害<$STR(S36)>>
+#ACT
+LOADEXVAR S4 羽翼技能名称 $TABLE(Lemon_YY).CC4 ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+LOADEXVAR S14 羽翼技能数据 <$STR(S4)><$TABLE(Lemon_YY).CCLV4> ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+
+
+#IF
+EQUAL $LENGTH.$STR(S1) 4
+#ACT
+MOV S5 　　　　　
+MOV S6 　　　
+#IF
+EQUAL $LENGTH.$STR(S1) 6
+#ACT
+MOV S5 　　　　　　
+MOV S6 　　　　
+#IF
+EQUAL $LENGTH.$STR(S1) 8
+#ACT
+MOV S5 　　　　　　　
+MOV S6 　　　　　
+#IF
+EQUAL $LENGTH.$STR(S1) 10
+#ACT
+MOV S5 　　　　　　　　
+MOV S6 　　　　　　
+;----------------------------
+#IF
+EQUAL $LENGTH.$STR(S2) 4
+#ACT
+MOV S15 　　　　　
+MOV S16 　　　
+#IF
+EQUAL $LENGTH.$STR(S2) 6
+#ACT
+MOV S15 　　　　　　
+MOV S16 　　　　
+#IF
+EQUAL $LENGTH.$STR(S2) 8
+#ACT
+MOV S15 　　　　　　　
+MOV S16 　　　　　
+#IF
+EQUAL $LENGTH.$STR(S2) 10
+#ACT
+MOV S15 　　　　　　　　
+MOV S16 　　　　
+;----------------------------
+#IF
+EQUAL $LENGTH.$STR(S3) 4
+#ACT
+MOV S25 　　　　　
+MOV S26 　　　
+#IF
+EQUAL $LENGTH.$STR(S3) 6
+#ACT
+MOV S25 　　　　　　
+MOV S26 　　　　
+#IF
+EQUAL $LENGTH.$STR(S3) 8
+#ACT
+MOV S25 　　　　　　　
+MOV S26 　　　　　
+#IF
+EQUAL $LENGTH.$STR(S3) 10
+#ACT
+MOV S25 　　　　　　　　
+MOV S26 　　　　
+;----------------------------
+#IF
+EQUAL $LENGTH.$STR(S4) 4
+#ACT
+MOV S35 　　　　　
+MOV S36 　　　
+#IF
+EQUAL $LENGTH.$STR(S4) 6
+#ACT
+MOV S35 　　　　　　
+MOV S36 　　　　
+#IF
+EQUAL $LENGTH.$STR(S4) 8
+#ACT
+MOV S35 　　　　　　　
+MOV S36 　　　　　
+#IF
+EQUAL $LENGTH.$STR(S4) 10
+#ACT
+MOV S35 　　　　　　　　
+MOV S36 　　　　　　
+
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV1 1
+#SAY
+<Img|x=330.0|y=275.0|scale=1|img=private/lingshou/chuji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV2 1
+#SAY
+<Img|x=530.0|y=275.0|scale=1|img=private/lingshou/chuji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV3 1
+#SAY
+<Img|x=730.0|y=275.0|scale=1|img=private/lingshou/chuji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV4 1
+#SAY
+<Img|x=930.0|y=275.0|scale=1|img=private/lingshou/chuji.png>
+
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV1 2
+#SAY
+<Img|x=330.0|y=275.0|scale=1|img=private/lingshou/zhongji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV2 2
+#SAY
+<Img|x=530.0|y=275.0|scale=1|img=private/lingshou/zhongji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV3 2
+#SAY
+<Img|x=730.0|y=275.0|scale=1|img=private/lingshou/zhongji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV4 2
+#SAY
+<Img|x=930.0|y=275.0|scale=1|img=private/lingshou/zhongji.png>
+
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV1 3
+#SAY
+<Img|x=330.0|y=275.0|scale=1|img=private/lingshou/gaoji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV2 3
+#SAY
+<Img|x=530.0|y=275.0|scale=1|img=private/lingshou/gaoji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV3 3
+#SAY
+<Img|x=730.0|y=275.0|scale=1|img=private/lingshou/gaoji.png>
+#IF
+EQUAL $TABLE(Lemon_YY).CCLV4 3
+#SAY
+<Img|x=930.0|y=275.0|scale=1|img=private/lingshou/gaoji.png>
+;==========================================================
+#IF
+EQUAL N$Lemon插槽成功 1
+#SAY
+<Frames|x=185.0|y=235.0|scale=1.1|speed=8|count=13|prefix=private/yuyi/yuyijineng/0001_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon插槽成功 0
+#IF
+EQUAL N$Lemon插槽成功 2
+#SAY
+<Frames|x=385.0|y=235.0|scale=1.1|speed=8|count=13|prefix=private/yuyi/yuyijineng/0001_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon插槽成功 0
+#IF
+EQUAL N$Lemon插槽成功 3
+#SAY
+<Frames|x=585.0|y=235.0|scale=1.1|speed=8|count=13|prefix=private/yuyi/yuyijineng/0001_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon插槽成功 0
+#IF
+EQUAL N$Lemon插槽成功 4
+#SAY
+<Frames|x=785.0|y=235.0|scale=1.1|speed=8|count=13|prefix=private/yuyi/yuyijineng/0001_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon插槽成功 0
+
+
+
+
+
+[@Lemon羽翼TS]
+
+#IF
+TRUE
+#ACT
+GOTO @羽翼界面红点判断
+
+#IF
+TRUE
+#SAY
+<Img|x=132.0|y=-6.0|show=0|bg=1|move=0|img=private/hefuhuodong/hefuhuodongdb.png|loadDelay=0|reset=1|link=@Lemon气泡GB>
+<Button|x=951.0|y=36.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=154.0|y=90.0|scale=1|img=private/yuyi/yuyibeijing.png|link=@Lemon气泡GB>
+<Img|x=437.0|y=50.0|scale=1|img=private/yuyi/yuyibiaoti.png|link=@Lemon气泡GB>
+<Img|x=154.5|y=494.0|scale=1|img=private/yuyi/bantoumingtiao.png|link=@Lemon气泡GB>
+<Text|x=312.0|y=102.0|color=67|size=20|text=<$STR(S0)>>
+;==========================================================================
+<Button|x=985.0|y=90.0|nimg=private/yuyi/fenlei2.png|pimg=private/yuyi/fenlei2.png|id=ycbmyy|children={ycyyhd}>
+<Button|x=985.0|y=244.0|nimg=private/yuyi/fenlei1.png|pimg=private/yuyi/fenlei1.png|id=yctsyy|children={yctshd}>
+<Button|x=985.0|y=398.0|nimg=private/yuyi/fenlei2.png|pimg=private/yuyi/fenlei2.png|id=ycyyjn|children={ycjnhd}>
+<$STR(S$羽翼右侧按钮红点1)>
+<$STR(S$羽翼右侧按钮红点2)>
+;-------------------------------
+<RText|x=1003.0|y=110.0|color=67|size=20|text=本\命\羽\翼>
+<RText|x=1003.0|y=265.0|color=67|size=20|text=特\殊\羽\翼>
+<RText|x=1003.0|y=420.0|color=67|size=20|text=羽\翼\技\能>
+;-------------------------------
+<Layout|x=994.0|y=92.0|width=40|height=150|rotate=0|link=@羽翼系统>
+<Layout|x=994.0|y=247.0|width=40|height=150|rotate=0|link=@xxx>
+<Layout|x=994.0|y=402.0|width=40|height=150|rotate=0|link=@Lemon羽翼JN>
+;==========================================================================
+<Img|x=215.0|y=140.0|img=private/lingshou/star<$INC.$STR(P21).1>.png>
+<Img|x=265.0|y=140.0|img=private/lingshou/star<$INC.$STR(P22).1>.png>
+<Img|x=315.0|y=140.0|img=private/lingshou/star<$INC.$STR(P23).1>.png>
+<Img|x=365.0|y=140.0|img=private/lingshou/star<$INC.$STR(P24).1>.png>
+<Img|x=415.0|y=140.0|img=private/lingshou/star<$INC.$STR(P25).1>.png>
+<Img|x=465.0|y=140.0|img=private/lingshou/star<$INC.$STR(P26).1>.png>
+;==========================================================================
+<Img|x=566.0|y=250.0|width=420|scale=1|img=public/bg_friend_01.png>
+<Img|x=570.0|y=400.0|width=420|scale=1|img=public/bg_friend_01.png>
+<Img|x=666.0|y=253.0|scale=1|img=public/title.png>
+<Img|x=666.0|y=403.0|scale=1|img=public/title.png>
+<Img|x=720.0|y=253.0|scale=1|img=private/yuyi/teshushuxing.png>
+<Img|x=720.0|y=403.0|scale=1|img=private/shizhuang/sz_sj.png>
+;==========================================================================
+<Text|x=584.0|y=133.0|color=67|size=18|text=<$STR(S1)>>
+<Text|x=584.0|y=173.0|color=67|size=18|text=防御>
+<Text|x=584.0|y=213.0|color=67|size=18|text=魔防>
+;-----------
+<Img|x=765.0|y=160.0|scale=1|img=public/jiantou.png>
+;-----------
+<Img|x=635.0|y=134.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+<Img|x=635.0|y=173.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+<Img|x=635.0|y=214.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+;-----------
+<Img|x=840.0|y=134.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+<Img|x=840.0|y=173.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+<Img|x=840.0|y=214.0|width=115|height=25|img=private/yuyi/bg_outgame_04.png|scale=1>
+;-----------
+<Text|x=640.0|y=133.0|color=67|size=18|text=<$STR(P5)>-<$STR(P5)>>
+<Text|x=640.0|y=173.0|color=67|size=18|text=<$STR(P5)>-<$STR(P5)>>
+<Text|x=640.0|y=213.0|color=67|size=18|text=<$STR(P5)>-<$STR(P5)>>
+;-----------
+<Text|x=845.0|y=133.0|color=67|size=18|text=<$STR(P15)>-<$STR(P16)>>
+<Text|x=845.0|y=173.0|color=67|size=18|text=<$STR(P15)>-<$STR(P16)>>
+<Text|x=845.0|y=213.0|color=67|size=18|text=<$STR(P15)>-<$STR(P16)>>
+;-----------
+<Button|x=715.0|y=322.0|color=67|scale=1|size=18|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$STR(S2)>+<$STR(P3)><$STR(S4)>>
+<Img|x=865.0|y=331.0|img=picpackage/3/17174.png>
+<Text|x=885.0|y=328.0|color=222|size=18|text=<$STR(P13)><$STR(S4)>>
+;=======================================================================
+<ListView|children=<yy0,yy1,yy2,yy3,yy4,yy5,yy6,yy7,yy8>|x=160.0|y=522.0|width=390|height=90|direction=2|bounce=1|reload=2|margin=24|loadDelay=0|img=public/9998.png>
+;-----------------------
+<Img|x=0.0|y=0.0|img=private/hefuhuodong/xxx.png|id=yy0>
+<Img|x=0.0|y=0.0|img=private/hefuhuodong/frame_starup_item.png|id=yy1|children=<yy1a1,yy1a2,yy1a3,yy1a4,yy1a5>>
+<Img|x=0.0|y=0.0|img=private/hefuhuodong/frame_starup_item.png|id=yy2|children=<yy2a1,yy2a2,yy2a3,yy2a4,yy2a5>>
+<Img|x=0.0|y=0.0|img=private/hefuhuodong/frame_starup_item.png|id=yy3|children=<yy3a1,yy3a2,yy3a3,yy3a4,yy3a5>>
+<Img|x=0.0|y=0.0|img=private/hefuhuodong/frame_starup_item.png|id=yy4|children=<yy4a1,yy4a2,yy4a3,yy4a4,yy4a5>>
+<Img|x=0.0|y=0.0|img=private/hefuhuodong/frame_starup_item.png|id=yy5|children=<yy5a1,yy5a2,yy5a3,yy5a4,yy5a5>>
+<Img|x=0.0|y=0.0|img=private/hefuhuodong/frame_starup_item.png|id=yy6|children=<yy6a1,yy6a2,yy6a3,yy6a4,yy6a5>>
+<Img|x=0.0|y=0.0|img=private/hefuhuodong/frame_starup_item.png|id=yy7|children=<yy7a1,yy7a2,yy7a3,yy7a4,yy7a5>>
+<Img|x=0.0|y=0.0|img=private/hefuhuodong/frame_starup_item.png|id=yy8|children=<yy8a1,yy8a2,yy8a3,yy8a4,yy8a5>>
+<$STR(S$特殊羽翼激活红点1)>
+<$STR(S$特殊羽翼激活红点2)>
+<$STR(S$特殊羽翼激活红点3)>
+<$STR(S$特殊羽翼激活红点4)>
+<$STR(S$特殊羽翼激活红点5)>
+<$STR(S$特殊羽翼激活红点6)>
+<$STR(S$特殊羽翼激活红点7)>
+<$STR(S$特殊羽翼激活红点8)>
+<$STR(S$特殊羽翼升星红点1)>
+<$STR(S$特殊羽翼升星红点2)>
+<$STR(S$特殊羽翼升星红点3)>
+<$STR(S$特殊羽翼升星红点4)>
+<$STR(S$特殊羽翼升星红点5)>
+<$STR(S$特殊羽翼升星红点6)>
+<$STR(S$特殊羽翼升星红点7)>
+<$STR(S$特殊羽翼升星红点8)>
+
+;-----------------------
+<Img|x=6.0|y=5.0|img=item/55501.png|link=@Lemon特殊XZ&1|id=yy1a1>
+<Img|x=6.0|y=5.0|img=item/55502.png|link=@Lemon特殊XZ&2|id=yy2a1>
+<Img|x=6.0|y=5.0|img=item/55503.png|link=@Lemon特殊XZ&3|id=yy3a1>
+<Img|x=6.0|y=5.0|img=item/55504.png|link=@Lemon特殊XZ&4|id=yy4a1>
+<Img|x=6.0|y=5.0|img=item/55505.png|link=@Lemon特殊XZ&5|id=yy5a1>
+<Img|x=6.0|y=5.0|img=item/55506.png|link=@Lemon特殊XZ&6|id=yy6a1>
+<Img|x=6.0|y=5.0|img=item/55507.png|link=@Lemon特殊XZ&7|id=yy7a1>
+<Img|x=6.0|y=5.0|img=item/55508.png|link=@Lemon特殊XZ&8|id=yy8a1>
+;=======================================================================
+<Img|x=170.0|y=430.0|img=private/yuyi/icon_fashion_upgrade.png|link=@Lemon属性SM>
+<Button|x=285.0|y=430.0|color=67|scale=1|size=20|nimg=public/btn_push_01.png|pimg=public/btn_push_01.png|text=<$STR(S$Lemon穿戴状态)>羽翼|link=@Lemon<$STR(S$Lemon穿戴状态)>&<$STR(P0)>&<$STR(N$Lemon特殊羽翼)>>
+#ACT
+CLEARVAR S0 99
+CLEARVAR P0 99
+LOADEXVAR P0 特殊翅膀ID $STR(N$Lemon特殊羽翼) ..\QUESTDIARY\数据文件\羽翼特殊数据.txt
+LOADEXVAR S0 特殊翅膀名字 $STR(N$Lemon特殊羽翼) ..\QUESTDIARY\数据文件\羽翼特殊数据.txt
+
+#IF
+EQUAL N$Lemon特殊羽翼 1
+#ACT
+MOV P44 2
+MOV P45 3
+#ELSEACT
+MOV P44 $MULT^$DEC.$STR(N$Lemon特殊羽翼).1^10
+INC P44 2
+MOV P45 $INC.$STR(P44).1
+
+#IF
+LARGE N$Lemon特殊羽翼 0
+#ACT
+READEXCEL ..\QUESTDIARY\数据文件\羽翼特殊数据.XLS <$INC.$STR(P44).<$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>>>
+MOV S2 $996(EXCEL).2
+MOV P3 $996(EXCEL).3
+MOV S4 $996(EXCEL).4
+MOV P5 $996(EXCEL).5
+MOV P6 $996(EXCEL).6
+READEXCEL ..\QUESTDIARY\数据文件\羽翼特殊数据.XLS <$INC.$STR(P45).<$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>>>
+MOV P13 $996(EXCEL).3
+MOV P15 $996(EXCEL).5
+MOV P16 $996(EXCEL).6
+MOV P17 $996(EXCEL).7
+;======================================================================
+#IF
+SMALL <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>> 6
+EQUAL <$TABLE(Lemon_YY).TS<$STR(N$Lemon特殊羽翼)>> 1
+#SAY
+<ItemShow|x=735.0|y=450.0|itemid=0|itemcount=0|name=<$STR(S0)>|bgtype=public/fjfqk.png|showtips=1|scale=1>
+<Text|x=770.0|y=490.0|color=<$STR(P18)>|size=18|text=<$STR(P19)>/<$STR(P17)>>
+<Button|x=700.0|y=550.0|color=67|scale=1|size=20|nimg=public/btn_push_11.png|pimg=public/btn_push_11.png|text=升级羽翼|link=@Lemon升星&<$STR(N$Lemon特殊羽翼)>&<$STR(S0)>&<$STR(P17)>>
+
+#IF
+!SMALL <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>> 6
+EQUAL <$TABLE(Lemon_YY).TS<$STR(N$Lemon特殊羽翼)>> 1
+#SAY
+<Text|x=710.0|y=490.0|color=67|size=20|text=已达最高星级>
+;----------------------------------
+#IF
+CHECKITEM $STR(S0) $STR(P17)
+#ACT
+MOV P18 222
+MOV P19 $ITEMCOUNT[$STR(S0)]
+#ELSEACT
+MOV P18 249
+MOV P19 $ITEMCOUNT[$STR(S0)]
+;======================================================================
+#IF
+EQUAL $JOB 战士
+#ACT
+MOV S1 攻击
+#IF
+EQUAL $JOB 法师
+#ACT
+MOV S1 魔法
+#IF
+EQUAL $JOB 道士
+#ACT
+MOV S1 道术
+;----------------------------------
+#IF
+EQUAL $TABLE(Lemon_YY).CD $STR(P0)
+#ACT
+MOV S$Lemon穿戴状态 卸下
+#ELSEACT
+MOV S$Lemon穿戴状态 穿戴
+;======================================================================
+#IF
+EQUAL N$Lemon特殊羽翼 1
+#SAY
+<Img|x=0.0|y=0.0|scale=0.85|img=private/shizhuang/frame_dress_02.png|id=yy1a2>
+#IF
+EQUAL N$Lemon特殊羽翼 2
+#SAY
+<Img|x=0.0|y=0.0|scale=0.85|img=private/shizhuang/frame_dress_02.png|id=yy2a2>
+#IF
+EQUAL N$Lemon特殊羽翼 3
+#SAY
+<Img|x=0.0|y=0.0|scale=0.85|img=private/shizhuang/frame_dress_02.png|id=yy3a2>
+#IF
+EQUAL N$Lemon特殊羽翼 4
+#SAY
+<Img|x=0.0|y=0.0|scale=0.85|img=private/shizhuang/frame_dress_02.png|id=yy4a2>
+#IF
+EQUAL N$Lemon特殊羽翼 5
+#SAY
+<Img|x=0.0|y=0.0|scale=0.85|img=private/shizhuang/frame_dress_02.png|id=yy5a2>
+#IF
+EQUAL N$Lemon特殊羽翼 6
+#SAY
+<Img|x=0.0|y=0.0|scale=0.85|img=private/shizhuang/frame_dress_02.png|id=yy6a2>
+#IF
+EQUAL N$Lemon特殊羽翼 7
+#SAY
+<Img|x=0.0|y=0.0|scale=0.85|img=private/shizhuang/frame_dress_02.png|id=yy7a2>
+#IF
+EQUAL N$Lemon特殊羽翼 8
+#SAY
+<Img|x=0.0|y=0.0|scale=0.85|img=private/shizhuang/frame_dress_02.png|id=yy8a2>
+;======================================================================
+#IF
+EQUAL N$Lemon特殊羽翼 1
+EQUAL $TABLE(Lemon_YY).TS1 1
+#SAY
+<Img|x=200.0|y=180.0|scale=1.1|img=private/yuyi/teshuyuyi/1.png>
+<Frames|x=171.0|y=160.0|scale=1.1|speed=8|count=12|prefix=private/yuyi/teshuyuyi/zhzy2j_|loop=-1|suffix=.png|blend=1>
+
+#IF
+EQUAL N$Lemon特殊羽翼 1
+!EQUAL $TABLE(Lemon_YY).TS1 1
+#SAY
+<Img|x=200.0|y=180.0|scale=1.1|img=private/yuyi/teshuyuyi/1a.png>
+<Text|x=730.0|y=490.0|color=67|size=20|text=尚未获得>
+;-----------------------------------------------------------------------------------------------
+#IF
+EQUAL N$Lemon特殊羽翼 2
+EQUAL $TABLE(Lemon_YY).TS2 1
+#SAY
+<Img|x=160.0|y=160.0|scale=0.85|img=private/yuyi/teshuyuyi/2.png>
+<Frames|x=125.0|y=140.0|scale=0.85|speed=8|count=16|prefix=private/yuyi/teshuyuyi/cszy3j_|loop=-1|suffix=.png|blend=1>
+
+#IF
+EQUAL N$Lemon特殊羽翼 2
+!EQUAL $TABLE(Lemon_YY).TS2 1
+#SAY
+<Img|x=160.0|y=160.0|scale=0.85|img=private/yuyi/teshuyuyi/2a.png>
+<Text|x=730.0|y=490.0|color=67|size=20|text=尚未获得>
+;-----------------------------------------------------------------------------------------------
+#IF
+EQUAL N$Lemon特殊羽翼 3
+EQUAL $TABLE(Lemon_YY).TS3 1
+#SAY
+<Frames|x=160.0|y=100.0|scale=0.85|speed=8|count=16|prefix=private/yuyi/teshuyuyi/11910_|loop=-1|suffix=.png>
+
+#IF
+EQUAL N$Lemon特殊羽翼 3
+!EQUAL $TABLE(Lemon_YY).TS3 1
+#SAY
+<Img|x=160.0|y=100.0|scale=0.85|img=private/yuyi/teshuyuyi/3a.png>
+<Text|x=730.0|y=490.0|color=67|size=20|text=尚未获得>
+;-----------------------------------------------------------------------------------------------
+#IF
+EQUAL N$Lemon特殊羽翼 4
+EQUAL $TABLE(Lemon_YY).TS4 1
+#SAY
+<Img|x=70.0|y=100.0|scale=0.75|img=private/yuyi/teshuyuyi/4.png>
+<Frames|x=70.0|y=100.0|scale=0.75|speed=8|count=25|prefix=private/yuyi/teshuyuyi/08086_|loop=-1|suffix=.png|blend=1>
+
+#IF
+EQUAL N$Lemon特殊羽翼 4
+!EQUAL $TABLE(Lemon_YY).TS4 1
+#SAY
+<Img|x=70.0|y=100.0|scale=0.75|img=private/yuyi/teshuyuyi/4a.png>
+<Text|x=730.0|y=490.0|color=67|size=20|text=尚未获得>
+;-----------------------------------------------------------------------------------------------
+#IF
+EQUAL N$Lemon特殊羽翼 5
+EQUAL $TABLE(Lemon_YY).TS5 1
+#SAY
+<Img|x=160.0|y=160.0|scale=0.85|img=private/yuyi/teshuyuyi/5.png>
+<Frames|x=145.0|y=140.0|scale=0.85|speed=8|count=12|prefix=private/yuyi/teshuyuyi/flsy2j_|loop=-1|suffix=.png|blend=1>
+
+#IF
+EQUAL N$Lemon特殊羽翼 5
+!EQUAL $TABLE(Lemon_YY).TS5 1
+#SAY
+<Img|x=160.0|y=160.0|scale=0.8|img=private/yuyi/teshuyuyi/5a.png>
+<Text|x=730.0|y=490.0|color=67|size=20|text=尚未获得>
+;-----------------------------------------------------------------------------------------------
+#IF
+EQUAL N$Lemon特殊羽翼 6
+EQUAL $TABLE(Lemon_YY).TS6 1
+#SAY
+<Img|x=90.0|y=130.0|scale=1|img=private/yuyi/teshuyuyi/6.png>
+<Frames|x=90.0|y=130.0|scale=1|speed=8|count=12|prefix=private/yuyi/teshuyuyi/12067_|loop=-1|suffix=.png|blend=1>
+
+#IF
+EQUAL N$Lemon特殊羽翼 6
+!EQUAL $TABLE(Lemon_YY).TS6 1
+#SAY
+<Img|x=90.0|y=130.0|scale=1|img=private/yuyi/teshuyuyi/6a.png>
+<Text|x=730.0|y=490.0|color=67|size=20|text=尚未获得>
+;-----------------------------------------------------------------------------------------------
+#IF
+EQUAL N$Lemon特殊羽翼 7
+EQUAL $TABLE(Lemon_YY).TS7 1
+#SAY
+<Frames|x=170.0|y=130.0|scale=1|speed=8|count=12|prefix=private/yuyi/teshuyuyi/swxy_|loop=-1|suffix=.png|blend=1>
+
+#IF
+EQUAL N$Lemon特殊羽翼 7
+!EQUAL $TABLE(Lemon_YY).TS7 1
+#SAY
+<Img|x=170.0|y=130.0|scale=1|img=private/yuyi/teshuyuyi/7a.png>
+<Text|x=730.0|y=490.0|color=67|size=20|text=尚未获得>
+;-----------------------------------------------------------------------------------------------
+#IF
+EQUAL N$Lemon特殊羽翼 8
+EQUAL $TABLE(Lemon_YY).TS8 1
+#SAY
+<Img|x=170.0|y=140.0|scale=0.65|img=private/yuyi/teshuyuyi/8.png>
+<Frames|x=150.0|y=125.0|scale=0.65|speed=8|count=20|prefix=private/yuyi/teshuyuyi/swwxy_|loop=-1|suffix=.png|blend=1>
+
+#IF
+EQUAL N$Lemon特殊羽翼 8
+!EQUAL $TABLE(Lemon_YY).TS8 1
+#SAY
+<Img|x=170.0|y=140.0|scale=0.65|img=private/yuyi/teshuyuyi/8a.png>
+<Text|x=730.0|y=490.0|color=67|size=20|text=尚未获得>
+;-----------------------------------------------------------------------------------------------
+#IF
+EQUAL <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>> 1
+#ACT
+MOV P21 1
+#IF
+EQUAL <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>> 2
+#ACT
+MOV P21 1
+MOV P22 1
+#IF
+EQUAL <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>> 3
+#ACT
+MOV P21 1
+MOV P22 1
+MOV P23 1
+#IF
+EQUAL <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>> 4
+#ACT
+MOV P21 1
+MOV P22 1
+MOV P23 1
+MOV P24 1
+#IF
+EQUAL <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>> 5
+#ACT
+MOV P21 1
+MOV P22 1
+MOV P23 1
+MOV P24 1
+MOV P25 1
+#IF
+EQUAL <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>> 6
+#ACT
+MOV P21 1
+MOV P22 1
+MOV P23 1
+MOV P24 1
+MOV P25 1
+MOV P26 1
+#IF
+EQUAL <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>> 7
+#ACT
+MOV P21 1
+MOV P22 1
+MOV P23 1
+MOV P24 1
+MOV P25 1
+MOV P26 1
+MOV P27 1
+#IF
+EQUAL <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>> 8
+#ACT
+MOV P21 1
+MOV P22 1
+MOV P23 1
+MOV P24 1
+MOV P25 1
+MOV P26 1
+MOV P27 1
+MOV P28 1
+;==========================================================
+#IF
+EQUAL N$Lemon升星成功 1
+#SAY
+<Frames|x=165.0|y=215.0|scale=1.1|speed=8|count=15|prefix=public/7758_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon升星成功 0
+;==========================================================
+#IF
+EQUAL N$Lemon属性说明 1
+#SAY
+<Img|x=205.0|y=250.0|scale=1|img=private/yuyi/qipaodi.png|link=@Lemon气泡GB>
+<Text|x=215.0|y=265.0|color=67|size=18|text=穿戴该羽翼后将再额外获得如下属性：>
+<Text|x=215.0|y=290.0|color=222|size=18|text=<$STR(S2)>+<$STR(P36)><$STR(S4)>>
+<Text|x=215.0|y=315.0|color=222|size=18|text=攻击 <$STR(P31)>-<$STR(P32)>>
+<Text|x=215.0|y=340.0|color=222|size=18|text=防御 <$STR(P33)>-<$STR(P34)>>
+<Text|x=215.0|y=365.0|color=222|size=18|text=魔防 <$STR(P33)>-<$STR(P34)>>
+#ACT
+READEXCEL ..\QUESTDIARY\数据文件\羽翼升级数据.XLS <$INC.<$TABLE(Lemon_YY).BM>.1>
+MOV P31 $996(EXCEL).1
+MOV P32 $996(EXCEL).2
+MOV P33 $996(EXCEL).3
+MOV P34 $996(EXCEL).4
+;------------------------------------------------------------------------------------
+MOV P35 <$TABLE(Lemon_YY).XJ<$STR(N$Lemon特殊羽翼)>>
+INC P35 1
+MULT P35 10
+MOV P31 $DIV.$MULT^$STR(P31)^$STR(P35).100
+MOV P32 $DIV.$MULT^$STR(P32)^$STR(P35).100
+MOV P33 $DIV.$MULT^$STR(P33)^$STR(P35).100
+MOV P34 $DIV.$MULT^$STR(P34)^$STR(P35).100
+;------------------------------------------------------------------------------------
+MOV P36 $DIV.$MULT^$STR(P3)^50.100
+
+
+
+[@Lemon气泡GB]
+#IF
+EQUAL N$Lemon属性说明 1
+#ACT
+MOV N$Lemon属性说明 0
+GOTO @Lemon羽翼TS
+BREAK
+
+[@Lemon属性SM]
+#IF
+SMALL <$TABLE(Lemon_YY).TS<$STR(N$Lemon特殊羽翼)>> 1
+#ACT
+SENDMSG 19 你还未拥有该羽翼!
+BREAK
+
+#IF
+EQUAL N$Lemon属性说明 1
+#ACT
+MOV N$Lemon属性说明 0
+GOTO @Lemon羽翼TS
+BREAK
+#ELSEACT
+MOV N$Lemon属性说明 1
+GOTO @Lemon羽翼TS
+BREAK
+
+
+[@Lemon升星]
+#IFONE
+!POS -1-2-3-4-5-6-7-8- -<$SCRIPTPARAM(1)>-
+!POS -纵横之翼-传世之翼-魔焱之翼-恶魔之翼-幻灵凤羽-蓝冰之焱-神武仙翼-神王仙翼- -<$SCRIPTPARAM(2)>-
+SMALL $SCRIPTPARAM(3) 1
+#ACT
+KICK
+BREAK
+
+#IF
+!SMALL <$TABLE(Lemon_YY).XJ<$SCRIPTPARAM(1)>> 6
+#ACT
+SENDMSG 19 已经达到满星,无法继续升星了!
+BREAK
+
+#IF
+CHECKITEM $SCRIPTPARAM(2) $SCRIPTPARAM(3)
+#ACT
+TAKE $SCRIPTPARAM(2) $SCRIPTPARAM(3)
+TABLE Lemon_YY XJ<$SCRIPTPARAM(1)> + 1
+MOV N$Lemon升星成功 1
+GOTO @临时属性
+GOTO @Lemon羽翼TS
+GOTO @羽翼界面红点判断
+BREAK
+#ELSEACT
+SENDMSG 19 你的"<$SCRIPTPARAM(2)>"不足<$SCRIPTPARAM(3)>个
+BREAK
+
+
+
+
+[@Lemon特殊XZ]
+#IF
+!EQUAL N$Lemon特殊羽翼 $SCRIPTPARAM(1)
+#ACT
+MOV N$Lemon属性说明 0
+MOV N$Lemon特殊羽翼 $SCRIPTPARAM(1)
+GOTO @Lemon羽翼TS
+BREAK
+
+
+[@Lemon洗练]
+#IF
+!POS -1-2-3-4- -<$SCRIPTPARAM(1)>-
+#ACT
+KICK
+BREAK
+
+#IF
+SMALL <$TABLE(Lemon_YY).CC<$SCRIPTPARAM(1)>> 1
+#ACT
+SENDMSG 19 当前插槽还没有被解锁,暂时无法洗练羽翼技能!
+BREAK
+
+#IF
+LARGE $TABLE(Lemon_YY).XL 0
+#ACT
+TABLE Lemon_YY XL = 0
+GOTO @Lemon洗练B&<$SCRIPTPARAM(1)>
+BREAK
+#ELSEACT
+MOV P44 0
+#IF
+EQUAL $SCRIPTPARAM(1) 1
+#ACT
+MOV P44 800
+#IF
+EQUAL $SCRIPTPARAM(1) 2
+#ACT
+MOV P44 1500
+#IF
+EQUAL $SCRIPTPARAM(1) 3
+#ACT
+MOV P44 2000
+#IF
+EQUAL $SCRIPTPARAM(1) 4
+#ACT
+MOV P44 3000
+
+#IF
+SMALL P44 800
+#ACT
+SENDMSG 5 羽翼技能洗练异常!
+BREAK
+
+#IF
+!SMALL $GAMEGOLD $STR(P44)
+#ACT
+GAMEGOLD - $STR(P44)
+GOTO @Lemon洗练B&<$SCRIPTPARAM(1)>
+BREAK
+#ELSEACT
+SENDMSG 19 你的元宝不足<$STR(P44)>个!
+BREAK
+
+[@Lemon洗练B]
+#IF
+!POS -1-2-3-4- -<$SCRIPTPARAM(1)>-
+#ACT
+KICK
+BREAK
+
+#IF
+SMALL <$TABLE(Lemon_YY).CC<$SCRIPTPARAM(1)>> 1
+#ACT
+SENDMSG 5 当前插槽还没有被解锁,暂时无法洗练羽翼技能!
+BREAK
+#ELSEACT
+CLEARVAR S44 46
+CLEARVAR P43 46
+
+#IF
+!EQUAL P43 3333333
+RANDOM 50
+#ACT
+RANDOMSTR 八方分影斩,10|毒凌波,10|纵雷诀,10|翱风斩,10|火毒攻心剑,10|迷光烈焰,10|天女散花咒,10|怒斩天下,10 S44
+RANDOMSTR 1,60|2,30|3,10 S45
+LOADEXVAR P44 羽翼技能名称 $STR(S44) ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+GOTO @Lemon计算重复&<$SCRIPTPARAM(1)>
+
+#IF
+!EQUAL P43 3333333
+RANDOM  20
+#ACT
+RANDOMSTR 破击剑法,10|破盾斩,10|突斩,10|幽冥火咒,10|狂龙紫电,10|流星火雨,10 S44
+RANDOMSTR 1,60|2,30|3,10 S45
+LOADEXVAR P44 羽翼技能名称 $STR(S44) ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+GOTO @Lemon计算重复&<$SCRIPTPARAM(1)>
+
+#IF
+!EQUAL P43 3333333
+RANDOM  1
+#ACT
+RANDOMSTR 施毒术,10|攻杀剑法,10|雷电术,10|刺杀剑术,10|灵魂道符,10|火墙,10|爆裂火焰,10|地狱雷光,10|半月弯刀,10|烈火剑法,10|冰咆哮,10|抱月刀,10|五雷轰,10 S44
+RANDOMSTR 1,60|2,30|3,10 S45
+LOADEXVAR P44 羽翼技能名称 $STR(S44) ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+GOTO @Lemon计算重复&<$SCRIPTPARAM(1)>
+
+#IF
+EQUAL P43 3333333
+#ACT
+SkillDefPower <$TABLE(Lemon_YY).CC<$SCRIPTPARAM(1)>> = 0
+TABLE Lemon_YY CC<$SCRIPTPARAM(1)> = $STR(P44)
+TABLE Lemon_YY CCLV<$SCRIPTPARAM(1)> = $STR(S45)
+LOADEXVAR S46 羽翼技能数据 <$STR(S44)><$STR(S45)> ..\QUESTDIARY\数据文件\羽翼技能数据.txt
+GOTO @Lemon计算数值&<$SCRIPTPARAM(1)>
+SkillDefPower <$TABLE(Lemon_YY).CC<$SCRIPTPARAM(1)>> = <$TABLE(Lemon_YY).CCSZ<$SCRIPTPARAM(1)>>
+MOV N$Lemon插槽成功 $SCRIPTPARAM(1)
+GOTO @Lemon羽翼JN
+BREAK
+
+
+
+
+[@Lemon计算重复]
+#IF
+EQUAL $SCRIPTPARAM(1) 1
+!EQUAL P44 $TABLE(Lemon_YY).CC2
+!EQUAL P44 $TABLE(Lemon_YY).CC3
+!EQUAL P44 $TABLE(Lemon_YY).CC4
+#ACT
+MOV P43 3333333
+BREAK
+#IF
+EQUAL $SCRIPTPARAM(1) 2
+!EQUAL P44 $TABLE(Lemon_YY).CC1
+!EQUAL P44 $TABLE(Lemon_YY).CC3
+!EQUAL P44 $TABLE(Lemon_YY).CC4
+#ACT
+MOV P43 3333333
+BREAK
+#IF
+EQUAL $SCRIPTPARAM(1) 3
+!EQUAL P44 $TABLE(Lemon_YY).CC1
+!EQUAL P44 $TABLE(Lemon_YY).CC2
+!EQUAL P44 $TABLE(Lemon_YY).CC4
+#ACT
+MOV P43 3333333
+BREAK
+#IF
+EQUAL $SCRIPTPARAM(1) 4
+!EQUAL P44 $TABLE(Lemon_YY).CC1
+!EQUAL P44 $TABLE(Lemon_YY).CC2
+!EQUAL P44 $TABLE(Lemon_YY).CC3
+#ACT
+MOV P43 3333333
+BREAK
+#ELSEACT
+MOV P43 0
+GOTO @Lemon洗练B
+BREAK
+
+
+
+[@Lemon计算数值]
+#IF
+!POS $STR(S46) .
+SMALL $STR(S46) 1
+#ACT
+BREAK
+
+#IF
+POS $STR(S46) .
+#ACT
+DEC S46 .
+TABLE Lemon_YY CCSZ<$SCRIPTPARAM(1)> = $STR(S46)
+BREAK
+#ELSEACT
+TABLE Lemon_YY CCSZ<$SCRIPTPARAM(1)> = $MULT.$STR(S46).10
+BREAK
+
+
+[@Lemon穿戴]
+#IF
+EQUAL $SCRIPTPARAM(1) 1
+#ACT
+MOV P44 $DIV^$TABLE(Lemon_YY).BM^20
+INC P44 1
+TABLE Lemon_YY CD = $STR(P44)
+WINGTYPE $TABLE(Lemon_YY).CD 2
+SENDMSG 19 穿戴本命羽翼成功!
+GOTO @羽翼系统
+GOTO @临时属性
+BREAK
+
+#IF
+SMALL <$TABLE(Lemon_YY).TS<$STR(N$Lemon特殊羽翼)>> 1
+#ACT
+SENDMSG 19 你还未拥有该羽翼!
+BREAK
+#ELSEACT
+TABLE Lemon_YY CD = $SCRIPTPARAM(1)
+WINGTYPE $SCRIPTPARAM(1) 2
+SENDMSG 19 穿戴特殊羽翼成功!
+GOTO @Lemon羽翼TS
+GOTO @临时属性
+BREAK
+
+
+[@Lemon卸下]
+#IF
+EQUAL $SCRIPTPARAM(1) 1
+#ACT
+TABLE Lemon_YY CD = 0
+WINGTYPE 666 2
+SENDMSG 19 卸下本命羽翼成功!
+GOTO @羽翼系统
+GOTO @临时属性
+BREAK
+#ELSEACT
+TABLE Lemon_YY CD = 0
+WINGTYPE 666 2
+SENDMSG 19 卸下特殊羽翼成功!
+GOTO @Lemon羽翼TS
+GOTO @临时属性
+BREAK
+
+
+[@Lemon升级B]
+#IF
+SMALL $SCRIPTPARAM(1) 1
+#ACT
+SENDMSG 19 你的羽翼已无法升级了!!
+BREAK
+
+#IF
+!SMALL $TABLE(Lemon_YY).BM 100
+#ACT
+SENDMSG 19 你的羽翼等级已达到顶级!!
+BREAK
+
+#IF
+!CHECKITEM 仙翎之羽 1
+#ACT
+SENDMSG 19 你1个仙翎之羽也没有!
+BREAK
+
+#IF
+EQUAL $TABLE(Lemon_YY).BM 99
+!SMALL $ITEMCOUNT(仙翎之羽) $DEC.$SCRIPTPARAM(1).<$TABLE(Lemon_YY).JY>
+#ACT
+TABLE Lemon_YY JY + $DEC.$SCRIPTPARAM(1).<$TABLE(Lemon_YY).JY>
+TAKE 仙翎之羽 $DEC.$SCRIPTPARAM(1).<$TABLE(Lemon_YY).JY>
+#ELSEACT
+TABLE Lemon_YY JY + $ITEMCOUNT(仙翎之羽)
+TAKE 仙翎之羽 $ITEMCOUNT(仙翎之羽)
+
+
+
+#IF
+!SMALL $TABLE(Lemon_YY).JY $SCRIPTPARAM(1)
+#ACT
+TABLE Lemon_YY JY - $SCRIPTPARAM(1)
+TABLE Lemon_YY BM + 1
+MOV N$Lemon升级成功 1
+GOTO @Lemon升级JC
+GOTO @临时属性
+GOTO @羽翼界面红点判断
+GOTO @羽翼系统
+GOTO @顶部七日狂欢红点
+BREAK
+#ELSEACT
+GOTO @羽翼系统
+GOTO @羽翼界面红点判断
+BREAK
+
+
+
+
+
+[@Lemon升级A]
+#IF
+SMALL $SCRIPTPARAM(1) 1
+#ACT
+SENDMSG 19 你的羽翼已无法升级了!!
+BREAK
+
+#IF
+!SMALL $TABLE(Lemon_YY).BM 100
+#ACT
+SENDMSG 19 你的羽翼等级已达到顶级!!
+BREAK
+
+#IF
+CHECKITEM 仙翎之羽 1
+#ACT
+TAKE 仙翎之羽 1
+TABLE Lemon_YY JY + 1
+#ELSEACT
+SENDMSG 19 你没有1个仙翎之羽!
+BREAK
+
+#IF
+!SMALL $TABLE(Lemon_YY).JY $SCRIPTPARAM(1)
+#ACT
+TABLE Lemon_YY JY - $SCRIPTPARAM(1)
+TABLE Lemon_YY BM + 1
+MOV N$Lemon升级成功 1
+GOTO @Lemon升级JC
+GOTO @临时属性
+GOTO @羽翼系统
+GOTO @羽翼界面红点判断
+GOTO @顶部七日狂欢红点
+BREAK
+#ELSEACT
+GOTO @羽翼系统
+GOTO @羽翼界面红点判断
+BREAK
+
+
+[@Lemon升级JC]
+#IF
+SMALL $TABLE(Lemon_YY).BM 100
+LARGE $TABLE(Lemon_YY).CD 0
+LARGE $DIV^$TABLE(Lemon_YY).BM^20 $DEC^$TABLE(Lemon_YY).CD^1
+#ACT
+MOV P44 $DIV^$TABLE(Lemon_YY).BM^20
+INC P44 1
+TABLE Lemon_YY CD = $STR(P44)
+WINGTYPE $TABLE(Lemon_YY).CD 2
+SENDMSG 19 羽翼已更新!!
+
+#IF
+EQUAL $TABLE(Lemon_YY).BM 10
+#ACT
+TABLE Lemon_YY CC1 + 1
+MOV N$Lemon插槽成功 1
+
+#IF
+EQUAL $TABLE(Lemon_YY).BM 35
+#ACT
+TABLE Lemon_YY CC2 + 1
+MOV N$Lemon插槽成功 2
+
+#IF
+EQUAL $TABLE(Lemon_YY).BM 55
+#ACT
+TABLE Lemon_YY CC3 + 1
+MOV N$Lemon插槽成功 3
+
+#IF
+EQUAL $TABLE(Lemon_YY).BM 75
+#ACT
+TABLE Lemon_YY CC4 + 1
+MOV N$Lemon插槽成功 4
+
+#IF
+TRUE
+#ACT
+MOV P33 0
+READEXCEL ..\QUESTDIARY\数据文件\羽翼升级数据.XLS <$INC.<$TABLE(Lemon_YY).BM>.2>
+MOV P33 $996(EXCEL).13
+
+#IF
+LARGE P33 0
+!SMALL $TABLE(Lemon_YY).JY $STR(P33)
+#ACT
+TABLE Lemon_YY JY - $STR(P33)
+TABLE Lemon_YY BM + 1
+GOTO @Lemon升级JC
+BREAK
+
+
+
+[@Lemon_YYJN]
+#IF
+LARGE <$TABLE(Lemon_YY).CC<$SCRIPTPARAM(1)>> 0
+#ACT
+GOTO @Lemon羽翼JN
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+[@羽翼界面红点判断]
+
+#if
+SMALL $TABLE(Lemon_YY).BM 100
+LARGE <$ITEMCOUNT(仙翎之羽)> 0
+#ACT
+MOV S$羽翼升级红点1 <Img|id=sjhd1|x=105.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV S$羽翼升级红点2 <Img|id=sjhd2|x=105.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼升级红点1 
+MOV S$羽翼升级红点2 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC1 1
+EQUAL $TABLE(Lemon_YY).BM 10
+#ACT
+MOV S$羽翼技能解锁红点1 <Img|id=jshd1|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点1 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC2 1
+EQUAL $TABLE(Lemon_YY).BM 35
+#ACT
+MOV S$羽翼技能解锁红点2 <Img|id=jshd2|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点2 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC3 1
+EQUAL $TABLE(Lemon_YY).BM 55
+#ACT
+MOV S$羽翼技能解锁红点3 <Img|id=jshd3|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点3 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC4 1
+EQUAL $TABLE(Lemon_YY).BM 55
+#ACT
+MOV S$羽翼技能解锁红点4 <Img|id=jshd4|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点4 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS1 0
+CHECKITEM 纵横之翼
+#ACT
+MOV S$特殊羽翼激活红点1 <Img|id=yy1a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS1 0
+!CHECKITEM 纵横之翼
+#ACT
+MOV S$特殊羽翼激活红点1 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS2 0
+CHECKITEM 传世之翼
+#ACT
+MOV S$特殊羽翼激活红点2 <Img|id=yy2a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS2 0
+!CHECKITEM 传世之翼
+#ACT
+MOV S$特殊羽翼激活红点2 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS3 0
+CHECKITEM 魔焱之翼
+#ACT
+MOV S$特殊羽翼激活红点3 <Img|id=yy3a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS3 0
+!CHECKITEM 魔焱之翼
+#ACT
+MOV S$特殊羽翼激活红点3 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS4 0
+CHECKITEM 恶魔之翼
+#ACT
+MOV S$特殊羽翼激活红点4 <Img|id=yy4a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS4 0
+!CHECKITEM 恶魔之翼
+#ACT
+MOV S$特殊羽翼激活红点4 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS5 0
+CHECKITEM 幻灵凤羽
+#ACT
+MOV S$特殊羽翼激活红点5 <Img|id=yy5a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS5 0
+!CHECKITEM 幻灵凤羽
+#ACT
+MOV S$特殊羽翼激活红点5 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS6 0
+CHECKITEM 蓝冰之焱
+#ACT
+MOV S$特殊羽翼激活红点6 <Img|id=yy6a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS6 0
+!CHECKITEM 蓝冰之焱
+#ACT
+MOV S$特殊羽翼激活红点6 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS7 0
+CHECKITEM 神武仙翼
+#ACT
+MOV S$特殊羽翼激活红点7 <Img|id=yy7a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS7 0
+!CHECKITEM 神武仙翼
+#ACT
+MOV S$特殊羽翼激活红点7 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS8 0
+CHECKITEM 神王仙翼
+#ACT
+MOV S$特殊羽翼激活红点8 <Img|id=yy8a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS8 0
+!CHECKITEM 神王仙翼
+#ACT
+MOV S$特殊羽翼激活红点8 
+
+
+#if
+LARGE $TABLE(Lemon_YY).TS1 0
+#ACT
+LOADEXVAR S$升星所需1 羽翼红点 <$TABLE(Lemon_YY).XJ1> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS2 0
+#ACT
+LOADEXVAR S$升星所需2 羽翼红点 <$TABLE(Lemon_YY).XJ2> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS3 0
+#ACT
+LOADEXVAR S$升星所需3 羽翼红点 <$TABLE(Lemon_YY).XJ3> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS4 0
+#ACT
+LOADEXVAR S$升星所需4 羽翼红点 <$TABLE(Lemon_YY).XJ4> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS5 0
+#ACT
+LOADEXVAR S$升星所需5 羽翼红点 <$TABLE(Lemon_YY).XJ5> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS6 0
+#ACT
+LOADEXVAR S$升星所需6 羽翼红点 <$TABLE(Lemon_YY).XJ6> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS7 0
+#ACT
+LOADEXVAR S$升星所需7 羽翼红点 <$TABLE(Lemon_YY).XJ7> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS8 0
+#ACT
+LOADEXVAR S$升星所需8 羽翼红点 <$TABLE(Lemon_YY).XJ8> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+
+#IF
+LARGE $TABLE(Lemon_YY).TS1 0
+CHECKITEM 纵横之翼 <$STR(S$升星所需1)>
+#ACT
+MOV S$特殊羽翼升星红点1 <Img|id=yy1a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点1 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS2 0
+CHECKITEM 传世之翼 <$STR(S$升星所需2)>
+#ACT
+MOV S$特殊羽翼升星红点2 <Img|id=yy2a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点2 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS3 0
+CHECKITEM 魔焱之翼 <$STR(S$升星所需3)>
+#ACT
+MOV S$特殊羽翼升星红点3 <Img|id=yy3a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点3 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS4 0
+CHECKITEM 恶魔之翼 <$STR(S$升星所需4)>
+#ACT
+MOV S$特殊羽翼升星红点4 <Img|id=yy4a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点4 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS5 0
+CHECKITEM 幻灵凤羽 <$STR(S$升星所需5)>
+#ACT
+MOV S$特殊羽翼升星红点5 <Img|id=yy5a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点5 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS6 0
+CHECKITEM 蓝冰之焱 <$STR(S$升星所需6)>
+#ACT
+MOV S$特殊羽翼升星红点6 <Img|id=yy6a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点6 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS7 0
+CHECKITEM 神武仙翼 <$STR(S$升星所需7)>
+#ACT
+MOV S$特殊羽翼升星红点7 <Img|id=yy7a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点7 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS8 0
+CHECKITEM 神王仙翼 <$STR(S$升星所需8)>
+#ACT
+MOV S$特殊羽翼升星红点8 <Img|id=yy8a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点8 
+
+
+
+;--------------------------------------------------------右侧3按钮红点
+#IFONE
+!EQUAL S$羽翼升级红点1 
+!EQUAL S$羽翼升级红点2 
+!EQUAL S$羽翼技能解锁红点1 
+!EQUAL S$羽翼技能解锁红点2 
+!EQUAL S$羽翼技能解锁红点3 
+!EQUAL S$羽翼技能解锁红点4 
+#ACT
+MOV S$羽翼右侧按钮红点1 <Img|id=ycyyhd|x=30.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼右侧按钮红点1 
+
+#IFONE
+!EQUAL S$特殊羽翼激活红点1 
+!EQUAL S$特殊羽翼激活红点2 
+!EQUAL S$特殊羽翼激活红点3 
+!EQUAL S$特殊羽翼激活红点4 
+!EQUAL S$特殊羽翼激活红点5 
+!EQUAL S$特殊羽翼激活红点6 
+!EQUAL S$特殊羽翼激活红点7 
+!EQUAL S$特殊羽翼激活红点8 
+!EQUAL S$特殊羽翼升星红点1 
+!EQUAL S$特殊羽翼升星红点2 
+!EQUAL S$特殊羽翼升星红点3 
+!EQUAL S$特殊羽翼升星红点4 
+!EQUAL S$特殊羽翼升星红点5 
+!EQUAL S$特殊羽翼升星红点6 
+!EQUAL S$特殊羽翼升星红点7 
+!EQUAL S$特殊羽翼升星红点8 
+#ACT
+MOV S$羽翼右侧按钮红点2 <Img|id=yctshd|x=30.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼右侧按钮红点2 
+
+
+
+#IF
+EQUAL S$羽翼升级红点1 
+EQUAL S$羽翼升级红点2 
+EQUAL S$羽翼技能解锁红点1 
+EQUAL S$羽翼技能解锁红点2 
+EQUAL S$羽翼技能解锁红点3 
+EQUAL S$羽翼技能解锁红点4 
+EQUAL S$特殊羽翼激活红点1 
+EQUAL S$特殊羽翼激活红点2 
+EQUAL S$特殊羽翼激活红点3 
+EQUAL S$特殊羽翼激活红点4 
+EQUAL S$特殊羽翼激活红点5 
+EQUAL S$特殊羽翼激活红点6 
+EQUAL S$特殊羽翼激活红点7 
+EQUAL S$特殊羽翼激活红点8 
+EQUAL S$特殊羽翼升星红点1 
+EQUAL S$特殊羽翼升星红点2 
+EQUAL S$特殊羽翼升星红点3 
+EQUAL S$特殊羽翼升星红点4 
+EQUAL S$特殊羽翼升星红点5 
+EQUAL S$特殊羽翼升星红点6 
+EQUAL S$特殊羽翼升星红点7 
+EQUAL S$特殊羽翼升星红点8 
+#ACT
+GOTO @角色按钮红点判断
+BREAK
+
+
+
+}

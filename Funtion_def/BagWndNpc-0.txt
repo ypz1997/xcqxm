@@ -1,0 +1,7 @@
+(@Storage @getback @FastStorge)
+[@main]
+#IF
+TRUE
+#ACT
+#CALL [\游戏功能\背包.txt] @背包界面
+BREAK

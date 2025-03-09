@@ -1,0 +1,193 @@
+[@封魔录]
+{
+#IF
+TRUE
+#ACT
+MOV S$封魔录_现行选中项 <$DEC.<$STR(S$封魔录_现行任务ID)>.30>
+GOTO @封魔录_二级页面
+[@封魔录_主页面]
+#IF
+TRUE
+#ACT
+MOV N$封魔录_循环计次1 0
+MOV S$封魔录_主页面菜单按钮
+MOV S$封魔录_主页面菜单children
+for N$封魔录_循环计次1 = <$TXTLINE(..\QuestDiary\读取数据\封魔录数据.txt)>
+ReadRandomStr ..\QuestDiary\读取数据\封魔录数据.txt S$封魔录_数据 <$STR(N$封魔录_循环计次1)>
+split <$STR(S$封魔录_数据)> = S$封魔录_主页面按钮
+INC S$封魔录_主页面菜单按钮 <Layout|id={$STR(N$封魔录_循环计次1)}|x=0.0|y=0.0|children={btn_{$STR(N$封魔录_循环计次1)}_0,btn_{$STR(N$封魔录_循环计次1)}_1,btn_{$STR(N$封魔录_循环计次1)}_2}|width=160|height=60|color=|link=@封魔录_二级页面&封魔录_现行选中项={$STR(S$封魔录_主页面按钮_0)}&封魔录_现行选中项={$STR(N$封魔录_循环计次1)}>
+INC S$封魔录_主页面菜单按钮 <Img|id=btn_{$STR(N$封魔录_循环计次1)}_0|x=0.0|y=0.0|scale=1|img=private/fengmobang/tab-1.png|esc=0>
+INC s$封魔录_主页面菜单按钮 <Button|id=btn_{$STR(N$封魔录_循环计次1)}_2|x=0.0|y=0.0|width=160|height=60|nimg=|scale=1|size=18|color=255|text={$STR(S$封魔录_主页面按钮_0)}>
+INC S$封魔录_主页面菜单children <$STR(N$封魔录_循环计次1)>,
+INC N$封魔录_循环计次1 1
+endfor
+INC S$封魔录_主页面菜单按钮 <Img|id=btn_{$STR(S$封魔录_现行选中项)}_1|x=0.0|y=0.0|scale=1|img=private/fengmobang/tab-2.png|esc=0>
+#SAY
+<Button|x=945.0|y=85.0|nimg=private/fengmobang/btn_x_01.png|_localZOrder=0|pimg=private/fengmobang/btn_x_01.png|link=@exit>
+<Img|x=150.0|y=63.0|show=0|reset=1|bg=1|move=0|img=private/fengmobang/main.png|_localZOrder=-2|loadDelay=1|esc=1>
+<ListView|children={<$STR(S$封魔录_主页面菜单children)>}|x=209.0|y=128.0|width=160|height=340|color=|loadDelay=0|reload=0|default={$STR(S$封魔录_现行选中项)}|img=public/9998.png>
+<$str(S$封魔录_主页面菜单按钮)>
+<$str(S$封魔录_二级页面)>
+[@封魔录_二级页面]
+#IF
+SMALL <$LEVEL> 60
+#ACT
+BREAK
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\读取数据\封魔录数据.txt S$封魔录_当前展示数据 <$STR(S$封魔录_现行选中项)>
+split <$STR(S$封魔录_当前展示数据)> = S$封魔录_当前展示数据分割1
+split <$STR(S$封魔录_当前展示数据分割1_1)> | S$封魔录_当前展示数据分割2
+#IF
+EQUAL <$STR(S$封魔录_当前展示数据分割2_0)> 0
+#ACT
+MOV S$封魔录_展示文本 人物等级达到<$STR(S$封魔录_当前展示数据分割2_1)>级。
+MOV s$封魔录_二级页面 <Text|x={$DEC.665.<$mult.<$LENGTH.<$STR(S$封魔录_展示文本)>>.5>}|y=196.0|color=0|size=18|text={$STR(S$封魔录_展示文本)}>
+#IF
+EQUAL <$STR(S$封魔录_当前展示数据分割2_0)> 1
+#ACT
+split <$STR(S$封魔录_当前展示数据分割2_1)> * S$封魔录_当前展示数据分割3
+MOV S$封魔录_展示文本 击杀【<$STR(S$封魔录_当前展示数据分割3_0)>】<$STR(S$封魔录_当前展示数据分割3_1)>只。
+MOV s$封魔录_二级页面 <Text|x={$DEC.665.<$mult.<$LENGTH.<$STR(S$封魔录_展示文本)>>.5>}|y=196.0|color=0|size=18|text={$STR(S$封魔录_展示文本)}>
+#IF
+EQUAL <$STR(S$封魔录_当前展示数据分割2_0)> 2
+#ACT
+MOV S$封魔录_展示文本 人物转生等级达到<$STR(S$封魔录_当前展示数据分割2_1)>级
+MOV s$封魔录_二级页面 <Text|x={$DEC.665.<$mult.<$LENGTH.<$STR(S$封魔录_展示文本)>>.5>}|y=196.0|color=0|size=18|text={$STR(S$封魔录_展示文本)}>
+
+#IF
+TRUE
+#ACT
+split <$STR(S$封魔录_当前展示数据分割2_5)> * S$封魔录_当前展示数据分割5
+ReadConfigFileItem ..\QuestDiary\读取数据\封魔录地图数据.txt 封魔录 <$STR(S$封魔录_当前展示数据分割2_2)> S$封魔录_地图名字1
+INC s$封魔录_二级页面 <Button|x=428.0|y=299.0|nimg=private/fengmobang/ico_{$STR(S$封魔录_当前展示数据分割2_2)}.png|scale=1|size=18|color=255|link=@封魔录_传送地图&封魔录_地图=<$STR(S$封魔录_当前展示数据分割5_0)>&封魔录_X坐标=<$STR(S$封魔录_当前展示数据分割5_1)>&封魔录_Y坐标=<$STR(S$封魔录_当前展示数据分割5_2)>>
+INC s$封魔录_二级页面 <Button|x=423.0|y=356.0|nimg=|scale=1|width=70|size=18|color=67|text={$STR(S$封魔录_地图名字1)}|link=@封魔录_传送地图&封魔录_地图=<$STR(S$封魔录_当前展示数据分割5_0)>&封魔录_X坐标=<$STR(S$封魔录_当前展示数据分割5_1)>&封魔录_Y坐标=<$STR(S$封魔录_当前展示数据分割5_2)>>
+split <$STR(S$封魔录_当前展示数据分割2_6)> * S$封魔录_当前展示数据分割6
+INC s$封魔录_二级页面 <Button|x=540.0|y=299.0|nimg=private/fengmobang/ico_guaji.png|scale=1|size=18|color=255|link=@封魔录_传送地图&封魔录_地图=<$STR(S$封魔录_当前展示数据分割6_0)>&封魔录_X坐标=<$STR(S$封魔录_当前展示数据分割6_1)>&封魔录_Y坐标=<$STR(S$封魔录_当前展示数据分割6_2)>>
+INC s$封魔录_二级页面 <Button|x=537.0|y=356.0|nimg=|text=安全挂机|scale=1|size=18|color=67|link=@封魔录_传送地图&封魔录_地图=<$STR(S$封魔录_当前展示数据分割6_0)>&封魔录_X坐标=<$STR(S$封魔录_当前展示数据分割6_1)>&封魔录_Y坐标=<$STR(S$封魔录_当前展示数据分割6_2)>>
+#IF
+TRUE
+#ACT
+split <$STR(S$封魔录_当前展示数据分割2_3)> & S$封魔录_当前展示数据分割3 N$封魔录_当前展示数据分割3NUM
+split <$STR(S$封魔录_当前展示数据分割2_7)> & S$封魔录_当前展示数据分割7
+MOV N$封魔录_循环计次2 0
+FOR N$封魔录_循环计次2 = <$STR(N$封魔录_当前展示数据分割3NUM)>
+split <$STR(S$封魔录_当前展示数据分割7_<$STR(N$封魔录_循环计次2)>)> * S$封魔录_推荐地图
+ReadConfigFileItem ..\QuestDiary\读取数据\封魔录地图数据.txt 封魔录 <$STR(S$封魔录_当前展示数据分割3_<$STR(N$封魔录_循环计次2)>)> S$封魔录_地图名字2
+INC s$封魔录_二级页面 <Button|x={$INC.<$DEC.775.<$mult.40.N$封魔录_当前展示数据分割3NUM>>.<$MULT.N$封魔录_循环计次2.80>}|y=299.0|nimg=private/fengmobang/ico_{$STR(S$封魔录_当前展示数据分割3_<$STR(N$封魔录_循环计次2)>)}.png|scale=1|size=18|color=255|link=@封魔录_传送地图&封魔录_地图=<$STR(S$封魔录_推荐地图_0)>&封魔录_X坐标=<$STR(S$封魔录_推荐地图_1)>&封魔录_Y坐标=<$STR(S$封魔录_推荐地图_2)>>
+INC s$封魔录_二级页面 <Button|x={$INC.<$DEC.770.<$mult.40.N$封魔录_当前展示数据分割3NUM>>.<$MULT.N$封魔录_循环计次2.80>}|y=356.0|width=70|nimg=|scale=1|size=18|color=67|text={$STR(S$封魔录_地图名字2)}|link=@封魔录_传送地图&封魔录_地图=<$STR(S$封魔录_推荐地图_0)>&封魔录_X坐标=<$STR(S$封魔录_推荐地图_1)>&封魔录_Y坐标=<$STR(S$封魔录_推荐地图_2)>>
+INC N$封魔录_循环计次2 1
+ENDFOR
+
+#IF
+TRUE
+#ACT
+split <$STR(S$封魔录_当前展示数据分割2_4)> & S$封魔录_当前展示数据分割3
+split <$STR(S$封魔录_当前展示数据分割3_0)> * S$封魔录_当前展示数据分割4
+INC s$封魔录_二级页面 <ItemShow|x=450.0|y=393.0|width=70|height=70|itemid={$STDITEM(<$STR(s$封魔录_当前展示数据分割4_0)>).looks}|itemcount={$STR(S$封魔录_当前展示数据分割4_1)}|bgtype=1|name={$STR(S$封魔录_当前展示数据分割4_0)}|scale=1|showtips=1>
+split <$STR(S$封魔录_当前展示数据分割3_1)> * S$封魔录_当前展示数据分割4
+INC s$封魔录_二级页面 <ItemShow|x=515.0|y=393.0|width=70|height=70|itemid={$STDITEM(<$STR(s$封魔录_当前展示数据分割4_0)>).looks}|itemcount={$STR(S$封魔录_当前展示数据分割4_1)}|bgtype=1|name={$STR(S$封魔录_当前展示数据分割4_0)}|scale=1|showtips=1>
+split <$STR(S$封魔录_当前展示数据分割3_2)> * S$封魔录_当前展示数据分割4
+INC s$封魔录_二级页面 <ItemShow|x=580.0|y=393.0|width=70|height=70|itemid={$STDITEM(<$STR(s$封魔录_当前展示数据分割4_0)>).looks}|itemcount={$STR(S$封魔录_当前展示数据分割4_1)}|bgtype=1|name={$STR(S$封魔录_当前展示数据分割4_0)}|scale=1|showtips=1>
+split <$STR(S$封魔录_当前展示数据分割3_3)> * S$封魔录_当前展示数据分割4
+INC s$封魔录_二级页面 <ItemShow|x=645.0|y=393.0|width=70|height=70|itemid={$STDITEM(<$STR(s$封魔录_当前展示数据分割4_0)>).looks}|itemcount={$STR(S$封魔录_当前展示数据分割4_1)}|bgtype=1|name={$STR(S$封魔录_当前展示数据分割4_0)}|scale=1|showtips=1>
+
+#IF
+equal <$TASK(<$INC.S$封魔录_现行选中项.30>)> 0
+small <$INC.S$封魔录_现行选中项.30> <$HUMAN(封魔录_任务记录)>
+#ACT
+INC s$封魔录_二级页面 <Img|x=782.0|y=182.0|scale=1|img=private/fengmobang/ok.png|esc=0>
+INC s$封魔录_二级页面 <Img|x=754.0|y=400.0|grey=1|esc=0|img=private/fengmobang/btn-1.png|scale=1>
+INC s$封魔录_二级页面 <Img|x=755.0|y=401.0|grey=1|scale=1|img=private/fengmobang/btn-wb-2.png|esc=0>
+GOTO @封魔录_主页面
+
+#IF
+equal <$TASK(<$INC.S$封魔录_现行选中项.30>)> 1
+#ACT
+INC s$封魔录_二级页面 <Img|x=754.0|y=400.0|esc=0|grey=1|img=private/fengmobang/btn-1.png|scale=1>
+INC s$封魔录_二级页面 <Img|x=755.0|y=401.0|grey=1|scale=1|img=private/fengmobang/btn-wb-1.png|esc=0>
+GOTO @封魔录_主页面
+#IF
+equal <$TASK(<$INC.S$封魔录_现行选中项.30>)> 2
+#ACT
+INC s$封魔录_二级页面 <Img|x=782.0|y=182.0|scale=1|img=private/fengmobang/ok.png|esc=0>
+INC s$封魔录_二级页面 <Img|x=754.0|y=400.0|esc=0|img=private/fengmobang/btn-1.png|scale=1|link=@封魔录_领取奖励&封魔录_奖励条目ID=<$STR(S$封魔录_现行选中项)>>
+INC s$封魔录_二级页面 <Img|x=755.0|y=401.0|scale=1|img=private/fengmobang/btn-wb-1.png|esc=0>
+GOTO @封魔录_主页面
+[@封魔录_领取奖励]
+#IF
+CheckBagSize 4
+#ACT
+#ELSEACT
+sendmsg 19 请清理包裹后领取奖励
+break
+
+
+#IF
+small <$HUMAN(封魔录_任务记录)> 60
+#ACT
+ReadRandomStr ..\QuestDiary\读取数据\封魔录数据.txt S$封魔录_当前展示数据 <$STR(S$封魔录_奖励条目ID)>
+split <$STR(S$封魔录_当前展示数据)> = S$封魔录_当前展示数据分割1
+split <$STR(S$封魔录_当前展示数据分割1_1)> | S$封魔录_当前展示数据分割2
+split <$STR(S$封魔录_当前展示数据分割2_4)> & S$封魔录_当前展示数据分割3 N$封魔录_奖励数目
+
+MOV N$封魔录_当前任务 <$STR(S$封魔录_奖励条目ID)>
+MOV N$封魔录_下个任务 <$INC.<$STR(S$封魔录_奖励条目ID)>.1>
+UpdateTask <$INC.N$封魔录_当前任务.30> 2
+EndTask <$INC.N$封魔录_当前任务.30>
+MOV N$封魔录_循环计次 0
+LOOPGOTO @封魔录_奖励发放 <$STR(N$封魔录_奖励数目)>
+AddTask <$INC.N$封魔录_下个任务.30>
+UpdateTask <$INC.N$封魔录_下个任务.30> 1
+CalcVar Human 封魔录_任务记录 = <$INC.N$封魔录_下个任务.30> 1
+MOV S$封魔录_现行选中项 <$DEC.<$Human(封魔录_任务记录)>.30>
+FUNC 1 @封魔录_升级
+FUNC 1 @封魔录_转生
+GOTO @封魔录_二级页面
+
+#IF
+TRUE
+#ACT
+CLOSE
+
+[@封魔录_奖励发放]
+#IF
+TRUE
+#ACT
+split <$STR(S$封魔录_当前展示数据分割3_<$STR(N$封魔录_循环计次)>)> * S$封魔录_当前展示数据分割4
+
+#IFONE
+EQUAL S$封魔录_当前展示数据分割4_0 金币
+EQUAL S$封魔录_当前展示数据分割4_0 绑定金币
+EQUAL S$封魔录_当前展示数据分割4_0 元宝
+EQUAL S$封魔录_当前展示数据分割4_0 绑定元宝
+#ACT
+money <$STR(S$封魔录_当前展示数据分割4_0)> + <$STR(S$封魔录_当前展示数据分割4_1)>
+#ELSEACT
+GIVE <$STR(s$封魔录_当前展示数据分割4_0)> <$STR(S$封魔录_当前展示数据分割4_1)> 1
+#IF
+TRUE
+#ACT
+INC N$封魔录_循环计次 1
+[@封魔录_传送地图]
+#IF
+small d83 10
+#ACT
+sendmsg 19 战斗状态中无法传送!
+BREAK
+#IF
+EQUAL hjc0001 <$STR(S$封魔录_地图)>
+small <$CustomValue(42)> 1
+#ACT
+sendmsg 19 转生等级小于1级，无法传送！
+BREAK
+#IF
+EQUAL <$M> <$STR(S$封魔录_地图)>
+#ACT
+GoNpc <$STR(S$封魔录_X坐标)> <$STR(S$封魔录_Y坐标)>
+#ELSEACT
+MapMove <$STR(S$封魔录_地图)> <$STR(S$封魔录_X坐标)> <$STR(S$封魔录_Y坐标)>
+
+GoNpc <$STR(S$封魔录_X坐标)> <$STR(S$封魔录_Y坐标)>
+}

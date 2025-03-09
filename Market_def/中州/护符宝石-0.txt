@@ -1,0 +1,238 @@
+[@main]
+;------------------------------------------------------------------默认进宝石界面
+#if
+true
+#act
+goto @展示界面_1
+
+
+
+
+[@展示界面_1]
+;------------------------------------------------------------------------------宝石和护符的分页
+#if
+equal p1 0
+#act
+mov S$界面按钮_1 <Button|id=bshf_5|x=-4|y=48|width=67|height=79|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png|mimg=private/lingshou/fenlei2.png|color=251|size=18|text=宝石>
+inc S$界面按钮_1 <Button|id=bshf_4|x=-4|y=126|width=67|height=79|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png|mimg=private/lingshou/fenlei2.png|color=251|size=18|text=护符|link=@界面变量判断_2>
+delaygoto 300  @宝石展示条件
+
+
+#if
+equal p1 1
+#act
+mov S$界面按钮_1 <Button|id=bshf_5|x=-4|y=48|width=67|height=79|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png|mimg=private/lingshou/fenlei2.png|color=251|size=18|text=宝石|link=@界面变量判断_1>
+inc S$界面按钮_1 <Button|id=bshf_4|x=-4|y=126|width=67|height=79|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png|mimg=private/lingshou/fenlei2.png|color=251|size=18|text=护符>
+delaygoto 300  @护符展示条件
+
+
+;-------------------------------------------------------------------------------------------组成宝石界面的条件
+[@宝石展示条件]
+#if
+CHECKJOB Warrior
+#act
+mov S$显示属性 攻击
+
+#if
+CHECKJOB Wizard
+#act
+mov S$显示属性 魔法
+
+#if
+CHECKJOB Taos
+#act
+mov S$显示属性 道术
+
+
+#if
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(11)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$宝石升级条件
+#act
+SPLIT <$str(S$宝石升级条件)> | S$宝石升级分割
+mov N$装备位置 11
+mov S$材料 宝石
+mov S$升级消耗材料 特装精粹(攻)
+mov S$宝石展示界面 <RText|id=bshf_15|x=385|y=295|color=128|size=18|text=<<$str(S$显示属性)>　　　/FCOLOR=68><<$str(S$宝石升级分割_6)>-<$str(S$宝石升级分割_7)>/FCOLOR=224>>
+inc S$宝石展示界面 <RText|id=bshf_16|x=385|y=320|color=128|size=18|text=<防御　　　/FCOLOR=68><<$str(S$宝石升级分割_8)>-<$str(S$宝石升级分割_9)>/FCOLOR=224>>
+inc S$宝石展示界面 <RText|id=bshf_17|x=385|y=345|color=128|size=18|text=<魔防　　　/FCOLOR=68><<$str(S$宝石升级分割_8)>-<$str(S$宝石升级分割_9)>/FCOLOR=224>>
+inc S$宝石展示界面 <RText|id=bshf_18|x=385|y=370|color=128|size=18|text=<切割　　　/FCOLOR=68><<$str(S$宝石升级分割_10)>/FCOLOR=224>>
+inc S$宝石展示界面 <RText|id=bshf_19|x=640|y=295|color=128|size=18|text=<<$str(S$显示属性)>　　　/FCOLOR=68><<$str(S$宝石升级分割_11)>-<$str(S$宝石升级分割_12)>/FCOLOR=224>>
+inc S$宝石展示界面 <RText|id=bshf_20|x=640|y=320|color=128|size=18|text=<防御　　　/FCOLOR=68><<$str(S$宝石升级分割_13)>-<$str(S$宝石升级分割_14)>/FCOLOR=224>>
+inc S$宝石展示界面 <RText|id=bshf_21|x=640|y=345|color=128|size=18|text=<魔防　　　/FCOLOR=68><<$str(S$宝石升级分割_13)>-<$str(S$宝石升级分割_14)>/FCOLOR=224>>
+inc S$宝石展示界面 <RText|id=bshf_22|x=640|y=370|color=128|size=18|text=<切割　　　/FCOLOR=68><<$str(S$宝石升级分割_15)>/FCOLOR=224>>
+inc S$宝石展示界面 <ItemShow|id=bshf_13|x=545|y=124|itemid=<$str(S$宝石升级分割_2)>|name=<$str(S$宝石升级分割_1)>|itemcount=1|showtips=1|bgtype=1|scale=1>
+mov S$升级按钮 <Button|id=bshf_23|x=516|y=481|width=118|height=45|nimg=public/yuekaanniu1.png|pimg=public/yuekaanniu1.png|mimg=public/yuekaanniu1.png|color=70|size=18|text=升　　级|link=@宝石升级逻辑判断>
+inc S$升级按钮 <EquipShow|id=bshf_7|x=134|y=154|index=<$str(N$装备位置)>|showtips=1|bgtype=1>
+goto @展示界面_2
+
+;-------------------------------------------------------------------------------------------组成护符界面的条件
+[@护符展示条件]
+#if
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(12)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$护符升级条件
+#act
+SPLIT <$str(S$护符升级条件)> | S$护符升级分割
+mov N$装备位置 12
+mov S$材料 护符
+mov S$升级消耗材料 特装精粹(攻)
+mov S$护符展示界面 <RText|id=bshf_15|x=385|y=295|color=128|size=18|text=<生命值　　　/FCOLOR=68><<$str(S$护符升级分割_6)>/FCOLOR=224>>
+inc S$护符展示界面 <RText|id=bshf_16|x=385|y=320|color=128|size=18|text=<魔法值　　　/FCOLOR=68><<$str(S$护符升级分割_7)>/FCOLOR=224>>
+inc S$护符展示界面 <RText|id=bshf_17|x=385|y=345|color=128|size=18|text=<回血　/FCOLOR=68><<$str(S$护符升级分割_8)>/FCOLOR=224>>
+inc S$护符展示界面 <RText|id=bshf_18|x=385|y=370|color=128|size=18|text=<回蓝　/FCOLOR=68><<$str(S$护符升级分割_9)>/FCOLOR=224>>
+inc S$护符展示界面 <RText|id=bshf_19|x=640|y=295|color=128|size=18|text=<生命值　　　/FCOLOR=68><<$str(S$护符升级分割_10)>/FCOLOR=224>>
+inc S$护符展示界面 <RText|id=bshf_20|x=640|y=320|color=128|size=18|text=<魔法值　　　/FCOLOR=68><<$str(S$护符升级分割_11)>/FCOLOR=224>>
+inc S$护符展示界面 <RText|id=bshf_21|x=640|y=345|color=128|size=18|text=<回血　/FCOLOR=68><<$str(S$护符升级分割_12)>/FCOLOR=224>>
+inc S$护符展示界面 <RText|id=bshf_22|x=640|y=370|color=128|size=18|text=<回蓝　/FCOLOR=68><<$str(S$护符升级分割_13)>/FCOLOR=224>>
+inc S$护符展示界面 <ItemShow|id=bshf_13|x=545|y=124|itemid=<$str(S$护符升级分割_2)>|name=<$str(S$护符升级分割_1)>|itemcount=1|showtips=1|bgtype=1|scale=1>
+mov S$升级按钮 <Button|id=bshf_23|x=516|y=481|width=118|height=45|nimg=public/yuekaanniu1.png|pimg=public/yuekaanniu1.png|mimg=public/yuekaanniu1.png|color=70|size=18|text=升　　级|link=@护符升级逻辑判断>
+inc S$升级按钮 <EquipShow|id=bshf_7|x=134|y=154|index=<$str(N$装备位置)>|showtips=1|bgtype=1>
+goto @展示界面_2
+
+;----------------------------------------------------------------------------------------------宝石升级的逻辑
+[@宝石升级逻辑判断]
+#if
+!CHECKUSEITEM 11
+#act
+SENDMSG 19 没有佩戴装备,请联系客服
+break
+
+#if
+pos <$ITEMINFO[<$USEITEMMAKEINDEX(N$装备位置)>].NAME>  混沌
+#act
+SENDMSG 19 装备已满级
+break
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(N$装备位置)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$升级逻辑判断
+#ACT
+SPLIT $STR(S$升级逻辑判断) | S$条件升级分割
+#ELSEACT
+SENDMSG 19 此装备错误，请联系客服
+BREAK
+
+#IF
+!SMALL <$ITEMVALSUM(<$STR(S$升级消耗材料)>).DURA> <$STR(S$条件升级分割_4)>
+#ACT
+SENDMSG 19 升级材料不足
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> <$STR(S$条件升级分割_5)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+
+
+#if
+true
+#act
+;take <$str(S$升级消耗材料)> <$STR(S$条件升级分割_4)>
+;take 金币 <$str(S$条件升级分割_5)>
+UPGRADEUSERITEM <$USEITEMMAKEINDEX(N$装备位置)> 13 = $STR(S$条件升级分割_3)
+goto @展示界面_1
+func 1 @附件套装装备检测
+break
+
+
+
+
+
+
+;----------------------------------------------------------------------------------------------护符升级的逻辑
+[@护符升级逻辑判断]
+#if
+!CHECKUSEITEM 12
+#act
+SENDMSG 19 没有佩戴装备,请联系客服
+break
+
+#if
+pos <$ITEMINFO[<$USEITEMMAKEINDEX(N$装备位置)>].NAME>  混沌
+#act
+SENDMSG 19 装备已满级
+break
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(N$装备位置)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$升级逻辑判断
+#ACT
+SPLIT $STR(S$升级逻辑判断) | S$条件升级分割
+#ELSEACT
+SENDMSG 19 此装备错误，请联系客服
+BREAK
+
+#IF
+!SMALL <$ITEMVALSUM(<$STR(S$升级消耗材料)>).DURA> <$STR(S$条件升级分割_4)>
+#ACT
+SENDMSG 19 升级材料不足
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> <$STR(S$条件升级分割_5)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#if
+true
+#act
+;take <$str(S$升级消耗材料)> <$STR(S$条件升级分割_4)>
+;take 金币 <$str(S$条件升级分割_5)>
+UPGRADEUSERITEM <$USEITEMMAKEINDEX(N$装备位置)> 13 = $STR(S$条件升级分割_3)
+mov p1 1
+goto @展示界面_1
+func 1 @附件套装装备检测
+break
+
+
+
+;----------------------------------------------------------------------------------------------切换标签的界面
+[@界面变量判断_1]
+#if
+true
+#act
+mov p1 0
+goto @展示界面_1
+
+[@界面变量判断_2]
+#if
+true
+#act
+mov p1 1 
+goto @展示界面_1
+
+
+;----------------------------------------------------------------------------------------------主要的界面展示
+[@展示界面_2]
+#IF
+!SMALL <$ITEMVALSUM(<$STR(S$升级消耗材料)>).DURA> <$STR(S$<$str(S$材料)>升级分割_4)>
+#ACT
+MOV N$升级材料颜色1 224
+#ELSEACT
+MOV N$升级材料颜色1 58
+
+#IF
+!SMALL <$GOLDCOUNT> <$STR(S$<$str(S$材料)>升级分割_5)>
+#ACT
+MOV N$升级材料颜色2 224
+#ELSEACT
+MOV N$升级材料颜色2 58
+
+
+
+#if
+true
+#say
+<Img|id=bshf_1|children={bshf_10,bshf_24,bshf_2,bshf_3,bshf_5,bshf_4,bshf_6,bshf_7,bshf_8,bshf_9,bshf_13,bshf_23}|x=118|y=32|width=846|height=559|img=public\bg_1.png|bg=1|move=1|reset=1|show=0|loadDelay=0>
+<Img|id=bshf_10|children={bshf_12,bshf_14,bshf_15,bshf_16,bshf_17,bshf_18,bshf_19,bshf_20,bshf_21,bshf_22}|x=8|y=42|width=830|height=510|img=private\duanzao\fjbjb.png|bg=1|reset=1|show=0|loadDelay=0>
+<RText|id=bshf_12|x=40|y=355|color=128|size=18|text=<<$str(S$升级消耗材料)>　　/FCOLOR=68><<$ITEMVALSUM(<$STR(S$升级消耗材料)>).DURA>/<$str(S$<$str(S$材料)>升级分割_4)>/FCOLOR=<$str(N$升级材料颜色1)>>>
+<RText|id=bshf_14|x=40|y=400|color=128|size=18|text=<金币　　　/FCOLOR=68><<$GOLDCOUNT>/<$STR(S$<$str(S$材料)>升级分割_5)>/FCOLOR=<$str(N$升级材料颜色2)>>>
+<Text|id=bshf_24|x=537|y=57|color=68|size=18|text=升级预览>
+<Layout|id=bshf_2|x=772|y=-14|width=80|height=80|link=@exit>
+<Button|id=bshf_3|x=793|y=2|width=50|height=50|nimg=public\00030.png|pimg=public\00030.png|mimg=public\00030.png|color=255|size=18|link=@exit>
+<Img|id=bshf_6|x=112|y=127|width=110|height=110|img=public\item_bg1.png|bg=1|reset=1|show=0|loadDelay=0>
+<Img|id=bshf_8|children={bshf_11}|x=20|y=324|width=279|height=32|img=public\bg_aution_chosen.png|bg=1|reset=1|show=0|loadDelay=0>
+<Text|id=bshf_11|x=90|y=6|color=68|size=18|text=升级所需材料>
+<Img|id=bshf_9|x=495|y=74|width=157|height=157|img=public\dzfjfqk.png|bg=1|reset=1|show=0|loadDelay=0>
+<EquipShow|id=bshf_7|x=134|y=154|index=<$str(N$装备位置)>|showtips=1|bgtype=1>
+<$str(S$界面按钮_1)>
+<$str(S$<$str(S$材料)>展示界面)>
+<$str(S$升级按钮)>

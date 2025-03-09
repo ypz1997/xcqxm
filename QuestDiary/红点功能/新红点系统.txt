@@ -1,0 +1,31 @@
+[@新红点系统]
+{
+#IF
+TRUE
+#ACT
+[@红点操作]
+#IF
+POS <$STR(S$红点操作_参数1)> |
+#ACT
+split <$STR(S$红点操作_参数1)> | S$红点操作_分割按钮ID N$红点操作_按钮数量
+MOV N$红点操作_循环计次1 0
+LoopGoto @红点显示 <$STR(N$红点操作_按钮数量)>
+#ELSEACT
+
+[@红点显示]
+#IF
+TRUE
+#ACT
+split <$Human(<$STR(S$红点操作_参数2)><$STR(S$红点操作_分割按钮ID_<$STR(N$红点操作_循环计次1)>)>)> | S$红点操作_显示参数
+#IF
+!EQUAL <$STR(S$红点操作_显示参数_0)> 0
+!EQUAL <$STR(S$红点操作_显示参数_1)> 0
+#ACT
+RedDot 5 <$STR(S$红点操作_分割按钮ID_<$STR(N$红点操作_循环计次1)>)> 175 12
+#IF
+TRUE
+#ACT
+INC N$红点操作_循环计次1 1
+
+
+}

@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=32
+IsMain=0
+stepcount = 2
+title = [　]初战通天
+ID = 32
+stepstitle1 = <color=graygolden 任务描述：>\<color=graygolden 等级提升至70级>\<color=graygolden 当前等级:><color=green <$LEVEL>/70>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+stepstitle2 = <color=green 任务完成：>\ \　<点击领取奖励/@XXXXX>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>

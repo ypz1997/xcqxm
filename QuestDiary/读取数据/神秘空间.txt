@@ -1,0 +1,36 @@
+[@神秘空间]
+{
+#IF
+TRUE
+#ACT
+#SAY
+<Button|x=970.0|y=32.0|color=255|pimg=public/00030.png|nimg=public/00030.png|_localZOrder=0|size=18|link=@exit>
+<Layout|x=545|y=0|width=80|height=80|_localZOrder=-1|link=@exit>
+<Img|x=158.0|y=36.0|show=0|reset=1|bg=1|move=0|img=private/shenmikongjian/shenmibj.png|_localZOrder=-2|loadDelay=1|esc=1>
+<Img|x=180.0|y=83.0|img=private/shenmikongjian/shenmi{$STR(S$神秘空间等级)}ceng.png|esc=0>
+<RText|x=228.0|y=459.0|color=255|size=18|text=<       神秘空间内BOSS刷新时间减半爆率大幅度提升,每次使用神秘卷轴均可延长玩家在神秘空间内/FCOLOR=67>\<停留时间。/FCOLOR=67>\<       时间归零时强制传送至中州,所有精英怪物均有概率掉落神秘空间碎片及神秘卷轴,各个等级神/FCOLOR=67>\<秘卷轴可进入对应等级神秘空间/FCOLOR=67>>
+<Img|x=548.0|y=375.0|img=public/00060.png|esc=0|link=@神秘空间_进入>
+<Img|x=582.0|y=385.0|img=private/shenmikongjian/jinru.png|esc=0>
+[@神秘空间_进入]
+#IF
+TRUE
+#ACT
+split <$HUMAN(神秘卷轴使用)> | S$神秘空间_使用计数
+MOV N$神秘空间1_使用计数 <$STR(S$神秘空间_使用计数_0)>
+MOV N$神秘空间2_使用计数 <$STR(S$神秘空间_使用计数_1)>
+MOV N$神秘空间3_使用计数 <$STR(S$神秘空间_使用计数_2)>
+MOV N$神秘空间4_使用计数 <$STR(S$神秘空间_使用计数_3)>
+#IF
+CHECKITEM <$STR(S$神秘空间等级)>级神秘卷轴 1
+Large <$STR(N$神秘空间<$STR(S$神秘空间等级)>_使用计数)> 0
+#ACT
+TAKE <$STR(S$神秘空间等级)>级神秘卷轴 1
+SPLIT smkj1|smkj2|smkj3|smkj4 | S$神秘地图_接受1
+SPLIT 41|31|31|21 | S$神秘地图_接受2
+INC N$神秘空间计时<$STR(S$神秘空间等级)> <$STR(S$神秘地图_接受2_<$DEC.<$STR(S$神秘空间等级)>.1>)>
+MAP <$STR(S$神秘地图_接受1_<$DEC.<$STR(S$神秘空间等级)>.1>)>
+DEC N$神秘空间<$STR(S$神秘空间等级)>_使用计数 1
+CALCVAR HUMAN 神秘卷轴使用 <$STR(N$神秘空间1_使用计数)>|<$STR(N$神秘空间2_使用计数)>|<$STR(N$神秘空间3_使用计数)>|<$STR(N$神秘空间4_使用计数)>|
+#ELSEACT
+sendmsg 19 已达到最大进入次数，或对应卷轴不存在。
+}

@@ -1,0 +1,50 @@
+;======================日触发
+#AutoRun NPC RUNONDAY 00:00 @每日数据恢复
+#AutoRun NPC RUNONDAY 12:00 @双倍押镖开始
+#AutoRun NPC RUNONDAY 12:30 @双倍押镖结束
+#AutoRun NPC RUNONDAY 12:30 @激情烤火开始
+#AutoRun NPC RUNONDAY 12:45 @激情烤火结束
+#AutoRun NPC RUNONDAY 16:45 @大逃杀开始
+#AutoRun NPC RUNONDAY 16:47 @大逃杀正式开始播报
+#AutoRun NPC RUNONDAY 18:00 @双倍押镖开始
+#AutoRun NPC RUNONDAY 18:30 @双倍押镖结束
+#AutoRun NPC RUNONDAY 19:29 @特戒夺宝开始
+#AutoRun NPC RUNONDAY 19:45 @特戒夺宝结束
+#AutoRun NPC RUNONDAY 21:05 @回馈魔王开始
+#AutoRun NPC RUNONDAY 21:35 @回馈魔王结束
+;--------------------------------------沙城
+#AutoRun NPC RUNONDAY 18:00:00 @攻城提示
+#AutoRun NPC RUNONDAY 19:00:00 @攻城提示
+#AutoRun NPC RUNONDAY 19:55:00 @攻城提示
+#AutoRun NPC RUNONDAY 19:59:59 @开始攻城
+#AutoRun NPC RUNONDAY 21:00:05 @攻城结束
+;======================星期触发
+#AutoRun NPC RUNONWEEK 2:17:30 @阵营战开始
+#AutoRun NPC RUNONWEEK 2:17:31 @阵营战清中间格挡怪
+#AutoRun NPC RUNONWEEK 2:18:20 @阵营战结束
+#AutoRun NPC RUNONWEEK 4:17:30 @阵营战开始
+#AutoRun NPC RUNONWEEK 4:17:31 @阵营战清中间格挡怪
+#AutoRun NPC RUNONWEEK 4:18:20 @阵营战结束
+#AutoRun NPC RUNONWEEK 6:17:30 @阵营战开始
+#AutoRun NPC RUNONWEEK 6:17:31 @阵营战清中间格挡怪
+#AutoRun NPC RUNONWEEK 6:18:20 @阵营战结束
+#AutoRun NPC RUNONWEEK 1:18:30 @工会战开始
+#AutoRun NPC RUNONWEEK 1:19:00 @工会战结束
+#AutoRun NPC RUNONWEEK 3:18:30 @工会战开始
+#AutoRun NPC RUNONWEEK 3:19:00 @工会战结束
+#AutoRun NPC RUNONWEEK 5:18:30 @工会战开始
+#AutoRun NPC RUNONWEEK 5:19:00 @工会战结束
+;======================时分秒触发
+#AutoRun NPC Min 1 @每分触发
+
+#AutoRun NPC SEC 1 @每秒触发
+#AutoRun NPC SEC 2 @每2秒触发
+#AutoRun NPC SEC 10 @每10秒触发
+
+
+#AutoRun NPC RUNONDAY 15:00 @怪物攻城提示15
+#AutoRun NPC RUNONDAY 15:10 @怪物攻城提示5
+#AutoRun NPC RUNONDAY 15:15 @怪物攻城
+#AutoRun NPC RUNONDAY 15:45 @怪物攻城刷新15
+#AutoRun NPC RUNONDAY 15:55 @怪物攻城刷新5
+#AutoRun NPC RUNONDAY 15:59 @怪物攻城结束刷新

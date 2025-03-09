@@ -1,0 +1,13 @@
+ID,取值代码,描述
+1,<$LEVEL>,人物等级达到(%s/%s)级
+2,<$CUSTOMVALUE(42)>,转生等级达到(%s/%s)级
+3,<$TABLE(Lemon_YY).BM>,羽翼等级达到(%s/%s)级
+4,<$TABLE(Lemon_LS).DJ>,坐骑等级达到(%s/%s)级
+5,<$FORMULATION[<$CUSTOMVALUE(5)>+<$CUSTOMVALUE(6)>+<$CUSTOMVALUE(7)>+<$CUSTOMVALUE(8)>+<$CUSTOMVALUE(9)>+<$CUSTOMVALUE(10)>+<$CUSTOMVALUE(11)>+<$CUSTOMVALUE(12)>+<$CUSTOMVALUE(13)>]>,特戒等级总和达到(%s/%s)级
+6,<$FORMULATION[<$HUMAN(无量飞剑等级)>+<$HUMAN(八卦镜等级)>+<$HUMAN(招魂幡等级)>+<$HUMAN(紫金葫芦等级)>+<$HUMAN(番天印等级)>+<$HUMAN(七宝玲珑塔等级)>]>,法宝等级总和达到(%s/%s)级
+7,<$CUSTOMVALUE(44)>,神兵等级达到(%s/%s)级
+8,<$CUSTOMVALUE(45)>,宝甲等级达到(%s/%s)级
+9,<$FORMULATION[<$HUMAN(撼天等级)>+<$HUMAN(暗月等级)>+<$HUMAN(冥日等级)>+<$HUMAN(鬼炎等级)>+<$HUMAN(碧海天王等级)>+<$HUMAN(赤明天帝等级)>+<$HUMAN(紫月圣君等级)>+<$HUMAN(耀阳圣尊等级)>]>,凶器等级总和达到(%s/%s)级
+10,<$CUSTOMVALUE(90)>,VIP等级达到(%s/%s)级
+11,<$FORMULATION[<$ITEMINFO[$USEITEMMAKEINDEX(2)].GC1>+<$ITEMINFO[$USEITEMMAKEINDEX(11)].GC1>+<$ITEMINFO[$USEITEMMAKEINDEX(12)].GC1>+<$ITEMINFO[$USEITEMMAKEINDEX(13)].GC1>+<$ITEMINFO[$USEITEMMAKEINDEX(14)].GC1>+<$ITEMINFO[$USEITEMMAKEINDEX(19)].GC1>]>,附件等级总和达到(%s/%s)级
+12,<$HUMAN(天关_昨日通关层数)>,昨日通关层数不小于(%s/%s)层

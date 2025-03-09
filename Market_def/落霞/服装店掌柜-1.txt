@@ -1,0 +1,68 @@
+[@main]
+#IF
+LARGE $CLIENTFLAG 1
+#ACT
+GOTO @手游端
+#ELSEACT
+GOTO @PC端
+
+[@手游端]
+#IF
+GENDER MAN
+#ACT
+MOV S$新手装备 轻盔(男)
+#ELSEACT
+MOV S$新手装备 轻盔(女)
+
+#IF
+HasTask 1
+#SAY
+<Button|x=413.0|y=0.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=0.0|y=-1.0|height=200|show=0|esc=1|bg=1|move=0|img=public/bg_npc_01.png|_localZOrder=-2|loadDelay=1|reset=1>
+<RText|x=30.1|y=25.8|text=少侠初入江湖，难免会遇到危险。>
+<RText|x=30.1|y=62.9|text=送你一件盔甲，省的到时候磕磕碰碰的受伤！\\>
+<RText|x=30.1|y=100.0|color=222|text=任务奖励：<$STR(S$新手装备)>*1\\>
+<Img|x=30.0|y=113.2|width=10|height=10|img=private/xjty.png|esc=0>
+<RText|x=49.1|y=149.2|color=251|size=18|text=<多谢老板/@多谢老板>>
+<Layout|id=884|x=29.1|y=140.1|width=110|height=50|link=@多谢老板>
+#ELSESAY
+闯荡江湖的道路上可谓是披荆斩棘,勇士要加油啊!
+
+#IF
+HasTask 1
+#ACT
+Navigation 80 884 点击对话#5000#5 1 5
+
+[@多谢老板]
+#IF
+HasTask 1
+#ACT
+SENDUI 105
+
+#IF
+HasTask 1
+CHECK [180] 1
+!CheckItemID <$Human(新手任务记录1)>
+#ACT
+SENDMSG 19 请联系客服或重新建立角色
+BREAK
+
+#IF
+HasTask 1
+CHECK [180] 1
+CheckItemID <$Human(新手任务记录1)>
+#ACT
+OPENUI 2011 1
+SENDMSG 19 双击穿戴该衣服
+BREAK
+
+#IF
+HasTask 1
+CHECK [180] 0
+#ACT
+SET [180] 1
+GIVE <$STR(S$新手装备)> 1 1
+CalcVar Human 新手任务记录1 = <$PARAM(10)> 1
+BREAK
+CLOSE
+

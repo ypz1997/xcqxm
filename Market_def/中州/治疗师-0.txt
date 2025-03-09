@@ -1,0 +1,73 @@
+[@MAIN]
+争强斗狠是人之本性!如果受伤了,可以找我来治疗!\
+　\
+　\
+  <金币治疗/@金币治疗>   <color=green 20000金币>             <元宝治疗/@元宝治疗>   <color=green 50元宝>
+　\
+　\
+  <一键修复全身装备持久/@装备持久>   <color=green 2000金币>
+
+
+[@装备持久]
+#IF
+!CheckGold 2000
+#ACT
+SENDMSG 19 金币不足
+BREAK
+#ELSEACT
+TAKE 金币 2000
+REPAIRALL
+SENDMSG 5 您的装备已经焕然一新
+BREAK
+
+[@金币治疗]
+#IF
+EQUAL $HP $MAXHP
+#ACT
+SENDMSG 19 状态已满，无需治疗
+BREAK
+
+#IF
+!CheckGold 20000
+#ACT
+SENDMSG 19 金币不足
+BREAK
+#ELSEACT
+TAKE 金币 20000
+HumanHP = $MAXHP
+HumanMP = $MAXMP
+SENDMSG 19 您的状态已经补充满了
+BREAK
+
+[@元宝治疗]
+#IF
+EQUAL $HP $MAXHP
+#ACT
+SENDMSG 19 状态已满，无需治疗
+BREAK
+
+#IF
+SMALL $INC.$BINDGAMEGOLD.$GAMEGOLD 50
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+#ELSEACT
+QueryMsg 确定花费50元宝为自己治疗伤势吗？\绑元不足时会自动使用元宝补足 @确定元宝治疗
+BREAK
+
+[@确定元宝治疗1]
+#IF
+!SMALL $BINDGAMEGOLD 50
+#ACT
+BINDGAMEGOLD - 50
+HumanHP = $MAXHP
+HumanMP = $MAXMP
+SENDMSG 19 您的状态已经补充满了
+BREAK
+#ELSEACT
+GAMEGOLD - $DEC.50.$BINDGAMEGOLD
+BINDGAMEGOLD - $BINDGAMEGOLD
+HumanHP = $MAXHP
+HumanMP = $MAXMP
+SENDMSG 19 您的状态已经补充满了
+BREAK

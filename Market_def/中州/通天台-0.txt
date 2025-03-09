@@ -1,0 +1,78 @@
+[@MAIN]
+#IF
+TRUE
+#ACT
+MOV N$进地图减免 0
+#IF
+LARGE $CustomValue(90) 5
+SMALL $CustomValue(90) 7
+#ACT
+MOV N$进地图减免 <$DIV.<$MULT.50000.10>.100>
+
+#IF
+LARGE $CustomValue(90) 6
+SMALL $CustomValue(90) 10
+#ACT
+MOV N$进地图减免 <$DIV.<$MULT.50000.20>.100>
+
+#IF
+LARGE $CustomValue(90) 9
+#ACT
+MOV N$进地图减免 <$DIV.<$MULT.50000.30>.100>
+
+
+#IF
+TRUE
+#SAY
+<Img|x=132.0|y=32.0|img=private/npc/npcindex.png|bg=1|esc=0>
+<Img|x=175.0|y=133.0|img=private/npc/5.png|esc=0>
+<RText|x=300.0|y=95.0|color=67|size=24|text=<通天台/FCOLOR=67>>
+<Img|x=174.0|y=131.0|img=private/npc/bg_star_02.png|esc=0>
+<RText|x=508.0|y=106.0|color=67|size=22|text=<地图介绍:/FCOLOR=67>>
+<Img|x=511.0|y=154.0|img=private/npc/1900000677_1.png|esc=0>
+<Img|x=511.0|y=210.0|img=private/npc/1900000677_1.png|esc=0>
+<RText|x=537.0|y=152.0|color=222|size=18|text=<高级地图，70级可进入/FCOLOR=222>>
+<RText|x=537.0|y=208.0|color=222|size=18|text=<怪物掉落五阶装备/FCOLOR=222>>
+<Button|x=934.0|y=30.0|pimg=public/btn_close_01.png|nimg=public/btn_close_01.png|mimg=public/btn_close_01.png|color=255|size=18|link=@exit>
+<RText|x=600|y=380.0|size=22|color=67|text=<进入条件1:/FCOLOR=67><等级达到：70级/FCOLOR=222>>
+<RText|x=600|y=410.0|size=22|color=67|text=<进入条件2:/FCOLOR=67><金       币：50000/FCOLOR=222>\                 <减  免  后：<$DEC.50000.$STR(N$进地图减免)>/FCOLOR=251>>
+<Button|x=570.0|y=480.0|mimg=private/npc/btn_push_01.png|pimg=private/npc/btn_push_01.png|nimg=private/npc/btn_push_01.png|size=20|color=67|text=通天台①号|link=@通天台①号>
+<Button|x=770.0|y=480.0|mimg=private/npc/btn_push_01.png|pimg=private/npc/btn_push_01.png|nimg=private/npc/btn_push_01.png|size=20|color=67|text=通天台②号|link=@通天台②号>
+<Img|x=178.0|y=391.0|img=private/npc/icon_monster_01.png|esc=0>
+<RText|x=278.0|y=407.0|color=255|size=20|text=<BOSS提示:/FCOLOR=151>>
+<RText|x=220.0|y=466.0|color=255|size=18|text=<通天教主每20分钟刷新一次/FCOLOR=151>>
+
+
+[@通天台①号]
+#IF
+SMALL $LEVEL 70
+#ACT
+SENDMSG 19 等级不足70级
+BREAK
+
+#IF
+SMALL $MONEY(1) <$DEC.50000.$STR(N$进地图减免)>
+#ACT
+Messagebox 金币不足
+BREAK
+#ELSEACT
+Money 1 - <$DEC.50000.$STR(N$进地图减免)>
+Map 5JMAP
+BREAK
+
+[@通天台②号]
+#IF
+SMALL $LEVEL 70
+#ACT
+SENDMSG 19 等级不足70级
+BREAK
+
+#IF
+SMALL $MONEY(1) <$DEC.50000.$STR(N$进地图减免)>
+#ACT
+Messagebox 金币不足
+BREAK
+#ELSEACT
+Money 1 - <$DEC.50000.$STR(N$进地图减免)>
+Map 5JMAP1
+BREAK

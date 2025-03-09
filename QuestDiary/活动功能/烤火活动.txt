@@ -1,0 +1,460 @@
+[@烤火活动]
+
+{
+
+;==========================================================QF跳转
+
+[@LemonKSYM]
+;--------------------------进入活动界面
+#IF
+TRUE
+#SAY
+<Img|x=120.0|y=30.0|move=0|img=public/frame_squared_outside.png|loadDelay=0|bg=1|move=2|children=<yd1,yd2,yd3,yd4,yd5,yd6,yd7,yd8,yd9,yd10,yd11,yd12,yd13,yd14,yd15,yd16,yd17,yd18,yd19,yd20,yd21,yd21,yd22,yd23,yd24,yd25,yd26,yd27,yd28,yd29,yd30,yd31,yd32,yd33,yd34,yd35,yd36,yd37,yd38,yd39,yd40,yd41,yd42,yd43,yd44,yd45,yd46,yd47,yd48,yd49,yd50>>
+<Button|x=807.0|y=5.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit|id=yd1>
+<Img|x=22.0|y=43.0|img=private/jiqingkaohuo/jiqingkaohuo.png|id=yd2>
+<Text|x=386.0|y=7.0|color=67|size=22|text=激情烤火|id=yd4>
+<Text|x=675.0|y=80.0|color=67|size=18|text=活动说明|id=yd45>
+<Effect|id=yd5|x=584.0|y=82.0|speed=1|act=0|sex=0|scale=1|effecttype=3|dir=0|effectid=407>
+<Effect|id=yd6|x=582.0|y=304.0|speed=1|act=0|sex=0|scale=0.5|effecttype=3|dir=0|effectid=407>
+<Text|x=695.0|y=317.0|color=67|size=18|text=3倍人物经验|id=yd7>
+<Text|x=694.0|y=349.0|color=67|size=18|text=2倍魔体经验|id=yd8>
+<Text|x=698.0|y=382.0|color=67|size=18|text=元宝奖励|id=yd9>
+<Button|x=661.0|y=454.0|color=67|scale=1|size=20|nimg=public/button/btn_push_01.png|pimg=public/button/btn_push_01.png|text=立即参与|link=@Lemon参与1|id=yd10>
+<Text|x=60.0|y=350.0|color=67|size=18|text=双榜第一额外获得：|id=yd11>
+<ItemShow|x=210.0|y=330.0|itemid=<$STDITEM(30米充值2折券).LOOKS>|itemcount=1|name=30米充值2折券|bgtype=1|showtips=1|scale=0.8|id=yd44>
+<Text|x=60.0|y=390.0|color=67|size=18|text=进入地图自动获得经验、魔体经验、绑定元宝奖励|id=yd12>
+<Text|x=60.0|y=415.0|color=67|size=18|text=1.站在火堆中央可获得3倍经验、2倍魔体经验、元宝奖励|id=yd13>
+<Text|x=60.0|y=440.0|color=67|size=18|text=2.站在火堆1×1范围内，可获1.5倍经验、魔体经验|id=yd14>
+<Text|x=60.0|y=465.0|color=67|size=18|text=3.在非安全区范围获得人物经验奖励|id=yd15>
+<ItemShow|x=130.0|y=100.0|itemid=<$STDITEM(1米充值代金券).LOOKS>|itemcount=1|name=1米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd16>
+<ItemShow|x=210.0|y=100.0|itemid=<$STDITEM(0.2米充值代金券).LOOKS>|itemcount=1|name=0.2米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd17>
+<ItemShow|x=130.0|y=142.0|itemid=<$STDITEM(1米充值代金券).LOOKS>|itemcount=1|name=1米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd18>
+<ItemShow|x=210.0|y=142.0|itemid=<$STDITEM(0.5米充值代金券).LOOKS>|itemcount=1|name=0.5米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd19>
+<ItemShow|x=130.0|y=184.0|itemid=<$STDITEM(0.5米充值代金券).LOOKS>|itemcount=1|name=0.5米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd20>
+<ItemShow|x=130.0|y=226.0|itemid=<$STDITEM(0.2米充值代金券).LOOKS>|itemcount=1|name=0.2米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd21>
+<ItemShow|x=210.0|y=226.0|itemid=<$STDITEM(0.1米充值代金券).LOOKS>|itemcount=1|name=0.1米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd22>
+<ItemShow|x=130.0|y=268.0|itemid=<$STDITEM(0.1米充值代金券).LOOKS>|itemcount=1|name=0.1米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd23>
+<ItemShow|x=400.0|y=100.0|itemid=<$STDITEM(1米充值代金券).LOOKS>|itemcount=1|name=1米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd24>
+<ItemShow|x=480.0|y=100.0|itemid=<$STDITEM(0.2米充值代金券).LOOKS>|itemcount=1|name=0.2米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd25>
+<ItemShow|x=400.0|y=142.0|itemid=<$STDITEM(1米充值代金券).LOOKS>|itemcount=1|name=1米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd26>
+<ItemShow|x=480.0|y=142.0|itemid=<$STDITEM(0.5米充值代金券).LOOKS>|itemcount=1|name=0.5米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd27>
+<ItemShow|x=400.0|y=184.0|itemid=<$STDITEM(0.5米充值代金券).LOOKS>|itemcount=1|name=0.5米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd28>
+<ItemShow|x=400.0|y=226.0|itemid=<$STDITEM(0.2米充值代金券).LOOKS>|itemcount=1|name=0.2米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd29>
+<ItemShow|x=480.0|y=226.0|itemid=<$STDITEM(0.1米充值代金券).LOOKS>|itemcount=1|name=0.1米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd30>
+<ItemShow|x=400.0|y=268.0|itemid=<$STDITEM(0.1米充值代金券).LOOKS>|itemcount=1|name=0.1米充值代金券|bgtype=1|showtips=1|scale=0.8|id=yd31>
+<Text|x=187.0|y=130.0|color=255|size=20|text=×2|id=yd32>
+<Text|x=267.0|y=130.0|color=255|size=20|text=×3|id=yd33>
+<Text|x=187.0|y=214.0|color=255|size=20|text=×2|id=yd34>
+<Text|x=187.0|y=256.0|color=255|size=20|text=×2|id=yd35>
+<Text|x=267.0|y=256.0|color=255|size=20|text=×3|id=yd36>
+<Text|x=187.0|y=298.0|color=255|size=20|text=×2|id=yd37>
+<Text|x=457.0|y=130.0|color=255|size=20|text=×2|id=yd38>
+<Text|x=537.0|y=130.0|color=255|size=20|text=×3|id=yd39>
+<Text|x=457.0|y=214.0|color=255|size=20|text=×2|id=yd40>
+<Text|x=457.0|y=256.0|color=255|size=20|text=×2|id=yd41>
+<Text|x=537.0|y=256.0|color=255|size=20|text=×3|id=yd42>
+<Text|x=457.0|y=298.0|color=255|size=20|text=×2|id=yd43>
+
+
+
+
+[@Lemon参与1]
+#IF
+!EQUAL G$Lemon活动 1
+#ACT
+MESSAGEBOX 活动已结束!
+BREAK
+
+#IF
+SMALL $LEVEL 60
+#ACT
+MESSAGEBOX 等级不足60级,暂时无法参加此活动!
+BREAK
+#ELSEACT
+MAPMOVE JQKH 23 32 1
+SENDMSG 16 勇士<%s>进入了<%m>....
+BREAK
+
+
+
+
+;--------------------------倒计时提示
+[@LemonKSZB]
+#IF
+TRUE
+#ACT
+SENDMSG 19 活动将在计时结束后开始!
+BREAK
+
+;--------------------------关闭烤火
+[@LemonKSJS]
+#IF
+TRUE
+#ACT
+SENDUI 104
+BREAK
+
+
+;--------------------------活动进行显示
+[@LemonKSXS]
+#IF
+!EQUAL $M JQKH
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6618.png|nimg=picpackage/3/6618.png|link=@LemonKSYM>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$烤火时间).$LONGDATE>|link=@LemonKSJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+
+
+
+
+
+
+
+;==========================================================QM跳转
+[@Lemon活动TZ1]
+#IFONE
+!EQUAL G$Lemon活动 1
+SMALL G$烤火时间 $LONGDATE
+EQUAL $M JQKH
+#ACT
+BREAK
+
+#IF
+LARGE $DEC.$STR(G$烤火时间).$LONGDATE 900
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6618.png|nimg=picpackage/3/6618.png|link=@LemonKSZB>
+INC S$Lemon活动 <TIMETIPS|x=315|y=80.0|color=222|size=18|time=<$DEC^$DEC.$STR(G$烤火时间).$LONGDATE^900>|link=@LemonKSXS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+#ELSEACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6618.png|nimg=picpackage/3/6618.png|link=@LemonKSYM>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$烤火时间).$LONGDATE>|link=@LemonKSJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+
+
+[@Lemon烤火]
+#IF
+!EQUAL G$Lemon活动 1
+!EQUAL $MAPNAME 激情烤火
+#ACT
+SENDUI 104
+BREAK
+
+#IF
+!EQUAL G$Lemon活动 1
+EQUAL $MAPNAME 激情烤火
+#ACT
+SENDUI 104
+MAPMOVE 0 475 219 3
+SENDMSG 5 激情烤火活动已结束!
+BREAK
+
+#IF
+EQUAL G$Lemon活动 1
+#ACT
+MOV G$烤火人数 0
+MOV S$Lemon烤火 
+MOV S$Lemon烤火_0 
+MOV S$Lemon烤火_1 
+
+;---------------------火堆中间3倍奖励
+#IF
+EQUAL $POSITION(JQKH,19,27) $USERNAME
+#ACT
+GIVE 经验 15000
+CHANGECUSTOMVALUE 2 + 12000
+money 4 + 150
+GMEXECUTE 烟花 1226
+SENDMSG 16 玩家<%s>站在了火堆中间,正在享受3倍经验.魔体经验,元宝的奖励
+SENDMSG 19 人物经验+15000,魔体经验+12000,元宝+150
+
+;---------------------火堆1*1范围1.5倍奖励
+#IFONE
+EQUAL $POSITION(JQKH,18,27) $USERNAME
+EQUAL $POSITION(JQKH,20,27) $USERNAME
+EQUAL $POSITION(JQKH,18,26) $USERNAME
+EQUAL $POSITION(JQKH,19,26) $USERNAME
+EQUAL $POSITION(JQKH,20,26) $USERNAME
+EQUAL $POSITION(JQKH,18,28) $USERNAME
+EQUAL $POSITION(JQKH,19,28) $USERNAME
+EQUAL $POSITION(JQKH,20,28) $USERNAME
+#ACT
+GIVE 经验 7500
+CHANGECUSTOMVALUE 2 + 6000
+;GMEXECUTE 烟花 1618
+SENDMSG 16 玩家<%s>站在了火堆1×1范围你,正在享受1.5倍经验.魔体经验的奖励
+SENDMSG 19 人物经验+7500,魔体经验+6000
+
+;---------------------火堆1*1人数
+#IF
+EQUAL $POSITION(JQKH,18,27) $USERNAME
+#ACT
+INC G$烤火人数 1
+#IF
+EQUAL $POSITION(JQKH,20,27) $USERNAME
+#ACT
+INC G$烤火人数 1
+#IF
+EQUAL $POSITION(JQKH,18,26) $USERNAME
+#ACT
+INC G$烤火人数 1
+#IF
+EQUAL $POSITION(JQKH,19,26) $USERNAME
+#ACT
+INC G$烤火人数 1
+#IF
+EQUAL $POSITION(JQKH,20,26) $USERNAME
+#ACT
+INC G$烤火人数 1
+#IF
+EQUAL $POSITION(JQKH,18,28) $USERNAME
+#ACT
+INC G$烤火人数 1
+#IF
+EQUAL $POSITION(JQKH,19,28) $USERNAME
+#ACT
+INC G$烤火人数 1
+#IF
+EQUAL $POSITION(JQKH,20,28) $USERNAME
+#ACT
+INC G$烤火人数 1
+
+;---------------------火堆中间额外奖励
+#IF
+!LARGE G$烤火人数 3
+EQUAL $POSITION(JQKH,19,27) $USERNAME
+#ACT
+GIVE 经验 5000
+CHANGECUSTOMVALUE 2 + 4000
+money 4 + 50
+GMEXECUTE 烟花 1226
+SENDMSG 7 火堆1×1范围内人数不足4人,你额外获得1倍经验.魔体经验,元宝的奖励
+SENDMSG 19 人物经验+5000,魔体经验+4000,元宝+50
+
+#IF
+LARGE G$烤火人数 3
+!LARGE G$烤火人数 6
+EQUAL $POSITION(JQKH,19,27) $USERNAME
+#ACT
+GIVE 经验 2500
+CHANGECUSTOMVALUE 2 + 2000
+GMEXECUTE 烟花 1226
+SENDMSG 7 当前火堆1×1范围内人数<$STR(G$烤火人数)>人,你额外获得0.5倍经验.魔体经验,元宝的奖励
+SENDMSG 19 人物经验+2500,魔体经验+2000
+
+;---------------------非火堆奖励
+#IF
+!EQUAL $POSITION(JQKH,18,27) $USERNAME
+!EQUAL $POSITION(JQKH,20,27) $USERNAME
+!EQUAL $POSITION(JQKH,18,26) $USERNAME
+!EQUAL $POSITION(JQKH,19,26) $USERNAME
+!EQUAL $POSITION(JQKH,20,26) $USERNAME
+!EQUAL $POSITION(JQKH,18,28) $USERNAME
+!EQUAL $POSITION(JQKH,19,28) $USERNAME
+!EQUAL $POSITION(JQKH,20,28) $USERNAME
+!EQUAL $POSITION(JQKH,19,27) $USERNAME
+!ISINSAFEZONE
+#ACT
+GIVE 经验 5000
+SENDMSG 5 抢占火堆后将获得3倍经验.魔体经验,元宝的奖励,火堆1×1范围内将获得1.5倍奖励
+SENDMSG 19 人物经验+5000
+
+;------------------------内功自动升级,暂时屏蔽: 0是内功等级 2是当前经验 1是升级所需经验
+#IF
+!SMALL $CUSTOMVALUE(2) $CUSTOMVALUE(1)
+#ACT
+CHANGECUSTOMVALUE 0 + 1
+CHANGECUSTOMVALUE 2 - $CUSTOMVALUE(1)
+ReadRandomStr ..\QuestDiary\文本读取\魔体升级经验.txt N$魔体经验赋值 $CUSTOMVALUE(0)
+CHANGECUSTOMVALUE 1 = $STR(N$魔体经验赋值)
+
+;------------------------积分写入
+
+#IF
+EQUAL $POSITION(JQKH,19,27) $USERNAME
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\烤火积分排行.txt S$Lemon烤火
+#ACT
+DELVARLIST $STR(S$Lemon烤火) ..\QUESTDIARY\游戏数据\烤火积分排行.txt
+SPLIT $STR(S$Lemon烤火) | S$Lemon烤火
+ADDVARLIST |<$USERNAME>|<$INC.$STR(S$Lemon烤火_1).1> ..\QUESTDIARY\游戏数据\烤火积分排行.txt
+
+#IF
+EQUAL $POSITION(JQKH,19,27) $USERNAME
+!POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\烤火积分排行.txt
+#ACT
+ADDVARLIST |<$USERNAME>|1 ..\QUESTDIARY\游戏数据\烤火积分排行.txt
+
+
+#IF
+TRUE
+#ACT
+GOTO @LemonKH排行
+
+
+[@LemonKH排行]
+;-----------------------------关闭排行榜
+#IF
+EQUAL N$Lemon排行 0
+#SAY
+<Img|x=280.0|y=5.0|height=340|bg=1|img=private/jiqingkaohuo/1.png|loadDelay=0>
+<Button|x=280.0|y=5.0|pimg=private/jiqingkaohuo/icon_guild_rank.png|nimg=private/jiqingkaohuo/icon_guild_rank.png|link=@Lemon烤火FH>
+#ACT
+MOV S$Lemon烤火FL 积分
+BREAK
+
+;-----------------------------打开排行榜
+#IF
+!POS -积分-杀人- -<$STR(S$Lemon烤火FL)>-
+#ACT
+MOV S$Lemon烤火FL 积分
+
+#IF
+TRUE
+#SAY
+;======================================
+<Img|x=0.0|y=0.0|height=340|bg=1|img=private/jiqingkaohuo/bg_charge_item_03.png|loadDelay=0>
+;======================================
+<Img|x=20.0|y=104.0|width=30|height=30|img=private/jiqingkaohuo/icon_rank_01.png>
+<Img|x=20.0|y=137.0|width=30|height=30|img=private/jiqingkaohuo/icon_rank_02.png>
+<Img|x=20.0|y=171.0|width=30|height=30|img=private/jiqingkaohuo/icon_rank_03.png>
+<Text|x=28.0|y=203.0|color=67|size=22|text=4>
+<Text|x=28.0|y=238.0|color=67|size=22|text=5>
+;---------------------
+<Text|x=65.0|y=105.0|color=255|size=18|text=<$STR(S11)>>
+<Text|x=205.0|y=105.0|color=255|size=18|text=<$STR(S12)>>
+;---------------------
+<Text|x=65.0|y=139.0|color=255|size=18|text=<$STR(S21)>>
+<Text|x=205.0|y=139.0|color=255|size=18|text=<$STR(S22)>>
+;---------------------
+<Text|x=65.0|y=173.0|color=255|size=18|text=<$STR(S31)>>
+<Text|x=205.0|y=173.0|color=255|size=18|text=<$STR(S32)>>
+;---------------------
+<Text|x=65.0|y=207.0|color=255|size=18|text=<$STR(S41)>>
+<Text|x=205.0|y=207.0|color=255|size=18|text=<$STR(S42)>>
+;---------------------
+<Text|x=65.0|y=240.0|color=255|size=18|text=<$STR(S51)>>
+<Text|x=205.0|y=240.0|color=255|size=18|text=<$STR(S52)>>
+;======================================
+<Button|x=210.0|y=285.0|pimg=private/jiqingkaohuo/btn_growbook_01.png|nimg=private/jiqingkaohuo/btn_growbook_01.png|link=@Lemon烤火FH>
+;======================================
+<Text|x=28.0|y=295.0|color=67|size=18|text=我的排名 <$STR(S61)>>
+#ACT
+CLEARVAR S1 99
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火<$STR(S$Lemon烤火FL)>排行.txt S1 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火<$STR(S$Lemon烤火FL)>排行.txt S2 1 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火<$STR(S$Lemon烤火FL)>排行.txt S3 2 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火<$STR(S$Lemon烤火FL)>排行.txt S4 3 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火<$STR(S$Lemon烤火FL)>排行.txt S5 4 0 2 |
+
+#IF
+EQUAL S$Lemon烤火FL 积分
+#SAY
+<Text|x=20.0|y=65.0|color=67|size=18|text=名次　玩家　　　　　积分>
+<Button|x=30.0|y=15.0|pimg=private/jiqingkaohuo/anniuhui2.png|nimg=private/jiqingkaohuo/anniuhong2.png|color=67|size=18|text=积分|link=@Lemon烤火FL&积分>
+<Button|x=125.0|y=15.0|pimg=private/jiqingkaohuo/anniuhong1.png|nimg=private/jiqingkaohuo/anniuhui1.png|color=10|size=18|text=击杀|link=@Lemon烤火FL&杀人>
+#ELSESAY
+<Text|x=20.0|y=65.0|color=67|size=18|text=名次　玩家　　　　击杀数>
+<Button|x=30.0|y=15.0|pimg=private/jiqingkaohuo/anniuhong2.png|nimg=private/jiqingkaohuo/anniuhui2.png|color=10|size=18|text=积分|link=@Lemon烤火FL&积分>
+<Button|x=125.0|y=15.0|pimg=private/jiqingkaohuo/anniuhui1.png|nimg=private/jiqingkaohuo/anniuhong1.png|color=67|size=18|text=击杀|link=@Lemon烤火FL&杀人>
+
+#IF
+POS $STR(S1) |
+#ACT
+SPLIT $STR(S1) | S11
+#IF
+POS $STR(S2) |
+#ACT
+SPLIT $STR(S2) | S21
+#IF
+POS $STR(S3) |
+#ACT
+SPLIT $STR(S3) | S31
+#IF
+POS $STR(S4) |
+#ACT
+SPLIT $STR(S4) | S41
+#IF
+POS $STR(S5) |
+#ACT
+SPLIT $STR(S5) | S51
+
+#IF
+EQUAL S11 $USERNAME
+#ACT
+MOV S61 1
+BREAK
+#IF
+EQUAL S21 $USERNAME
+#ACT
+MOV S61 2
+BREAK
+#IF
+EQUAL S31 $USERNAME
+#ACT
+MOV S61 3
+
+BREAK
+#IF
+EQUAL S41 $USERNAME
+#ACT
+MOV S61 4
+BREAK
+#IF
+EQUAL S51 $USERNAME
+#ACT
+MOV S61 5
+BREAK
+#ELSEACT
+MOV S61 未上榜
+BREAK
+
+
+
+;--------------------------排行数据切换
+[@Lemon烤火FL]
+
+#IF
+TRUE
+#ACT
+MOV S$Lemon烤火FL $SCRIPTPARAM(1)
+GOTO @LemonKH排行
+BREAK
+
+
+;--------------------------排行开关
+[@Lemon烤火FH]
+#IF
+EQUAL N$Lemon排行 1
+#ACT
+MOV N$Lemon排行 0
+GOTO @LemonKH排行
+BREAK
+#ELSEACT
+MOV N$Lemon排行 1
+GOTO @LemonKH排行
+BREAK
+;==========================================
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

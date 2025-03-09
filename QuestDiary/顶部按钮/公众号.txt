@@ -1,0 +1,323 @@
+{
+[@公众号面板]
+#IFONE
+!EQUAL <$ACCOUNT> 38071174
+!EQUAL <$ACCOUNT> 11903369
+!EQUAL <$ACCOUNT> 36075115
+!EQUAL <$ACCOUNT> 35773142
+!EQUAL <$ACCOUNT> 38186550
+#ACT
+GOTO @抖音福利面板
+
+#ELSEACT
+
+GOTO @主播专用面板
+
+[@主播专用面板]
+<Img|x=148.0|y=77.0|img=private/gongzhonghao/zhibojian.png|esc=1>
+<Img|x=127.0|y=32.0|img=public/frame_squared_outside.png|bg=1|esc=1>
+<Button|x=939.0|y=30.0|pimg=public/button/btn_close_01.png|nimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<Button|x=162.0|y=100.0|nimg=public/btn_chosen_02.png|pimg=public/btn_chosen_02.png|scale=1|size=18|color=67|text=抖音福利|link=@主播专用面板>
+<Button|x=162.0|y=165.0|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|scale=1|size=18|color=67|text=直播福利>
+<Button|x=162.0|y=165.0|nimg=public/btn_chosen_01.png|scale=1|pimg=public/btn_chosen_01.png|size=18|color=67|text=主播发放|link=@主播发放>
+<Button|x=689.0|y=322.0|scale=1|mimg=private/gongzhonghao/duananniu.png|pimg=private/gongzhonghao/duananniu.png|nimg=private/gongzhonghao/duananniu.png|color=67|size=18|text=兑换礼包|link=@兑换直播福利>
+<Text|x=388.0|y=506.0|color=255|size=16|text=咨询游戏玩法、关注官方动态>
+<Text|x=388.0|y=532.0|color=255|size=16|text=寻找游戏伙伴、领取限时福利>
+<Img|x=619.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<Img|x=727.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<Img|x=837.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<ItemShow|x=619.0|y=493.0|width=70|height=70|itemid=51083|itemcount=3|bgtype=private/boss/item_bg1.png|showtips=1|name=魔体经验券(10万)>
+<ItemShow|x=727.0|y=493.0|width=70|height=70|itemid=26748|itemcount=10|bgtype=private/boss/item_bg1.png|showtips=1|name=特装精粹(攻)>
+<ItemShow|x=837.0|y=493.0|width=70|height=70|itemid=26900|itemcount=300|bgtype=private/boss/item_bg1.png|showtips=1|name=绑定元宝>
+
+[@抖音福利面板]
+<Img|x=148.0|y=77.0|img=private/gongzhonghao/zhibojian.png|esc=1>
+<Img|x=127.0|y=32.0|img=public/frame_squared_outside.png|bg=1|esc=1>
+<Button|x=939.0|y=30.0|pimg=public/button/btn_close_01.png|nimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<Button|x=162.0|y=100.0|nimg=public/btn_chosen_02.png|pimg=public/btn_chosen_02.png|scale=1|size=18|color=67|text=抖音福利|link=@抖音福利面板>
+<Button|x=162.0|y=165.0|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|scale=1|size=18|color=67|text=官方Q群福利|link=@Q群福利>
+<Button|x=162.0|y=230.0|nimg=public/btn_chosen_01.png|scale=1|pimg=public/btn_chosen_01.png|size=18|color=67|text=公众号福利|link=@公众号福利>
+<RText|x=388.0|y=159.0|color=255|size=18|text=<认准官方QQ群：/FCOLOR=255><853393848/FCOLOR=222>>
+<Button|x=689.0|y=322.0|scale=1|mimg=private/gongzhonghao/duananniu.png|pimg=private/gongzhonghao/duananniu.png|nimg=private/gongzhonghao/duananniu.png|color=67|size=18|text=兑换礼包|link=@兑换直播福利>
+<Text|x=388.0|y=506.0|color=255|size=16|text=咨询游戏玩法、关注官方动态>
+<Text|x=388.0|y=532.0|color=255|size=16|text=寻找游戏伙伴、领取限时福利>
+<Img|x=619.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<Img|x=727.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<Img|x=837.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<ItemShow|x=619.0|y=493.0|width=70|height=70|itemid=51083|itemcount=3|bgtype=private/boss/item_bg1.png|showtips=1|name=魔体经验券(10万)>
+<ItemShow|x=727.0|y=493.0|width=70|height=70|itemid=26748|itemcount=10|bgtype=private/boss/item_bg1.png|showtips=1|name=特装精粹(攻)>
+<ItemShow|x=837.0|y=493.0|width=70|height=70|itemid=26900|itemcount=300|bgtype=private/boss/item_bg1.png|showtips=1|name=绑定元宝>
+
+[@Q群福利]
+<Img|x=148.0|y=77.0|img=private/gongzhonghao/kongmianban.png|esc=1>
+<Img|x=127.0|y=32.0|img=public/frame_squared_outside.png|bg=1|esc=1>
+<Button|x=939.0|y=30.0|pimg=public/button/btn_close_01.png|nimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<Img|x=514.0|y=107.0|img=private/gongzhonghao/gfqqfl.png|esc=1>
+<Button|x=162.0|y=100.0|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|scale=1|size=18|color=67|text=抖音福利|link=@抖音福利面板>
+<Button|x=162.0|y=165.0|nimg=public/btn_chosen_02.png|pimg=public/btn_chosen_02.png|scale=1|size=18|color=67|text=官方Q群福利|link=@Q群福利>
+<Button|x=162.0|y=230.0|nimg=public/btn_chosen_01.png|scale=1|pimg=public/btn_chosen_01.png|size=18|color=67|text=公众号福利|link=@公众号福利>
+<RText|x=388.0|y=159.0|color=255|size=18|text=<认准官方QQ群：/FCOLOR=255><853393848/FCOLOR=222>>
+<Button|x=392.0|y=404.0|width=100|pimg=private/gongzhonghao/duananniu.png|scale=1|nimg=private/gongzhonghao/duananniu.png|mimg=private/gongzhonghao/duananniu.png|color=67|size=18|text=复制群号码||link=@@copyright&853393848>
+<Button|x=538.0|y=404.0|scale=1|mimg=private/gongzhonghao/duananniu.png|pimg=private/gongzhonghao/duananniu.png|nimg=private/gongzhonghao/duananniu.png|color=67|size=18|text=兑换礼包|link=@兑换Q群礼包>
+<Text|x=388.0|y=491.0|color=255|size=16|text=咨询游戏玩法、关注官方动态>
+<Text|x=388.0|y=517.0|color=255|size=16|text=寻找游戏伙伴、领取限时福利>
+<Text|x=388.0|y=543.0|color=255|size=16|text=尽在官方指定Q群！>
+<Img|x=619.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<Img|x=727.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<Img|x=837.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<ItemShow|x=619.0|y=493.0|width=70|height=70|itemid=1325|itemcount=6|bgtype=private/boss/item_bg1.png|showtips=1|name=仙翎之羽>
+<ItemShow|x=727.0|y=493.0|width=70|height=70|itemid=1493|itemcount=6|bgtype=private/boss/item_bg1.png|showtips=1|name=灵兽精粹>
+<ItemShow|x=837.0|y=493.0|width=70|height=70|itemid=26900|itemcount=300|bgtype=private/boss/item_bg1.png|showtips=1|name=绑定元宝>
+<Img|x=653.0|y=271.0|scale=0.5|img=private/gongzhonghao/nimo.png|esc=0>
+<RText|x=388.0|y=262.0|color=255|size=18|text=<加入QQ群，查看群公告获取礼包码/FCOLOR=255>>
+<RText|x=388.0|y=295.0|color=255|size=18|text=<点击兑换礼包，领取下列游戏道具/FCOLOR=255>>
+
+[@公众号福利]
+<Img|x=148.0|y=77.0|img=private/gongzhonghao/gongzhonghao.png|esc=1>
+<Img|x=127.0|y=32.0|img=public/frame_squared_outside.png|bg=1|esc=1>
+<Button|x=939.0|y=30.0|pimg=public/button/btn_close_01.png|nimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<Button|x=162.0|y=100.0|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|scale=1|size=18|color=67|text=抖音福利|link=@抖音福利面板>
+<Button|x=162.0|y=165.0|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|scale=1|size=18|color=67|text=官方Q群福利|link=@Q群福利>
+<Button|x=162.0|y=230.0|nimg=public/btn_chosen_02.png|scale=1|pimg=public/btn_chosen_02.png|size=18|color=67|text=公众号福利|link=@公众号福利>
+<RText|x=413.0|y=158.0|size=18|color=255|text=<打开微信-添加好友-公众号，输入/FCOLOR=255><星沐游戏/FCOLOR=222><加关注获取/FCOLOR=255><礼包码/FCOLOR=222>>
+<Text|x=388.0|y=491.0|color=255|size=16|text=您也可以截屏保存该图片>
+<Text|x=388.0|y=517.0|color=255|size=16|text=长按识别图中二维码关注>
+<Text|x=388.0|y=543.0|color=255|size=16|text=限时礼包...超多福利等你领取！>
+<Img|x=619.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<Img|x=727.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<Img|x=837.0|y=493.0|scale=1|img=public/fjfqk.png|esc=0>
+<ItemShow|x=619.0|y=493.0|width=70|height=70|itemid=25898|itemcount=6|bgtype=private/boss/item_bg1.png|showtips=1|name=凶器精粹>
+<ItemShow|x=727.0|y=493.0|width=70|height=70|itemid=30272|itemcount=6|bgtype=private/boss/item_bg1.png|showtips=1|name=法宝精粹>
+<ItemShow|x=837.0|y=493.0|width=70|height=70|itemid=26900|itemcount=300|bgtype=private/boss/item_bg1.png|showtips=1|name=绑定元宝>
+<Button|x=641.0|y=229.0|width=150|pimg=public/btn_push_01.png|mimg=public/btn_push_01.png|scale=1|color=67|nimg=public/btn_push_01.png|size=18|text=复制公众号名称|link=@@copyright&星沐游戏>
+<Button|x=843.0|y=229.0|width=100|scale=1|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|nimg=public/btn_push_01.png|size=18|text=打开微信|link=@打开微信>
+<Button|x=735.0|y=356.0|width=116|scale=1|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|nimg=public/btn_push_01.png|size=18|text=兑换礼包|link=@公众号礼包>
+<Img|x=399.0|y=234.0|scale=0.81|img=private/gongzhonghao/erweima.jpg|esc=0>
+
+[@兑换直播福利]
+#IF
+TRUE
+#ACT
+QueryVal 85 0 7 @输入直播福利码 请输入直播礼包码
+BREAK
+
+
+[@输入直播福利码]
+#IF
+EQUAL S85 LB666
+CHECK [173] 1
+#ACT
+Messagebox 您已经领取过该礼包，不可重复领取
+BREAK
+
+#IF
+EQUAL S85 LB888
+CHECK [174] 1
+#ACT
+Messagebox 您已经领取过该礼包，不可重复领取
+BREAK
+
+#IF
+EQUAL S85 ZB666
+CHECK [175] 1
+#ACT
+Messagebox 您已经领取过该礼包，不可重复领取
+BREAK
+
+#IF
+EQUAL S85 ZB888
+CHECK [176] 1
+#ACT
+Messagebox 您已经领取过该礼包，不可重复领取
+BREAK
+
+#IF
+EQUAL S85 SVIP666
+CHECK [177] 1
+#ACT
+Messagebox 您已经领取过该礼包，不可重复领取
+BREAK
+
+#IF
+EQUAL S85 SVIP888
+CHECK [178] 1
+#ACT
+Messagebox 您已经领取过该礼包，不可重复领取
+BREAK
+
+#IF
+EQUAL S85 SVIP999
+CHECK [179] 1
+#ACT
+Messagebox 您已经领取过该礼包，不可重复领取
+BREAK
+
+#IF
+EQUAL S85 LB666
+CHECK [173] 0
+#ACT
+SET [173] 1
+MailGive 仙翎之羽 3 1
+MailGive 灵兽精粹 3 1
+MailGive 绑定元宝 200 1
+MailGive 金币 100000 1
+SendMail 2021 直播福利礼包 恭喜您成功领取直播福利礼包，以下是您的礼包奖励物品，请及时提取！
+Messagebox 兑换成功，请在邮箱中查看
+GOTO @抖音福利面板
+BREAK
+
+#IF
+EQUAL S85 LB888
+CHECK [174] 0
+#ACT
+SET [174] 1
+MailGive 凶器精粹 3 1
+MailGive 特戒精华 5 1
+MailGive 绑定元宝 250 1
+MailGive 金币 150000 1
+SendMail 2022 直播福利礼包 恭喜您成功领取直播福利礼包，以下是您的礼包奖励物品，请及时提取！
+Messagebox 兑换成功，请在邮箱中查看
+GOTO @抖音福利面板
+BREAK
+
+#IF
+EQUAL S85 ZB666
+CHECK [175] 0
+#ACT
+SET [175] 1
+MailGive 法宝精粹 5 1
+MailGive 魔体经验券(10万) 1 1
+MailGive 绑定元宝 300 1
+MailGive 金币 300000 1
+SendMail 2023 直播福利礼包 恭喜您成功领取直播福利礼包，以下是您的礼包奖励物品，请及时提取！
+Messagebox 兑换成功，请在邮箱中查看
+GOTO @抖音福利面板
+BREAK
+
+#IF
+EQUAL S85 ZB888
+CHECK [176] 0
+#ACT
+SET [176] 1
+MailGive 仙翎之羽 5 1
+MailGive 灵兽精粹 5 1
+MailGive 绑定元宝 300 1
+MailGive 金币 500000 1
+SendMail 2024 直播福利礼包 恭喜您成功领取直播福利礼包，以下是您的礼包奖励物品，请及时提取！
+Messagebox 兑换成功，请在邮箱中查看
+GOTO @抖音福利面板
+BREAK
+
+#IF
+EQUAL S85 SVIP666
+CHECK [177] 0
+#ACT
+SET [177] 1
+MailGive 凶器精粹 10 1
+MailGive 特戒精华 10 1
+MailGive 绑定元宝 500 1
+MailGive 金币 1000000 1
+SendMail 2025 直播福利礼包 恭喜您成功领取直播福利礼包，以下是您的礼包奖励物品，请及时提取！
+Messagebox 兑换成功，请在邮箱中查看
+GOTO @抖音福利面板
+BREAK
+
+#IF
+EQUAL S85 SVIP888
+CHECK [178] 0
+#ACT
+SET [178] 1
+MailGive 法宝精粹 10 1
+MailGive 魔体经验券(10万) 3 1
+MailGive 绑定元宝 500 1
+MailGive 金币 1500000 1
+SendMail 2026 直播福利礼包 恭喜您成功领取直播福利礼包，以下是您的礼包奖励物品，请及时提取！
+Messagebox 兑换成功，请在邮箱中查看
+GOTO @抖音福利面板
+BREAK
+
+#IF
+EQUAL S85 SVIP999
+CHECK [179] 0
+#ACT
+SET [179] 1
+MailGive 特装精粹(防) 15 1
+MailGive 特装精粹(攻) 15 1
+MailGive 绑定元宝 500 1
+MailGive 金币 2000000 1
+SendMail 2027 直播福利礼包 恭喜您成功领取直播福利礼包，以下是您的礼包奖励物品，请及时提取！
+Messagebox 兑换成功，请在邮箱中查看
+GOTO @抖音福利面板
+BREAK
+
+#IFONE
+!EQUAL S1 LB666
+!EQUAL S1 LB888
+!EQUAL S1 ZB666
+!EQUAL S1 ZB888
+!EQUAL S1 SVIP666
+!EQUAL S1 SVIP888
+!EQUAL S1 SVIP999
+#ACT
+Messagebox 礼包码不正确，请到直播间查看或联系客服
+BREAK
+
+[@兑换Q群礼包]
+#IF
+CHECK [98] 0
+#ACT
+QueryVal 1 1 7 @输入Q群礼包码 请输入QQ群礼包码
+BREAK
+#ELSEACT
+Messagebox 您已经领取过Q群大礼包，不可重复领取
+BREAK
+
+[@输入Q群礼包码]
+#IF
+EQUAL M1 2024888
+#ACT
+SET [98] 1
+MailGive 仙翎之羽 6 1
+MailGive 灵兽精粹 6 1
+MailGive 绑定元宝 300 1
+SendMail 2028 Q群礼包 恭喜您成功领取Q群大礼包，以下是您的礼包奖励物品，请及时提取！
+Messagebox 兑换成功，请在邮箱中查看
+GOTO @Q群福利
+BREAK
+#ELSEACT
+Messagebox 礼包码不正确，请查看Q群公告或联系客服
+BREAK
+
+[@公众号礼包]
+#IF
+CHECK [99] 0
+#ACT
+QueryVal 1 1 7 @输入公众号礼包码 请输入公众号礼包码
+BREAK
+#ELSEACT
+Messagebox 您已经领取过公众号礼包，不可重复领取
+BREAK
+
+[@输入公众号礼包码]
+#IF
+EQUAL M1 2024666
+#ACT
+SET [99] 1
+MailGive 凶器精粹 6 1
+MailGive 法宝精粹 6 1
+MailGive 绑定元宝 300 1
+SendMail 2023 公众号礼包 恭喜您成功领取公众号礼包，以下是您的礼包奖励物品，请及时提取！
+Messagebox 公众号礼包领取成功，请在邮箱中查看
+goto @公众号面板
+BREAK
+#ELSEACT
+Messagebox 验证码错误，请关注星沐游戏公众号获取验证码！
+BREAK
+
+[@打开微信]
+#IF
+TRUE
+#ACT
+SENDFORQQWX 4
+BREAK
+}

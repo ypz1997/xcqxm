@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=33
+IsMain=0
+stepcount = 2
+title = [　]教主克星
+ID = 33
+stepstitle1 = <color=graygolden 任务描述：>\<color=graygolden 杀死1只【通天教主】>\<color=graygolden 任务完成度:><color=green <$TASKVAL(33).I0>/1>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+stepstitle2 = <color=green 任务完成：>\ \　<点击领取奖励/@XXXXX>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>

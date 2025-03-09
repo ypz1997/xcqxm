@@ -1,0 +1,411 @@
+[@星沐后台管理]
+{
+#IF
+EQUAL N$后台密码正确 0
+#ACT
+QUERYVAL 99 0 50 @后台密码 请输入后台密码
+Break
+#ELSEACT
+GOTO @进入后台
+
+[@后台密码]
+#IF
+Equal S99 123
+#ACT
+MOV N$后台密码正确 1
+GOTO @进入后台
+#ELSEACT
+MESSAGEBOX 对不起,输入密码错误!
+Break
+
+
+[@进入后台]
+<开GM权限/@开启GM权限>      <充值发放/@充值发放>      <月卡发放/@月卡发放>      <季卡发放/@季卡发放>      <年卡发放/@年卡发放>\
+<投资发放/@投资发放>        <战令发放/@战令发放>      <一日礼包/@一日礼包>      <二日礼包/@二日礼包>      <三日礼包/@三日礼包>\
+<四日礼包/@四日礼包>        <五日礼包/@五日礼包>      <六日礼包/@六日礼包>      <七日礼包/@七日礼包>      <邮件发放/@邮件发放>\
+<月卡补发/@月卡补发>        <季卡补发/@季卡补发>      <年卡补发/@年卡补发>      <合服30/@合服30>             <修改CustomValue/@修改CustomValue>
+
+
+[@修改CustomValue]
+#IF
+TRUE
+#ACT
+QUERYVAL 1 0 14 @修改CustomValueA 输入玩家名字
+BREAK
+
+[@修改CustomValueA]
+#IF
+TRUE
+#ACT
+QUERYVAL 1 1 3 @修改CustomValueB 输入变量名
+BREAK
+
+[@修改CustomValueB]
+#IF
+TRUE
+#ACT
+QUERYVAL 2 0 20 @修改CustomValueC 输入变量值
+BREAK
+
+[@修改CustomValueC]
+#IF
+TRUE
+#ACT
+$STR(S1).ChangeCustomValue $STR(M1) = $STR(S2)
+DELAYCALL 1 @合服活动面板
+SENDMSG 5 修改完成
+BREAK
+
+
+
+[@合服30]
+#IF
+TRUE
+#ACT
+$USERNAME.SETPARAM 44 32
+$USERNAME.SETPARAM 45 648
+$USERNAME.goto @RECHARGE
+
+[@月卡补发]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 14 @月卡补发1 输入玩家名字
+BREAK
+
+[@月卡补发1]
+#IF
+TRUE
+#ACT
+MOV N$月卡判定 1
+$STR(S91).SETPARAM 45 38
+$STR(S91).SETPARAM 44 19
+$STR(S91).GOTO @RECHARGE
+
+
+[@季卡补发]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 14 @季卡补发1 输入玩家名字
+BREAK
+
+[@季卡补发1]
+#IF
+TRUE
+#ACT
+MOV N$季卡判定 1
+$STR(S91).SETPARAM 45 88
+$STR(S91).SETPARAM 44 20
+$STR(S91).GOTO @RECHARGE
+
+
+[@年卡补发]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 14 @年卡补发1 输入玩家名字
+BREAK
+
+[@年卡补发1]
+#IF
+TRUE
+#ACT
+MOV N$年卡判定 1
+$STR(S91).SETPARAM 45 168
+$STR(S91).SETPARAM 44 21
+$STR(S91).GOTO @RECHARGE
+
+
+
+
+[@开启GM权限]
+#IF
+TRUE
+#ACT
+CHANGEPERMISSION 10
+SENDMSG 5 开启GM权限
+break
+
+
+
+
+[@充值发放]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 14 @增加充值A 输入玩家名字
+BREAK
+
+[@增加充值A]
+#IF
+TRUE
+#ACT
+QUERYVAL 1 1 6 @增加充值B 请输入充值额度
+BREAK
+
+[@增加充值B]
+#IF
+TRUE
+#ACT
+QUERYVAL 2 1 14 @增加充值C 输入元宝数量
+BREAK
+
+[@增加充值C]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 $STR(M1)
+$STR(S91).SETPARAM 44 2
+SENDMSG 5 <$STR(S91)>充值金额增加了<$STR(M1)>
+$STR(S91).GOTO @RECHARGE
+GOTO @发送邮件119
+BREAK
+
+[@发送邮件119]
+#IF
+TRUE
+#ACT
+$STR(S91).MailGIve 元宝 $STR(M2)
+$STR(S91).SENDMAIL 1 系统邮件 请点提取
+BREAK
+
+[@邮件发放]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @邮件发放1 输入玩家名字
+BREAK
+
+[@邮件发放1]
+#IF
+TRUE
+#ACT
+QUERYVAL 90 0 16 @邮件发放2 输入物品名字
+BREAK
+
+[@邮件发放2]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 1 16 @邮件发放3 输入物品数量
+BREAK
+
+[@邮件发放3]
+#IF
+TRUE
+#ACT
+$STR(S91).MailGIve <$STR(S90)> $STR(M91) 1
+$STR(S91).SENDMAIL 1 系统邮件 请点提取
+BREAK
+
+
+
+[@月卡发放]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @月卡发放1 输入玩家名字
+BREAK
+
+[@月卡发放1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 38
+$STR(S91).SETPARAM 44 19
+SENDMSG 5 <$STR(S91)>成功开通月卡(有效期1个月)
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@季卡发放]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @季卡发放1 输入玩家名字
+BREAK
+
+[@季卡发放1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 88
+$STR(S91).SETPARAM 44 20
+SENDMSG 5 <$STR(S91)>成功开通季卡(有效期3个月)
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@年卡发放]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @年卡发放1 输入玩家名字
+BREAK
+
+[@年卡发放1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 168
+$STR(S91).SETPARAM 44 21
+SENDMSG 5 <$STR(S91)>成功开通年卡(有效期12个月)
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@投资发放]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @投资发放1 输入玩家名字
+BREAK
+
+[@投资发放1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 98
+$STR(S91).SETPARAM 44 30
+SENDMSG 5 <$STR(S91)>成功开通新服投资
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@战令发放]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @战令发放1 输入玩家名字
+BREAK
+
+[@战令发放1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 28
+$STR(S91).SETPARAM 44 31
+SENDMSG 5 <$STR(S91)>成功开通新服投资
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@一日礼包]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @一日礼包1 输入玩家名字
+BREAK
+
+[@一日礼包1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 10
+$STR(S91).SETPARAM 44 23
+SENDMSG 5 <$STR(S91)>成功充值1日礼包
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@二日礼包]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @二日礼包1 输入玩家名字
+BREAK
+
+[@二日礼包1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 30
+$STR(S91).SETPARAM 44 24
+SENDMSG 5 <$STR(S91)>成功充值2日礼包
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@三日礼包]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @三日礼包1 输入玩家名字
+BREAK
+
+[@三日礼包1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 30
+$STR(S91).SETPARAM 44 25
+SENDMSG 5 <$STR(S91)>成功充值3日礼包
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@四日礼包]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @四日礼包1 输入玩家名字
+BREAK
+
+[@四日礼包1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 68
+$STR(S91).SETPARAM 44 26
+SENDMSG 5 <$STR(S91)>成功充值4日礼包
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@五日礼包]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @五日礼包1 输入玩家名字
+BREAK
+
+[@五日礼包1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 30
+$STR(S91).SETPARAM 44 27
+SENDMSG 5 <$STR(S91)>成功充值5日礼包
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@六日礼包]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @六日礼包1 输入玩家名字
+BREAK
+
+[@六日礼包1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 30
+$STR(S91).SETPARAM 44 28
+SENDMSG 5 <$STR(S91)>成功充值6日礼包
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+[@七日礼包]
+#IF
+TRUE
+#ACT
+QUERYVAL 91 0 16 @七日礼包1 输入玩家名字
+BREAK
+
+[@七日礼包1]
+#IF
+TRUE
+#ACT
+$STR(S91).SETPARAM 45 68
+$STR(S91).SETPARAM 44 29
+SENDMSG 5 <$STR(S91)>成功充值6日礼包
+$STR(S91).GOTO @RECHARGE
+BREAK
+
+
+}
+
+

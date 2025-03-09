@@ -1,0 +1,232 @@
+[@main]
+;------------------------------------------------------------------默认进面具界面
+#if
+true
+#act
+goto @展示界面_mjxz_1
+
+
+
+
+[@展示界面_mjxz_1]
+;------------------------------------------------------------------------------面具和勋章的分页
+#if
+equal p1 0
+#act
+mov S$界面按钮_1 <Button|id=mjxz_5|x=-4|y=48|width=67|height=79|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png|mimg=private/lingshou/fenlei2.png|color=251|size=18|text=面具>
+inc S$界面按钮_1 <Button|id=mjxz_4|x=-4|y=126|width=67|height=79|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png|mimg=private/lingshou/fenlei2.png|color=251|size=18|text=勋章|link=@界面变量判断_mjxz_2>
+delaygoto 300 @面具展示条件
+
+
+#if
+equal p1 1
+#act
+mov S$界面按钮_1 <Button|id=mjxz_5|x=-4|y=48|width=67|height=79|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png|mimg=private/lingshou/fenlei2.png|color=251|size=18|text=面具|link=@界面变量判断_mjxz_1>
+inc S$界面按钮_1 <Button|id=mjxz_4|x=-4|y=126|width=67|height=79|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png|mimg=private/lingshou/fenlei2.png|color=251|size=18|text=勋章>
+delaygoto 300 @勋章展示条件
+
+;-------------------------------------------------------------------------------------------组成面具界面的条件
+[@面具展示条件]
+#if
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(19)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$面具升级条件
+#act
+SPLIT <$str(S$面具升级条件)> | S$面具升级分割
+mov N$装备位置 19
+mov S$材料 面具
+mov S$升级消耗材料 特装精粹(攻)
+mov S$面具展示界面 <RText|id=mjxz_15|x=385|y=295|color=128|size=18|text=<防御　　　　/FCOLOR=68><<$str(S$面具升级分割_6)>-<$str(S$面具升级分割_7)>/FCOLOR=224>>
+inc S$面具展示界面 <RText|id=mjxz_16|x=385|y=320|color=128|size=18|text=<魔防　　　　/FCOLOR=68><<$str(S$面具升级分割_6)>-<$str(S$面具升级分割_7)>/FCOLOR=224>>
+inc S$面具展示界面 <RText|id=mjxz_17|x=385|y=345|color=128|size=18|text=<生命　　　　/FCOLOR=68><<$str(S$面具升级分割_8)>%/FCOLOR=224>>
+inc S$面具展示界面 <RText|id=mjxz_18|x=385|y=370|color=128|size=18|text=<暴伤抵抗　　/FCOLOR=68><<$str(S$面具升级分割_9)>/FCOLOR=224>>
+inc S$面具展示界面 <RText|id=mjxz_19|x=640|y=295|color=128|size=18|text=<防御　　　　/FCOLOR=68><<$str(S$面具升级分割_10)>-<$str(S$面具升级分割_11)>/FCOLOR=224>>
+inc S$面具展示界面 <RText|id=mjxz_20|x=640|y=320|color=128|size=18|text=<魔防　　　　/FCOLOR=68><<$str(S$面具升级分割_10)>-<$str(S$面具升级分割_11)>/FCOLOR=224>>
+inc S$面具展示界面 <RText|id=mjxz_21|x=640|y=345|color=128|size=18|text=<生命　　　　/FCOLOR=68><<$str(S$面具升级分割_12)>%/FCOLOR=224>>
+inc S$面具展示界面 <RText|id=mjxz_22|x=640|y=370|color=128|size=18|text=<暴伤抵抗　　/FCOLOR=68><<$str(S$面具升级分割_13)>/FCOLOR=224>>
+inc S$面具展示界面 <ItemShow|id=mjxz_13|x=545|y=124|itemid=<$str(S$面具升级分割_2)>|name=<$str(S$面具升级分割_1)>|itemcount=1|showtips=1|bgtype=1|scale=1>
+mov S$升级按钮 <Button|id=mjxz_23|x=516|y=481|width=118|height=45|nimg=public/yuekaanniu1.png|pimg=public/yuekaanniu1.png|mimg=public/yuekaanniu1.png|color=70|size=18|text=升　　级|link=@面具升级逻辑判断>
+inc S$升级按钮 <EquipShow|id=mjxz_7|x=134|y=154|index=<$str(N$装备位置)>|showtips=1|bgtype=1>
+goto @展示界面_mjxz_2
+
+;-------------------------------------------------------------------------------------------组成勋章界面的条件
+[@勋章展示条件]
+#if
+CHECKJOB Warrior
+#act
+mov S$显示属性 攻击
+
+#if
+CHECKJOB Wizard
+#act
+mov S$显示属性 魔法
+
+#if
+CHECKJOB Taos
+#act
+mov S$显示属性 道术
+
+#if
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(2)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$勋章升级条件
+#act
+SPLIT <$str(S$勋章升级条件)> | S$勋章升级分割
+mov N$装备位置 2
+mov S$材料 勋章
+mov S$升级消耗材料 特装精粹(攻)
+mov S$勋章展示界面 <RText|id=mjxz_15|x=385|y=305|color=128|size=18|text=<<$str(S$显示属性)>　　　/FCOLOR=68><<$str(S$勋章升级分割_6)>-<$str(S$勋章升级分割_7)>/FCOLOR=224>>
+inc S$勋章展示界面 <RText|id=mjxz_16|x=385|y=340|color=128|size=18|text=<防御　　　/FCOLOR=68><<$str(S$勋章升级分割_8)>-<$str(S$勋章升级分割_9)>/FCOLOR=224>>
+inc S$勋章展示界面 <RText|id=mjxz_17|x=385|y=375|color=128|size=18|text=<魔防　　　/FCOLOR=68><<$str(S$勋章升级分割_8)>-<$str(S$勋章升级分割_9)>/FCOLOR=224>>
+inc S$勋章展示界面 <RText|id=mjxz_18|x=640|y=305|color=128|size=18|text=<<$str(S$显示属性)>　　　/FCOLOR=68><<$str(S$勋章升级分割_10)>-<$str(S$勋章升级分割_11)>/FCOLOR=224>>
+inc S$勋章展示界面 <RText|id=mjxz_19|x=640|y=340|color=128|size=18|text=<防御　　　/FCOLOR=68><<$str(S$勋章升级分割_12)>-<$str(S$勋章升级分割_13)>/FCOLOR=224>>
+inc S$勋章展示界面 <RText|id=mjxz_20|x=640|y=375|color=128|size=18|text=<魔防　　　/FCOLOR=68><<$str(S$勋章升级分割_12)>-<$str(S$勋章升级分割_13)>/FCOLOR=224>>
+inc S$勋章展示界面 <ItemShow|id=mjxz_13|x=545|y=124|itemid=<$str(S$勋章升级分割_2)>|name=<$str(S$勋章升级分割_1)>|itemcount=1|showtips=1|bgtype=1|scale=1>
+mov S$升级按钮 <Button|id=mjxz_23|x=516|y=481|width=118|height=45|nimg=public/yuekaanniu1.png|pimg=public/yuekaanniu1.png|mimg=public/yuekaanniu1.png|color=70|size=18|text=升　　级|link=@勋章升级逻辑判断>
+inc S$升级按钮 <EquipShow|id=mjxz_7|x=134|y=154|index=<$str(N$装备位置)>|showtips=1|bgtype=1>
+goto @展示界面_mjxz_2
+
+;----------------------------------------------------------------------------------------------面具升级的逻辑
+[@面具升级逻辑判断]
+#if
+!CHECKUSEITEM 19
+#act
+SENDMSG 19 没有佩戴装备,请联系客服
+break
+
+#if
+pos <$ITEMINFO[<$USEITEMMAKEINDEX(N$装备位置)>].NAME>  混沌
+#act
+SENDMSG 19 装备已满级
+break
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(N$装备位置)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$升级逻辑判断
+#ACT
+SPLIT $STR(S$升级逻辑判断) | S$条件升级分割
+#ELSEACT
+SENDMSG 19 此装备错误，请联系客服
+BREAK
+
+#IF
+!SMALL <$ITEMVALSUM(<$STR(S$升级消耗材料)>).DURA> <$STR(S$条件升级分割_4)>
+#ACT
+SENDMSG 19 升级材料不足
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> <$STR(S$条件升级分割_5)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#if
+true
+#act
+;take <$str(S$升级消耗材料)> <$STR(S$条件升级分割_4)>
+;take 金币 <$str(S$条件升级分割_5)>
+UPGRADEUSERITEM <$USEITEMMAKEINDEX(N$装备位置)> 13 = $STR(S$条件升级分割_3)
+goto @展示界面_mjxz_1
+func 1 @临时属性
+break
+
+
+
+
+
+
+;----------------------------------------------------------------------------------------------勋章升级的逻辑
+[@勋章升级逻辑判断]
+#if
+!CHECKUSEITEM 2
+#act
+SENDMSG 19 没有佩戴装备,请联系客服
+break
+
+#if
+pos <$ITEMINFO[<$USEITEMMAKEINDEX(N$装备位置)>].NAME>  混沌
+#act
+SENDMSG 19 装备已满级
+break
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(N$装备位置)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$升级逻辑判断
+#ACT
+SPLIT $STR(S$升级逻辑判断) | S$条件升级分割
+#ELSEACT
+SENDMSG 19 此装备错误，请联系客服
+BREAK
+
+#IF
+!SMALL <$ITEMVALSUM(<$STR(S$升级消耗材料)>).DURA> <$STR(S$条件升级分割_4)>
+#ACT
+SENDMSG 19 升级材料不足
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> <$STR(S$条件升级分割_5)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#if
+true
+#act
+;take <$str(S$升级消耗材料)> <$STR(S$条件升级分割_4)>
+;take 金币 <$str(S$条件升级分割_5)>
+UPGRADEUSERITEM <$USEITEMMAKEINDEX(N$装备位置)> 13 = $STR(S$条件升级分割_3)
+mov p1 1
+goto @展示界面_mjxz_1
+func 1 @临时属性
+break
+
+
+
+;----------------------------------------------------------------------------------------------切换标签的界面
+[@界面变量判断_mjxz_1]
+#if
+true
+#act
+mov p1 0
+goto @展示界面_mjxz_1
+
+[@界面变量判断_mjxz_2]
+#if
+true
+#act
+mov p1 1 
+goto @展示界面_mjxz_1
+
+
+;----------------------------------------------------------------------------------------------主要的界面展示
+[@展示界面_mjxz_2]
+#IF
+!SMALL <$ITEMVALSUM(<$STR(S$升级消耗材料)>).DURA> <$STR(S$<$str(S$材料)>升级分割_4)>
+#ACT
+MOV N$升级材料颜色1 224
+#ELSEACT
+MOV N$升级材料颜色1 58
+
+#IF
+!SMALL <$GOLDCOUNT> <$STR(S$<$str(S$材料)>升级分割_5)>
+#ACT
+MOV N$升级材料颜色2 224
+#ELSEACT
+MOV N$升级材料颜色2 58
+
+
+
+#if
+true
+#say
+<Img|id=mjxz_1|children={mjxz_10,mjxz_24,mjxz_2,mjxz_3,mjxz_5,mjxz_4,mjxz_6,mjxz_7,mjxz_8,mjxz_9,mjxz_13,mjxz_23}|x=118|y=32|width=846|height=559|img=public\bg_1.png|bg=1|move=1|reset=1|show=0|loadDelay=0>
+<Img|id=mjxz_10|children={mjxz_12,mjxz_14,mjxz_15,mjxz_16,mjxz_17,mjxz_18,mjxz_19,mjxz_20,mjxz_21,mjxz_22}|x=8|y=42|width=830|height=510|img=private\duanzao\fjbjb.png|bg=1|reset=1|show=0|loadDelay=0>
+<RText|id=mjxz_12|x=40|y=355|color=128|size=18|text=<<$str(S$升级消耗材料)>　　/FCOLOR=68><<$ITEMVALSUM(<$STR(S$升级消耗材料)>).DURA>/<$str(S$<$str(S$材料)>升级分割_4)>/FCOLOR=<$str(N$升级材料颜色1)>>>
+<RText|id=mjxz_14|x=40|y=400|color=128|size=18|text=<金币　　　/FCOLOR=68><<$GOLDCOUNT>/<$STR(S$<$str(S$材料)>升级分割_5)>/FCOLOR=<$str(N$升级材料颜色2)>>>
+<Text|id=mjxz_24|x=537|y=57|color=68|size=18|text=升级预览>
+<Layout|id=mjxz_2|x=772|y=-14|width=80|height=80|link=@exit>
+<Button|id=mjxz_3|x=793|y=2|width=50|height=50|nimg=public\00030.png|pimg=public\00030.png|mimg=public\00030.png|color=255|size=18|link=@exit>
+<Img|id=mjxz_6|x=112|y=127|width=110|height=110|img=public\item_bg1.png|bg=1|reset=1|show=0|loadDelay=0>
+<Img|id=mjxz_8|children={mjxz_11}|x=20|y=324|width=279|height=32|img=public\bg_aution_chosen.png|bg=1|reset=1|show=0|loadDelay=0>
+<Text|id=mjxz_11|x=90|y=6|color=68|size=18|text=升级所需材料>
+<Img|id=mjxz_9|x=495|y=74|width=157|height=157|img=public\dzfjfqk.png|bg=1|reset=1|show=0|loadDelay=0>
+<EquipShow|id=mjxz_7|x=134|y=154|index=<$str(N$装备位置)>|showtips=1|bgtype=1>
+<$str(S$界面按钮_1)>
+<$str(S$<$str(S$材料)>展示界面)>
+<$str(S$升级按钮)>

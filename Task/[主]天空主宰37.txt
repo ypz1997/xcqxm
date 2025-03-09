@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=37
+IsMain=0
+stepcount = 2
+title = [　]天空主宰
+ID = 37
+stepstitle1 = <color=graygolden 任务描述：>\<color=graygolden 杀死1只【阿修罗神】>\<color=graygolden 任务完成度:><color=green <$TASKVAL(37).I0>/1>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+stepstitle2 = <color=green 任务完成：>\ \　<点击领取奖励/@XXXXX>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>

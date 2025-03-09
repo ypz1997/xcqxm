@@ -1,0 +1,76 @@
+[@main]
+#IF
+RANDOM 1
+#SAY
+<Img|show=5|img=private/npcbj/bg.png|loadDelay=0|bg=1|reset=1|_localZOrder=-2|move=0>
+<Button|x=587.0|y=-8.0|color=255|scale=1|size=18|nimg=public/btn_close_01.png|link=@exit>
+<RText|x=38.0|y=205.0|color=67|size=18|text=钻石是通过回收7阶以上的装备获得,每日可获\得的钻石数量请看右侧说明>
+<ListView|children={lv1,lv2,lv3,lv4,lv5,lv6,lv7,lv8,lv9,lv10,lv11,lv12,lv13,lv14,lv15,lv16,lv17,lv18,lv19,lv20,lv21,lv22,lv23,lv24,lv25}|x=422.0|y=197.0|width=190|height=248|img=public/9998.png>
+
+<RText|id=lv5|color=255|size=16|text=<VIP5日钻石获得上限/FCOLOR=67><3/FCOLOR=218>>
+<RText|id=lv6|color=255|size=16|text=<VIP6日钻石获得上限/FCOLOR=67><6/FCOLOR=218>>
+<RText|id=lv7|color=255|size=16|text=<VIP7日钻石获得上限/FCOLOR=67><12/FCOLOR=218>>
+<RText|id=lv8|color=255|size=16|text=<VIP8日钻石获得上限/FCOLOR=67><24/FCOLOR=218>>
+<RText|id=lv9|color=255|size=16|text=<VIP9日钻石获得上限/FCOLOR=67><34/FCOLOR=218>>
+<RText|id=lv10|color=255|size=16|text=<VIP10日钻石获得上限/FCOLOR=67><60/FCOLOR=218>>
+<RText|id=lv11|color=255|size=16|text=<VIP11日钻石获得上限/FCOLOR=67><85/FCOLOR=218>>
+<RText|id=lv12|color=255|size=16|text=<VIP12日钻石获得上限/FCOLOR=67><90/FCOLOR=218>>
+<RText|id=lv13|color=255|size=16|text=<VIP13日钻石获得上限/FCOLOR=67><135/FCOLOR=218>>
+<RText|id=lv14|color=255|size=16|text=<VIP14日钻石获得上限/FCOLOR=67><150/FCOLOR=218>>
+<RText|id=lv15|color=255|size=16|text=<VIP15日钻石获得上限/FCOLOR=67><180/FCOLOR=218>>
+<RText|id=lv16|color=255|size=16|text=<VIP16日钻石获得上限/FCOLOR=67><210/FCOLOR=218>>
+<RText|id=lv17|color=255|size=16|text=<VIP17日钻石获得上限/FCOLOR=67><280/FCOLOR=218>>
+<RText|id=lv18|color=255|size=16|text=<VIP18日钻石获得上限/FCOLOR=67><360/FCOLOR=218>>
+<RText|id=lv19|color=255|size=16|text=<VIP19日钻石获得上限/FCOLOR=67><450/FCOLOR=218>>
+<RText|id=lv20|color=255|size=16|text=<VIP20日钻石获得上限/FCOLOR=67><580/FCOLOR=218>>
+<RText|id=lv21|color=255|size=16|text=<VIP21日钻石获得上限/FCOLOR=67><620/FCOLOR=218>>
+<RText|id=lv22|color=255|size=16|text=<VIP22日钻石获得上限/FCOLOR=67><750/FCOLOR=218>>
+<RText|id=lv23|color=255|size=16|text=<VIP23日钻石获得上限/FCOLOR=67><1200/FCOLOR=218>>
+<RText|id=lv24|color=255|size=16|text=<VIP24日钻石获得上限/FCOLOR=67><2000/FCOLOR=218>>
+<RText|id=lv25|color=255|size=16|text=<VIP25日钻石获得上限/FCOLOR=67><3500/FCOLOR=218>>
+
+<RText|x=460|y=453|color=218|size=16|text=<$MONEY(33)>>
+
+<Input|x=212|y=293|ax=0.5|ay=0.5|width=174|height=26|type=1|color=255|inputid=1|size=16>
+; <Layout|x=306.0|y=278.0|width=30|height=30|link=@钻石_最大值>
+
+<RText|x=190|y=423|ax=1|ay=1|color=255|size=18|text=<元宝/FCOLOR=67><<$MULT.<$MONEY(33)>.100>/FCOLOR=218>>
+<RText|x=238|y=423|color=255|size=18|text=<VIP经验/FCOLOR=67><<$MULT.<$MONEY(33)>.100>/FCOLOR=218>>
+
+
+<Button|x=148.0|y=483.0|color=67|scale=1|text=兑换|size=18|nimg=public/btn_push_11.png|link=@钻石_兑换>
+
+[@钻石_兑换]
+#IF
+RANDOM 1
+#ACT
+MOV N$钻石_兑换数量 <$NPCINPUT(1)>
+
+#IF
+EQUAL N$钻石_兑换数量 0
+#ACT
+SENDMSG 5 请输入有效的数量
+SENDMSG 19 请输入有效的数量
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+QueryMsg 本次兑换可获得:\元宝*<$MULT.N$钻石_兑换数量.100>\VIP经验*<$MULT.N$钻石_兑换数量.100> @钻石_确定兑换
+
+[@钻石_确定兑换1]
+#IF
+LARGE N$钻石_兑换数量 <$MONEY(33)>
+#ACT
+SENDMSG 5 钻石不足<$STR(N$钻石_兑换数量)>个,无法兑换
+SENDMSG 19 钻石不足<$STR(N$钻石_兑换数量)>个,无法兑换
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+MONEY 33 - <$STR(N$钻石_兑换数量)>
+MONEY 2 + <$MULT.N$钻石_兑换数量.100>
+CHANGECUSTOMVALUE 24 + <$MULT.N$钻石_兑换数量.100>
+SENDMSG 5 兑换成功
+SENDMSG 19 兑换成功

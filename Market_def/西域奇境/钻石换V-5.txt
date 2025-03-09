@@ -1,0 +1,53 @@
+[@main]
+#IF
+true
+#SAY
+<Img|show=5|img=private/npcbj/bg.png|loadDelay=0|bg=1|reset=1|_localZOrder=-2|move=0>
+<Button|x=587.0|y=-8.0|color=255|scale=1|size=18|nimg=public/btn_close_01.png|link=@exit>
+<RText|x=38.0|y=205.0|color=67|size=18|text=钻石是通过回收7阶以上的装备获得,每日可获\得的钻石数量请看右侧说明>
+<Text|x=425|y=213|color=255|size=18|text=逆魔必掉一个钻石>
+<Text|x=426|y=249|color=255|size=18|text=回收战魂以上装备\给予钻石奖励>
+
+<RText|x=460|y=453|color=218|size=16|text=<$MONEY(33)>>
+
+<Input|x=212|y=293|ax=0.5|ay=0.5|width=174|height=26|type=1|color=255|inputid=1|size=16>
+; <Layout|x=306.0|y=278.0|width=30|height=30|link=@钻石_最大值>
+
+<RText|x=168|y=423|color=255|size=18|text=<VIP经验/FCOLOR=67><<$MULT.<$MONEY(33)>.200>/FCOLOR=218>>
+
+
+<Button|x=148.0|y=483.0|color=67|scale=1|text=兑换|size=18|nimg=public/btn_push_11.png|link=@钻石_兑换>
+
+[@钻石_兑换]
+#IF
+true
+#ACT
+MOV N$钻石_兑换数量 <$NPCINPUT(1)>
+
+#if
+large 
+
+#IF
+EQUAL N$钻石_兑换数量 0
+#ACT
+SENDMSG 19 请输入有效的数量
+BREAK
+
+#IF
+true
+#ACT
+QueryMsg 本次兑换可获得:\VIP经验*<$MULT.N$钻石_兑换数量.200> @钻石_确定兑换
+
+[@钻石_确定兑换1]
+#IF
+LARGE N$钻石_兑换数量 <$MONEY(33)>
+#ACT
+SENDMSG 19 钻石不足<$STR(N$钻石_兑换数量)>个,无法兑换
+BREAK
+
+#IF
+true
+#ACT
+MONEY 33 - <$STR(N$钻石_兑换数量)>
+CHANGECUSTOMVALUE 24 + <$MULT.N$钻石_兑换数量.200>
+SENDMSG 19 兑换成功

@@ -1,0 +1,234 @@
+[@天选之人界面]
+{
+#IF
+!EQUAL A294 $USERID
+!EQUAL A295 $USERID
+!EQUAL A296 $USERID
+!EQUAL A297 $USERID
+!EQUAL A298 $USERID
+!EQUAL A299 $USERID
+#ACT
+MOV S42 未上榜
+
+
+#IF
+TRUE
+#SAY
+<Img|x=10.0|y=-8.0|show=0|bg=1|move=0|img=private/junxian/junxianmb.png|loadDelay=0>
+<Button|x=1021.0|y=30.0|pimg=public/btn_close_01.png|nimg=public/btn_close_01.png|link=@exit>
+;====================================================================
+<Button|x=88.0|y=480.0|color=67|scale=1|size=20|nimg=public/btn_push_11.png|pimg=public/btn_push_11.png|text=我要顶榜|link=@顶榜_0304>
+<Button|x=460.0|y=480.0|color=67|scale=1|size=20|nimg=public/btn_push_11.png|pimg=public/btn_push_11.png|text=排名奖励|link=@税收_0304>
+<Text|x=600.0|y=490.0|color=255|size=18|text=全服今日累捐 <$STR(G51)>>
+<Text|x=800.0|y=490.0|color=255|size=17|text=我的排名 <$STR(S42)>>
+;====================================================================
+<Button|x=545.0|y=143.0|pimg=private/F10/att_introduction.png|scale=1|nimg=private/F10/att_introduction.png>
+<RText|x=530.0|y=135.0|color=255|size=22|text=<color=~压制效果：高军衔攻击低军衔增伤乘算#0xffffffff$威压效果：低军衔攻击高军衔时高军衔获得对应免伤乘算#0xffffffff$压制/威压效果仅在军衔等级差异时生效,暴击率爆伤始终生效#0xffffffff$ 　　　>>
+<Button|x=745.0|y=143.0|pimg=private/F10/att_introduction.png|scale=1|nimg=private/F10/att_introduction.png>
+<RText|x=730.0|y=135.0|color=255|size=22|text=<color=~军衔榜前三名可以领取前一日全服捐献元宝总数对应比例的元宝#0xffffffff 　　　>>
+;====================================================================
+<ListView|children=<jx1,jx2,jx3,jx4,jx5,jx6,jx7,jx8,jx9,jx10>|direction=1|x=99.0|y=170.0|width=700|height=300|reload=1|margin=0|loadDelay=0|img=private/junxian/icon_arrow.png>
+<Img|x=0.0|y=0.0|height=100|img=private/junxian/da-1.png|id=jx1|children=<jx1a1,jx1a2,jx1a3,jx1a4,jx1a5,jx1a6,jx1a7,jx1a8,jx1a9,jx1a10,jx1a11,jx1a12,jx1a13,jx1a14,jx1a15,jx1a16,jx1a17>>
+<Img|x=0.0|y=10.0|img=private/jishaboss/res.02196.png|id=jx1a1>
+<Img|x=40.0|y=-10.0|scale=0.4|img=private/junxian/161.png|id=jx1a2>
+;--------------
+<RText|x=230.0|y=20.0|color=67|size=20|text=攻击 <8-8/FCOLOR=255>|id=jx1a5>
+<RText|x=340.0|y=20.0|color=67|size=20|text=暴击率 <+2%/FCOLOR=255>|id=jx1a6>
+<RText|x=460.0|y=20.0|color=67|size=20|text=威压 <+5%/FCOLOR=255>|id=jx1a7>
+;--------------
+<RText|x=230.0|y=53.0|color=67|size=20|text=双防 <20-20/FCOLOR=255>|id=jx1a8>
+<RText|x=340.0|y=53.0|color=67|size=20|text=血量 <+300/FCOLOR=255>|id=jx1a17>
+<RText|x=460.0|y=53.0|color=67|size=20|text=压制 <+5%/FCOLOR=255>|id=jx1a9>
+;--------------
+<RText|x=590.0|y=37.0|color=222|size=20|text=18%|id=jx1a10>
+;=======================================================================
+<Img|x=0.0|y=0.0|height=100|img=private/junxian/da-1.png|id=jx2|children=<jx2a1,jx2a2,jx2a3,jx2a4,jx2a5,jx2a6,jx2a7,jx2a8,jx2a9,jx2a10,jx2a11,jx2a12,jx2a13,jx2a14,jx2a15,jx2a16,jx2a17>>
+<Img|x=0.0|y=10.0|img=private/jishaboss/res.02197.png|id=jx2a1>
+<Img|x=40.0|y=-10.0|scale=0.4|img=private/junxian/162.png|id=jx2a2>
+;--------------
+<RText|x=230.0|y=20.0|color=67|size=20|text=攻击 <8-8/FCOLOR=255>|id=jx2a5>
+<RText|x=340.0|y=20.0|color=67|size=20|text=暴击率 <+2%/FCOLOR=255>|id=jx2a6>
+<RText|x=460.0|y=20.0|color=67|size=20|text=威压 <+5%/FCOLOR=255>|id=jx2a7>
+;--------------
+<RText|x=230.0|y=53.0|color=67|size=20|text=双防 <20-20/FCOLOR=255>|id=jx2a8>
+<RText|x=340.0|y=53.0|color=67|size=20|text=血量 <+300/FCOLOR=255>|id=jx2a17>
+<RText|x=460.0|y=53.0|color=67|size=20|text=压制 <+5%/FCOLOR=255>|id=jx2a9>
+;--------------
+<RText|x=597.0|y=37.0|color=222|size=20|text=5%|id=jx2a10>
+;=======================================================================
+<Img|x=0.0|y=0.0|height=100|img=private/junxian/da-1.png|id=jx3|children=<jx3a1,jx3a2,jx3a3,jx3a4,jx3a5,jx3a6,jx3a7,jx3a8,jx3a9,jx3a10,jx3a11,jx3a12,jx3a13,jx3a14,jx3a15,jx3a16,jx3a17>>
+<Img|x=0.0|y=10.0|img=private/jishaboss/res.02198.png|id=jx3a1>
+<Img|x=40.0|y=-10.0|scale=0.4|img=private/junxian/163.png|id=jx3a2>
+;--------------
+<RText|x=230.0|y=20.0|color=67|size=20|text=攻击 <8-8/FCOLOR=255>|id=jx3a5>
+<RText|x=340.0|y=20.0|color=67|size=20|text=暴击率 <+2%/FCOLOR=255>|id=jx3a6>
+<RText|x=460.0|y=20.0|color=67|size=20|text=威压 <+5%/FCOLOR=255>|id=jx3a7>
+;--------------
+<RText|x=230.0|y=53.0|color=67|size=20|text=双防 <20-20/FCOLOR=255>|id=jx3a8>
+<RText|x=340.0|y=53.0|color=67|size=20|text=血量 <+300/FCOLOR=255>|id=jx3a17>
+<RText|x=460.0|y=53.0|color=67|size=20|text=压制 <+5%/FCOLOR=255>|id=jx3a9>
+;--------------
+<RText|x=597.0|y=37.0|color=222|size=20|text=2%|id=jx3a10>
+;=======================================================================
+<Img|x=0.0|y=0.0|height=100|img=private/junxian/da-1.png|id=jx4|children=<jx4a1,jx4a2,jx4a3,jx4a4,jx4a5,jx4a6,jx4a7,jx4a8,jx4a9,jx4a10,jx4a11,jx4a12,jx4a13,jx4a14,jx4a15,jx4a16,jx4a17>>
+<Img|x=0.0|y=10.0|img=private/jishaboss/res.02199.png|id=jx4a1>
+;--------------
+<RText|x=230.0|y=20.0|color=67|size=20|text=攻击 <5-5/FCOLOR=255>|id=jx4a5>
+<RText|x=340.0|y=20.0|color=67|size=20|text=暴击率 <+1%/FCOLOR=255>|id=jx4a6>
+<RText|x=460.0|y=20.0|color=67|size=20|text=威压 <+3%/FCOLOR=255>|id=jx4a7>
+;--------------
+<RText|x=230.0|y=53.0|color=67|size=20|text=双防 <12-12/FCOLOR=255>|id=jx4a8>
+<RText|x=340.0|y=53.0|color=67|size=20|text=血量 <+180/FCOLOR=255>|id=jx4a17>
+<RText|x=460.0|y=53.0|color=67|size=20|text=压制 <+3%/FCOLOR=255>|id=jx4a9>
+;=======================================================================
+<Img|x=0.0|y=0.0|height=100|img=private/junxian/da-1.png|id=jx5|children=<jx5a1,jx5a2,jx5a3,jx5a4,jx5a5,jx5a6,jx5a7,jx5a8,jx5a9,jx5a10,jx5a11,jx5a12,jx5a13,jx5a14,jx5a15,jx5a16,jx5a17>>
+<Img|x=0.0|y=10.0|img=private/jishaboss/res.02200.png|id=jx5a1>
+;--------------
+<RText|x=230.0|y=20.0|color=67|size=20|text=攻击 <5-5/FCOLOR=255>|id=jx5a5>
+<RText|x=340.0|y=20.0|color=67|size=20|text=暴击率 <+1%/FCOLOR=255>|id=jx5a6>
+<RText|x=460.0|y=20.0|color=67|size=20|text=威压 <+3%/FCOLOR=255>|id=jx5a7>
+;--------------
+<RText|x=230.0|y=53.0|color=67|size=20|text=双防 <12-12/FCOLOR=255>|id=jx5a8>
+<RText|x=340.0|y=53.0|color=67|size=20|text=血量 <+180/FCOLOR=255>|id=jx5a17>
+<RText|x=460.0|y=53.0|color=67|size=20|text=压制 <+3%/FCOLOR=255>|id=jx5a9>
+;=======================================================================
+<Img|x=0.0|y=0.0|height=100|img=private/junxian/da-1.png|id=jx6|children=<jx6a1,jx6a2,jx6a3,jx6a4,jx6a5,jx6a6,jx6a7,jx6a8,jx6a9,jx6a10,jx6a11,jx6a12,jx6a13,jx6a14,jx6a15,jx6a16,jx6a17>>
+<Img|x=0.0|y=10.0|img=private/jishaboss/res.02201.png|id=jx6a1>
+;--------------
+<RText|x=230.0|y=20.0|color=67|size=20|text=攻击 <5-5/FCOLOR=255>|id=jx6a5>
+<RText|x=340.0|y=20.0|color=67|size=20|text=暴击率 <+1%/FCOLOR=255>|id=jx6a6>
+<RText|x=460.0|y=20.0|color=67|size=20|text=威压 <+3%/FCOLOR=255>|id=jx6a7>
+;--------------
+<RText|x=230.0|y=53.0|color=67|size=20|text=双防 <12-12/FCOLOR=255>|id=jx6a8>
+<RText|x=340.0|y=53.0|color=67|size=20|text=血量 <+180/FCOLOR=255>|id=jx6a17>
+<RText|x=460.0|y=53.0|color=67|size=20|text=压制 <+3%/FCOLOR=255>|id=jx6a9>
+;--------------
+<Button|x=120.0|y=50.0|color=67|size=20|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$HUMANINFO[<$STR(A299)>].$USERNAME>|id=jx1a3>
+<Button|x=120.0|y=50.0|color=67|size=20|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$HUMANINFO[<$STR(A298)>].$USERNAME>|id=jx2a3>
+<Button|x=120.0|y=50.0|color=67|size=20|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$HUMANINFO[<$STR(A297)>].$USERNAME>|id=jx3a3>
+<Button|x=120.0|y=30.0|color=67|size=20|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$HUMANINFO[<$STR(A296)>].$USERNAME>|id=jx4a3>
+<Button|x=120.0|y=30.0|color=67|size=20|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$HUMANINFO[<$STR(A295)>].$USERNAME>|id=jx5a3>
+<Button|x=120.0|y=30.0|color=67|size=20|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$HUMANINFO[<$STR(A294)>].$USERNAME>|id=jx6a3>
+
+
+
+[@税收_0304]
+#if
+equal A299 $USERID
+!EQUAL G3 0
+#act
+mov G3 0
+GAMEGOLD + $DIV.$MULT^$STR(G52)^18.100
+SENDMSG 7 恭喜你,领取第1名税收成功,获得元宝+<$DIV.$MULT^$STR(G52)^18.100>
+BREAK
+
+#if
+equal A298 $USERID
+!EQUAL G4 0
+#act
+mov G4 0
+GAMEGOLD + $DIV.$MULT^$STR(G52)^5.100
+SENDMSG 7 恭喜你,领取第2名税收成功,获得元宝+<$DIV.$MULT^$STR(G52)^5.100>
+BREAK
+
+#if
+equal A297 $USERID
+!EQUAL G5 0
+#act
+mov G5 0
+GAMEGOLD + $DIV.$MULT^$STR(G52)^2.100
+SENDMSG 7 恭喜你,领取第3名税收成功,获得元宝+<$DIV.$MULT^$STR(G52)^2.100>
+BREAK
+#ELSEACT
+MESSAGEBOX 排名奖励已被领取!!!
+BREAK
+
+[@顶榜_0304]
+#IF
+SMALL $GAMEGOLD 666
+#ACT
+MESSAGEBOX 需要不少于666元宝,你的元宝不足!
+BREAK
+
+#if
+true
+#act
+GAMEGOLD - 666
+INC G51 666
+RandomStr 1　1　1,10|2　2　2,10|3　3　3,10|4　4　4,10|5　5　5,10|6　6　6,10 S30
+sendmsg 19 恭喜你！摇动骰子:[<$str(S30)>]
+
+#if
+EQUAL A294 <$USERID>
+#act
+mov A294 
+#if
+EQUAL A295 <$USERID>
+#act
+mov A295
+#if
+EQUAL A296 <$USERID>
+#act
+mov A296  
+#if
+EQUAL A297 <$USERID>
+#act
+mov A297
+#if
+EQUAL A298 <$USERID>
+#act
+mov A298 
+#if
+EQUAL A299 <$USERID>
+#act
+mov A299  
+
+#if
+EQUAL S30 1　1　1
+#act
+mov A294 <$USERID>
+mov S42  第六名
+func 1 @临时属性
+goto @天选之人界面
+BREAK
+#if
+EQUAL S30 2　2　2
+#act
+mov A295 <$USERID>
+mov S42  第五名
+func 1 @临时属性
+goto @天选之人界面
+BREAK
+#if
+EQUAL S30 3　3　3
+#act
+mov A296 <$USERID>
+mov S42  第四名
+func 1 @临时属性
+goto @天选之人界面
+BREAK
+#if
+EQUAL S30 4　4　4
+#act
+mov A297 <$USERID>
+mov S42  第三名
+func 1 @临时属性
+goto @天选之人界面
+BREAK
+#if
+EQUAL S30 5　5　5
+#act
+mov A298 <$USERID>
+mov S42  第二名
+func 1 @临时属性
+goto @天选之人界面
+BREAK
+#if
+EQUAL S30 6　6　6
+#act
+mov A299 <$USERID>
+mov S42  第一名
+func 1 @临时属性
+goto @天选之人界面
+BREAK
+}

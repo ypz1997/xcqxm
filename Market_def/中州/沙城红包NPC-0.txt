@@ -1,0 +1,344 @@
+[@MAIN]
+
+#IF
+TRUE
+#SAY
+<Img|x=120.0|y=30.0|move=0|img=public/frame_squared_outside.png|loadDelay=0|bg=1|loadDelay=0>
+<Img|x=142.0|y=76.0|show=0|bg=0|move=0|img=private/hefuhuodong/qianghongbaomb.png|loadDelay=0>
+<Img|x=99.0|y=20.0|img=private/hefuhuodong/qianghongbaogb.png>
+<Button|x=930.0|y=30.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=157.0|y=75.0|img=private/hefuhuodong/hongbao_<$STR(P1)>.png>
+<Img|x=287.0|y=75.0|img=private/hefuhuodong/hongbao_<$STR(P2)>.png>
+<Img|x=417.0|y=75.0|img=private/hefuhuodong/hongbao_<$STR(P3)>.png>
+<Img|x=547.0|y=75.0|img=private/hefuhuodong/hongbao_<$STR(P4)>.png>
+<Img|x=157.0|y=285.0|img=private/hefuhuodong/hongbao_<$STR(P5)>.png>
+<Img|x=287.0|y=285.0|img=private/hefuhuodong/hongbao_<$STR(P6)>.png>
+<Img|x=417.0|y=285.0|img=private/hefuhuodong/hongbao_<$STR(P7)>.png>
+<Img|x=547.0|y=285.0|img=private/hefuhuodong/hongbao_<$STR(P8)>.png>
+;==============================================================
+#ACT
+CLEARVAR P0 20
+CLEARVAR S0 50
+;============================================================
+#IF
+POSINLIST |<$USERID>| ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家1.txt S0
+#SAY
+<Button|x=195.0|y=188.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=222|size=18|text=<$STR(P11)>>
+#ACT
+GETVALIDSTR $STR(S0) | S0 P11
+INC S33 <$STR(P11)>|
+MOV P1 1
+#ELSESAY
+<Button|x=175.0|y=115.0|nimg=private/hefuhuodong/btn_qiang.png|pimg=private/hefuhuodong/btn_qiang.png|link=@Lemon抢HB&1>
+
+#IF
+POSINLIST |<$USERID>| ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家2.txt S0
+#SAY
+<Button|x=325.0|y=188.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=222|size=18|text=<$STR(P12)>>
+#ACT
+GETVALIDSTR $STR(S0) | S0 P12
+INC S33 <$STR(P12)>|
+MOV P2 1
+#ELSESAY
+<Button|x=305.0|y=115.0|nimg=private/hefuhuodong/btn_qiang.png|pimg=private/hefuhuodong/btn_qiang.png|link=@Lemon抢HB&2>
+
+#IF
+POSINLIST |<$USERID>| ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家3.txt S0
+#SAY
+<Button|x=455.0|y=188.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=222|size=18|text=<$STR(P13)>>
+#ACT
+GETVALIDSTR $STR(S0) | S0 P13
+INC S33 <$STR(P13)>|
+MOV P3 1
+#ELSESAY
+<Button|x=435.0|y=115.0|nimg=private/hefuhuodong/btn_qiang.png|pimg=private/hefuhuodong/btn_qiang.png|link=@Lemon抢HB&3>
+
+#IF
+POSINLIST |<$USERID>| ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家4.txt S0
+#SAY
+<Button|x=585.0|y=188.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=222|size=18|text=<$STR(P14)>>
+#ACT
+GETVALIDSTR $STR(S0) | S0 P14
+INC S33 <$STR(P14)>|
+MOV P4 1
+#ELSESAY
+<Button|x=565.0|y=115.0|nimg=private/hefuhuodong/btn_qiang.png|pimg=private/hefuhuodong/btn_qiang.png|link=@Lemon抢HB&4>
+
+#IF
+POSINLIST |<$USERID>| ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家5.txt S0
+#SAY
+<Button|x=195.0|y=398.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=222|size=18|text=<$STR(P15)>>
+#ACT
+GETVALIDSTR $STR(S0) | S0 P15
+INC S33 <$STR(P15)>|
+MOV P5 1
+#ELSESAY
+<Button|x=175.0|y=325.0|nimg=private/hefuhuodong/btn_qiang.png|pimg=private/hefuhuodong/btn_qiang.png|link=@Lemon抢HB&5>
+
+#IF
+POSINLIST |<$USERID>| ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家6.txt S0
+#SAY
+<Button|x=325.0|y=398.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=222|size=18|text=<$STR(P16)>>
+#ACT
+GETVALIDSTR $STR(S0) | S0 P16
+INC S33 <$STR(P16)>|
+MOV P6 1
+#ELSESAY
+<Button|x=305.0|y=325.0|nimg=private/hefuhuodong/btn_qiang.png|pimg=private/hefuhuodong/btn_qiang.png|link=@Lemon抢HB&6>
+
+#IF
+POSINLIST |<$USERID>| ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家7.txt S0
+#SAY
+<Button|x=455.0|y=398.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=222|size=18|text=<$STR(P17)>>
+#ACT
+GETVALIDSTR $STR(S0) | S0 P17
+INC S33 <$STR(P17)>|
+MOV P7 1
+#ELSESAY
+<Button|x=435.0|y=325.0|nimg=private/hefuhuodong/btn_qiang.png|pimg=private/hefuhuodong/btn_qiang.png|link=@Lemon抢HB&7>
+
+#IF
+POSINLIST |<$USERID>| ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家8.txt S0
+#SAY
+<Button|x=585.0|y=398.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=222|size=18|text=<$STR(P18)>>
+#ACT
+GETVALIDSTR $STR(S0) | S0 P18
+INC S33 <$STR(P18)>|
+MOV P8 1
+#ELSESAY
+<Button|x=565.0|y=325.0|nimg=private/hefuhuodong/btn_qiang.png|pimg=private/hefuhuodong/btn_qiang.png|link=@Lemon抢HB&8>
+;============================================================
+#IF
+SMALL $TXTLINE(..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额1.txt) 1
+#SAY
+<Img|x=157.0|y=170.0|img=private/hefuhuodong/res.01917.png>
+#IF
+SMALL $TXTLINE(..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额2.txt) 1
+#SAY
+<Img|x=287.0|y=170.0|img=private/hefuhuodong/res.01917.png>
+#IF
+SMALL $TXTLINE(..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额3.txt) 1
+#SAY
+<Img|x=417.0|y=170.0|img=private/hefuhuodong/res.01917.png>
+#IF
+SMALL $TXTLINE(..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额4.txt) 1
+#SAY
+<Img|x=547.0|y=170.0|img=private/hefuhuodong/res.01917.png>
+#IF
+SMALL $TXTLINE(..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额5.txt) 1
+#SAY
+<Img|x=157.0|y=380.0|img=private/hefuhuodong/res.01917.png>
+#IF
+SMALL $TXTLINE(..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额6.txt) 1
+#SAY
+<Img|x=287.0|y=380.0|img=private/hefuhuodong/res.01917.png>
+#IF
+SMALL $TXTLINE(..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额7.txt) 1
+#SAY
+<Img|x=417.0|y=380.0|img=private/hefuhuodong/res.01917.png>
+#IF
+SMALL $TXTLINE(..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额8.txt) 1
+#SAY
+<Img|x=547.0|y=380.0|img=private/hefuhuodong/res.01917.png>
+;============================================================
+#IF
+EQUAL N$红包成功1 1
+#SAY
+<Frames|x=80.0|y=-70.0|scale=0.88|speed=3|count=41|prefix=private/hefuhuodong/hb_|loop=0|suffix=.png>
+#ACT
+MOV N$红包成功1 0
+
+#IF
+EQUAL N$红包成功2 1
+#SAY
+<Frames|x=210.0|y=-70.0|scale=0.88|speed=3|count=41|prefix=private/hefuhuodong/hb_|loop=0|suffix=.png>
+#ACT
+MOV N$红包成功2 0
+
+#IF
+EQUAL N$红包成功3 1
+#SAY
+<Frames|x=340.0|y=-70.0|scale=0.88|speed=3|count=41|prefix=private/hefuhuodong/hb_|loop=0|suffix=.png>
+#ACT
+MOV N$红包成功3 0
+
+#IF
+EQUAL N$红包成功4 1
+#SAY
+<Frames|x=470.0|y=-70.0|scale=0.88|speed=3|count=41|prefix=private/hefuhuodong/hb_|loop=0|suffix=.png>
+#ACT
+MOV N$红包成功4 0
+
+#IF
+EQUAL N$红包成功5 1
+#SAY
+<Frames|x=80.0|y=140.0|scale=0.88|speed=3|count=41|prefix=private/hefuhuodong/hb_|loop=0|suffix=.png>
+#ACT
+MOV N$红包成功5 0
+
+#IF
+EQUAL N$红包成功6 1
+#SAY
+<Frames|x=210.0|y=140.0|scale=0.88|speed=3|count=41|prefix=private/hefuhuodong/hb_|loop=0|suffix=.png>
+#ACT
+MOV N$红包成功6 0
+
+#IF
+EQUAL N$红包成功7 1
+#SAY
+<Frames|x=340.0|y=140.0|scale=0.88|speed=3|count=41|prefix=private/hefuhuodong/hb_|loop=0|suffix=.png>
+#ACT
+MOV N$红包成功7 0
+
+#IF
+EQUAL N$红包成功8 1
+#SAY
+<Frames|x=470.0|y=140.0|scale=0.88|speed=3|count=41|prefix=private/hefuhuodong/hb_|loop=0|suffix=.png>
+#ACT
+MOV N$红包成功8 0
+;============================================================
+#IF
+POS $STR(S33) |
+#ACT
+SPLIT $STR(S33) | S41
+#ELSEACT
+CLEARVAR S41 48
+
+#IF
+LARGE $STR(S41) 0
+#SAY
+<RText|x=695.0|y=370.0|color=255|size=18|text=你抢到了<<$STR(S41)>/FCOLOR=67>元宝>
+#IF
+LARGE $STR(S42) 0
+#SAY
+<RText|x=695.0|y=394.0|color=255|size=18|text=你抢到了<<$STR(S42)>/FCOLOR=67>元宝>
+#IF
+LARGE $STR(S43) 0
+#SAY
+<RText|x=695.0|y=418.0|color=255|size=18|text=你抢到了<<$STR(S43)>/FCOLOR=67>元宝>
+#IF
+LARGE $STR(S44) 0
+#SAY
+<RText|x=695.0|y=442.0|color=255|size=18|text=你抢到了<<$STR(S44)>/FCOLOR=67>元宝>
+#IF
+LARGE $STR(S45) 0
+#SAY
+<RText|x=695.0|y=466.0|color=255|size=18|text=你抢到了<<$STR(S45)>/FCOLOR=67>元宝>
+#IF
+LARGE $STR(S46) 0
+#SAY
+<RText|x=695.0|y=490.0|color=255|size=18|text=你抢到了<<$STR(S46)>/FCOLOR=67>元宝>
+#IF
+LARGE $STR(S47) 0
+#SAY
+<RText|x=695.0|y=514.0|color=255|size=18|text=你抢到了<<$STR(S47)>/FCOLOR=67>元宝>
+#IF
+LARGE $STR(S48) 0
+#SAY
+<RText|x=695.0|y=538.0|color=255|size=18|text=你抢到了<<$STR(S48)>/FCOLOR=67>元宝>
+;============================================================
+#IFONE
+!CHECKTXT ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt
+SMALL $TXTLINE(..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt) 1
+#SAY
+<RText|x=695.0|y=130.0|color=255|size=18|text=暂无记录>
+#ACT
+BREAK
+#ELSEACT
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S1 0
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S2 1
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S3 2
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S4 3
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S5 4
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S6 5
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S7 6
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S8 7
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S9 8
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S10 9
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S11 10
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S12 11
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S13 12
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S14 13
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S15 14
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S16 15
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S17 16
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S18 17
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S19 18
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt S20 19
+#ELSESAY
+<ListView|children=<jl1,jl2,jl3,jl4,jl5,jl6,jl7,jl8,jl9,jl10,jl11,jl12,jl13,jl14,jl15,jl16,jl17,jl18,jl19,jl20>|direction=1|x=700.0|y=130.0|width=280|height=200|reload=1|margin=5|loadDelay=0|img=public/down.png>
+;------------------------------------------------------------------------
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S1)>|id=jl1>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S2)>|id=jl2>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S3)>|id=jl3>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S4)>|id=jl4>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S5)>|id=jl5>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S6)>|id=jl6>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S7)>|id=jl7>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S8)>|id=jl8>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S9)>|id=jl9>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S10)>|id=jl10>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S11)>|id=jl11>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S12)>|id=jl12>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S13)>|id=jl13>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S14)>|id=jl14>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S15)>|id=jl15>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S16)>|id=jl16>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S17)>|id=jl17>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S18)>|id=jl18>
+<RText|x=0.0|y=0.0|color=255|size=18|text=<$STR(S19)>|id=jl19>
+
+
+
+
+
+[@Lemon抢HB]
+#IF
+!POS -1-2-3-4-5-6-7-8- -<$SCRIPTPARAM(1)>-
+#ACT
+SENDMSG 5 数据非法!
+BREAK
+
+#IF
+!ISCASTLEGUILD
+#ACT
+Messagebox 你不是沙城行会成员，每次攻城获胜行会成员都可以领取一次红包
+BREAK
+
+#IF
+POSINLIST |<$USERID>| ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家<$SCRIPTPARAM(1)>.txt
+#ACT
+Messagebox 这个红包你已经开启过了!
+BREAK
+
+#IFONE
+!CHECKTXT ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额<$SCRIPTPARAM(1)>.txt
+SMALL $TXTLINE(..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额<$SCRIPTPARAM(1)>.txt) 1
+#ACT
+Messagebox 很遗憾,红包被抢光了!
+BREAK
+#ELSEACT
+MOV P44 0
+READRANDOMSTR ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额<$SCRIPTPARAM(1)>.txt P44
+
+#IF
+LARGE P44 0
+#ACT
+MOV N$红包成功<$SCRIPTPARAM(1)> 1
+GAMEGOLD + $STR(P44)
+DELVARLIST $STR(P44) ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额<$SCRIPTPARAM(1)>.txt
+INSERTVARLIST 0 |<$USERID>|<$STR(P44)> ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家<$SCRIPTPARAM(1)>.txt
+INSERTVARLIST 0 <<$USERNAME>/FCOLOR=67>抢到了<<$STR(P44)>/FCOLOR=67>个元宝 ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt
+GOTO @MAIN
+BREAK
+#ELSEACT
+Messagebox 很遗憾,红包被抢光了!
+BREAK
+
+
+
+
+
+
+
+

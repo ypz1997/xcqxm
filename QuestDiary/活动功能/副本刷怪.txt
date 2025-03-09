@@ -1,0 +1,304 @@
+[@副本刷怪]
+{
+[@魔体副本刷怪]
+
+#IF
+SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本招魂使 10
+#act
+INC N$副本刷怪物数 5
+PARAM1 SELF
+PARAM2 48
+PARAM3 43
+MonGen 副本招魂使 5 5
+BREAK
+
+#IF
+CHECK [207] 0
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本招魂使 1
+#ACT
+SET [207] 1
+SET [214] 1
+CalcVar Human 魔体副本完成次数 + 1 1
+SendCenterMsg 222 255 %s后传出该地图 0 120 @踢出副本地图 0 1
+GOTO @完成挑战&副本给经验标识=0
+BREAK
+
+
+
+[@羽翼副本刷怪]
+#IF
+SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本白蛇妖 10
+#act
+INC N$副本刷怪物数 5
+PARAM1 SELF
+PARAM2 48
+PARAM3 43
+MonGen 副本白蛇妖 5 5
+BREAK
+
+
+#IF
+CHECK [208] 0
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本白蛇妖 1
+#ACT
+SET [208] 1
+SET [215] 1
+CalcVar Human 羽翼副本完成次数 + 1 1
+SendCenterMsg 222 255 %s后传出该地图 0 120 @踢出副本地图 0 1
+GOTO @完成挑战&副本给经验标识=1
+
+
+
+#IF
+HasTask 16
+CHECK [208] 1
+!EQUAL $TASK(16) 3
+#ACT
+UpdateTask 16 3
+Navigation 160 16 点击领取#5065#5 0 0
+BREAK
+
+
+
+[@法宝副本刷怪]
+#IF
+SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本幽影武士 5
+#act
+INC N$副本刷怪物数 5
+PARAM1 SELF
+PARAM2 48
+PARAM3 43
+MonGen 副本幽影武士 5 5
+
+#IF
+CHECK [209] 0
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本幽影武士 1
+#ACT
+SET [209] 1
+SET [216] 1
+CalcVar Human 法宝副本完成次数 + 1 1
+CalcVar HUMAN 法宝副本通关次数 + 1 1
+SendCenterMsg 222 255 %s后传出该地图 0 120 @踢出副本地图 0 1
+
+#IF
+CHECK [221] 1
+EQUAL $M FBFB
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本幽影武士 1
+SMALL <$RANDOM (<$STR(N$法宝成装掉落概率)>|100)> <$STR(N$法宝成装掉落概率)>
+#ACT
+CalcVar HUMAN 法宝副本通关次数 = 0 1
+RandomStr 无量飞剑,10|八卦镜,10|招魂幡,10|紫金葫芦,10|番天印,10|七宝玲珑塔,10 S$掉落物品
+MailGIve $STR(S$掉落物品) 1 1
+SENDMAIL 1 副本掉落 恭喜您获得<$STR(S$掉落物品)>奖励，请点提取
+SENDMSG 19 BOSS掉落物品已经发送至你的邮箱
+
+
+#IF
+CHECK [221] 0
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本幽影武士 1
+#ACT
+SET [221] 1
+MailGIve 无量飞剑 1 1
+CalcVar HUMAN 法宝副本通关次数 = 0 1
+SENDMAIL 1 副本BOSS掉落 恭喜您获得<$STR(S$掉落物品)>奖励，请点提取
+SENDMSG 19 BOSS掉落物品已经发送至你的邮箱
+GOTO @完成挑战&副本给经验标识=1
+
+
+#IF
+HasTask 22
+CHECK [209] 1
+!EQUAL $TASK(22) 3
+#ACT
+UpdateTask 22 3
+Navigation 160 22 点击领取#5066#5 0 0
+BREAK
+
+
+
+
+[@坐骑副本刷怪]
+#IF
+SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本魔神修罗 5
+#act
+INC N$副本刷怪物数 5
+PARAM1 SELF
+PARAM2 48
+PARAM3 43
+MonGen 副本魔神修罗 5 5
+BREAK
+
+#IF
+CHECK [210] 0
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本魔神修罗 1
+#ACT
+SET [210] 1
+SET [217] 1
+CalcVar Human 坐骑副本完成次数 + 1 1
+SendCenterMsg 222 255 %s后传出该地图 0 120 @踢出副本地图 0 1
+GOTO @完成挑战&副本给经验标识=1
+
+#IF
+HasTask 14
+CHECK [210] 1
+!EQUAL $TASK(14) 3
+#ACT
+UpdateTask 14 3
+Navigation 160 14 点击领取#5064#5 0 0
+BREAK
+
+
+[@特戒副本刷怪]
+#IF
+SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本驭冰游神 5
+#act
+INC N$副本刷怪物数 5
+PARAM1 SELF
+PARAM2 48
+PARAM3 43
+MonGen 副本驭冰游神 5 5
+BREAK
+
+#IF
+CHECK [211] 0
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本驭冰游神 1
+#ACT
+SET [211] 1
+SET [218] 1
+CalcVar Human 特戒副本完成次数 + 1 1
+SendCenterMsg 222 255 %s后传出该地图 0 120 @踢出副本地图 0 1
+GOTO @完成挑战&副本给经验标识=1
+#IF
+HasTask 23
+CHECK [211] 1
+!EQUAL $TASK(23) 3
+#ACT
+UpdateTask 23 3
+Navigation 160 23 点击领取#5073#5 0 0
+BREAK
+
+[@神器副本刷怪]
+#IF
+SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本幽影武士 5
+#act
+INC N$副本刷怪物数 5
+PARAM1 SELF
+PARAM2 48
+PARAM3 43
+MonGen 副本幽影武士 5 5
+
+#IF
+CHECK [212] 0
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本幽影武士 1
+#ACT
+SET [212] 1
+SET [219] 1
+CalcVar Human 神器副本完成次数 + 1 1
+CalcVar HUMAN 神器副本通关次数 + 1 1
+SendCenterMsg 222 255 %s后传出该地图 0 120 @踢出副本地图 0 1
+
+#IF
+CHECK [222] 1
+EQUAL $M SQFB
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本幽影武士 1
+SMALL <$RANDOM (<$STR(N$神器成装掉落概率)>|100)> <$STR(N$神器成装掉落概率)>
+#ACT
+CalcVar HUMAN 神器副本通关次数 = 0 1
+RandomStr 撼天,10|暗月,10|冥日,10|鬼炎,10|碧海天王,10|赤明天帝,10|紫月圣君,10|耀阳圣尊,10 S$掉落物品
+MailGIve $STR(S$掉落物品) 1 1
+SENDMAIL 1 副本BOSS掉落 恭喜您获得<$STR(S$掉落物品)>奖励，请点提取
+SENDMSG 19 BOSS掉落物品已经发送至你的邮箱
+
+#IF
+CHECK [222] 0
+EQUAL $M SQFB
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本幽影武士 1
+#ACT
+SET [222] 1
+MailGIve 撼天 1 1
+CalcVar HUMAN 神器副本通关次数 = 0 1
+SENDMAIL 1 副本BOSS掉落 恭喜您获得<$STR(S$掉落物品)>奖励，请点提取
+SENDMSG 19 BOSS掉落物品已经发送至你的邮箱
+GOTO @完成挑战&副本给经验标识=1
+BREAK
+
+[@BOSS副本刷怪]
+#IF
+SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本幽影武士 5
+#act
+INC N$副本刷怪物数 5
+PARAM1 SELF
+PARAM2 48
+PARAM3 43
+MonGen 副本幽影武士 5 5
+#IF
+SMALL $STR(N$副本刷BOSS数) $STR(N$副本BOSS数量)
+SMALL $MAPMONCOUNT[SELF].副本BOSS 1
+#act
+INC N$副本刷BOSS数 1
+PARAM1 SELF
+PARAM2 48
+PARAM3 43
+MonGen 副本BOSS 1 5
+
+
+#IF
+CHECK [213] 0
+!SMALL $STR(N$副本刷BOSS数) $STR(N$副本BOSS数量)
+!SMALL $STR(N$副本刷怪物数) $STR(N$副本怪物数量)
+SMALL $MAPMONCOUNT[SELF].副本幽影武士 1
+SMALL $MAPMONCOUNT[SELF].副本BOSS 1
+#ACT
+SET [213] 1
+SET [220] 1
+CalcVar Human BOSS副本完成次数 + 1 1
+SendCenterMsg 222 255 %s后传出该地图 0 120 @踢出副本地图 0 1
+GOTO @完成挑战&副本给经验标识=1
+BREAK
+
+
+[@完成挑战]
+;---------------------用于绿色封号完成过一次副本
+#IF
+TRUE
+#ACT
+MOV S$副本UI <Img|id=101|children={102,103,104,105,106}|x=277.0|y=88.0|scale=1|img=private/zhenyingzhan/bg_recycle_01.png|esc=0|bg=1>
+INC S$副本UI <Img|id=102|x=161.0|y=13.0|img=private/yabiao/word_fubentg_01.png|scale=1|esc=0>
+INC S$副本UI <Img|id=103|x=252.0|y=116.0|esc=0|scale=1|img=public/item_bg1.png>
+INC S$副本UI <ItemShow|id=104|x=251.0|y=115.0|width=70|height=70|itemid=<$STR(N$副本奖励ID)>|itemcount=<$STR(N$副本奖励数量)>|name=<$STR(S$副本奖励物品)>|showtips=1|bgtype=1>
+INC S$副本UI <Button|id=105|x=182.0|y=196.0|width=220|height=70|scale=1|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|size=18|nimg=public/btn_push_01.png|text=返回NPC领取奖励|link=@返回NPC领取奖励>
+INC S$副本UI <Button|id=106|x=500.0|y=40.0|scale=1|mimg=996box/46419.png|nimg=996box/46419.png|color=255|pimg=996box/46419.png|size=18|link=@关闭副本完成面板>
+SendUi 101 <$STR(S$副本UI)>
+MOV S$掉落物品 
+#IF
+EQUAL $STR(S$副本给经验标识) 1
+#ACT
+MONEY 6 + 100000
+MOV S$副本给经验标识 0
+SENDMSG 19 恭喜完成副本额外获得100000经验
+SENDMSG 7 恭喜完成副本额外获得100000经验
+
+#IF
+CHECK [199] 0
+#ACT
+SET [199] 1
+BREAK
+
+}

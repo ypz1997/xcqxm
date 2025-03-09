@@ -1,0 +1,9 @@
+[setup]
+MainTitle = VIP任务
+MainID=70
+IsMain=1
+stepcount = 1
+title = [　] VIP任务
+ID = 70
+stepDESC1 = <color=graygolden 任务介绍：>\击杀<$TASKVAL(70).I0>只<$TASKVAL(70).S0>\<Img|x=25.0|y=20.0|img=custom/dailyrefreshbranch.png|esc=0>
+stepstitle1 = <color=graygolden 任务介绍：>\<color=graygolden 前往击杀><color=green <$TASKVAL(70).I1>/<$TASKVAL(70).I0>><color=graygolden 只><color=green <$TASKVAL(70).S0>>\<color=graygolden 今日可完成次数<$CustomValue(23)>/5>\<Img|x=25.0|y=20.0|img=custom/dailyrefreshbranch.png|esc=0>

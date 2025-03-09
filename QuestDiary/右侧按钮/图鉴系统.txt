@@ -1,0 +1,7188 @@
+[@图鉴系统]
+{
+#IF
+TRUE
+#ACT
+GOTO @祈祷套&图鉴套装名字=祈祷
+BREAK
+
+[@图鉴显示面板]
+#IF
+TRUE
+#ACT
+Goto @图鉴面板红点
+
+#IF
+LARGE <$TABLE(<$STR(S$变量表表名)>).<$STR(S$变量表字段)>> 0
+#ACT
+LOADEXVAR S$图鉴属性抽取1 <$STR(S$图鉴物品名称)> <$TABLE(<$STR(S$变量表表名)>).<$STR(S$变量表字段)>> ..\QUESTDIARY\数据文件\图鉴升级数据.txt
+SPLIT $STR(S$图鉴属性抽取1) | S$图鉴属性分割1
+LOADEXVAR S$图鉴属性抽取2 <$STR(S$图鉴物品名称)> <$INC.<$TABLE(<$STR(S$变量表表名)>).<$STR(S$变量表字段)>>.1> ..\QUESTDIARY\数据文件\图鉴升级数据.txt
+SPLIT $STR(S$图鉴属性抽取2) | S$图鉴属性分割2
+#ELSEACT
+MOV S$图鉴属性分割1_0 
+MOV S$图鉴属性分割1_1 
+MOV S$图鉴属性分割1_2 
+MOV S$图鉴属性分割2_0 
+MOV S$图鉴属性分割2_1 
+MOV S$图鉴属性分割2_2 
+
+
+#IF
+EQUAL $STR(S$图鉴属性分割1_0) 攻击
+EQUAL $JOBID 1
+#ACT
+MOV S$图鉴属性分割1_0 魔法
+
+#IF
+EQUAL $STR(S$图鉴属性分割1_2) 攻击
+EQUAL $JOBID 1
+#ACT
+MOV S$图鉴属性分割1_2 魔法
+
+#IF
+EQUAL $STR(S$图鉴属性分割1_0) 攻击
+EQUAL $JOBID 2
+#ACT
+MOV S$图鉴属性分割1_0 道术
+
+#IF
+EQUAL $STR(S$图鉴属性分割1_2) 攻击
+EQUAL $JOBID 2
+#ACT
+MOV S$图鉴属性分割1_2 道术
+
+#IF
+EQUAL $STR(S$图鉴属性分割2_0) 攻击
+EQUAL $JOBID 1
+#ACT
+MOV S$图鉴属性分割2_0 魔法
+
+#IF
+EQUAL $STR(S$图鉴属性分割2_2) 攻击
+EQUAL $JOBID 1
+#ACT
+MOV S$图鉴属性分割2_2 魔法
+
+#IF
+EQUAL $STR(S$图鉴属性分割2_0) 攻击
+EQUAL $JOBID 2
+#ACT
+MOV S$图鉴属性分割2_0 道术
+
+#IF
+EQUAL $STR(S$图鉴属性分割2_2) 攻击
+EQUAL $JOBID 2
+#ACT
+MOV S$图鉴属性分割2_2 道术
+
+#IFONE
+EQUAL $STR(S$图鉴属性分割1_0) 血量
+#ACT
+MOV S$属性显示1 <RText|id=28|x=550.0|y=413.0|color=255|size=18|text=<<$STR(S$图鉴属性分割1_0)>/FCOLOR=67>　<<$STR(S$图鉴属性分割1_1)>/FCOLOR=255>>
+MOV S$属性显示2 <RText|id=26|x=760.0|y=413.0|color=255|size=18|text=<<$STR(S$图鉴属性分割2_0)>/FCOLOR=67>　<<$STR(S$图鉴属性分割2_1)>/FCOLOR=255>>
+
+#IFONE
+EQUAL $STR(S$图鉴属性分割1_0) 攻击
+EQUAL $STR(S$图鉴属性分割1_0) 双防
+EQUAL $STR(S$图鉴属性分割1_0) 暴击率
+EQUAL $STR(S$图鉴属性分割1_0) 暴击抵抗
+#ACT
+MOV S$属性显示1 <RText|id=28|x=550.0|y=413.0|color=255|size=18|text=<<$STR(S$图鉴属性分割1_0)>/FCOLOR=67>　<<$STR(S$图鉴属性分割1_1)>/FCOLOR=255>\<<$STR(S$图鉴属性分割1_2)>/FCOLOR=67>　<<$STR(S$图鉴属性分割1_3)>/FCOLOR=255>>
+MOV S$属性显示2 <RText|id=26|x=760.0|y=413.0|color=255|size=18|text=<<$STR(S$图鉴属性分割2_0)>/FCOLOR=67>　<<$STR(S$图鉴属性分割2_1)>/FCOLOR=255>\<<$STR(S$图鉴属性分割2_2)>/FCOLOR=67>　<<$STR(S$图鉴属性分割2_3)>/FCOLOR=255>>
+
+
+
+#IF
+TRUE
+#SAY
+<Img|id=1|children={3,zbtj4,zbtj5,zbtj6,7,zbtj8,zbtj9,zbtj10,zbtj11,zbtj12,zbtj13,zbtj14,zbtj15,zbtj16,zbtj17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34}|x=105.0|y=-2.0|rotate=0|scale=1|bg=1|img=private/tujian/zhuangbeitujianmb.png|loadDelay=0|esc=0>
+<Button|id=3|x=882.0|y=52.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Button|id=zbtj4|children={4-1}|x=33.0|y=221.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮1)>.png|mimg=public/btn_push_0<$STR(S$图鉴分类按钮1)>.png|nimg=public/btn_push_0<$STR(S$图鉴分类按钮1)>.png|color=255|size=18|scale=1|link=@祈祷套&图鉴套装名字=祈祷>
+<Text|id=4-1|x=90.0|y=16.0|rotate=90|size=20|color=67|text=装\ \备>
+<Button|id=zbtj5|children={5-1}|x=33.0|y=327.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮2)>.png|mimg=public/btn_push_0<$STR(S$图鉴分类按钮2)>.png|nimg=public/btn_push_0<$STR(S$图鉴分类按钮2)>.png|color=255|size=18|scale=1|link=@首领图鉴>
+<Text|id=5-1|x=87.0|y=16.0|rotate=90|size=20|color=67|text=首\ \领>
+<Button|id=zbtj6|children={6-1}|x=33.0|y=437.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮3)>.png|mimg=public/btn_push_0<$STR(S$图鉴分类按钮3)>.png|nimg=public/btn_push_0<$STR(S$图鉴分类按钮3)>.png|color=255|size=18|scale=1|link=@拆解祈祷套&拆解物品1=拆解祈祷>
+<Text|id=6-1|x=87.0|y=16.0|rotate=90|size=20|color=67|text=拆\ \解>
+<Button|id=7|children={7-1}|x=33.0|y=543.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮4)>.png|mimg=public/btn_push_0<$STR(S$图鉴分类按钮4)>.png|nimg=public/btn_push_0<$STR(S$图鉴分类按钮4)>.png|color=255|size=18|scale=1|link=@备用图鉴>
+<Text|id=7-1|x=24.0|y=16.0|rotate=90|size=18|color=255|text=\ \>
+<Button|id=zbtj8|x=97.0|y=108.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮1)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮1)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮1)>.png|scale=1|color=67|size=20|text=祈祷套|link=@祈祷套&图鉴套装名字=祈祷>
+<Button|id=zbtj9|x=97.0|y=163.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮2)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮2)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮2)>.png|scale=1|color=67|size=20|text=狂怒套|link=@狂怒套&图鉴套装名字=狂怒>
+<Button|id=zbtj10|x=97.0|y=217.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮3)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮3)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮3)>.png|scale=1|color=67|size=20|text=嗜血套|link=@嗜血套&图鉴套装名字=嗜血>
+<Button|id=zbtj11|x=97.0|y=273.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮4)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮4)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮4)>.png|scale=1|color=67|size=20|text=神秘套|link=@神秘套&图鉴套装名字=神秘>
+<Button|id=zbtj12|x=97.0|y=328.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮5)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮5)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮5)>.png|scale=1|color=67|size=20|text=明王套|link=@明王套&图鉴套装名字=明王>
+<Button|id=zbtj13|x=97.0|y=383.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮6)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮6)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装按钮6)>.png|scale=1|color=67|size=20|text=神御套|link=@神御套&图鉴套装名字=神御>
+<Button|id=zbtj14|children={14-1,14-2,14-3}|x=234.0|y=109.0|width=234|height=70|color=67|mimg=private/tujian/1822<$STR(S$图鉴单间按钮1)>.png|scale=1|nimg=private/tujian/1822<$STR(S$图鉴单间按钮1)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间按钮1)>.png|size=18|text=　　　<$STR(S$图鉴装备名称1)>|link=@<$STR(S$图鉴套装名字)>头盔&图鉴返回面板=<$STR(S$图鉴套装名字)>头盔>
+<Img|id=14-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=14-2|x=3.0|y=0.0|width=70|height=70|itemid=<$STR(S$图鉴装备LOOKS1)>|itemcount=1|name=<$STR(S$图鉴装备名称1)>图鉴|showtips=1|bgtype=1>
+<Img|id=14-3|x=57.0|y=5.0|img=private/tujian/yellow_star<$STR(N$图鉴装备星级1)>.png|scale=1|esc=0>
+<Button|id=zbtj15|children={15-1,15-2,15-3}|x=234.0|y=179.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间按钮2)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间按钮2)>.png|scale=1|pimg=private/tujian/1822<$STR(S$图鉴单间按钮2)>.png|color=67|size=18|text=　　　<$STR(S$图鉴装备名称2)>|link=@<$STR(S$图鉴套装名字)>项链&图鉴返回面板=<$STR(S$图鉴套装名字)>项链>
+<Img|id=15-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=15-2|x=3.0|y=0.0|width=70|height=70|itemid=<$STR(S$图鉴装备LOOKS2)>|itemcount=1|name=<$STR(S$图鉴装备名称2)>图鉴|showtips=1|bgtype=1>
+<Img|id=15-3|x=57.0|y=5.0|img=private/tujian/yellow_star<$STR(N$图鉴装备星级2)>.png|scale=1|esc=0>
+<Button|id=zbtj16|children={16-1,16-2,16-3}|x=234.0|y=249.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间按钮3)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间按钮3)>.png|scale=1|pimg=private/tujian/1822<$STR(S$图鉴单间按钮3)>.png|color=67|size=18|text=　　　<$STR(S$图鉴装备名称3)>|link=@<$STR(S$图鉴套装名字)>手镯&图鉴返回面板=<$STR(S$图鉴套装名字)>手镯>
+<Img|id=16-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=16-2|x=3.0|y=0.0|width=70|height=70|itemid=<$STR(S$图鉴装备LOOKS3)>|itemcount=1|name=<$STR(S$图鉴装备名称3)>图鉴|showtips=1|bgtype=1>
+<Img|id=16-3|x=57.0|y=5.0|img=private/tujian/yellow_star<$STR(N$图鉴装备星级3)>.png|scale=1|esc=0>
+<Button|id=zbtj17|children={17-1,17-2,17-3}|x=234.0|y=319.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间按钮4)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间按钮4)>.png|scale=1|pimg=private/tujian/1822<$STR(S$图鉴单间按钮4)>.png|color=67|size=18|text=　　　<$STR(S$图鉴装备名称4)>|link=@<$STR(S$图鉴套装名字)>戒指&图鉴返回面板=<$STR(S$图鉴套装名字)>戒指>
+<Img|id=17-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=17-2|x=3.0|y=0.0|width=70|height=70|itemid=<$STR(S$图鉴装备LOOKS4)>|itemcount=1|name=<$STR(S$图鉴装备名称4)>图鉴|showtips=1|bgtype=1>
+<Img|id=17-3|x=57.0|y=5.0|img=private/tujian/yellow_star<$STR(N$图鉴装备星级4)>.png|scale=1|esc=0>
+<Img|id=18|x=592.0|y=108.0|img=public/xj<$STR(N$图鉴装备星级5)>.png|scale=1|esc=0>
+<Button|id=24|children={24-1}|x=853.0|y=120.0|pimg=public/taozhuang.png|size=18|scale=1|nimg=public/taozhuang.png|color=255|mimg=public/taozhuang.png|link=@打开图鉴套装面板>
+
+
+#IF
+LARGE <$TABLE(<$STR(S$变量表表名)>).<$STR(S$变量表字段)>> 0
+#SAY
+<Img|id=25|x=612.0|y=356.0|img=private/tujian/shuxingyulan.png|scale=1|esc=0>
+<Img|id=27|x=689.0|y=409.0|img=private/tujian/icon_cross_05.png|esc=0|scale=1>
+<$STR(S$属性显示1)>
+<$STR(S$属性显示2)>
+<Text|id=30|x=640.0|y=499.0|color=67|size=18|text=图鉴碎片：>
+<Text|id=29|x=750.0|y=500.0|color=222|size=18|text=<$Money(8)>/<$STR(S$图鉴属性分割1_4)>>
+
+#ELSESAY
+<Img|id=27|x=637.0|y=365.0|img=private/tujian/res.02162.png|esc=0|scale=1>
+<Text|id=30|x=630.0|y=499.0|color=67|size=18|text=<$STR(S$图鉴物品名称)>图鉴：>
+<Text|id=29|x=770.0|y=500.0|color=222|size=18|text=<$ITEMCOUNT[<$STR(S$图鉴物品名称)>图鉴]>>
+
+
+
+
+#IF
+LARGE $TABLE(QD_TZ).QDTKDJ 0
+LARGE $TABLE(QD_TZ).QDXLDJ 0
+LARGE $TABLE(QD_TZ).QDSZDJ 0
+LARGE $TABLE(QD_TZ).QDJZDJ 0
+#ACT
+MOV N$套装启用按钮1 1
+#ELSEACT
+MOV N$套装启用按钮1 2
+#IF
+LARGE $TABLE(KN_TZ).KNTKDJ 0
+LARGE $TABLE(KN_TZ).KNXLDJ 0
+LARGE $TABLE(KN_TZ).KNSZDJ 0
+LARGE $TABLE(KN_TZ).KNJZDJ 0
+#ACT
+MOV N$套装启用按钮2 1
+#ELSEACT
+MOV N$套装启用按钮2 2
+#IF
+LARGE $TABLE(SX_TZ).SXTKDJ 0
+LARGE $TABLE(SX_TZ).SXXLDJ 0
+LARGE $TABLE(SX_TZ).SXSZDJ 0
+LARGE $TABLE(SX_TZ).SXJZDJ 0
+#ACT
+MOV N$套装启用按钮3 1
+#ELSEACT
+MOV N$套装启用按钮3 2
+#IF
+LARGE $TABLE(SM_TZ).SMTKDJ 0
+LARGE $TABLE(SM_TZ).SMXLDJ 0
+LARGE $TABLE(SM_TZ).SMSZDJ 0
+LARGE $TABLE(SM_TZ).SMJZDJ 0
+#ACT
+MOV N$套装启用按钮4 1
+#ELSEACT
+MOV N$套装启用按钮4 2
+#IF
+LARGE $TABLE(SY_TZ).SYTKDJ 0
+LARGE $TABLE(SY_TZ).SYXLDJ 0
+LARGE $TABLE(SY_TZ).SYSZDJ 0
+LARGE $TABLE(SY_TZ).SYJZDJ 0
+#ACT
+MOV N$套装启用按钮5 1
+#ELSEACT
+MOV N$套装启用按钮5 2
+#IF
+LARGE $TABLE(MW_TZ).MWTKDJ 0
+LARGE $TABLE(MW_TZ).MWXLDJ 0
+LARGE $TABLE(MW_TZ).MWSZDJ 0
+LARGE $TABLE(MW_TZ).MWJZDJ 0
+#ACT
+MOV N$套装启用按钮6 1
+#ELSEACT
+MOV N$套装启用按钮6 2
+
+
+#IF
+CHECK [636] 0
+#ACT
+MOV N$套装启用中1 0
+#ELSEACT
+MOV N$套装启用中1 32647
+
+#IF
+CHECK [637] 0
+#ACT
+MOV N$套装启用中2 0
+#ELSEACT
+MOV N$套装启用中2 32647
+
+#IF
+CHECK [638] 0
+#ACT
+MOV N$套装启用中3 0
+#ELSEACT
+MOV N$套装启用中3 32647
+
+#IF
+CHECK [639] 0
+#ACT
+MOV N$套装启用中4 0
+#ELSEACT
+MOV N$套装启用中4 32647
+
+#IF
+CHECK [640] 0
+#ACT
+MOV N$套装启用中5 0
+#ELSEACT
+MOV N$套装启用中5 32647
+
+#IF
+CHECK [641] 0
+#ACT
+MOV N$套装启用中6 0
+#ELSEACT
+MOV N$套装启用中6 32647
+
+#IF
+TRUE
+#SAY
+
+<Button|id=31|x=650.0|y=546.0|scale=1|mimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=67|nimg=public/btn_push_10.png|size=18|text=<$STR(S$激活升级)>|link=@图鉴激活和升级>
+<ItemShow|id=32|x=666.0|y=216.0|width=70|height=70|itemid=<$STR(S$图鉴物品LOOKS)>|itemcount=1|name=<$STR(S$图鉴物品名称)>图鉴|showtips=1|bgtype=1>
+<$STR(S$装备图鉴特效)>
+#IF
+EQUAL $STR(N$图鉴套装) 1
+#SAY
+<Img|id=34|children={34-x,34-1}|x=218.0|y=129.0|esc=0|scale=1|img=private/tujian/tujiantaozhuangdb.png|link=0>
+<Button|id=34-x|x=467.0|y=-3.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@关闭图鉴套装面板>
+<ListView|id=34-1|children={34-101,34-201,34-301,34-401,34-501,34-601}|x=32.0|y=119.0|width=465|height=287|img=picpackage/3/9998.png>
+
+<Img|id=34-101|children={34-102,34-103,34-104,34-105,34-106,34-107,34-108}|x=352.0|y=246.0|scale=1|esc=0|img=private/tujian/tjtzchangtiao.png>
+<Img|id=34-102|x=5.0|y=3.0|img=private/tujian/zfsjkl.png|scale=1|esc=0>
+<Img|id=34-103|x=26.0|y=24.0|img=private/tujian/00146.png|scale=1|esc=0>
+<RText|id=34-104|x=100.0|y=18.0|color=255|size=18|text=<被战法攻击免伤2%/FCOLOR=67>>
+<RText|id=34-105|x=100.0|y=52.0|color=255|size=18|text=<被道士宝宝攻击免伤5%/FCOLOR=67>>
+<Button|id=34-106|x=347.0|y=19.0|scale=1|nimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮1)>.png|mimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮1)>.png|size=18|color=255|pimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮1)>.png|link=@启用祈祷套装>
+<Img|id=34-107|x=19.0|y=8.0|img=private/tujian/qd1-1.png|scale=1|esc=0>
+<Img|id=34-108|x=410.0|y=34.0|img=private/tujian/<$STR(N$套装启用中1)>.png|scale=1|esc=0>
+
+<Img|id=34-201|children={34-202,34-203,34-204,34-205,34-206,34-207,34-208}|x=352.0|y=246.0|scale=1|esc=0|img=private/tujian/tjtzchangtiao.png>
+<Img|id=34-202|x=5.0|y=3.0|img=private/tujian/zfsjkl.png|scale=1|esc=0>
+<Img|id=34-203|x=26.0|y=24.0|img=private/tujian/00625.png|scale=1|esc=0>
+<RText|id=34-204|x=100.0|y=18.0|color=255|size=18|text=<攻击时提升攻击力5%持续10秒/FCOLOR=67>>
+<RText|id=34-205|x=100.0|y=52.0|color=255|size=18|text=<CD60秒/FCOLOR=67>>
+<Button|id=34-206|x=347.0|y=19.0|scale=1|nimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮2)>.png|mimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮2)>.png|size=18|color=255|pimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮2)>.png|link=@启用狂怒套装>
+<Img|id=34-207|x=19.0|y=8.0|img=private/tujian/kn1-1.png|scale=1|esc=0>
+<Img|id=34-208|x=410.0|y=34.0|img=private/tujian/<$STR(N$套装启用中2)>.png|scale=1|esc=0>
+
+<Img|id=34-301|children={34-302,34-303,34-304,34-305,34-306,34-307,34-308}|x=352.0|y=246.0|scale=1|esc=0|img=private/tujian/tjtzchangtiao.png>
+<Img|id=34-302|x=5.0|y=3.0|img=private/tujian/zfsjkl.png|scale=1|esc=0>
+<Img|id=34-303|x=26.0|y=24.0|img=private/tujian/00617.png|scale=1|esc=0>
+<RText|id=34-304|x=100.0|y=35.0|color=255|size=18|text=<吸血概率增加5%/FCOLOR=67>>
+<RText|id=34-305|x=100.0|y=52.0|color=255|size=18|text=>
+<Button|id=34-306|x=347.0|y=19.0|scale=1|nimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮3)>.png|mimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮3)>.png|size=18|color=255|pimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮3)>.png|link=@启用嗜血套装>
+<Img|id=34-307|x=19.0|y=8.0|img=private/tujian/sx1-1.png|scale=1|esc=0>
+<Img|id=34-308|x=410.0|y=34.0|img=private/tujian/<$STR(N$套装启用中3)>.png|scale=1|esc=0>
+
+<Img|id=34-401|children={34-402,34-403,34-404,34-405,34-406,34-407,34-408}|x=352.0|y=246.0|scale=1|esc=0|img=private/tujian/tjtzchangtiao.png>
+<Img|id=34-402|x=5.0|y=3.0|img=private/tujian/zfsjkl.png|scale=1|esc=0>
+<Img|id=34-403|x=26.0|y=24.0|img=private/tujian/1092.png|scale=1|esc=0>
+<RText|id=34-404|x=100.0|y=18.0|color=255|size=18|text=<攻击时有33%的概率增伤3%/FCOLOR=67>>
+<RText|id=34-405|x=100.0|y=52.0|color=255|size=18|text=<3%的概率增伤13%；CD33秒/FCOLOR=67>>
+<Button|id=34-406|x=347.0|y=19.0|scale=1|nimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮4)>.png|mimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮4)>.png|size=18|color=255|pimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮4)>.png|link=@启用神秘套装>
+<Img|id=34-407|x=19.0|y=8.0|img=private/tujian/sm1-1.png|scale=1|esc=0>
+<Img|id=34-408|x=410.0|y=34.0|img=private/tujian/<$STR(N$套装启用中4)>.png|scale=1|esc=0>
+
+<Img|id=34-501|children={34-502,34-503,34-504,34-505,34-506,34-507,34-508}|x=352.0|y=246.0|scale=1|esc=0|img=private/tujian/tjtzchangtiao.png>
+<Img|id=34-502|x=5.0|y=3.0|img=private/tujian/zfsjkl.png|scale=1|esc=0>
+<Img|id=34-503|x=26.0|y=24.0|img=private/tujian/00629.png|scale=1|esc=0>
+<RText|id=34-504|x=100.0|y=18.0|color=255|size=18|text=<受到玩家攻击时双防提升15%/FCOLOR=67>>
+<RText|id=34-505|x=100.0|y=52.0|color=255|size=18|text=<持续15秒；CD60秒/FCOLOR=67>>
+<Button|id=34-506|x=347.0|y=19.0|scale=1|nimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮5)>.png|mimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮5)>.png|size=18|color=255|pimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮5)>.png|link=@启用神御套装>
+<Img|id=34-507|x=19.0|y=8.0|img=private/tujian/sy1-1.png|scale=1|esc=0>
+<Img|id=34-508|x=410.0|y=34.0|img=private/tujian/<$STR(N$套装启用中5)>.png|scale=1|esc=0>
+
+<Img|id=34-601|children={34-602,34-603,34-604,34-605,34-606,34-607,34-608}|x=352.0|y=246.0|scale=1|esc=0|img=private/tujian/tjtzchangtiao.png>
+<Img|id=34-602|x=5.0|y=3.0|img=private/tujian/zfsjkl.png|scale=1|esc=0>
+<Img|id=34-603|x=26.0|y=24.0|img=private/tujian/00634.png|scale=1|esc=0>
+<RText|id=34-604|x=100.0|y=18.0|color=255|size=18|text=<被攻击时有1%的概率无敌1秒/FCOLOR=67>>
+<RText|id=34-605|x=100.0|y=52.0|color=255|size=18|text=<冷却时间120秒/FCOLOR=67>>
+<Button|id=34-606|x=347.0|y=19.0|scale=1|nimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮6)>.png|mimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮6)>.png|size=18|color=255|pimg=private/tujian/btn_tjtz_0<$STR(N$套装启用按钮6)>.png|link=@启用明王套装>
+<Img|id=34-607|x=19.0|y=8.0|img=private/tujian/mw1-1.png|scale=1|esc=0>
+<Img|id=34-608|x=410.0|y=34.0|img=private/tujian/<$STR(N$套装启用中6)>.png|scale=1|esc=0>
+
+
+#IF
+HasTask 18
+EQUAL $TASK(18) 3
+#ACT
+Navigation 80 31 点击激活#996#3 1 0
+
+
+#IF
+TRUE
+#ACT
+DelayGoto 1 @清理特效
+BREAK
+
+[@启用祈祷套装]
+#IF
+EQUAL $STR(N$套装启用按钮1) 1
+#ACT
+SET [636] 1
+SET [637] 0
+SET [638] 0
+SET [639] 0
+SET [640] 0
+SET [641] 0
+FUNC 2 @图鉴_BUFF修改&BUFF标识=6361
+CalcVar Human 启用图鉴名称 = 祈祷 1
+ADDFH 4 3 25700 -15 112
+GOTO @图鉴显示面板
+GOTO @临时属性
+BREAK
+#ELSEACT
+SENDMSG 19 套装还未激活
+BREAK
+
+[@启用狂怒套装]
+#IF
+EQUAL $STR(N$套装启用按钮2) 1
+#ACT
+SET [636] 0
+SET [637] 1
+SET [638] 0
+SET [639] 0
+SET [640] 0
+SET [641] 0
+FUNC 2 @图鉴_BUFF修改&BUFF标识=6371
+CalcVar Human 启用图鉴名称 = 狂怒 1
+ADDFH 4 3 25710 -30 100
+GOTO @图鉴显示面板
+GOTO @临时属性
+BREAK
+#ELSEACT
+SENDMSG 19 套装还未激活
+BREAK
+
+[@启用嗜血套装]
+#IF
+EQUAL $STR(N$套装启用按钮3) 1
+#ACT
+SET [636] 0
+SET [637] 0
+SET [638] 1
+SET [639] 0
+SET [640] 0
+SET [641] 0
+FUNC 2 @图鉴_BUFF修改&BUFF标识=6381
+CalcVar Human 启用图鉴名称 = 嗜血 1
+ADDFH 4 3 25720 -30 100
+GOTO @图鉴显示面板
+GOTO @临时属性
+BREAK
+#ELSEACT
+SENDMSG 19 套装还未激活
+BREAK
+
+[@启用神秘套装]
+#IF
+EQUAL $STR(N$套装启用按钮4) 1
+#ACT
+SET [636] 0
+SET [637] 0
+SET [638] 0
+SET [639] 1
+SET [640] 0
+SET [641] 0
+FUNC 2 @图鉴_BUFF修改&BUFF标识=6391
+CalcVar Human 启用图鉴名称 = 神秘 1
+ADDFH 4 3 25730 -32 100
+GOTO @图鉴显示面板
+GOTO @临时属性
+BREAK
+#ELSEACT
+SENDMSG 19 套装还未激活
+BREAK
+
+[@启用神御套装]
+#IF
+EQUAL $STR(N$套装启用按钮5) 1
+#ACT
+SET [636] 0
+SET [637] 0
+SET [638] 0
+SET [639] 0
+SET [640] 1
+SET [641] 0
+FUNC 2 @图鉴_BUFF修改&BUFF标识=6401
+CalcVar Human 启用图鉴名称 = 神御 1
+ADDFH 4 3 25740 -32 100
+GOTO @图鉴显示面板
+GOTO @临时属性
+BREAK
+#ELSEACT
+SENDMSG 19 套装还未激活
+BREAK
+
+
+[@启用明王套装]
+#IF
+EQUAL $STR(N$套装启用按钮6) 1
+#ACT
+SET [636] 0
+SET [637] 0
+SET [638] 0
+SET [639] 0
+SET [640] 0
+SET [641] 1
+FUNC 2 @图鉴_BUFF修改&BUFF标识=6411
+CalcVar Human 启用图鉴名称 = 明王 1
+ADDFH 4 3 25750 -32 100
+GOTO @图鉴显示面板
+GOTO @临时属性
+BREAK
+#ELSEACT
+SENDMSG 19 套装还未激活
+BREAK
+
+
+[@图鉴激活和升级]
+#IF
+EQUAL $STR(S$激活升级) 激　活
+#ACT
+GOTO @图鉴激活
+BREAK
+
+#IF
+EQUAL $STR(S$激活升级) 升　级
+#ACT
+GOTO @图鉴升级
+BREAK
+
+
+[@图鉴激活]
+#IF
+HasTask 18
+EQUAL $TASK(18) 3
+#ACT
+UpdateTask 18 4
+Navigation 160 18 点击领取#5069#5 0 0
+
+#IF
+LARGE <$TABLE(<$STR(S$变量表表名)>).<$STR(S$变量表字段)>> 0
+#ACT
+SENDMSG 19 <$STR(S$图鉴物品名称)>图鉴已激活
+BREAK
+
+#IF
+CheckItem <$STR(S$图鉴物品名称)>图鉴 1
+#ACT
+TAKE <$STR(S$图鉴物品名称)>图鉴 1
+TABLE <$STR(S$变量表表名)> <$STR(S$变量表字段)> = 1
+SENDMSG 19 成功激活<$STR(S$图鉴物品名称)>图鉴
+MOV S$装备图鉴特效 <Frames|id=33|x=455.0|y=130.0|count=0|scale=1|speed=10|prefix=public/jh_|loop=1|suffix=.png>
+SET [116] 1
+GOTO @顶部按钮会员红点
+GOTO @临时属性
+GOTO @<$STR(S$图鉴返回面板)>
+GOTO @图鉴红点
+GOTO @图鉴面板红点
+BREAK
+#ELSEACT
+SENDMSG 19 <$STR(S$图鉴物品名称)>图鉴不足
+BREAK
+
+[@图鉴升级]
+#IF
+HasTask 18
+EQUAL $TASK(18) 3
+#ACT
+UpdateTask 18 4
+Navigation 160 18 点击领取#5069#5 0 0
+
+#IF
+EQUAL <$TABLE(<$STR(S$变量表表名)>).<$STR(S$变量表字段)>> 0
+#ACT
+SENDMSG 19 请先激活图鉴
+BREAK
+
+#IF
+LARGE <$TABLE(<$STR(S$变量表表名)>).<$STR(S$变量表字段)>> 5
+#ACT
+SENDMSG 19 该图鉴已满级
+BREAK
+
+#IF
+!SMALL $Money(8) <$STR(S$图鉴属性分割1_4)>
+#ACT
+Money 8 - <$STR(S$图鉴属性分割1_4)>
+TABLE <$STR(S$变量表表名)> <$STR(S$变量表字段)> + 1
+MOV S$装备图鉴特效 <Frames|id=33|x=520.0|y=180.0|count=0|scale=1|speed=10|prefix=public/7758_|loop=1|suffix=.png>
+GOTO @临时属性
+GOTO @<$STR(S$图鉴返回面板)>
+BREAK
+#ELSEACT
+SENDMSG 19 你的图鉴碎片不足
+BREAK
+
+
+
+[@打开图鉴套装面板]
+#IF
+EQUAL $STR(N$图鉴套装) 0
+#ACT
+MOV N$图鉴套装 1
+GOTO @图鉴显示面板
+BREAK
+
+[@关闭图鉴套装面板]
+#IF
+EQUAL $STR(N$图鉴套装) 1
+#ACT
+MOV N$图鉴套装 0
+GOTO @图鉴显示面板
+BREAK
+
+[@祈祷套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧1列按钮
+MOV S$图鉴分类按钮1 5
+MOV S$图鉴分类按钮2 6
+MOV S$图鉴分类按钮3 6
+MOV S$图鉴分类按钮4 6
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装按钮1 1
+MOV S$图鉴套装按钮2 2
+MOV S$图鉴套装按钮3 2
+MOV S$图鉴套装按钮4 2
+MOV S$图鉴套装按钮5 2
+MOV S$图鉴套装按钮6 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴装备LOOKS1 146
+MOV S$图鉴装备LOOKS2 143
+MOV S$图鉴装备LOOKS3 145
+MOV S$图鉴装备LOOKS4 142
+;-------------------------------------装备名称
+MOV S$图鉴装备名称1 祈祷头盔
+MOV S$图鉴装备名称2 祈祷项链
+MOV S$图鉴装备名称3 祈祷手镯
+MOV S$图鉴装备名称4 祈祷戒指
+MOV S$图鉴物品名称 祈祷头盔
+MOV S$图鉴物品LOOKS 146
+MOV S$变量表表名 QD_TZ
+MOV S$变量表字段 QDTKDJ
+MOV N$图鉴装备星级1 $TABLE(QD_TZ).QDTKDJ
+MOV N$图鉴装备星级2 $TABLE(QD_TZ).QDXLDJ
+MOV N$图鉴装备星级3 $TABLE(QD_TZ).QDSZDJ
+MOV N$图鉴装备星级4 $TABLE(QD_TZ).QDJZDJ
+MOV N$图鉴装备星级5 $TABLE(QD_TZ).QDTKDJ
+GOTO @祈祷头盔&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@祈祷头盔]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 QD_TZ
+MOV S$变量表字段 QDTKDJ
+MOV S$图鉴物品名称 祈祷头盔
+MOV S$图鉴物品LOOKS 146
+MOV N$图鉴装备星级1 $TABLE(QD_TZ).QDTKDJ
+MOV N$图鉴装备星级2 $TABLE(QD_TZ).QDXLDJ
+MOV N$图鉴装备星级3 $TABLE(QD_TZ).QDSZDJ
+MOV N$图鉴装备星级4 $TABLE(QD_TZ).QDJZDJ
+MOV N$图鉴装备星级5 $TABLE(QD_TZ).QDTKDJ
+#IF
+SMALL $TABLE(QD_TZ).QDTKDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@祈祷项链]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 2
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 QD_TZ
+MOV S$变量表字段 QDXLDJ
+MOV S$图鉴物品名称 祈祷项链
+MOV S$图鉴物品LOOKS 143
+MOV N$图鉴装备星级1 $TABLE(QD_TZ).QDTKDJ
+MOV N$图鉴装备星级2 $TABLE(QD_TZ).QDXLDJ
+MOV N$图鉴装备星级3 $TABLE(QD_TZ).QDSZDJ
+MOV N$图鉴装备星级4 $TABLE(QD_TZ).QDJZDJ
+MOV N$图鉴装备星级5 $TABLE(QD_TZ).QDXLDJ
+#IF
+SMALL $TABLE(QD_TZ).QDXLDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@祈祷手镯]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 2
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 QD_TZ
+MOV S$变量表字段 QDSZDJ
+MOV S$图鉴物品名称 祈祷手镯
+MOV S$图鉴物品LOOKS 145
+MOV N$图鉴装备星级1 $TABLE(QD_TZ).QDTKDJ
+MOV N$图鉴装备星级2 $TABLE(QD_TZ).QDXLDJ
+MOV N$图鉴装备星级3 $TABLE(QD_TZ).QDSZDJ
+MOV N$图鉴装备星级4 $TABLE(QD_TZ).QDJZDJ
+MOV N$图鉴装备星级5 $TABLE(QD_TZ).QDSZDJ
+#IF
+SMALL $TABLE(QD_TZ).QDSZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+[@祈祷戒指]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 2
+;-------------------------------------等级变量
+MOV S$变量表表名 QD_TZ
+MOV S$变量表字段 QDJZDJ
+MOV S$图鉴物品名称 祈祷戒指
+MOV S$图鉴物品LOOKS 142
+MOV N$图鉴装备星级1 $TABLE(QD_TZ).QDTKDJ
+MOV N$图鉴装备星级2 $TABLE(QD_TZ).QDXLDJ
+MOV N$图鉴装备星级3 $TABLE(QD_TZ).QDSZDJ
+MOV N$图鉴装备星级4 $TABLE(QD_TZ).QDJZDJ
+MOV N$图鉴装备星级5 $TABLE(QD_TZ).QDJZDJ
+#IF
+SMALL $TABLE(QD_TZ).QDJZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+
+
+
+
+[@狂怒套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装按钮1 2
+MOV S$图鉴套装按钮2 1
+MOV S$图鉴套装按钮3 2
+MOV S$图鉴套装按钮4 2
+MOV S$图鉴套装按钮5 2
+MOV S$图鉴套装按钮6 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴装备LOOKS1 625
+MOV S$图鉴装备LOOKS2 626
+MOV S$图鉴装备LOOKS3 627
+MOV S$图鉴装备LOOKS4 628
+;-------------------------------------装备名称
+MOV S$图鉴装备名称1 狂怒头盔
+MOV S$图鉴装备名称2 狂怒项链
+MOV S$图鉴装备名称3 狂怒手镯
+MOV S$图鉴装备名称4 狂怒戒指
+MOV S$图鉴物品名称 狂怒头盔
+MOV S$变量表表名 KN_TZ
+MOV S$变量表字段 KNTKDJ
+MOV N$图鉴装备星级1 $TABLE(KN_TZ).KNTKDJ
+MOV N$图鉴装备星级2 $TABLE(KN_TZ).KNXLDJ
+MOV N$图鉴装备星级3 $TABLE(KN_TZ).KNSZDJ
+MOV N$图鉴装备星级4 $TABLE(KN_TZ).KNJZDJ
+MOV N$图鉴装备星级5 $TABLE(KN_TZ).KNTKDJ
+GOTO @狂怒头盔&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@狂怒头盔]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 KN_TZ
+MOV S$变量表字段 KNTKDJ
+MOV S$图鉴物品名称 狂怒头盔
+MOV S$图鉴物品LOOKS 625
+MOV N$图鉴装备星级1 $TABLE(KN_TZ).KNTKDJ
+MOV N$图鉴装备星级2 $TABLE(KN_TZ).KNXLDJ
+MOV N$图鉴装备星级3 $TABLE(KN_TZ).KNSZDJ
+MOV N$图鉴装备星级4 $TABLE(KN_TZ).KNJZDJ
+MOV N$图鉴装备星级5 $TABLE(KN_TZ).KNTKDJ
+#IF
+SMALL $TABLE(KN_TZ).KNTKDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@狂怒项链]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 2
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 KN_TZ
+MOV S$变量表字段 KNXLDJ
+MOV S$图鉴物品名称 狂怒项链
+MOV S$图鉴物品LOOKS 626
+MOV N$图鉴装备星级1 $TABLE(KN_TZ).KNTKDJ
+MOV N$图鉴装备星级2 $TABLE(KN_TZ).KNXLDJ
+MOV N$图鉴装备星级3 $TABLE(KN_TZ).KNSZDJ
+MOV N$图鉴装备星级4 $TABLE(KN_TZ).KNJZDJ
+MOV N$图鉴装备星级5 $TABLE(KN_TZ).KNXLDJ
+#IF
+SMALL $TABLE(KN_TZ).KNXLDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@狂怒手镯]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 2
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 KN_TZ
+MOV S$变量表字段 KNSZDJ
+MOV S$图鉴物品名称 狂怒手镯
+MOV S$图鉴物品LOOKS 627
+MOV N$图鉴装备星级1 $TABLE(KN_TZ).KNTKDJ
+MOV N$图鉴装备星级2 $TABLE(KN_TZ).KNXLDJ
+MOV N$图鉴装备星级3 $TABLE(KN_TZ).KNSZDJ
+MOV N$图鉴装备星级4 $TABLE(KN_TZ).KNJZDJ
+MOV N$图鉴装备星级5 $TABLE(KN_TZ).KNSZDJ
+#IF
+SMALL $TABLE(KN_TZ).KNSZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+[@狂怒戒指]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 2
+;-------------------------------------等级变量
+MOV S$变量表表名 KN_TZ
+MOV S$变量表字段 KNJZDJ
+MOV S$图鉴物品名称 狂怒戒指
+MOV S$图鉴物品LOOKS 628
+MOV N$图鉴装备星级1 $TABLE(KN_TZ).KNTKDJ
+MOV N$图鉴装备星级2 $TABLE(KN_TZ).KNXLDJ
+MOV N$图鉴装备星级3 $TABLE(KN_TZ).KNSZDJ
+MOV N$图鉴装备星级4 $TABLE(KN_TZ).KNJZDJ
+MOV N$图鉴装备星级5 $TABLE(KN_TZ).KNJZDJ
+#IF
+SMALL $TABLE(KN_TZ).KNJZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+
+[@嗜血套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装按钮1 2
+MOV S$图鉴套装按钮2 2
+MOV S$图鉴套装按钮3 1
+MOV S$图鉴套装按钮4 2
+MOV S$图鉴套装按钮5 2
+MOV S$图鉴套装按钮6 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴装备LOOKS1 617
+MOV S$图鉴装备LOOKS2 618
+MOV S$图鉴装备LOOKS3 619
+MOV S$图鉴装备LOOKS4 620
+;-------------------------------------装备名称
+MOV S$图鉴装备名称1 嗜血头盔
+MOV S$图鉴装备名称2 嗜血项链
+MOV S$图鉴装备名称3 嗜血手镯
+MOV S$图鉴装备名称4 嗜血戒指
+MOV S$图鉴物品名称 嗜血头盔
+MOV S$图鉴物品LOOKS 617
+MOV S$变量表表名 SX_TZ
+MOV S$变量表字段 SXTKDJ
+MOV N$图鉴装备星级1 $TABLE(SX_TZ).SXTKDJ
+MOV N$图鉴装备星级2 $TABLE(SX_TZ).SXXLDJ
+MOV N$图鉴装备星级3 $TABLE(SX_TZ).SXSZDJ
+MOV N$图鉴装备星级4 $TABLE(SX_TZ).SXJZDJ
+MOV N$图鉴装备星级5 $TABLE(SX_TZ).SXTKDJ
+GOTO @嗜血头盔&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+[@嗜血头盔]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 SX_TZ
+MOV S$变量表字段 SXTKDJ
+MOV S$图鉴物品名称 嗜血头盔
+MOV S$图鉴物品LOOKS 617
+MOV N$图鉴装备星级1 $TABLE(SX_TZ).SXTKDJ
+MOV N$图鉴装备星级2 $TABLE(SX_TZ).SXXLDJ
+MOV N$图鉴装备星级3 $TABLE(SX_TZ).SXSZDJ
+MOV N$图鉴装备星级4 $TABLE(SX_TZ).SXJZDJ
+MOV N$图鉴装备星级5 $TABLE(SX_TZ).SXTKDJ
+#IF
+SMALL $TABLE(SX_TZ).SXTKDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@嗜血项链]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 2
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 SX_TZ
+MOV S$变量表字段 SXXLDJ
+MOV S$图鉴物品名称 嗜血项链
+MOV S$图鉴物品LOOKS 618
+MOV N$图鉴装备星级1 $TABLE(SX_TZ).SXTKDJ
+MOV N$图鉴装备星级2 $TABLE(SX_TZ).SXXLDJ
+MOV N$图鉴装备星级3 $TABLE(SX_TZ).SXSZDJ
+MOV N$图鉴装备星级4 $TABLE(SX_TZ).SXJZDJ
+MOV N$图鉴装备星级5 $TABLE(SX_TZ).SXXLDJ
+#IF
+SMALL $TABLE(SX_TZ).SXXLDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@嗜血手镯]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 2
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 SX_TZ
+MOV S$变量表字段 SXSZDJ
+MOV S$图鉴物品名称 嗜血手镯
+MOV S$图鉴物品LOOKS 619
+MOV N$图鉴装备星级1 $TABLE(SX_TZ).SXTKDJ
+MOV N$图鉴装备星级2 $TABLE(SX_TZ).SXXLDJ
+MOV N$图鉴装备星级3 $TABLE(SX_TZ).SXSZDJ
+MOV N$图鉴装备星级4 $TABLE(SX_TZ).SXJZDJ
+MOV N$图鉴装备星级5 $TABLE(SX_TZ).SXSZDJ
+#IF
+SMALL $TABLE(SX_TZ).SXSZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+[@嗜血戒指]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 2
+;-------------------------------------等级变量
+MOV S$变量表表名 SX_TZ
+MOV S$变量表字段 SXJZDJ
+MOV S$图鉴物品名称 嗜血戒指
+MOV S$图鉴物品LOOKS 620
+MOV N$图鉴装备星级1 $TABLE(SX_TZ).SXTKDJ
+MOV N$图鉴装备星级2 $TABLE(SX_TZ).SXXLDJ
+MOV N$图鉴装备星级3 $TABLE(SX_TZ).SXSZDJ
+MOV N$图鉴装备星级4 $TABLE(SX_TZ).SXJZDJ
+MOV N$图鉴装备星级5 $TABLE(SX_TZ).SXJZDJ
+#IF
+SMALL $TABLE(SX_TZ).SXJZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@神秘套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装按钮1 2
+MOV S$图鉴套装按钮2 2
+MOV S$图鉴套装按钮3 2
+MOV S$图鉴套装按钮4 1
+MOV S$图鉴套装按钮5 2
+MOV S$图鉴套装按钮6 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴装备LOOKS1 1092
+MOV S$图鉴装备LOOKS2 1093
+MOV S$图鉴装备LOOKS3 1095
+MOV S$图鉴装备LOOKS4 1094
+;-------------------------------------装备名称
+MOV S$图鉴装备名称1 神秘头盔
+MOV S$图鉴装备名称2 神秘项链
+MOV S$图鉴装备名称3 神秘手镯
+MOV S$图鉴装备名称4 神秘戒指
+
+MOV S$变量表表名 SM_TZ
+MOV S$变量表字段 SMTKDJ
+MOV S$图鉴物品名称 神秘头盔
+MOV S$图鉴物品LOOKS 1092
+MOV N$图鉴装备星级1 $TABLE(SM_TZ).SMTKDJ
+MOV N$图鉴装备星级2 $TABLE(SM_TZ).SMXLDJ
+MOV N$图鉴装备星级3 $TABLE(SM_TZ).SMSZDJ
+MOV N$图鉴装备星级4 $TABLE(SM_TZ).SMJZDJ
+MOV N$图鉴装备星级5 $TABLE(SM_TZ).SMTKDJ
+GOTO @神秘头盔&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@神秘头盔]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 SM_TZ
+MOV S$变量表字段 SMTKDJ
+MOV S$图鉴物品名称 神秘头盔
+MOV S$图鉴物品LOOKS 1092
+MOV N$图鉴装备星级1 $TABLE(SM_TZ).SMTKDJ
+MOV N$图鉴装备星级2 $TABLE(SM_TZ).SMXLDJ
+MOV N$图鉴装备星级3 $TABLE(SM_TZ).SMSZDJ
+MOV N$图鉴装备星级4 $TABLE(SM_TZ).SMJZDJ
+MOV N$图鉴装备星级5 $TABLE(SM_TZ).SMTKDJ
+#IF
+SMALL $TABLE(SM_TZ).SMTKDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@神秘项链]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 2
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 SM_TZ
+MOV S$变量表字段 SMXLDJ
+MOV S$图鉴物品名称 神秘项链
+MOV S$图鉴物品LOOKS 1093
+MOV N$图鉴装备星级1 $TABLE(SM_TZ).SMTKDJ
+MOV N$图鉴装备星级2 $TABLE(SM_TZ).SMXLDJ
+MOV N$图鉴装备星级3 $TABLE(SM_TZ).SMSZDJ
+MOV N$图鉴装备星级4 $TABLE(SM_TZ).SMJZDJ
+MOV N$图鉴装备星级5 $TABLE(SM_TZ).SMXLDJ
+#IF
+SMALL $TABLE(SM_TZ).SMXLDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@神秘手镯]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 2
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 SM_TZ
+MOV S$变量表字段 SMSZDJ
+MOV S$图鉴物品名称 神秘手镯
+MOV S$图鉴物品LOOKS 1094
+MOV N$图鉴装备星级1 $TABLE(SM_TZ).SMTKDJ
+MOV N$图鉴装备星级2 $TABLE(SM_TZ).SMXLDJ
+MOV N$图鉴装备星级3 $TABLE(SM_TZ).SMSZDJ
+MOV N$图鉴装备星级4 $TABLE(SM_TZ).SMJZDJ
+MOV N$图鉴装备星级5 $TABLE(SM_TZ).SMSZDJ
+#IF
+SMALL $TABLE(SM_TZ).SMSZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+[@神秘戒指]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 2
+;-------------------------------------等级变量
+MOV S$变量表表名 SM_TZ
+MOV S$变量表字段 SMJZDJ
+MOV S$图鉴物品名称 神秘戒指
+MOV S$图鉴物品LOOKS 1095
+MOV N$图鉴装备星级1 $TABLE(SM_TZ).SMTKDJ
+MOV N$图鉴装备星级2 $TABLE(SM_TZ).SMXLDJ
+MOV N$图鉴装备星级3 $TABLE(SM_TZ).SMSZDJ
+MOV N$图鉴装备星级4 $TABLE(SM_TZ).SMJZDJ
+MOV N$图鉴装备星级5 $TABLE(SM_TZ).SMJZDJ
+#IF
+SMALL $TABLE(SM_TZ).SMJZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+
+[@神御套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装按钮1 2
+MOV S$图鉴套装按钮2 2
+MOV S$图鉴套装按钮3 2
+MOV S$图鉴套装按钮4 2
+MOV S$图鉴套装按钮5 2
+MOV S$图鉴套装按钮6 1
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴装备LOOKS1 629
+MOV S$图鉴装备LOOKS2 630
+MOV S$图鉴装备LOOKS3 631
+MOV S$图鉴装备LOOKS4 632
+;-------------------------------------装备名称
+MOV S$图鉴装备名称1 神御头盔
+MOV S$图鉴装备名称2 神御项链
+MOV S$图鉴装备名称3 神御手镯
+MOV S$图鉴装备名称4 神御戒指
+MOV S$变量表表名 SY_TZ
+MOV S$变量表字段 SYTKDJ
+MOV S$图鉴物品名称 神御头盔
+MOV S$图鉴物品LOOKS 629
+MOV N$图鉴装备星级1 $TABLE(SY_TZ).SYTKDJ
+MOV N$图鉴装备星级2 $TABLE(SY_TZ).SYXLDJ
+MOV N$图鉴装备星级3 $TABLE(SY_TZ).SYSZDJ
+MOV N$图鉴装备星级4 $TABLE(SY_TZ).SYJZDJ
+MOV N$图鉴装备星级5 $TABLE(SY_TZ).SYTKDJ
+GOTO @神御头盔&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@神御头盔]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 SY_TZ
+MOV S$变量表字段 SYTKDJ
+MOV S$图鉴物品名称 神御头盔
+MOV S$图鉴物品LOOKS 629
+MOV N$图鉴装备星级1 $TABLE(SY_TZ).SYTKDJ
+MOV N$图鉴装备星级2 $TABLE(SY_TZ).SYXLDJ
+MOV N$图鉴装备星级3 $TABLE(SY_TZ).SYSZDJ
+MOV N$图鉴装备星级4 $TABLE(SY_TZ).SYJZDJ
+MOV N$图鉴装备星级5 $TABLE(SY_TZ).SYTKDJ
+#IF
+SMALL $TABLE(SY_TZ).SYTKDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@神御项链]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 2
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 SY_TZ
+MOV S$变量表字段 SYXLDJ
+MOV S$图鉴物品名称 神御项链
+MOV S$图鉴物品LOOKS 630
+MOV N$图鉴装备星级1 $TABLE(SY_TZ).SYTKDJ
+MOV N$图鉴装备星级2 $TABLE(SY_TZ).SYXLDJ
+MOV N$图鉴装备星级3 $TABLE(SY_TZ).SYSZDJ
+MOV N$图鉴装备星级4 $TABLE(SY_TZ).SYJZDJ
+MOV N$图鉴装备星级5 $TABLE(SY_TZ).SYXLDJ
+#IF
+SMALL $TABLE(SY_TZ).SYXLDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@神御手镯]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 2
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 SY_TZ
+MOV S$变量表字段 SYSZDJ
+MOV S$图鉴物品名称 神御手镯
+MOV S$图鉴物品LOOKS 631
+MOV N$图鉴装备星级1 $TABLE(SY_TZ).SYTKDJ
+MOV N$图鉴装备星级2 $TABLE(SY_TZ).SYXLDJ
+MOV N$图鉴装备星级3 $TABLE(SY_TZ).SYSZDJ
+MOV N$图鉴装备星级4 $TABLE(SY_TZ).SYJZDJ
+MOV N$图鉴装备星级5 $TABLE(SY_TZ).SYSZDJ
+#IF
+SMALL $TABLE(SY_TZ).SYSZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+[@神御戒指]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 2
+;-------------------------------------等级变量
+MOV S$变量表表名 SY_TZ
+MOV S$变量表字段 SYJZDJ
+MOV S$图鉴物品名称 神御戒指
+MOV S$图鉴物品LOOKS 632
+MOV N$图鉴装备星级1 $TABLE(SY_TZ).SYTKDJ
+MOV N$图鉴装备星级2 $TABLE(SY_TZ).SYXLDJ
+MOV N$图鉴装备星级3 $TABLE(SY_TZ).SYSZDJ
+MOV N$图鉴装备星级4 $TABLE(SY_TZ).SYJZDJ
+MOV N$图鉴装备星级5 $TABLE(SY_TZ).SYJZDJ
+#IF
+SMALL $TABLE(SY_TZ).SYJZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+[@明王套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装按钮1 2
+MOV S$图鉴套装按钮2 2
+MOV S$图鉴套装按钮3 2
+MOV S$图鉴套装按钮4 2
+MOV S$图鉴套装按钮5 1
+MOV S$图鉴套装按钮6 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴装备LOOKS1 633
+MOV S$图鉴装备LOOKS2 634
+MOV S$图鉴装备LOOKS3 635
+MOV S$图鉴装备LOOKS4 636
+;-------------------------------------装备名称
+MOV S$图鉴装备名称1 明王头盔
+MOV S$图鉴装备名称2 明王项链
+MOV S$图鉴装备名称3 明王手镯
+MOV S$图鉴装备名称4 明王戒指
+MOV S$图鉴物品名称 明王头盔
+MOV S$图鉴物品LOOKS 633
+MOV S$变量表表名 MW_TZ
+MOV S$变量表字段 MWTKDJ
+MOV N$图鉴装备星级1 $TABLE(MW_TZ).MWTKDJ
+MOV N$图鉴装备星级2 $TABLE(MW_TZ).MWXLDJ
+MOV N$图鉴装备星级3 $TABLE(MW_TZ).MWSZDJ
+MOV N$图鉴装备星级4 $TABLE(MW_TZ).MWJZDJ
+MOV N$图鉴装备星级5 $TABLE(MW_TZ).MWTKDJ
+GOTO @明王头盔&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+[@明王头盔]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 2
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 MW_TZ
+MOV S$变量表字段 MWTKDJ
+MOV S$图鉴物品名称 明王头盔
+MOV S$图鉴物品LOOKS 633
+MOV N$图鉴装备星级1 $TABLE(MW_TZ).MWTKDJ
+MOV N$图鉴装备星级2 $TABLE(MW_TZ).MWXLDJ
+MOV N$图鉴装备星级3 $TABLE(MW_TZ).MWSZDJ
+MOV N$图鉴装备星级4 $TABLE(MW_TZ).MWJZDJ
+MOV N$图鉴装备星级5 $TABLE(MW_TZ).MWTKDJ
+#IF
+SMALL $TABLE(MW_TZ).MWTKDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@明王项链]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 2
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 MW_TZ
+MOV S$变量表字段 MWXLDJ
+MOV S$图鉴物品名称 明王项链
+MOV S$图鉴物品LOOKS 634
+MOV N$图鉴装备星级1 $TABLE(MW_TZ).MWTKDJ
+MOV N$图鉴装备星级2 $TABLE(MW_TZ).MWXLDJ
+MOV N$图鉴装备星级3 $TABLE(MW_TZ).MWSZDJ
+MOV N$图鉴装备星级4 $TABLE(MW_TZ).MWJZDJ
+MOV N$图鉴装备星级5 $TABLE(MW_TZ).MWXLDJ
+#IF
+SMALL $TABLE(MW_TZ).MWXLDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+[@明王手镯]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 2
+MOV S$图鉴单间按钮4 1
+;-------------------------------------等级变量
+MOV S$变量表表名 MW_TZ
+MOV S$变量表字段 MWSZDJ
+MOV S$图鉴物品名称 明王手镯
+MOV S$图鉴物品LOOKS 635
+MOV N$图鉴装备星级1 $TABLE(MW_TZ).MWTKDJ
+MOV N$图鉴装备星级2 $TABLE(MW_TZ).MWXLDJ
+MOV N$图鉴装备星级3 $TABLE(MW_TZ).MWSZDJ
+MOV N$图鉴装备星级4 $TABLE(MW_TZ).MWJZDJ
+MOV N$图鉴装备星级5 $TABLE(MW_TZ).MWSZDJ
+#IF
+SMALL $TABLE(MW_TZ).MWSZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+[@明王戒指]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间按钮1 1
+MOV S$图鉴单间按钮2 1
+MOV S$图鉴单间按钮3 1
+MOV S$图鉴单间按钮4 2
+;-------------------------------------等级变量
+MOV S$变量表表名 MW_TZ
+MOV S$变量表字段 MWJZDJ
+MOV S$图鉴物品名称 明王戒指
+MOV S$图鉴物品LOOKS 636
+MOV N$图鉴装备星级1 $TABLE(MW_TZ).MWTKDJ
+MOV N$图鉴装备星级2 $TABLE(MW_TZ).MWXLDJ
+MOV N$图鉴装备星级3 $TABLE(MW_TZ).MWSZDJ
+MOV N$图鉴装备星级4 $TABLE(MW_TZ).MWJZDJ
+MOV N$图鉴装备星级5 $TABLE(MW_TZ).MWJZDJ
+#IF
+SMALL $TABLE(MW_TZ).MWJZDJ 1
+#ACT
+MOV S$激活升级 激　活
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+#ELSEACT
+MOV S$激活升级 升　级
+GOTO @图鉴显示面板&图鉴返回面板=<$STR(S$图鉴物品名称)>
+BREAK
+
+
+
+
+
+
+[@首领图鉴]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧1列按钮
+MOV S$图鉴分类按钮1 6
+MOV S$图鉴分类按钮2 5
+MOV S$图鉴分类按钮3 6
+MOV S$图鉴分类按钮4 6
+
+#IF
+TRUE
+#ACT
+GOTO @一大陆
+BREAK
+
+
+[@首领图鉴展示]
+#IF
+TRUE
+#ACT
+GOTO @图鉴面板红点
+GOTO @首领图鉴红点
+#IF
+LARGE <$TABLE(SL_TJ).TJ1DJ> 0
+SMALL <$TABLE(SL_TJ).TJ1DJ> 10
+#ACT
+MOV N$图鉴等级十位1 0
+COPYTEXT <$TABLE(SL_TJ).TJ1DJ> 1 1 N$图鉴等级个位1
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ1DJ> 9
+SMALL <$TABLE(SL_TJ).TJ1DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ1DJ> 1 1 N$图鉴等级十位1
+COPYTEXT <$TABLE(SL_TJ).TJ1DJ> 2 1 N$图鉴等级个位1
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ2DJ> 0
+SMALL <$TABLE(SL_TJ).TJ2DJ> 10
+#ACT
+MOV N$图鉴等级十位2 0
+COPYTEXT <$TABLE(SL_TJ).TJ2DJ> 1 1 N$图鉴等级个位2
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ2DJ> 9
+SMALL <$TABLE(SL_TJ).TJ2DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ2DJ> 1 1 N$图鉴等级十位2
+COPYTEXT <$TABLE(SL_TJ).TJ2DJ> 2 1 N$图鉴等级个位2
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ3DJ> 0
+SMALL <$TABLE(SL_TJ).TJ3DJ> 10
+#ACT
+MOV N$图鉴等级十位3 0
+COPYTEXT <$TABLE(SL_TJ).TJ3DJ> 1 1 N$图鉴等级个位3
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ3DJ> 9
+SMALL <$TABLE(SL_TJ).TJ3DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ3DJ> 1 1 N$图鉴等级十位3
+COPYTEXT <$TABLE(SL_TJ).TJ3DJ> 2 1 N$图鉴等级个位3
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ4DJ> 0
+SMALL <$TABLE(SL_TJ).TJ4DJ> 10
+#ACT
+MOV N$图鉴等级十位4 0
+COPYTEXT <$TABLE(SL_TJ).TJ4DJ> 1 1 N$图鉴等级个位4
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ4DJ> 9
+SMALL <$TABLE(SL_TJ).TJ4DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ4DJ> 1 1 N$图鉴等级十位4
+COPYTEXT <$TABLE(SL_TJ).TJ4DJ> 2 1 N$图鉴等级个位4
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ5DJ> 0
+SMALL <$TABLE(SL_TJ).TJ5DJ> 10
+#ACT
+MOV N$图鉴等级十位5 0
+COPYTEXT <$TABLE(SL_TJ).TJ5DJ> 1 1 N$图鉴等级个位5
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ5DJ> 9
+SMALL <$TABLE(SL_TJ).TJ5DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ5DJ> 1 1 N$图鉴等级十位5
+COPYTEXT <$TABLE(SL_TJ).TJ5DJ> 2 1 N$图鉴等级个位5
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ6DJ> 0
+SMALL <$TABLE(SL_TJ).TJ6DJ> 10
+#ACT
+MOV N$图鉴等级十位6 0
+COPYTEXT <$TABLE(SL_TJ).TJ6DJ> 1 1 N$图鉴等级个位6
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ6DJ> 9
+SMALL <$TABLE(SL_TJ).TJ6DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ6DJ> 1 1 N$图鉴等级十位6
+COPYTEXT <$TABLE(SL_TJ).TJ6DJ> 2 1 N$图鉴等级个位6
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ7DJ> 0
+SMALL <$TABLE(SL_TJ).TJ7DJ> 10
+#ACT
+MOV N$图鉴等级十位7 0
+COPYTEXT <$TABLE(SL_TJ).TJ8DJ> 1 1 N$图鉴等级个位7
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ7DJ> 9
+SMALL <$TABLE(SL_TJ).TJ7DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ7DJ> 1 1 N$图鉴等级十位7
+COPYTEXT <$TABLE(SL_TJ).TJ7DJ> 2 1 N$图鉴等级个位7
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ8DJ> 0
+SMALL <$TABLE(SL_TJ).TJ8DJ> 10
+#ACT
+MOV N$图鉴等级十位8 0
+COPYTEXT <$TABLE(SL_TJ).TJ9DJ> 1 1 N$图鉴等级个位8
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ8DJ> 9
+SMALL <$TABLE(SL_TJ).TJ8DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ8DJ> 1 1 N$图鉴等级十位8
+COPYTEXT <$TABLE(SL_TJ).TJ8DJ> 2 1 N$图鉴等级个位8
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ9DJ> 0
+SMALL <$TABLE(SL_TJ).TJ9DJ> 10
+#ACT
+MOV N$图鉴等级十位9 0
+COPYTEXT <$TABLE(SL_TJ).TJ9DJ> 1 1 N$图鉴等级个位9
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ9DJ> 9
+SMALL <$TABLE(SL_TJ).TJ9DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ9DJ> 1 1 N$图鉴等级十位9
+COPYTEXT <$TABLE(SL_TJ).TJ9DJ> 2 1 N$图鉴等级个位9
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ10DJ> 0
+SMALL <$TABLE(SL_TJ).TJ10DJ> 10
+#ACT
+MOV N$图鉴等级十位10 0
+COPYTEXT <$TABLE(SL_TJ).TJ10DJ> 1 1 N$图鉴等级个位10
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ10DJ> 9
+SMALL <$TABLE(SL_TJ).TJ10DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ10DJ> 1 1 N$图鉴等级十位10
+COPYTEXT <$TABLE(SL_TJ).TJ10DJ> 2 1 N$图鉴等级个位10
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ11DJ> 0
+SMALL <$TABLE(SL_TJ).TJ11DJ> 10
+#ACT
+MOV N$图鉴等级十位11 0
+COPYTEXT <$TABLE(SL_TJ).TJ11DJ> 1 1 N$图鉴等级个位11
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ11DJ> 9
+SMALL <$TABLE(SL_TJ).TJ11DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ11DJ> 1 1 N$图鉴等级十位11
+COPYTEXT <$TABLE(SL_TJ).TJ11DJ> 2 1 N$图鉴等级个位11
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ12DJ> 0
+SMALL <$TABLE(SL_TJ).TJ12DJ> 10
+#ACT
+MOV N$图鉴等级十位12 0
+COPYTEXT <$TABLE(SL_TJ).TJ12DJ> 1 1 N$图鉴等级个位12
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ12DJ> 9
+SMALL <$TABLE(SL_TJ).TJ12DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ12DJ> 1 1 N$图鉴等级十位12
+COPYTEXT <$TABLE(SL_TJ).TJ12DJ> 2 1 N$图鉴等级个位12
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ13DJ> 0
+SMALL <$TABLE(SL_TJ).TJ13DJ> 10
+#ACT
+MOV N$图鉴等级十位13 0
+COPYTEXT <$TABLE(SL_TJ).TJ13DJ> 1 1 N$图鉴等级个位13
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ13DJ> 9
+SMALL <$TABLE(SL_TJ).TJ13DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ13DJ> 1 1 N$图鉴等级十位13
+COPYTEXT <$TABLE(SL_TJ).TJ13DJ> 2 1 N$图鉴等级个位13
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ14DJ> 0
+SMALL <$TABLE(SL_TJ).TJ14DJ> 10
+#ACT
+MOV N$图鉴等级十位14 0
+COPYTEXT <$TABLE(SL_TJ).TJ14DJ> 1 1 N$图鉴等级个位14
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ14DJ> 9
+SMALL <$TABLE(SL_TJ).TJ14DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ14DJ> 1 1 N$图鉴等级十位14
+COPYTEXT <$TABLE(SL_TJ).TJ14DJ> 2 1 N$图鉴等级个位14
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ15DJ> 0
+SMALL <$TABLE(SL_TJ).TJ15DJ> 10
+#ACT
+MOV N$图鉴等级十位15 0
+COPYTEXT <$TABLE(SL_TJ).TJ15DJ> 1 1 N$图鉴等级个位15
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ15DJ> 9
+SMALL <$TABLE(SL_TJ).TJ15DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ15DJ> 1 1 N$图鉴等级十位15
+COPYTEXT <$TABLE(SL_TJ).TJ15DJ> 2 1 N$图鉴等级个位15
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ16DJ> 0
+SMALL <$TABLE(SL_TJ).TJ16DJ> 10
+#ACT
+MOV N$图鉴等级十位16 0
+COPYTEXT <$TABLE(SL_TJ).TJ16DJ> 1 1 N$图鉴等级个位16
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ16DJ> 9
+SMALL <$TABLE(SL_TJ).TJ16DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ16DJ> 1 1 N$图鉴等级十位16
+COPYTEXT <$TABLE(SL_TJ).TJ16DJ> 2 1 N$图鉴等级个位16
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ17DJ> 0
+SMALL <$TABLE(SL_TJ).TJ17DJ> 10
+#ACT
+MOV N$图鉴等级十位17 0
+COPYTEXT <$TABLE(SL_TJ).TJ17DJ> 1 1 N$图鉴等级个位17
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ17DJ> 9
+SMALL <$TABLE(SL_TJ).TJ17DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ17DJ> 1 1 N$图鉴等级十位17
+COPYTEXT <$TABLE(SL_TJ).TJ17DJ> 2 1 N$图鉴等级个位17
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ18DJ> 0
+SMALL <$TABLE(SL_TJ).TJ18DJ> 10
+#ACT
+MOV N$图鉴等级十位18 0
+COPYTEXT <$TABLE(SL_TJ).TJ18DJ> 1 1 N$图鉴等级个位18
+
+#IF
+LARGE <$TABLE(SL_TJ).TJ18DJ> 9
+SMALL <$TABLE(SL_TJ).TJ18DJ> 71
+#ACT
+COPYTEXT <$TABLE(SL_TJ).TJ18DJ> 1 1 N$图鉴等级十位18
+COPYTEXT <$TABLE(SL_TJ).TJ18DJ> 2 1 N$图鉴等级个位18
+
+#IF
+TRUE
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴抽取 <$TABLE(SL_TJ).<$STR(S$首领图鉴等级缩写)>>
+SPLIT $STR(S$首领图鉴抽取) | N$首领图鉴分割
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴抽取1 <$INC^<$TABLE(SL_TJ).<$STR(S$首领图鉴等级缩写)>>^1>
+SPLIT $STR(S$首领图鉴抽取1) | N$首领图鉴分割1
+
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ1DJ> 0
+#ACT
+MOV S$首领图鉴组件1 <Img|id=zz1-1|children={zz1-2,zz1-5,zz1-6,zz1-7,zz1-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件1 <Img|id=zz1-2|children={zz1-3,zz1-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件1 <Img|id=zz1-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位1)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件1 <Img|id=zz1-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位1)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件1 <Effect|id=zz1-5|x=-25.0|y=32.0|effectid=69|speed=1|sex=0|effecttype=2|scale=1|dir=4|act=0>
+INC S$首领图鉴组件1 <Img|id=zz1-6|x=54.0|y=215.0|img=private/vip/vipditu/a1.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件1 <Img|id=zz1-1|children={zz1-5,zz1-6,zz1-7,zz1-8,zz1-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件1 <Img|id=zz1-2|children={zz1-3,zz1-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件1 <Img|id=zz1-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件1 <Img|id=zz1-4|x=90.0|y=27.0|esc=0|img=private/tujian/100.png|scale=1>
+INC S$首领图鉴组件1 <Img|id=zz1-5|x=-58.0|y=32.0|img=private/vip/vipditu/1.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件1 <Img|id=zz1-6|x=54.0|y=215.0|img=private/vip/vipditu/a1.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件1 <Img|id=zz1-7|x=39.0|y=253.0|img=private/tujian/10jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ2DJ> 0
+#ACT
+MOV S$首领图鉴组件2 <Img|id=zz2-1|children={zz2-2,zz2-5,zz2-6,zz2-7,zz2-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件2 <Img|id=zz2-2|children={zz2-3,zz2-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件2 <Img|id=zz2-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位2)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件2 <Img|id=zz2-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位2)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件2 <Effect|id=zz2-5|x=15.0|y=92.0|effectid=77|speed=1|sex=0|effecttype=2|scale=0.7|dir=4|act=0>
+INC S$首领图鉴组件2 <Img|id=zz2-6|x=54.0|y=215.0|img=private/vip/vipditu/a2.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件2 <Img|id=zz2-1|children={zz2-5,zz2-6,zz2-7,zz2-8,zz2-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件2 <Img|id=zz2-2|children={zz2-3,zz2-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件2 <Img|id=zz2-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件2 <Img|id=zz2-4|x=90.0|y=27.0|esc=0|img=private/tujian/200.png|scale=1>
+INC S$首领图鉴组件2 <Img|id=zz2-5|x=-58.0|y=32.0|img=private/vip/vipditu/2.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件2 <Img|id=zz2-6|x=54.0|y=215.0|img=private/vip/vipditu/a2.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件2 <Img|id=zz2-7|x=39.0|y=253.0|img=private/tujian/20jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ3DJ> 0
+#ACT
+MOV S$首领图鉴组件3 <Img|id=zz3-1|children={zz3-2,zz3-5,zz3-6,zz3-7,zz3-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件3 <Img|id=zz3-2|children={zz3-3,zz3-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件3 <Img|id=zz3-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位3)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件3 <Img|id=zz3-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位3)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件3 <Effect|id=zz3-5|x=-15.0|y=75.0|effectid=618|speed=1|sex=0|effecttype=2|scale=0.9|dir=4|act=0>
+INC S$首领图鉴组件3 <Img|id=zz3-6|x=54.0|y=215.0|img=private/vip/vipditu/a3.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件3 <Img|id=zz3-1|children={zz3-5,zz3-6,zz3-7,zz3-8,zz3-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件3 <Img|id=zz3-2|children={zz3-3,zz3-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件3 <Img|id=zz3-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件3 <Img|id=zz3-4|x=90.0|y=27.0|esc=0|img=private/tujian/200.png|scale=1>
+INC S$首领图鉴组件3 <Img|id=zz3-5|x=-50.0|y=32.0|img=private/vip/vipditu/3.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件3 <Img|id=zz3-6|x=54.0|y=215.0|img=private/vip/vipditu/a3.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件3 <Img|id=zz3-7|x=39.0|y=253.0|img=private/tujian/20jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ4DJ> 0
+#ACT
+MOV S$首领图鉴组件4 <Img|id=zz4-1|children={zz4-2,zz4-5,zz4-6,zz4-7,zz4-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件4 <Img|id=zz4-2|children={zz4-3,zz4-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件4 <Img|id=zz4-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位4)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件4 <Img|id=zz4-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位4)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件4 <Effect|id=zz4-5|x=0.0|y=80.0|effectid=229|speed=1|sex=0|effecttype=2|scale=0.8|dir=4|act=0>
+INC S$首领图鉴组件4 <Img|id=zz4-6|x=54.0|y=215.0|img=private/vip/vipditu/a4.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件4 <Img|id=zz4-1|children={zz4-5,zz4-6,zz4-7,zz4-8,zz4-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件4 <Img|id=zz4-2|children={zz4-3,zz4-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件4 <Img|id=zz4-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件4 <Img|id=zz4-4|x=90.0|y=27.0|esc=0|img=private/tujian/300.png|scale=1>
+INC S$首领图鉴组件4 <Img|id=zz4-5|x=-58.0|y=32.0|img=private/vip/vipditu/4.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件4 <Img|id=zz4-6|x=54.0|y=215.0|img=private/vip/vipditu/a4.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件4 <Img|id=zz4-7|x=39.0|y=253.0|img=private/tujian/30jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ5DJ> 0
+#ACT
+MOV S$首领图鉴组件5 <Img|id=zz5-1|children={zz5-2,zz5-5,zz5-6,zz5-7,zz5-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件5 <Img|id=zz5-2|children={zz5-3,zz5-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件5 <Img|id=zz5-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位5)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件5 <Img|id=zz5-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位5)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件5 <Effect|id=zz5-5|x=15.0|y=86.0|effectid=199|speed=1|sex=0|effecttype=2|scale=0.7|dir=4|act=0>
+INC S$首领图鉴组件5 <Img|id=zz5-6|x=54.0|y=215.0|img=private/vip/vipditu/a5.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件5 <Img|id=zz5-1|children={zz5-5,zz5-6,zz5-7,zz5-8,zz5-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件5 <Img|id=zz5-2|children={zz5-3,zz5-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件5 <Img|id=zz5-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件5 <Img|id=zz5-4|x=90.0|y=27.0|esc=0|img=private/tujian/400.png|scale=1>
+INC S$首领图鉴组件5 <Img|id=zz5-5|x=-48.0|y=32.0|img=private/vip/vipditu/5.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件5 <Img|id=zz5-6|x=54.0|y=215.0|img=private/vip/vipditu/a5.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件5 <Img|id=zz5-7|x=39.0|y=253.0|img=private/tujian/40jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ6DJ> 0
+#ACT
+MOV S$首领图鉴组件6 <Img|id=zz6-1|children={zz6-2,zz6-5,zz6-6,zz6-7,zz6-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件6 <Img|id=zz6-2|children={zz6-3,zz6-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件6 <Img|id=zz6-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位6)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件6 <Img|id=zz6-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位6)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件6 <Effect|id=zz6-5|x=-25.0|y=52.0|effectid=221|speed=1|sex=0|effecttype=2|scale=1|dir=4|act=0>
+INC S$首领图鉴组件6 <Img|id=zz6-6|x=54.0|y=215.0|img=private/vip/vipditu/a6.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件6 <Img|id=zz6-1|children={zz6-5,zz6-6,zz6-7,zz6-8,zz6-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件6 <Img|id=zz6-2|children={zz6-3,zz6-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件6 <Img|id=zz6-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件6 <Img|id=zz6-4|x=90.0|y=27.0|esc=0|img=private/tujian/500.png|scale=1>
+INC S$首领图鉴组件6 <Img|id=zz6-5|x=-55.0|y=30.0|img=private/vip/vipditu/6.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件6 <Img|id=zz6-6|x=54.0|y=215.0|img=private/vip/vipditu/a6.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件6 <Img|id=zz6-7|x=39.0|y=253.0|img=private/tujian/50jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ7DJ> 0
+#ACT
+MOV S$首领图鉴组件7 <Img|id=zz7-1|children={zz7-2,zz7-5,zz7-6,zz7-7,zz7-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件7 <Img|id=zz7-2|children={zz7-3,zz7-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件7 <Img|id=zz7-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位7)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件7 <Img|id=zz7-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位7)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件7 <Effect|id=zz7-5|x=0.0|y=90.0|effectid=544|speed=1|sex=0|effecttype=2|scale=0.8|dir=4|act=0>
+INC S$首领图鉴组件7 <Img|id=zz7-6|x=54.0|y=215.0|img=private/vip/vipditu/a7.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件7 <Img|id=zz7-1|children={zz7-5,zz7-6,zz7-7,zz7-8,zz7-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件7 <Img|id=zz7-2|children={zz7-3,zz7-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件7 <Img|id=zz7-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件7 <Img|id=zz7-4|x=90.0|y=27.0|esc=0|img=private/tujian/650.png|scale=1>
+INC S$首领图鉴组件7 <Img|id=zz7-5|x=-28.0|y=32.0|img=private/vip/vipditu/7.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件7 <Img|id=zz7-6|x=54.0|y=215.0|img=private/vip/vipditu/a7.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件7 <Img|id=zz7-7|x=39.0|y=253.0|img=private/tujian/65jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ8DJ> 0
+#ACT
+MOV S$首领图鉴组件8 <Img|id=zz8-1|children={zz8-2,zz8-5,zz8-6,zz8-7,zz8-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件8 <Img|id=zz8-2|children={zz8-3,zz8-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件8 <Img|id=zz8-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位8)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件8 <Img|id=zz8-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位8)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件8 <Effect|id=zz8-5|x=2.0|y=85.0|effectid=560|speed=1|sex=0|effecttype=2|scale=0.8|dir=4|act=0>
+INC S$首领图鉴组件8 <Img|id=zz8-6|x=54.0|y=215.0|img=private/vip/vipditu/a8.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件8 <Img|id=zz8-1|children={zz8-5,zz8-6,zz8-7,zz8-8,zz8-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件8 <Img|id=zz8-2|children={zz8-3,zz8-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件8 <Img|id=zz8-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件8 <Img|id=zz8-4|x=90.0|y=27.0|esc=0|img=private/tujian/800.png|scale=1>
+INC S$首领图鉴组件8 <Img|id=zz8-5|x=-53.0|y=32.0|img=private/vip/vipditu/8.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件8 <Img|id=zz8-6|x=54.0|y=215.0|img=private/vip/vipditu/a8.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件8 <Img|id=zz8-7|x=39.0|y=253.0|img=private/tujian/80jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ9DJ> 0
+#ACT
+MOV S$首领图鉴组件9 <Img|id=zz9-1|children={zz9-2,zz9-5,zz9-6,zz9-7,zz9-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件9 <Img|id=zz9-2|children={zz9-3,zz9-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件9 <Img|id=zz9-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位9)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件9 <Img|id=zz9-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位9)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件9 <Effect|id=zz9-5|x=22.0|y=60.0|effectid=897|speed=1|sex=0|effecttype=2|scale=0.65|dir=4|act=0>
+INC S$首领图鉴组件9 <Img|id=zz9-6|x=54.0|y=215.0|img=private/vip/vipditu/a9.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件9 <Img|id=zz9-1|children={zz9-5,zz9-6,zz9-7,zz9-8,zz9-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件9 <Img|id=zz9-2|children={zz9-3,zz9-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件9 <Img|id=zz9-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件9 <Img|id=zz9-4|x=90.0|y=27.0|esc=0|img=private/tujian/1000.png|scale=1>
+INC S$首领图鉴组件9 <Img|id=zz9-5|x=-50.0|y=32.0|img=private/vip/vipditu/9.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件9 <Img|id=zz9-6|x=54.0|y=215.0|img=private/vip/vipditu/a9.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件9 <Img|id=zz9-7|x=39.0|y=253.0|img=private/tujian/100jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ10DJ> 0
+#ACT
+MOV S$首领图鉴组件10 <Img|id=zz10-1|children={zz10-2,zz10-5,zz10-6,zz10-7,zz10-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件10 <Img|id=zz10-2|children={zz10-3,zz10-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件10 <Img|id=zz10-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位10)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件10 <Img|id=zz10-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位10)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件10 <Effect|id=zz10-5|x=10.0|y=65.0|effectid=776|speed=1|sex=0|effecttype=2|scale=0.75|dir=4|act=0>
+INC S$首领图鉴组件10 <Img|id=zz10-6|x=54.0|y=215.0|img=private/vip/vipditu/a10.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件10 <Img|id=zz10-1|children={zz10-5,zz10-6,zz10-7,zz10-8,zz10-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件10 <Img|id=zz10-2|children={zz10-3,zz10-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件10 <Img|id=zz10-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件10 <Img|id=zz10-4|x=90.0|y=27.0|esc=0|img=private/tujian/1000.png|scale=1>
+INC S$首领图鉴组件10 <Img|id=zz10-5|x=-48.0|y=32.0|img=private/vip/vipditu/10.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件10 <Img|id=zz10-6|x=54.0|y=215.0|img=private/vip/vipditu/a10.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件10 <Img|id=zz10-7|x=39.0|y=253.0|img=private/tujian/100jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ11DJ> 0
+#ACT
+MOV S$首领图鉴组件11 <Img|id=zz11-1|children={zz11-2,zz11-5,zz11-6,zz11-7,zz11-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件11 <Img|id=zz11-2|children={zz11-3,zz11-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件11 <Img|id=zz11-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位11)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件11 <Img|id=zz11-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位11)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件11 <Effect|id=zz11-5|x=-4.0|y=87.0|effectid=880|speed=1|sex=0|effecttype=2|scale=0.8|dir=4|act=0>
+INC S$首领图鉴组件11 <Img|id=zz11-6|x=54.0|y=215.0|img=private/vip/vipditu/a11.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件11 <Img|id=zz11-1|children={zz11-5,zz11-6,zz11-7,zz11-8,zz11-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件11 <Img|id=zz11-2|children={zz11-3,zz11-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件11 <Img|id=zz11-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件11 <Img|id=zz11-4|x=90.0|y=27.0|esc=0|img=private/tujian/1000.png|scale=1>
+INC S$首领图鉴组件11 <Img|id=zz11-5|x=-48.0|y=32.0|img=private/vip/vipditu/11.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件11 <Img|id=zz11-6|x=54.0|y=215.0|img=private/vip/vipditu/a11.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件11 <Img|id=zz11-7|x=39.0|y=253.0|img=private/tujian/100jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ12DJ> 0
+#ACT
+MOV S$首领图鉴组件12 <Img|id=zz12-1|children={zz12-2,zz12-5,zz12-6,zz12-7,zz12-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件12 <Img|id=zz12-2|children={zz12-3,zz12-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件12 <Img|id=zz12-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位12)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件12 <Img|id=zz12-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位12)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件12 <Effect|id=zz12-5|x=16.0|y=69.0|effectid=625|speed=1|sex=0|effecttype=2|scale=0.7|dir=4|act=0>
+INC S$首领图鉴组件12 <Img|id=zz12-6|x=54.0|y=215.0|img=private/vip/vipditu/a12.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件12 <Img|id=zz12-1|children={zz12-5,zz12-6,zz12-7,zz12-8,zz12-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件12 <Img|id=zz12-2|children={zz12-3,zz12-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件12 <Img|id=zz12-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件12 <Img|id=zz12-4|x=90.0|y=27.0|esc=0|img=private/tujian/1200.png|scale=1>
+INC S$首领图鉴组件12 <Img|id=zz12-5|x=-36.0|y=32.0|img=private/vip/vipditu/12.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件12 <Img|id=zz12-6|x=54.0|y=215.0|img=private/vip/vipditu/a12.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件12 <Img|id=zz12-7|x=39.0|y=253.0|img=private/tujian/120jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ13DJ> 0
+#ACT
+MOV S$首领图鉴组件13 <Img|id=zz13-1|children={zz13-2,zz13-5,zz13-6,zz13-7,zz13-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件13 <Img|id=zz13-2|children={zz13-3,zz13-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件13 <Img|id=zz13-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位13)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件13 <Img|id=zz13-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位13)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件13 <Effect|id=zz13-5|x=30.0|y=80.0|effectid=928|speed=1|sex=0|effecttype=2|scale=0.65|dir=4|act=0>
+INC S$首领图鉴组件13 <Img|id=zz13-6|x=54.0|y=215.0|img=private/vip/vipditu/a13.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件13 <Img|id=zz13-1|children={zz13-5,zz13-6,zz13-7,zz13-8,zz13-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件13 <Img|id=zz13-2|children={zz13-3,zz13-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件13 <Img|id=zz13-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件13 <Img|id=zz13-4|x=90.0|y=27.0|esc=0|img=private/tujian/1200.png|scale=1>
+INC S$首领图鉴组件13 <Img|id=zz13-5|x=-49.0|y=32.0|img=private/vip/vipditu/13.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件13 <Img|id=zz13-6|x=54.0|y=215.0|img=private/vip/vipditu/a13.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件13 <Img|id=zz13-7|x=39.0|y=253.0|img=private/tujian/120jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ14DJ> 0
+#ACT
+MOV S$首领图鉴组件14 <Img|id=zz14-1|children={zz14-2,zz14-5,zz14-6,zz14-7,zz14-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件14 <Img|id=zz14-2|children={zz14-3,zz14-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件14 <Img|id=zz14-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位14)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件14 <Img|id=zz14-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位14)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件14 <Effect|id=zz14-5|x=8.0|y=60.0|effectid=920|speed=1|sex=0|effecttype=2|scale=0.75|dir=4|act=0>
+INC S$首领图鉴组件14 <Img|id=zz14-6|x=54.0|y=215.0|img=private/vip/vipditu/a14.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件14 <Img|id=zz14-1|children={zz14-5,zz14-6,zz14-7,zz14-8,zz14-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件14 <Img|id=zz14-2|children={zz14-3,zz14-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件14 <Img|id=zz14-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件14 <Img|id=zz14-4|x=90.0|y=27.0|esc=0|img=private/tujian/1500.png|scale=1>
+INC S$首领图鉴组件14 <Img|id=zz14-5|x=-40.0|y=32.0|img=private/vip/vipditu/14.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件14 <Img|id=zz14-6|x=54.0|y=215.0|img=private/vip/vipditu/a14.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件14 <Img|id=zz14-7|x=39.0|y=253.0|img=private/tujian/150jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ15DJ> 0
+#ACT
+MOV S$首领图鉴组件15 <Img|id=zz15-1|children={zz15-2,zz15-5,zz15-6,zz15-7,zz15-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件15 <Img|id=zz15-2|children={zz15-3,zz15-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件15 <Img|id=zz15-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位15)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件15 <Img|id=zz15-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位15)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件15 <Effect|id=zz15-5|x=5.0|y=80.0|effectid=906|speed=1|sex=0|effecttype=2|scale=0.8|dir=4|act=0>
+INC S$首领图鉴组件15 <Img|id=zz15-6|x=54.0|y=215.0|img=private/vip/vipditu/a15.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件15 <Img|id=zz15-1|children={zz15-5,zz15-6,zz15-7,zz15-8,zz15-2,}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件15 <Img|id=zz15-2|children={zz15-3,zz15-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件15 <Img|id=zz15-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件15 <Img|id=zz15-4|x=90.0|y=27.0|esc=0|img=private/tujian/2000.png|scale=1>
+INC S$首领图鉴组件15 <Img|id=zz15-5|x=-43.0|y=32.0|img=private/vip/vipditu/15.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件15 <Img|id=zz15-6|x=54.0|y=215.0|img=private/vip/vipditu/a15.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件15 <Img|id=zz15-7|x=39.0|y=253.0|img=private/tujian/200jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ16DJ> 0
+#ACT
+MOV S$首领图鉴组件16 <Img|id=zz16-1|children={zz16-2,zz16-5,zz16-6,zz16-7,zz16-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件16 <Img|id=zz16-2|children={zz16-3,zz16-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件16 <Img|id=zz16-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位16)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件16 <Img|id=zz16-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位16)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件16 <Effect|id=zz16-5|x=0.0|y=65.0|effectid=852|speed=1|sex=0|effecttype=2|scale=0.8|dir=4|act=0>
+INC S$首领图鉴组件16 <Img|id=zz16-6|x=54.0|y=215.0|img=private/vip/vipditu/a16.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件16 <Img|id=zz16-1|children={zz16-5,zz16-6,zz16-7,zz16-8,zz16-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件16 <Img|id=zz16-2|children={zz16-3,zz16-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件16 <Img|id=zz16-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件16 <Img|id=zz16-4|x=90.0|y=27.0|esc=0|img=private/tujian/2000.png|scale=1>
+INC S$首领图鉴组件16 <Img|id=zz16-5|x=-48.0|y=32.0|img=private/vip/vipditu/16.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件16 <Img|id=zz16-6|x=54.0|y=215.0|img=private/vip/vipditu/a16.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件16 <Img|id=zz16-7|x=39.0|y=253.0|img=private/tujian/200jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ17DJ> 0
+#ACT
+MOV S$首领图鉴组件17 <Img|id=zz17-1|children={zz17-2,zz17-5,zz17-6,zz17-7,zz17-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件17 <Img|id=zz17-2|children={zz17-3,zz17-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件17 <Img|id=zz17-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位17)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件17 <Img|id=zz17-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位17)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件17 <Effect|id=zz17-5|x=25.0|y=90.0|effectid=777|speed=1|sex=0|effecttype=2|scale=0.65|dir=4|act=0>
+INC S$首领图鉴组件17 <Img|id=zz17-6|x=54.0|y=215.0|img=private/vip/vipditu/a17.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件17 <Img|id=zz17-1|children={zz17-5,zz17-6,zz17-7,zz17-8,zz17-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件17 <Img|id=zz17-2|children={zz17-3,zz17-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件17 <Img|id=zz17-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件17 <Img|id=zz17-4|x=90.0|y=27.0|esc=0|img=private/tujian/2000.png|scale=1>
+INC S$首领图鉴组件17 <Img|id=zz17-5|x=-45.0|y=32.0|img=private/vip/vipditu/17.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件17 <Img|id=zz17-6|x=54.0|y=215.0|img=private/vip/vipditu/a17.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件17 <Img|id=zz17-7|x=39.0|y=253.0|img=private/tujian/200jifen.png|scale=1|esc=0>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).TJ18DJ> 0
+#ACT
+MOV S$首领图鉴组件18 <Img|id=zz18-1|children={zz18-2,zz18-5,zz18-6,zz18-7,zz18-8}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1>
+INC S$首领图鉴组件18 <Img|id=zz18-2|children={zz18-3,zz18-4}|x=4.0|y=-4.0|scale=1|esc=0|img=private/tujian/tujianxiaoyuancai.png>
+INC S$首领图鉴组件18 <Img|id=zz18-3|x=11.0|y=22.0|img=public/shu<$STR(N$图鉴等级十位18)>.png|scale=0.5|esc=0>
+INC S$首领图鉴组件18 <Img|id=zz18-4|x=27.0|y=22.0|img=public/shu<$STR(N$图鉴等级个位18)>.png|esc=0|scale=0.5>
+INC S$首领图鉴组件18 <Effect|id=zz18-5|x=17.0|y=80.0|effectid=853|speed=1|sex=0|effecttype=2|scale=0.7|dir=4|act=0>
+INC S$首领图鉴组件18 <Img|id=zz18-6|x=54.0|y=215.0|img=private/vip/vipditu/a18.png|scale=1|esc=0>
+#ELSEACT
+MOV S$首领图鉴组件18 <Img|id=zz18-1|children={zz18-5,zz18-6,zz18-7,zz18-8,zz18-2}|x=2.0|y=2.0|width=206|img=private/tujian/tujiancaikuang.png|esc=0|scale=1|grey=1>
+INC S$首领图鉴组件18 <Img|id=zz18-2|children={zz18-3,zz18-4}|x=2.0|y=2.0|img=private/tujian/ss.png|esc=0|scale=1>
+INC S$首领图鉴组件18 <Img|id=zz18-3|x=40.0|y=27.0|scale=1|img=private/tujian/jiangli.png|esc=0>
+INC S$首领图鉴组件18 <Img|id=zz18-4|x=90.0|y=27.0|esc=0|img=private/tujian/3000.png|scale=1>
+INC S$首领图鉴组件18 <Img|id=zz18-5|x=-58.0|y=32.0|img=private/vip/vipditu/18.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件18 <Img|id=zz18-6|x=54.0|y=215.0|img=private/vip/vipditu/a18.png|scale=1|esc=0|grey=1>
+INC S$首领图鉴组件18 <Img|id=zz18-7|x=39.0|y=253.0|img=private/tujian/300jifen.png|scale=1|esc=0>
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$图鉴属性名字 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$图鉴属性名字 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$图鉴属性名字 道术
+
+#IF
+!SMALL $Money(9) $STR(N$首领图鉴分割1_5)
+#ACT
+MOV N$首领图鉴颜色 222
+#ELSEACT
+MOV N$首领图鉴颜色 249
+
+#IF
+TRUE
+#SAY
+<Img|id=1|children={3,zbtj4,zbtj5,zbtj6,7,sltj8,sltj9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}|x=105.0|y=-2.0|rotate=0|scale=1|bg=1|img=private/tujian/bosstujianmb.png|loadDelay=0|esc=0>
+<Button|id=3|x=882.0|y=52.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Button|id=zbtj4|children={4-1}|x=33.0|y=221.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮1)>.png|color=255|scale=1|nimg=public/btn_push_0<$STR(S$图鉴分类按钮1)>.png|size=18|mimg=public/btn_push_0<$STR(S$图鉴分类按钮1)>.png|link=@祈祷套&图鉴套装名字=祈祷>
+<Text|id=4-1|x=90.0|y=16.0|rotate=90|size=20|color=67|text=装\ \备>
+<Button|id=zbtj5|children={5-1}|x=33.0|y=327.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮2)>.png|color=255|scale=1|nimg=public/btn_push_0<$STR(S$图鉴分类按钮2)>.png|size=18|mimg=public/btn_push_0<$STR(S$图鉴分类按钮2)>.png|link=@首领图鉴>
+<Text|id=5-1|x=87.0|y=16.0|rotate=90|size=20|color=67|text=首\ \领>
+<Button|id=zbtj6|children={6-1}|x=33.0|y=437.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮3)>.png|color=255|scale=1|nimg=public/btn_push_0<$STR(S$图鉴分类按钮3)>.png|size=18|mimg=public/btn_push_0<$STR(S$图鉴分类按钮3)>.png|link=@拆解祈祷套&拆解物品1=拆解祈祷>
+<Text|id=6-1|x=87.0|y=16.0|rotate=90|size=20|color=67|text=拆\ \解>
+<Button|id=7|children={7-1}|x=33.0|y=543.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮4)>.png|color=255|scale=1|nimg=public/btn_push_0<$STR(S$图鉴分类按钮4)>.png|size=18|mimg=public/btn_push_0<$STR(S$图鉴分类按钮4)>.png|link=@备用图鉴>
+<Text|id=7-1|x=24.0|y=16.0|rotate=90|size=18|color=255|text=\ \>
+<Button|id=sltj8|x=97.0|y=108.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴首领按钮1)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴首领按钮1)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴首领按钮1)>.png|scale=1|color=67|size=20|text=一大陆|link=@一大陆>
+<Button|id=sltj9|x=97.0|y=163.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴首领按钮2)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴首领按钮2)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴首领按钮2)>.png|scale=1|color=67|size=20|text=二大陆|link=@二大陆>
+<RText|id=11|x=685.0|y=166.0|size=18|color=255|text=<<$STR(S$图鉴属性名字)>/FCOLOR=95>  <<$STR(N$首领图鉴分割_0)>-<$STR(N$首领图鉴分割_1)>/FCOLOR=255>>
+<RText|id=12|x=685.0|y=201.0|size=18|color=255|text=<防御/FCOLOR=95>  <<$STR(N$首领图鉴分割_2)>-<$STR(N$首领图鉴分割_3)>/FCOLOR=255>>
+<RText|id=13|x=685.0|y=236.0|size=18|color=255|text=<魔防/FCOLOR=95>  <<$STR(N$首领图鉴分割_2)>-<$STR(N$首领图鉴分割_3)>/FCOLOR=255>>
+<RText|id=14|x=685.0|y=271.0|size=18|color=255|text=<血量/FCOLOR=95>   <<$STR(N$首领图鉴分割_4)>/FCOLOR=255>>
+<Img|id=15|x=800.0|y=166.0|img=private/jishouhang/btn_szjm_01_3.png|esc=0|scale=1>
+<Img|id=16|x=800.0|y=201.0|img=private/jishouhang/btn_szjm_01_3.png|scale=1|esc=0>
+<Img|id=17|x=800.0|y=236.0|img=private/jishouhang/btn_szjm_01_3.png|scale=1|esc=0>
+<Img|id=18|x=800.0|y=271.0|img=private/jishouhang/btn_szjm_01_3.png|scale=1|esc=0>
+<RText|id=19|x=825.0|y=166.0|size=18|color=255|text=<  <$STR(N$首领图鉴分割1_0)>-<$STR(N$首领图鉴分割1_1)>/FCOLOR=222>>
+<RText|id=20|x=825.0|y=201.0|size=18|color=255|text=<  <$STR(N$首领图鉴分割1_2)>-<$STR(N$首领图鉴分割1_3)>/FCOLOR=222>>
+<RText|id=21|x=825.0|y=236.0|size=18|color=255|text=<  <$STR(N$首领图鉴分割1_2)>-<$STR(N$首领图鉴分割1_3)>/FCOLOR=222>>
+<RText|id=22|x=825.0|y=271.0|size=18|color=255|text=<   <$STR(N$首领图鉴分割1_4)>/FCOLOR=222>>
+<Button|id=24|x=721.0|y=498.0|scale=1|mimg=public/btn_push_11.png|nimg=public/btn_push_11.png|color=255|pimg=public/btn_push_11.png|size=18|text=升   级|link=@首领图鉴升级>
+<Frames|id=25|x=250.0|y=168.0|count=0|scale=1|speed=10|prefix=public/<$str(S$首领图鉴特效)>_|loop=1|suffix=.png>
+
+#IF
+!EQUAL <$TABLE(SL_TJ).<$STR(S$首领图鉴等级缩写)>> 0
+#SAY
+<RText|id=23|x=715.0|y=381.0|color=255|size=18|text=<BOSS积分：/FCOLOR=67><<$Money(9)>/<$STR(N$首领图鉴分割1_5)>/FCOLOR=<$STR(N$首领图鉴颜色)>>>
+#ELSESAY
+<RText|id=23|x=745.0|y=381.0|color=255|size=18|text=<图鉴未激活/FCOLOR=249>>
+
+#IF
+EQUAL $STR(N$首领图鉴大陆) 1
+#SAY
+<ListView|id=10|children={zz1,zz2,zz3,zz4,zz5,zz6,zz7,zz8,zz9,}|x=234.0|y=104.0|width=424|height=488|direction=1|colcount=2|colwidth=214|colheight=305|img=picpackage/3/9998.png>
+<Layout|id=zz1|children={zz1-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴1&首领图鉴等级缩写=TJ1DJ>
+<$STR(S$首领图鉴组件1)>
+<Img|id=zz1-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮1)>.png|scale=1|esc=0>
+
+<Layout|id=zz2|children={zz2-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴2&首领图鉴等级缩写=TJ2DJ>
+<$STR(S$首领图鉴组件2)>
+<Img|id=zz2-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮2)>.png|scale=1|esc=0>
+
+<Layout|id=zz3|children={zz3-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴3&首领图鉴等级缩写=TJ3DJ>
+<$STR(S$首领图鉴组件3)>
+<Img|id=zz3-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮3)>.png|scale=1|esc=0>
+
+<Layout|id=zz4|children={zz4-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴4&首领图鉴等级缩写=TJ4DJ>
+<$STR(S$首领图鉴组件4)>
+<Img|id=zz4-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮4)>.png|scale=1|esc=0>
+
+<Layout|id=zz5|children={zz5-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴5&首领图鉴等级缩写=TJ5DJ>
+<$STR(S$首领图鉴组件5)>
+<Img|id=zz5-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮5)>.png|scale=1|esc=0>
+
+<Layout|id=zz6|children={zz6-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴6&首领图鉴等级缩写=TJ6DJ>
+<$STR(S$首领图鉴组件6)>
+<Img|id=zz6-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮6)>.png|scale=1|esc=0>
+
+<Layout|id=zz7|children={zz7-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴7&首领图鉴等级缩写=TJ7DJ>
+<$STR(S$首领图鉴组件7)>
+<Img|id=zz7-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮7)>.png|scale=1|esc=0>
+
+<Layout|id=zz8|children={zz8-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴8&首领图鉴等级缩写=TJ8DJ>
+<$STR(S$首领图鉴组件8)>
+<Img|id=zz8-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮8)>.png|scale=1|esc=0>
+
+<Layout|id=zz9|children={zz9-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴9&首领图鉴等级缩写=TJ9DJ>
+<$STR(S$首领图鉴组件9)>
+<Img|id=zz9-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮9)>.png|scale=1|esc=0>
+
+
+#IF
+EQUAL $STR(N$首领图鉴大陆) 2
+#SAY
+<ListView|id=10|children={zz10,zz11,zz12,zz13,zz14,zz15,zz16,zz17,zz18,}|x=234.0|y=104.0|width=424|height=488|direction=1|colcount=2|colwidth=214|colheight=305|img=picpackage/3/9998.png>
+<Layout|id=zz10|children={zz10-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴10&首领图鉴等级缩写=TJ10DJ>
+<$STR(S$首领图鉴组件10)>
+<Img|id=zz10-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮10)>.png|scale=1|esc=0>
+
+<Layout|id=zz11|children={zz11-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴11&首领图鉴等级缩写=TJ11DJ>
+<$STR(S$首领图鉴组件11)>
+<Img|id=zz11-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮11)>.png|scale=1|esc=0>
+
+<Layout|id=zz12|children={zz12-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴12&首领图鉴等级缩写=TJ12DJ>
+<$STR(S$首领图鉴组件12)>
+<Img|id=zz12-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮12)>.png|scale=1|esc=0>
+
+<Layout|id=zz13|children={zz13-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴13&首领图鉴等级缩写=TJ13DJ>
+<$STR(S$首领图鉴组件13)>
+<Img|id=zz13-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮13)>.png|scale=1|esc=0>
+
+<Layout|id=zz14|children={zz14-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴14&首领图鉴等级缩写=TJ14DJ>
+<$STR(S$首领图鉴组件14)>
+<Img|id=zz14-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮14)>.png|scale=1|esc=0>
+
+<Layout|id=zz15|children={zz15-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴15&首领图鉴等级缩写=TJ15DJ>
+<$STR(S$首领图鉴组件15)>
+<Img|id=zz15-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮15)>.png|scale=1|esc=0>
+
+<Layout|id=zz16|children={zz16-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴16&首领图鉴等级缩写=TJ16DJ>
+<$STR(S$首领图鉴组件16)>
+<Img|id=zz16-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮16)>.png|scale=1|esc=0>
+
+<Layout|id=zz17|children={zz17-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴17&首领图鉴等级缩写=TJ17DJ>
+<$STR(S$首领图鉴组件17)>
+<Img|id=zz17-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮17)>.png|scale=1|esc=0>
+
+<Layout|id=zz18|children={zz18-1}|x=5.0|y=6.0|width=210|height=298|link=@图鉴18&首领图鉴等级缩写=TJ18DJ>
+<$STR(S$首领图鉴组件18)>
+<Img|id=zz18-8|x=-8.0|y=-10.0|width=223|height=313|rotate=0|img=private/tujian/frame_chapter_0<$STR(N$图鉴按钮18)>.png|scale=1|esc=0>
+
+#IF
+TRUE
+#ACT
+DelayGoto 1 @清理特效
+BREAK
+
+[@清理特效]
+#IF
+TRUE
+#ACT
+MOV S$首领图鉴特效 
+MOV S$装备图鉴特效 
+MOV S$拆解图鉴特效 
+BREAK
+
+[@一大陆]
+#IF
+TRUE
+#ACT
+MOV S$图鉴首领按钮1 1
+MOV S$图鉴首领按钮2 2
+MOV N$首领图鉴大陆 1
+GOTO @图鉴1&首领图鉴等级缩写=TJ1DJ
+BREAK
+[@二大陆]
+#IF
+TRUE
+#ACT
+MOV S$图鉴首领按钮1 2
+MOV S$图鉴首领按钮2 1
+MOV N$首领图鉴大陆 2
+GOTO @图鉴10&首领图鉴等级缩写=TJ10DJ
+BREAK
+
+[@图鉴1]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 1
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+
+[@图鉴2]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 1
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴3]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 1
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴4]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 1
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴5]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 1
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴6]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 1
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴7]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 1
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴8]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 1
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴9]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 1
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴10]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 1
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴11]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 1
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴12]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 1
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴13]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 1
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴14]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 1
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴15]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 1
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴16]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 1
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴17]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 1
+MOV N$图鉴按钮18 0
+GOTO @首领图鉴展示
+BREAK
+[@图鉴18]
+#IF
+TRUE
+#ACT
+MOV N$图鉴按钮1 0
+MOV N$图鉴按钮2 0
+MOV N$图鉴按钮3 0
+MOV N$图鉴按钮4 0
+MOV N$图鉴按钮5 0
+MOV N$图鉴按钮6 0
+MOV N$图鉴按钮7 0
+MOV N$图鉴按钮8 0
+MOV N$图鉴按钮9 0
+MOV N$图鉴按钮10 0
+MOV N$图鉴按钮11 0
+MOV N$图鉴按钮12 0
+MOV N$图鉴按钮13 0
+MOV N$图鉴按钮14 0
+MOV N$图鉴按钮15 0
+MOV N$图鉴按钮16 0
+MOV N$图鉴按钮17 0
+MOV N$图鉴按钮18 1
+GOTO @首领图鉴展示
+BREAK
+
+[@首领图鉴升级]
+
+#IF
+EQUAL <$TABLE(SL_TJ).<$STR(S$首领图鉴等级缩写)>> 0
+#ACT
+SENDMSG 19 请先激活图鉴
+BREAK
+
+#IF
+LARGE <$TABLE(SL_TJ).<$STR(S$首领图鉴等级缩写)>> 69
+#ACT
+SENDMSG 19 图鉴已满级
+BREAK
+
+#IF
+SMALL $Money(9) $STR(N$首领图鉴分割1_5)
+#ACT
+SENDMSG 19 所需积分不足
+BREAK
+#ELSEACT
+Money 9 - $STR(N$首领图鉴分割1_5)
+TABLE SL_TJ <$STR(S$首领图鉴等级缩写)> + 1
+MOV S$首领图鉴特效 sj
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴抽取 <$TABLE(SL_TJ).<$STR(S$首领图鉴等级缩写)>>
+SPLIT $STR(S$首领图鉴抽取) | N$首领图鉴分割
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴抽取1 <$INC^$TABLE(SL_TJ).<$STR(S$首领图鉴等级缩写)>^1>
+SPLIT $STR(S$首领图鉴抽取1) | N$首领图鉴分割1
+SENDMSG 19 图鉴升级成功
+GOTO @临时属性
+GOTO @首领图鉴展示
+GOTO @图鉴面板红点
+BREAK
+
+[@拆解图鉴]
+#IF
+TRUE
+#ACT
+GOTO @图鉴面板红点
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称1)>).DURA> 0
+#ACT
+MOV N$分解红点1 1
+#ELSEACT
+MOV N$分解红点1 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称2)>).DURA> 0
+#ACT
+MOV N$分解红点2 1
+#ELSEACT
+MOV N$分解红点2 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称3)>).DURA> 0
+#ACT
+MOV N$分解红点3 1
+#ELSEACT
+MOV N$分解红点3 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称4)>).DURA> 0
+#ACT
+MOV N$分解红点4 1
+#ELSEACT
+MOV N$分解红点4 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称5)>).DURA> 0
+#ACT
+MOV N$分解红点5 1
+#ELSEACT
+MOV N$分解红点5 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称6)>).DURA> 0
+#ACT
+MOV N$分解红点6 1
+#ELSEACT
+MOV N$分解红点6 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称7)>).DURA> 0
+#ACT
+MOV N$分解红点7 1
+#ELSEACT
+MOV N$分解红点7 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称8)>).DURA> 0
+#ACT
+MOV N$分解红点8 1
+#ELSEACT
+MOV N$分解红点8 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称9)>).DURA> 0
+#ACT
+MOV N$分解红点9 1
+#ELSEACT
+MOV N$分解红点9 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称10)>).DURA> 0
+#ACT
+MOV N$分解红点10 1
+#ELSEACT
+MOV N$分解红点10 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称11)>).DURA> 0
+#ACT
+MOV N$分解红点11 1
+#ELSEACT
+MOV N$分解红点11 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称12)>).DURA> 0
+#ACT
+MOV N$分解红点12 1
+#ELSEACT
+MOV N$分解红点12 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称13)>).DURA> 0
+#ACT
+MOV N$分解红点13 1
+#ELSEACT
+MOV N$分解红点13 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称14)>).DURA> 0
+#ACT
+MOV N$分解红点14 1
+#ELSEACT
+MOV N$分解红点14 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称15)>).DURA> 0
+#ACT
+MOV N$分解红点15 1
+#ELSEACT
+MOV N$分解红点15 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称16)>).DURA> 0
+#ACT
+MOV N$分解红点16 1
+#ELSEACT
+MOV N$分解红点16 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称17)>).DURA> 0
+#ACT
+MOV N$分解红点17 1
+#ELSEACT
+MOV N$分解红点17 0
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解装备名称18)>).DURA> 0
+#ACT
+MOV N$分解红点18 1
+#ELSEACT
+MOV N$分解红点18 0
+
+#IF
+TRUE
+#SAY
+<Img|id=1|children={2,3,zbtj4,zbtj5,zbtj6,7,cjtj8,cjtj9,cjtj10,cjtj11,cjtj12,cjtj13,cjtj14,18,19,20,22,21}|x=105.0|y=-2.0|rotate=0|esc=0|bg=1|img=private/tujian/zhuangbeitujianmb.png|loadDelay=0|scale=1>
+<Img|id=2|x=91.0|y=94.0|img=private/tujian/tujianfenjiemb.png|esc=0|scale=1>
+<Button|id=3|x=882.0|y=52.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Button|id=zbtj4|children={4-1}|x=33.0|y=221.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮1)>.png|mimg=public/btn_push_0<$STR(S$图鉴分类按钮1)>.png|nimg=public/btn_push_0<$STR(S$图鉴分类按钮1)>.png|color=255|size=18|scale=1|link=@祈祷套&图鉴套装名字=祈祷>
+<Text|id=4-1|x=90.0|y=16.0|rotate=90|size=20|color=67|text=装\ \备>
+<Button|id=zbtj5|children={5-1}|x=33.0|y=327.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮2)>.png|mimg=public/btn_push_0<$STR(S$图鉴分类按钮2)>.png|nimg=public/btn_push_0<$STR(S$图鉴分类按钮2)>.png|color=255|size=18|scale=1|link=@首领图鉴>
+<Text|id=5-1|x=87.0|y=16.0|rotate=90|size=20|color=67|text=首\ \领>
+<Button|id=zbtj6|children={6-1}|x=33.0|y=437.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮3)>.png|mimg=public/btn_push_0<$STR(S$图鉴分类按钮3)>.png|nimg=public/btn_push_0<$STR(S$图鉴分类按钮3)>.png|color=255|size=18|scale=1|link=@拆解祈祷套&拆解物品1=拆解祈祷>
+<Text|id=6-1|x=87.0|y=16.0|rotate=90|size=20|color=67|text=拆\ \解>
+<Button|id=7|children={7-1}|x=33.0|y=543.0|rotate=270|pimg=public/btn_push_0<$STR(S$图鉴分类按钮4)>.png|mimg=public/btn_push_0<$STR(S$图鉴分类按钮4)>.png|nimg=public/btn_push_0<$STR(S$图鉴分类按钮4)>.png|color=255|size=18|scale=1|link=@备用图鉴>
+<Text|id=7-1|x=24.0|y=16.0|rotate=90|size=18|color=255|text=\ \>
+<Button|id=cjtj8|x=97.0|y=108.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮1)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮1)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮1)>.png|scale=1|color=67|size=20|text=祈祷套|link=@拆解祈祷套&拆解物品1=拆解祈祷>
+<Button|id=cjtj9|x=97.0|y=163.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮2)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮2)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮2)>.png|scale=1|color=67|size=20|text=狂怒套|link=@拆解狂怒套&拆解物品1=拆解狂怒>
+<Button|id=cjtj10|x=97.0|y=217.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮3)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮3)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮3)>.png|scale=1|color=67|size=20|text=嗜血套|link=@拆解嗜血套&拆解物品1=拆解嗜血>
+<Button|id=cjtj11|x=97.0|y=273.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮4)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮4)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮4)>.png|scale=1|color=67|size=20|text=神秘套|link=@拆解神秘套&拆解物品1=拆解神秘>
+<Button|id=cjtj12|x=97.0|y=328.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮5)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮5)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮5)>.png|scale=1|color=67|size=20|text=明王套|link=@拆解明王套&拆解物品1=拆解明王>
+<Button|id=cjtj13|x=97.0|y=383.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮6)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮6)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮6)>.png|scale=1|color=67|size=20|text=神御套|link=@拆解神御套&拆解物品1=拆解神御>
+<Button|id=cjtj14|x=97.0|y=438.0|width=125|pimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮7)>.png|nimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮7)>.png|mimg=private/tujian/btn_tj_0<$STR(S$图鉴套装拆解按钮7)>.png|scale=1|color=67|size=20|text=BOSS图鉴|link=@拆解首领图鉴>
+#IF
+!EQUAL $STR(S$图鉴套装拆解按钮7) 1
+#SAY
+<ListView|id=22|children={cjzbtj14,cjzbtj15,cjzbtj16,cjzbtj17}|x=232.0|y=102.0|width=238|height=490|rotate=0>
+<Button|id=cjzbtj14|children={14-1,14-2,14-3}|x=234.0|y=109.0|width=234|height=70|color=67|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮1)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮1)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮1)>.png|scale=1|size=18|text=　　　<$STR(S$图鉴拆解装备名称1)>|link=@<$STR(S$拆解物品1)>头盔>
+<Img|id=14-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=14-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片1)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称1)>|showtips=1|bgtype=1>
+<Img|id=14-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点1)>.png|scale=1|esc=0>
+
+<Button|id=cjzbtj15|children={15-1,15-2,15-3}|x=234.0|y=179.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮2)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮2)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮2)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称2)>|link=@<$STR(S$拆解物品1)>项链>
+<Img|id=15-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=15-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片2)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称2)>|showtips=1|bgtype=1>
+<Img|id=15-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点2)>.png|scale=1|esc=0>
+<Button|id=cjzbtj16|children={16-1,16-2,16-3}|x=234.0|y=249.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮3)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮3)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮3)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称3)>|link=@<$STR(S$拆解物品1)>手镯>
+<Img|id=16-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=16-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片3)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称3)>|showtips=1|bgtype=1>
+<Img|id=16-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点3)>.png|scale=1|esc=0>
+<Button|id=cjzbtj17|children={17-1,17-2,17-3}|x=234.0|y=319.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮4)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮4)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮4)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称4)>|link=@<$STR(S$拆解物品1)>戒指>
+<Img|id=17-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=17-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片4)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称4)>|showtips=1|bgtype=1>
+<Img|id=17-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点4)>.png|scale=1|esc=0>
+#IF
+EQUAL $STR(S$图鉴套装拆解按钮7) 1
+#SAY
+<ListView|id=22|children={cjsltj14,cjsltj15,cjsltj16,cjsltj17,cjsltj23,cjsltj24,cjsltj25,cjsltj26,cjsltj27,cjsltj28,cjsltj29,cjsltj30,cjsltj31,cjsltj32,cjsltj33,cjsltj34,cjsltj35,cjsltj36}|x=232.0|y=102.0|width=238|height=490|rotate=0|img=picpackage/3/9998.png>
+<Button|id=cjsltj14|children={14-1,14-2,14-3}|x=234.0|y=109.0|width=234|height=70|color=67|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮1)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮1)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮1)>.png|scale=1|size=18|text=　　　<$STR(S$图鉴拆解装备名称1)>|link=@尸霸图鉴>
+<Img|id=14-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=14-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片1)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称1)>|showtips=1|bgtype=1>
+<Img|id=14-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点1)>.png|scale=1|esc=0>
+<Button|id=cjsltj15|children={15-1,15-2,15-3}|x=234.0|y=179.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮2)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮2)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮2)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称2)>|link=@机关巨兽图鉴>
+<Img|id=15-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=15-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片2)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称2)>|showtips=1|bgtype=1>
+<Img|id=15-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点2)>.png|scale=1|esc=0>
+<Button|id=cjsltj16|children={16-1,16-2,16-3}|x=234.0|y=249.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮3)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮3)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮3)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称3)>|link=@蛇妖王图鉴>
+<Img|id=16-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=16-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片3)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称3)>|showtips=1|bgtype=1>
+<Img|id=16-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点3)>.png|scale=1|esc=0>
+<Button|id=cjsltj17|children={17-1,17-2,17-3}|x=234.0|y=319.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮4)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮4)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮4)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称4)>|link=@逆魔之王图鉴>
+<Img|id=17-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=17-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片4)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称4)>|showtips=1|bgtype=1>
+<Img|id=17-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点4)>.png|scale=1|esc=0>
+<Button|id=cjsltj23|children={23-1,23-2,23-3}|x=234.0|y=109.0|width=234|height=70|color=67|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮5)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮5)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮5)>.png|scale=1|size=18|text=　　　<$STR(S$图鉴拆解装备名称5)>|link=@通天教主图鉴>
+<Img|id=23-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=23-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片5)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称5)>|showtips=1|bgtype=1>
+<Img|id=23-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点5)>.png|scale=1|esc=0>
+<Button|id=cjsltj24|children={24-1,24-2,24-3}|x=234.0|y=179.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮6)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮6)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮6)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称6)>|link=@铁血魔王图鉴>
+<Img|id=24-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=24-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片6)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称6)>|showtips=1|bgtype=1>
+<Img|id=24-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点6)>.png|scale=1|esc=0>
+<Button|id=cjsltj25|children={25-1,25-2,25-3}|x=234.0|y=249.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮7)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮7)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮7)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称7)>|link=@阿修罗神图鉴>
+<Img|id=25-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=25-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片7)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称7)>|showtips=1|bgtype=1>
+<Img|id=25-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点7)>.png|scale=1|esc=0>
+<Button|id=cjsltj26|children={26-1,26-2,26-3}|x=234.0|y=319.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮8)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮8)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮8)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称8)>|link=@赤阳魔尊图鉴>
+<Img|id=26-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=26-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片8)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称8)>|showtips=1|bgtype=1>
+<Img|id=26-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点8)>.png|scale=1|esc=0>
+
+<Button|id=cjsltj27|children={27-1,27-2,27-3}|x=234.0|y=109.0|width=234|height=70|color=67|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮9)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮9)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮9)>.png|scale=1|size=18|text=　　　<$STR(S$图鉴拆解装备名称9)>|link=@上古妖王图鉴>
+<Img|id=27-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=27-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片9)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称9)>|showtips=1|bgtype=1>
+<Img|id=27-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点9)>.png|scale=1|esc=0>
+<Button|id=cjsltj28|children={28-1,28-2,28-3}|x=234.0|y=179.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮10)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮10)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮10)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称10)>|link=@血域魔尊图鉴>
+<Img|id=28-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=28-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片10)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称10)>|showtips=1|bgtype=1>
+<Img|id=28-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点10)>.png|scale=1|esc=0>
+<Button|id=cjsltj29|children={29-1,29-2,29-3}|x=234.0|y=249.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮11)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮11)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮11)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称11)>|link=@巨木王者图鉴>
+<Img|id=29-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=29-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片11)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称11)>|showtips=1|bgtype=1>
+<Img|id=29-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点11)>.png|scale=1|esc=0>
+<Button|id=cjsltj30|children={30-1,30-2,30-3}|x=234.0|y=319.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮12)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮12)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮12)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称12)>|link=@魔域妖王图鉴>
+<Img|id=30-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=30-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片12)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称12)>|showtips=1|bgtype=1>
+<Img|id=30-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点12)>.png|scale=1|esc=0>
+
+<Button|id=cjsltj31|children={31-1,31-2,31-3}|x=234.0|y=109.0|width=234|height=70|color=67|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮13)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮13)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮13)>.png|scale=1|size=18|text=　　　<$STR(S$图鉴拆解装备名称13)>|link=@刑天真身图鉴>
+<Img|id=31-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=31-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片13)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称13)>|showtips=1|bgtype=1>
+<Img|id=31-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点13)>.png|scale=1|esc=0>
+<Button|id=cjsltj32|children={32-1,32-2,32-3}|x=234.0|y=179.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮14)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮14)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮14)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称14)>|link=@玄武真灵图鉴>
+<Img|id=32-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=32-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片14)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称14)>|showtips=1|bgtype=1>
+<Img|id=32-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点14)>.png|scale=1|esc=0>
+<Button|id=cjsltj33|children={33-1,33-2,33-3}|x=234.0|y=249.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮15)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮15)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮15)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称15)>|link=@无间之主图鉴>
+<Img|id=33-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=33-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片15)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称15)>|showtips=1|bgtype=1>
+<Img|id=33-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点15)>.png|scale=1|esc=0>
+<Button|id=cjsltj34|children={34-1,34-2,34-3}|x=234.0|y=319.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮16)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮16)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮16)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称16)>|link=@地底仙帝图鉴>
+<Img|id=34-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=34-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片16)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称16)>|showtips=1|bgtype=1>
+<Img|id=34-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点16)>.png|scale=1|esc=0>
+
+<Button|id=cjsltj35|children={35-1,35-2,35-3}|x=234.0|y=109.0|width=234|height=70|color=67|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮17)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮17)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮17)>.png|scale=1|size=18|text=　　　<$STR(S$图鉴拆解装备名称17)>|link=@绝毒蛛后图鉴>
+<Img|id=35-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=35-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片17)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称17)>|showtips=1|bgtype=1>
+<Img|id=35-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点17)>.png|scale=1|esc=0>
+<Button|id=cjsltj36|children={36-1,36-2,36-3}|x=234.0|y=179.0|width=234|height=70|mimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮18)>.png|nimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮18)>.png|pimg=private/tujian/1822<$STR(S$图鉴单间拆解按钮18)>.png|scale=1|color=67|size=18|text=　　　<$STR(S$图鉴拆解装备名称18)>|link=@虚空古神图鉴>
+<Img|id=36-1|x=9.0|y=4.0|img=public/clk.png|scale=1|esc=0>
+<ItemShow|id=36-2|x=6.0|y=2.0|itemid=<$STR(S$图鉴拆解装备图片18)>|itemcount=1|name=<$STR(S$图鉴拆解装备名称18)>|showtips=1|bgtype=1>
+<Img|id=36-3|x=212.0|y=2.0|img=public/icon_reddot_0<$STR(N$分解红点18)>.png|scale=1|esc=0>
+
+#IF
+TRUE
+#SAY
+<Button|id=20|x=643.0|y=542.0|scale=1|mimg=public/btn_push_10.png|nimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=67|size=18|text=分解|link=@确认分解图鉴>
+<$str(S$装备图鉴特效)>
+#IF
+!EQUAL N$拆解是否拥有 0
+#SAY
+<ItemShow|id=18|x=664.0|y=187.0|width=70|height=70|itemid=<$STR(S$图鉴拆解物品LOOK)>|itemcount=<$ITEMVALSUM(<$STR(S$图鉴拆解物品名称)>).DURA>|name=<$STR(S$图鉴拆解物品名称)>|showtips=1|bgtype=1>
+<ItemShow|id=19|x=664.0|y=412.0|width=70|height=70|itemid=<$STR(S$图鉴拆解材料ID)>|itemcount=<$MULT.<$ITEMVALSUM(<$STR(S$图鉴拆解物品名称)>).DURA>.$STR(N$材料分解价值)>|name=<$STR(S$图鉴拆解材料名称)>|showtips=1|bgtype=1>
+
+#IF
+TRUE
+#ACT
+DelayGoto 1 @清理特效
+BREAK
+
+
+[@确认分解图鉴]
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$图鉴拆解物品名称)>).DURA> 0
+#ACT
+Money <$STR(S$图鉴拆解材料名称)> + <$MULT.<$ITEMVALSUM(<$STR(S$图鉴拆解物品名称)>).DURA>.$STR(N$材料分解价值)>
+SENDMSG 19 分解成功获得图鉴碎片<$MULT.<$ITEMVALSUM(<$STR(S$图鉴拆解物品名称)>).DURA>.$STR(N$材料分解价值)>枚
+TAKE $STR(S$图鉴拆解物品名称) <$ITEMVALSUM(<$STR(S$图鉴拆解物品名称)>).DURA>
+MOV S$装备图鉴特效 <Frames|id=33|x=605.0|y=150.0|count=0|scale=1|speed=10|prefix=public/cjcg_|loop=1|suffix=.png>
+GOTO @拆解图鉴
+GOTO @图鉴面板红点
+BREAK
+#ELSEACT
+SENDMSG 19 <$STR(S$图鉴拆解物品名称)>不足
+BREAK
+
+[@拆解祈祷套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧1列按钮
+MOV S$图鉴分类按钮1 6
+MOV S$图鉴分类按钮2 6
+MOV S$图鉴分类按钮3 5
+MOV S$图鉴分类按钮4 6
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装拆解按钮1 1
+MOV S$图鉴套装拆解按钮2 2
+MOV S$图鉴套装拆解按钮3 2
+MOV S$图鉴套装拆解按钮4 2
+MOV S$图鉴套装拆解按钮5 2
+MOV S$图鉴套装拆解按钮6 2
+MOV S$图鉴套装拆解按钮7 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴拆解装备图片1 00146
+MOV S$图鉴拆解装备图片2 00143
+MOV S$图鉴拆解装备图片3 00145
+MOV S$图鉴拆解装备图片4 00142
+;-------------------------------------装备名称
+MOV S$图鉴拆解装备名称1 祈祷头盔图鉴
+MOV S$图鉴拆解装备名称2 祈祷项链图鉴
+MOV S$图鉴拆解装备名称3 祈祷手镯图鉴
+MOV S$图鉴拆解装备名称4 祈祷戒指图鉴
+MOV S$图鉴拆解物品名称 祈祷头盔图鉴
+MOV N$材料分解价值 10
+MOV S$图鉴拆解材料名称 图鉴碎片
+MOV S$图鉴拆解材料ID 25894
+GOTO @拆解图鉴
+BREAK
+
+
+[@拆解祈祷头盔]
+#IF
+!LARGE $ITEMCOUNT[祈祷头盔图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 2
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 祈祷头盔图鉴
+MOV S$图鉴拆解物品LOOK 00146
+GOTO @拆解图鉴
+BREAK
+
+[@拆解祈祷项链]
+#IF
+!LARGE $ITEMCOUNT[祈祷项链图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 2
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 祈祷项链图鉴
+MOV S$图鉴拆解物品LOOK 00143
+GOTO @拆解图鉴
+BREAK
+
+[@拆解祈祷手镯]
+#IF
+!LARGE $ITEMCOUNT[祈祷手镯图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 2
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 祈祷手镯图鉴
+MOV S$图鉴拆解物品LOOK 00145
+GOTO @拆解图鉴
+BREAK
+
+[@拆解祈祷戒指]
+#IF
+!LARGE $ITEMCOUNT[祈祷戒指图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 2
+MOV S$图鉴拆解物品名称 祈祷戒指图鉴
+MOV S$图鉴拆解物品LOOK 00143
+GOTO @拆解图鉴
+BREAK
+
+
+
+
+
+[@拆解狂怒套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧1列按钮
+MOV S$图鉴分类按钮1 6
+MOV S$图鉴分类按钮2 6
+MOV S$图鉴分类按钮3 5
+MOV S$图鉴分类按钮4 6
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装拆解按钮1 2
+MOV S$图鉴套装拆解按钮2 1
+MOV S$图鉴套装拆解按钮3 2
+MOV S$图鉴套装拆解按钮4 2
+MOV S$图鉴套装拆解按钮5 2
+MOV S$图鉴套装拆解按钮6 2
+MOV S$图鉴套装拆解按钮7 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴拆解装备图片1 00625
+MOV S$图鉴拆解装备图片2 00626
+MOV S$图鉴拆解装备图片3 00627
+MOV S$图鉴拆解装备图片4 00628
+;-------------------------------------装备名称
+MOV S$图鉴拆解装备名称1 狂怒头盔图鉴
+MOV S$图鉴拆解装备名称2 狂怒项链图鉴
+MOV S$图鉴拆解装备名称3 狂怒手镯图鉴
+MOV S$图鉴拆解装备名称4 狂怒戒指图鉴
+MOV S$图鉴拆解物品名称 狂怒头盔图鉴
+MOV N$材料分解价值 20
+MOV S$图鉴拆解材料名称 图鉴碎片
+MOV S$图鉴拆解材料ID 25894
+GOTO @拆解图鉴
+BREAK
+
+
+[@拆解狂怒头盔]
+#IF
+!LARGE $ITEMCOUNT[狂怒头盔图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 2
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 狂怒头盔图鉴
+MOV S$图鉴拆解物品LOOK 00625
+GOTO @拆解图鉴
+BREAK
+
+[@拆解狂怒项链]
+#IF
+!LARGE $ITEMCOUNT[狂怒项链图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 2
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 狂怒项链图鉴
+MOV S$图鉴拆解物品LOOK 00626
+GOTO @拆解图鉴
+BREAK
+
+[@拆解狂怒手镯]
+#IF
+!LARGE $ITEMCOUNT[狂怒手镯图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 2
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 狂怒手镯图鉴
+MOV S$图鉴拆解物品LOOK 00627
+GOTO @拆解图鉴
+BREAK
+
+[@拆解狂怒戒指]
+#IF
+!LARGE $ITEMCOUNT[狂怒戒指图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 2
+MOV S$图鉴拆解物品名称 狂怒戒指图鉴
+MOV S$图鉴拆解物品LOOK 00628
+GOTO @拆解图鉴
+BREAK
+
+
+[@拆解嗜血套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧1列按钮
+MOV S$图鉴分类按钮1 6
+MOV S$图鉴分类按钮2 6
+MOV S$图鉴分类按钮3 5
+MOV S$图鉴分类按钮4 6
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装拆解按钮1 2
+MOV S$图鉴套装拆解按钮2 2
+MOV S$图鉴套装拆解按钮3 1
+MOV S$图鉴套装拆解按钮4 2
+MOV S$图鉴套装拆解按钮5 2
+MOV S$图鉴套装拆解按钮6 2
+MOV S$图鉴套装拆解按钮7 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴拆解装备图片1 00617
+MOV S$图鉴拆解装备图片2 00618
+MOV S$图鉴拆解装备图片3 00619
+MOV S$图鉴拆解装备图片4 00620
+;-------------------------------------装备名称
+MOV S$图鉴拆解装备名称1 嗜血头盔图鉴
+MOV S$图鉴拆解装备名称2 嗜血项链图鉴
+MOV S$图鉴拆解装备名称3 嗜血手镯图鉴
+MOV S$图鉴拆解装备名称4 嗜血戒指图鉴
+MOV S$图鉴拆解物品名称 嗜血头盔图鉴
+MOV N$材料分解价值 35
+MOV S$图鉴拆解材料名称 图鉴碎片
+MOV S$图鉴拆解材料ID 25894
+GOTO @拆解图鉴
+BREAK
+
+
+[@拆解嗜血头盔]
+#IF
+!LARGE $ITEMCOUNT[嗜血头盔图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 2
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 嗜血头盔图鉴
+MOV S$图鉴拆解物品LOOK 00617
+GOTO @拆解图鉴
+BREAK
+
+[@拆解嗜血项链]
+#IF
+!LARGE $ITEMCOUNT[嗜血项链图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 2
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 嗜血项链图鉴
+MOV S$图鉴拆解物品LOOK 00618
+GOTO @拆解图鉴
+BREAK
+
+[@拆解嗜血手镯]
+#IF
+!LARGE $ITEMCOUNT[嗜血手镯图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 2
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 嗜血手镯图鉴
+MOV S$图鉴拆解物品LOOK 00619
+GOTO @拆解图鉴
+BREAK
+
+[@拆解嗜血戒指]
+#IF
+!LARGE $ITEMCOUNT[嗜血戒指图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 2
+MOV S$图鉴拆解物品名称 嗜血戒指图鉴
+MOV S$图鉴拆解物品LOOK 00620
+GOTO @拆解图鉴
+BREAK
+
+
+[@拆解神秘套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧1列按钮
+MOV S$图鉴分类按钮1 6
+MOV S$图鉴分类按钮2 6
+MOV S$图鉴分类按钮3 5
+MOV S$图鉴分类按钮4 6
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装拆解按钮1 2
+MOV S$图鉴套装拆解按钮2 2
+MOV S$图鉴套装拆解按钮3 2
+MOV S$图鉴套装拆解按钮4 1
+MOV S$图鉴套装拆解按钮5 2
+MOV S$图鉴套装拆解按钮6 2
+MOV S$图鉴套装拆解按钮7 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴拆解装备图片1 1092
+MOV S$图鉴拆解装备图片2 1093
+MOV S$图鉴拆解装备图片3 1095
+MOV S$图鉴拆解装备图片4 1094
+;-------------------------------------装备名称
+MOV S$图鉴拆解装备名称1 神秘头盔图鉴
+MOV S$图鉴拆解装备名称2 神秘项链图鉴
+MOV S$图鉴拆解装备名称3 神秘手镯图鉴
+MOV S$图鉴拆解装备名称4 神秘戒指图鉴
+MOV S$图鉴拆解物品名称 神秘头盔图鉴
+MOV N$材料分解价值 60
+MOV S$图鉴拆解材料名称 图鉴碎片
+MOV S$图鉴拆解材料ID 25894
+GOTO @拆解图鉴
+BREAK
+
+
+[@拆解神秘头盔]
+#IF
+!LARGE $ITEMCOUNT[神秘头盔图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 2
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 神秘头盔图鉴
+MOV S$图鉴拆解物品LOOK 1092
+GOTO @拆解图鉴
+BREAK
+
+[@拆解神秘项链]
+#IF
+!LARGE $ITEMCOUNT[神秘项链图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 2
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 神秘项链图鉴
+MOV S$图鉴拆解物品LOOK 1093
+GOTO @拆解图鉴
+BREAK
+
+[@拆解神秘手镯]
+#IF
+!LARGE $ITEMCOUNT[神秘手镯图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 2
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 神秘手镯图鉴
+MOV S$图鉴拆解物品LOOK 1095
+GOTO @拆解图鉴
+BREAK
+
+[@拆解神秘戒指]
+#IF
+!LARGE $ITEMCOUNT[神秘戒指图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 2
+MOV S$图鉴拆解物品名称 神秘戒指图鉴
+MOV S$图鉴拆解物品LOOK 1094
+GOTO @拆解图鉴
+BREAK
+
+
+[@拆解明王套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧1列按钮
+MOV S$图鉴分类按钮1 6
+MOV S$图鉴分类按钮2 6
+MOV S$图鉴分类按钮3 5
+MOV S$图鉴分类按钮4 6
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装拆解按钮1 2
+MOV S$图鉴套装拆解按钮2 2
+MOV S$图鉴套装拆解按钮3 2
+MOV S$图鉴套装拆解按钮4 2
+MOV S$图鉴套装拆解按钮5 1
+MOV S$图鉴套装拆解按钮6 2
+MOV S$图鉴套装拆解按钮7 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴拆解装备图片1 00633
+MOV S$图鉴拆解装备图片2 00634
+MOV S$图鉴拆解装备图片3 00635
+MOV S$图鉴拆解装备图片4 00636
+;-------------------------------------装备名称
+MOV S$图鉴拆解装备名称1 明王头盔图鉴
+MOV S$图鉴拆解装备名称2 明王项链图鉴
+MOV S$图鉴拆解装备名称3 明王手镯图鉴
+MOV S$图鉴拆解装备名称4 明王戒指图鉴
+MOV S$图鉴拆解物品名称 明王头盔图鉴
+MOV N$材料分解价值 90
+MOV S$图鉴拆解材料名称 图鉴碎片
+MOV S$图鉴拆解材料ID 25894
+GOTO @拆解图鉴
+BREAK
+
+
+[@拆解明王头盔]
+#IF
+!LARGE $ITEMCOUNT[明王头盔图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 2
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 明王头盔图鉴
+MOV S$图鉴拆解物品LOOK 00633
+GOTO @拆解图鉴
+BREAK
+
+[@拆解明王项链]
+#IF
+!LARGE $ITEMCOUNT[明王项链图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 2
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 明王项链图鉴
+MOV S$图鉴拆解物品LOOK 00634
+GOTO @拆解图鉴
+BREAK
+
+[@拆解明王手镯]
+#IF
+!LARGE $ITEMCOUNT[明王手镯图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 2
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 明王手镯图鉴
+MOV S$图鉴拆解物品LOOK 00635
+GOTO @拆解图鉴
+BREAK
+
+[@拆解明王戒指]
+#IF
+!LARGE $ITEMCOUNT[明王戒指图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 2
+MOV S$图鉴拆解物品名称 明王戒指图鉴
+MOV S$图鉴拆解物品LOOK 00636
+GOTO @拆解图鉴
+BREAK
+
+
+[@拆解神御套]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧1列按钮
+MOV S$图鉴分类按钮1 6
+MOV S$图鉴分类按钮2 6
+MOV S$图鉴分类按钮3 5
+MOV S$图鉴分类按钮4 6
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装拆解按钮1 2
+MOV S$图鉴套装拆解按钮2 2
+MOV S$图鉴套装拆解按钮3 2
+MOV S$图鉴套装拆解按钮4 2
+MOV S$图鉴套装拆解按钮5 2
+MOV S$图鉴套装拆解按钮6 1
+MOV S$图鉴套装拆解按钮7 2
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+;-------------------------------------装备图片
+MOV S$图鉴拆解装备图片1 00629
+MOV S$图鉴拆解装备图片2 00630
+MOV S$图鉴拆解装备图片3 00631
+MOV S$图鉴拆解装备图片4 00632
+;-------------------------------------装备名称
+MOV S$图鉴拆解装备名称1 神御头盔图鉴
+MOV S$图鉴拆解装备名称2 神御项链图鉴
+MOV S$图鉴拆解装备名称3 神御手镯图鉴
+MOV S$图鉴拆解装备名称4 神御戒指图鉴
+MOV S$图鉴拆解物品名称 神御头盔图鉴
+MOV N$材料分解价值 180
+MOV S$图鉴拆解材料名称 图鉴碎片
+MOV S$图鉴拆解材料ID 25894
+GOTO @拆解图鉴
+BREAK
+
+[@拆解神御头盔]
+#IF
+!LARGE $ITEMCOUNT[神御头盔图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 2
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 神御头盔图鉴
+MOV S$图鉴拆解物品LOOK 00629
+GOTO @拆解图鉴
+BREAK
+
+[@拆解神御项链]
+#IF
+!LARGE $ITEMCOUNT[神御项链图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 2
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 神御项链图鉴
+MOV S$图鉴拆解物品LOOK 00630
+GOTO @拆解图鉴
+BREAK
+
+[@拆解神御手镯]
+#IF
+!LARGE $ITEMCOUNT[神御手镯图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 2
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴拆解物品名称 神御手镯图鉴
+MOV S$图鉴拆解物品LOOK 00631
+GOTO @拆解图鉴
+BREAK
+
+[@拆解神御戒指]
+#IF
+!LARGE $ITEMCOUNT[神御戒指图鉴] 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 2
+MOV S$图鉴拆解物品名称 神御戒指图鉴
+MOV S$图鉴拆解物品LOOK 00632
+GOTO @拆解图鉴
+BREAK
+
+
+
+[@拆解首领图鉴]
+#IF
+TRUE
+#ACT
+;-------------------------------------左侧1列按钮
+MOV S$图鉴分类按钮1 6
+MOV S$图鉴分类按钮2 6
+MOV S$图鉴分类按钮3 5
+MOV S$图鉴分类按钮4 6
+;-------------------------------------左侧2列按钮
+MOV S$图鉴套装拆解按钮1 2
+MOV S$图鉴套装拆解按钮2 2
+MOV S$图鉴套装拆解按钮3 2
+MOV S$图鉴套装拆解按钮4 2
+MOV S$图鉴套装拆解按钮5 2
+MOV S$图鉴套装拆解按钮6 2
+MOV S$图鉴套装拆解按钮7 1
+;-------------------------------------左侧3列按钮
+MOV S$图鉴单间拆解按钮1 2
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+;-------------------------------------装备图片
+MOV S$图鉴拆解装备图片1 51065
+MOV S$图鉴拆解装备图片2 51066
+MOV S$图鉴拆解装备图片3 51067
+MOV S$图鉴拆解装备图片4 51068
+MOV S$图鉴拆解装备图片5 51069
+MOV S$图鉴拆解装备图片6 51070
+MOV S$图鉴拆解装备图片7 51071
+MOV S$图鉴拆解装备图片8 51072
+MOV S$图鉴拆解装备图片9 51073
+MOV S$图鉴拆解装备图片10 51074
+MOV S$图鉴拆解装备图片11 51075
+MOV S$图鉴拆解装备图片12 51076
+MOV S$图鉴拆解装备图片13 51077
+MOV S$图鉴拆解装备图片14 51078
+MOV S$图鉴拆解装备图片15 51079
+MOV S$图鉴拆解装备图片16 51080
+MOV S$图鉴拆解装备图片17 51081
+MOV S$图鉴拆解装备图片18 51082
+;-------------------------------------装备名称
+MOV S$图鉴拆解装备名称1 尸霸图鉴卡
+MOV S$图鉴拆解装备名称2 机关巨兽图鉴卡
+MOV S$图鉴拆解装备名称3 蛇妖王图鉴卡
+MOV S$图鉴拆解装备名称4 逆魔之王图鉴卡
+MOV S$图鉴拆解装备名称5 通天教主图鉴卡
+MOV S$图鉴拆解装备名称6 铁血魔王图鉴卡
+MOV S$图鉴拆解装备名称7 阿修罗神图鉴卡
+MOV S$图鉴拆解装备名称8 赤阳魔尊图鉴卡
+MOV S$图鉴拆解装备名称9 上古妖王图鉴卡
+MOV S$图鉴拆解装备名称10 血域魔尊图鉴卡
+MOV S$图鉴拆解装备名称11 巨木王者图鉴卡
+MOV S$图鉴拆解装备名称12 魔域妖王图鉴卡
+MOV S$图鉴拆解装备名称13 刑天真身图鉴卡
+MOV S$图鉴拆解装备名称14 玄武真灵图鉴卡
+MOV S$图鉴拆解装备名称15 无间之主图鉴卡
+MOV S$图鉴拆解装备名称16 地底仙帝图鉴卡
+MOV S$图鉴拆解装备名称17 绝毒蛛后图鉴卡
+MOV S$图鉴拆解装备名称18 虚空古神图鉴卡
+MOV S$图鉴拆解物品名称 尸霸图鉴卡
+MOV N$材料分解价值 10
+MOV S$图鉴拆解材料名称 BOSS积分
+MOV S$图鉴拆解材料ID 6696
+GOTO @拆解图鉴
+BREAK
+
+
+[@尸霸图鉴]
+#IF
+!LARGE <$ITEMVALSUM(尸霸图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 2
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 10
+MOV S$图鉴拆解物品名称 尸霸图鉴卡
+MOV S$图鉴拆解物品LOOK 51065
+GOTO @拆解图鉴
+BREAK
+
+[@机关巨兽图鉴]
+#IF
+!LARGE <$ITEMVALSUM(机关巨兽图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 2
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 20
+MOV S$图鉴拆解物品名称 机关巨兽图鉴卡
+MOV S$图鉴拆解物品LOOK 51066
+GOTO @拆解图鉴
+BREAK
+
+[@蛇妖王图鉴]
+#IF
+!LARGE <$ITEMVALSUM(蛇妖王图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 2
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 20
+MOV S$图鉴拆解物品名称 蛇妖王图鉴卡
+MOV S$图鉴拆解物品LOOK 51067
+GOTO @拆解图鉴
+BREAK
+
+[@逆魔之王图鉴]
+#IF
+!LARGE <$ITEMVALSUM(逆魔之王图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 2
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 30
+MOV S$图鉴拆解物品名称 逆魔之王图鉴卡
+MOV S$图鉴拆解物品LOOK 51068
+GOTO @拆解图鉴
+BREAK
+
+[@通天教主图鉴]
+#IF
+!LARGE <$ITEMVALSUM(通天教主图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 2
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 40
+MOV S$图鉴拆解物品名称 通天教主图鉴卡
+MOV S$图鉴拆解物品LOOK 51069
+GOTO @拆解图鉴
+BREAK
+
+[@铁血魔王图鉴]
+#IF
+!LARGE <$ITEMVALSUM(铁血魔王图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 2
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 50
+MOV S$图鉴拆解物品名称 铁血魔王图鉴卡
+MOV S$图鉴拆解物品LOOK 51070
+GOTO @拆解图鉴
+BREAK
+
+[@阿修罗神图鉴]
+#IF
+!LARGE <$ITEMVALSUM(阿修罗神图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 2
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 65
+MOV S$图鉴拆解物品名称 阿修罗神图鉴卡
+MOV S$图鉴拆解物品LOOK 51071
+GOTO @拆解图鉴
+BREAK
+
+[@赤阳魔尊图鉴]
+#IF
+!LARGE <$ITEMVALSUM(赤阳魔尊图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 2
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 80
+MOV S$图鉴拆解物品名称 赤阳魔尊图鉴卡
+MOV S$图鉴拆解物品LOOK 51072
+GOTO @拆解图鉴
+BREAK
+
+[@上古妖王图鉴]
+#IF
+!LARGE <$ITEMVALSUM(上古妖王图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 2
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 100
+MOV S$图鉴拆解物品名称 上古妖王图鉴卡
+MOV S$图鉴拆解物品LOOK 51073
+GOTO @拆解图鉴
+BREAK
+
+[@血域魔尊图鉴]
+#IF
+!LARGE <$ITEMVALSUM(血域魔尊图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 2
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 100
+MOV S$图鉴拆解物品名称 血域魔尊图鉴卡
+MOV S$图鉴拆解物品LOOK 51074
+GOTO @拆解图鉴
+BREAK
+
+[@巨木王者图鉴]
+#IF
+!LARGE <$ITEMVALSUM(巨木王者图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 2
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 100
+MOV S$图鉴拆解物品名称 巨木王者图鉴卡
+MOV S$图鉴拆解物品LOOK 51075
+GOTO @拆解图鉴
+BREAK
+
+[@魔域妖王图鉴]
+#IF
+!LARGE <$ITEMVALSUM(魔域妖王图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 2
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 120
+MOV S$图鉴拆解物品名称 魔域妖王图鉴卡
+MOV S$图鉴拆解物品LOOK 51076
+GOTO @拆解图鉴
+BREAK
+
+[@刑天真身图鉴]
+#IF
+!LARGE <$ITEMVALSUM(刑天真身图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 2
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 120
+MOV S$图鉴拆解物品名称 刑天真身图鉴卡
+MOV S$图鉴拆解物品LOOK 51077
+GOTO @拆解图鉴
+BREAK
+
+[@玄武真灵图鉴]
+#IF
+!LARGE <$ITEMVALSUM(玄武真灵图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 2
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 150
+MOV S$图鉴拆解物品名称 玄武真灵图鉴卡
+MOV S$图鉴拆解物品LOOK 51078
+GOTO @拆解图鉴
+BREAK
+
+[@无间之主图鉴]
+#IF
+!LARGE <$ITEMVALSUM(无间之主图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 2
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 200
+MOV S$图鉴拆解物品名称 无间之主图鉴卡
+MOV S$图鉴拆解物品LOOK 51079
+GOTO @拆解图鉴
+BREAK
+
+[@地底仙帝图鉴]
+#IF
+!LARGE <$ITEMVALSUM(地底仙帝图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 2
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 200
+MOV S$图鉴拆解物品名称 地底仙帝图鉴卡
+MOV S$图鉴拆解物品LOOK 51080
+GOTO @拆解图鉴
+BREAK
+
+[@绝毒蛛后图鉴]
+#IF
+!LARGE <$ITEMVALSUM(绝毒蛛后图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 2
+MOV S$图鉴单间拆解按钮18 1
+MOV N$材料分解价值 300
+MOV S$图鉴拆解物品名称 绝毒蛛后图鉴卡
+MOV S$图鉴拆解物品LOOK 51081
+GOTO @拆解图鉴
+BREAK
+
+[@虚空古神图鉴]
+#IF
+!LARGE <$ITEMVALSUM(虚空古神图鉴卡).DURA> 0
+#ACT
+MOV N$拆解是否拥有 0
+SENDMSG 19 包裹中没有该物品
+BREAK
+#ELSEACT
+;-------------------------------------左侧3列按钮
+MOV N$拆解是否拥有 1
+MOV S$图鉴单间拆解按钮1 1
+MOV S$图鉴单间拆解按钮2 1
+MOV S$图鉴单间拆解按钮3 1
+MOV S$图鉴单间拆解按钮4 1
+MOV S$图鉴单间拆解按钮5 1
+MOV S$图鉴单间拆解按钮6 1
+MOV S$图鉴单间拆解按钮7 1
+MOV S$图鉴单间拆解按钮8 1
+MOV S$图鉴单间拆解按钮9 1
+MOV S$图鉴单间拆解按钮10 1
+MOV S$图鉴单间拆解按钮11 1
+MOV S$图鉴单间拆解按钮12 1
+MOV S$图鉴单间拆解按钮13 1
+MOV S$图鉴单间拆解按钮14 1
+MOV S$图鉴单间拆解按钮15 1
+MOV S$图鉴单间拆解按钮16 1
+MOV S$图鉴单间拆解按钮17 1
+MOV S$图鉴单间拆解按钮18 2
+MOV N$材料分解价值 300
+MOV S$图鉴拆解物品名称 虚空古神图鉴卡
+MOV S$图鉴拆解物品LOOK 51082
+GOTO @拆解图鉴
+BREAK
+
+
+
+
+[@图鉴面板红点]
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 0
+CHECKITEM 祈祷头盔图鉴
+#ACT
+MOV N$祈祷头盔图鉴红点1 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷头盔图鉴红点2 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷头盔图鉴红点3 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷头盔图鉴红点4 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷头盔图鉴红点5 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷头盔图鉴红点6 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 0
+CHECKITEM 祈祷项链图鉴
+#ACT
+MOV N$祈祷项链图鉴红点1 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷项链图鉴红点2 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷项链图鉴红点3 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷项链图鉴红点4 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷项链图鉴红点5 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷项链图鉴红点6 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 0
+CHECKITEM 祈祷手镯图鉴
+#ACT
+MOV N$祈祷手镯图鉴红点1 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷手镯图鉴红点2 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷手镯图鉴红点3 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷手镯图鉴红点4 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷手镯图鉴红点5 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷手镯图鉴红点6 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 0
+CHECKITEM 祈祷戒指图鉴
+#ACT
+MOV N$祈祷戒指图鉴红点1 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷戒指图鉴红点2 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷戒指图鉴红点3 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷戒指图鉴红点4 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷戒指图鉴红点5 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷戒指图鉴红点6 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$祈祷头盔图鉴红点1) 1
+EQUAL $STR(N$祈祷头盔图鉴红点2) 1
+EQUAL $STR(N$祈祷头盔图鉴红点3) 1
+EQUAL $STR(N$祈祷头盔图鉴红点4) 1
+EQUAL $STR(N$祈祷头盔图鉴红点5) 1
+EQUAL $STR(N$祈祷头盔图鉴红点6) 1
+EQUAL $STR(N$祈祷项链图鉴红点1) 1
+EQUAL $STR(N$祈祷项链图鉴红点2) 1
+EQUAL $STR(N$祈祷项链图鉴红点3) 1
+EQUAL $STR(N$祈祷项链图鉴红点4) 1
+EQUAL $STR(N$祈祷项链图鉴红点5) 1
+EQUAL $STR(N$祈祷项链图鉴红点6) 1
+EQUAL $STR(N$祈祷手镯图鉴红点1) 1
+EQUAL $STR(N$祈祷手镯图鉴红点2) 1
+EQUAL $STR(N$祈祷手镯图鉴红点3) 1
+EQUAL $STR(N$祈祷手镯图鉴红点4) 1
+EQUAL $STR(N$祈祷手镯图鉴红点5) 1
+EQUAL $STR(N$祈祷手镯图鉴红点6) 1
+EQUAL $STR(N$祈祷戒指图鉴红点1) 1
+EQUAL $STR(N$祈祷戒指图鉴红点2) 1
+EQUAL $STR(N$祈祷戒指图鉴红点3) 1
+EQUAL $STR(N$祈祷戒指图鉴红点4) 1
+EQUAL $STR(N$祈祷戒指图鉴红点5) 1
+EQUAL $STR(N$祈祷戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj8 113 11
+MOV S$祈祷红点 1
+#ELSEACT
+MOV S$祈祷红点 0
+REDDEL 5 zbtj8
+
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 0
+CHECKITEM 狂怒头盔图鉴
+#ACT
+MOV N$狂怒头盔图鉴红点1 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒头盔图鉴红点2 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒头盔图鉴红点3 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒头盔图鉴红点4 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒头盔图鉴红点5 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒头盔图鉴红点6 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 0
+CHECKITEM 狂怒项链图鉴
+#ACT
+MOV N$狂怒项链图鉴红点1 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒项链图鉴红点2 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒项链图鉴红点3 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒项链图鉴红点4 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒项链图鉴红点5 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒项链图鉴红点6 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 0
+CHECKITEM 狂怒手镯图鉴
+#ACT
+MOV N$狂怒手镯图鉴红点1 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒手镯图鉴红点2 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒手镯图鉴红点3 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒手镯图鉴红点4 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒手镯图鉴红点5 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒手镯图鉴红点6 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 0
+CHECKITEM 狂怒戒指图鉴
+#ACT
+MOV N$狂怒戒指图鉴红点1 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒戒指图鉴红点2 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒戒指图鉴红点3 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒戒指图鉴红点4 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒戒指图鉴红点5 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒戒指图鉴红点6 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$狂怒头盔图鉴红点1) 1
+EQUAL $STR(N$狂怒头盔图鉴红点2) 1
+EQUAL $STR(N$狂怒头盔图鉴红点3) 1
+EQUAL $STR(N$狂怒头盔图鉴红点4) 1
+EQUAL $STR(N$狂怒头盔图鉴红点5) 1
+EQUAL $STR(N$狂怒头盔图鉴红点6) 1
+EQUAL $STR(N$狂怒项链图鉴红点1) 1
+EQUAL $STR(N$狂怒项链图鉴红点2) 1
+EQUAL $STR(N$狂怒项链图鉴红点3) 1
+EQUAL $STR(N$狂怒项链图鉴红点4) 1
+EQUAL $STR(N$狂怒项链图鉴红点5) 1
+EQUAL $STR(N$狂怒项链图鉴红点6) 1
+EQUAL $STR(N$狂怒手镯图鉴红点1) 1
+EQUAL $STR(N$狂怒手镯图鉴红点2) 1
+EQUAL $STR(N$狂怒手镯图鉴红点3) 1
+EQUAL $STR(N$狂怒手镯图鉴红点4) 1
+EQUAL $STR(N$狂怒手镯图鉴红点5) 1
+EQUAL $STR(N$狂怒手镯图鉴红点6) 1
+EQUAL $STR(N$狂怒戒指图鉴红点1) 1
+EQUAL $STR(N$狂怒戒指图鉴红点2) 1
+EQUAL $STR(N$狂怒戒指图鉴红点3) 1
+EQUAL $STR(N$狂怒戒指图鉴红点4) 1
+EQUAL $STR(N$狂怒戒指图鉴红点5) 1
+EQUAL $STR(N$狂怒戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj9 113 11
+MOV S$狂怒红点 1
+#ELSEACT
+MOV S$狂怒红点 0
+REDDEL 5 zbtj9
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 0
+CHECKITEM 嗜血头盔图鉴
+#ACT
+MOV N$嗜血头盔图鉴红点1 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血头盔图鉴红点2 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血头盔图鉴红点3 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血头盔图鉴红点4 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血头盔图鉴红点5 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血头盔图鉴红点6 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 0
+CHECKITEM 嗜血项链图鉴
+#ACT
+MOV N$嗜血项链图鉴红点1 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血项链图鉴红点2 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血项链图鉴红点3 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血项链图鉴红点4 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血项链图鉴红点5 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血项链图鉴红点6 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 0
+CHECKITEM 嗜血手镯图鉴
+#ACT
+MOV N$嗜血手镯图鉴红点1 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血手镯图鉴红点2 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血手镯图鉴红点3 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血手镯图鉴红点4 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血手镯图鉴红点5 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血手镯图鉴红点6 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 0
+CHECKITEM 嗜血戒指图鉴
+#ACT
+MOV N$嗜血戒指图鉴红点1 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血戒指图鉴红点2 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血戒指图鉴红点3 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血戒指图鉴红点4 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血戒指图鉴红点5 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血戒指图鉴红点6 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$嗜血头盔图鉴红点1) 1
+EQUAL $STR(N$嗜血头盔图鉴红点2) 1
+EQUAL $STR(N$嗜血头盔图鉴红点3) 1
+EQUAL $STR(N$嗜血头盔图鉴红点4) 1
+EQUAL $STR(N$嗜血头盔图鉴红点5) 1
+EQUAL $STR(N$嗜血头盔图鉴红点6) 1
+EQUAL $STR(N$嗜血项链图鉴红点1) 1
+EQUAL $STR(N$嗜血项链图鉴红点2) 1
+EQUAL $STR(N$嗜血项链图鉴红点3) 1
+EQUAL $STR(N$嗜血项链图鉴红点4) 1
+EQUAL $STR(N$嗜血项链图鉴红点5) 1
+EQUAL $STR(N$嗜血项链图鉴红点6) 1
+EQUAL $STR(N$嗜血手镯图鉴红点1) 1
+EQUAL $STR(N$嗜血手镯图鉴红点2) 1
+EQUAL $STR(N$嗜血手镯图鉴红点3) 1
+EQUAL $STR(N$嗜血手镯图鉴红点4) 1
+EQUAL $STR(N$嗜血手镯图鉴红点5) 1
+EQUAL $STR(N$嗜血手镯图鉴红点6) 1
+EQUAL $STR(N$嗜血戒指图鉴红点1) 1
+EQUAL $STR(N$嗜血戒指图鉴红点2) 1
+EQUAL $STR(N$嗜血戒指图鉴红点3) 1
+EQUAL $STR(N$嗜血戒指图鉴红点4) 1
+EQUAL $STR(N$嗜血戒指图鉴红点5) 1
+EQUAL $STR(N$嗜血戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj10 113 11
+MOV S$嗜血红点 1
+#ELSEACT
+MOV S$嗜血红点 0
+REDDEL 5 zbtj10
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 0
+CHECKITEM 神秘头盔图鉴
+#ACT
+MOV N$神秘头盔图鉴红点1 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘头盔图鉴红点2 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘头盔图鉴红点3 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘头盔图鉴红点4 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘头盔图鉴红点5 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘头盔图鉴红点6 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 0
+CHECKITEM 神秘项链图鉴
+#ACT
+MOV N$神秘项链图鉴红点1 1
+#ELSEACT
+MOV N$神秘项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘项链图鉴红点2 1
+#ELSEACT
+MOV N$神秘项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘项链图鉴红点3 1
+#ELSEACT
+MOV N$神秘项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘项链图鉴红点4 1
+#ELSEACT
+MOV N$神秘项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘项链图鉴红点5 1
+#ELSEACT
+MOV N$神秘项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘项链图鉴红点6 1
+#ELSEACT
+MOV N$神秘项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 0
+CHECKITEM 神秘手镯图鉴
+#ACT
+MOV N$神秘手镯图鉴红点1 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘手镯图鉴红点2 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘手镯图鉴红点3 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘手镯图鉴红点4 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘手镯图鉴红点5 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘手镯图鉴红点6 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 0
+CHECKITEM 神秘戒指图鉴
+#ACT
+MOV N$神秘戒指图鉴红点1 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘戒指图鉴红点2 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘戒指图鉴红点3 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘戒指图鉴红点4 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘戒指图鉴红点5 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘戒指图鉴红点6 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$神秘头盔图鉴红点1) 1
+EQUAL $STR(N$神秘头盔图鉴红点2) 1
+EQUAL $STR(N$神秘头盔图鉴红点3) 1
+EQUAL $STR(N$神秘头盔图鉴红点4) 1
+EQUAL $STR(N$神秘头盔图鉴红点5) 1
+EQUAL $STR(N$神秘头盔图鉴红点6) 1
+EQUAL $STR(N$神秘项链图鉴红点1) 1
+EQUAL $STR(N$神秘项链图鉴红点2) 1
+EQUAL $STR(N$神秘项链图鉴红点3) 1
+EQUAL $STR(N$神秘项链图鉴红点4) 1
+EQUAL $STR(N$神秘项链图鉴红点5) 1
+EQUAL $STR(N$神秘项链图鉴红点6) 1
+EQUAL $STR(N$神秘手镯图鉴红点1) 1
+EQUAL $STR(N$神秘手镯图鉴红点2) 1
+EQUAL $STR(N$神秘手镯图鉴红点3) 1
+EQUAL $STR(N$神秘手镯图鉴红点4) 1
+EQUAL $STR(N$神秘手镯图鉴红点5) 1
+EQUAL $STR(N$神秘手镯图鉴红点6) 1
+EQUAL $STR(N$神秘戒指图鉴红点1) 1
+EQUAL $STR(N$神秘戒指图鉴红点2) 1
+EQUAL $STR(N$神秘戒指图鉴红点3) 1
+EQUAL $STR(N$神秘戒指图鉴红点4) 1
+EQUAL $STR(N$神秘戒指图鉴红点5) 1
+EQUAL $STR(N$神秘戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj11 113 11
+MOV S$神秘红点 1
+#ELSEACT
+MOV S$神秘红点 0
+REDDEL 5 zbtj11
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 0
+CHECKITEM 明王头盔图鉴
+#ACT
+MOV N$明王头盔图鉴红点1 1
+#ELSEACT
+MOV N$明王头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王头盔图鉴红点2 1
+#ELSEACT
+MOV N$明王头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王头盔图鉴红点3 1
+#ELSEACT
+MOV N$明王头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王头盔图鉴红点4 1
+#ELSEACT
+MOV N$明王头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王头盔图鉴红点5 1
+#ELSEACT
+MOV N$明王头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王头盔图鉴红点6 1
+#ELSEACT
+MOV N$明王头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 0
+CHECKITEM 明王项链图鉴
+#ACT
+MOV N$明王项链图鉴红点1 1
+#ELSEACT
+MOV N$明王项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王项链图鉴红点2 1
+#ELSEACT
+MOV N$明王项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王项链图鉴红点3 1
+#ELSEACT
+MOV N$明王项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王项链图鉴红点4 1
+#ELSEACT
+MOV N$明王项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王项链图鉴红点5 1
+#ELSEACT
+MOV N$明王项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王项链图鉴红点6 1
+#ELSEACT
+MOV N$明王项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 0
+CHECKITEM 明王手镯图鉴
+#ACT
+MOV N$明王手镯图鉴红点1 1
+#ELSEACT
+MOV N$明王手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王手镯图鉴红点2 1
+#ELSEACT
+MOV N$明王手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王手镯图鉴红点3 1
+#ELSEACT
+MOV N$明王手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王手镯图鉴红点4 1
+#ELSEACT
+MOV N$明王手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王手镯图鉴红点5 1
+#ELSEACT
+MOV N$明王手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王手镯图鉴红点6 1
+#ELSEACT
+MOV N$明王手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 0
+CHECKITEM 明王戒指图鉴
+#ACT
+MOV N$明王戒指图鉴红点1 1
+#ELSEACT
+MOV N$明王戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王戒指图鉴红点2 1
+#ELSEACT
+MOV N$明王戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王戒指图鉴红点3 1
+#ELSEACT
+MOV N$明王戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王戒指图鉴红点4 1
+#ELSEACT
+MOV N$明王戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王戒指图鉴红点5 1
+#ELSEACT
+MOV N$明王戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王戒指图鉴红点6 1
+#ELSEACT
+MOV N$明王戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$明王头盔图鉴红点1) 1
+EQUAL $STR(N$明王头盔图鉴红点2) 1
+EQUAL $STR(N$明王头盔图鉴红点3) 1
+EQUAL $STR(N$明王头盔图鉴红点4) 1
+EQUAL $STR(N$明王头盔图鉴红点5) 1
+EQUAL $STR(N$明王头盔图鉴红点6) 1
+EQUAL $STR(N$明王项链图鉴红点1) 1
+EQUAL $STR(N$明王项链图鉴红点2) 1
+EQUAL $STR(N$明王项链图鉴红点3) 1
+EQUAL $STR(N$明王项链图鉴红点4) 1
+EQUAL $STR(N$明王项链图鉴红点5) 1
+EQUAL $STR(N$明王项链图鉴红点6) 1
+EQUAL $STR(N$明王手镯图鉴红点1) 1
+EQUAL $STR(N$明王手镯图鉴红点2) 1
+EQUAL $STR(N$明王手镯图鉴红点3) 1
+EQUAL $STR(N$明王手镯图鉴红点4) 1
+EQUAL $STR(N$明王手镯图鉴红点5) 1
+EQUAL $STR(N$明王手镯图鉴红点6) 1
+EQUAL $STR(N$明王戒指图鉴红点1) 1
+EQUAL $STR(N$明王戒指图鉴红点2) 1
+EQUAL $STR(N$明王戒指图鉴红点3) 1
+EQUAL $STR(N$明王戒指图鉴红点4) 1
+EQUAL $STR(N$明王戒指图鉴红点5) 1
+EQUAL $STR(N$明王戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj12 113 11
+MOV S$明王红点 1
+#ELSEACT
+MOV S$明王红点 0
+REDDEL 5 zbtj12
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 0
+CHECKITEM 神御头盔图鉴
+#ACT
+MOV N$神御头盔图鉴红点1 1
+#ELSEACT
+MOV N$神御头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御头盔图鉴红点2 1
+#ELSEACT
+MOV N$神御头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御头盔图鉴红点3 1
+#ELSEACT
+MOV N$神御头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御头盔图鉴红点4 1
+#ELSEACT
+MOV N$神御头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御头盔图鉴红点5 1
+#ELSEACT
+MOV N$神御头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 5
+!SMALL $MONEY(8) 48800
+#ACT
+MOV N$神御头盔图鉴红点6 1
+#ELSEACT
+MOV N$神御头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 0
+CHECKITEM 神御项链图鉴
+#ACT
+MOV N$神御项链图鉴红点1 1
+#ELSEACT
+MOV N$神御项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御项链图鉴红点2 1
+#ELSEACT
+MOV N$神御项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御项链图鉴红点3 1
+#ELSEACT
+MOV N$神御项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御项链图鉴红点4 1
+#ELSEACT
+MOV N$神御项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御项链图鉴红点5 1
+#ELSEACT
+MOV N$神御项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 5
+!SMALL $MONEY(8) 48800
+#ACT
+MOV N$神御项链图鉴红点6 1
+#ELSEACT
+MOV N$神御项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 0
+CHECKITEM 神御手镯图鉴
+#ACT
+MOV N$神御手镯图鉴红点1 1
+#ELSEACT
+MOV N$神御手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御手镯图鉴红点2 1
+#ELSEACT
+MOV N$神御手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御手镯图鉴红点3 1
+#ELSEACT
+MOV N$神御手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御手镯图鉴红点4 1
+#ELSEACT
+MOV N$神御手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御手镯图鉴红点5 1
+#ELSEACT
+MOV N$神御手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 5
+!SMALL $MONEY(8) 44880
+#ACT
+MOV N$神御手镯图鉴红点6 1
+#ELSEACT
+MOV N$神御手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 0
+CHECKITEM 神御戒指图鉴
+#ACT
+MOV N$神御戒指图鉴红点1 1
+#ELSEACT
+MOV N$神御戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御戒指图鉴红点2 1
+#ELSEACT
+MOV N$神御戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御戒指图鉴红点3 1
+#ELSEACT
+MOV N$神御戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御戒指图鉴红点4 1
+#ELSEACT
+MOV N$神御戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御戒指图鉴红点5 1
+#ELSEACT
+MOV N$神御戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 5
+!SMALL $MONEY(8) 48800
+#ACT
+MOV N$神御戒指图鉴红点6 1
+#ELSEACT
+MOV N$神御戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$神御头盔图鉴红点1) 1
+EQUAL $STR(N$神御头盔图鉴红点2) 1
+EQUAL $STR(N$神御头盔图鉴红点3) 1
+EQUAL $STR(N$神御头盔图鉴红点4) 1
+EQUAL $STR(N$神御头盔图鉴红点5) 1
+EQUAL $STR(N$神御头盔图鉴红点6) 1
+EQUAL $STR(N$神御项链图鉴红点1) 1
+EQUAL $STR(N$神御项链图鉴红点2) 1
+EQUAL $STR(N$神御项链图鉴红点3) 1
+EQUAL $STR(N$神御项链图鉴红点4) 1
+EQUAL $STR(N$神御项链图鉴红点5) 1
+EQUAL $STR(N$神御项链图鉴红点6) 1
+EQUAL $STR(N$神御手镯图鉴红点1) 1
+EQUAL $STR(N$神御手镯图鉴红点2) 1
+EQUAL $STR(N$神御手镯图鉴红点3) 1
+EQUAL $STR(N$神御手镯图鉴红点4) 1
+EQUAL $STR(N$神御手镯图鉴红点5) 1
+EQUAL $STR(N$神御手镯图鉴红点6) 1
+EQUAL $STR(N$神御戒指图鉴红点1) 1
+EQUAL $STR(N$神御戒指图鉴红点2) 1
+EQUAL $STR(N$神御戒指图鉴红点3) 1
+EQUAL $STR(N$神御戒指图鉴红点4) 1
+EQUAL $STR(N$神御戒指图鉴红点5) 1
+EQUAL $STR(N$神御戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj13 113 11
+MOV S$神御红点 1
+#ELSEACT
+MOV S$神御红点 0
+REDDEL 5 zbtj13
+
+#IFONE
+EQUAL S$祈祷红点 1
+EQUAL S$狂怒红点 1
+EQUAL S$嗜血红点 1
+EQUAL S$神秘红点 1
+EQUAL S$神御红点 1
+EQUAL S$明王红点 1
+#ACT
+REDDOT 5 zbtj4 85 80
+
+#IF
+LARGE $TABLE(SL_TJ).TJ1DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ1DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割1
+
+#IF
+LARGE $TABLE(SL_TJ).TJ2DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ2DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割2
+
+#IF
+LARGE $TABLE(SL_TJ).TJ3DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ3DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割3
+
+#IF
+LARGE $TABLE(SL_TJ).TJ4DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ4DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割4
+
+#IF
+LARGE $TABLE(SL_TJ).TJ5DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ5DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割5
+
+#IF
+LARGE $TABLE(SL_TJ).TJ6DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ6DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割6
+
+#IF
+LARGE $TABLE(SL_TJ).TJ7DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ7DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割7
+
+#IF
+LARGE $TABLE(SL_TJ).TJ8DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ8DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割8
+
+#IF
+LARGE $TABLE(SL_TJ).TJ9DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ9DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割9
+
+#IF
+LARGE $TABLE(SL_TJ).TJ10DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ10DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割10
+
+#IF
+LARGE $TABLE(SL_TJ).TJ11DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ11DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割11
+
+#IF
+LARGE $TABLE(SL_TJ).TJ12DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ12DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割12
+
+#IF
+LARGE $TABLE(SL_TJ).TJ13DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ13DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割13
+
+#IF
+LARGE $TABLE(SL_TJ).TJ14DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ14DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割14
+
+#IF
+LARGE $TABLE(SL_TJ).TJ15DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ15DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割15
+
+#IF
+LARGE $TABLE(SL_TJ).TJ16DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ16DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割16
+
+#IF
+LARGE $TABLE(SL_TJ).TJ17DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ17DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割17
+
+#IF
+LARGE $TABLE(SL_TJ).TJ18DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ18DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割18
+
+#IF
+LARGE $TABLE(SL_TJ).TJ1DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割1_5)
+#ACT
+MOV S$首领图鉴红点1 1
+#ELSEACT
+MOV S$首领图鉴红点1 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ2DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割2_5)
+#ACT
+MOV S$首领图鉴红点2 1
+#ELSEACT
+MOV S$首领图鉴红点2 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ3DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割3_5)
+#ACT
+MOV S$首领图鉴红点3 1
+#ELSEACT
+MOV S$首领图鉴红点3 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ4DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割4_5)
+#ACT
+MOV S$首领图鉴红点4 1
+#ELSEACT
+MOV S$首领图鉴红点4 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ5DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割5_5)
+#ACT
+MOV S$首领图鉴红点5 1
+#ELSEACT
+MOV S$首领图鉴红点5 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ6DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割6_5)
+#ACT
+MOV S$首领图鉴红点6 1
+#ELSEACT
+MOV S$首领图鉴红点6 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ7DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割7_5)
+#ACT
+MOV S$首领图鉴红点7 1
+#ELSEACT
+MOV S$首领图鉴红点7 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ8DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割8_5)
+#ACT
+MOV S$首领图鉴红点8 1
+#ELSEACT
+MOV S$首领图鉴红点8 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ9DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割9_5)
+#ACT
+MOV S$首领图鉴红点9 1
+#ELSEACT
+MOV S$首领图鉴红点9 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ10DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割10_5)
+#ACT
+MOV S$首领图鉴红点10 1
+#ELSEACT
+MOV S$首领图鉴红点10 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ11DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割11_5)
+#ACT
+MOV S$首领图鉴红点11 1
+#ELSEACT
+MOV S$首领图鉴红点11 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ12DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割12_5)
+#ACT
+MOV S$首领图鉴红点12 1
+#ELSEACT
+MOV S$首领图鉴红点12 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ13DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割13_5)
+#ACT
+MOV S$首领图鉴红点13 1
+#ELSEACT
+MOV S$首领图鉴红点13 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ14DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割14_5)
+#ACT
+MOV S$首领图鉴红点14 1
+#ELSEACT
+MOV S$首领图鉴红点14 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ15DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割15_5)
+#ACT
+MOV S$首领图鉴红点15 1
+#ELSEACT
+MOV S$首领图鉴红点15 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ16DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割16_5)
+#ACT
+MOV S$首领图鉴红点16 1
+#ELSEACT
+MOV S$首领图鉴红点16 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ17DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割17_5)
+#ACT
+MOV S$首领图鉴红点17 1
+#ELSEACT
+MOV S$首领图鉴红点17 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ18DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割18_5)
+#ACT
+MOV S$首领图鉴红点18 1
+#ELSEACT
+MOV S$首领图鉴红点18 0
+
+#IFONE
+EQUAL S$首领图鉴红点1 1
+EQUAL S$首领图鉴红点2 1
+EQUAL S$首领图鉴红点3 1
+EQUAL S$首领图鉴红点4 1
+EQUAL S$首领图鉴红点5 1
+EQUAL S$首领图鉴红点6 1
+EQUAL S$首领图鉴红点7 1
+EQUAL S$首领图鉴红点8 1
+EQUAL S$首领图鉴红点9 1
+EQUAL S$首领图鉴红点10 1
+EQUAL S$首领图鉴红点11 1
+EQUAL S$首领图鉴红点12 1
+EQUAL S$首领图鉴红点13 1
+EQUAL S$首领图鉴红点14 1
+EQUAL S$首领图鉴红点15 1
+EQUAL S$首领图鉴红点16 1
+EQUAL S$首领图鉴红点17 1
+EQUAL S$首领图鉴红点18 1
+#ACT
+REDDOT 5 zbtj5 85 80
+#ELSEACT
+REDDEL 5 zbtj5
+
+#IFONE
+LARGE <$ITEMVALSUM(祈祷头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(尸霸图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(机关巨兽图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(蛇妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(逆魔之王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(通天教主图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(铁血魔王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(阿修罗神图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(赤阳魔尊图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(上古妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(血域魔尊图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(巨木王者图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(魔域妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(刑天真身图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(玄武真灵图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(无间之主图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(地底仙帝图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(绝毒蛛后图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(虚空古神图鉴卡).DURA> 0
+#ACT
+REDDOT 5 zbtj6 85 80
+#ELSEACT
+REDDEL 5 zbtj6
+
+#IF
+EQUAL $STR(S$图鉴套装名字) 祈祷
+#act
+GOTO @祈祷红点
+break
+
+#IF
+EQUAL $STR(S$图鉴套装名字) 狂怒
+#act
+GOTO @狂怒红点
+break
+
+#IF
+EQUAL $STR(S$图鉴套装名字) 嗜血
+#act
+GOTO @嗜血红点
+break
+
+#IF
+EQUAL $STR(S$图鉴套装名字) 神秘
+#act
+GOTO @神秘红点
+break
+#IF
+EQUAL $STR(S$图鉴套装名字) 明王
+#act
+GOTO @明王红点
+break
+#IF
+EQUAL $STR(S$图鉴套装名字) 神御
+#act
+GOTO @神御红点
+break
+
+[@祈祷红点]
+#IFONE
+EQUAL $STR(N$祈祷头盔图鉴红点1) 1
+EQUAL $STR(N$祈祷头盔图鉴红点2) 1
+EQUAL $STR(N$祈祷头盔图鉴红点3) 1
+EQUAL $STR(N$祈祷头盔图鉴红点4) 1
+EQUAL $STR(N$祈祷头盔图鉴红点5) 1
+EQUAL $STR(N$祈祷头盔图鉴红点6) 1
+EQUAL $STR(N$祈祷项链图鉴红点1) 1
+EQUAL $STR(N$祈祷项链图鉴红点2) 1
+EQUAL $STR(N$祈祷项链图鉴红点3) 1
+EQUAL $STR(N$祈祷项链图鉴红点4) 1
+EQUAL $STR(N$祈祷项链图鉴红点5) 1
+EQUAL $STR(N$祈祷项链图鉴红点6) 1
+EQUAL $STR(N$祈祷手镯图鉴红点1) 1
+EQUAL $STR(N$祈祷手镯图鉴红点2) 1
+EQUAL $STR(N$祈祷手镯图鉴红点3) 1
+EQUAL $STR(N$祈祷手镯图鉴红点4) 1
+EQUAL $STR(N$祈祷手镯图鉴红点5) 1
+EQUAL $STR(N$祈祷手镯图鉴红点6) 1
+EQUAL $STR(N$祈祷戒指图鉴红点1) 1
+EQUAL $STR(N$祈祷戒指图鉴红点2) 1
+EQUAL $STR(N$祈祷戒指图鉴红点3) 1
+EQUAL $STR(N$祈祷戒指图鉴红点4) 1
+EQUAL $STR(N$祈祷戒指图鉴红点5) 1
+EQUAL $STR(N$祈祷戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj8 113 11
+#ELSEACT
+REDDEL 5 zbtj8
+
+#IFONE
+EQUAL $STR(N$祈祷头盔图鉴红点1) 1
+EQUAL $STR(N$祈祷头盔图鉴红点2) 1
+EQUAL $STR(N$祈祷头盔图鉴红点3) 1
+EQUAL $STR(N$祈祷头盔图鉴红点4) 1
+EQUAL $STR(N$祈祷头盔图鉴红点5) 1
+EQUAL $STR(N$祈祷头盔图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj14 223 12
+#ELSEACT
+REDDEL 5 zbtj14
+
+#IFONE
+EQUAL $STR(N$祈祷项链图鉴红点1) 1
+EQUAL $STR(N$祈祷项链图鉴红点2) 1
+EQUAL $STR(N$祈祷项链图鉴红点3) 1
+EQUAL $STR(N$祈祷项链图鉴红点4) 1
+EQUAL $STR(N$祈祷项链图鉴红点5) 1
+EQUAL $STR(N$祈祷项链图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj15 223 12
+#ELSEACT
+REDDEL 5 zbtj15
+
+#IFONE
+EQUAL $STR(N$祈祷手镯图鉴红点1) 1
+EQUAL $STR(N$祈祷手镯图鉴红点2) 1
+EQUAL $STR(N$祈祷手镯图鉴红点3) 1
+EQUAL $STR(N$祈祷手镯图鉴红点4) 1
+EQUAL $STR(N$祈祷手镯图鉴红点5) 1
+EQUAL $STR(N$祈祷手镯图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj16 223 12
+#ELSEACT
+REDDEL 5 zbtj16
+
+#IFONE
+EQUAL $STR(N$祈祷戒指图鉴红点1) 1
+EQUAL $STR(N$祈祷戒指图鉴红点2) 1
+EQUAL $STR(N$祈祷戒指图鉴红点3) 1
+EQUAL $STR(N$祈祷戒指图鉴红点4) 1
+EQUAL $STR(N$祈祷戒指图鉴红点5) 1
+EQUAL $STR(N$祈祷戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj17 223 12
+#ELSEACT
+REDDEL 5 zbtj17
+
+
+
+[@狂怒红点]
+#IFONE
+EQUAL $STR(N$狂怒头盔图鉴红点1) 1
+EQUAL $STR(N$狂怒头盔图鉴红点2) 1
+EQUAL $STR(N$狂怒头盔图鉴红点3) 1
+EQUAL $STR(N$狂怒头盔图鉴红点4) 1
+EQUAL $STR(N$狂怒头盔图鉴红点5) 1
+EQUAL $STR(N$狂怒头盔图鉴红点6) 1
+EQUAL $STR(N$狂怒项链图鉴红点1) 1
+EQUAL $STR(N$狂怒项链图鉴红点2) 1
+EQUAL $STR(N$狂怒项链图鉴红点3) 1
+EQUAL $STR(N$狂怒项链图鉴红点4) 1
+EQUAL $STR(N$狂怒项链图鉴红点5) 1
+EQUAL $STR(N$狂怒项链图鉴红点6) 1
+EQUAL $STR(N$狂怒手镯图鉴红点1) 1
+EQUAL $STR(N$狂怒手镯图鉴红点2) 1
+EQUAL $STR(N$狂怒手镯图鉴红点3) 1
+EQUAL $STR(N$狂怒手镯图鉴红点4) 1
+EQUAL $STR(N$狂怒手镯图鉴红点5) 1
+EQUAL $STR(N$狂怒手镯图鉴红点6) 1
+EQUAL $STR(N$狂怒戒指图鉴红点1) 1
+EQUAL $STR(N$狂怒戒指图鉴红点2) 1
+EQUAL $STR(N$狂怒戒指图鉴红点3) 1
+EQUAL $STR(N$狂怒戒指图鉴红点4) 1
+EQUAL $STR(N$狂怒戒指图鉴红点5) 1
+EQUAL $STR(N$狂怒戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj9 113 11
+#ELSEACT
+REDDEL 5 zbtj9
+
+#IFONE
+EQUAL $STR(N$狂怒头盔图鉴红点1) 1
+EQUAL $STR(N$狂怒头盔图鉴红点2) 1
+EQUAL $STR(N$狂怒头盔图鉴红点3) 1
+EQUAL $STR(N$狂怒头盔图鉴红点4) 1
+EQUAL $STR(N$狂怒头盔图鉴红点5) 1
+EQUAL $STR(N$狂怒头盔图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj14 223 12
+#ELSEACT
+REDDEL 5 zbtj14
+
+#IFONE
+EQUAL $STR(N$狂怒项链图鉴红点1) 1
+EQUAL $STR(N$狂怒项链图鉴红点2) 1
+EQUAL $STR(N$狂怒项链图鉴红点3) 1
+EQUAL $STR(N$狂怒项链图鉴红点4) 1
+EQUAL $STR(N$狂怒项链图鉴红点5) 1
+EQUAL $STR(N$狂怒项链图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj15 223 12
+#ELSEACT
+REDDEL 5 zbtj15
+
+#IFONE
+EQUAL $STR(N$狂怒手镯图鉴红点1) 1
+EQUAL $STR(N$狂怒手镯图鉴红点2) 1
+EQUAL $STR(N$狂怒手镯图鉴红点3) 1
+EQUAL $STR(N$狂怒手镯图鉴红点4) 1
+EQUAL $STR(N$狂怒手镯图鉴红点5) 1
+EQUAL $STR(N$狂怒手镯图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj16 223 12
+#ELSEACT
+REDDEL 5 zbtj16
+
+#IFONE
+EQUAL $STR(N$狂怒戒指图鉴红点1) 1
+EQUAL $STR(N$狂怒戒指图鉴红点2) 1
+EQUAL $STR(N$狂怒戒指图鉴红点3) 1
+EQUAL $STR(N$狂怒戒指图鉴红点4) 1
+EQUAL $STR(N$狂怒戒指图鉴红点5) 1
+EQUAL $STR(N$狂怒戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj17 223 12
+#ELSEACT
+REDDEL 5 zbtj17
+
+[@嗜血红点]
+#IFONE
+EQUAL $STR(N$嗜血头盔图鉴红点1) 1
+EQUAL $STR(N$嗜血头盔图鉴红点2) 1
+EQUAL $STR(N$嗜血头盔图鉴红点3) 1
+EQUAL $STR(N$嗜血头盔图鉴红点4) 1
+EQUAL $STR(N$嗜血头盔图鉴红点5) 1
+EQUAL $STR(N$嗜血头盔图鉴红点6) 1
+EQUAL $STR(N$嗜血项链图鉴红点1) 1
+EQUAL $STR(N$嗜血项链图鉴红点2) 1
+EQUAL $STR(N$嗜血项链图鉴红点3) 1
+EQUAL $STR(N$嗜血项链图鉴红点4) 1
+EQUAL $STR(N$嗜血项链图鉴红点5) 1
+EQUAL $STR(N$嗜血项链图鉴红点6) 1
+EQUAL $STR(N$嗜血手镯图鉴红点1) 1
+EQUAL $STR(N$嗜血手镯图鉴红点2) 1
+EQUAL $STR(N$嗜血手镯图鉴红点3) 1
+EQUAL $STR(N$嗜血手镯图鉴红点4) 1
+EQUAL $STR(N$嗜血手镯图鉴红点5) 1
+EQUAL $STR(N$嗜血手镯图鉴红点6) 1
+EQUAL $STR(N$嗜血戒指图鉴红点1) 1
+EQUAL $STR(N$嗜血戒指图鉴红点2) 1
+EQUAL $STR(N$嗜血戒指图鉴红点3) 1
+EQUAL $STR(N$嗜血戒指图鉴红点4) 1
+EQUAL $STR(N$嗜血戒指图鉴红点5) 1
+EQUAL $STR(N$嗜血戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj10 113 11
+#ELSEACT
+REDDEL 5 zbtj10
+
+#IFONE
+EQUAL $STR(N$嗜血头盔图鉴红点1) 1
+EQUAL $STR(N$嗜血头盔图鉴红点2) 1
+EQUAL $STR(N$嗜血头盔图鉴红点3) 1
+EQUAL $STR(N$嗜血头盔图鉴红点4) 1
+EQUAL $STR(N$嗜血头盔图鉴红点5) 1
+EQUAL $STR(N$嗜血头盔图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj14 223 12
+#ELSEACT
+REDDEL 5 zbtj14
+
+#IFONE
+EQUAL $STR(N$嗜血项链图鉴红点1) 1
+EQUAL $STR(N$嗜血项链图鉴红点2) 1
+EQUAL $STR(N$嗜血项链图鉴红点3) 1
+EQUAL $STR(N$嗜血项链图鉴红点4) 1
+EQUAL $STR(N$嗜血项链图鉴红点5) 1
+EQUAL $STR(N$嗜血项链图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj15 223 12
+#ELSEACT
+REDDEL 5 zbtj15
+
+#IFONE
+EQUAL $STR(N$嗜血手镯图鉴红点1) 1
+EQUAL $STR(N$嗜血手镯图鉴红点2) 1
+EQUAL $STR(N$嗜血手镯图鉴红点3) 1
+EQUAL $STR(N$嗜血手镯图鉴红点4) 1
+EQUAL $STR(N$嗜血手镯图鉴红点5) 1
+EQUAL $STR(N$嗜血手镯图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj16 223 12
+#ELSEACT
+REDDEL 5 zbtj16
+
+#IFONE
+EQUAL $STR(N$嗜血戒指图鉴红点1) 1
+EQUAL $STR(N$嗜血戒指图鉴红点2) 1
+EQUAL $STR(N$嗜血戒指图鉴红点3) 1
+EQUAL $STR(N$嗜血戒指图鉴红点4) 1
+EQUAL $STR(N$嗜血戒指图鉴红点5) 1
+EQUAL $STR(N$嗜血戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj17 223 12
+#ELSEACT
+REDDEL 5 zbtj17
+
+[@神秘红点]
+#IFONE
+EQUAL $STR(N$神秘头盔图鉴红点1) 1
+EQUAL $STR(N$神秘头盔图鉴红点2) 1
+EQUAL $STR(N$神秘头盔图鉴红点3) 1
+EQUAL $STR(N$神秘头盔图鉴红点4) 1
+EQUAL $STR(N$神秘头盔图鉴红点5) 1
+EQUAL $STR(N$神秘头盔图鉴红点6) 1
+EQUAL $STR(N$神秘项链图鉴红点1) 1
+EQUAL $STR(N$神秘项链图鉴红点2) 1
+EQUAL $STR(N$神秘项链图鉴红点3) 1
+EQUAL $STR(N$神秘项链图鉴红点4) 1
+EQUAL $STR(N$神秘项链图鉴红点5) 1
+EQUAL $STR(N$神秘项链图鉴红点6) 1
+EQUAL $STR(N$神秘手镯图鉴红点1) 1
+EQUAL $STR(N$神秘手镯图鉴红点2) 1
+EQUAL $STR(N$神秘手镯图鉴红点3) 1
+EQUAL $STR(N$神秘手镯图鉴红点4) 1
+EQUAL $STR(N$神秘手镯图鉴红点5) 1
+EQUAL $STR(N$神秘手镯图鉴红点6) 1
+EQUAL $STR(N$神秘戒指图鉴红点1) 1
+EQUAL $STR(N$神秘戒指图鉴红点2) 1
+EQUAL $STR(N$神秘戒指图鉴红点3) 1
+EQUAL $STR(N$神秘戒指图鉴红点4) 1
+EQUAL $STR(N$神秘戒指图鉴红点5) 1
+EQUAL $STR(N$神秘戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj11 113 11
+#ELSEACT
+REDDEL 5 zbtj11
+
+#IFONE
+EQUAL $STR(N$神秘头盔图鉴红点1) 1
+EQUAL $STR(N$神秘头盔图鉴红点2) 1
+EQUAL $STR(N$神秘头盔图鉴红点3) 1
+EQUAL $STR(N$神秘头盔图鉴红点4) 1
+EQUAL $STR(N$神秘头盔图鉴红点5) 1
+EQUAL $STR(N$神秘头盔图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj14 223 12
+#ELSEACT
+REDDEL 5 zbtj14
+
+#IFONE
+EQUAL $STR(N$神秘项链图鉴红点1) 1
+EQUAL $STR(N$神秘项链图鉴红点2) 1
+EQUAL $STR(N$神秘项链图鉴红点3) 1
+EQUAL $STR(N$神秘项链图鉴红点4) 1
+EQUAL $STR(N$神秘项链图鉴红点5) 1
+EQUAL $STR(N$神秘项链图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj15 223 12
+#ELSEACT
+REDDEL 5 zbtj15
+
+#IFONE
+EQUAL $STR(N$神秘手镯图鉴红点1) 1
+EQUAL $STR(N$神秘手镯图鉴红点2) 1
+EQUAL $STR(N$神秘手镯图鉴红点3) 1
+EQUAL $STR(N$神秘手镯图鉴红点4) 1
+EQUAL $STR(N$神秘手镯图鉴红点5) 1
+EQUAL $STR(N$神秘手镯图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj16 223 12
+#ELSEACT
+REDDEL 5 zbtj16
+
+#IFONE
+EQUAL $STR(N$神秘戒指图鉴红点1) 1
+EQUAL $STR(N$神秘戒指图鉴红点2) 1
+EQUAL $STR(N$神秘戒指图鉴红点3) 1
+EQUAL $STR(N$神秘戒指图鉴红点4) 1
+EQUAL $STR(N$神秘戒指图鉴红点5) 1
+EQUAL $STR(N$神秘戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj17 223 12
+#ELSEACT
+REDDEL 5 zbtj17
+
+[@明王红点]
+#IFONE
+EQUAL $STR(N$明王头盔图鉴红点1) 1
+EQUAL $STR(N$明王头盔图鉴红点2) 1
+EQUAL $STR(N$明王头盔图鉴红点3) 1
+EQUAL $STR(N$明王头盔图鉴红点4) 1
+EQUAL $STR(N$明王头盔图鉴红点5) 1
+EQUAL $STR(N$明王头盔图鉴红点6) 1
+EQUAL $STR(N$明王项链图鉴红点1) 1
+EQUAL $STR(N$明王项链图鉴红点2) 1
+EQUAL $STR(N$明王项链图鉴红点3) 1
+EQUAL $STR(N$明王项链图鉴红点4) 1
+EQUAL $STR(N$明王项链图鉴红点5) 1
+EQUAL $STR(N$明王项链图鉴红点6) 1
+EQUAL $STR(N$明王手镯图鉴红点1) 1
+EQUAL $STR(N$明王手镯图鉴红点2) 1
+EQUAL $STR(N$明王手镯图鉴红点3) 1
+EQUAL $STR(N$明王手镯图鉴红点4) 1
+EQUAL $STR(N$明王手镯图鉴红点5) 1
+EQUAL $STR(N$明王手镯图鉴红点6) 1
+EQUAL $STR(N$明王戒指图鉴红点1) 1
+EQUAL $STR(N$明王戒指图鉴红点2) 1
+EQUAL $STR(N$明王戒指图鉴红点3) 1
+EQUAL $STR(N$明王戒指图鉴红点4) 1
+EQUAL $STR(N$明王戒指图鉴红点5) 1
+EQUAL $STR(N$明王戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj12 113 11
+#ELSEACT
+REDDEL 5 zbtj12
+
+#IFONE
+EQUAL $STR(N$明王头盔图鉴红点1) 1
+EQUAL $STR(N$明王头盔图鉴红点2) 1
+EQUAL $STR(N$明王头盔图鉴红点3) 1
+EQUAL $STR(N$明王头盔图鉴红点4) 1
+EQUAL $STR(N$明王头盔图鉴红点5) 1
+EQUAL $STR(N$明王头盔图鉴红点6) 1
+#ACT
+REDDOT 5 14 223 12
+#ELSEACT
+REDDEL 5 14
+
+#IFONE
+EQUAL $STR(N$明王项链图鉴红点1) 1
+EQUAL $STR(N$明王项链图鉴红点2) 1
+EQUAL $STR(N$明王项链图鉴红点3) 1
+EQUAL $STR(N$明王项链图鉴红点4) 1
+EQUAL $STR(N$明王项链图鉴红点5) 1
+EQUAL $STR(N$明王项链图鉴红点6) 1
+#ACT
+REDDOT 5 15 223 12
+#ELSEACT
+REDDEL 5 15
+
+#IFONE
+EQUAL $STR(N$明王手镯图鉴红点1) 1
+EQUAL $STR(N$明王手镯图鉴红点2) 1
+EQUAL $STR(N$明王手镯图鉴红点3) 1
+EQUAL $STR(N$明王手镯图鉴红点4) 1
+EQUAL $STR(N$明王手镯图鉴红点5) 1
+EQUAL $STR(N$明王手镯图鉴红点6) 1
+#ACT
+REDDOT 5 16 223 12
+#ELSEACT
+REDDEL 5 16
+
+#IFONE
+EQUAL $STR(N$明王戒指图鉴红点1) 1
+EQUAL $STR(N$明王戒指图鉴红点2) 1
+EQUAL $STR(N$明王戒指图鉴红点3) 1
+EQUAL $STR(N$明王戒指图鉴红点4) 1
+EQUAL $STR(N$明王戒指图鉴红点5) 1
+EQUAL $STR(N$明王戒指图鉴红点6) 1
+#ACT
+REDDOT 5 17 223 12
+#ELSEACT
+REDDEL 5 17
+
+[@神御红点]
+#IFONE
+EQUAL $STR(N$神御头盔图鉴红点1) 1
+EQUAL $STR(N$神御头盔图鉴红点2) 1
+EQUAL $STR(N$神御头盔图鉴红点3) 1
+EQUAL $STR(N$神御头盔图鉴红点4) 1
+EQUAL $STR(N$神御头盔图鉴红点5) 1
+EQUAL $STR(N$神御头盔图鉴红点6) 1
+EQUAL $STR(N$神御项链图鉴红点1) 1
+EQUAL $STR(N$神御项链图鉴红点2) 1
+EQUAL $STR(N$神御项链图鉴红点3) 1
+EQUAL $STR(N$神御项链图鉴红点4) 1
+EQUAL $STR(N$神御项链图鉴红点5) 1
+EQUAL $STR(N$神御项链图鉴红点6) 1
+EQUAL $STR(N$神御手镯图鉴红点1) 1
+EQUAL $STR(N$神御手镯图鉴红点2) 1
+EQUAL $STR(N$神御手镯图鉴红点3) 1
+EQUAL $STR(N$神御手镯图鉴红点4) 1
+EQUAL $STR(N$神御手镯图鉴红点5) 1
+EQUAL $STR(N$神御手镯图鉴红点6) 1
+EQUAL $STR(N$神御戒指图鉴红点1) 1
+EQUAL $STR(N$神御戒指图鉴红点2) 1
+EQUAL $STR(N$神御戒指图鉴红点3) 1
+EQUAL $STR(N$神御戒指图鉴红点4) 1
+EQUAL $STR(N$神御戒指图鉴红点5) 1
+EQUAL $STR(N$神御戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj13 113 11
+#ELSEACT
+REDDEL 5 zbtj13
+
+#IFONE
+EQUAL $STR(N$神御头盔图鉴红点1) 1
+EQUAL $STR(N$神御头盔图鉴红点2) 1
+EQUAL $STR(N$神御头盔图鉴红点3) 1
+EQUAL $STR(N$神御头盔图鉴红点4) 1
+EQUAL $STR(N$神御头盔图鉴红点5) 1
+EQUAL $STR(N$神御头盔图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj14 223 12
+#ELSEACT
+REDDEL 5 zbtj14
+
+#IFONE
+EQUAL $STR(N$神御项链图鉴红点1) 1
+EQUAL $STR(N$神御项链图鉴红点2) 1
+EQUAL $STR(N$神御项链图鉴红点3) 1
+EQUAL $STR(N$神御项链图鉴红点4) 1
+EQUAL $STR(N$神御项链图鉴红点5) 1
+EQUAL $STR(N$神御项链图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj15 223 12
+#ELSEACT
+REDDEL 5 zbtj15
+
+#IFONE
+EQUAL $STR(N$神御手镯图鉴红点1) 1
+EQUAL $STR(N$神御手镯图鉴红点2) 1
+EQUAL $STR(N$神御手镯图鉴红点3) 1
+EQUAL $STR(N$神御手镯图鉴红点4) 1
+EQUAL $STR(N$神御手镯图鉴红点5) 1
+EQUAL $STR(N$神御手镯图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj16 223 12
+#ELSEACT
+REDDEL 5 zbtj16
+
+#IFONE
+EQUAL $STR(N$神御戒指图鉴红点1) 1
+EQUAL $STR(N$神御戒指图鉴红点2) 1
+EQUAL $STR(N$神御戒指图鉴红点3) 1
+EQUAL $STR(N$神御戒指图鉴红点4) 1
+EQUAL $STR(N$神御戒指图鉴红点5) 1
+EQUAL $STR(N$神御戒指图鉴红点6) 1
+#ACT
+REDDOT 5 zbtj17 223 12
+#ELSEACT
+REDDEL 5 zbtj17
+
+
+[@首领图鉴红点]
+
+#IF
+LARGE $TABLE(SL_TJ).TJ1DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ1DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割1
+
+#IF
+LARGE $TABLE(SL_TJ).TJ2DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ2DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割2
+
+#IF
+LARGE $TABLE(SL_TJ).TJ3DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ3DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割3
+
+#IF
+LARGE $TABLE(SL_TJ).TJ4DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ4DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割4
+
+#IF
+LARGE $TABLE(SL_TJ).TJ5DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ5DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割5
+
+#IF
+LARGE $TABLE(SL_TJ).TJ6DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ6DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割6
+
+#IF
+LARGE $TABLE(SL_TJ).TJ7DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ7DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割7
+
+#IF
+LARGE $TABLE(SL_TJ).TJ8DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ8DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割8
+
+#IF
+LARGE $TABLE(SL_TJ).TJ9DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ9DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割9
+
+#IF
+LARGE $TABLE(SL_TJ).TJ10DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ10DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割10
+
+#IF
+LARGE $TABLE(SL_TJ).TJ11DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ11DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割11
+
+#IF
+LARGE $TABLE(SL_TJ).TJ12DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ12DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割12
+
+#IF
+LARGE $TABLE(SL_TJ).TJ13DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ13DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割13
+
+#IF
+LARGE $TABLE(SL_TJ).TJ14DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ14DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割14
+
+#IF
+LARGE $TABLE(SL_TJ).TJ15DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ15DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割15
+
+#IF
+LARGE $TABLE(SL_TJ).TJ16DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ16DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割16
+
+#IF
+LARGE $TABLE(SL_TJ).TJ17DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ17DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割17
+
+#IF
+LARGE $TABLE(SL_TJ).TJ18DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取 <$TABLE(SL_TJ).TJ18DJ>
+SPLIT $STR(S$首领图鉴红点抽取) | S$首领图鉴分割18
+
+#IF
+LARGE $TABLE(SL_TJ).TJ1DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割1_5)
+#ACT
+MOV S$首领图鉴红点1 1
+#ELSEACT
+MOV S$首领图鉴红点1 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ2DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割2_5)
+#ACT
+MOV S$首领图鉴红点2 1
+#ELSEACT
+MOV S$首领图鉴红点2 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ3DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割3_5)
+#ACT
+MOV S$首领图鉴红点3 1
+#ELSEACT
+MOV S$首领图鉴红点3 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ4DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割4_5)
+#ACT
+MOV S$首领图鉴红点4 1
+#ELSEACT
+MOV S$首领图鉴红点4 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ5DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割5_5)
+#ACT
+MOV S$首领图鉴红点5 1
+#ELSEACT
+MOV S$首领图鉴红点5 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ6DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割6_5)
+#ACT
+MOV S$首领图鉴红点6 1
+#ELSEACT
+MOV S$首领图鉴红点6 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ7DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割7_5)
+#ACT
+MOV S$首领图鉴红点7 1
+#ELSEACT
+MOV S$首领图鉴红点7 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ8DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割8_5)
+#ACT
+MOV S$首领图鉴红点8 1
+#ELSEACT
+MOV S$首领图鉴红点8 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ9DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割9_5)
+#ACT
+MOV S$首领图鉴红点9 1
+#ELSEACT
+MOV S$首领图鉴红点9 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ10DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割10_5)
+#ACT
+MOV S$首领图鉴红点10 1
+#ELSEACT
+MOV S$首领图鉴红点10 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ11DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割11_5)
+#ACT
+MOV S$首领图鉴红点11 1
+#ELSEACT
+MOV S$首领图鉴红点11 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ12DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割12_5)
+#ACT
+MOV S$首领图鉴红点12 1
+#ELSEACT
+MOV S$首领图鉴红点12 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ13DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割13_5)
+#ACT
+MOV S$首领图鉴红点13 1
+#ELSEACT
+MOV S$首领图鉴红点13 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ14DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割14_5)
+#ACT
+MOV S$首领图鉴红点14 1
+#ELSEACT
+MOV S$首领图鉴红点14 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ15DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割15_5)
+#ACT
+MOV S$首领图鉴红点15 1
+#ELSEACT
+MOV S$首领图鉴红点15 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ16DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割16_5)
+#ACT
+MOV S$首领图鉴红点16 1
+#ELSEACT
+MOV S$首领图鉴红点16 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ17DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割17_5)
+#ACT
+MOV S$首领图鉴红点17 1
+#ELSEACT
+MOV S$首领图鉴红点17 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ18DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割18_5)
+#ACT
+MOV S$首领图鉴红点18 1
+#ELSEACT
+MOV S$首领图鉴红点18 0
+
+
+#IFONE
+EQUAL S$首领图鉴红点1 1
+EQUAL S$首领图鉴红点2 1
+EQUAL S$首领图鉴红点3 1
+EQUAL S$首领图鉴红点4 1
+EQUAL S$首领图鉴红点5 1
+EQUAL S$首领图鉴红点6 1
+EQUAL S$首领图鉴红点7 1
+EQUAL S$首领图鉴红点8 1
+EQUAL S$首领图鉴红点9 1
+EQUAL S$首领图鉴红点10 1
+EQUAL S$首领图鉴红点11 1
+EQUAL S$首领图鉴红点12 1
+EQUAL S$首领图鉴红点13 1
+EQUAL S$首领图鉴红点14 1
+EQUAL S$首领图鉴红点15 1
+EQUAL S$首领图鉴红点16 1
+EQUAL S$首领图鉴红点17 1
+EQUAL S$首领图鉴红点18 1
+#ACT
+REDDOT 5 zbtj5 85 80
+#ELSEACT
+REDDEL 5 zbtj5
+
+#IFONE
+EQUAL S$首领图鉴红点1 1
+EQUAL S$首领图鉴红点2 1
+EQUAL S$首领图鉴红点3 1
+EQUAL S$首领图鉴红点4 1
+EQUAL S$首领图鉴红点5 1
+EQUAL S$首领图鉴红点6 1
+EQUAL S$首领图鉴红点7 1
+EQUAL S$首领图鉴红点8 1
+EQUAL S$首领图鉴红点9 1
+#ACT
+REDDOT 5 sltj8 115 10
+#ELSEACT
+REDDEL 5 sltj8
+
+#IFONE
+EQUAL S$首领图鉴红点10 1
+EQUAL S$首领图鉴红点11 1
+EQUAL S$首领图鉴红点12 1
+EQUAL S$首领图鉴红点13 1
+EQUAL S$首领图鉴红点14 1
+EQUAL S$首领图鉴红点15 1
+EQUAL S$首领图鉴红点16 1
+EQUAL S$首领图鉴红点17 1
+EQUAL S$首领图鉴红点18 1
+#ACT
+REDDOT 5 sltj9 115 10
+#ELSEACT
+REDDEL 5 sltj9
+
+#IF
+EQUAL S$首领图鉴红点1 1
+#ACT
+REDDOT 5 zz1-1 196 10
+#ELSEACT
+REDDEL 5 zz1-1
+
+#IF
+EQUAL S$首领图鉴红点2 1
+#ACT
+REDDOT 5 zz2-1 196 10
+#ELSEACT
+REDDEL 5 zz2-1
+
+#IF
+EQUAL S$首领图鉴红点3 1
+#ACT
+REDDOT 5 zz3-1 196 10
+#ELSEACT
+REDDEL 5 zz3-1
+
+#IF
+EQUAL S$首领图鉴红点4 1
+#ACT
+REDDOT 5 zz4-1 196 10
+#ELSEACT
+REDDEL 5 zz4-1
+
+#IF
+EQUAL S$首领图鉴红点5 1
+#ACT
+REDDOT 5 zz5-1 196 10
+#ELSEACT
+REDDEL 5 zz5-1
+
+#IF
+EQUAL S$首领图鉴红点6 1
+#ACT
+REDDOT 5 zz6-1 196 10
+#ELSEACT
+REDDEL 5 zz6-1
+
+#IF
+EQUAL S$首领图鉴红点7 1
+#ACT
+REDDOT 5 zz7-1 196 10
+#ELSEACT
+REDDEL 5 zz7-1
+
+#IF
+EQUAL S$首领图鉴红点8 1
+#ACT
+REDDOT 5 zz8-1 196 10
+#ELSEACT
+REDDEL 5 zz8-1
+
+#IF
+EQUAL S$首领图鉴红点9 1
+#ACT
+REDDOT 5 zz9-1 196 10
+#ELSEACT
+REDDEL 5 zz9-1
+
+#IF
+EQUAL S$首领图鉴红点10 1
+#ACT
+REDDOT 5 zz10-1 196 10
+#ELSEACT
+REDDEL 5 zz10-1
+
+#IF
+EQUAL S$首领图鉴红点11 1
+#ACT
+REDDOT 5 zz11-1 196 10
+#ELSEACT
+REDDEL 5 zz11-1
+
+#IF
+EQUAL S$首领图鉴红点12 1
+#ACT
+REDDOT 5 zz12-1 196 10
+#ELSEACT
+REDDEL 5 zz12-1
+
+#IF
+EQUAL S$首领图鉴红点13 1
+#ACT
+REDDOT 5 zz13-1 196 10
+#ELSEACT
+REDDEL 5 zz13-1
+
+#IF
+EQUAL S$首领图鉴红点14 1
+#ACT
+REDDOT 5 zz14-1 196 10
+#ELSEACT
+REDDEL 5 zz14-1
+
+#IF
+EQUAL S$首领图鉴红点15 1
+#ACT
+REDDOT 5 zz15-1 196 10
+#ELSEACT
+REDDEL 5 zz15-1
+
+#IF
+EQUAL S$首领图鉴红点16 1
+#ACT
+REDDOT 5 zz16-1 196 10
+#ELSEACT
+REDDEL 5 zz16-1
+
+#IF
+EQUAL S$首领图鉴红点17 1
+#ACT
+REDDOT 5 zz17-1 196 10
+#ELSEACT
+REDDEL 5 zz17-1
+
+#IF
+EQUAL S$首领图鉴红点18 1
+#ACT
+REDDOT 5 zz18-1 196 10
+#ELSEACT
+REDDEL 5 zz18-1
+
+
+
+[@图鉴拆解红点]
+
+#IFONE
+LARGE <$ITEMVALSUM(祈祷头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷戒指图鉴).DURA> 0
+#ACT
+REDDOT 5 cjtj8 115 10
+#ELSEACT
+REDDEL 5 cjtj8
+
+#IFONE
+LARGE <$ITEMVALSUM(狂怒头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒戒指图鉴).DURA> 0
+#ACT
+REDDOT 5 cjtj9 115 10
+#ELSEACT
+REDDEL 5 cjtj9
+
+#IFONE
+LARGE <$ITEMVALSUM(嗜血头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血戒指图鉴).DURA> 0
+#ACT
+REDDOT 5 cjtj10 115 10
+#ELSEACT
+REDDEL 5 cjtj10
+
+#IFONE
+LARGE <$ITEMVALSUM(神秘头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘戒指图鉴).DURA> 0
+#ACT
+REDDOT 5 cjtj11 115 10
+#ELSEACT
+REDDEL 5 cjtj11
+
+#IFONE
+LARGE <$ITEMVALSUM(明王头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王戒指图鉴).DURA> 0
+#ACT
+REDDOT 5 cjtj12 115 10
+#ELSEACT
+REDDEL 5 cjtj12
+
+#IFONE
+LARGE <$ITEMVALSUM(神御头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御戒指图鉴).DURA> 0
+#ACT
+REDDOT 5 cjtj13 115 10
+#ELSEACT
+REDDEL 5 cjtj13
+
+#IFONE
+LARGE <$ITEMVALSUM(尸霸图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(机关巨兽图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(蛇妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(逆魔之王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(通天教主图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(铁血魔王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(阿修罗神图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(赤阳魔尊图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(上古妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(血域魔尊图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(巨木王者图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(魔域妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(刑天真身图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(玄武真灵图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(无间之主图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(地底仙帝图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(绝毒蛛后图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(虚空古神图鉴卡).DURA> 0
+#ACT
+REDDOT 5 cjtj14 115 10
+#ELSEACT
+REDDEL 5 cjtj14
+
+}
+
+
+
+
+
+
+
+

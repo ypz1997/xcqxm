@@ -1,0 +1,60 @@
+[@main]
+#IF
+LARGE $CLIENTFLAG 1
+#ACT
+GOTO @手游端
+#ELSEACT
+GOTO @PC端
+
+
+[@手游端]
+
+#IF
+HasTask 4
+#SAY
+<Button|x=413.0|y=0.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|show=0|move=0|bg=1|loadDelay=1|img=public/bg_npc_01.png|esc=1|_localZOrder=-2|reset=1>
+<RText|x=25|y=20|text=好久不见那么多少年英雄来此历练了，此去\击杀几只僵尸来提升你的修为吧！\\>
+<Img|x=25.0|y=120.0|width=10|height=10|img=private/xjty.png|esc=0>
+<RText|id=999|x=45.0|y=110.0|color=251|size=18|text=<前往历练/@前往历练>>
+<Layout|id=1|x=6.1|y=7.1|width=200|height=150|link=@前往历练>
+#ELSESAY
+<Button|x=413.0|y=0.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|show=0|move=0|bg=1|loadDelay=1|img=public/bg_npc_01.png|esc=1|_localZOrder=-2|reset=1>
+<RText|x=25|y=20|text=好久不见那么多少年英雄来此历练了，期待你们的成长！\\>
+
+
+
+
+#IF
+HasTask 4
+#ACT
+Navigation 80 999 前往历练#001#5 0 0
+
+[@前往历练]
+
+#IF
+HasTask 4
+#ACT
+GIVE 回城神石 1 1
+ChoosePos 0 475 220 <$PARAM(10)>
+GIVE 太阳神水 199 1
+GIVE 随机神石 1 1
+MAPMOVE t012 65 25
+EndTask 4
+AddTask 5
+MOV S$记录当前地图名 <$MAPNAME>
+DelayCall 5 @开自动打怪2
+BREAK
+CLOSE
+
+[@开自动打怪2]
+#IF
+EQUAL $AutoKill 0
+EQUAL <$STR(S$记录当前地图名)> <$MAPNAME>
+#ACT
+MOV S$挂机 开启
+OpenAutokill 1
+DelFunBtn 0 2
+AddFunBtn 0 2 8011 0 "" 0 0
+BREAK

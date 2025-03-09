@@ -1,0 +1,71 @@
+[@MAIN]
+#if
+true
+#act
+goto @军衔界面展示条件
+
+[@军衔界面展示条件]
+#IF
+LARGE $CUSTOMVALUE(17) 9
+#ACT
+MOV N$Lemon军衔SXTS0 0
+MOV N$Lemon军衔SXTS1 0
+MOV N$Lemon军衔SXTS3 0
+MOV N$Lemon军衔SXTS4 0
+LOADEXVAR S$Lemon军衔SX 军衔属性 $CUSTOMVALUE(17) ..\QUESTDIARY\数据文件\军衔升级数据.txt
+SPLIT $STR(S$Lemon军衔SX) | S$Lemon军衔SX
+BREAK
+
+#IF
+EQUAL $CUSTOMVALUE(17) 0
+#ACT
+MOV N$Lemon军衔JY 1000
+MOV S$Lemon军衔SX_0 0
+MOV S$Lemon军衔SX_1 0
+MOV S$Lemon军衔SX_2 0
+MOV S$Lemon军衔SX_3 0
+LOADEXVAR S$Lemon军衔SXTS 军衔属性 $INC.$CUSTOMVALUE(17).1 ..\QUESTDIARY\数据文件\军衔升级数据.txt
+SPLIT $STR(S$Lemon军衔SXTS) | S$Lemon军衔SXTS
+MOV N$Lemon军衔SXTS0 $DEC.$STR(S$Lemon军衔SXTS_0).$STR(S$Lemon军衔SX_0)
+MOV N$Lemon军衔SXTS1 $DEC.$STR(S$Lemon军衔SXTS_1).$STR(S$Lemon军衔SX_1)
+MOV N$Lemon军衔SXTS2 $DEC.$STR(S$Lemon军衔SXTS_2).$STR(S$Lemon军衔SX_2)
+MOV N$Lemon军衔SXTS3 $DEC.$STR(S$Lemon军衔SXTS_3).$STR(S$Lemon军衔SX_3)
+goto @军衔界面展示_0305
+#ELSEACT
+LOADEXVAR N$Lemon军衔JY 军衔经验 $INC.$CUSTOMVALUE(17).1 ..\QUESTDIARY\数据文件\军衔升级数据.txt
+LOADEXVAR S$Lemon军衔SX 军衔属性 $CUSTOMVALUE(17) ..\QUESTDIARY\数据文件\军衔升级数据.txt
+SPLIT $STR(S$Lemon军衔SX) | S$Lemon军衔SX
+LOADEXVAR S$Lemon军衔SXTS 军衔属性 $INC.$CUSTOMVALUE(17).1 ..\QUESTDIARY\数据文件\军衔升级数据.txt
+SPLIT $STR(S$Lemon军衔SXTS) | S$Lemon军衔SXTS
+MOV N$Lemon军衔SXTS0 $DEC.$STR(S$Lemon军衔SXTS_0).$STR(S$Lemon军衔SX_0)
+MOV N$Lemon军衔SXTS1 $DEC.$STR(S$Lemon军衔SXTS_1).$STR(S$Lemon军衔SX_1)
+MOV N$Lemon军衔SXTS2 $DEC.$STR(S$Lemon军衔SXTS_2).$STR(S$Lemon军衔SX_2)
+MOV N$Lemon军衔SXTS3 $DEC.$STR(S$Lemon军衔SXTS_3).$STR(S$Lemon军衔SX_3)
+goto @军衔界面展示_0305
+
+
+[@军衔界面展示_0305]
+#if
+true
+#say
+<Img|id=junxianjm_1|children={junxianjm_2,junxianjm_4,junxianjm_3,junxianjm_8,junxianjm_9,junxianjm_10,junxianjm_11,junxianjm_12,junxianjm_13,junxianjm_14,junxianjm_15,junxianjm_16,junxianjm_17,junxianjm_18,junxianjm_19,junxianjm_20,junxianjm_21}|x=300|y=90|width=683|height=432|img=private\junxian\junxian_13.png|bg=1|move=0|reset=1|show=0|loadDelay=1>
+<Layout|id=junxianjm_2|x=639|y=-20|width=80|height=80|link=@exit>
+<Button|id=junxianjm_4|x=642|y=1|width=53|height=49|nimg=public/btn_close_01.png|pimg=public/btn_close_01.png|mimg=public/btn_close_01.png|color=251|size=18>
+<Img|id=junxianjm_3|children={junxianjm_5}|x=162|y=45|width=370|height=335|img=private\junxian\junxian_11.png|bg=1|reset=1|show=0|loadDelay=0>
+<Img|id=junxianjm_5|children={junxianjm_6,junxianjm_7}|x=113|y=75|width=153|height=181|img=private\junxian\junxian_12.png|bg=1|reset=1|show=0|loadDelay=0>
+<Img|id=junxianjm_6|x=26|y=18|width=84|height=95|img=private\junxian\junxian_14.png|bg=1|reset=1|show=0|loadDelay=0>
+<Img|id=junxianjm_7|x=-32|y=-75|width=206|height=64|img=private\junxian\junxian_15.png|bg=1|reset=1|show=0|loadDelay=0>
+<Text|id=junxianjm_8|x=40|y=100|color=94|size=25|text=当前属性>
+<Text|id=junxianjm_9|x=545|y=100|color=94|size=25|text=下级属性>
+<Img|id=junxianjm_10|x=300|y=66|width=101|height=21|img=private\junxian\title_currency_<$CUSTOMVALUE(17)>.png|bg=1|reset=1|show=0|loadDelay=0>
+<RText|id=junxianjm_11|x=30|y=180|color=128|size=18|text=<威压/FCOLOR=25><+<$STR(S$Lemon军衔SX_0)>%/FCOLOR=254>>
+<RText|id=junxianjm_12|x=30|y=210|color=128|size=18|text=<压制/FCOLOR=25><+<$STR(S$Lemon军衔SX_1)>%/FCOLOR=254>>
+<RText|id=junxianjm_13|x=30|y=240|color=128|size=18|text=<暴击率/FCOLOR=25><+<$STR(S$Lemon军衔SX_2)>%/FCOLOR=254>>
+<RText|id=junxianjm_14|x=30|y=270|color=128|size=18|text=<暴击伤害/FCOLOR=25><+<$STR(S$Lemon军衔SX_3)>%/FCOLOR=254>>
+<RText|id=junxianjm_15|x=550|y=180|color=128|size=18|text=<威压/FCOLOR=25><+<$STR(N$Lemon军衔SXTS0)>%/FCOLOR=254>>
+<RText|id=junxianjm_16|x=550|y=210|color=128|size=18|text=<压制/FCOLOR=25><+<$STR(N$Lemon军衔SXTS1)>%/FCOLOR=254>>
+<RText|id=junxianjm_17|x=550|y=240|color=128|size=18|text=<暴击率/FCOLOR=25><+<$STR(N$Lemon军衔SXTS2)>%/FCOLOR=254>>
+<RText|id=junxianjm_18|x=550|y=270|color=128|size=18|text=<暴击伤害/FCOLOR=25><+<$STR(N$Lemon军衔SXTS3)>%/FCOLOR=254>>
+<Img|id=junxianjm_21|x=248|y=385|width=206|height=10|img=public\frame_mission_chosen.png|bg=1|reset=1|show=0|loadDelay=0>
+<LoadingBar|id=junxianjm_19|x=245|y=385|maxLen=100|curLen=<$PERCENT.<$CUSTOMVALUE(18)>.$STR(N$Lemon军衔JY)>|img=private/junxian/bg_shenlonghy_05.png>
+<Button|id=junxianjm_20|x=340.0|y=372.0|color=255|scale=1|size=16|nimg=private/junxian/1.png|pimg=private/junxian/1.png|text=<$CUSTOMVALUE(18)>/<$STR(N$Lemon军衔JY)>>

@@ -1,0 +1,334 @@
+[@新人登陆]
+{
+#IF
+ISNEWHUMAN
+CHECK [799] 0
+#ACT
+MOV S$上次下线时间 <$LONGTODATETIME(<$INC.$LONGDATE.28800>)>
+CalcVar Human 离线时间 = <$INC.$LONGDATE.28800> 1
+SET [799] 1
+GIVE 惊喜礼包 1 1
+CalcVar Human 泡点剩余时间 = 3600 1
+CalcVar Human 泡点付费剩余时间 = 1800 1
+CALCVAR HUMAN 装备悬赏_已兑换装备ID字符串 = | 1
+CALCVAR HUMAN 装备悬赏_已爆出装备ID字符串 = | 1
+CALCVAR HUMAN 装备悬赏_无名额装备ID字符串 = | 1
+CALCVAR HUMAN 神秘卷轴使用 = 5|5|5|5 1
+CALCVAR HUMAN 惊喜礼包 = 1 1
+CALCVAR HUMAN 天关_今日通关层数 = 0 1
+CALCVAR HUMAN 天关_昨日通关层数 = 0 1
+CALCVAR HUMAN 天关_历史最高层数 = 0 1
+Table PlayerALLOutput0 Ring = 24
+Table PlayerALLOutput0 Bracelet = 24
+Table PlayerALLOutput0 Helmet = 18
+Table PlayerALLOutput0 Belt = 18
+Table PlayerALLOutput0 Clothing = 12
+Table PlayerALLOutput0 Weapon = 12
+Table PlayerALLOutput0 Necklace = 18
+Table PlayerALLOutput0 Boots = 18
+Table PlayerALLOutput1 Ring = 24
+Table PlayerALLOutput1 Bracelet = 24
+Table PlayerALLOutput1 Helmet = 18
+Table PlayerALLOutput1 Belt = 18
+Table PlayerALLOutput1 Clothing = 12
+Table PlayerALLOutput1 Weapon = 12
+Table PlayerALLOutput1 Necklace = 18
+Table PlayerALLOutput1 Boots = 18
+Table PlayerALLOutput2 Ring = 24
+Table PlayerALLOutput2 Bracelet = 24
+Table PlayerALLOutput2 Helmet = 18
+Table PlayerALLOutput2 Belt = 18
+Table PlayerALLOutput2 Clothing = 12
+Table PlayerALLOutput2 Weapon = 12
+Table PlayerALLOutput2 Necklace = 18
+Table PlayerALLOutput2 Boots = 18
+Table PlayerALLOutput3 Ring = 20
+Table PlayerALLOutput3 Bracelet = 20
+Table PlayerALLOutput3 Helmet = 15
+Table PlayerALLOutput3 Belt = 15
+Table PlayerALLOutput3 Clothing = 10
+Table PlayerALLOutput3 Weapon = 10
+Table PlayerALLOutput3 Necklace = 15
+Table PlayerALLOutput3 Boots = 15
+Table PlayerALLOutput4 Ring = 20
+Table PlayerALLOutput4 Bracelet = 20
+Table PlayerALLOutput4 Helmet = 15
+Table PlayerALLOutput4 Belt = 15
+Table PlayerALLOutput4 Clothing = 10
+Table PlayerALLOutput4 Weapon = 10
+Table PlayerALLOutput4 Necklace = 15
+Table PlayerALLOutput4 Boots = 15
+Table PlayerALLOutput5 Ring = 20
+Table PlayerALLOutput5 Bracelet = 20
+Table PlayerALLOutput5 Helmet = 15
+Table PlayerALLOutput5 Belt = 15
+Table PlayerALLOutput5 Clothing = 10
+Table PlayerALLOutput5 Weapon = 10
+Table PlayerALLOutput5 Necklace = 15
+Table PlayerALLOutput5 Boots = 15
+Table PlayerALLOutput6 Ring = 16
+Table PlayerALLOutput6 Bracelet = 16
+Table PlayerALLOutput6 Helmet = 12
+Table PlayerALLOutput6 Belt = 12
+Table PlayerALLOutput6 Clothing = 8
+Table PlayerALLOutput6 Weapon = 8
+Table PlayerALLOutput6 Necklace = 12
+Table PlayerALLOutput6 Boots = 12
+Table PlayerALLOutput7 Ring = 16
+Table PlayerALLOutput7 Bracelet = 16
+Table PlayerALLOutput7 Helmet = 12
+Table PlayerALLOutput7 Belt = 12
+Table PlayerALLOutput7 Clothing = 8
+Table PlayerALLOutput7 Weapon = 8
+Table PlayerALLOutput7 Necklace = 12
+Table PlayerALLOutput7 Boots = 12
+Table PlayerALLOutput8 Ring = 16
+Table PlayerALLOutput8 Bracelet = 16
+Table PlayerALLOutput8 Helmet = 12
+Table PlayerALLOutput8 Belt = 12
+Table PlayerALLOutput8 Clothing = 8
+Table PlayerALLOutput8 Weapon = 8
+Table PlayerALLOutput8 Necklace = 12
+Table PlayerALLOutput8 Boots = 12
+Table PlayerALLOutput9 Ring = 12
+Table PlayerALLOutput9 Bracelet = 12
+Table PlayerALLOutput9 Helmet = 8
+Table PlayerALLOutput9 Belt = 8
+Table PlayerALLOutput9 Clothing = 6
+Table PlayerALLOutput9 Weapon = 6
+Table PlayerALLOutput9 Necklace = 8
+Table PlayerALLOutput9 Boots = 8
+Table PlayerALLOutput10 Ring = 12
+Table PlayerALLOutput10 Bracelet = 12
+Table PlayerALLOutput10 Helmet = 8
+Table PlayerALLOutput10 Belt = 8
+Table PlayerALLOutput10 Clothing = 6
+Table PlayerALLOutput10 Weapon = 6
+Table PlayerALLOutput10 Necklace = 8
+Table PlayerALLOutput10 Boots = 8
+Table PlayerALLOutput11 Ring = 8
+Table PlayerALLOutput11 Bracelet = 8
+Table PlayerALLOutput11 Helmet = 6
+Table PlayerALLOutput11 Belt = 6
+Table PlayerALLOutput11 Clothing = 4
+Table PlayerALLOutput11 Weapon = 4
+Table PlayerALLOutput11 Necklace = 6
+Table PlayerALLOutput11 Boots = 6
+Table PlayerALLOutput12 Ring = 8
+Table PlayerALLOutput12 Bracelet = 8
+Table PlayerALLOutput12 Helmet = 6
+Table PlayerALLOutput12 Belt = 6
+Table PlayerALLOutput12 Clothing = 4
+Table PlayerALLOutput12 Weapon = 4
+Table PlayerALLOutput12 Necklace = 6
+Table PlayerALLOutput12 Boots = 6
+Table PlayerALLOutput13 Ring = 4
+Table PlayerALLOutput13 Bracelet = 4
+Table PlayerALLOutput13 Helmet = 4
+Table PlayerALLOutput13 Belt = 4
+Table PlayerALLOutput13 Clothing = 2
+Table PlayerALLOutput13 Weapon = 2
+Table PlayerALLOutput13 Necklace = 4
+Table PlayerALLOutput13 Boots = 4
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取1 1 108
+SPLIT $STR(S$神秘商店抽取1) | S$神秘商店分割1
+TABLE XM_DY YHWP0 = <$STR(S$神秘商店分割1_0)>
+TABLE XM_DY YHWP1 = <$STR(S$神秘商店分割1_1)>
+TABLE XM_DY YHWP2 = <$STR(S$神秘商店分割1_2)>
+TABLE XM_DY YHWP3 = <$STR(S$神秘商店分割1_3)>
+TABLE XM_DY YHWP4 = <$STR(S$神秘商店分割1_4)>
+TABLE XM_DY YHWP5 = <$STR(S$神秘商店分割1_5)>
+CalcVar Human 神秘商店物品1 = <Text|id=sd1-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DY).YHWP0>><Text|id=sd1-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DY).YHWP3><$TABLE(XM_DY).YHWP4>><Button|id=sd1-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品1&神秘商店1=<$TABLE(XM_DY).YHWP0>&神秘商店2=<$TABLE(XM_DY).YHWP1>1&神秘商店3=<$TABLE(XM_DY).YHWP2>&神秘商店4=<$TABLE(XM_DY).YHWP3>&神秘商店5=<$TABLE(XM_DY).YHWP4>><ItemShow|id=sd1-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DY).YHWP5>|itemcount=<$TABLE(XM_DY).YHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DY).YHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取2 1 105
+SPLIT $STR(S$神秘商店抽取2) | S$神秘商店分割2
+TABLE XM_DE EHWP0 = <$STR(S$神秘商店分割2_0)>
+TABLE XM_DE EHWP1 = <$STR(S$神秘商店分割2_1)>
+TABLE XM_DE EHWP2 = <$STR(S$神秘商店分割2_2)>
+TABLE XM_DE EHWP3 = <$STR(S$神秘商店分割2_3)>
+TABLE XM_DE EHWP4 = <$STR(S$神秘商店分割2_4)>
+TABLE XM_DE EHWP5 = <$STR(S$神秘商店分割2_5)>
+CalcVar Human 神秘商店物品2 = <Text|id=sd2-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DE).EHWP0>><Text|id=sd2-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DE).EHWP3><$TABLE(XM_DE).EHWP4>><Button|id=sd2-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品2&神秘商店1=<$TABLE(XM_DE).EHWP0>&神秘商店2=<$TABLE(XM_DE).EHWP1>&神秘商店3=<$TABLE(XM_DE).EHWP2>&神秘商店4=<$TABLE(XM_DE).EHWP3>&神秘商店5=<$TABLE(XM_DE).EHWP4>><ItemShow|id=sd2-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DE).EHWP5>|itemcount=<$TABLE(XM_DE).EHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DE).EHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取3 1 106
+SPLIT $STR(S$神秘商店抽取3) | S$神秘商店分割3
+TABLE XM_DS SHWP0 = <$STR(S$神秘商店分割3_0)>
+TABLE XM_DS SHWP1 = <$STR(S$神秘商店分割3_1)>
+TABLE XM_DS SHWP2 = <$STR(S$神秘商店分割3_2)>
+TABLE XM_DS SHWP3 = <$STR(S$神秘商店分割3_3)>
+TABLE XM_DS SHWP4 = <$STR(S$神秘商店分割3_4)>
+TABLE XM_DS SHWP5 = <$STR(S$神秘商店分割3_5)>
+CalcVar Human 神秘商店物品3 = <Text|id=sd3-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DS).SHWP0>><Text|id=sd3-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DS).SHWP3><$TABLE(XM_DS).SHWP4>><Button|id=sd3-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品3&神秘商店1=<$TABLE(XM_DS).SHWP0>&神秘商店2=<$TABLE(XM_DS).SHWP1>&神秘商店3=<$TABLE(XM_DS).SHWP2>&神秘商店4=<$TABLE(XM_DS).SHWP3>&神秘商店5=<$TABLE(XM_DS).SHWP4>><ItemShow|id=sd3-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DS).SHWP5>|itemcount=<$TABLE(XM_DS).SHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DS).SHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取4 1 105
+SPLIT $STR(S$神秘商店抽取4) | S$神秘商店分割4
+TABLE XM_SD SIHWP0 = <$STR(S$神秘商店分割4_0)>
+TABLE XM_SD SIHWP1 = <$STR(S$神秘商店分割4_1)>
+TABLE XM_SD SIHWP2 = <$STR(S$神秘商店分割4_2)>
+TABLE XM_SD SIHWP3 = <$STR(S$神秘商店分割4_3)>
+TABLE XM_SD SIHWP4 = <$STR(S$神秘商店分割4_4)>
+TABLE XM_SD SIHWP5 = <$STR(S$神秘商店分割4_5)>
+CalcVar Human 神秘商店物品4 = <Text|id=sd4-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_SD).SIHWP0>><Text|id=sd4-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_SD).SIHWP3><$TABLE(XM_SD).SIHWP4>><Button|id=sd4-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品4&神秘商店1=<$TABLE(XM_SD).SIHWP0>&神秘商店2=<$TABLE(XM_SD).SIHWP1>&神秘商店3=<$TABLE(XM_SD).SIHWP2>&神秘商店4=<$TABLE(XM_SD).SIHWP3>&神秘商店5=<$TABLE(XM_SD).SIHWP4>><ItemShow|id=sd4-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_SD).SIHWP5>|itemcount=<$TABLE(XM_SD).SIHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_SD).SIHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取5 1 106
+SPLIT $STR(S$神秘商店抽取5) | S$神秘商店分割5
+TABLE XM_DW WHWP0 = <$STR(S$神秘商店分割5_0)>
+TABLE XM_DW WHWP1 = <$STR(S$神秘商店分割5_1)>
+TABLE XM_DW WHWP2 = <$STR(S$神秘商店分割5_2)>
+TABLE XM_DW WHWP3 = <$STR(S$神秘商店分割5_3)>
+TABLE XM_DW WHWP4 = <$STR(S$神秘商店分割5_4)>
+TABLE XM_DW WHWP5 = <$STR(S$神秘商店分割5_5)>
+CalcVar Human 神秘商店物品5 = <Text|id=sd5-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DW).WHWP0>><Text|id=sd5-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DW).WHWP3><$TABLE(XM_DW).WHWP4>><Button|id=sd5-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品5&神秘商店1=<$TABLE(XM_DW).WHWP0>&神秘商店2=<$TABLE(XM_DW).WHWP1>&神秘商店3=<$TABLE(XM_DW).WHWP2>&神秘商店4=<$TABLE(XM_DW).WHWP3>&神秘商店5=<$TABLE(XM_DW).WHWP4>><ItemShow|id=sd5-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DW).WHWP5>|itemcount=<$TABLE(XM_DW).WHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DW).WHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取6 1 106
+SPLIT $STR(S$神秘商店抽取6) | S$神秘商店分割6
+TABLE XM_DL LHWP0 = <$STR(S$神秘商店分割6_0)>
+TABLE XM_DL LHWP1 = <$STR(S$神秘商店分割6_1)>
+TABLE XM_DL LHWP2 = <$STR(S$神秘商店分割6_2)>
+TABLE XM_DL LHWP3 = <$STR(S$神秘商店分割6_3)>
+TABLE XM_DL LHWP4 = <$STR(S$神秘商店分割6_4)>
+TABLE XM_DL LHWP5 = <$STR(S$神秘商店分割6_5)>
+CalcVar Human 神秘商店物品6 = <Text|id=sd6-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DL).LHWP0>><Text|id=sd6-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DL).LHWP3><$TABLE(XM_DL).LHWP4>><Button|id=sd6-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品6&神秘商店1=<$TABLE(XM_DL).LHWP0>&神秘商店2=<$TABLE(XM_DL).LHWP1>&神秘商店3=<$TABLE(XM_DL).LHWP2>&神秘商店4=<$TABLE(XM_DL).LHWP3>&神秘商店5=<$TABLE(XM_DL).LHWP4>><ItemShow|id=sd6-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DL).LHWP5>|itemcount=<$TABLE(XM_DL).LHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DL).LHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取7 1 106
+SPLIT $STR(S$神秘商店抽取7) | S$神秘商店分割7
+TABLE XM_DQ QHWP0 = <$STR(S$神秘商店分割7_0)>
+TABLE XM_DQ QHWP1 = <$STR(S$神秘商店分割7_1)>
+TABLE XM_DQ QHWP2 = <$STR(S$神秘商店分割7_2)>
+TABLE XM_DQ QHWP3 = <$STR(S$神秘商店分割7_3)>
+TABLE XM_DQ QHWP4 = <$STR(S$神秘商店分割7_4)>
+TABLE XM_DQ QHWP5 = <$STR(S$神秘商店分割7_5)>
+CalcVar Human 神秘商店物品7 = <Text|id=sd7-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DQ).QHWP0>><Text|id=sd7-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DQ).QHWP3><$TABLE(XM_DQ).QHWP4>><Button|id=sd7-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品7&神秘商店1=<$TABLE(XM_DQ).QHWP0>&神秘商店2=<$TABLE(XM_DQ).QHWP1>&神秘商店3=<$TABLE(XM_DQ).QHWP2>&神秘商店4=<$TABLE(XM_DQ).QHWP3>&神秘商店5=<$TABLE(XM_DQ).QHWP4>><ItemShow|id=sd7-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DQ).QHWP5>|itemcount=<$TABLE(XM_DQ).QHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DQ).QHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取8 1 106
+SPLIT $STR(S$神秘商店抽取8) | S$神秘商店分割8
+TABLE XM_DB BHWP0 = <$STR(S$神秘商店分割8_0)>
+TABLE XM_DB BHWP1 = <$STR(S$神秘商店分割8_1)>
+TABLE XM_DB BHWP2 = <$STR(S$神秘商店分割8_2)>
+TABLE XM_DB BHWP3 = <$STR(S$神秘商店分割8_3)>
+TABLE XM_DB BHWP4 = <$STR(S$神秘商店分割8_4)>
+TABLE XM_DB BHWP5 = <$STR(S$神秘商店分割8_5)>
+CalcVar Human 神秘商店物品8 = <Text|id=sd8-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DB).BHWP0>><Text|id=sd8-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DB).BHWP3><$TABLE(XM_DB).BHWP4>><Button|id=sd8-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品8&神秘商店1=<$TABLE(XM_DB).BHWP0>&神秘商店2=<$TABLE(XM_DB).BHWP1>&神秘商店3=<$TABLE(XM_DB).BHWP2>&神秘商店4=<$TABLE(XM_DB).BHWP3>&神秘商店5=<$TABLE(XM_DB).BHWP4>><ItemShow|id=sd8-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DB).BHWP5>|itemcount=<$TABLE(XM_DB).BHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DB).BHWP0>> 1
+
+ReadExcel ..\QuestDiary\文本读取\会员等级权益.xls <$INC.$CUSTOMVALUE(90).1>
+;副本次数
+CHANGECUSTOMVALUE 25 = <$996(Excel).0>
+CHANGECUSTOMVALUE 26 = <$996(Excel).0>
+CHANGECUSTOMVALUE 27 = <$996(Excel).0>
+CHANGECUSTOMVALUE 28 = <$996(Excel).0>
+CHANGECUSTOMVALUE 29 = <$996(Excel).0>
+CHANGECUSTOMVALUE 30 = <$996(Excel).0>
+CHANGECUSTOMVALUE 31 = <$996(Excel).0>
+;特权复活次数
+CHANGECUSTOMVALUE 86 = <$996(Excel).1>
+ChangeCustomValue 88 = 3
+;特权地图次数
+CHANGECUSTOMVALUE 20 = <$996(Excel).2>
+
+
+
+
+;---------------------新手上线必须的
+GMEXECUTE 等级 50
+HumanHP + $MAXHP
+HumanMP + $MAXMP
+MapMove 1 233 233 1
+BAGSIZE 96
+GOTO @看看职业
+BREAK
+CLOSE
+;---------------------职业
+
+[@看看职业]
+#IF
+CHECKJOB Warrior
+#ACT
+ADDSKILL 初级剑法 0
+ADDSKILL 攻杀剑法 0
+ADDSKILL 护身真气 0
+ADDSKILL 刺杀剑术 0
+ADDSKILL 金刚护体 0
+ADDSKILL 抱月刀 0
+SetSkillKey 42 49
+SetSkillKey 12 50
+SetSkillKey 43 51
+DelayGoto 100 @开出生任务
+BREAK
+
+#IF
+CHECKJOB Wizard
+#ACT
+ADDSKILL 抗拒火环 0
+ADDSKILL 雷电术 0
+ADDSKILL 火墙 0
+ADDSKILL 疾光电影 0
+ADDSKILL 地狱雷光 0
+ADDSKILL 魔法盾 0
+SetSkillKey 8 49
+SetSkillKey 11 48
+SetSkillKey 22 50
+SetSkillKey 10 51
+SetSkillKey 24 52
+SetSkillKey 31 53
+DelayGoto 100 @开出生任务
+BREAK
+
+#IF
+CHECKJOB Taos
+#ACT
+GIVE 道尊神符 1 1
+GIVE 道尊灵毒(绿) 1 1
+GIVE 道尊灵毒(红) 1 1
+ADDSKILL 治疗术 0
+ADDSKILL 精神战法 0
+ADDSKILL 施毒术 0
+ADDSKILL 灵魂道符 0
+ADDSKILL 隐身术 0
+ADDSKILL 集体隐身术 0
+ADDSKILL 幽灵盾 0
+ADDSKILL 神圣战甲术 0
+ADDSKILL 狮子吼 0
+ADDSKILL 心灵召唤 0
+SetSkillKey 13 48
+SetSkillKey 15 49
+SetSkillKey 14 50
+SetSkillKey 6 51
+SetSkillKey 18 52
+DelayGoto 100 @开出生任务
+BREAK
+
+
+[@开出生任务]
+#IF
+TRUE
+#ACT
+AddTask 1
+GONPC 218 230 0
+GOTO @首次登录弹出图片
+
+#IF
+Gender Man
+#ACT
+SetTaskValue 1 I0 = 118
+SetTaskValue 1 S0 = 轻盔(男)
+UpdateTask 1 1
+BREAK
+#ELSEACT
+SetTaskValue 1 I0 = 126
+SetTaskValue 1 S0 = 轻盔(女)
+UpdateTask 1 1
+BREAK
+
+[@首次登录弹出图片]
+#IF
+TRUE
+#ACT
+MOV S$新人_首次登录弹出 <Img|children={xrdjk,xrdj2}|x=-400|y=-250|esc=0|img=private/npcbj/80553.png|bg=1|scale=1|loadDelay=0>
+INC S$新人_首次登录弹出 <Button|id=xrdjk|x=352.0|y=349.0|scale=1|size=18|color=255|nimg=private/npcbj/80552.png>
+INC S$新人_首次登录弹出 <Layout|id=xrdj2|x=-138.0|y=-78.0|width=1100|height=610|link=@关闭首次登录图片>
+SENDUI 105 <$STR(S$新人_首次登录弹出)>
+BREAK
+
+
+}

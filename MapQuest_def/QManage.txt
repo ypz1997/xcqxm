@@ -1,0 +1,2853 @@
+#CALL [\红点功能\红点判断.txt] @红点判断
+#CALL [\游戏功能\临时属性.txt] @临时属性
+#CALL [\活动功能\镖车活动.txt] @镖车活动
+#CALL [\活动功能\逃杀模式.txt] @逃杀模式
+#CALL [\活动功能\回馈魔王.txt] @回馈魔王
+#CALL [\活动功能\工会活动.txt] @工会活动
+#CALL [\活动功能\烤火活动.txt] @烤火活动
+#CALL [\活动功能\特戒夺宝.txt] @特戒夺宝
+#CALL [\活动功能\阵营活动.txt] @阵营活动
+#CALL [\顶部按钮\寄售行.txt] @寄售行
+#CALL [\活动功能\副本刷怪.txt] @副本刷怪
+#CALL [\活动功能\天关挑战成功.txt] @天关挑战成功_Main
+
+[@GlobalVar] ;//引擎启动执行。作用：声明、读取全局变量
+#IF
+SMALL $HFCOUNT 1
+#ACT
+MOV G99 1
+#ELSEACT
+MOV G99 2
+#IF
+EQUAL G1 0
+#ACT
+FileCopy  ..\QuestDiary\数据文件\文本数据\装备悬赏剩余人数备份.txt ..\QuestDiary\数据文件\文本数据\装备悬赏剩余人数.txt
+ClearNameList ..\QuestDiary\读取数据\行会信息.txt
+#IF
+TRUE
+#ACT
+VAR STRING Global 每日首次登录
+VAR INTEGER Global Ring0
+VAR INTEGER Global Bracelet0
+VAR INTEGER Global Helmet0
+VAR INTEGER Global Belt0
+VAR INTEGER Global Clothing0
+VAR INTEGER Global Weapon0
+VAR INTEGER Global Necklace0
+VAR INTEGER Global Boots0
+VAR INTEGER Global Ring1
+VAR INTEGER Global Bracelet1
+VAR INTEGER Global Helmet1
+VAR INTEGER Global Belt1
+VAR INTEGER Global Clothing1
+VAR INTEGER Global Weapon1
+VAR INTEGER Global Necklace1
+VAR INTEGER Global Boots1
+VAR INTEGER Global Ring2
+VAR INTEGER Global Bracelet2
+VAR INTEGER Global Helmet2
+VAR INTEGER Global Belt2
+VAR INTEGER Global Clothing2
+VAR INTEGER Global Weapon2
+VAR INTEGER Global Necklace2
+VAR INTEGER Global Boots2
+VAR INTEGER Global Ring3
+VAR INTEGER Global Bracelet3
+VAR INTEGER Global Helmet3
+VAR INTEGER Global Belt3
+VAR INTEGER Global Clothing3
+VAR INTEGER Global Weapon3
+VAR INTEGER Global Necklace3
+VAR INTEGER Global Boots3
+VAR INTEGER Global Ring4
+VAR INTEGER Global Bracelet4
+VAR INTEGER Global Helmet4
+VAR INTEGER Global Belt4
+VAR INTEGER Global Clothing4
+VAR INTEGER Global Weapon4
+VAR INTEGER Global Necklace4
+VAR INTEGER Global Boots4
+VAR INTEGER Global Ring5
+VAR INTEGER Global Bracelet5
+VAR INTEGER Global Helmet5
+VAR INTEGER Global Belt5
+VAR INTEGER Global Clothing5
+VAR INTEGER Global Weapon5
+VAR INTEGER Global Necklace5
+VAR INTEGER Global Boots5
+VAR INTEGER Global Ring6
+VAR INTEGER Global Bracelet6
+VAR INTEGER Global Helmet6
+VAR INTEGER Global Belt6
+VAR INTEGER Global Clothing6
+VAR INTEGER Global Weapon6
+VAR INTEGER Global Necklace6
+VAR INTEGER Global Boots6
+VAR INTEGER Global Ring7
+VAR INTEGER Global Bracelet7
+VAR INTEGER Global Helmet7
+VAR INTEGER Global Belt7
+VAR INTEGER Global Clothing7
+VAR INTEGER Global Weapon7
+VAR INTEGER Global Necklace7
+VAR INTEGER Global Boots7
+VAR INTEGER Global Ring8
+VAR INTEGER Global Bracelet8
+VAR INTEGER Global Helmet8
+VAR INTEGER Global Belt8
+VAR INTEGER Global Clothing8
+VAR INTEGER Global Weapon8
+VAR INTEGER Global Necklace8
+VAR INTEGER Global Boots8
+VAR INTEGER Global Ring9
+VAR INTEGER Global Bracelet9
+VAR INTEGER Global Helmet9
+VAR INTEGER Global Belt9
+VAR INTEGER Global Clothing9
+VAR INTEGER Global Weapon9
+VAR INTEGER Global Necklace9
+VAR INTEGER Global Boots9
+VAR INTEGER Global Ring10
+VAR INTEGER Global Bracelet10
+VAR INTEGER Global Helmet10
+VAR INTEGER Global Belt10
+VAR INTEGER Global Clothing10
+VAR INTEGER Global Weapon10
+VAR INTEGER Global Necklace10
+VAR INTEGER Global Boots10
+VAR INTEGER Global Ring11
+VAR INTEGER Global Bracelet11
+VAR INTEGER Global Helmet11
+VAR INTEGER Global Belt11
+VAR INTEGER Global Clothing11
+VAR INTEGER Global Weapon11
+VAR INTEGER Global Necklace11
+VAR INTEGER Global Boots11
+VAR INTEGER Global Ring12
+VAR INTEGER Global Bracelet12
+VAR INTEGER Global Helmet12
+VAR INTEGER Global Belt12
+VAR INTEGER Global Clothing12
+VAR INTEGER Global Weapon12
+VAR INTEGER Global Necklace12
+VAR INTEGER Global Boots12
+VAR INTEGER Global Ring13
+VAR INTEGER Global Bracelet13
+VAR INTEGER Global Helmet13
+VAR INTEGER Global Belt13
+VAR INTEGER Global Clothing13
+VAR INTEGER Global Weapon13
+VAR INTEGER Global Necklace13
+VAR INTEGER Global Boots13
+Var Integer Global BOSS召唤令通天教主召唤次数
+Var Integer Global BOSS召唤令铁血魔王召唤次数
+Var Integer Global BOSS召唤令阿修罗神召唤次数
+Var Integer Global BOSS召唤令赤阳魔尊召唤次数
+Var Integer Global BOSS召唤令上古妖王召唤次数
+Var Integer Global BOSS召唤令血域魔尊召唤次数
+Var Integer Global BOSS召唤令巨木王者召唤次数
+Var Integer Global BOSS召唤令魔域妖王召唤次数
+Var Integer Global BOSS召唤令刑天真身召唤次数
+Var Integer Global BOSS召唤令玄武真灵召唤次数
+Var Integer Global BOSS召唤令无间之主召唤次数
+Var Integer Global BOSS召唤令地底仙帝召唤次数
+Var Integer Global BOSS召唤令绝毒蛛后召唤次数
+Var Integer Global BOSS召唤令虚空古神召唤次数
+VAR INTEGER Global 章鱼王1_刷新小时
+VAR INTEGER Global 章鱼王1_刷新分钟
+VAR INTEGER Global 章鱼王1_刷新秒数
+VAR INTEGER Global 章鱼王2_刷新小时
+VAR INTEGER Global 章鱼王2_刷新分钟
+VAR INTEGER Global 章鱼王2_刷新秒数
+VAR INTEGER Global 章鱼王1_刷新总秒数
+VAR INTEGER Global 章鱼王2_刷新总秒数
+
+
+#IF
+EQUAL $STR(G20) 0
+#ACT
+MOV G20 <$INC.$LONGDATE.604800>
+
+#IF
+LARGE $HFCOUNT $STR(G77)
+#ACT
+CLEARCASTLEOWNER 沙城
+MOV G77 $HFCOUNT
+MOV G78 $INC.$LONGDATE.172800
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\合服排行\合服充值排行1.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\合服排行\合服充值排行2.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\合服排行\合服充值排行3.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行1.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行2.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt
+MOV G2 1
+
+;#IF
+;EQUAL G1 0
+;#ACT
+;MOV G10 $LONGDATE
+;检测开区时间比冬至节小则把冬至节作为参照
+;#IF
+;SMALL G10 1703116799
+;EQUAL G1 0
+;#ACT
+;MOV G11 1703116799
+;BREAK
+;检测开区时间比圣诞节小则把圣诞节作为参照
+;#IF
+;SMALL G10 1703289599
+;EQUAL G1 0
+;#ACT
+;MOV G11 1703289599
+;BREAK
+;检测开区时间比元旦节小则把元旦节作为参照
+;#IF
+;SMALL G10 1703894399
+;EQUAL G1 0
+;#ACT
+;MOV G11 1703894399
+;BREAK
+;检测开区时间比腊八节小则把腊八节作为参照
+;#IF
+;SMALL G10 1705449599
+;EQUAL G1 0
+;#ACT
+;MOV G11 1705449599
+;BREAK
+;检测开区时间比春节小则把春节作为参照
+;#IF
+;SMALL G10 1707436799
+;EQUAL G1 0
+;#ACT
+;MOV G11 1707436799
+;BREAK
+;检测开区时间比元宵节小则把元宵节作为参照
+;#IF
+;SMALL G10 1708646399
+;EQUAL G1 0
+;#ACT
+;MOV G11 1708646399
+;BREAK
+;检测开区时间比妇女节小则把妇女节作为参照
+;#IF
+;SMALL G10 1709769599
+;EQUAL G1 0
+;#ACT
+;MOV G11 1709769599
+;BREAK
+;检测开区时间比植树节小则把植树节作为参照
+;#IF
+;SMALL G10 1710115199
+;EQUAL G1 0
+;#ACT
+;MOV G11 1710115199
+;BREAK
+
+[@GuildVar] ;//有行会的执行，无行会不执行。作用：声明、读取行会变量
+#IF
+RANDOM 1
+#ACT
+VAR STRING GUILD 行会_行会仓库
+VAR Integer GUILD 行会_自动同意入会
+VAR Integer GUILD 行会_每日招募次数
+VAR STRING GUILD 行会_行会每日清除标识
+
+[@Initialize] ;//角色每次登录执行。作用：声明、读取个人变量
+#IF
+TRUE
+#ACT
+VAR Integer HUMAN 天关_今日通关层数
+VAR Integer HUMAN 天关_昨日通关层数
+VAR Integer HUMAN 天关_历史最高层数
+VAR INTEGER HUMAN 封魔录_任务记录
+VAR Integer HUMAN LvItem0
+VAR Integer HUMAN LvItem1
+VAR Integer HUMAN LvItem2
+VAR Integer HUMAN LvItem3
+VAR Integer HUMAN LvItem4
+VAR Integer HUMAN LvItem5
+VAR Integer HUMAN LvItem6
+VAR Integer HUMAN LvItem7
+VAR Integer HUMAN LvItem8
+VAR Integer HUMAN LvItem9
+VAR Integer HUMAN LvItem10
+VAR Integer HUMAN LvItem11
+VAR Integer HUMAN LvItem12
+VAR Integer HUMAN LvItem13
+Var Integer HUMAN 行会_贡献值
+Var STRING Human 神秘卷轴使用
+Var STRING Human 神秘卷轴获得
+VAR STRING HUMAN 启用图鉴名称
+VAR INTEGER HUMAN 绿色封号等级
+VAR INTEGER HUMAN 已抽奖次数
+VAR INTEGER HUMAN 魔体副本完成次数
+VAR INTEGER HUMAN 羽翼副本完成次数
+VAR INTEGER HUMAN 法宝副本完成次数
+VAR INTEGER HUMAN 坐骑副本完成次数
+VAR INTEGER HUMAN 特戒副本完成次数
+VAR INTEGER HUMAN 神器副本完成次数
+VAR INTEGER HUMAN BOSS副本完成次数
+VAR INTEGER HUMAN 法宝副本通关次数
+VAR INTEGER HUMAN 神器副本通关次数
+VAR INTEGER HUMAN 书页每日限购
+
+VAR STRING HUMAN 神秘商店物品1
+VAR STRING HUMAN 神秘商店物品2
+VAR STRING HUMAN 神秘商店物品3
+VAR STRING HUMAN 神秘商店物品4
+VAR STRING HUMAN 神秘商店物品5
+VAR STRING HUMAN 神秘商店物品6
+VAR STRING HUMAN 神秘商店物品7
+VAR STRING HUMAN 神秘商店物品8
+
+VAR INTEGER HUMAN 成功率0
+VAR INTEGER HUMAN 成功率1
+VAR INTEGER HUMAN 成功率2
+VAR INTEGER HUMAN 成功率3
+VAR INTEGER HUMAN 成功率4
+VAR INTEGER HUMAN 成功率5
+VAR INTEGER HUMAN 成功率6
+VAR INTEGER HUMAN 成功率7
+VAR INTEGER HUMAN 成功率8
+VAR INTEGER HUMAN 成功率9
+VAR INTEGER HUMAN 成功率10
+VAR INTEGER HUMAN 成功率11
+VAR INTEGER HUMAN 成功率13
+VAR INTEGER HUMAN 成功率14
+VAR INTEGER HUMAN 成功率19
+
+VAR INTEGER HUMAN 撼天等级
+VAR INTEGER HUMAN 暗月等级
+VAR INTEGER HUMAN 冥日等级
+VAR INTEGER HUMAN 鬼炎等级
+VAR INTEGER HUMAN 碧海天王等级
+VAR INTEGER HUMAN 赤明天帝等级
+VAR INTEGER HUMAN 紫月圣君等级
+VAR INTEGER HUMAN 耀阳圣尊等级
+
+VAR INTEGER HUMAN 离线时间
+VAR INTEGER HUMAN 离线时间累计
+VAR INTEGER HUMAN 累计在线时长
+
+VAR INTEGER HUMAN 应神兽升级
+VAR INTEGER HUMAN 白虎等级
+VAR INTEGER HUMAN 玄武等级
+VAR INTEGER HUMAN 青龙等级
+VAR INTEGER HUMAN 朱雀等级
+
+VAR STRING HUMAN 当前佩戴法宝
+VAR INTEGER HUMAN 无量飞剑等级
+VAR INTEGER HUMAN 八卦镜等级
+VAR INTEGER HUMAN 招魂幡等级
+VAR INTEGER HUMAN 紫金葫芦等级
+VAR INTEGER HUMAN 番天印等级
+VAR INTEGER HUMAN 七宝玲珑塔等级
+VAR INTEGER HUMAN 无量飞剑星级
+VAR INTEGER HUMAN 八卦镜星级
+VAR INTEGER HUMAN 招魂幡星级
+VAR INTEGER HUMAN 紫金葫芦星级
+VAR INTEGER HUMAN 番天印星级
+VAR INTEGER HUMAN 七宝玲珑塔星级
+VAR INTEGER HUMAN 无量飞剑进度
+VAR INTEGER HUMAN 八卦镜进度
+VAR INTEGER HUMAN 招魂幡进度
+VAR INTEGER HUMAN 紫金葫芦进度
+VAR INTEGER HUMAN 番天印进度
+VAR INTEGER HUMAN 七宝玲珑塔进度
+VAR Integer HUMAN 法宝闯关进度
+VAR Integer HUMAN 法宝闯关层数
+VAR Integer HUMAN VIP任务星2
+VAR Integer HUMAN VIP任务星3
+VAR Integer HUMAN VIP任务星4
+VAR Integer HUMAN VIP任务星5
+VAR Integer HUMAN VIP任务奖励经验
+VAR Integer HUMAN VIP任务怪数量
+VAR Integer HUMAN VIP任务怪击杀数量
+VAR Integer HUMAN 新手任务记录1
+Var Integer Human BOSS召唤令使用次数
+VAR INTEGER HUMAN 每日追杀次数
+
+VAR STRING HUMAN 武器符石1
+VAR STRING HUMAN 武器符石2
+VAR STRING HUMAN 武器符石3
+VAR STRING HUMAN 武器符石4
+VAR STRING HUMAN 武器符石5
+VAR STRING HUMAN 衣服符石1
+VAR STRING HUMAN 衣服符石2
+VAR STRING HUMAN 衣服符石3
+VAR STRING HUMAN 衣服符石4
+VAR STRING HUMAN 衣服符石5
+VAR STRING HUMAN 头盔符石1
+VAR STRING HUMAN 头盔符石2
+VAR STRING HUMAN 头盔符石3
+VAR STRING HUMAN 头盔符石4
+VAR STRING HUMAN 头盔符石5
+VAR STRING HUMAN 项链符石1
+VAR STRING HUMAN 项链符石2
+VAR STRING HUMAN 项链符石3
+VAR STRING HUMAN 项链符石4
+VAR STRING HUMAN 项链符石5
+VAR STRING HUMAN 左手镯符石1
+VAR STRING HUMAN 左手镯符石2
+VAR STRING HUMAN 左手镯符石3
+VAR STRING HUMAN 左手镯符石4
+VAR STRING HUMAN 左手镯符石5
+VAR STRING HUMAN 右手镯符石1
+VAR STRING HUMAN 右手镯符石2
+VAR STRING HUMAN 右手镯符石3
+VAR STRING HUMAN 右手镯符石4
+VAR STRING HUMAN 右手镯符石5
+VAR STRING HUMAN 左戒指符石1
+VAR STRING HUMAN 左戒指符石2
+VAR STRING HUMAN 左戒指符石3
+VAR STRING HUMAN 左戒指符石4
+VAR STRING HUMAN 左戒指符石5
+VAR STRING HUMAN 右戒指符石1
+VAR STRING HUMAN 右戒指符石2
+VAR STRING HUMAN 右戒指符石3
+VAR STRING HUMAN 右戒指符石4
+VAR STRING HUMAN 右戒指符石5
+VAR STRING HUMAN 靴子符石1
+VAR STRING HUMAN 靴子符石2
+VAR STRING HUMAN 靴子符石3
+VAR STRING HUMAN 靴子符石4
+VAR STRING HUMAN 靴子符石5
+VAR STRING HUMAN 腰带符石1
+VAR STRING HUMAN 腰带符石2
+VAR STRING HUMAN 腰带符石3
+VAR STRING HUMAN 腰带符石4
+VAR STRING HUMAN 腰带符石5
+VAR STRING HUMAN VIP任务描述
+VAR STRING HUMAN VIP任务怪名字
+
+VAR INTEGER HUMAN 战令任务计数
+VAR Integer HUMAN 泡点剩余时间
+VAR Integer HUMAN 泡点付费剩余时间
+VAR Integer HUMAN 惊喜礼包
+VAR String HUMAN 惊喜礼包按钮
+VAR Integer HUMAN 惊喜礼包额度
+VAR String HUMAN 惊喜礼包领取时间
+VAR INTEGER HUMAN 每日复活次数
+VAR String HUMAN 装备悬赏_已兑换装备ID字符串
+VAR String HUMAN 装备悬赏_已爆出装备ID字符串
+VAR String HUMAN 装备悬赏_无名额装备ID字符串
+VAR String HUMAN 首充_领取数据1
+VAR String HUMAN 首充_领取数据2
+VAR String HUMAN 首充_领取数据3
+
+VAR INTEGER HUMAN 神秘商店可刷新次数
+
+
+[@LoginNotice]  ;//点击公告后触发
+#IF
+SMALL $CustomValue(32) 100
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\战令任务.txt S$战令任务抽取 $INC.$CustomValue(32).1
+SPLIT $STR(S$战令任务抽取) | S$战令任务分割
+
+#IF
+TRUE
+#ACT
+#CALL [\登陆配置\时装配置.txt] @时装设置
+#CALL [\游戏功能\合服离线.txt] @离线奖励
+GOTO @Lemon镖车LX
+
+#IF
+LARGE $LEVEL 59
+!HASTASK 444
+#ACT
+ADDTASK 444
+
+#IF
+HASTASK 445
+#ACT
+UpdateTask 445 1
+
+#IF
+LARGE $LEVEL 54
+!HASTASK 445
+#ACT
+ADDTASK 445
+
+
+
+[@AutoLogin] ;//加载自动挂机触发
+
+
+
+
+[@PlayReconnection] ;//角色小退触发
+#IF
+TRUE
+#ACT
+GOTO @PlayOffLine
+GOTO @大小退执行
+BREAK
+
+
+[@PlayOffLine] ;//角色大退触发，离线挂机玩家下线也会触发此标签。
+#IF
+TRUE
+#ACT
+GOTO @大小退执行
+
+
+
+#IF
+EQUAL $M GHZZ
+LARGE S$Lemon采集ID 0
+#ACT
+MOV G$宝箱<$STR(S$Lemon采集ID)>状态 0
+
+#IF
+EQUAL $M GHZZ
+CHECKITEM 宝箱(大) 1
+#ACT
+SENDUI 105
+TAKE 宝箱(大) 1
+CHANGEMODE 25 1
+SENDMSG 14 工会战争:大宝箱可重新采集了
+;-----------------------------------------------------复活大宝箱
+MOV G$宝箱大刷新 2
+SETNPCNAME 1000 宝箱(大)
+SETNPCAPPR 1000 233
+
+
+[@大小退执行]
+#IF
+TRUE
+#ACT
+CalcVar Human 离线时间 = <$INC.$LONGDATE.28800> 1
+BREAK
+
+[@Resume] ;//离线挂机登录触发，用于实现某些特殊的功能。
+#IF
+RANDOM 1
+#ACT
+GOTO @Login
+BREAK
+
+
+[@记录人名]
+#IF
+TRUE
+#ACT
+ADDVARLIST |<$USERNAME>|<$MAPNAME>|<$M>|<$X>|<$Y>|<$CUSTOMVALUE(9)> ..\QUESTDIARY\文本读取\追杀名单.txt
+BREAK
+
+
+[@Login]
+#IF
+RANDOM 1
+#ACT
+#CALL [\登陆配置\新人登陆.txt] @新人登陆
+#CALL [\登陆配置\登陆执行.txt] @登陆执行
+;#CALL [\游戏功能\临时属性.txt] @临时属性
+GOTO @临时属性
+GOTO @行会数据每日初始化
+GOTO @合区刷新行会展示
+GOTO @神凶器红点判断
+GOTO @法宝红点
+GOTO @强化红点
+GOTO @图鉴红点
+GOTO @顶部七日狂欢红点
+GOTO @顶部累充红点
+GOTO @顶部福利活动红点
+GOTO @顶部按钮会员红点
+GOTO @顶部按钮会员红点
+GOTO @顶部首冲按钮红点
+GOTO @右侧伸缩红点
+GOTO @顶部伸缩按钮红点
+GOTO @角色按钮红点判断
+SENDUI 105
+
+#IF
+LARGE $CUSTOMVALUE(19) 0
+!POSINLIST |<$USERID>| ..\QUESTDIARY\游戏数据\军衔捐献今日.txt
+#ACT
+INC G51 $CUSTOMVALUE(19)
+INSERTVARLIST 0 |<$USERID>|<$USERNAME>|<$CUSTOMVALUE(19)> ..\QUESTDIARY\游戏数据\军衔捐献今日.txt
+GOTO @Lemon军衔SX
+
+
+#IF
+LARGE G$Lemon活动 0
+#ACT
+GOTO @Lemon活动TZ<$STR(G$Lemon活动)>
+
+#IF
+EQUAL $M JQKH
+#ACT
+MAPMOVE JQKH 20 40 1
+
+;---------------------------合区个人清理
+#IF
+LARGE $HFCOUNT 0
+!EQUAL $CUSTOMVALUE(41) $HFCOUNT
+#ACT
+CHANGECUSTOMVALUE 41 = $HFCOUNT
+SET [671] 0
+SET [672] 0
+SET [673] 0
+SET [674] 0
+SET [675] 0
+SET [676] 0
+SET [677] 0
+SET [678] 0
+SET [679] 0
+SET [680] 0
+CHANGECUSTOMVALUE 37 = 0
+CHANGECUSTOMVALUE 38 = 0
+CHANGECUSTOMVALUE 39 = 0
+CHANGECUSTOMVALUE 40 = 0
+
+#IF
+ISCASTLEGUILD
+!EQUAL A245 $GUILDNAME
+#ACT
+MOV A245 $GUILDNAME
+
+#IF
+ISCASTLEMASTER
+!EQUAL A246 $USERNAME
+#ACT
+MOV A246 $USERNAME
+
+;--------------------------------按钮和红点
+;#IF
+;LARGE $HFCOUNT 0
+;#ACT
+;ADDBTN 10 6622 6622 6622 0 0 　 0 0
+
+#IF
+ISONCASTLEWAR
+#ACT
+REDDOT 3000 2 58 10
+
+[@恢复个人变量]
+#IF
+LARGE $LONGDATE 1714348800
+SMALL $LONGDATE 1714953600
+#ACT
+MOV G90 1
+CHANGECUSTOMVALUE 99 = 900
+#ELSEACT
+MOV G90 0
+
+
+#IF
+RANDOM 1
+#ACT
+TABLE XM_SJ RQ01 = $DATE
+CALCVAR HUMAN 神秘卷轴使用 = 5|5|5|5 1
+CALCVAR HUMAN 神秘卷轴获得 = 5|5|5|5 1
+CHANGECUSTOMVALUE 19 = 0
+CHANGECUSTOMVALUE 23 = 0
+CHANGECUSTOMVALUE 39 = 0
+CHANGECUSTOMVALUE 48 = 0
+CHANGECUSTOMVALUE 49 = 0
+CHANGECUSTOMVALUE 56 = 0
+CHANGECUSTOMVALUE 57 = 0
+CHANGECUSTOMVALUE 60 = 0
+CHANGECUSTOMVALUE 61 = 0
+CHANGECUSTOMVALUE 62 = 0
+CHANGECUSTOMVALUE 63 = 0
+CHANGECUSTOMVALUE 64 = 0
+CHANGECUSTOMVALUE 65 = 0
+CHANGECUSTOMVALUE 66 = 0
+CHANGECUSTOMVALUE 67 = 0
+CHANGECUSTOMVALUE 68 = 0
+CHANGECUSTOMVALUE 69 = 0
+CHANGECUSTOMVALUE 87 = $CUSTOMVALUE(50)
+CHANGECUSTOMVALUE 88 = 3
+CHANGECUSTOMVALUE 91 = 0
+UpdateTask 444 1
+UpdateTask 445 1
+CHANGECUSTOMVALUE 92 = 0
+CHANGECUSTOMVALUE 93 = 0
+
+CalcVar Human 神秘商店可刷新次数 = 100 1
+SET [188] 0
+SET [189] 0
+SET [190] 0
+SET [191] 0
+SET [192] 0
+SET [193] 0
+SET [195] 0
+SET [197] 0
+SET [198] 0
+SET [199] 0
+SET [201] 0
+SET [202] 0
+SET [203] 0
+FengHao 1 　
+GOTO @VIP爆物上限初始化
+GOTO @个人装备掉落计分
+#CALL [\红点功能\包裹红点的判断脚本.txt] @遍历惊喜礼包
+CalcVar Human 泡点剩余时间 = 3600 1
+CalcVar Human 泡点付费剩余时间 = 1800 1
+CalcVar Human 书页每日限购 = 0 1
+TABLE BOSS_ZhaoHL TTJZ = 0
+TABLE BOSS_ZhaoHL TXMW = 0
+TABLE BOSS_ZhaoHL AXLS = 0
+TABLE BOSS_ZhaoHL CYMZ = 0
+TABLE BOSS_ZhaoHL SGYW = 0
+TABLE BOSS_ZhaoHL XYMZ = 0
+TABLE BOSS_ZhaoHL HBYL = 0
+TABLE BOSS_ZhaoHL MYYW = 0
+TABLE BOSS_ZhaoHL XTZS = 0
+TABLE BOSS_ZhaoHL XWYL = 0
+TABLE BOSS_ZhaoHL WJZZ = 0
+TABLE BOSS_ZhaoHL DDXD = 0
+TABLE BOSS_ZhaoHL JDZH = 0
+TABLE BOSS_ZhaoHL XKGS = 0
+CalcVar Human BOSS召唤令使用次数 = 0 1
+CalcVar Human 魔体副本完成次数 = 0 1
+CalcVar Human 羽翼副本完成次数 = 0 1
+CalcVar Human 法宝副本完成次数 = 0 1
+CalcVar Human 坐骑副本完成次数 = 0 1
+CalcVar Human 特戒副本完成次数 = 0 1
+CalcVar Human 神器副本完成次数 = 0 1
+CalcVar Human BOSS副本完成次数 = 0 1
+CALCVAR HUMAN 天关_昨日通关层数 = <$HUMAN(天关_今日通关层数)> 1
+CALCVAR HUMAN 天关_今日通关层数 = 0 1
+CalcVar Human 每日复活次数 = 0 1
+SET [288] 0
+SET [289] 0
+SET [290] 0
+SET [291] 0
+SET [292] 0
+SET [293] 0
+SET [294] 0
+SET [295] 0
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取1 1 108
+SPLIT $STR(S$神秘商店抽取1) | S$神秘商店分割1
+TABLE XM_DY YHWP0 = <$STR(S$神秘商店分割1_0)>
+TABLE XM_DY YHWP1 = <$STR(S$神秘商店分割1_1)>
+TABLE XM_DY YHWP2 = <$STR(S$神秘商店分割1_2)>
+TABLE XM_DY YHWP3 = <$STR(S$神秘商店分割1_3)>
+TABLE XM_DY YHWP4 = <$STR(S$神秘商店分割1_4)>
+TABLE XM_DY YHWP5 = <$STR(S$神秘商店分割1_5)>
+CalcVar Human 神秘商店物品1 = <Text|id=sd1-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DY).YHWP0>><Text|id=sd1-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DY).YHWP3><$TABLE(XM_DY).YHWP4>><Button|id=sd1-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品1&神秘商店1=<$TABLE(XM_DY).YHWP0>&神秘商店2=<$TABLE(XM_DY).YHWP1>1&神秘商店3=<$TABLE(XM_DY).YHWP2>&神秘商店4=<$TABLE(XM_DY).YHWP3>&神秘商店5=<$TABLE(XM_DY).YHWP4>><ItemShow|id=sd1-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DY).YHWP5>|itemcount=<$TABLE(XM_DY).YHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DY).YHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取2 1 105
+SPLIT $STR(S$神秘商店抽取2) | S$神秘商店分割2
+TABLE XM_DE EHWP0 = <$STR(S$神秘商店分割2_0)>
+TABLE XM_DE EHWP1 = <$STR(S$神秘商店分割2_1)>
+TABLE XM_DE EHWP2 = <$STR(S$神秘商店分割2_2)>
+TABLE XM_DE EHWP3 = <$STR(S$神秘商店分割2_3)>
+TABLE XM_DE EHWP4 = <$STR(S$神秘商店分割2_4)>
+TABLE XM_DE EHWP5 = <$STR(S$神秘商店分割2_5)>
+CalcVar Human 神秘商店物品2 = <Text|id=sd2-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DE).EHWP0>><Text|id=sd2-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DE).EHWP3><$TABLE(XM_DE).EHWP4>><Button|id=sd2-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品2&神秘商店1=<$TABLE(XM_DE).EHWP0>&神秘商店2=<$TABLE(XM_DE).EHWP1>&神秘商店3=<$TABLE(XM_DE).EHWP2>&神秘商店4=<$TABLE(XM_DE).EHWP3>&神秘商店5=<$TABLE(XM_DE).EHWP4>><ItemShow|id=sd2-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DE).EHWP5>|itemcount=<$TABLE(XM_DE).EHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DE).EHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取3 1 106
+SPLIT $STR(S$神秘商店抽取3) | S$神秘商店分割3
+TABLE XM_DS SHWP0 = <$STR(S$神秘商店分割3_0)>
+TABLE XM_DS SHWP1 = <$STR(S$神秘商店分割3_1)>
+TABLE XM_DS SHWP2 = <$STR(S$神秘商店分割3_2)>
+TABLE XM_DS SHWP3 = <$STR(S$神秘商店分割3_3)>
+TABLE XM_DS SHWP4 = <$STR(S$神秘商店分割3_4)>
+TABLE XM_DS SHWP5 = <$STR(S$神秘商店分割3_5)>
+CalcVar Human 神秘商店物品3 = <Text|id=sd3-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DS).SHWP0>><Text|id=sd3-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DS).SHWP3><$TABLE(XM_DS).SHWP4>><Button|id=sd3-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品3&神秘商店1=<$TABLE(XM_DS).SHWP0>&神秘商店2=<$TABLE(XM_DS).SHWP1>&神秘商店3=<$TABLE(XM_DS).SHWP2>&神秘商店4=<$TABLE(XM_DS).SHWP3>&神秘商店5=<$TABLE(XM_DS).SHWP4>><ItemShow|id=sd3-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DS).SHWP5>|itemcount=<$TABLE(XM_DS).SHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DS).SHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取4 1 105
+SPLIT $STR(S$神秘商店抽取4) | S$神秘商店分割4
+TABLE XM_SD SIHWP0 = <$STR(S$神秘商店分割4_0)>
+TABLE XM_SD SIHWP1 = <$STR(S$神秘商店分割4_1)>
+TABLE XM_SD SIHWP2 = <$STR(S$神秘商店分割4_2)>
+TABLE XM_SD SIHWP3 = <$STR(S$神秘商店分割4_3)>
+TABLE XM_SD SIHWP4 = <$STR(S$神秘商店分割4_4)>
+TABLE XM_SD SIHWP5 = <$STR(S$神秘商店分割4_5)>
+CalcVar Human 神秘商店物品4 = <Text|id=sd4-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_SD).SIHWP0>><Text|id=sd4-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_SD).SIHWP3><$TABLE(XM_SD).SIHWP4>><Button|id=sd4-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品4&神秘商店1=<$TABLE(XM_SD).SIHWP0>&神秘商店2=<$TABLE(XM_SD).SIHWP1>&神秘商店3=<$TABLE(XM_SD).SIHWP2>&神秘商店4=<$TABLE(XM_SD).SIHWP3>&神秘商店5=<$TABLE(XM_SD).SIHWP4>><ItemShow|id=sd4-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_SD).SIHWP5>|itemcount=<$TABLE(XM_SD).SIHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_SD).SIHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取5 1 106
+SPLIT $STR(S$神秘商店抽取5) | S$神秘商店分割5
+TABLE XM_DW WHWP0 = <$STR(S$神秘商店分割5_0)>
+TABLE XM_DW WHWP1 = <$STR(S$神秘商店分割5_1)>
+TABLE XM_DW WHWP2 = <$STR(S$神秘商店分割5_2)>
+TABLE XM_DW WHWP3 = <$STR(S$神秘商店分割5_3)>
+TABLE XM_DW WHWP4 = <$STR(S$神秘商店分割5_4)>
+TABLE XM_DW WHWP5 = <$STR(S$神秘商店分割5_5)>
+CalcVar Human 神秘商店物品5 = <Text|id=sd5-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DW).WHWP0>><Text|id=sd5-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DW).WHWP3><$TABLE(XM_DW).WHWP4>><Button|id=sd5-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品5&神秘商店1=<$TABLE(XM_DW).WHWP0>&神秘商店2=<$TABLE(XM_DW).WHWP1>&神秘商店3=<$TABLE(XM_DW).WHWP2>&神秘商店4=<$TABLE(XM_DW).WHWP3>&神秘商店5=<$TABLE(XM_DW).WHWP4>><ItemShow|id=sd5-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DW).WHWP5>|itemcount=<$TABLE(XM_DW).WHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DW).WHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取6 1 106
+SPLIT $STR(S$神秘商店抽取6) | S$神秘商店分割6
+TABLE XM_DL LHWP0 = <$STR(S$神秘商店分割6_0)>
+TABLE XM_DL LHWP1 = <$STR(S$神秘商店分割6_1)>
+TABLE XM_DL LHWP2 = <$STR(S$神秘商店分割6_2)>
+TABLE XM_DL LHWP3 = <$STR(S$神秘商店分割6_3)>
+TABLE XM_DL LHWP4 = <$STR(S$神秘商店分割6_4)>
+TABLE XM_DL LHWP5 = <$STR(S$神秘商店分割6_5)>
+CalcVar Human 神秘商店物品6 = <Text|id=sd6-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DL).LHWP0>><Text|id=sd6-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DL).LHWP3><$TABLE(XM_DL).LHWP4>><Button|id=sd6-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品6&神秘商店1=<$TABLE(XM_DL).LHWP0>&神秘商店2=<$TABLE(XM_DL).LHWP1>&神秘商店3=<$TABLE(XM_DL).LHWP2>&神秘商店4=<$TABLE(XM_DL).LHWP3>&神秘商店5=<$TABLE(XM_DL).LHWP4>><ItemShow|id=sd6-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DL).LHWP5>|itemcount=<$TABLE(XM_DL).LHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DL).LHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取7 1 106
+SPLIT $STR(S$神秘商店抽取7) | S$神秘商店分割7
+TABLE XM_DQ QHWP0 = <$STR(S$神秘商店分割7_0)>
+TABLE XM_DQ QHWP1 = <$STR(S$神秘商店分割7_1)>
+TABLE XM_DQ QHWP2 = <$STR(S$神秘商店分割7_2)>
+TABLE XM_DQ QHWP3 = <$STR(S$神秘商店分割7_3)>
+TABLE XM_DQ QHWP4 = <$STR(S$神秘商店分割7_4)>
+TABLE XM_DQ QHWP5 = <$STR(S$神秘商店分割7_5)>
+CalcVar Human 神秘商店物品7 = <Text|id=sd7-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DQ).QHWP0>><Text|id=sd7-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DQ).QHWP3><$TABLE(XM_DQ).QHWP4>><Button|id=sd7-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品7&神秘商店1=<$TABLE(XM_DQ).QHWP0>&神秘商店2=<$TABLE(XM_DQ).QHWP1>&神秘商店3=<$TABLE(XM_DQ).QHWP2>&神秘商店4=<$TABLE(XM_DQ).QHWP3>&神秘商店5=<$TABLE(XM_DQ).QHWP4>><ItemShow|id=sd7-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DQ).QHWP5>|itemcount=<$TABLE(XM_DQ).QHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DQ).QHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取8 1 106
+SPLIT $STR(S$神秘商店抽取8) | S$神秘商店分割8
+TABLE XM_DB BHWP0 = <$STR(S$神秘商店分割8_0)>
+TABLE XM_DB BHWP1 = <$STR(S$神秘商店分割8_1)>
+TABLE XM_DB BHWP2 = <$STR(S$神秘商店分割8_2)>
+TABLE XM_DB BHWP3 = <$STR(S$神秘商店分割8_3)>
+TABLE XM_DB BHWP4 = <$STR(S$神秘商店分割8_4)>
+TABLE XM_DB BHWP5 = <$STR(S$神秘商店分割8_5)>
+CalcVar Human 神秘商店物品8 = <Text|id=sd8-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DB).BHWP0>><Text|id=sd8-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DB).BHWP3><$TABLE(XM_DB).BHWP4>><Button|id=sd8-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品8&神秘商店1=<$TABLE(XM_DB).BHWP0>&神秘商店2=<$TABLE(XM_DB).BHWP1>&神秘商店3=<$TABLE(XM_DB).BHWP2>&神秘商店4=<$TABLE(XM_DB).BHWP3>&神秘商店5=<$TABLE(XM_DB).BHWP4>><ItemShow|id=sd8-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DB).BHWP5>|itemcount=<$TABLE(XM_DB).BHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DB).BHWP0>> 1
+
+ReadExcel ..\QuestDiary\文本读取\会员等级权益.xls <$INC.$CUSTOMVALUE(90).1>
+;特权复活次数
+CHANGECUSTOMVALUE 86 = <$996(Excel).1>
+
+#IF
+!EQUAL $TABLE(XM_RQ).YQL1 $DATE.MONTH
+#ACT
+TABLE XM_RQ YQL1 = $DATE.MONTH
+SET [227] 0
+SET [228] 0
+SET [229] 0
+SET [230] 0
+SET [231] 0
+SET [232] 0
+SET [233] 0
+SET [234] 0
+SET [235] 0
+SET [236] 0
+SET [237] 0
+SET [238] 0
+SET [239] 0
+SET [240] 0
+SET [241] 0
+SET [242] 0
+SET [243] 0
+SET [244] 0
+SET [245] 0
+SET [246] 0
+SET [247] 0
+SET [248] 0
+SET [249] 0
+SET [250] 0
+SET [251] 0
+SET [252] 0
+SET [253] 0
+SET [254] 0
+SET [255] 0
+SET [256] 0
+SET [257] 0
+
+
+#IF
+TRUE
+#ACT
+GOTO @临时属性
+BREAK
+;----------------------------------------------------------------------------------------------------------------------------------------------------------在线时间--------------------
+[@在线时间]
+
+;-----------------------------------------------------月卡、季卡、年卡检测
+
+#IF
+SMALL $CustomValue(34) $LONGDATE
+CHECK [224] 1
+#ACT
+SET [224] 0
+SENDMAIL 101 系统消息 你的月卡已到期，效果加成已失效
+
+#IF
+!SMALL $CustomValue(35) $LONGDATE
+CHECK [225] 1
+#ACT
+MOV N$季卡赠送的VIP次数 5
+
+#IF
+SMALL $CustomValue(35) $LONGDATE
+CHECK [225] 1
+#ACT
+SET [225] 0
+MOV N$季卡赠送的VIP次数 0
+SENDMAIL 102 系统消息 你的季卡已到期，效果加成已失效
+
+#IF
+SMALL $CustomValue(36) $LONGDATE
+CHECK [226] 1
+#ACT
+SET [226] 0
+SENDMAIL 103 系统消息 你的年卡已到期，效果加成已失效
+
+
+
+[@全图挂机]
+#IF
+CHECKMAPNAME $HUMANINFO[$STR(A$角色)].$M
+#ACT
+OpenAutoKill 1
+SENDMSG 0 <%S>开启挂机
+BREAK
+#ELSEACT
+SENDMSG 0 错误<$HUMANINFO[$STR(A$角色)].$M>
+
+
+[@每2秒提问触发]
+
+#IF
+EQUAL <$996(Btn_Top).1> 1
+#ACT
+REDDEL 3001 0 
+#ELSEACT
+GOTO @红点顶部伸缩按钮
+
+#IF
+CHECK [1] 1
+CHECKITEMINLIST ..\QuestDiary\文本读取\版本药品.txt
+#ACT
+SET [1] 0
+DelFunBtn 2 4
+
+#IF
+CHECK [1] 0
+!CHECKITEMINLIST ..\QuestDiary\文本读取\版本药品.txt
+LARGE $LEVEL 59
+#ACT
+SET [1] 1
+AddFunBtn 2 4 8017 0 "" 0 0
+
+
+#IF
+CHECK [0] 1
+CheckItem 随机神石
+#ACT
+SET [0] 0
+DelFunBtn 2 3
+BREAK
+
+#IF
+CHECK [0] 0
+!CheckItem 随机神石
+LARGE $LEVEL 59
+#ACT
+SET [0] 1
+AddFunBtn 2 3 8016 0 "" 0 0
+BREAK
+
+[@红点顶部伸缩按钮]
+#IFONE
+EQUAL S$顶部伸缩红点1 1
+EQUAL S$顶部伸缩红点2 1
+EQUAL S$顶部伸缩红点3 1
+EQUAL S$顶部伸缩红点4 1
+EQUAL <$STR(S$顶部按钮收缩红点)> 1
+#ACT
+RedDot 3001 0 -10 10
+#ELSEACT
+RedDel 3001 0
+
+
+[@Lemon军衔SX]
+#IF
+TRUE
+#ACT
+CLEARVAR S0 44
+READRANDOMSTR ..\QUESTDIARY\游戏数据\军衔捐献今日.txt S0 0 0 3 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\军衔捐献今日.txt S1 1 0 3 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\军衔捐献今日.txt S2 2 0 3 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\军衔捐献今日.txt S3 3 0 3 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\军衔捐献今日.txt S4 4 0 3 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\军衔捐献今日.txt S5 5 0 3 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\军衔捐献今日.txt S6 6 0 3 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\军衔捐献今日.txt S7 7 0 3 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\军衔捐献今日.txt S8 8 0 3 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\军衔捐献今日.txt S9 9 0 3 |
+
+#IF
+POS $STR(S0) |
+!POS $STR(S0) |<$STR(A251)>|
+#ACT
+SPLIT $STR(S0) | S11
+MOV S43 $HUMANINFO[$STR(A251)].$USERNAME
+MOV A251 $STR(S11)
+MOV S44 $HUMANINFO[$STR(A251)].$USERNAME
+$STR(S43).GOTO @临时属性
+$STR(S44).GOTO @临时属性
+$STR(S43).SENDMSG 7 军衔排行榜发生了变化,你已不是第1名
+$STR(S44).SENDMSG 7 军衔排行榜发生了变化,你获得了第1名
+
+#IF
+POS $STR(S1) |
+!POS $STR(S1) |<$STR(A252)>|
+#ACT
+SPLIT $STR(S1) | S11
+MOV S43 $HUMANINFO[$STR(A252)].$USERNAME
+MOV A252 $STR(S11)
+MOV S44 $HUMANINFO[$STR(A252)].$USERNAME
+$STR(S43).GOTO @临时属性
+$STR(S44).GOTO @临时属性
+$STR(S43).SENDMSG 7 军衔排行榜发生了变化,你已不是第2名
+$STR(S44).SENDMSG 7 军衔排行榜发生了变化,你获得了第2名
+
+#IF
+POS $STR(S2) |
+!POS $STR(S2) |<$STR(A253)>|
+#ACT
+SPLIT $STR(S2) | S11
+MOV S43 $HUMANINFO[$STR(A253)].$USERNAME
+MOV A253 $STR(S11)
+MOV S44 $HUMANINFO[$STR(A253)].$USERNAME
+$STR(S43).GOTO @临时属性
+$STR(S44).GOTO @临时属性
+$STR(S43).SENDMSG 7 军衔排行榜发生了变化,你已不是第3名
+$STR(S44).SENDMSG 7 军衔排行榜发生了变化,你获得了第3名
+
+#IF
+POS $STR(S3) |
+!POS $STR(S3) |<$STR(A254)>|
+#ACT
+SPLIT $STR(S3) | S11
+MOV S43 $HUMANINFO[$STR(A254)].$USERNAME
+MOV A254 $STR(S11)
+MOV S44 $HUMANINFO[$STR(A254)].$USERNAME
+$STR(S43).GOTO @临时属性
+$STR(S44).GOTO @临时属性
+$STR(S43).SENDMSG 7 军衔排行榜发生了变化,你已不是第4名
+$STR(S44).SENDMSG 7 军衔排行榜发生了变化,你获得了第4名
+
+#IF
+POS $STR(S4) |
+!POS $STR(S4) |<$STR(A255)>|
+#ACT
+SPLIT $STR(S4) | S11
+MOV S43 $HUMANINFO[$STR(A255)].$USERNAME
+MOV A255 $STR(S11)
+MOV S44 $HUMANINFO[$STR(A255)].$USERNAME
+$STR(S43).GOTO @临时属性
+$STR(S44).GOTO @临时属性
+$STR(S43).SENDMSG 7 军衔排行榜发生了变化,你已不是第5名
+$STR(S44).SENDMSG 7 军衔排行榜发生了变化,你获得了第5名
+
+#IF
+POS $STR(S5) |
+!POS $STR(S5) |<$STR(A256)>|
+#ACT
+SPLIT $STR(S5) | S11
+MOV S43 $HUMANINFO[$STR(A256)].$USERNAME
+MOV A256 $STR(S11)
+MOV S44 $HUMANINFO[$STR(A256)].$USERNAME
+$STR(S43).GOTO @临时属性
+$STR(S44).GOTO @临时属性
+$STR(S43).SENDMSG 7 军衔排行榜发生了变化,你已不是第6名
+$STR(S44).SENDMSG 7 军衔排行榜发生了变化,你获得了第6名
+
+#IF
+POS $STR(S6) |
+!POS $STR(S6) |<$STR(A257)>|
+#ACT
+SPLIT $STR(S6) | S11
+MOV S43 $HUMANINFO[$STR(A257)].$USERNAME
+MOV A257 $STR(S11)
+MOV S44 $HUMANINFO[$STR(A257)].$USERNAME
+$STR(S43).GOTO @临时属性
+$STR(S44).GOTO @临时属性
+$STR(S43).SENDMSG 7 军衔排行榜发生了变化,你已不是第7名
+$STR(S44).SENDMSG 7 军衔排行榜发生了变化,你获得了第7名
+
+#IF
+POS $STR(S7) |
+!POS $STR(S7) |<$STR(A258)>|
+#ACT
+SPLIT $STR(S7) | S11
+MOV S43 $HUMANINFO[$STR(A258)].$USERNAME
+MOV A258 $STR(S11)
+MOV S44 $HUMANINFO[$STR(A258)].$USERNAME
+$STR(S43).GOTO @临时属性
+$STR(S44).GOTO @临时属性
+$STR(S43).SENDMSG 7 军衔排行榜发生了变化,你已不是第8名
+$STR(S44).SENDMSG 7 军衔排行榜发生了变化,你获得了第8名
+
+#IF
+POS $STR(S8) |
+!POS $STR(S8) |<$STR(A259)>|
+#ACT
+SPLIT $STR(S8) | S11
+MOV S43 $HUMANINFO[$STR(A259)].$USERNAME
+MOV A259 $STR(S11)
+MOV S44 $HUMANINFO[$STR(A259)].$USERNAME
+$STR(S43).GOTO @临时属性
+$STR(S44).GOTO @临时属性
+$STR(S43).SENDMSG 7 军衔排行榜发生了变化,你已不是第9名
+$STR(S44).SENDMSG 7 军衔排行榜发生了变化,你获得了第9名
+
+#IF
+POS $STR(S9) |
+!POS $STR(S9) |<$STR(A260)>|
+#ACT
+SPLIT $STR(S9) | S11
+MOV S43 $HUMANINFO[$STR(A260)].$USERNAME
+MOV A260 $STR(S11)
+MOV S44 $HUMANINFO[$STR(A260)].$USERNAME
+$STR(S43).GOTO @临时属性
+$STR(S44).GOTO @临时属性
+$STR(S43).SENDMSG 7 军衔排行榜发生了变化,你已不是第10名
+$STR(S44).SENDMSG 7 军衔排行榜发生了变化,你获得了第10名
+BREAK
+
+
+[@Lemon沙城红点]
+#IF
+TRUE
+#ACT
+GOTO @临时属性
+HCALL $USERNAME @顶部福利活动红点
+BREAK
+
+[@Lemon写入沙城]
+;-----------------------------删除红点
+#IF
+TRUE
+#ACT
+REDDEL 3000 2
+
+#IF
+ISCASTLEGUILD
+!EQUAL A245 $GUILDNAME
+#ACT
+MOV A245 $GUILDNAME
+
+#IF
+ISCASTLEMASTER
+!EQUAL A246 $USERNAME
+#ACT
+MOV A246 $USERNAME
+
+#IF
+EQUAL A245 $GUILDNAME
+#ACT
+GOTO @临时属性
+SENDMSG 7 您是伟大的沙城行会成员,获得属性加成及独一无二的封号!
+BREAK
+
+[@确定新沙城城主]
+#IF
+IsCastleMaster
+#ACT
+MailGive 绑定元宝 8888
+SendMail 2 沙城战奖励 恭喜你所在的行会成功夺取了沙城，以下是本次沙城战役成功方的奖励，请及时提取
+GOTO @临时属性
+
+#IF
+!IsCastleMaster
+IsCastleGuild
+#ACT
+MailGive 绑定元宝 3888
+SendMail 2 沙城战奖励 恭喜你所在的行会成功夺取了沙城，以下是本次沙城战役成功方的奖励，请及时提取
+GOTO @临时属性
+
+#IF
+True
+#ACT
+#CALL [\登陆配置\时装配置.txt] @时装设置
+BREAK
+
+
+[@CD时间]
+#IF
+CHECK [194] 1
+SMALL $STR(N$当前骑战技能值) 120
+#ACT
+INC N$当前骑战技能值 1
+
+#IF
+SMALL D83 10
+#ACT
+INC D83 1
+
+#IF
+!SMALL D83 10
+SMALL $STR(N$当前魔体护盾值) $STR(D84)
+#ACT
+MOV N$魔体值恢复计算 $STR(D84)
+CEIL N$魔体值恢复计算 100
+INC N$当前魔体护盾值 $MULT.$STR(N$魔体值恢复计算).5
+
+#IF
+!SMALL $CustomValue(7) 1
+SMALL $CustomValue(16) $LONGDATE
+#ACT
+MOV S$F复活状态面板 <Img|id=108|x=80.0|y=<$STR(N$魔骑形态坐标2)>|height=26|esc=0|img=picpackage/3/cszt2.png|scale=1>
+
+#IF
+!SMALL $CustomValue(7) 1
+!SMALL $CustomValue(16) $LONGDATE
+#ACT
+MOV S$F复活状态面板 <TIMETIPS|id=108|x=100|y=<$STR(N$魔骑形态坐标2)>|color=255|size=18|time=<$dec.$CustomValue(16).$LONGDATE>>
+
+#IF
+SMALL $CustomValue(7) 1
+#ACT
+MOV S$F复活状态面板 <Img|id=108|x=80.0|y=<$STR(N$魔骑形态坐标2)>|height=26|esc=0|img=picpackage/3/cszt1.png|scale=1>
+
+
+#IF
+LARGE $CustomValue(98) 0
+#ACT
+MOV S$狂暴开启状态 已开启
+MOV N$狂暴状态颜色 215
+#ELSEACT
+MOV S$狂暴开启状态 未开启
+MOV N$狂暴状态颜色 249
+
+#IF
+EQUAL N$按钮样式 1
+#ACT
+MOV S$攻击倍率十位 <$DIV.$POWERRATE.100>
+MOV S$攻击倍率_除数 <$POWERRATE>
+MOV S$攻击倍率_被除数 100
+Mod $str(S$攻击倍率_除数) $str(S$攻击倍率_被除数)
+MOV S$攻击倍率个位 <$str(S$攻击倍率_除数)>
+
+#IF
+EQUAL N$按钮样式 0
+#ACT
+MOV S$魔骑1 <Img|id=101|children={102,103,104,105,106,107,108,109,110,111,112,113,108}|x=0|y=<$STR(N$魔骑形态坐标1)>|width=265|height=30|esc=0|bg=1|img=picpackage/3/biaoti.png|loadDelay=0|scale=1|UiLevel=-1|ax=0>
+INC S$魔骑1 <Button|id=102|x=-4.0|y=0.0|width=70|height=28|color=255|pimg=picpackage/3/btn<$STR(N$按钮样式)>.png|nimg=picpackage/3/btn<$STR(N$按钮样式)>.png|size=18|scale=1|link=@切换按钮模式>
+INC S$魔骑1 <Img|id=106|x=-2.0|y=<$STR(N$魔骑形态坐标2)>|width=265|scale=1|img=picpackage/3/chongsheng.png|esc=0|link=0>
+INC S$魔骑1 <Effect|id=107|x=101.0|y=<$STR(N$魔骑形态坐标3)>|act=0|speed=1|effecttype=0|scale=1|sex=0|dir=0|effectid=8452>
+INC S$魔骑1 <$STR(S$F复活状态面板)>
+INC S$魔骑1 <Layout|id=113|x=192.0|y=<$STR(N$魔骑形态坐标2)>|width=70|height=28|link=@前往充值>
+SENDUI 102 <$STR(S$魔骑1)>
+BREAK
+#ELSEACT
+MOV S$魔骑1 <Img|id=101|children={102,103,104,105,106,107,108,109,110,111,112,113,108}|x=0|y=<$STR(N$魔骑形态坐标1)>|width=265|height=30|esc=0|bg=1|img=picpackage/3/biaoti.png|loadDelay=0|scale=1|UiLevel=-1|ax=0>
+INC S$魔骑1 <Button|id=102|x=-4.0|y=0.0|width=70|height=28|color=255|pimg=picpackage/3/btn1.png|nimg=picpackage/3/btn1.png|size=18|scale=1|link=@切换按钮模式>
+INC S$魔骑1 <Img|id=103|x=-2.0|y=28.0|width=265|height=120|esc=0|img=picpackage/3/zhankai.png|scale=1>
+INC S$魔骑1 <LoadingBar|id=104|x=77.0|y=97.0|width=130|height=10|maxLen=<$STR(D84)>|curLen=<$STR(N$当前魔体护盾值)>|img=picpackage/3/bg_state_jindu02.png>
+INC S$魔骑1 <LoadingBar|id=105|x=77.0|y=126.0|width=130|height=10|maxLen=100|curLen=<$STR(N$当前骑战技能值)>|img=picpackage/3/bg_state_jindu01.png>
+INC S$魔骑1 <Img|id=106|x=-2.0|y=<$STR(N$魔骑形态坐标2)>|width=265|scale=1|img=picpackage/3/chongsheng.png|esc=0>
+INC S$魔骑1 <Effect|id=107|x=101.0|y=<$STR(N$魔骑形态坐标3)>|act=0|speed=1|effecttype=0|scale=1|sex=0|dir=0|effectid=8452>
+INC S$魔骑1 <$STR(S$F复活状态面板)>
+INC S$魔骑1 <RText|id=109|x=76.0|y=32.0|size=16|color=255|text=<<$STR(D90)>/FCOLOR=255>>
+INC S$魔骑1 <RText|id=110|x=202.0|y=32.0|size=16|color=255|text=<<$STR(D92)>/FCOLOR=255>>
+INC S$魔骑1 <RText|id=111|x=76.0|y=61.0|size=16|color=255|text=<<$STR(S$狂暴开启状态)>/FCOLOR=<$STR(N$狂暴状态颜色)>>>
+INC S$魔骑1 <RText|id=112|x=202.0|y=61.0|size=16|color=255|text=<<$STR(S$攻击倍率十位)>.<$STR(S$攻击倍率个位)>倍/FCOLOR=255>>
+INC S$魔骑1 <Layout|id=113|x=192.0|y=<$STR(N$魔骑形态坐标2)>|width=70|height=28|link=@前往充值>
+SENDUI 102 <$STR(S$魔骑1)>
+BREAK
+
+
+
+
+
+#IF
+CHECK [640] 1
+EQUAL N$神御恢复 1
+SMALL $STR(N$神御套持续) $LONGDATE
+#ACT
+MOV N$神御恢复 0
+GOTO @临时属性
+SENDMSG 6 神御恢复
+
+#IF
+CHECK [637] 1
+EQUAL N$狂怒恢复 1
+SMALL $STR(N$狂怒套持续) $LONGDATE
+#ACT
+MOV N$狂怒恢复 0
+GOTO @临时属性
+SENDMSG 6 狂怒恢复
+
+
+#IF
+SMALL $CustomValue(81) $INC.$LONGDATE.5
+EQUAL N$法宝特效2触发2 1
+#ACT
+MOV N$法宝特效2触发2 0
+GOTO @临时属性
+
+#IF
+SMALL $CustomValue(82) $INC.$LONGDATE.20
+EQUAL N$法宝特效2触发3 1
+#ACT
+MOV N$法宝特效2触发3 0
+GOTO @临时属性
+
+#IF
+SMALL $CustomValue(83) $INC.$LONGDATE.50
+EQUAL N$法宝特效2触发4 1
+#ACT
+MOV N$法宝特效2触发4 0
+GOTO @临时属性
+
+;-----------------------------------------------每秒执行添加在这以上------不可带BREAK
+#IF
+LARGE $LONGDATE $CustomValue(46)
+CheckUseItem 12
+#ACT
+ReadCacheConfigFileItem ..\QuestDiary\文本读取\附件装备属性.txt 护符 $ITEMINFO[$USEITEMMAKEINDEX(12)].NAME S$魔法值恢复
+SPLIT $STR(S$魔法值恢复) | N$魔法值恢复分割
+#ELSEACT
+BREAK
+
+#IF
+SMALL $PERCENT.$MP.$MAXMP $STR(N$魔法值恢复分割_6)
+#ACT
+GOTO @魔法恢复
+BREAK
+
+[@魔法恢复]
+#IF
+SMALL N$魔法恢复次数 5
+#ACT
+CHANGECUSTOMVALUE 46 = $INC.$LONGDATE.60
+HUMANMP + <$INC.<$MULT.<$DIV.$MAXMP.100>.$STR(N$魔法值恢复分割_7)>.30>
+INC N$魔法恢复次数 1
+DelayGoto 1000 @魔法恢复
+BREAK
+#ELSEACT
+MOV N$魔法恢复次数 0
+BREAK
+
+[@护符生命恢复]
+#IF
+CheckUseItem 12
+SMALL $HP $MAXHP
+#ACT
+ReadCacheConfigFileItem ..\QuestDiary\文本读取\附件装备属性.txt 护符 $ITEMINFO[$USEITEMMAKEINDEX(12)].NAME S$生命值恢复
+SPLIT $STR(S$生命值恢复) | N$S$生命值恢复分割
+HUMANHP + <$MULT.<$DIV.$MAXHP.100>.$STR(N$魔法值恢复分割_8)>
+BREAK
+
+
+[@没回城石了]
+#IF
+LARGE $INC.$MONEY(2).$MONEY(4) 49
+#ACT
+MOV P1 222
+#ELSEACT
+MOV P1 249
+
+#IF
+TRUE
+#SAY
+<Img|x=375.0|y=231.0|height=157|bg=1|img=public/frame_auction_01.png|esc=0>
+<Button|x=707.0|y=230.0|pimg=public/btn_close_01.png|mimg=public/btn_close_01.png|color=255|size=18|nimg=public/btn_close_01.png|link=@exit>
+<Button|x=608.0|y=308.0|height=50|nimg=public/btn_push_10.png|mimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=67|size=24|text=购   买|link=@购买中州回城石>
+<Img|x=520.0|y=258.0|img=public/word_title_gainmaterial.png|esc=0>
+<Img|x=412.0|y=297.0|img=public/item_bg1.png|esc=0>
+<ItemShow|x=413.0|y=298.0|width=70|height=70|itemid=942|itemcount=1|bgtype=1|showtips=1|name=回城神石>
+<Img|x=495.0|y=336.0|img=private/baoguo/26904.png|esc=0>
+<RText|x=530.0|y=336.0|size=18|color=255|text=<50/FCOLOR=<$STR(P1)>>>
+<RText|x=494.0|y=299.0|size=19|color=67|text=<中州回城石/FCOLOR=67>>
+
+[@购买中州回城石]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空格不足，请先清理包裹
+BREAK
+
+#IF
+!LARGE $INC.$MONEY(2).$MONEY(4) 49
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+
+#IF
+LARGE $MONEY(4) 49
+#ACT
+MONEY 4 - 50
+GIVE 回城神石 1 1
+ChoosePos  0 472 223 $PARAM(10)
+DelFunBtn 2 2
+GOTO @没回城石了
+SENDMSG 19 购买成功
+BREAK
+CLOSE
+#ELSEACT
+MONEY 2 - $DEC.50.$MONEY(4)
+MONEY 4 - $MONEY(4)
+GIVE 回城神石 1 1
+ChoosePos  0 472 223 $PARAM(10)
+DelFunBtn 2 2
+GOTO @没回城石了
+SENDMSG 19 购买成功
+BREAK
+CLOSE
+
+
+[@没随机神石了]
+#IF
+LARGE $INC.$MONEY(2).$MONEY(4) 49
+#ACT
+MOV P1 222
+#ELSEACT
+MOV P1 249
+
+#IF
+TRUE
+#SAY
+<Img|x=375.0|y=231.0|height=157|bg=1|img=public/frame_auction_01.png|esc=0>
+<Button|x=707.0|y=230.0|pimg=public/btn_close_01.png|mimg=public/btn_close_01.png|color=255|size=18|nimg=public/btn_close_01.png|link=@exit>
+<Button|x=608.0|y=308.0|height=50|nimg=public/btn_push_10.png|mimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=67|size=24|text=购   买|link=@购买随机神石>
+<Img|x=520.0|y=258.0|img=public/word_title_gainmaterial.png|esc=0>
+<Img|x=412.0|y=297.0|img=public/item_bg1.png|esc=0>
+<ItemShow|x=413.0|y=298.0|width=70|height=70|itemid=888|itemcount=1|bgtype=1|showtips=1|name=随机神石>
+<Img|x=495.0|y=336.0|img=private/baoguo/26904.png|esc=0>
+<RText|x=530.0|y=336.0|size=18|color=255|text=<50/FCOLOR=<$STR(P1)>>>
+<RText|x=494.0|y=299.0|size=19|color=67|text=<随机神石/FCOLOR=67>>
+
+[@购买随机神石]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空格不足，请先清理包裹
+BREAK
+
+#IF
+!LARGE $INC.$MONEY(2).$MONEY(4) 49
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+LARGE $MONEY(4) 49
+#ACT
+MONEY 4 - 50
+GIVE 随机神石 1 1
+SET [0] 0
+DelFunBtn 2 3
+GOTO @没随机神石了
+SENDMSG 19 购买成功
+BREAK
+CLOSE
+#ELSEACT
+MONEY 2 - $DEC.50.$MONEY(4)
+MONEY 4 - $MONEY(4)
+GIVE 随机神石 1 1
+SET [0] 0
+DelFunBtn 2 3
+GOTO @没随机神石了
+SENDMSG 19 购买成功
+BREAK
+CLOSE
+[@没队伍召集令了]
+#IF
+!SMALL $INC.$MONEY(2).$MONEY(4) 800
+#ACT
+MOV P1 222
+#ELSEACT
+MOV P1 249
+
+#IF
+TRUE
+#SAY
+<Img|x=375.0|y=231.0|height=157|bg=1|img=public/frame_auction_01.png|esc=0>
+<Button|x=707.0|y=230.0|pimg=public/btn_close_01.png|nimg=public/btn_close_01.png|mimg=public/btn_close_01.png|color=255|size=18|link=@exit>
+<Button|x=608.0|y=308.0|height=50|nimg=public/btn_push_10.png|mimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=67|size=24|text=购   买|link=@购买队伍召集令>
+<Img|x=520.0|y=258.0|img=public/word_title_gainmaterial.png|esc=0>
+<Img|x=412.0|y=297.0|img=public/item_bg1.png|esc=0>
+<ItemShow|x=413.0|y=298.0|width=70|height=70|itemid=1485|itemcount=1|name=队伍召集令|bgtype=1|showtips=1>
+<Img|x=495.0|y=336.0|img=private/baoguo/26904.png|esc=0>
+<RText|x=530.0|y=336.0|color=255|size=18|text=<800/FCOLOR=<$STR(P1)>>>
+<RText|x=494.0|y=299.0|color=67|size=19|text=<队伍召集令/FCOLOR=67>>
+<RText|x=622.0|y=288.0|color=255|size=18|text=>
+
+
+[@购买队伍召集令]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空格不足，请先清理包裹
+BREAK
+
+#IF
+SMALL $INC.$MONEY(2).$MONEY(4) 800
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+!SMALL $MONEY(4) 800
+#ACT
+MONEY 4 - 800
+GIVE 队伍召集令 1 1
+GOTO @没队伍召集令了
+SENDMSG 19 购买成功
+BREAK
+CLOSE
+#ELSEACT
+MONEY 2 - $DEC.800.$MONEY(4)
+MONEY 4 - $MONEY(4)
+GIVE 队伍召集令 1 1
+GOTO @没队伍召集令了
+SENDMSG 19 购买成功
+BREAK
+CLOSE
+
+
+[@没行会召集令了]
+#IF
+!SMALL $INC.$MONEY(2).$MONEY(4) 1600
+#ACT
+MOV P1 222
+#ELSEACT
+MOV P1 249
+
+#IF
+TRUE
+#SAY
+<Img|x=375.0|y=231.0|height=157|bg=1|img=public/frame_auction_01.png|esc=0>
+<Button|x=707.0|y=230.0|pimg=public/btn_close_01.png|nimg=public/btn_close_01.png|mimg=public/btn_close_01.png|color=255|size=18|link=@exit>
+<Button|x=608.0|y=308.0|height=50|nimg=public/btn_push_10.png|mimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=67|size=24|text=购   买|link=@购买行会召集令>
+<Img|x=520.0|y=258.0|img=public/word_title_gainmaterial.png|esc=0>
+<Img|x=412.0|y=297.0|img=public/item_bg1.png|esc=0>
+<ItemShow|x=413.0|y=298.0|width=70|height=70|itemid=1486|itemcount=1|name=行会召集令|bgtype=1|showtips=1>
+<Img|x=495.0|y=336.0|img=private/baoguo/26904.png|esc=0>
+<RText|x=530.0|y=336.0|color=255|size=18|text=<1600/FCOLOR=<$STR(P1)>>>
+<RText|x=494.0|y=299.0|color=67|size=19|text=<行会召集令/FCOLOR=67>>
+<RText|x=622.0|y=288.0|color=255|size=18|text=>
+
+
+[@购买行会召集令]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空格不足，请先清理包裹
+BREAK
+
+#IF
+SMALL $INC.$MONEY(2).$MONEY(4) 1600
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+
+#IF
+!SMALL $MONEY(4) 1600
+#ACT
+MONEY 4 - 1600
+GIVE 行会召集令 1 1
+GOTO @没行会召集令了
+SENDMSG 19 购买成功
+BREAK
+CLOSE
+#ELSEACT
+MONEY 2 - $DEC.1600.$MONEY(4)
+MONEY 4 - $MONEY(4)
+GIVE 行会召集令 1 1
+GOTO @没行会召集令了
+SENDMSG 19 购买成功
+BREAK
+CLOSE
+
+
+
+[@队伍召集]
+#IF
+LARGE $LEVEL 60
+!EQUAL $STR(S$召集者名字) $USERNAME
+#say
+<Img|x=750.0|y=156.0|width=380|height=160|rotate=0|show=0|bg=1|move=0|img=private/npc/erjimianban1.png|loadDelay=1|_localZOrder=-2|reset=1>
+<Button|x=820.0|y=253.0|width=100|height=35|nimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=255|size=18|text=拒绝|link=@拒绝>
+<Button|x=993.0|y=253.0|width=100|height=35|nimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=255|size=18|text=前往|link=@前往>
+<Text|x=770.0|y=175.0|size=18|color=67|text="<$STR(S$召集者名字)>"召唤你前往:\<$STR(S$召集者地图名字)>地图坐标:<$STR(S$召集者地图X)>,<$STR(S$召集者地图Y)>\你确定前往吗?>
+#ACT
+MOV S$5 1
+AddFunBtn 0 4 8014 8014 　 0 0
+DelayGoto 15000 @删除按钮
+DELAYCALL 5 @拒绝
+Break
+
+[@行会召集]
+#IF
+LARGE $LEVEL 60
+!EQUAL $STR(S$召集者名字) $USERNAME
+#say
+<Img|x=750.0|y=156.0|width=380|height=160|rotate=0|show=0|bg=1|move=0|img=private/npc/erjimianban1.png|loadDelay=1|_localZOrder=-2|reset=1>
+<Button|x=820.0|y=253.0|width=100|height=35|nimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=255|size=18|text=拒绝|link=@拒绝>
+<Button|x=993.0|y=253.0|width=100|height=35|nimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=255|size=18|text=前往|link=@前往>
+<Text|x=770.0|y=175.0|size=18|color=67|text="<$STR(S$召集者名字)>"召唤你前往:\<$STR(S$召集者地图名字)>地图坐标:<$STR(S$召集者地图X)>,<$STR(S$召集者地图Y)>\你确定前往吗?>
+#ACT
+MOV S$5 2
+AddFunBtn 0 4 8014 8014 　 0 0
+DelayGoto 15000 @删除按钮
+DELAYCALL 5 @拒绝
+Break
+
+[@拒绝]
+#IF
+True
+#ACT
+Break
+CLOSE
+
+[@删除按钮]
+#IF
+True
+#ACT
+DelFunBtn 0 4
+Break
+
+[@前往]
+#IF
+PosInlist |<$STR(S$召集者地图号)>| ..\QuestDiary\追踪文本\单条件检测地图.txt S$召集抽取
+#ACT
+SPLIT $STR(S$召集抽取) | S$召集条件分割
+GOTO @单条件召集
+BREAK
+
+#IF
+PosInlist |<$STR(S$召集者地图号)>| ..\QuestDiary\追踪文本\需转生等级2条件地图.txt S$召集抽取
+#ACT
+SPLIT $STR(S$召集抽取) | S$召集条件分割
+GOTO @双条件召集
+BREAK
+
+#IF
+PosInlist |<$STR(S$召集者地图号)>| ..\QuestDiary\追踪文本\需转生等级3条件地图.txt S$召集抽取
+#ACT
+SPLIT $STR(S$召集抽取) | S$召集条件分割
+GOTO @三条件召集
+BREAK
+
+
+
+[@单条件召集]
+#IF
+SMALL <<$STR(S$召集条件分割_1)>> <$STR(S$召集条件分割_2)>
+#ACT
+
+SENDMSG 19 你无法进入当前地图
+BREAK
+#ELSEACT
+MAPMOVE $STR(S$召集者地图号) $STR(S$召集者地图X) $STR(S$召集者地图Y) 2
+DelFunBtn 0 4
+BREAK
+CLOSE
+
+[@双条件召集]
+#IF
+SMALL <<$STR(S$召集条件分割_1)>> <$STR(S$召集条件分割_2)>
+#ACT
+SENDMSG 19 你无法进入当前地图
+BREAK
+
+#IF
+SMALL <<$STR(S$召集条件分割_3)>> <$STR(S$召集条件分割_4)>
+#ACT
+SENDMSG 19 你无法进入当前地图
+BREAK
+
+#IF
+TRUE
+#ACT
+MAPMOVE $STR(S$召集者地图号) $STR(S$召集者地图X) $STR(S$召集者地图Y) 2
+DelFunBtn 0 4
+BREAK
+CLOSE
+
+[@三条件召集]
+#IF
+SMALL <<$STR(S$召集条件分割_1)>> <$STR(S$召集条件分割_2)>
+#ACT
+SENDMSG 19 你无法进入当前地图
+BREAK
+
+#IF
+SMALL <<$STR(S$召集条件分割_3)>> <$STR(S$召集条件分割_4)>
+#ACT
+SENDMSG 19 你无法进入当前地图
+BREAK
+
+#IF
+SMALL <<$STR(S$召集条件分割_5)>> <$STR(S$召集条件分割_6)>
+#ACT
+SENDMSG 19 你无法进入当前地图
+BREAK
+
+#IF
+TRUE
+#ACT
+MAPMOVE $STR(S$召集者地图号) $STR(S$召集者地图X) $STR(S$召集者地图Y) 2
+DelFunBtn 0 4
+BREAK
+CLOSE
+
+
+
+
+[@GetExpFucn]
+#IF
+EQUAL $PARAM(20) 6000
+#ACT
+changeCustomValue 2 + <$INC.<$DIV.<$MULT.$PARAM(20).40>.100>.<$DIV.<$MULT.<$DIV.<$MULT.$PARAM(20).40>.100>.$STR(D63)>.100>>
+SENDMSG 7 你获得了<$INC.<$DIV.<$MULT.$PARAM(20).40>.100>.<$DIV.<$MULT.<$DIV.<$MULT.$PARAM(20).40>.100>.$STR(D63)>.100>>点魔体经验！
+
+#IF
+EQUAL $PARAM(20) 5000
+#ACT
+changeCustomValue 2 + <$INC.<$DIV.<$MULT.$PARAM(20).40>.100>.<$DIV.<$MULT.<$DIV.<$MULT.$PARAM(20).40>.100>.$STR(D63)>.100>>
+SENDMSG 7 你获得了<$INC.<$DIV.<$MULT.$PARAM(20).40>.100>.<$DIV.<$MULT.<$DIV.<$MULT.$PARAM(20).40>.100>.$STR(D63)>.100>>点魔体经验！
+SETPARAM 20 <$INC.$PARAM(20).<$DIV.<$MULT.$PARAM(20).$STR(D62)>.100>>
+
+; #IF
+; !SMALL $CustomValue(2) $CustomValue(1)
+; #ACT
+; changeCustomValue 0 + 1
+; changeCustomValue 2 - $CustomValue(1)
+; ReadRandomStr ..\QuestDiary\文本读取\魔体升级经验.txt N$魔体经验1 <$CustomValue(0)>
+; ChangeCustomValue 1 = <$STR(N$魔体经验1)>
+
+
+
+
+[@VIP爆物上限初始化]
+
+#IF
+Small <$CustomValue(90)> 5
+#ACT
+BREAK
+#ELSEACT
+ReadRandomStr ..\QuestDiary\爆率数据\VIP个人每日掉落上限.txt S$每日VIP爆率数据变量 <$DEC.<$CustomValue(90)>.5>
+SPLIT <$STR(S$每日VIP爆率数据变量)> | S$数据接受
+CalcVar HUMAN LvItem0 = <$STR(S$数据接受_0)> 1
+CalcVar HUMAN LvItem1 = <$STR(S$数据接受_1)> 1
+CalcVar HUMAN LvItem2 = <$STR(S$数据接受_2)> 1
+CalcVar HUMAN LvItem3 = <$STR(S$数据接受_3)> 1
+CalcVar HUMAN LvItem4 = <$STR(S$数据接受_4)> 1
+CalcVar HUMAN LvItem5 = <$STR(S$数据接受_5)> 1
+CalcVar HUMAN LvItem6 = <$STR(S$数据接受_6)> 1
+CalcVar HUMAN LvItem7 = <$STR(S$数据接受_7)> 1
+CalcVar HUMAN LvItem8 = <$STR(S$数据接受_8)> 1
+CalcVar HUMAN LvItem9 = <$STR(S$数据接受_9)> 1
+CalcVar HUMAN LvItem10 = <$STR(S$数据接受_10)> 1
+CalcVar HUMAN LvItem11 = <$STR(S$数据接受_11)> 1
+CalcVar HUMAN LvItem12 = <$STR(S$数据接受_12)> 1
+CalcVar HUMAN LvItem13 = <$STR(S$数据接受_13)> 1
+BREAK
+
+[@个人装备掉落计分]
+#IF
+TRUE
+#ACT
+MOV N$个人装备掉落计分计次 0
+LoopGoto @个人装备掉落计分循环 14
+[@个人装备掉落计分循环]
+#IF
+TRUE
+#ACT
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_0 Ring = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_0 Bracelet = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_0 Helmet = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_0 Belt = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_0 Clothing = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_0 Weapon = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_0 Necklace = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_0 Boots = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_1 Ring = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_1 Bracelet = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_1 Helmet = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_1 Belt = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_1 Clothing = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_1 Weapon = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_1 Necklace = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_1 Boots = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_2 Ring = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_2 Bracelet = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_2 Helmet = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_2 Belt = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_2 Clothing = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_2 Weapon = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_2 Necklace = 0
+Table PlayerDailyOutput<$STR(N$个人装备掉落计分计次)>_2 Boots = 0
+INC N$个人装备掉落计分计次 1
+BREAK
+
+[@扩展包裹]
+#IF
+TRUE
+#ACT
+QueryMsg 确定消耗1枚背包拓展符将第三页包裹全部打开吗？ @确定背包拓展
+BREAK
+
+[@确定背包拓展1]
+#IF
+CheckItem 背包拓展符 1
+#ACT
+BAGSIZE 126
+TAKE 背包拓展符 1
+SENDMSG 19 背包空间拓展成功
+BREAK
+#ELSEACT
+SENDMSG 19 缺少背包拓展符
+BREAK
+
+[@扩展仓库]
+#IF
+TRUE
+#ACT
+QueryMsg 确定消耗1枚仓库拓展符来开启一个仓库格子吗？ @确定仓库拓展
+BREAK
+
+[@确定仓库拓展1]
+#IF
+CheckItem 仓库拓展符 1
+#ACT
+StorageSize + 1
+TAKE 仓库拓展符 1
+SENDMSG 19 仓库空间拓展成功
+BREAK
+#ELSEACT
+SENDMSG 19 缺少仓库拓展符
+BREAK
+
+
+[@图鉴_BUFF修改]
+#IF
+RANDOM 1
+#ACT
+NEWREADCSV ..\Data\cfg_buff.csv
+SetOffTimer 0
+MOV N$图鉴_BUFF行号 <$GetTypeBRow(cfg_buff,0,<$STR(S$BUFF标识)>)>
+MOV S$图鉴_BUFF名字 <$cfg_buff(<$STR(N$图鉴_BUFF行号)>_1)> 
+MOV N$图鉴_BUFF图标 <$cfg_buff(<$STR(N$图鉴_BUFF行号)>_2)> 
+MOV N$图鉴_BUFF类型 <$cfg_buff(<$STR(N$图鉴_BUFF行号)>_3)> 
+MOV S$图鉴_BUFF持续时间 <$cfg_buff(<$STR(N$图鉴_BUFF行号)>_4)> 
+MOV S$图鉴_BUFF回调 <$cfg_buff(<$STR(N$图鉴_BUFF行号)>_5)> 
+MOV S$图鉴_UI字符串 <ItemShow|children={1,2}|ax=1|ay=0|x=-3|y=-392|itemcount=1|loadDelay=0|bgtype=1|showtips=1|name=<$STR(S$图鉴_BUFF名字)>|itemid=<$STR(N$图鉴_BUFF图标)>>
+#IF
+EQUAL S$图鉴_BUFF持续时间 -1
+#ACT
+SendUi 109 <$STR(S$图鉴_UI字符串)>
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+MOV N$图鉴_BUFF持续时间TEMP <$STR(S$图鉴_BUFF持续时间)>
+INC S$图鉴_UI字符串 <LoadingBar|rotate=-90|id=1|ax=0.5|ay=0.5|x=33|y=33|maxLen=<$STR(S$图鉴_BUFF持续时间)>|curLen=*STR(N$图鉴_BUFF持续时间TEMP)>|img=public/img_buffMask.png>
+INC S$图鉴_UI字符串 <Text|id=2|ax=1|ay=0|x=55|y=55|color=255|size=12|text=*STR(N$图鉴_BUFF持续时间TEMP)>s>
+MOV S$图鉴_UI字符串TEMP <$STR(S$图鉴_UI字符串)>
+ReplaceText S$图鉴_UI字符串TEMP * <$
+SendUi 109 <$STR(S$图鉴_UI字符串TEMP)>
+SETONTIMER 0 1 <$STR(N$图鉴_BUFF持续时间TEMP)>
+
+
+[@OnTimer0]
+#IF
+RANDOM 1 
+#ACT
+DEC N$图鉴_BUFF持续时间TEMP 1
+MOV S$图鉴_UI字符串TEMP <$STR(S$图鉴_UI字符串)>
+ReplaceText S$图鉴_UI字符串TEMP * <$
+SendUi 109 <$STR(S$图鉴_UI字符串TEMP)>
+
+#IF
+EQUAL N$图鉴_BUFF持续时间TEMP 0
+#ACT
+FUNC 1 @临时属性
+GOTO @图鉴_BUFF修改&BUFF标识=<$STR(S$图鉴_BUFF回调)>
+
+
+
+[@地图补充刷怪]
+;------------------------------1阶1---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT T012 > 2
+; SMALL $MAPMONCOUNT[T012].僵尸 45
+; #ACT
+; MonGenEx T012 52 46 僵尸 40 <$DEC.45.<$MAPMONCOUNT[T012].僵尸>>
+
+; #IF
+; CHECKMAPHUMANCOUNT T012 > 2
+; SMALL $MAPMONCOUNT[T012].僵尸1 45
+; #ACT
+; MonGenEx T012 52 46 僵尸1 40 <$DEC.45.<$MAPMONCOUNT[T012].僵尸1>>
+
+; #IF
+; CHECKMAPHUMANCOUNT T012 > 2
+; SMALL $MAPMONCOUNT[T012].尸王 27
+; #ACT
+; MonGenEx T012 52 46 尸王 40 <$DEC.27.<$MAPMONCOUNT[T012].尸王>>
+
+; ;------------------------------1阶2---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT L004 > 2
+; SMALL $MAPMONCOUNT[L004].尸王 40
+; #ACT
+; MonGenEx L004 82 81 尸王 30 <$DEC.40.<$MAPMONCOUNT[L004].尸王>>
+
+; ;------------------------------2阶1---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT M014 > 2
+; SMALL $MAPMONCOUNT[M014].石头人 36
+; #ACT
+; MonGenEx M014 73 73 石头人 40 <$DEC.36.<$MAPMONCOUNT[M014].石头人>>
+
+; #IF
+; CHECKMAPHUMANCOUNT M014 > 2
+; SMALL $MAPMONCOUNT[M014].青铜兽 36
+; #ACT
+; MonGenEx M014 73 73 青铜兽 40 <$DEC.36.<$MAPMONCOUNT[M014].青铜兽>>
+
+; #IF
+; CHECKMAPHUMANCOUNT M014 > 2
+; SMALL $MAPMONCOUNT[M014].金刚人 36
+; #ACT
+; MonGenEx M014 73 73 金刚人 40 <$DEC.36.<$MAPMONCOUNT[M014].金刚人>>
+
+; ;------------------------------2阶2---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT M029 > 2
+; SMALL $MAPMONCOUNT[M029].石头人 18
+; #ACT
+; MonGenEx M029 53 48 石头人 40 <$DEC.18.<$MAPMONCOUNT[M029].石头人>>
+
+; #IF
+; CHECKMAPHUMANCOUNT M029 > 2
+; SMALL $MAPMONCOUNT[M029].青铜兽 18
+; #ACT
+; MonGenEx M029 53 48 青铜兽 40 <$DEC.18.<$MAPMONCOUNT[M029].青铜兽>>
+
+; #IF
+; CHECKMAPHUMANCOUNT M029 > 2
+; SMALL $MAPMONCOUNT[M029].金刚人 18
+; #ACT
+; MonGenEx M029 53 48 金刚人 40 <$DEC.18.<$MAPMONCOUNT[M029].金刚人>>
+
+; ;------------------------------3阶1---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT MH030 > 2
+; SMALL $MAPMONCOUNT[MH030].三头蛇 90
+; #ACT
+; MonGenEx MH030 113 113 三头蛇 70 <$DEC.90.<$MAPMONCOUNT[MH030].三头蛇>>
+
+; #IF
+; CHECKMAPHUMANCOUNT MH030 > 2
+; SMALL $MAPMONCOUNT[MH030].黑蛇妖 90
+; #ACT
+; MonGenEx MH030 113 113 黑蛇妖 70 <$DEC.90.<$MAPMONCOUNT[MH030].黑蛇妖>>
+
+; #IF
+; CHECKMAPHUMANCOUNT MH030 > 2
+; SMALL $MAPMONCOUNT[MH030].白蛇妖 90
+; #ACT
+; MonGenEx MH030 113 113 白蛇妖 70 <$DEC.90.<$MAPMONCOUNT[MH030].白蛇妖>>
+
+
+; ;------------------------------3阶2---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT NB003 > 2
+; SMALL $MAPMONCOUNT[NB003].三头蛇 25
+; #ACT
+; MonGenEx NB003 51 46 三头蛇 20 <$DEC.25.<$MAPMONCOUNT[NB003].三头蛇>>
+
+; #IF
+; CHECKMAPHUMANCOUNT NB003 > 2
+; SMALL $MAPMONCOUNT[NB003].黑蛇妖 20
+; #ACT
+; MonGenEx NB003 51 46 黑蛇妖 20 <$DEC.20.<$MAPMONCOUNT[NB003].黑蛇妖>>
+
+; #IF
+; CHECKMAPHUMANCOUNT MH030 > 2
+; SMALL $MAPMONCOUNT[MH030].白蛇妖 6
+; #ACT
+; MonGenEx NB003 51 46 白蛇妖 20 <$DEC.6.<$MAPMONCOUNT[NB003].白蛇妖>>
+
+; ;------------------------------4阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 4JMAP > 2
+; SMALL $MAPMONCOUNT[4JMAP].逆魔雕像 100
+; #ACT
+; MonGenEx 4JMAP 235 255 逆魔雕像 50 <$DEC.100.<$MAPMONCOUNT[4JMAP].逆魔雕像>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 4JMAP > 2
+; SMALL $MAPMONCOUNT[4JMAP].逆魔侍卫 100
+; #ACT
+; MonGenEx 4JMAP 235 255 逆魔侍卫 50 <$DEC.100.<$MAPMONCOUNT[4JMAP].逆魔侍卫>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 4JMAP > 2
+; SMALL $MAPMONCOUNT[4JMAP].逆魔 6
+; #ACT
+; MonGenEx 4JMAP 235 255 逆魔 50 <$DEC.6.<$MAPMONCOUNT[4JMAP].逆魔>>
+; ;------------------------------4阶1---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT 4JMAP1 > 2
+; SMALL $MAPMONCOUNT[4JMAP1].逆魔雕像 100
+; #ACT
+; MonGenEx 4JMAP1 235 255 逆魔雕像 50 <$DEC.100.<$MAPMONCOUNT[4JMAP1].逆魔雕像>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 4JMAP1 > 2
+; SMALL $MAPMONCOUNT[4JMAP1].逆魔侍卫 100
+; #ACT
+; MonGenEx 4JMAP1 235 255 逆魔侍卫 50 <$DEC.100.<$MAPMONCOUNT[4JMAP1].逆魔侍卫>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 4JMAP1 > 2
+; SMALL $MAPMONCOUNT[4JMAP1].逆魔 6
+; #ACT
+; MonGenEx 4JMAP1 235 255 逆魔 50 <$DEC.6.<$MAPMONCOUNT[4JMAP1].逆魔>>
+; ;------------------------------5阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 5JMAP > 0
+; SMALL $MAPMONCOUNT[5JMAP].烈焰使 60
+; #ACT
+; MonGenEx 5JMAP 192 180 烈焰使 60 <$DEC.60.<$MAPMONCOUNT[5JMAP].烈焰使>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 5JMAP > 0
+; SMALL $MAPMONCOUNT[5JMAP].火烈鸟 60
+; #ACT
+; MonGenEx 5JMAP 192 180 火烈鸟 60 <$DEC.60.<$MAPMONCOUNT[5JMAP].火烈鸟>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 5JMAP > 0
+; SMALL $MAPMONCOUNT[5JMAP].招魂使 6
+; #ACT
+; MonGenEx 5JMAP 192 180 招魂使 60 <$DEC.6.<$MAPMONCOUNT[5JMAP].招魂使>>
+
+; ;------------------------------5阶1---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 5JMAP1 > 0
+; SMALL $MAPMONCOUNT[5JMAP1].烈焰使 60
+; #ACT
+; MonGenEx 5JMAP1 192 180 烈焰使 60 <$DEC.60.<$MAPMONCOUNT[5JMAP1].烈焰使>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 5JMAP1 > 0
+; SMALL $MAPMONCOUNT[5JMAP1].火烈鸟 60
+; #ACT
+; MonGenEx 5JMAP1 192 180 火烈鸟 60 <$DEC.60.<$MAPMONCOUNT[5JMAP1].火烈鸟>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 5JMAP1 > 0
+; SMALL $MAPMONCOUNT[5JMAP1].招魂使 6
+; #ACT
+; MonGenEx 5JMAP1 192 180 招魂使 60 <$DEC.6.<$MAPMONCOUNT[5JMAP1].招魂使>>
+
+; ;------------------------------6阶---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT 6JMAP > 2
+; SMALL $MAPMONCOUNT[6JMAP].猛魔刀兵 40
+; #ACT
+; MonGenEx 6JMAP 77 71 猛魔刀兵 50 <$DEC.40.<$MAPMONCOUNT[6JMAP].猛魔刀兵>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 6JMAP > 2
+; SMALL $MAPMONCOUNT[6JMAP].猛魔枪卒 40
+; #ACT
+; MonGenEx 6JMAP 77 71 猛魔枪卒 50 <$DEC.40.<$MAPMONCOUNT[6JMAP].猛魔枪卒>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 6JMAP > 2
+; SMALL $MAPMONCOUNT[6JMAP].幽影武士 8
+; #ACT
+; MonGenEx 6JMAP 77 71 幽影武士 50 <$DEC.8.<$MAPMONCOUNT[6JMAP].幽影武士>>
+
+; ;------------------------------6阶1---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT 6JMAP1 > 2
+; SMALL $MAPMONCOUNT[6JMAP1].猛魔刀兵 40
+; #ACT
+; MonGenEx 6JMAP1 77 71 猛魔刀兵 50 <$DEC.40.<$MAPMONCOUNT[6JMAP1].猛魔刀兵>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 6JMAP1 > 2
+; SMALL $MAPMONCOUNT[6JMAP1].猛魔枪卒 40
+; #ACT
+; MonGenEx 6JMAP1 77 71 猛魔枪卒 50 <$DEC.40.<$MAPMONCOUNT[6JMAP1].猛魔枪卒>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 6JMAP1 > 2
+; SMALL $MAPMONCOUNT[6JMAP1].幽影武士 8
+; #ACT
+; MonGenEx 6JMAP1 77 71 幽影武士 50 <$DEC.8.<$MAPMONCOUNT[6JMAP1].幽影武士>>
+; ;------------------------------7阶---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT 7JMAP > 0
+; SMALL $MAPMONCOUNT[7JMAP].魔神修罗 50
+; #ACT
+; MonGenEx 7JMAP 67 86 魔神修罗 40 <$DEC.50.<$MAPMONCOUNT[7JMAP].魔神修罗>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 7JMAP > 0
+; SMALL $MAPMONCOUNT[7JMAP].暗影修罗 50
+; #ACT
+; MonGenEx 7JMAP 67 86 暗影修罗 40 <$DEC.50.<$MAPMONCOUNT[7JMAP].暗影修罗>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 7JMAP > 0
+; SMALL $MAPMONCOUNT[7JMAP].黑袍修罗 12
+; #ACT
+; MonGenEx 7JMAP 67 86 黑袍修罗 40 <$DEC.12.<$MAPMONCOUNT[7JMAP].黑袍修罗>>
+
+
+; ;------------------------------7阶1---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT 7JMAP1 > 0
+; SMALL $MAPMONCOUNT[7JMAP1].魔神修罗 50
+; #ACT
+; MonGenEx 7JMAP1 67 86 魔神修罗 40 <$DEC.50.<$MAPMONCOUNT[7JMAP1].魔神修罗>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 7JMAP1 > 0
+; SMALL $MAPMONCOUNT[7JMAP1].暗影修罗 50
+; #ACT
+; MonGenEx 7JMAP1 67 86 暗影修罗 40 <$DEC.50.<$MAPMONCOUNT[7JMAP1].暗影修罗>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 7JMAP1 > 0
+; SMALL $MAPMONCOUNT[7JMAP1].黑袍修罗 12
+; #ACT
+; MonGenEx 7JMAP1 67 86 黑袍修罗 40 <$DEC.12.<$MAPMONCOUNT[7JMAP1].黑袍修罗>>
+
+; ;------------------------------8阶---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT 8JMAP > 3
+; SMALL $MAPMONCOUNT[8JMAP].御兽狂魔 150
+; #ACT
+; MonGenEx 8JMAP 140 137 御兽狂魔 100 <$DEC.150.<$MAPMONCOUNT[8JMAP].御兽狂魔>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 8JMAP > 3
+; SMALL $MAPMONCOUNT[8JMAP].焚天马奴 150
+; #ACT
+; MonGenEx 8JMAP 140 137 焚天马奴 100 <$DEC.150.<$MAPMONCOUNT[8JMAP].焚天马奴>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 8JMAP > 3
+; SMALL $MAPMONCOUNT[8JMAP].驭冰游神 40
+; #ACT
+; MonGenEx 8JMAP 140 137 驭冰游神 100 <$DEC.40.<$MAPMONCOUNT[8JMAP].驭冰游神>>
+
+
+; ;------------------------------8阶1---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT 8JMAP1 > 3
+; SMALL $MAPMONCOUNT[8JMAP1].御兽狂魔 150
+; #ACT
+; MonGenEx 8JMAP1 140 137 御兽狂魔 100 <$DEC.150.<$MAPMONCOUNT[8JMAP1].御兽狂魔>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 8JMAP1 > 3
+; SMALL $MAPMONCOUNT[8JMAP1].焚天马奴 150
+; #ACT
+; MonGenEx 8JMAP1 140 137 焚天马奴 100 <$DEC.150.<$MAPMONCOUNT[8JMAP1].焚天马奴>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 8JMAP1 > 3
+; SMALL $MAPMONCOUNT[8JMAP1].驭冰游神 40
+; #ACT
+; MonGenEx 8JMAP1 140 137 驭冰游神 100 <$DEC.40.<$MAPMONCOUNT[8JMAP1].驭冰游神>>
+
+; ;------------------------------9阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 9JMAP > 2
+; SMALL $MAPMONCOUNT[9JMAP].上古腾蛇 80
+; #ACT
+; MonGenEx 9JMAP 98 148 上古腾蛇 135 <$DEC.80.<$MAPMONCOUNT[9JMAP].上古腾蛇>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 9JMAP > 2
+; SMALL $MAPMONCOUNT[9JMAP].上古英招 80
+; #ACT
+; MonGenEx 9JMAP 98 148 上古英招 135 <$DEC.80.<$MAPMONCOUNT[9JMAP].上古英招>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 9JMAP > 2
+; SMALL $MAPMONCOUNT[9JMAP].上古巫神 26
+; #ACT
+; MonGenEx 9JMAP 98 148 上古巫神 135 <$DEC.26.<$MAPMONCOUNT[9JMAP].上古巫神>>
+
+; ;------------------------------9阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 9JMAP > 2
+; SMALL $MAPMONCOUNT[9JMAP1].上古腾蛇 80
+; #ACT
+; MonGenEx 9JMAP1 98 148 上古腾蛇 135 <$DEC.80.<$MAPMONCOUNT[9JMAP1].上古腾蛇>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 9JMAP1 > 2
+; SMALL $MAPMONCOUNT[9JMAP1].上古英招 80
+; #ACT
+; MonGenEx 9JMAP1 98 148 上古英招 135 <$DEC.80.<$MAPMONCOUNT[9JMAP1].上古英招>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 9JMAP1 > 2
+; SMALL $MAPMONCOUNT[9JMAP1].上古巫神 26
+; #ACT
+; MonGenEx 9JMAP1 98 148 上古巫神 135 <$DEC.26.<$MAPMONCOUNT[9JMAP1].上古巫神>>
+; ;------------------------------10阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 10JMAP > 2
+; SMALL $MAPMONCOUNT[10JMAP].镇魔刀卫 60
+; #ACT
+; MonGenEx 10JMAP 135 198 镇魔刀卫 60 <$DEC.60.<$MAPMONCOUNT[10JMAP].镇魔刀卫>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 10JMAP > 2
+; SMALL $MAPMONCOUNT[10JMAP].镇魔勇士 60
+; #ACT
+; MonGenEx 10JMAP 135 198 镇魔勇士 60 <$DEC.60.<$MAPMONCOUNT[10JMAP].镇魔勇士>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 10JMAP > 2
+; SMALL $MAPMONCOUNT[10JMAP].镇魔校尉 15
+; #ACT
+; MonGenEx 10JMAP 135 198 镇魔校尉 60 <$DEC.15.<$MAPMONCOUNT[10JMAP].镇魔校尉>>
+
+; ;------------------------------10阶1---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 10JMAP1 > 2
+; SMALL $MAPMONCOUNT[10JMAP1].镇魔刀卫 60
+; #ACT
+; MonGenEx 10JMAP1 135 198 镇魔刀卫 60 <$DEC.60.<$MAPMONCOUNT[10JMAP1].镇魔刀卫>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 10JMAP1 > 2
+; SMALL $MAPMONCOUNT[10JMAP1].镇魔勇士 60
+; #ACT
+; MonGenEx 10JMAP1 135 198 镇魔勇士 60 <$DEC.60.<$MAPMONCOUNT[10JMAP1].镇魔勇士>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 10JMAP1 > 2
+; SMALL $MAPMONCOUNT[10JMAP1].镇魔校尉 15
+; #ACT
+; MonGenEx 10JMAP1 135 198 镇魔校尉 60 <$DEC.15.<$MAPMONCOUNT[10JMAP1].镇魔校尉>>
+
+; ;------------------------------11阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 11JMAP > 2
+; SMALL $MAPMONCOUNT[11JMAP].幽暗藤妖 40
+; #ACT
+; MonGenEx 11JMAP 84 114 幽暗藤妖 60 <$DEC.40.<$MAPMONCOUNT[11JMAP].幽暗藤妖>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 11JMAP > 2
+; SMALL $MAPMONCOUNT[11JMAP].幽暗力士 40
+; #ACT
+; MonGenEx 11JMAP 84 114 幽暗力士 60 <$DEC.40.<$MAPMONCOUNT[11JMAP].幽暗力士>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 11JMAP > 2
+; SMALL $MAPMONCOUNT[11JMAP].密林巡察 10
+; #ACT
+; MonGenEx 11JMAP 84 114 密林巡察 60 <$DEC.10.<$MAPMONCOUNT[11JMAP].密林巡察>>
+
+; ;------------------------------11阶1---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 11JMAP1 > 2
+; SMALL $MAPMONCOUNT[11JMAP1].幽暗藤妖 40
+; #ACT
+; MonGenEx 11JMAP1 84 114 幽暗藤妖 60 <$DEC.40.<$MAPMONCOUNT[11JMAP1].幽暗藤妖>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 11JMAP1 > 2
+; SMALL $MAPMONCOUNT[11JMAP1].幽暗力士 40
+; #ACT
+; MonGenEx 11JMAP1 84 114 幽暗力士 60 <$DEC.40.<$MAPMONCOUNT[11JMAP1].幽暗力士>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 11JMAP1 > 2
+; SMALL $MAPMONCOUNT[11JMAP1].密林巡察 10
+; #ACT
+; MonGenEx 11JMAP1 84 114 密林巡察 60 <$DEC.10.<$MAPMONCOUNT[11JMAP1].密林巡察>>
+; ;------------------------------12阶---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT 12JMAP > 2
+; SMALL $MAPMONCOUNT[12JMAP].烈焰骑士 70
+; #ACT
+; MonGenEx 12JMAP 112 129 烈焰骑士 55 <$DEC.70.<$MAPMONCOUNT[12JMAP].烈焰骑士>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 12JMAP > 2
+; SMALL $MAPMONCOUNT[12JMAP].烈焰魔蛛 70
+; #ACT
+; MonGenEx 12JMAP 112 129 烈焰魔蛛 55 <$DEC.70.<$MAPMONCOUNT[12JMAP].烈焰魔蛛>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 12JMAP > 2
+; SMALL $MAPMONCOUNT[12JMAP].烈焰斧魔 15
+; #ACT
+; MonGenEx 12JMAP 112 129 烈焰斧魔 55 <$DEC.15.<$MAPMONCOUNT[12JMAP].烈焰斧魔>>
+
+; ;------------------------------12阶1---------------------------------------------------------------
+
+; #IF
+; CHECKMAPHUMANCOUNT 12JMAP1 > 2
+; SMALL $MAPMONCOUNT[12JMAP1].烈焰骑士 70
+; #ACT
+; MonGenEx 12JMAP1 112 129 烈焰骑士 55 <$DEC.70.<$MAPMONCOUNT[12JMAP1].烈焰骑士>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 12JMAP1 > 2
+; SMALL $MAPMONCOUNT[12JMAP1].烈焰魔蛛 70
+; #ACT
+; MonGenEx 12JMAP1 112 129 烈焰魔蛛 55 <$DEC.70.<$MAPMONCOUNT[12JMAP1].烈焰魔蛛>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 12JMAP1 > 2
+; SMALL $MAPMONCOUNT[12JMAP1].烈焰斧魔 15
+; #ACT
+; MonGenEx 12JMAP1 112 129 烈焰斧魔 55 <$DEC.15.<$MAPMONCOUNT[12JMAP1].烈焰斧魔>>
+
+; ;------------------------------13阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 13JMAP > 3
+; SMALL $MAPMONCOUNT[13JMAP].长枪之灵 140
+; #ACT
+; MonGenEx 13JMAP 184 381 长枪之灵 50 <$DEC.140.<$MAPMONCOUNT[13JMAP].长枪之灵>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 13JMAP > 3
+; SMALL $MAPMONCOUNT[13JMAP].巨斧之灵 140
+; #ACT
+; MonGenEx 13JMAP 184 381 长枪之灵 50 <$DEC.140.<$MAPMONCOUNT[13JMAP].巨斧之灵>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 13JMAP > 3
+; SMALL $MAPMONCOUNT[13JMAP].刑天后裔 70
+; #ACT
+; MonGenEx 13JMAP 184 381 刑天后裔 50 <$DEC.70.<$MAPMONCOUNT[13JMAP].刑天后裔>>
+
+; ;------------------------------13阶1---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 13JMAP1 > 3
+; SMALL $MAPMONCOUNT[13JMAP1].长枪之灵 140
+; #ACT
+; MonGenEx 13JMAP1 184 381 长枪之灵 50 <$DEC.140.<$MAPMONCOUNT[13JMAP1].长枪之灵>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 13JMAP1 > 3
+; SMALL $MAPMONCOUNT[13JMAP1].巨斧之灵 140
+; #ACT
+; MonGenEx 13JMAP1 184 381 长枪之灵 50 <$DEC.140.<$MAPMONCOUNT[13JMAP1].巨斧之灵>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 13JMAP1 > 3
+; SMALL $MAPMONCOUNT[13JMAP1].刑天后裔 70
+; #ACT
+; MonGenEx 13JMAP1 184 381 刑天后裔 50 <$DEC.70.<$MAPMONCOUNT[13JMAP1].刑天后裔>>
+
+; ;------------------------------14阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 14JMAP > 2
+; SMALL $MAPMONCOUNT[14JMAP].混沌狰 150
+; #ACT
+; MonGenEx 14JMAP 170 170 混沌狰 140 <$DEC.150.<$MAPMONCOUNT[14JMAP].混沌狰>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 14JMAP > 2
+; SMALL $MAPMONCOUNT[14JMAP].混沌狴犴 150
+; #ACT
+; MonGenEx 14JMAP 170 170 混沌狴犴 140 <$DEC.150.<$MAPMONCOUNT[14JMAP].混沌狴犴>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 14JMAP > 2
+; SMALL $MAPMONCOUNT[14JMAP].混沌猬焰 20
+; #ACT
+; MonGenEx 14JMAP 170 170 混沌猬焰 140 <$DEC.20.<$MAPMONCOUNT[14JMAP].混沌猬焰>>
+; ;------------------------------14阶1---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 14JMAP1 > 2
+; SMALL $MAPMONCOUNT[14JMAP1].混沌狰 150
+; #ACT
+; MonGenEx 14JMAP1 170 170 混沌狰 140 <$DEC.150.<$MAPMONCOUNT[14JMAP1].混沌狰>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 14JMAP1 > 2
+; SMALL $MAPMONCOUNT[14JMAP1].混沌狴犴 150
+; #ACT
+; MonGenEx 14JMAP1 170 170 混沌狴犴 140 <$DEC.150.<$MAPMONCOUNT[14JMAP1].混沌狴犴>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 14JMAP1 > 2
+; SMALL $MAPMONCOUNT[14JMAP1].混沌猬焰 20
+; #ACT
+; MonGenEx 14JMAP1 170 170 混沌猬焰 140 <$DEC.20.<$MAPMONCOUNT[14JMAP1].混沌猬焰>>
+; ;------------------------------15阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 15JMAP > 2
+; SMALL $MAPMONCOUNT[15JMAP].无间斧卫 50
+; #ACT
+; MonGenEx 15JMAP 93 161 无间斧卫 80 <$DEC.50.<$MAPMONCOUNT[15JMAP].无间斧卫>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 15JMAP > 2
+; SMALL $MAPMONCOUNT[15JMAP].无间龙卫 35
+; #ACT
+; MonGenEx 15JMAP 93 161 无间龙卫 80 <$DEC.35.<$MAPMONCOUNT[15JMAP].无间龙卫>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 15JMAP > 2
+; SMALL $MAPMONCOUNT[15JMAP].无间统领 15
+; #ACT
+; MonGenEx 15JMAP 93 161 无间统领 80 <$DEC.15.<$MAPMONCOUNT[15JMAP].无间统领>>
+; ;------------------------------15阶1---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT 15JMAP1 > 2
+; SMALL $MAPMONCOUNT[15JMAP1].无间斧卫 50
+; #ACT
+; MonGenEx 15JMAP1 93 161 无间斧卫 80 <$DEC.50.<$MAPMONCOUNT[15JMAP1].无间斧卫>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 15JMAP1 > 2
+; SMALL $MAPMONCOUNT[15JMAP1].无间龙卫 35
+; #ACT
+; MonGenEx 15JMAP1 93 161 无间龙卫 80 <$DEC.35.<$MAPMONCOUNT[15JMAP1].无间龙卫>>
+
+; #IF
+; CHECKMAPHUMANCOUNT 15JMAP1 > 2
+; SMALL $MAPMONCOUNT[15JMAP1].无间统领 15
+; #ACT
+; MonGenEx 15JMAP1 93 161 无间统领 80 <$DEC.15.<$MAPMONCOUNT[15JMAP1].无间统领>>
+; ;------------------------------16阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT HHBOSS > 0
+; SMALL $MAPMONCOUNT[HHBOSS].地底锤仙 12
+; #ACT
+; MonGenEx HHBOSS 62 96 地底锤仙 20 <$DEC.12.<$MAPMONCOUNT[HHBOSS].地底锤仙>>
+
+; #IF
+; CHECKMAPHUMANCOUNT HHBOSS > 0
+; SMALL $MAPMONCOUNT[HHBOSS].地底枪仙 12
+; #ACT
+; MonGenEx HHBOSS 62 96 地底枪仙 20 <$DEC.12.<$MAPMONCOUNT[HHBOSS].地底枪仙>>
+
+; #IF
+; CHECKMAPHUMANCOUNT HHBOSS > 0
+; SMALL $MAPMONCOUNT[HHBOSS].地底雷公 3
+; #ACT
+; MonGenEx HHBOSS 62 96 地底雷公 20 <$DEC.3.<$MAPMONCOUNT[HHBOSS].地底雷公>>
+
+; ;------------------------------17阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT XJDMX01 > 0
+; SMALL $MAPMONCOUNT[XJDMX01].绝毒四尾 9
+; #ACT
+; MonGenEx XJDMX01 49 52 绝毒四尾 20 <$DEC.9.<$MAPMONCOUNT[XJDMX01].绝毒四尾>>
+
+; #IF
+; CHECKMAPHUMANCOUNT XJDMX01 > 0
+; SMALL $MAPMONCOUNT[XJDMX01].绝毒术士 6
+; #ACT
+; MonGenEx XJDMX01 49 52 绝毒术士 20 <$DEC.6.<$MAPMONCOUNT[XJDMX01].绝毒术士>>
+
+; #IF
+; CHECKMAPHUMANCOUNT XJDMX01 > 0
+; SMALL $MAPMONCOUNT[XJDMX01].绝毒四尾 3
+; #ACT
+; MonGenEx XJDMX01 49 52 绝毒四尾 20 <$DEC.3.<$MAPMONCOUNT[XJDMX01].绝毒四尾>>
+
+; ;------------------------------18阶---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT F005 > 0
+; SMALL $MAPMONCOUNT[F005].虚空魔妖 20
+; #ACT
+; MonGenEx F005 38 32 虚空魔妖 150 <$DEC.20.<$MAPMONCOUNT[F005].虚空魔妖>>
+
+; #IF
+; CHECKMAPHUMANCOUNT F005 > 0
+; SMALL $MAPMONCOUNT[F005].虚空梼杌 20
+; #ACT
+; MonGenEx F005 38 32 虚空梼杌 150 <$DEC.20.<$MAPMONCOUNT[F005].虚空梼杌>>
+
+; #IF
+; CHECKMAPHUMANCOUNT F005 > 0
+; SMALL $MAPMONCOUNT[F005].虚空镰奴 8
+; #ACT
+; MonGenEx F005 38 32 虚空镰奴 150 <$DEC.8.<$MAPMONCOUNT[F005].虚空镰奴>>
+
+; ;------------------------------安全挂机1---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT SWYSL > 1
+; SMALL $MAPMONCOUNT[SWYSL].烈焰使1 250
+; #ACT
+; MonGenEx SWYSL 96 104 烈焰使1 55 <$DEC.250.<$MAPMONCOUNT[SWYSL].烈焰使1>>
+
+; #IF
+; CHECKMAPHUMANCOUNT SWYSL > 1
+; SMALL $MAPMONCOUNT[SWYSL].火烈鸟1 250
+; #ACT
+; MonGenEx SWYSL 96 104 火烈鸟1 55 <$DEC.250.<$MAPMONCOUNT[SWYSL].火烈鸟1>>
+; ;------------------------------安全挂机2---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT M031 > 1
+; SMALL $MAPMONCOUNT[M031].猛魔刀兵1 250
+; #ACT
+; MonGenEx M031 98 89 猛魔刀兵1 60 <$DEC.250.<$MAPMONCOUNT[M031].猛魔刀兵1>>
+
+; #IF
+; CHECKMAPHUMANCOUNT M031 > 1
+; SMALL $MAPMONCOUNT[M031].猛魔枪卒1 250
+; #ACT
+; MonGenEx M031 98 89 猛魔枪卒1 60 <$DEC.250.<$MAPMONCOUNT[M031].猛魔枪卒1>>
+; ;------------------------------安全挂机3---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT NB001 > 1
+; SMALL $MAPMONCOUNT[NB001].暗影修罗1 70
+; #ACT
+; MonGenEx NB001 52 50 暗影修罗1 40 <$DEC.70.<$MAPMONCOUNT[NB001].暗影修罗1>>
+; #IF
+; CHECKMAPHUMANCOUNT NB001 > 1
+; SMALL $MAPMONCOUNT[NB001].魔神修罗1 70
+; #ACT
+; MonGenEx NB001 52 50 魔神修罗1 40 <$DEC.70.<$MAPMONCOUNT[NB001].魔神修罗1>>
+
+; ;------------------------------安全挂机4---------------------------------------------------------------
+; #IF
+; CHECKMAPHUMANCOUNT M032 > 1
+; SMALL $MAPMONCOUNT[M032].焚天马奴1 100
+; #ACT
+; MonGenEx M032 100 86 焚天马奴1 60 <$DEC.100.<$MAPMONCOUNT[M032].焚天马奴1>>
+
+; #IF
+; CHECKMAPHUMANCOUNT M032 > 1
+; SMALL $MAPMONCOUNT[M032].御兽狂魔1 100
+; #ACT
+; MonGenEx M032 100 86 御兽狂魔1 60 <$DEC.100.<$MAPMONCOUNT[M032].御兽狂魔1>>
+
+;---------------------------------------泡点地图
+[@泡点一区地图]
+#IF
+SMALL <$HUMAN(泡点剩余时间)> 5
+#ACT
+MAPMOVE 0 473 225 3
+SENDMSG 19 今日泡点时间为零
+BREAK
+
+#IF
+EQUAL <$POSITION(QGD001,33,61)> <$USERNAME>
+#ACT
+GETEXP <$DIV.<$MULT.<$INC.26250.<$DIV.<$MULT.26250.$STR(D62)>.100>>.110>.100>
+ChangeCustomValue 2 + <$DIV.<$MULT.<$INC.4500.<$DIV.<$MULT.4500.$STR(D63)>.100>>.110>.100>
+CalcVar Human 泡点剩余时间 - 5 1
+UpdateTask 445 1
+SENDMSG 7 你获得了<$DIV.<$MULT.<$INC.4500.<$DIV.<$MULT.4500.$STR(D63)>.100>>.110>.100>点魔体经验！
+BREAK
+#ELSEACT
+GETEXP <$INC.26250.<$DIV.<$MULT.26250.$STR(D62)>.100>>
+ChangeCustomValue 2 + 4500
+CalcVar Human 泡点剩余时间 - 5 1
+UpdateTask 445 1
+SENDMSG 7 你获得了<$INC.4500.<$DIV.<$MULT.4500.$STR(D63)>.100>>点魔体经验！
+BREAK
+
+[@泡点二区地图]
+#IF
+SMALL <$HUMAN(泡点付费剩余时间)> 5
+#ACT
+MAPMOVE 0 473 225 3
+SENDMSG 19 今日元宝泡点时间为零
+BREAK
+
+#IF
+CHECK [226] 1
+#ACT
+MOV S$二区泡点消耗元宝 10
+#ELSEACT
+MOV S$二区泡点消耗元宝 20
+
+#IF
+SMALL <$Money(2)> <$Str(S$二区泡点消耗元宝)>
+#ACT
+MAPMOVE 0 473 225 3
+SENDMSG 19 元宝不足！
+BREAK
+#ELSEACT
+MONEY 2 - <$Str(S$二区泡点消耗元宝)>
+
+#IF
+EQUAL <$POSITION(QGD002,33,61)> <$USERNAME>
+#ACT
+GETEXP <$DIV.<$MULT.<$INC.40700.<$DIV.<$MULT.40700.$STR(D62)>.100>>.110>.100>
+ChangeCustomValue 2 + <$DIV.<$MULT.<$INC.6000.<$DIV.<$MULT.6000.$STR(D63)>.100>>.110>.100>
+CalcVar Human 泡点付费剩余时间 - 5 1
+UpdateTask 445 1
+SENDMSG 7 你获得了<$DIV.<$MULT.<$INC.6000.<$DIV.<$MULT.6000.$STR(D63)>.100>>.110>.100>点魔体经验！
+BREAK
+#ELSEACT
+GETEXP <$INC.40700.<$DIV.<$MULT.40700.$STR(D62)>.100>>
+ChangeCustomValue 2 + <$DIV.<$MULT.<$INC.6000.<$DIV.<$MULT.6000.$STR(D63)>.100>>.110>.100>
+CalcVar Human 泡点付费剩余时间 - 5 1
+UpdateTask 445 1
+SENDMSG 7 你获得了<$INC.6000.<$DIV.<$MULT.6000.$STR(D63)>.100>>点魔体经验！
+BREAK
+
+
+[@泡点三区地图]
+#IF
+CHECK [226] 1
+#ACT
+MOV S$三区泡点消耗元宝 20
+#ELSEACT
+MOV S$三区泡点消耗元宝 40
+#IF
+SMALL <$HUMAN(泡点付费剩余时间)> 5
+#ACT
+MAPMOVE 0 473 225 3
+SENDMSG 19 今日元宝泡点时间为零
+BREAK
+
+#IF
+SMALL <$Money(2)> <$Str(S$三区泡点消耗元宝)>
+#ACT
+MAPMOVE 0 473 225 3
+SENDMSG 19 元宝不足！
+BREAK
+#ELSEACT
+MONEY 2 - <$Str(S$三区泡点消耗元宝)>
+
+#IF
+EQUAL <$POSITION(QGD003,33,61)> <$USERNAME>
+#ACT
+GETEXP <$DIV.<$MULT.<$INC.57750.<$DIV.<$MULT.57750.$STR(D62)>.100>>.110>.100>
+ChangeCustomValue 2 + <$DIV.<$MULT.<$INC.9000.<$DIV.<$MULT.9000.$STR(D63)>.100>>.110>.100>
+CalcVar Human 泡点付费剩余时间 - 5 1
+UpdateTask 445 1
+SENDMSG 7 你获得了<$DIV.<$MULT.<$INC.9000.<$DIV.<$MULT.9000.$STR(D63)>.100>>.110>.100>点魔体经验！
+BREAK
+#ELSEACT
+GETEXP <$INC.57750.<$DIV.<$MULT.57750.$STR(D62)>.100>>
+ChangeCustomValue 2 + <$DIV.<$MULT.<$INC.9000.<$DIV.<$MULT.9000.$STR(D63)>.100>>.110>.100>
+CalcVar Human 泡点付费剩余时间 - 5 1
+UpdateTask 445 1
+SENDMSG 7 你获得了<$INC.9000.<$DIV.<$MULT.9000.$STR(D63)>.100>>点魔体经验！
+BREAK
+
+
+
+[@泡点四区地图]
+#IF
+CHECK [226] 1
+#ACT
+MOV S$四区泡点消耗元宝 50
+#ELSEACT
+MOV S$四区泡点消耗元宝 100
+
+#IF
+SMALL <$HUMAN(泡点付费剩余时间)> 5
+#ACT
+MAPMOVE 0 473 225 3
+SENDMSG 19 今日元宝泡点时间为零
+BREAK
+
+#IF
+SMALL <$Money(2)> <$Str(S$四区泡点消耗元宝)>
+#ACT
+MAPMOVE 0 473 225 3
+SENDMSG 19 元宝不足！
+BREAK
+#ELSEACT
+MONEY 2 - <$Str(S$四区泡点消耗元宝)>
+
+#IF
+EQUAL <$POSITION(QGD004,33,61)> <$USERNAME>
+#ACT
+GETEXP <$DIV.<$MULT.<$INC.84250.<$DIV.<$MULT.84250.$STR(D62)>.100>>.110>.100>
+ChangeCustomValue 2 + <$DIV.<$MULT.<$INC.15000.<$DIV.<$MULT.15000.$STR(D63)>.100>>.110>.100>
+CalcVar Human 泡点付费剩余时间 - 5 1
+UpdateTask 445 1
+SENDMSG 7 你获得了<$DIV.<$MULT.<$INC.15000.<$DIV.<$MULT.15000.$STR(D63)>.100>>.110>.100>点魔体经验！
+BREAK
+#ELSEACT
+GETEXP <$INC.84250.<$DIV.<$MULT.84250.$STR(D62)>.100>>
+ChangeCustomValue 2 + <$DIV.<$MULT.<$INC.15000.<$DIV.<$MULT.15000.$STR(D63)>.100>>.110>.100>
+CalcVar Human 泡点付费剩余时间 - 5 1
+UpdateTask 445 1
+SENDMSG 7 你获得了<$INC.15000.<$DIV.<$MULT.15000.$STR(D63)>.100>>点魔体经验！
+BREAK
+
+
+
+
+[@HJQGD]
+#IF
+EQUAL <$MAPMONCOUNT[HJQGD].ALL> 0
+SMALL G0 7
+!SMALL <$LONGDATE> <$STR(G12)>
+#ACT
+PARAM1 HJQGD
+PARAM2 33
+PARAM3 60
+MonGen 技能玩法真BOSS1 1 5 天书尊者
+ADDFH 0 3 18822 -230 -200 MON
+MonGen 技能玩法假BOSS1 8 5 天书尊者
+ADDFH 0 3 18822 -230 -200 MON
+BREAK
+#IF
+EQUAL <$MAPMONCOUNT[HJQGD].ALL> 0
+LARGE G0 6
+!SMALL <$LONGDATE> <$STR(G12)>
+#ACT
+PARAM1 HJQGD
+PARAM2 33
+PARAM3 60
+MonGen 技能玩法真BOSS2 1 5 天书尊者
+ADDFH 0 3 18822 -230 -200 MON
+MonGen 技能玩法假BOSS2 8 5 天书尊者
+ADDFH 0 3 18822 -230 -200 MON
+BREAK
+
+
+[@每分钟触发函数]
+#IF
+TRUE
+#ACT
+FUNC 1 @神秘空间倒计时函数
+BREAK
+
+
+[@前往怪物攻城活动]
+#IF
+True
+#ACT
+QueryMsg 是否前往参加怪物攻城活动？ @确定前往怪物攻城
+
+
+[@确定前往怪物攻城1]
+#IF
+True
+#ACT
+MAPMOVE 0 505 260
+close
+
+
+[@全服发送邮件]
+#IF
+!HAVEGUILD
+#act
+SendMail 1 入会邀请 【<$STR(S$行会_发送邮件行会名)>】行会诚挚邀请你的加入，请往中州安全区找到行会功能NPC了解区服行会信息!
+BREAK
+
+[@合区刷新行会展示]
+#IF
+HaveGuild
+!PosInlist <$GUILD.NAME> ..\QuestDiary\读取数据\行会信息.txt
+#ACT
+ADDVARLIST <$GUILD.CHIEF>|<$GUILD.NAME>|是否开启自动收人=<$GUILD(行会_自动同意入会)> ..\QuestDiary\读取数据\行会信息.txt
+BREAK
+[@行会数据每日初始化]
+#IF
+HaveGuild
+!EQUAL <$GUILD(行会_行会每日清除标识)> $DATE
+#ACT
+CALCVAR GUILD 行会_每日招募次数 = 5 1
+CALCVAR GUILD 行会_行会每日清除标识 = $DATE 1
+BREAK
+[@闯天关杀怪触发]
+#IF
+EQUAL <$MAPMONCOUNT[SELF].ALL> 0
+#ACT
+GOTO @天关挑战成功_Main
+BREAK
+
+
+[@阵营战图内倒计时]
+#IF
+!LARGE $LONGDATE <$DEC.$STR(G$阵营战时间).1800>
+#ACT
+SENDMSG 19 阵营战开始倒计时<$DEC.<$DEC.$STR(G$阵营战时间).1800>.$LONGDATE>秒
+
+#IF
+EQUAL <$DEC.<$DEC.$STR(G$阵营战时间).1800>.$LONGDATE> 0
+#SAY
+<Effect|x=583.0|y=317.0|act=0|speed=1|scale=1|dir=0|effecttype=0|effectid=9009|sex=0|bg=1>
+#ACT
+DELAYGOTO 1100 @关掉这个开始
+BREAK
+
+
+[@关掉这个开始]
+#IF
+TRUE
+#ACT
+BREAK
+CLOSE
+
+
+[@合服在线时间]
+#IFONE
+ISOFFLINE
+!CHECKONLINE $USERNAME
+SMALL $HFCOUNT 1
+#ACT
+BREAK
+#ELSEACT
+CHANGECUSTOMVALUE 39 + 1
+;SENDMSG 7 在线时间+1,当前累积:<$CUSTOMVALUE(39)>
+BREAK
+
+
+
+;参数 装备悬赏QM_参数_装备名
+[@装备悬赏QM_装备爆出]
+#IF
+RANDOM 1
+#ACT
+;sendmsg 1 爆出装备=<$STR(S$装备悬赏QM_参数_装备名)>
+MOV S$装备悬赏QM_装备ID <$GetTypeBRow(cfg_zhuangbeixuanshang,1,<$STR(S$装备悬赏QM_参数_装备名)>)>
+;sendmsg 1 装备ID=<$STR(S$装备悬赏QM_装备ID)>
+
+#IFONE
+EQUAL S$装备悬赏QM_装备ID -1
+POS <$HUMAN(装备悬赏_已爆出装备ID字符串)> |<$STR(S$装备悬赏QM_装备ID)>|
+#ACT
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+CALCVAR HUMAN 装备悬赏_已爆出装备ID字符串 + <$STR(S$装备悬赏QM_装备ID)>| 1
+ReadCacheConfigFileItem ..\QuestDiary\数据文件\文本数据\装备悬赏剩余人数.txt 装备悬赏剩余人数 |<$STR(S$装备悬赏QM_参数_装备名)>| N$装备悬赏QM_剩余数量
+
+#IF
+LARGE N$装备悬赏QM_剩余数量 0
+#ACT
+#CALL [\红点功能\红点判断.txt] @顶部福利活动红点
+#ELSEACT
+CALCVAR HUMAN 装备悬赏_无名额装备ID字符串 + <$STR(S$装备悬赏QM_装备ID)>| 1
+
+[@无敌怪处理]
+#IF
+CHECK [661] 1
+EQUAL <$AutoKill> 1
+POSINLIST <$M> ..\QuestDiary\数据读取\防卡怪地图.txt
+!EQUAL <$StdMonster(<$NEWPARAM(Attack).4>).UNDEAD> 254
+#ACT
+GmExeCute GO <$M>
+BREAK
+
+[@挖矿地计时]
+#IF
+LARGE $CustomValue(99) 0
+#ACT
+CHANGECustomValue 99 - 1
+
+#IF
+!LARGE $CustomValue(99) 0
+#ACT
+MAPMOVE 0 471 224
+BREAK

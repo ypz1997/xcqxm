@@ -1,0 +1,321 @@
+[@MAIN]
+#IF
+TRUE
+#ACT
+QueryVal 70 0 15 @确定密码 输入密码
+BREAK
+
+[@确定密码]
+#IF
+EQUAL S70 jimudalao666
+#ACT
+GOTO @显示功能面板
+BREAK
+#ELSEACT
+SENDMSG 19 密码错误
+break
+
+[@显示功能面板]
+<10元充值/@10元充值>　　　　　　<50元充值/@50元充值>　　　　　<100元充值/@100元充值>\
+<月卡购买/@月卡购买>　　　　　　<季卡购买/@季卡购买>　　　　　<年卡购买/@年卡购买>\
+<战令购买/@战令购买>　　　　　　<投资购买/@投资购买>　　　　　<开服礼包1/@新手礼包1>\
+<开服礼包2/@新手礼包2>　  　　　　<开服礼包3/@新手礼包3>　  　　　<开服礼包4/@新手礼包4>\
+<开服礼包5/@新手礼包5>　  　　　　<开服礼包6/@新手礼包6>　  　　　<开服礼包7/@新手礼包7>\
+<会员等级加1/@会员等级加>　　　　<会员等级减1/@会员等级减>　　　　<转生等级加1/@转生等级加>\
+<转生等级减1/@转生等级减>　　　　<开启GM权限/@开启GM权限>　　　　<获取材料/@获取材料>\
+<等级提升1级/@等级加1>　　　　<等级下调1级/@等级减1>　　　　<一键获取货币/@获取货币>\
+<魔体等级加1级/@魔体等级加>　　　<魔体等级减1级/@魔体等级减>　　　<传送到中州/@传送>\
+<附件获取/@附件获取>　\
+
+
+[@附件获取]
+#IF
+TRUE
+#ACT
+GIVE 太初盾牌 1
+GIVE 太初宝石 1
+GIVE 太初面具 1
+GIVE 太初魂珠 1
+GIVE 太初勋章 1
+GIVE 太初护符 1
+BREAK
+
+
+[@魔体等级加]
+#IF
+SMALL $CustomValue(0) 120
+#ACT
+CHANGECustomValue 0 + 1
+SENDMSG 6 魔体当前等级<$CustomValue(0)>
+BREAK
+
+[@魔体等级减]
+#IF
+LARGE $CustomValue(0) 0
+#ACT
+CHANGECustomValue 0 - 1
+SENDMSG 6 魔体当前等级<$CustomValue(0)>
+BREAK
+
+
+[@获取货币]
+#IF
+TRUE
+#ACT
+MONEY 1 + 100000000
+MONEY 2 + 100000000
+MONEY 4 + 100000000
+break
+
+[@传送]
+#IF
+!EQUAL $M 0
+#ACT
+MAPMOVE 0 472 222
+break
+
+[@等级加1]
+#IF
+SMALL $LEVEL 120
+#ACT
+GMEXECUTE 等级 $INC.$level.1
+break
+
+[@等级减1]
+#IF
+!SMALL $LEVEL 1
+#ACT
+GMEXECUTE 等级 $DEC.$level.1
+break
+
+[@获取材料]
+#IF
+CHECKBAGSIZE 16
+#ACT
+GIVE 玄铁 999
+GIVE 凶器精粹 999
+GIVE 仙翎之羽 999
+GIVE 神魔精粹 999
+GIVE 法宝精粹 999
+GIVE 魔盾精粹 999
+GIVE 特戒精华 999
+GIVE 特戒精粹 999
+GIVE 特戒精魄 999
+GIVE 特装精粹(防) 999
+GIVE 特装精粹(攻) 999
+GIVE 一阶金符石 999
+GIVE 一阶木符石 999
+GIVE 一阶水符石 999
+GIVE 一阶火符石 999
+GIVE 一阶土符石 999
+break
+#ELSEACT
+SENDMSG 19 包裹空间不足---需要留出 16个以上的空格
+break
+
+[@开启GM权限]
+#IF
+TRUE
+#ACT
+CHANGEPERMISSION 10
+SENDMSG 6 开启GM权限
+break
+
+
+[@会员等级加]
+#IF
+SMALL $CustomValue(90) 25
+#ACT
+CHANGECustomValue 90 + 1
+SENDMSG 6 当前会员等级<$CustomValue(90)>
+BREAK
+#ELSEACT
+SENDMSG 6 当前会员等级已达上限
+BREAK
+
+
+[@会员等级减]
+#IF
+!SMALL $CustomValue(90) 1
+#ACT
+CHANGECustomValue 90 - 1
+SENDMSG 6 当前会员等级<$CustomValue(90)>
+BREAK
+#ELSEACT
+SENDMSG 6 当前会员等级已达下限
+BREAK
+
+[@转生等级加]
+#IF
+SMALL $CustomValue(42) 20
+#ACT
+RenewLevel 1 0 0
+CHANGECustomValue 42 + 1
+SENDMSG 6 当前转生等级<$CustomValue(42)>
+BREAK
+#ELSEACT
+SENDMSG 6 当前转生等级已达上限
+BREAK
+
+[@转生等级减]
+#IF
+!SMALL $CustomValue(42) 1
+#ACT
+CHANGECustomValue 42 - 1
+SENDMSG 6 当前转生等级<$CustomValue(42)>
+BREAK
+#ELSEACT
+SENDMSG 6 当前转生等级已达下限
+BREAK
+
+[@10元充值]
+#IF
+TRUE
+#ACT
+SETPARAM 45 10
+MONEY 2 + 1000
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 10元充值成功
+BREAK
+
+[@50元充值]
+#IF
+TRUE
+#ACT
+SETPARAM 45 50
+MONEY 2 + 5000
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 50元充值成功
+BREAK
+
+
+[@100元充值]
+#IF
+TRUE
+#ACT
+SETPARAM 45 100
+MONEY 2 + 10000
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 100元充值成功
+BREAK
+
+[@月卡购买]
+#IF
+TRUE
+#ACT
+SETPARAM 44 19
+SETPARAM 45 68
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 月卡充值成功
+BREAK
+
+[@季卡购买]
+#IF
+TRUE
+#ACT
+SETPARAM 44 20
+SETPARAM 45 108
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 季卡充值成功
+BREAK
+
+[@年卡购买]
+#IF
+TRUE
+#ACT
+SETPARAM 44 21
+SETPARAM 45 198
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 年卡充值成功
+BREAK
+
+[@战令购买]
+#IF
+TRUE
+#ACT
+SETPARAM 44 31
+SETPARAM 45 28
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 战令充值成功
+BREAK
+
+[@投资购买]
+#IF
+TRUE
+#ACT
+SETPARAM 44 30
+SETPARAM 45 188
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 投资充值成功
+BREAK
+
+[@新手礼包1]
+#IF
+TRUE
+#ACT
+SETPARAM 44 23
+SETPARAM 45 10
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 开服礼包1充值成功
+BREAK
+
+[@新手礼包2]
+#IF
+TRUE
+#ACT
+SETPARAM 44 24
+SETPARAM 45 30
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 开服礼包2充值成功
+BREAK
+
+[@新手礼包3]
+#IF
+TRUE
+#ACT
+SETPARAM 44 25
+SETPARAM 45 30
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 开服礼包3充值成功
+BREAK
+
+[@新手礼包4]
+#IF
+TRUE
+#ACT
+SETPARAM 44 26
+SETPARAM 45 68
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 开服礼包4充值成功
+BREAK
+
+[@新手礼包5]
+#IF
+TRUE
+#ACT
+SETPARAM 44 27
+SETPARAM 45 30
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 开服礼包5充值成功
+BREAK
+
+[@新手礼包6]
+#IF
+TRUE
+#ACT
+SETPARAM 44 28
+SETPARAM 45 30
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 开服礼包6充值成功
+BREAK
+
+[@新手礼包7]
+#IF
+TRUE
+#ACT
+SETPARAM 44 29
+SETPARAM 45 68
+#CALL [\游戏功能\充值触发.txt] @ReCharge
+SENDMSG 6 开服礼包7充值成功
+BREAK
+

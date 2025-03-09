@@ -1,0 +1,234 @@
+[@特戒夺宝]
+{
+
+[@LemonDBYM]
+#IF
+TRUE
+#SAY
+<Img|children={yd1,yd3,yd4,yd6,yd7,yd8,yd10,yd11,yd12,yd13,yd14,yd15,yd16,yd17,yd18,yd19,yd20}|x=180.0|y=30.0|loadDelay=0|img=private/tejieduobao/tejieduobaomb.png|bg=1|move=2>
+<Button|id=yd1|x=642.0|y=-5.0|pimg=public/button/btn_close_01.png|nimg=public/button/btn_close_01.png|link=@exit>
+<Text|id=yd3|x=303.0|y=1.0|color=67|size=20|text=特戒夺宝>
+<Text|id=yd4|x=303.0|y=1.0|color=67|size=20|text=特戒夺宝>
+<Text|id=yd6|x=455.0|y=274.0|size=18|color=67|text=每天19:30-19:45>
+<RText|id=yd7|x=373.0|y=43.0|size=18|color=67|text=宝盒持有者每2分钟循环获得如下奖励>
+<Text|id=yd8|x=374.0|y=183.0|size=18|color=67|text=最终持宝者获得>
+<Text|id=yd10|x=484.0|y=236.0|color=67|size=18|text=参与条件>
+<Text|id=yd11|x=484.0|y=313.0|color=222|size=18|text=等级≥60>
+<ItemShow|id=yd12|x=65.0|y=345.0|itemid=491|itemcount=20|showtips=1|bgtype=public\icon_props_01.png|name=特戒精华|scale=1>
+<ItemShow|id=yd13|x=157.0|y=345.0|itemid=491|itemcount=30|showtips=1|bgtype=public\icon_props_01.png|name=特戒精华|scale=1>
+<ItemShow|id=yd14|x=249.0|y=345.0|itemid=51047|itemcount=2|showtips=1|bgtype=public\icon_props_01.png|name=10米充值代金券|scale=1>
+<Button|id=yd15|x=458.0|y=363.0|pimg=public/button/btn_push_01.png|nimg=public/button/btn_push_01.png|scale=0.9|color=67|size=20|text=立即参与|link=@Lemon参与4>
+<ItemShow|id=yd16|x=396.0|y=82.0|itemid=491|itemcount=20|showtips=1|bgtype=public\icon_props_01.png|name=特戒精华|scale=1>
+<ItemShow|id=yd17|x=488.0|y=82.0|itemid=491|itemcount=30|showtips=1|bgtype=public\icon_props_01.png|name=特戒精华|scale=1>
+<ItemShow|id=yd18|x=582.0|y=82.0|itemid=51047|itemcount=2|showtips=1|bgtype=public\icon_props_01.png|name=10米充值代金券|scale=1>
+<ItemShow|id=yd19|x=537.0|y=161.0|itemid=51051|itemcount=1|effectid=198|showtips=1|dir=0|bgtype=public\icon_props_01.png|act=0|speed=1|name=100米充值3折券|effecttype=2|sex=0|scale=1>
+<Effect|id=yd20|x=61.0|y=43.0|effectid=198|speed=0.7|sex=0|effecttype=2|scale=1|dir=4|act=2>
+
+
+
+
+[@Lemon参与4]
+#IF
+!EQUAL G$Lemon活动 4
+#ACT
+MESSAGEBOX 活动已结束!
+BREAK
+
+#IF
+SMALL $LEVEL 60
+#ACT
+MESSAGEBOX 等级不足60级，暂时无法参加此活动!
+BREAK
+#ELSEACT
+MAPMOVE TJDB
+SENDMSG 16 勇士<%s>进入了<%m>....
+BREAK
+
+
+
+[@pickupitem44444]
+#IF
+!EQUAL $M TJDB
+#ACT
+TAKE 特戒宝箱 66
+SENDMSG 5 特戒宝箱只能在特戒夺宝地图使用!!
+BREAK
+
+#IF
+!EQUAL G$Lemon活动 4
+#ACT
+TAKE 特戒宝箱 66
+SENDMSG 5 活动已经结束了!!
+BREAK
+
+#IF
+CHECKITEM 特戒宝箱 1
+#ACT
+ADDFH 1 3 46614 2 -45
+MOV N$Lemon宝箱 0
+SETARROW 15 @xxxx 特戒宝箱 1 @Lemon宝箱JL
+SENDMSG 14 特戒宝箱在<%m(%x:%y)>被<%s>检起
+SENDMSG 14 持有"特戒宝箱"每2分钟可获得循环奖励(代金券,特戒材料)....
+BREAK
+
+
+[@Lemon宝箱JL]
+#IF
+EQUAL G$Lemon活动 4
+CHECKITEM 特戒宝箱 1
+#ACT
+INC N$Lemon宝箱 1
+#ELSEACT
+BREAK
+
+#IF
+EQUAL N$Lemon宝箱 2
+#ACT
+MailGive 10米充值代金券 1 1
+SENDMAIL 44 宝箱持有奖励 你持有宝箱达2分钟,获得了奖励!请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL N$Lemon宝箱 4
+#ACT
+MailGive 特戒精华 20 1
+SENDMAIL 44 宝箱持有奖励 你持有宝箱达4分钟,获得了奖励!请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL N$Lemon宝箱 6
+#ACT
+MOV N$Lemon宝箱 0
+MailGive 特戒精华 30 1
+SENDMAIL 44 宝箱持有奖励 你持有宝箱达6分钟,获得了奖励!请点提取获取奖励!
+BREAK
+
+
+
+[@dropitem44444]
+#IF
+TRUE
+#ACT
+DELFH 1
+CLEARARROW
+SENDMSG 14 (*)特戒夺宝:当前宝箱掉落在<%m(%x:%y)>
+BREAK
+
+
+
+
+
+[@Lemon特戒JS]
+#IF
+CHECKITEM 特戒宝箱 1
+#ACT
+CLEARARROW
+DELFH 1
+TAKE 特戒宝箱 1
+MailGive 特戒精华 40 1
+MailGive 100米充值3折券 1 1
+SENDMAIL 44 宝箱开启奖励 恭喜你获得了特戒宝箱的奖励!请点提取获取奖励!
+DELAYGOTO 500 @Tiger踢出DT
+
+#IF
+EQUAL $M TJDB
+#ACT
+MAPMOVE 0 475 219 3
+SENDMSG 5 特戒夺宝活动结束了!!
+
+#IF
+CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\特戒夺宝玩家.txt
+#SAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=280.0|y=166.0|bg=1|loadDelay=0|img=private/zhenyingzhan/bg_recycle_01.png|link=@exit>
+<Button|x=760.0|y=229.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+<Img|x=470.0|y=185.0|img=private/tejieduobao/icon_pet_word.png>
+;===========================================================================
+<ItemShow|x=535.0|y=320.0|itemid=491|itemcount=10|name=特戒精华|bgtype=1|showtips=1|scale=1|bgtype=public/icon_props_01.png>
+#ACT
+MailGive 特戒精华 10 1
+SENDMAIL 44 特戒夺宝奖励 恭喜你获得了特戒夺宝参与奖励!请点提取获取奖励!
+BREAK
+
+
+[@Tiger踢出DT]
+#IF
+TRUE
+#SAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=280.0|y=166.0|bg=1|loadDelay=0|img=private/zhenyingzhan/bg_recycle_01.png|link=@exit>
+<Button|x=760.0|y=229.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+<Img|x=470.0|y=185.0|img=private/tejieduobao/icon_pet_word.png>
+;===========================================================================
+<ItemShow|x=485.0|y=320.0|itemid=491|itemcount=40|name=特戒精华|bgtype=1|showtips=1|scale=1|bgtype=public/icon_props_01.png>
+<ItemShow|x=585.0|y=320.0|itemid=51051|itemcount=1|name=100米充值3折券|bgtype=1|showtips=1|scale=1|bgtype=public/icon_props_01.png>
+#ACT
+MAPMOVE 0 475 219 3
+BREAK
+
+[@Lemon特戒DB]
+#IF
+!EQUAL G$Lemon活动 4
+#ACT
+BREAK
+#ELSEACT
+INC N$Lemon地图时间 2
+;------------------------------------------------获得奖励资格
+#IF
+!SMALL N$Lemon地图时间 60
+!CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\特戒夺宝玩家.txt
+#ACT
+ADDVARLIST $USERNAME ..\QUESTDIARY\游戏数据\特戒夺宝玩家.txt
+
+
+
+
+
+[@Lemon活动TZ4]
+#IFONE
+!EQUAL G$Lemon活动 4
+SMALL G$夺宝时间 $LONGDATE
+EQUAL $M TJDB
+#ACT
+BREAK
+
+#IF
+LARGE $DEC.$STR(G$夺宝时间).$LONGDATE 900
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6622.png|nimg=picpackage/3/6622.png|link=@LemonDBZB|UiLevel=0>
+INC S$Lemon活动 <TIMETIPS|x=315|y=80.0|color=222|size=18|time=<$DEC^$DEC.$STR(G$夺宝时间).$LONGDATE^900>|link=@LemonDBXS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+#ELSEACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6622.png|nimg=picpackage/3/6622.png|link=@LemonDBYM|UiLevel=0>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$夺宝时间).$LONGDATE>|link=@LemonDBJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+
+;--------------------------倒计时提示
+[@LemonDBZB]
+#IF
+TRUE
+#ACT
+SENDMSG 19 活动将在计时结束后开始!
+BREAK
+
+;--------------------------夺宝活动进行显示
+[@LemonDBXS]
+#IF
+!EQUAL $M TJDB
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6622.png|nimg=picpackage/3/6622.png|link=@LemonDBYM>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$夺宝时间).$LONGDATE>|link=@LemonDBJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+;--------------------------自动关闭特戒夺宝图标
+[@LemonDBJS]
+#IF
+TRUE
+#ACT
+SENDUI 104
+BREAK
+
+
+}

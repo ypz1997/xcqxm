@@ -1,0 +1,480 @@
+[@main]
+#IF
+RANDOM 1
+#ACT
+MOV S$按钮标签1_1 btn_tab2_01
+MOV S$按钮标签1_2 btn_tab2_02
+MOV S$按钮标签1_3 btn_tab2_01
+MOV S$按钮标签2_1 btn_tab2_01
+MOV S$按钮标签2_2 btn_tab2_02
+MOV S$按钮标签2_3 btn_tab2_01
+MOV S$按钮标签3_1 btn_tab2_01
+MOV S$按钮标签3_2 btn_tab2_02
+MOV S$按钮标签3_3 btn_tab2_01
+MOV S$按钮标签4_1 btn_tab2_01
+MOV S$按钮标签4_2 btn_tab2_02
+MOV S$按钮标签4_3 btn_tab2_01
+#IF
+EQUAL $CLIENTFLAG 1
+#SAY
+\
+　　王权不容挑战，未经本王同意，私自建立行会，私自开\
+启行会战争，都是非法的！你有何事，不妨直言？\ \
+<申请创建行会/@buildguildnow>　　　　<询问建立行会条件/@询问创建>\
+<申请攻打沙城/@申请攻打沙城>　　　　<询问攻打沙城条件/@询问攻打>\
+<申请行会战争/@guildwar>　　　　<询问行会战争条件/@询问战争>\
+<增加行会人数上限/@询问人数>\
+<离开皇宫/@前往中州>
+#ACT
+BREAK
+#ELSESAY
+<Layout|percentwidth=100|percentheight=100|rotate=0|link=@exit>
+<Img|x=284.0|y=87.0|show=4|bg=1|img=newsys/45003.png|esc=1>
+<Button|x=853.0|y=87.0|pimg=public/button/btn_close_02.png|nimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<RText|x=482.0|y=120.0|color=255|size=18|text=王权不容挑战，未经本王同意，私自建立行\会，私自开启行会战争，都是非法的！\　\你有何事，不妨直言？\>
+<Button|x=303.0|y=105.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签1_1)}.png|pimg=public/button/{$STR(S$按钮标签1_2)}.png|mimg=public/button/{$STR(S$按钮标签1_3)}.png|color=251|size=18|text=询问创建行会|link=@询问创建>
+<Button|x=303.0|y=147.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签2_1)}.png|pimg=public/button/{$STR(S$按钮标签2_2)}.png|mimg=public/button/{$STR(S$按钮标签2_3)}.png|color=251|size=18|text=询问攻打沙城|link=@询问攻打>
+<Button|x=303.0|y=189.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签3_1)}.png|pimg=public/button/{$STR(S$按钮标签3_2)}.png|mimg=public/button/{$STR(S$按钮标签3_3)}.png|color=251|size=18|text=询问行会战争|link=@询问战争>
+<Button|x=303.0|y=231.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签4_1)}.png|pimg=public/button/{$STR(S$按钮标签4_2)}.png|mimg=public/button/{$STR(S$按钮标签4_3)}.png|color=251|size=18|text=询问行会人数|link=@询问人数>
+<Button|x=303.0|y=273.0|width=158|height=43|rotate=0|nimg=public/button/btn_tab2_01.png|pimg=public/button/btn_tab2_02.png|mimg=public/button/btn_tab2_01.png|color=251|size=18|text=离开皇宫|link=@前往中州>
+
+
+
+
+[@询问创建]
+#IF
+RANDOM 1
+#ACT
+MOV S$按钮标签1_1 btn_tab2_02
+MOV S$按钮标签1_2 btn_tab2_01
+MOV S$按钮标签1_3 btn_tab2_02
+MOV S$按钮标签2_1 btn_tab2_01
+MOV S$按钮标签2_2 btn_tab2_02
+MOV S$按钮标签2_3 btn_tab2_01
+MOV S$按钮标签3_1 btn_tab2_01
+MOV S$按钮标签3_2 btn_tab2_02
+MOV S$按钮标签3_3 btn_tab2_01
+MOV S$按钮标签4_1 btn_tab2_01
+MOV S$按钮标签4_2 btn_tab2_02
+MOV S$按钮标签4_3 btn_tab2_01
+#IF
+EQUAL $CLIENTFLAG 1
+#SAY
+\
+　想要成立行会，你得证明你有这个资格。\
+　首先你要准备好100万金币和一个战斗号角。\
+　<返回/@main>
+#ACT
+BREAK
+#ELSESAY
+<Layout|percentwidth=100|percentheight=100|rotate=0|link=@exit>
+<Img|x=284.0|y=87.0|show=4|bg=1|img=newsys/45003.png|esc=1>
+<Button|x=853.0|y=87.0|pimg=public/button/btn_close_02.png|nimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<RText|x=482.0|y=120.0|color=255|size=18|text=　想要成立行会，你得证明你有这个资格。\　首先你要准备好100万金币和一个战斗号\角。\>
+<Button|x=303.0|y=105.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签1_1)}.png|pimg=public/button/{$STR(S$按钮标签1_2)}.png|mimg=public/button/{$STR(S$按钮标签1_3)}.png|color=251|size=18|text=询问创建行会|link=@询问创建>
+<Button|x=303.0|y=147.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签2_1)}.png|pimg=public/button/{$STR(S$按钮标签2_2)}.png|mimg=public/button/{$STR(S$按钮标签2_3)}.png|color=251|size=18|text=询问攻打沙城|link=@询问攻打>
+<Button|x=303.0|y=189.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签3_1)}.png|pimg=public/button/{$STR(S$按钮标签3_2)}.png|mimg=public/button/{$STR(S$按钮标签3_3)}.png|color=251|size=18|text=询问行会战争|link=@询问战争>
+<Button|x=303.0|y=231.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签4_1)}.png|pimg=public/button/{$STR(S$按钮标签4_2)}.png|mimg=public/button/{$STR(S$按钮标签4_3)}.png|color=251|size=18|text=询问行会人数|link=@询问人数>
+<Button|x=303.0|y=273.0|width=158|height=43|rotate=0|nimg=public/button/btn_tab2_01.png|pimg=public/button/btn_tab2_02.png|mimg=public/button/btn_tab2_01.png|color=251|size=18|text=离开皇宫|link=@前往中州>
+<Button|x=493.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=我要创建行会|link=@buildguildnow>
+<Button|x=668.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=返回主页|link=@MAIN>
+
+
+[@询问攻打]
+
+#IF
+RANDOM 1
+#ACT
+MOV S$按钮标签1_1 btn_tab2_01
+MOV S$按钮标签1_2 btn_tab2_02
+MOV S$按钮标签1_3 btn_tab2_01
+MOV S$按钮标签2_1 btn_tab2_02
+MOV S$按钮标签2_2 btn_tab2_01
+MOV S$按钮标签2_3 btn_tab2_02
+MOV S$按钮标签3_1 btn_tab2_01
+MOV S$按钮标签3_2 btn_tab2_02
+MOV S$按钮标签3_3 btn_tab2_01
+MOV S$按钮标签4_1 btn_tab2_01
+MOV S$按钮标签4_2 btn_tab2_02
+MOV S$按钮标签4_3 btn_tab2_01
+#IF
+EQUAL $CLIENTFLAG 1
+#SAY
+\
+　　座落在跃马平原之上的沙城，是传世大陆上武力和勇\
+气的象征；占有沙城是行会的最高荣誉。所以攻打沙城并\
+非很容易之事，你需要提供“魔神雕像、一块金砖”作为条\
+件，才能获得攻打沙城的资格。获得资格的一天之后就\
+可以率领你的行会攻城了！\\
+<返回/@main>
+#ACT
+BREAK
+#ELSESAY
+<Layout|percentwidth=100|percentheight=100|rotate=0|link=@exit>
+<Img|x=284.0|y=87.0|show=4|bg=1|img=newsys/45003.png|esc=1>
+<Button|x=853.0|y=87.0|pimg=public/button/btn_close_02.png|nimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<RText|x=482.0|y=120.0|color=255|size=18|text=　　座落在跃马平原之上的沙城，是传世大\陆上武力和勇气的象征；占有沙城是行会的\最高荣誉。所以攻打沙城并非很容易之事，\你需要提供“魔神雕像、一块金砖”作为条件，\才能获得攻打沙城的资格。获得资格的一天\之后就可以率领你的行会攻城了！>
+<Button|x=303.0|y=105.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签1_1)}.png|pimg=public/button/{$STR(S$按钮标签1_2)}.png|mimg=public/button/{$STR(S$按钮标签1_3)}.png|color=251|size=18|text=询问创建行会|link=@询问创建>
+<Button|x=303.0|y=147.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签2_1)}.png|pimg=public/button/{$STR(S$按钮标签2_2)}.png|mimg=public/button/{$STR(S$按钮标签2_3)}.png|color=251|size=18|text=询问攻打沙城|link=@询问攻打>
+<Button|x=303.0|y=189.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签3_1)}.png|pimg=public/button/{$STR(S$按钮标签3_2)}.png|mimg=public/button/{$STR(S$按钮标签3_3)}.png|color=251|size=18|text=询问行会战争|link=@询问战争>
+<Button|x=303.0|y=231.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签4_1)}.png|pimg=public/button/{$STR(S$按钮标签4_2)}.png|mimg=public/button/{$STR(S$按钮标签4_3)}.png|color=251|size=18|text=询问行会人数|link=@询问人数>
+<Button|x=303.0|y=273.0|width=158|height=43|rotate=0|nimg=public/button/btn_tab2_01.png|pimg=public/button/btn_tab2_02.png|mimg=public/button/btn_tab2_01.png|color=251|size=18|text=离开皇宫|link=@前往中州>
+<Button|x=493.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=申请攻打沙城|link=@申请攻打沙城>
+<Button|x=668.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=返回主页|link=@MAIN>
+
+
+
+[@询问战争]
+#IF
+RANDOM 1
+#ACT
+MOV S$按钮标签1_1 btn_tab2_01
+MOV S$按钮标签1_2 btn_tab2_02
+MOV S$按钮标签1_3 btn_tab2_01
+MOV S$按钮标签2_1 btn_tab2_01
+MOV S$按钮标签2_2 btn_tab2_02
+MOV S$按钮标签2_3 btn_tab2_01
+MOV S$按钮标签3_1 btn_tab2_02
+MOV S$按钮标签3_2 btn_tab2_01
+MOV S$按钮标签3_3 btn_tab2_02
+MOV S$按钮标签4_1 btn_tab2_01
+MOV S$按钮标签4_2 btn_tab2_02
+MOV S$按钮标签4_3 btn_tab2_01
+#IF
+EQUAL $CLIENTFLAG 1
+#SAY
+\
+　　行会战争是合法的战争，经过批准的战争双方可以在\
+法律允许下大开杀戒！要有主国的行会，行会里有足够的\
+勇士才可以申请，政府也才回批准这次合法战争。一次战\
+争要求被批准，战争将持续三个小时。当然，你必须支付\
+金币来让政府维护持续。\\
+<继续/@战争界面二>
+#ACT
+BREAK
+#ELSESAY
+<Layout|percentwidth=100|percentheight=100|rotate=0|link=@exit>
+<Img|x=284.0|y=87.0|show=4|bg=1|img=newsys/45003.png|esc=1>
+<Button|x=853.0|y=87.0|pimg=public/button/btn_close_02.png|nimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<RText|x=482.0|y=120.0|color=255|size=18|text=　　行会战争是合法的战争，经过批准的战\争双方可以在法律允许下大开杀戒！要有主\国的行会，行会里有足够的勇士才可以申请，\政府也才回批准这次合法战争。一次战争要\求被批准，战争将持续三个小时。当然，你\必须支付金币来让政府维护持续。\　　你成功申请行会战争后，你们行会的所\有参战人员的名字将变成蓝色；而你的敌对\行会成员的名字就会变成橘黄色的。\>
+<Button|x=303.0|y=105.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签1_1)}.png|pimg=public/button/{$STR(S$按钮标签1_2)}.png|mimg=public/button/{$STR(S$按钮标签1_3)}.png|color=251|size=18|text=询问创建行会|link=@询问创建>
+<Button|x=303.0|y=147.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签2_1)}.png|pimg=public/button/{$STR(S$按钮标签2_2)}.png|mimg=public/button/{$STR(S$按钮标签2_3)}.png|color=251|size=18|text=询问攻打沙城|link=@询问攻打>
+<Button|x=303.0|y=189.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签3_1)}.png|pimg=public/button/{$STR(S$按钮标签3_2)}.png|mimg=public/button/{$STR(S$按钮标签3_3)}.png|color=251|size=18|text=询问行会战争|link=@询问战争>
+<Button|x=303.0|y=231.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签4_1)}.png|pimg=public/button/{$STR(S$按钮标签4_2)}.png|mimg=public/button/{$STR(S$按钮标签4_3)}.png|color=251|size=18|text=询问行会人数|link=@询问人数>
+<Button|x=303.0|y=273.0|width=158|height=43|rotate=0|nimg=public/button/btn_tab2_01.png|pimg=public/button/btn_tab2_02.png|mimg=public/button/btn_tab2_01.png|color=251|size=18|text=离开皇宫|link=@前往中州>
+<Button|x=493.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=开启行会战争|link=@guildwar>
+<Button|x=668.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=查看下一页|link=@战争界面二>
+
+
+[@战争界面二]
+#IF
+RANDOM 1
+#ACT
+MOV S$按钮标签1_1 btn_tab2_01
+MOV S$按钮标签1_2 btn_tab2_02
+MOV S$按钮标签1_3 btn_tab2_01
+MOV S$按钮标签2_1 btn_tab2_01
+MOV S$按钮标签2_2 btn_tab2_02
+MOV S$按钮标签2_3 btn_tab2_01
+MOV S$按钮标签3_1 btn_tab2_02
+MOV S$按钮标签3_2 btn_tab2_01
+MOV S$按钮标签3_3 btn_tab2_02
+MOV S$按钮标签4_1 btn_tab2_01
+MOV S$按钮标签4_2 btn_tab2_02
+MOV S$按钮标签4_3 btn_tab2_01
+#IF
+EQUAL $CLIENTFLAG 1
+#SAY
+\
+　　你成功申请行会战争后，你们行会的所有参战人员的名\
+字将变成蓝色；而你的敌对行会成员的名字就会变成橘黄色\
+的。一旦进入行会战争状态，你会看到这样的信息“行会战\
+争正在进行”在这种模式下，不管你杀死对方多少人，都不\
+会被看作PK。\\
+<继续/@战争界面三>
+#ACT
+BREAK
+#ELSESAY
+<Layout|percentwidth=100|percentheight=100|rotate=0|link=@exit>
+<Img|x=284.0|y=87.0|show=4|bg=1|img=newsys/45003.png|esc=1>
+<Button|x=853.0|y=87.0|pimg=public/button/btn_close_02.png|nimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<RText|x=482.0|y=120.0|color=255|size=18|text=　　一旦进入行会战争状态，你会看到这样\的信息“行会战争正在进行”在这种模式下，\不管你杀死对方多少人，都不会被看作PK。\　　行会战争不允许在城市、乡村进行。战\场必须离开城堡，乡村一定距离，当然，商\店里更是不可以的了。行会战争结束后，一\切将恢复到正常状态。这个时候你还继续打\架的话，你的名字可就真的变成红的了！>
+<Button|x=303.0|y=105.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签1_1)}.png|pimg=public/button/{$STR(S$按钮标签1_2)}.png|mimg=public/button/{$STR(S$按钮标签1_3)}.png|color=251|size=18|text=询问创建行会|link=@询问创建>
+<Button|x=303.0|y=147.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签2_1)}.png|pimg=public/button/{$STR(S$按钮标签2_2)}.png|mimg=public/button/{$STR(S$按钮标签2_3)}.png|color=251|size=18|text=询问攻打沙城|link=@询问攻打>
+<Button|x=303.0|y=189.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签3_1)}.png|pimg=public/button/{$STR(S$按钮标签3_2)}.png|mimg=public/button/{$STR(S$按钮标签3_3)}.png|color=251|size=18|text=询问行会战争|link=@询问战争>
+<Button|x=303.0|y=231.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签4_1)}.png|pimg=public/button/{$STR(S$按钮标签4_2)}.png|mimg=public/button/{$STR(S$按钮标签4_3)}.png|color=251|size=18|text=询问行会人数|link=@询问人数>
+<Button|x=303.0|y=273.0|width=158|height=43|rotate=0|nimg=public/button/btn_tab2_01.png|pimg=public/button/btn_tab2_02.png|mimg=public/button/btn_tab2_01.png|color=251|size=18|text=离开皇宫|link=@前往中州>
+<Button|x=493.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=开启行会战争|link=@guildwar>
+<Button|x=668.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=查看上一页|link=@询问战争>
+
+
+[@战争界面三]
+\
+　　行会战争不允许在城市、乡村进行。战场必须离开城堡，\
+乡村一定距离，当然，商店里更是不可以的了。行会战争结\
+束后，一切将恢复到正常状态。这个时候你还继续打架的话，\
+你的名字可就真的变成红的了！\\
+<返回/@main>
+
+
+
+[@询问人数]
+#IF
+RANDOM 1
+#ACT
+MOV S$按钮标签1_1 btn_tab2_01
+MOV S$按钮标签1_2 btn_tab2_02
+MOV S$按钮标签1_3 btn_tab2_01
+MOV S$按钮标签2_1 btn_tab2_01
+MOV S$按钮标签2_2 btn_tab2_02
+MOV S$按钮标签2_3 btn_tab2_01
+MOV S$按钮标签3_1 btn_tab2_01
+MOV S$按钮标签3_2 btn_tab2_02
+MOV S$按钮标签3_3 btn_tab2_01
+MOV S$按钮标签4_1 btn_tab2_02
+MOV S$按钮标签4_2 btn_tab2_01
+MOV S$按钮标签4_3 btn_tab2_02
+#IF
+!HAVEGUILD
+#ACT
+MESSAGEBOX 你都没有加入行会，本王怎么为你扩大行会人数上限啊！
+BREAK
+#IF
+HAVEGUILD
+EQUAL $CLIENTFLAG 1
+#SAY
+行会太大，会影响传世大陆的安定，你必须用你的声望作保\
+证，本王才能让你扩大行会人数上限。每1点声望可增加10个\
+行会成员名额上限；行会人数超过1000就不能再次增加人\
+数上限了，否则就不是行会而是军队了。\
+当前你所在行会最高可招收人数是：<$GUILD.MAXMEMBER>人\
+目前已有成员：<$GUILD.MEMBERCOUNT>人！\
+你愿意用1点声望值为你的行会换取10个成员名额上限吗？\
+<我非常愿意/@改变人数>\
+<我想再考虑考虑/@MAIN>\
+#ACT
+BREAK
+#ELSESAY
+<Layout|percentwidth=100|percentheight=100|rotate=0|link=@exit>
+<Img|x=284.0|y=87.0|show=4|bg=1|img=newsys/45003.png|esc=1>
+<Button|x=853.0|y=87.0|pimg=public/button/btn_close_02.png|nimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+{RText|x=482.0|y=120.0|color=255|size=18|text=行会太大，会影响传世大陆的安定，你必须\用你的声望作保证，本王才能让你扩大行会\人数上限。每1点声望可增加10个行会成员名\额上限；行会人数超过1000就不能再次增加\人数上限了，否则就不是行会而是军队了。\当前你所在行会最高可招收人数是：<$GUILD.MAXMEMBER>人\目前已有成员：<$GUILD.MEMBERCOUNT>人！\你愿意用1点声望值为你的行会换取10个成员\名额上限吗？}
+<Button|x=303.0|y=105.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签1_1)}.png|pimg=public/button/{$STR(S$按钮标签1_2)}.png|mimg=public/button/{$STR(S$按钮标签1_3)}.png|color=251|size=18|text=询问创建行会|link=@询问创建>
+<Button|x=303.0|y=147.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签2_1)}.png|pimg=public/button/{$STR(S$按钮标签2_2)}.png|mimg=public/button/{$STR(S$按钮标签2_3)}.png|color=251|size=18|text=询问攻打沙城|link=@询问攻打>
+<Button|x=303.0|y=189.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签3_1)}.png|pimg=public/button/{$STR(S$按钮标签3_2)}.png|mimg=public/button/{$STR(S$按钮标签3_3)}.png|color=251|size=18|text=询问行会战争|link=@询问战争>
+<Button|x=303.0|y=231.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签4_1)}.png|pimg=public/button/{$STR(S$按钮标签4_2)}.png|mimg=public/button/{$STR(S$按钮标签4_3)}.png|color=251|size=18|text=询问行会人数|link=@询问人数>
+<Button|x=303.0|y=273.0|width=158|height=43|rotate=0|nimg=public/button/btn_tab2_01.png|pimg=public/button/btn_tab2_02.png|mimg=public/button/btn_tab2_01.png|color=251|size=18|text=离开皇宫|link=@前往中州>
+<Button|x=493.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=我非常愿意|link=@改变人数>
+<Button|x=668.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=返回主页|link=@MAIN>
+
+
+
+
+[@改变人数]
+#IF
+CHECKCREDITPOINT < 1
+#ACT
+MessageBox 不行，没有声望作保证，本王不能批准你扩大行会人数上限的请求！\\
+Break
+
+#IF
+!CHECKGUILDMAXMEMBER $GUILDNAME < 500
+EQUAL $CLIENTFLAG 1
+#SAY
+你还想扩大行会人数上限？你所在行会人数已经超过500了\
+……你不是想建立军队，造本王的反吧？\\
+<不是的，我没这个意思哦/@exit>\\
+#ACT
+BREAK
+#IF
+!CHECKGUILDMAXMEMBER $GUILDNAME < 500
+!EQUAL $CLIENTFLAG 1
+#SAY
+<Layout|percentwidth=100|percentheight=100|rotate=0|link=@exit>
+<Img|x=284.0|y=87.0|show=4|bg=1|img=newsys/45003.png|esc=1>
+<Button|x=853.0|y=87.0|pimg=public/button/btn_close_02.png|nimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<RText|x=482.0|y=120.0|color=255|size=18|text=你还想扩大行会人数上限？你所在行会人数\已经超过500了\……你不是想建立军队，造本王的反吧？>
+<Button|x=303.0|y=105.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签1_1)}.png|pimg=public/button/{$STR(S$按钮标签1_2)}.png|mimg=public/button/{$STR(S$按钮标签1_3)}.png|color=251|size=18|text=询问创建行会|link=@询问创建>
+<Button|x=303.0|y=147.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签2_1)}.png|pimg=public/button/{$STR(S$按钮标签2_2)}.png|mimg=public/button/{$STR(S$按钮标签2_3)}.png|color=251|size=18|text=询问攻打沙城|link=@询问攻打>
+<Button|x=303.0|y=189.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签3_1)}.png|pimg=public/button/{$STR(S$按钮标签3_2)}.png|mimg=public/button/{$STR(S$按钮标签3_3)}.png|color=251|size=18|text=询问行会战争|link=@询问战争>
+<Button|x=303.0|y=231.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签4_1)}.png|pimg=public/button/{$STR(S$按钮标签4_2)}.png|mimg=public/button/{$STR(S$按钮标签4_3)}.png|color=251|size=18|text=询问行会人数|link=@询问人数>
+<Button|x=303.0|y=273.0|width=158|height=43|rotate=0|nimg=public/button/btn_tab2_01.png|pimg=public/button/btn_tab2_02.png|mimg=public/button/btn_tab2_01.png|color=251|size=18|text=离开皇宫|link=@前往中州>
+<Button|x=668.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=返回主页|link=@MAIN>
+#ACT
+BREAK
+#IF
+HAVEGUILD
+CHECKCREDITPOINT > 0
+CHECKGUILDMAXMEMBER $GUILD.NAME < 500
+#ACT
+MONEY 声望 - 1
+GUILDMEMBERS $GUILD.NAME + 10
+SENDMSG 7 恭喜你成功将你所在行会可招收成员人数上限提高了10人！
+SENDMSG 5 当前你所在行会最高可招收人数是：<$GUILD.MAXMEMBER>人，目前已有成员：<$GUILD.MEMBERCOUNT>人！
+GOTO @询问人数
+Break
+
+
+[@guildwar]
+#IF
+RANDOM 1
+#ACT
+MOV S$按钮标签1_1 btn_tab2_01
+MOV S$按钮标签1_2 btn_tab2_02
+MOV S$按钮标签1_3 btn_tab2_01
+MOV S$按钮标签2_1 btn_tab2_01
+MOV S$按钮标签2_2 btn_tab2_02
+MOV S$按钮标签2_3 btn_tab2_01
+MOV S$按钮标签3_1 btn_tab2_02
+MOV S$按钮标签3_2 btn_tab2_01
+MOV S$按钮标签3_3 btn_tab2_02
+MOV S$按钮标签4_1 btn_tab2_01
+MOV S$按钮标签4_2 btn_tab2_02
+MOV S$按钮标签4_3 btn_tab2_01
+#IF
+EQUAL $CLIENTFLAG 1
+#SAY
+\
+　　你要先让我知道你要和哪个行会打仗。\
+　　要申请合法的行会战争, 你必须给我足够的金币，这样\
+　　才会有合法战争的权利！\ \
+　　<输入你想要挑战的行会名称/@guildwar_d>\
+　　<返回/@main>\
+#ACT
+BREAK
+#ELSESAY
+<Layout|percentwidth=100|percentheight=100|rotate=0|link=@exit>
+<Img|x=284.0|y=87.0|show=4|bg=1|img=newsys/45003.png|esc=1>
+<Button|x=853.0|y=87.0|pimg=public/button/btn_close_02.png|nimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<RText|x=482.0|y=120.0|color=255|size=18|text=　　你要先让我知道你要和哪个行会打仗。\要申请合法的行会战争, 你必须给我足够的\金币，这样才会有合法战争的权利！>
+<Button|x=303.0|y=105.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签1_1)}.png|pimg=public/button/{$STR(S$按钮标签1_2)}.png|mimg=public/button/{$STR(S$按钮标签1_3)}.png|color=251|size=18|text=询问创建行会|link=@询问创建>
+<Button|x=303.0|y=147.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签2_1)}.png|pimg=public/button/{$STR(S$按钮标签2_2)}.png|mimg=public/button/{$STR(S$按钮标签2_3)}.png|color=251|size=18|text=询问攻打沙城|link=@询问攻打>
+<Button|x=303.0|y=189.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签3_1)}.png|pimg=public/button/{$STR(S$按钮标签3_2)}.png|mimg=public/button/{$STR(S$按钮标签3_3)}.png|color=251|size=18|text=询问行会战争|link=@询问战争>
+<Button|x=303.0|y=231.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签4_1)}.png|pimg=public/button/{$STR(S$按钮标签4_2)}.png|mimg=public/button/{$STR(S$按钮标签4_3)}.png|color=251|size=18|text=询问行会人数|link=@询问人数>
+<Button|x=303.0|y=273.0|width=158|height=43|rotate=0|nimg=public/button/btn_tab2_01.png|pimg=public/button/btn_tab2_02.png|mimg=public/button/btn_tab2_01.png|color=251|size=18|text=离开皇宫|link=@前往中州>
+<Button|x=493.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=开启战争|link=@guildwar_d>
+<Button|x=668.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=返回主页|link=@MAIN>
+
+
+
+[@propose]
+#IF
+RANDOM 1
+#ACT
+MOV S$按钮标签1_1 btn_tab2_01
+MOV S$按钮标签1_2 btn_tab2_02
+MOV S$按钮标签1_3 btn_tab2_01
+MOV S$按钮标签2_1 btn_tab2_01
+MOV S$按钮标签2_2 btn_tab2_02
+MOV S$按钮标签2_3 btn_tab2_01
+MOV S$按钮标签3_1 btn_tab2_02
+MOV S$按钮标签3_2 btn_tab2_01
+MOV S$按钮标签3_3 btn_tab2_02
+MOV S$按钮标签4_1 btn_tab2_01
+MOV S$按钮标签4_2 btn_tab2_02
+MOV S$按钮标签4_3 btn_tab2_01
+#IF
+EQUAL $CLIENTFLAG 1
+#SAY
+\
+行会战争的申请只能由掌门人提出。\\
+<返回/@main>
+#ACT
+BREAK
+#ELSESAY
+<Layout|percentwidth=100|percentheight=100|rotate=0|link=@exit>
+<Img|x=284.0|y=87.0|show=4|bg=1|img=newsys/45003.png|esc=1>
+<Button|x=853.0|y=87.0|pimg=public/button/btn_close_02.png|nimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<RText|x=482.0|y=120.0|color=255|size=18|text=行会战争的申请只能由掌门人提出。>
+<Button|x=303.0|y=105.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签1_1)}.png|pimg=public/button/{$STR(S$按钮标签1_2)}.png|mimg=public/button/{$STR(S$按钮标签1_3)}.png|color=251|size=18|text=询问创建行会|link=@询问创建>
+<Button|x=303.0|y=147.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签2_1)}.png|pimg=public/button/{$STR(S$按钮标签2_2)}.png|mimg=public/button/{$STR(S$按钮标签2_3)}.png|color=251|size=18|text=询问攻打沙城|link=@询问攻打>
+<Button|x=303.0|y=189.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签3_1)}.png|pimg=public/button/{$STR(S$按钮标签3_2)}.png|mimg=public/button/{$STR(S$按钮标签3_3)}.png|color=251|size=18|text=询问行会战争|link=@询问战争>
+<Button|x=303.0|y=231.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签4_1)}.png|pimg=public/button/{$STR(S$按钮标签4_2)}.png|mimg=public/button/{$STR(S$按钮标签4_3)}.png|color=251|size=18|text=询问行会人数|link=@询问人数>
+<Button|x=303.0|y=273.0|width=158|height=43|rotate=0|nimg=public/button/btn_tab2_01.png|pimg=public/button/btn_tab2_02.png|mimg=public/button/btn_tab2_01.png|color=251|size=18|text=离开皇宫|link=@前往中州>
+<Button|x=668.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=返回主页|link=@MAIN>
+
+
+
+
+[@申请攻打沙城]
+#IF
+!ISGUILDMASTER
+#ACT
+MESSAGEBOX 你不是行会老大！不能提交申请！
+BREAK
+#IF
+RANDOM 1
+#ACT
+MOV S$按钮标签1_1 btn_tab2_01
+MOV S$按钮标签1_2 btn_tab2_02
+MOV S$按钮标签1_3 btn_tab2_01
+MOV S$按钮标签2_1 btn_tab2_02
+MOV S$按钮标签2_2 btn_tab2_01
+MOV S$按钮标签2_3 btn_tab2_02
+MOV S$按钮标签3_1 btn_tab2_01
+MOV S$按钮标签3_2 btn_tab2_02
+MOV S$按钮标签3_3 btn_tab2_01
+MOV S$按钮标签4_1 btn_tab2_01
+MOV S$按钮标签4_2 btn_tab2_02
+MOV S$按钮标签4_3 btn_tab2_01
+#IF
+!CHECKITEM 金砖 1
+#ACT
+MESSAGEBOX 你并没有带来金砖
+BREAK
+#IF
+!checkitem 魔神雕像 1
+#ACT
+MESSAGEBOX 你并没有带来魔神雕像
+BREAK
+#IF 
+EQUAL $CLIENTFLAG 1
+#SAY
+\
+你来申请攻占沙城？你带魔神雕像来了吗？\ 
+如果你待会你的攻城申被允许的话。\ 
+<提供魔神雕像/@申请结算>\
+<返回/@main>\
+#ACT
+BREAK
+#ELSESAY
+<Layout|percentwidth=100|percentheight=100|rotate=0|link=@exit>
+<Img|x=284.0|y=87.0|show=4|bg=1|img=newsys/45003.png|esc=1>
+<Button|x=853.0|y=87.0|pimg=public/button/btn_close_02.png|nimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|link=@exit>
+<RText|x=482.0|y=120.0|color=255|size=18|text=你来申请攻占沙城？\你带魔神雕像来了吗？\ 如果你待会你的攻城申被允许的话。\ >
+<Button|x=303.0|y=105.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签1_1)}.png|pimg=public/button/{$STR(S$按钮标签1_2)}.png|mimg=public/button/{$STR(S$按钮标签1_3)}.png|color=251|size=18|text=询问创建行会|link=@询问创建>
+<Button|x=303.0|y=147.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签2_1)}.png|pimg=public/button/{$STR(S$按钮标签2_2)}.png|mimg=public/button/{$STR(S$按钮标签2_3)}.png|color=251|size=18|text=询问攻打沙城|link=@询问攻打>
+<Button|x=303.0|y=189.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签3_1)}.png|pimg=public/button/{$STR(S$按钮标签3_2)}.png|mimg=public/button/{$STR(S$按钮标签3_3)}.png|color=251|size=18|text=询问行会战争|link=@询问战争>
+<Button|x=303.0|y=231.0|width=158|height=43|rotate=0|nimg=public/button/{$STR(S$按钮标签4_1)}.png|pimg=public/button/{$STR(S$按钮标签4_2)}.png|mimg=public/button/{$STR(S$按钮标签4_3)}.png|color=251|size=18|text=询问行会人数|link=@询问人数>
+<Button|x=303.0|y=273.0|width=158|height=43|rotate=0|nimg=public/button/btn_tab2_01.png|pimg=public/button/btn_tab2_02.png|mimg=public/button/btn_tab2_01.png|color=251|size=18|text=离开皇宫|link=@前往中州>
+<Button|x=493.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=提供魔神雕像|link=@申请结算>
+<Button|x=668.0|y=358.0|color=251|mimg=public/button/btn_tab_01.png|size=18|nimg=public/button/btn_tab_01.png|pimg=public/button/btn_tab_02.png|text=返回主页|link=@MAIN>
+
+
+[@申请结算]
+#IF
+CHECKCASTLEWARGUILD $GUILDNAME 沙城
+#ACT
+MESSAGEBOX 你已经提交过了攻城申请,无须多次提交
+BREAK
+#IF
+CHECKITEM 金砖 1
+CHECKITEM 魔神雕像 1
+#ACT
+TAKE 金砖 1
+TAKE 魔神雕像 1
+ADDCASTLEWARGUILD SELF 沙城 1
+GOTO @MAIN
+MESSAGEBOX 攻城战役的提议被接受了\请记住你的攻城时间:\<$CASTLEWARDATE> 晚上20:00-21:00
+BREAK
+#ELSEACT
+MESSAGEBOX 你并没有带来足够的材料
+BREAK
+
+
+[@前往中州]
+#IF
+RANDOM 1
+#ACT
+MAPMOVE 0 471 222 3
+BREAK

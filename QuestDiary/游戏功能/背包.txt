@@ -1,0 +1,1769 @@
+(@Storage @getback @FastStorge)
+[@背包界面]
+{
+
+#IF
+HasTask 1 3
+CheckItemID <$Human(新手任务记录1)>
+#ACT
+Navigation 301 <$Human(新手任务记录1)> 双击穿戴#001#8 0 0
+
+#IF
+CHECK [664] 1
+#ACT
+MOV N$飘屏勾 1
+#ELSEACT
+MOV N$飘屏勾 0
+
+#IFONE
+EQUAL S$背包已满 1
+EQUAL P98 1
+#ACT
+MOV S$背包已满 0
+DELAYGOTO 10 @LEMON回收
+
+#IF
+EQUAL S$已满快速回收 1
+#ACT
+MOV S$已满快速回收 0
+DELAYGOTO 10 @LEMON回收
+Navigation 303 8005 勾选自动回收#996#3
+
+#IF
+TRUE
+#ACT
+SETBAGCFG 133 91 1116
+#SAY
+;================================================================
+<Button|x=556.0|y=-1.0|pimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|nimg=public/button/btn_close_01.png|link=@Lemon关闭>
+<Button|x=133.0|y=47.0|width=90|mimg=private/baoguo/btn_push_05.png|pimg=private/baoguo/btn_push_05.png|nimg=private/baoguo/btn_push_05.png|size=18|color=<$STR(N$包一字色)>|text=包裹一|link=@Lemon包裹1>
+<Button|x=223.0|y=47.0|width=90|mimg=private/baoguo/btn_push_05.png|pimg=private/baoguo/btn_push_05.png|nimg=private/baoguo/btn_push_05.png|size=18|color=<$STR(N$包二字色)>|text=包裹二|link=@Lemon包裹2>
+<Button|x=315.0|y=47.0|width=90|mimg=private/baoguo/btn_push_05.png|pimg=private/baoguo/btn_push_05.png|nimg=private/baoguo/btn_push_05.png|size=18|color=<$STR(N$包三字色)>|text=包裹三|link=@Lemon包裹3>
+
+;================================================================
+<Img|x=46.0|y=436.0|img=private/baoguo/frame_state_01.jpg|esc=0>
+<Img|x=226.0|y=436.0|img=private/baoguo/frame_state_01.jpg|esc=0>
+<Img|x=406.0|y=436.0|img=private/baoguo/frame_state_01.jpg|esc=0>
+<Img|x=98.0|y=457.0|width=120|height=25|img=private/baoguo/bg_progress_01.png|esc=0>
+<Img|x=279.0|y=457.0|width=120|height=25|img=private/baoguo/bg_progress_01.png|esc=0>
+<Img|x=459.0|y=457.0|width=120|height=25|img=private/baoguo/bg_progress_01.png|esc=0>
+<Img|x=53.0|y=444.0|img=private/baoguo/26930.png|esc=0>
+<Img|x=234.0|y=443.0|img=private/baoguo/26904.png|esc=0>
+<Img|x=413.0|y=443.0|img=private/baoguo/26903.png|esc=0>
+<Text|x=100.0|y=434.0|color=67|size=16|text=元宝>
+<Text|x=281.0|y=434.0|color=67|size=16|text=绑定元宝>
+<Text|x=462.0|y=434.0|color=67|size=16|text=金币>
+<CheckBox|x=60.0|y=59.0|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|checkboxid=1|default=<$STR(N$飘屏勾)>|link=@飘屏提示开关>
+<Text|x=45.0|y=99.0|color=67|size=18|text=屏蔽飘屏>
+<Button|x=35.0|y=150.0|width=90|height=50|nimg=public/btn_push_01.png|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|size=18|text=整理包裹|link=@整理包裹>
+<Button|x=35.0|y=220.0|width=90|height=50|nimg=public/btn_push_01.png|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|size=18|text=删除道具|link=@Lemon清理>
+<Button|x=35.0|y=290.0|width=90|height=50|nimg=public/btn_push_01.png|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|size=18|text=随身仓库|link=@FastStorge>
+<Button|x=35.0|y=360.0|width=90|height=50|nimg=public/btn_push_01.png|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|size=18|text=回收装备|link=@Lemon回收|id=200>
+<Text|x=102.0|y=457.0|color=67|size=18|text=$STM(MONEY_2)>
+<Text|x=283.0|y=457.0|color=67|size=18|text=$STM(MONEY_4)>
+<Text|x=463.0|y=457.0|color=67|size=18|text=$STM(MONEY_1)>
+<RText|x=49.0|y=437.0|color=255|size=18|text=<color=~万能货币#0xffcd9a5b$用于购买商城、活动、摆摊道具等#0xffa3cf62$仅可通过充值、交易获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=49.0|y=461.0|color=255|size=18|text=<color=~万能货币#0xffcd9a5b$用于购买商城、活动、摆摊道具等#0xffa3cf62$仅可通过充值、交易获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=228.0|y=437.0|color=255|size=18|text=<color=~绑定元宝#0xffcd9a5b$用于购买商城道具、礼包等几乎与元宝相同#0xffa3cf62$通过活动、BOSS获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=228.0|y=461.0|color=255|size=18|text=<color=~绑定元宝#0xffcd9a5b$用于购买商城道具、礼包等几乎与元宝相同#0xffa3cf62$通过活动、BOSS获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=408.0|y=437.0|color=255|size=18|text=<color=~金币#0xffcd9a5b$用于升级装备、购买道具#0xffa3cf62$通过打怪、回收、活动获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=408.0|y=461.0|color=255|size=18|text=<color=~金币#0xffcd9a5b$用于升级装备、购买道具#0xffa3cf62$通过打怪、回收、活动获得#0xffa3cf62$ 　　　　　　　　　>>
+; <Img|x=406.0|y=45.0|img=private/baoguo/frame_state_01.jpg|esc=0>
+<Img|x=452.0|y=60.0|width=120|height=25|img=private/baoguo/bg_progress_01.png|esc=0>
+<Img|x=423.0|y=58.0|img=private/baoguo/26931.png|esc=0>
+; <Text|x=462.0|y=43.0|color=67|size=16|text=钻石>
+<Text|x=456.0|y=61.0|color=67|size=18|text=<$MONEY(33)>>
+<RText|x=415.0|y=46.0|color=255|size=18|text=<color=~钻石#0xffcd9a5b$用于兑换VIP经验#0xffa3cf62$通过回收高级装备获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=415.0|y=70.0|color=255|size=18|text=<color=~钻石#0xffcd9a5b$用于兑换VIP经验#0xffa3cf62$通过回收高级装备获得#0xffa3cf62$ 　　　　　　　　　>>
+
+#IF
+SMALL N$包裹 1
+#ACT
+MOV N$包裹 1
+MOV N$包一字色 67
+MOV N$包二字色 91
+MOV N$包三字色 91
+OPENUI 2011 1
+
+#IF
+EQUAL N$清理功能 1
+#SAY
+<Img|x=615.0|y=40.0|width=310|height=380|esc=0|img=private/huishou/bg_quickrecycle_01.png|bg=1>
+<Button|x=873.0|y=37.0|rotate=0|nimg=public/button/btn_close_01.png|color=243|size=24|link=@Lemon清理GB>
+<Text|x=731.0|y=45.0|color=67|size=18|text=删 除 道 具>
+<Text|x=700.0|y=244.0|size=18|color=249|text=请将物品放入框内>
+<ITEMBOX|x=742.0|y=149.0|width=60|height=60|boxindex=2|stdmode=*|tips=请放入你要清理的物品|tipsx=10|tipsy=20|img=private/huishou/gezi.png|link=@Lemon清理A>
+<Button|x=718.0|y=301.0|width=110|height=50|nimg=public/btn_push_01.png|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|size=18|text=清理物品|link=@Lemon清理AA>
+
+
+
+#IFONE
+EQUAL $TASK(9) 2
+EQUAL $TASK(9) 3
+#ACT
+UpdateTask 9 3
+Navigation 303 200 点击回收装备#996#3
+
+
+[@Lemon回收]
+#IF
+LARGE $HUMSTATE.1 0
+#ACT
+SENDMSG 19 交易进行中,无法使用回收功能!
+BREAK
+
+#IF
+LARGE $HUMSTATE.2 0
+#ACT
+SENDMSG 19 摆摊进行中,无法使用回收功能!
+BREAK
+
+
+#IF
+TRUE
+#ACT
+MOV S$Lemon包裹BL 
+MOV N$绑定元宝 0
+mov N$金币 0
+MOV N$吞噬经验 0
+MOV N$游戏经验 0
+MOV N$回收钻石 0
+MOV N$强化石 0
+MOV S$充值装备 
+MOV S$格子位置 
+MOV N$回收功能 1
+MOV N$清理功能 0
+SELECTBAGITEMS
+
+
+#IF
+POS $TABLE(HS_BL).ZBM ,
+#ACT
+MOV S$Lemon物品ID 
+LOOPBAGITEMS @Lemon回收BL S$Lemon物品ID
+
+
+#IF
+TRUE
+#ACT
+DELAYCALL 1 @Lemon遍历XH
+GOTO @Lemon回收XS
+
+#IF
+HasTask 9
+EQUAL $TASK(9) 3
+!POS $TABLE(HS_BL).LEIXING 新手级=1,
+#ACT
+UpdateTask 9 4
+Navigation 303 10111 点击勾选#996#3
+
+#IF
+HasTask 9
+EQUAL $TASK(9) 3
+POS $TABLE(HS_BL).LEIXING 新手级=1,
+#ACT
+UpdateTask 9 5
+Navigation 303 201 点击快速回收#996#3
+;==================================
+#IF
+HasTask 9
+EQUAL $TASK(9) 4
+!POS $TABLE(HS_BL).LEIXING 新手级=1,
+#ACT
+Navigation 303 10111 点击勾选#996#3
+
+#IF
+HasTask 9
+EQUAL $TASK(9) 4
+POS $TABLE(HS_BL).LEIXING 新手级=1,
+#ACT
+Navigation 303 201 点击快速回收#996#3
+
+#IF
+HasTask 9
+EQUAL $TASK(9) 5
+!POS $TABLE(HS_BL).LEIXING 新手级=1,
+#ACT
+Navigation 303 10111 点击勾选#996#3
+
+#IF
+HasTask 9
+EQUAL $TASK(9) 5
+POS $TABLE(HS_BL).LEIXING 新手级=1,
+#ACT
+Navigation 303 201 点击快速回收#996#3
+
+;==================================
+
+
+#IF
+HasTask 14
+EQUAL $TASK(14) 3
+#ACT
+UpdateTask 14 4
+Navigation 303 10211 点击勾选#996#3
+BREAK
+
+;===========================================================
+[@Lemon回收BL]
+#IF
+CHECK [662] 0
+LARGE <$ITEMINFO[<$STR(S$Lemon物品ID)>].VALUEEX(172)> 0
+#ACT
+BREAK
+
+#IF
+POS $TABLE(HS_BL).ZBM <$ITEMINFO[<$STR(S$Lemon物品ID)>].NAME>,
+#ACT
+INC S$Lemon包裹BL <$STR(S$Lemon物品ID)>,
+SELECTBAGITEMS + $STR(S$Lemon物品ID)
+MOV S71 
+LOADEXVAR S71 回收价格 <$ITEMINFO[<$STR(S$Lemon物品ID)>].NAME> ..\QuestDiary\猪头回收\装备价格总览<$STR(G99)>.txt
+MOV S$77 <$ITEMINFO[<$STR(S$Lemon物品ID)>].STDNAME>
+MOV P77 <$STDITEM[<$STR(S$77)>].GC1>
+SPLIT $STR(S71) | S71
+INC N$吞噬经验 $STR(S72)
+INC N$游戏经验 $STR(S74)
+#ELSEACT
+BREAK
+
+
+#IF
+!LARGE p77 5
+#ACT
+INC N$金币 $STR(S71)
+
+
+#IF
+LARGE p77 5
+#ACT
+INC N$绑定元宝 $STR(S71)
+INC N$回收钻石 $STR(S73)
+INC S$充值装备 <$STR(S$Lemon物品ID)>,
+
+;-----------------------------检测极品状态 给强化石
+#IF
+CHECK [662] 1
+LARGE <$ITEMINFO[<$STR(S$Lemon物品ID)>].VALUEEX(172)> 0
+#ACT
+MOV P71 0 
+LOADEXVAR P71 强化数量 <$ITEMINFO[<$STR(S$Lemon物品ID)>].VALUEEX(172)> ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+INC N$强化石 $STR(P71)
+BREAK
+
+
+
+
+[@Lemon回收XS]
+#IF
+LARGE $HUMSTATE.1 0
+#ACT
+SENDMSG 19 交易进行中,无法使用回收功能!
+BREAK
+
+#IF
+LARGE $HUMSTATE.2 0
+#ACT
+SENDMSG 19 摆摊进行中,无法使用回收功能!
+BREAK
+
+#IF
+CHECK [661] 1
+#ACT
+MOV N$防卡怪勾 1
+#ELSEACT
+MOV N$防卡怪勾 0
+
+
+#IF
+TRUE
+#SAY
+;================================================================
+<Button|x=556.0|y=-1.0|pimg=public/button/btn_close_01.png|mimg=public/button/btn_close_01.png|color=255|size=18|nimg=public/button/btn_close_01.png|link=@Lemon关闭>
+<Button|x=133.0|y=47.0|width=90|mimg=private/baoguo/btn_push_05.png|pimg=private/baoguo/btn_push_05.png|nimg=private/baoguo/btn_push_05.png|size=18|color=<$STR(N$包一字色)>|text=包裹一|link=@Lemon包裹1>
+<Button|x=223.0|y=47.0|width=90|mimg=private/baoguo/btn_push_05.png|pimg=private/baoguo/btn_push_05.png|nimg=private/baoguo/btn_push_05.png|size=18|color=<$STR(N$包二字色)>|text=包裹二|link=@Lemon包裹2>
+<Button|x=315.0|y=47.0|width=90|mimg=private/baoguo/btn_push_05.png|pimg=private/baoguo/btn_push_05.png|nimg=private/baoguo/btn_push_05.png|size=18|color=<$STR(N$包三字色)>|text=包裹三|link=@Lemon包裹3>
+;================================================================
+<Img|x=46.0|y=436.0|img=private/baoguo/frame_state_01.jpg|esc=0>
+<Img|x=226.0|y=436.0|img=private/baoguo/frame_state_01.jpg|esc=0>
+<Img|x=406.0|y=436.0|img=private/baoguo/frame_state_01.jpg|esc=0>
+<Img|x=98.0|y=457.0|width=120|height=25|img=private/baoguo/bg_progress_01.png|esc=0>
+<Img|x=279.0|y=457.0|width=120|height=25|img=private/baoguo/bg_progress_01.png|esc=0>
+<Img|x=459.0|y=457.0|width=120|height=25|img=private/baoguo/bg_progress_01.png|esc=0>
+<Img|x=53.0|y=444.0|img=private/baoguo/26930.png|esc=0>
+<Img|x=234.0|y=443.0|img=private/baoguo/26904.png|esc=0>
+<Img|x=413.0|y=443.0|img=private/baoguo/26903.png|esc=0>
+<Text|x=100.0|y=434.0|color=67|size=16|text=元宝>
+<Text|x=281.0|y=434.0|color=67|size=16|text=绑定元宝>
+<Text|x=462.0|y=434.0|color=67|size=16|text=金币>
+<CheckBox|x=60.0|y=59.0|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|checkboxid=1|default=<$STR(N$飘屏勾)>|link=@飘屏提示开关>
+<Text|x=45.0|y=99.0|color=67|size=18|text=屏蔽飘屏>
+<Button|x=35.0|y=150.0|width=90|height=50|nimg=public/btn_push_01.png|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|size=18|text=整理包裹|link=@整理包裹>
+<Button|x=35.0|y=220.0|width=90|height=50|nimg=public/btn_push_01.png|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|size=18|text=删除道具|link=@Lemon清理>
+<Button|x=35.0|y=290.0|width=90|height=50|nimg=public/btn_push_01.png|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|size=18|text=随身仓库|link=@打开随身仓库>
+<Button|x=35.0|y=360.0|width=90|height=50|nimg=public/btn_push_01.png|mimg=public/btn_push_01.png|pimg=public/btn_push_01.png|color=67|size=18|text=回收装备|link=@Lemon回收|id=200>
+<Text|x=102.0|y=457.0|color=67|size=18|text=$STM(MONEY_2)>
+<Text|x=283.0|y=457.0|color=67|size=18|text=$STM(MONEY_4)>
+<Text|x=463.0|y=457.0|color=67|size=18|text=$STM(MONEY_1)>
+<RText|x=49.0|y=437.0|color=255|size=18|text=<color=~万能货币#0xffcd9a5b$用于购买商城、活动、摆摊道具等#0xffa3cf62$仅可通过充值、交易获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=49.0|y=461.0|color=255|size=18|text=<color=~万能货币#0xffcd9a5b$用于购买商城、活动、摆摊道具等#0xffa3cf62$仅可通过充值、交易获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=228.0|y=437.0|color=255|size=18|text=<color=~绑定元宝#0xffcd9a5b$用于购买商城道具、礼包等几乎与元宝相同#0xffa3cf62$通过活动、BOSS获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=228.0|y=461.0|color=255|size=18|text=<color=~绑定元宝#0xffcd9a5b$用于购买商城道具、礼包等几乎与元宝相同#0xffa3cf62$通过活动、BOSS获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=408.0|y=437.0|color=255|size=18|text=<color=~金币#0xffcd9a5b$用于升级装备、购买道具#0xffa3cf62$通过打怪、回收、活动获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=408.0|y=461.0|color=255|size=18|text=<color=~金币#0xffcd9a5b$用于升级装备、购买道具#0xffa3cf62$通过打怪、回收、活动获得#0xffa3cf62$ 　　　　　　　　　>>
+; <Img|x=406.0|y=45.0|img=private/baoguo/frame_state_01.jpg|esc=0>
+<Img|x=452.0|y=60.0|width=120|height=25|img=private/baoguo/bg_progress_01.png|esc=0>
+<Img|x=423.0|y=58.0|img=private/baoguo/26931.png|esc=0>
+; <Text|x=462.0|y=43.0|color=67|size=16|text=钻石>
+<Text|x=456.0|y=61.0|color=67|size=18|text=<$MONEY(33)>>
+<RText|x=415.0|y=46.0|color=255|size=18|text=<color=~钻石#0xffcd9a5b$用于兑换VIP经验#0xffa3cf62$通过回收高级装备获得#0xffa3cf62$ 　　　　　　　　　>>
+<RText|x=415.0|y=70.0|color=255|size=18|text=<color=~钻石#0xffcd9a5b$用于兑换VIP经验#0xffa3cf62$通过回收高级装备获得#0xffa3cf62$ 　　　　　　　　　>>
+#ACT
+SETBAGCFG 133 91 1116
+
+;=======================================================================================================================================
+
+#IF
+TRUE
+#SAY
+;========================================================================================================================================
+<Img|children=<lm1,lm2,lm3,lm4,8005,lm6,201,lm8,lm9,lm10,lm11,lm12,lm13,lm14,gdrq,kshs,gb,886,zdlg,zdsq,xlm3,xlm4,zdsqz,jpbz,zdhs,tips1,tips2,lbrq,hsjg1,hsjg2,hsjg3,hsjg4,hsjg5,hsjg6,hsjg7,hsjg8,hsjg9>|x=616.0|y=0.0|move=1|loadDelay=0|esc=0|img=private/huishou/bg_quickrecycle_01.png|bg=1>
+<Img|id=kshs|x=159|y=14.0|img=private/huishou/word_quickrecycle_02.png|esc=0>
+<Button|id=gb|x=353|y=-2.0|mimg=public/btn_close_01.png|nimg=public/btn_close_01.png|pimg=public/btn_close_01.png|link=@Lemon关闭HS>
+;-------------------------------
+<CheckBox|id=zdsq|x=50.0|y=390.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(N$防卡怪勾)>|link=@防卡怪>
+<Text|id=zdhs|x=90.0|y=390.0|size=22|color=67|text=防卡怪>
+<Img|id=xlm3|x=160.0|y=395.0|img=private/F10/att_introduction.png|scale=1.2>
+<RText|id=xlm4|x=160.0|y=395.0|size=22|color=67|text=<color=~　$防止常规地图挂机卡怪#0xffffe600$如果在自动战斗状态下#0xffffe600$五分钟没有获得#0xffffe600$经验自动随机#0xffffe600$　$ 　　　>>
+;-------------------------------
+<CheckBox|id=lm1|x=50.0|y=450.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P22)>|link=@Lemon回收JP>
+<Text|id=lm2|x=90.0|y=450.0|size=22|color=67|text=回收极品>
+<Img|id=lm3|x=180.0|y=455.0|img=private/F10/att_introduction.png|scale=1.2>
+<RText|id=lm4|x=175.0|y=455.0|size=22|color=67|text=<color=~　$强化过的装备,回收时将退还不等的强化材料#0xffffe600$　$ 　　　>>
+;-------------------------------
+<Button|id=8005|x=245.0|y=450.0|width=35|height=35|pimg=public/btn_duigou_0<$str(p23)>.png|nimg=public/btn_duigou_0<$str(p23)>.png|link=@Lemon回收ZD>
+<Text|id=lm6|x=285.0|y=450.0|size=22|color=67|text=自动回收>
+;---------------------------------
+;===================================================================
+<Layout|id=gdrq|x=39.0|y=62.0|width=338|height=265|link=@某某>
+<ListView|id=lbrq|children=<hd1,hd2,hd3,hd4,hd5,hd6,hd7,hd8>|direction=2|x=39.0|y=62.0|width=338|height=265|reload=1|color=0|margin=0|img=picpackage/3/9998.png>
+<Layout|id=hd1|children=<10111,hd112,hd113,hd114,hd115,hd116,hd117,hd118,hd119,hd120,hd121,hd122,hd123,hd124,hd125>|x=0.0|y=0.0|width=169|height=249>
+<CheckBox|id=10111|x=10.0|y=6.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P1)>|link=@Lemon框选&新手级>
+<CheckBox|x=60.0|y=59.0|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|checkboxid=1|default=1>
+<Text|id=hd112|x=50.0|y=9.0|size=20|color=67|text=新手级装备|link=@Lemon单选&新手级>
+<Img|id=hd113|x=0.0|y=0.0|width=338|height=45|img=private/huishou/word_banner_01.png>
+<CheckBox|id=hd114|x=10.0|y=56.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P2)>|link=@Lemon框选&逆魔级>
+<Text|id=hd115|x=50.0|y=59.0|size=20|color=67|text=逆魔级装备|link=@Lemon单选&逆魔级>
+<Img|id=hd116||x=0.0|y=50.0|width=338|height=45|img=private/huishou/word_banner_01.png>
+<CheckBox|id=hd117|x=10.0|y=106.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P3)>|link=@Lemon框选&神武级>
+<Text|id=hd118|x=50.0|y=109.0|size=20|color=67|text=神武级装备|link=@Lemon单选&神武级>
+<Img|id=hd119||x=0.0|y=100.0|width=338|height=45|img=private/huishou/word_banner_01.png>
+<CheckBox|id=hd120|x=10.0|y=156.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P4)>|link=@Lemon框选&三凶级>
+<Text|id=hd121|x=50.0|y=159.0|size=20|color=67|text=三凶级装备|link=@Lemon单选&三凶级>
+<Img|id=hd122||x=0.0|y=150.0|width=338|height=45|img=private/huishou/word_banner_01.png>
+<CheckBox|id=hd123|x=10.0|y=206.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P5)>|link=@Lemon框选&三君级>
+<Text|id=hd124|x=50.0|y=209.0|size=20|color=67|text=三君级装备|link=@Lemon单选&三君级>
+<Img|id=hd125||x=0.0|y=200.0|width=338|height=45|img=private/huishou/word_banner_01.png>
+;===================================================================
+<Layout|id=hd2|children=<10211,hd212,hd213,hd214,hd215,hd216,hd217,hd218,hd219,hd220>|x=0.0|y=0.0|width=169|height=249>
+<CheckBox|id=10211|x=10.0|y=6.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P6)>|link=@Lemon框选&将军级>
+<Text|id=hd212|x=50.0|y=9.0|size=20|color=67|text=将军级装备|link=@Lemon单选&将军级>
+<CheckBox|id=hd213|x=10.0|y=56.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P7)>|link=@Lemon框选&圣战级>
+<Text|id=hd214|x=50.0|y=59.0|size=20|color=67|text=圣战级装备|link=@Lemon单选&圣战级>
+<CheckBox|id=hd215|x=10.0|y=106.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P8)>|link=@Lemon框选&三光级>
+<Text|id=hd216|x=50.0|y=109.0|size=20|color=67|text=三光级装备|link=@Lemon单选&三光级>
+<CheckBox|id=hd217|x=10.0|y=156.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P9)>|link=@Lemon框选&三灾级>
+<Text|id=hd218|x=50.0|y=159.0|size=20|color=67|text=三灾级装备|link=@Lemon单选&三灾级>
+<CheckBox|id=hd219|x=10.0|y=206.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P10)>|link=@Lemon框选&三思级>
+<Text|id=hd220|x=50.0|y=209.0|size=20|color=67|text=三思级装备|link=@Lemon单选&三思级>
+;===================================================================
+<Layout|id=hd3|children=<hd311,hd312,hd313,hd314,hd315,hd316,hd317,hd318,hd319,hd320,hd321,hd322,hd323,hd324,hd325>|x=0.0|y=0.0|width=169|height=249>
+<CheckBox|id=hd311|x=10.0|y=6.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P11)>|link=@Lemon框选&三花级>
+<Text|id=hd312|x=50.0|y=9.0|size=20|color=67|text=三花级装备|link=@Lemon单选&三花级>
+<Img|id=hd313|x=0.0|y=0.0|width=338|height=45|img=private/huishou/word_banner_01.png>
+<CheckBox|id=hd314|x=10.0|y=56.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P12)>|link=@Lemon框选&三邪级>
+<Text|id=hd315|x=50.0|y=59.0|size=20|color=67|text=三邪级装备|link=@Lemon单选&三邪级>
+<Img|id=hd316||x=0.0|y=50.0|width=338|height=45|img=private/huishou/word_banner_01.png>
+<CheckBox|id=hd317|x=10.0|y=106.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P13)>|link=@Lemon框选&三武级>
+<Text|id=hd318|x=50.0|y=109.0|size=20|color=67|text=三武级装备|link=@Lemon单选&三武级>
+<Img|id=hd319||x=0.0|y=100.0|width=338|height=45|img=private/huishou/word_banner_01.png>
+<CheckBox|id=hd320|x=10.0|y=156.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P14)>|link=@Lemon框选&三乾级>
+<Text|id=hd321|x=50.0|y=159.0|size=20|color=67|text=三乾级装备|link=@Lemon单选&三乾级>
+<Img|id=hd322||x=0.0|y=150.0|width=338|height=45|img=private/huishou/word_banner_01.png>
+;<CheckBox|id=hd323|x=10.0|y=206.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P15)>|link=@Lemon框选&三全级>
+;<Text|id=hd324|x=50.0|y=209.0|size=20|color=67|text=三全级装备|link=@Lemon单选&三全级>
+<Img|id=hd325||x=0.0|y=200.0|width=338|height=45|img=private/huishou/word_banner_01.png>
+;===================================================================
+<Layout|id=hd4|children=<hd411,hd412,hd413,hd414,hd415,hd416,hd417,hd418,hd419,hd420,hd421,hd422>|x=0.0|y=0.0|width=169|height=249>
+<CheckBox|id=hd411|x=10.0|y=6.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P16)>|link=@Lemon框选&三杰级>
+<Text|id=hd412|x=50.0|y=9.0|size=20|color=67|text=三杰级装备|link=@Lemon单选&三杰级>
+<CheckBox|id=hd413|x=10.0|y=56.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P17)>|link=@Lemon框选&三圣级>
+<Text|id=hd414|x=50.0|y=59.0|size=20|color=67|text=三圣级装备|link=@Lemon单选&三圣级>
+<CheckBox|id=hd415|x=10.0|y=106.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P18)>|link=@Lemon框选&三雅级>
+<Text|id=hd416|x=50.0|y=109.0|size=20|color=67|text=三雅级装备|link=@Lemon单选&三雅级>
+<CheckBox|id=hd417|x=10.0|y=156.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P19)>|link=@Lemon框选&三清级>
+<Text|id=hd418|x=50.0|y=159.0|size=20|color=67|text=三清级装备|link=@Lemon单选&三清级>
+;<CheckBox|id=hd419|x=10.0|y=206.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P20)>|link=@Lemon框选&三绝级>
+;<Text|id=hd420|x=50.0|y=209.0|size=20|color=67|text=三绝级装备|link=@Lemon单选&三绝级>
+;===================================================================
+#ACT
+CLEARVAR P0 34
+
+#IF
+POS $TABLE(HS_BL).LEIXING 新手级=1,
+#ACT
+MOV P1 1
+#IF
+POS $TABLE(HS_BL).LEIXING 逆魔级=1,
+#ACT
+MOV P2 1
+#IF
+POS $TABLE(HS_BL).LEIXING 神武级=1,
+#ACT
+MOV P3 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三凶级=1,
+#ACT
+MOV P4 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三君级=1,
+#ACT
+MOV P5 1
+#IF
+POS $TABLE(HS_BL).LEIXING 将军级=1,
+#ACT
+MOV P6 1
+#IF
+POS $TABLE(HS_BL).LEIXING 圣战级=1,
+#ACT
+MOV P7 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三光级=1,
+#ACT
+MOV P8 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三灾级=1,
+#ACT
+MOV P9 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三思级=1,
+#ACT
+MOV P10 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三花级=1,
+#ACT
+MOV P11 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三邪级=1,
+#ACT
+MOV P12 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三武级=1,
+#ACT
+MOV P13 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三乾级=1,
+#ACT
+MOV P14 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三全级=1,
+#ACT
+MOV P15 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三杰级=1,
+#ACT
+MOV P16 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三圣级=1,
+#ACT
+MOV P17 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三雅级=1,
+#ACT
+MOV P18 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三清级=1,
+#ACT
+MOV P19 1
+#IF
+POS $TABLE(HS_BL).LEIXING 三绝级=1,
+#ACT
+MOV P20 1
+
+;----------------回收真充
+#IF
+CHECK [661] 1
+#ACT
+MOV P21 1
+;----------------回收极品
+#IF
+CHECK [662] 1
+#ACT
+MOV P22 1
+;----------------自动回收
+#IF
+CHECK [663] 1
+#ACT
+MOV P23 2
+#ELSEACT
+MOV P23 1
+
+;------------------------------------价格展示
+
+#IF
+LARGE N$金币 0
+#SAY
+<Text|id=lm8|x=45.0|y=325.0|size=16|color=222|text=金币:<$STR(N$金币)>>
+
+#IF
+LARGE N$绑定元宝 0
+#SAY
+<Text|id=lm8|x=45.0|y=325.0|size=16|color=222|text=绑元:<$STR(N$绑定元宝)>>
+
+#IF
+LARGE N$游戏经验 0
+#SAY
+<Text|id=lm9|x=165.0|y=325.0|size=16|color=222|text=经验:<$STR(N$游戏经验)>>
+
+#IF
+LARGE N$回收钻石 0
+#SAY
+<Text|id=lm10|x=285.0|y=325.0|size=16|color=222|text=钻石:<$STR(N$回收钻石)>>
+
+#IF
+LARGE N$吞噬经验 0
+#SAY
+<Text|id=lm12|x=45.0|y=355.0|size=16|color=222|text=吞噬经验:<$STR(N$吞噬经验)>>
+
+#IF
+LARGE N$强化石 0
+#SAY
+<Text|id=lm11|x=165.0|y=355.0|size=16|color=222|text=强化材料:<$STR(N$强化石)>>
+
+;------------------------------------回收按钮
+#IFONE
+LARGE N$金币 0
+LARGE N$绑定元宝 0
+LARGE N$游戏经验 0
+LARGE N$回收钻石 0
+LARGE N$强化石 0
+LARGE N$吞噬经验 0
+#SAY
+<Button|id=201|x=220.0|y=380.0|color=67|size=20|nimg=public/btn_push_01.png|pimg=public/btn_push_01.png|text=快速回收|link=@Lemon回收KS>
+#ELSESAY
+<Button|id=201|x=220.0|y=380.0|color=10|size=20|nimg=public/btn_push_01.png|pimg=public/btn_push_01.png|text=快速回收|link=@为完成新手任务>
+
+;------------------------------------爆炸效果
+#IF
+EQUAL N$回收完成 1
+#SAY
+<Frames|x=100.0|y=60.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_0)>_|loop=1|suffix=.png>
+<Frames|x=160.0|y=60.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_1)>_|loop=1|suffix=.png>
+<Frames|x=220.0|y=60.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_2)>_|loop=1|suffix=.png>
+<Frames|x=280.0|y=60.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_3)>_|loop=1|suffix=.png>
+<Frames|x=340.0|y=60.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_4)>_|loop=1|suffix=.png>
+<Frames|x=400.0|y=60.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_5)>_|loop=1|suffix=.png>
+<Frames|x=460.0|y=60.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_6)>_|loop=1|suffix=.png>
+<Frames|x=520.0|y=60.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_7)>_|loop=1|suffix=.png>
+
+<Frames|x=100.0|y=120.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_8)>_|loop=1|suffix=.png>
+<Frames|x=160.0|y=120.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_9)>_|loop=1|suffix=.png>
+<Frames|x=220.0|y=120.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_10)>_|loop=1|suffix=.png>
+<Frames|x=280.0|y=120.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_11)>_|loop=1|suffix=.png>
+<Frames|x=340.0|y=120.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_12)>_|loop=1|suffix=.png>
+<Frames|x=400.0|y=120.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_13)>_|loop=1|suffix=.png>
+<Frames|x=460.0|y=120.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_14)>_|loop=1|suffix=.png>
+<Frames|x=520.0|y=120.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_15)>_|loop=1|suffix=.png>
+
+<Frames|x=100.0|y=180.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_16)>_|loop=1|suffix=.png>
+<Frames|x=160.0|y=180.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_17)>_|loop=1|suffix=.png>
+<Frames|x=220.0|y=180.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_18)>_|loop=1|suffix=.png>
+<Frames|x=280.0|y=180.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_19)>_|loop=1|suffix=.png>
+<Frames|x=340.0|y=180.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_20)>_|loop=1|suffix=.png>
+<Frames|x=400.0|y=180.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_21)>_|loop=1|suffix=.png>
+<Frames|x=460.0|y=180.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_22)>_|loop=1|suffix=.png>
+<Frames|x=520.0|y=180.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_23)>_|loop=1|suffix=.png>
+
+<Frames|x=100.0|y=240.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_24)>_|loop=1|suffix=.png>
+<Frames|x=160.0|y=240.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_25)>_|loop=1|suffix=.png>
+<Frames|x=220.0|y=240.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_26)>_|loop=1|suffix=.png>
+<Frames|x=280.0|y=240.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_27)>_|loop=1|suffix=.png>
+<Frames|x=340.0|y=240.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_28)>_|loop=1|suffix=.png>
+<Frames|x=400.0|y=240.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_29)>_|loop=1|suffix=.png>
+<Frames|x=460.0|y=240.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_30)>_|loop=1|suffix=.png>
+<Frames|x=520.0|y=240.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_31)>_|loop=1|suffix=.png>
+
+<Frames|x=100.0|y=300.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_32)>_|loop=1|suffix=.png>
+<Frames|x=160.0|y=300.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_33)>_|loop=1|suffix=.png>
+<Frames|x=220.0|y=300.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_34)>_|loop=1|suffix=.png>
+<Frames|x=280.0|y=300.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_35)>_|loop=1|suffix=.png>
+<Frames|x=340.0|y=300.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_36)>_|loop=1|suffix=.png>
+<Frames|x=400.0|y=300.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_37)>_|loop=1|suffix=.png>
+<Frames|x=460.0|y=300.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_38)>_|loop=1|suffix=.png>
+<Frames|x=520.0|y=300.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_39)>_|loop=1|suffix=.png>
+
+<Frames|x=100.0|y=360.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_40)>_|loop=1|suffix=.png>
+<Frames|x=160.0|y=360.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_41)>_|loop=1|suffix=.png>
+<Frames|x=220.0|y=360.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_42)>_|loop=1|suffix=.png>
+<Frames|x=280.0|y=360.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_43)>_|loop=1|suffix=.png>
+<Frames|x=340.0|y=360.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_44)>_|loop=1|suffix=.png>
+<Frames|x=400.0|y=360.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_45)>_|loop=1|suffix=.png>
+<Frames|x=460.0|y=360.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_46)>_|loop=1|suffix=.png>
+<Frames|x=520.0|y=360.0|speed=10|count=7|prefix=private/huishou/<$STR(S$格子位置_47)>_|loop=1|suffix=.png>
+#ACT
+MOV N$回收完成 0
+
+
+
+
+;=====================================================================子页面单选
+#IF
+EQUAL S$单选 
+#ACT
+BREAK
+
+#IF
+EQUAL S$职业 
+#ACT
+MOV S$职业 战士
+
+#IF
+TRUE
+#SAY
+<Img|children=<gdrq1,1hslb,1gb,1zs,1fs,1ds,1lbrq,1fj,1gx1,1gx2,1gx3>|x=170.0|width=450|y=0.0|move=1|img=private/huishou/bg_quickrecycle_01.png|bg=0>
+<Text|id=1hslb|x=175.0|y=9.0|size=20|color=67|text=<$STR(S$单选)>装备>
+<Button|id=1gb|x=385|y=-2.0|mimg=public/btn_close_01.png|nimg=public/btn_close_01.png|pimg=public/btn_close_01.png|size=18|color=255|link=@Lemon子GB>
+;=====================================================================
+<Button|id=1zs|x=50.0|y=64.0|height=40|width=65|nimg=private/huishou/a<$DEC.6.$STR(P51)>.png|pimg=private/huishou/<$DEC.6.$STR(P51)>.png|size=18|color=250|text=战士类|link=@Lemon职业呀&战士>
+<Button|id=1fs|x=175.0|y=64.0|height=40|width=65|nimg=private/huishou/a<$DEC.6.$STR(P52)>.png|pimg=private/huishou/<$DEC.6.$STR(P52)>.png|size=18|color=250|text=法师类|link=@Lemon职业呀&法师>
+<Button|id=1ds|x=298.0|y=64.0|height=40|width=65|nimg=private/huishou/a<$DEC.6.$STR(P53)>.png|pimg=private/huishou/<$DEC.6.$STR(P53)>.png|size=18|color=250|text=道士类|link=@Lemon职业呀&道士>
+<CheckBox|id=1gx1|x=113.0|y=62.0|width=45|height=45|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P31)>|link=@Lemon框选1&<$STR(S$单选)>战士>
+<CheckBox|id=1gx2|x=240.0|y=62.0|width=45|height=45|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P32)>|link=@Lemon框选1&<$STR(S$单选)>法师>
+<CheckBox|id=1gx3|x=360.0|y=62.0|width=45|height=45|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P33)>|link=@Lemon框选1&<$STR(S$单选)>道士>
+;==========================================================================
+<Img|id=1fj||x=40.0|y=85.0|width=370|height=25|img=private/huishou/word_banner_01.png>
+<Layout|id=gdrq1|x=39.0|y=115.0|width=338|height=360|link=@某某某>
+<ListView|id=1lbrq|children=<1hd1,1hd2,1hd3,1hd4>|direction=1|x=39.0|y=115.0|width=488|height=360|reload=1|margin=10|bounce=1|img=picpackage/3/9998.png>
+<Layout|id=1hd1|children=<hs1,hs2,hs3,hs4,hs5,hs6,hs7,hs8,hs9,hs10>|x=39.0|y=115.0|width=400|height=500>
+#ACT
+SENDMSG 19 <$STR(S$单选)><$STR(S$职业)>
+CLEARVAR P30 60
+CLEARVAR S0 99
+MOV N$框选子数量 0
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$STR(S$单选)><$STR(S$职业)>.txt S0 0
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$STR(S$单选)><$STR(S$职业)>.txt S1 1
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$STR(S$单选)><$STR(S$职业)>.txt S2 2
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$STR(S$单选)><$STR(S$职业)>.txt S3 3
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$STR(S$单选)><$STR(S$职业)>.txt S4 4
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$STR(S$单选)><$STR(S$职业)>.txt S5 5
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$STR(S$单选)><$STR(S$职业)>.txt S6 6
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$STR(S$单选)><$STR(S$职业)>.txt S7 7
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$STR(S$单选)><$STR(S$职业)>.txt S8 8
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$STR(S$单选)><$STR(S$职业)>.txt S9 9
+;======================================================
+#IF
+POS $TABLE(HS_BL).LEIXING <$STR(S$单选)>战士=1,
+#ACT
+MOV P31 1
+#IF
+POS $TABLE(HS_BL).LEIXING <$STR(S$单选)>法师=1,
+#ACT
+MOV P32 1
+#IF
+POS $TABLE(HS_BL).LEIXING <$STR(S$单选)>道士=1,
+#ACT
+MOV P33 1
+;======================================================
+#IF
+EQUAL S$职业 战士
+#ACT
+MOV P51 1
+
+#IF
+EQUAL S$职业 法师
+#ACT
+MOV P52 1
+
+#IF
+EQUAL S$职业 道士
+#ACT
+MOV P53 1
+;======================================================
+
+#IF
+!POS -新手级-将军级-逆魔级-圣战级-神武级- -<$STR(S$单选)>-
+#ACT
+MOV S$14 钻石
+MOV S15 ,
+MOV S16 绑元
+#ELSEACT
+MOV S$14 
+MOV S15 
+MOV S16 金币
+
+
+#IF
+!EQUAL $STR(S0) 
+#SAY
+<Text|x=3.0|y=5.0|size=18|color=255|text=<$STR(S0)>|id=hs1|children=<hs1a1,hs1a2,hs1a3,hs1a4,hs1a5>>
+<CheckBox|x=205.0|y=-3.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P41)>|link=@Lemon框选2&<$STR(S0)>|id=hs1a1>
+<Text|x=245.0|y=-5.0|size=15|color=255|text=<$STR(S$14)><$STR(S13)><$STR(S15)><$STR(S16)><$STR(S11)>|id=hs1a2>
+<Text|x=245.0|y=15.0|size=15|color=255|text=吞噬经验<$STR(S12)>|id=hs1a3>
+<Img|x=0.0|y=5.0|width=370|height=35|img=private/huishou/word_banner_01.png|id=hs1a4>
+#ACT
+LOADEXVAR S11 回收价格 $STR(S0) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S11) | S11
+#IF
+EQUAL S13 0
+#ACT
+MOV S13 
+;-------------------------------------------------
+#IF
+!EQUAL $STR(S1) 
+#SAY
+<Text|x=3.0|y=55.0|size=18|color=255|text=<$STR(S1)>|id=hs2|children=<hs2a1,hs2a2,hs2a3,hs2a4,hs2a5>>
+<CheckBox|x=205.0|y=-3.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P42)>|link=@Lemon框选2&<$STR(S1)>|id=hs2a1>
+<Text|x=245.0|y=-5.0|size=15|color=255|text=<$STR(S$14)><$STR(S23)><$STR(S15)><$STR(S16)><$STR(S21)>|id=hs2a2>
+<Text|x=245.0|y=15.0|size=15|color=255|text=吞噬经验<$STR(S22)>|id=hs2a3>
+<Img|x=0.0|y=5.0|width=370|height=35|img=private/huishou/word_banner_01.png|id=hs2a4>
+#ACT
+LOADEXVAR S21 回收价格 $STR(S1) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S21) | S21
+
+#IF
+EQUAL S23 0
+#ACT
+MOV S23 
+;-------------------------------------------------
+#IF
+!EQUAL $STR(S2) 
+#SAY
+<Text|x=3.0|y=105.0|size=18|color=255|text=<$STR(S2)>|id=hs3|children=<hs3a1,hs3a2,hs3a3,hs3a4,hs3a5>>
+<CheckBox|x=205.0|y=-3.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P43)>|link=@Lemon框选2&<$STR(S2)>|id=hs3a1>
+<Text|x=245.0|y=-5.0|size=15|color=255|text=<$STR(S$14)><$STR(S33)><$STR(S15)><$STR(S16)><$STR(S31)>|id=hs3a2>
+<Text|x=245.0|y=15.0|size=15|color=255|text=吞噬经验<$STR(S32)>|id=hs3a3>
+<Img|x=0.0|y=5.0|width=370|height=35|img=private/huishou/word_banner_01.png|id=hs3a4>
+#ACT
+LOADEXVAR S31 回收价格 $STR(S2) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S31) | S31
+
+#IF
+EQUAL S33 0
+#ACT
+MOV S33 
+;-------------------------------------------------
+#IF
+!EQUAL $STR(S3) 
+#SAY
+<Text|x=3.0|y=155.0|size=18|color=255|text=<$STR(S3)>|id=hs4|children=<hs4a1,hs4a2,hs4a3,hs4a4,hs4a5>>
+<CheckBox|x=205.0|y=-3.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P44)>|link=@Lemon框选2&<$STR(S3)>|id=hs4a1>
+<Text|x=245.0|y=-5.0|size=15|color=255|text=<$STR(S$14)><$STR(S43)><$STR(S15)><$STR(S16)><$STR(S41)>|id=hs4a2>
+<Text|x=245.0|y=15.0|size=15|color=255|text=吞噬经验<$STR(S42)>|id=hs4a3>
+<Img|x=0.0|y=5.0|width=370|height=35|img=private/huishou/word_banner_01.png|id=hs4a4>
+#ACT
+LOADEXVAR S41 回收价格 $STR(S3) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S41) | S41
+
+#IF
+EQUAL S43 0
+#ACT
+MOV S43 
+;-------------------------------------------------
+#IF
+!EQUAL $STR(S4) 
+#SAY
+<Text|x=3.0|y=205.0|size=18|color=255|text=<$STR(S4)>|id=hs5|children=<hs5a1,hs5a2,hs5a3,hs5a4,hs5a5>>
+<CheckBox|x=205.0|y=-3.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P45)>|link=@Lemon框选2&<$STR(S4)>|id=hs5a1>
+<Text|x=245.0|y=-5.0|size=15|color=255|text=<$STR(S$14)><$STR(S53)><$STR(S15)><$STR(S16)><$STR(S51)>|id=hs5a2>
+<Text|x=245.0|y=15.0|size=15|color=255|text=吞噬经验<$STR(S52)>|id=hs5a3>
+<Img|x=0.0|y=5.0|width=370|height=35|img=private/huishou/word_banner_01.png|id=hs5a4>
+#ACT
+LOADEXVAR S51 回收价格 $STR(S4) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S51) | S51
+
+#IF
+EQUAL S53 0
+#ACT
+MOV S53 
+;-------------------------------------------------
+#IF
+!EQUAL $STR(S5) 
+#SAY
+<Text|x=3.0|y=255.0|size=18|color=255|text=<$STR(S5)>|id=hs6|children=<hs6a1,hs6a2,hs6a3,hs6a4,hs6a5>>
+<CheckBox|x=205.0|y=-3.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P46)>|link=@Lemon框选2&<$STR(S5)>|id=hs6a1>
+<Text|x=245.0|y=-5.0|size=15|color=255|text=<$STR(S$14)><$STR(S63)><$STR(S15)><$STR(S16)><$STR(S61)>|id=hs6a2>
+<Text|x=245.0|y=15.0|size=15|color=255|text=吞噬经验<$STR(S62)>|id=hs6a3>
+<Img|x=0.0|y=5.0|width=370|height=35|img=private/huishou/word_banner_01.png|id=hs6a4>
+#ACT
+LOADEXVAR S61 回收价格 $STR(S5) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S61) | S61
+
+#IF
+EQUAL S63 0
+#ACT
+MOV S63 
+;-------------------------------------------------
+#IF
+!EQUAL $STR(S6) 
+#SAY
+<Text|x=3.0|y=305.0|size=18|color=255|text=<$STR(S6)>|id=hs7|children=<hs7a1,hs7a2,hs7a3,hs7a4,hs7a5>>
+<CheckBox|x=205.0|y=-3.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P47)>|link=@Lemon框选2&<$STR(S6)>|id=hs7a1>
+<Text|x=245.0|y=-5.0|size=15|color=255|text=<$STR(S$14)><$STR(S73)><$STR(S15)><$STR(S16)><$STR(S71)>|id=hs7a2>
+<Text|x=245.0|y=15.0|size=15|color=255|text=吞噬经验<$STR(S72)>|id=hs7a3>
+<Img|x=0.0|y=5.0|width=370|height=35|img=private/huishou/word_banner_01.png|id=hs7a4>
+#ACT
+LOADEXVAR S71 回收价格 $STR(S6) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S71) | S71
+
+#IF
+EQUAL S73 0
+#ACT
+MOV S73 
+;-------------------------------------------------
+#IF
+!EQUAL $STR(S7) 
+#SAY
+<Text|x=3.0|y=355.0|size=18|color=255|text=<$STR(S7)>|id=hs8|children=<hs8a1,hs8a2,hs8a3,hs8a4,hs8a5>>
+<CheckBox|x=205.0|y=-3.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P48)>|link=@Lemon框选2&<$STR(S7)>|id=hs8a1>
+<Text|x=245.0|y=-5.0|size=15|color=255|text=<$STR(S$14)><$STR(S83)><$STR(S15)><$STR(S16)><$STR(S81)>|id=hs8a2>
+<Text|x=245.0|y=15.0|size=15|color=255|text=吞噬经验<$STR(S82)>|id=hs8a3>
+<Img|x=0.0|y=5.0|width=370|height=35|img=private/huishou/word_banner_01.png|id=hs8a4>
+#ACT
+LOADEXVAR S81 回收价格 $STR(S7) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S81) | S81
+
+#IF
+EQUAL S83 0
+#ACT
+MOV S83 
+;-------------------------------------------------
+#IF
+!EQUAL $STR(S8) 
+#SAY
+<Text|x=3.0|y=405.0|size=18|color=255|text=<$STR(S8)>|id=hs9|children=<hs9a1,hs9a2,hs9a3,hs9a4,hs9a5>>
+<CheckBox|x=205.0|y=-3.0|width=35|height=35|pimg=public/btn_duigou_02.png|nimg=public/btn_duigou_01.png|default=<$STR(P49)>|link=@Lemon框选2&<$STR(S8)>|id=hs9a1>
+<Text|x=245.0|y=-5.0|size=15|color=255|text=<$STR(S$14)><$STR(S93)><$STR(S15)><$STR(S16)><$STR(S91)>|id=hs9a2>
+<Text|x=245.0|y=15.0|size=15|color=255|text=吞噬经验<$STR(S92)>|id=hs9a3>
+<Img|x=0.0|y=5.0|width=370|height=35|img=private/huishou/word_banner_01.png|id=hs9a4>
+#ACT
+LOADEXVAR S91 回收价格 $STR(S8) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S91) | S91
+
+#IF
+EQUAL S93 0
+#ACT
+MOV S93 
+;-------------------------------------------------
+
+;========================================================================================================================================
+#IF
+POS $TABLE(HS_BL).ZBM <$STR(S0)>,
+#ACT
+MOV P41 1
+INC N$框选子数量 1
+#IF
+POS $TABLE(HS_BL).ZBM <$STR(S1)>,
+#ACT
+MOV P42 1
+INC N$框选子数量 1
+#IF
+POS $TABLE(HS_BL).ZBM <$STR(S2)>,
+#ACT
+MOV P43 1
+INC N$框选子数量 1
+#IF
+POS $TABLE(HS_BL).ZBM <$STR(S3)>,
+#ACT
+MOV P44 1
+INC N$框选子数量 1
+#IF
+POS $TABLE(HS_BL).ZBM <$STR(S4)>,
+#ACT
+MOV P45 1
+INC N$框选子数量 1
+#IF
+POS $TABLE(HS_BL).ZBM <$STR(S5)>,
+#ACT
+MOV P46 1
+INC N$框选子数量 1
+#IF
+POS $TABLE(HS_BL).ZBM <$STR(S6)>,
+#ACT
+MOV P47 1
+INC N$框选子数量 1
+#IF
+POS $TABLE(HS_BL).ZBM <$STR(S7)>,
+#ACT
+MOV P48 1
+INC N$框选子数量 1
+#IF
+POS $TABLE(HS_BL).ZBM <$STR(S8)>,
+#ACT
+MOV P49 1
+INC N$框选子数量 1
+
+
+#IF
+EQUAL N$框选子数量 9
+!POS $TABLE(HS_BL).LEIXING <$STR(S$单选)><$STR(S$职业)>=1,
+!POS $TABLE(HS_BL).LEIXING <$STR(S$单选)><$STR(S$职业)>=0,
+#ACT
+TABLE HS_BL LEIXING + <$STR(S$单选)><$STR(S$职业)>=1,
+GOTO @Lemon回收
+BREAK
+
+#IF
+EQUAL N$框选子数量 9
+!POS $TABLE(HS_BL).LEIXING <$STR(S$单选)><$STR(S$职业)>=1,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+REPLACETEXT S$总类型代替 <$STR(S$单选)><$STR(S$职业)>=0, <$STR(S$单选)><$STR(S$职业)>=1,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+GOTO @Lemon回收
+BREAK
+
+
+
+;========================================================================================================================================
+[@为完成新手任务]
+#IF
+HasTask 9
+CHECK [184] 0
+EQUAL $TASK(9) 5
+#ACT
+BINDGAMEGOLD + 500
+set [184] 1
+UpdateTask 9 6
+OPENUI 2011 2
+OPENUI 2012 2
+OPENUI 2013 2
+Navigation 160 9 点击领取#5055#5 0 0
+BREAK
+CLOSE
+
+[@Lemon回收KS]
+#IF
+HasTask 9
+CHECK [184] 0
+EQUAL $TASK(9) 5
+#ACT
+BINDGAMEGOLD + 500
+set [184] 1
+UpdateTask 9 6
+Navigation 160 9 点击领取#5055#5 0 0
+
+#IF
+LARGE $HUMSTATE.1 0
+#ACT
+SENDMSG 19 交易进行中,无法使用回收功能!
+BREAK
+
+#IF
+LARGE $HUMSTATE.2 0
+#ACT
+SENDMSG 19 摆摊进行中,无法使用回收功能!
+BREAK
+
+
+#IF
+SMALL N$金币 1
+SMALL N$绑定元宝 1
+SMALL N$游戏经验 1
+SMALL N$回收钻石 1
+SMALL N$强化石 1
+SMALL N$吞噬经验 1
+#ACT
+SENDMSG 19 请先选择要回收的装备!
+BREAK
+#ELSEACT
+MOV N$仓库格子 0
+GOTO @Lemon仓库JC
+BAGREF 2
+DELAYGOTO 100 @Lemon回收WC
+
+
+
+
+[@Lemon回收WC]
+
+#IF
+LARGE $HUMSTATE.1 0
+#ACT
+SENDMSG 19 交易进行中,无法使用回收功能!
+BREAK
+
+#IF
+LARGE $HUMSTATE.2 0
+#ACT
+SENDMSG 19 摆摊进行中,无法使用回收功能!
+BREAK
+
+#IF
+SMALL N$金币 1
+SMALL N$绑定元宝 1
+SMALL N$游戏经验 1
+SMALL N$回收钻石 1
+SMALL N$强化石 1
+SMALL N$吞噬经验 1
+#ACT
+SENDMSG 19 请先选择要回收的装备!
+BREAK
+
+#IFONE
+!POS $STR(S$Lemon包裹BL) ,
+SMALL $LENGTH.$STR(S$Lemon包裹BL) 2
+#ACT
+SENDMSG 19 请先选择要回收的装备!
+BREAK
+#ELSEACT
+REPLACETEXT S$Lemon包裹BL , |
+TAKEBAGITEM $STR(S$Lemon包裹BL) 999 M44 0 1
+BINDGAMEGOLD + $STR(N$绑定元宝)
+
+#IF
+LARGE N$绑定元宝 0
+#ACT
+MOV N$额外绑元 $DIV^$MULT.$STR(N$绑定元宝).$STR(D64)^100
+BINDGAMEGOLD + $STR(N$额外绑元)
+#ELSEACT
+MOV N$额外绑元 0
+
+#IF
+LARGE N$吞噬经验 0
+SMALL $CUSTOMVALUE(95) 100
+#ACT
+CHANGECUSTOMVALUE 96 + $STR(N$吞噬经验)
+GOTO @Lemon吞噬SJ
+;===================================================
+#IF
+LARGE $STR(N$回收钻石) 0
+#ACT
+MONEY 33  + $STR(N$回收钻石)
+
+#if
+large N$金币 0
+#act
+money 1 + $STR(N$金币)
+
+
+
+
+
+;===================================================
+
+#IF
+LARGE N$强化石 0
+#ACT
+GIVE 玄铁 $STR(N$强化石) 1
+
+#IF
+CHECK [110] 0
+#ACT
+SET [110] 1
+GOTO @顶部按钮会员红点
+
+#IF
+TRUE
+#ACT
+MOV N$回收完成 1
+FUNC 1 @Lemon回收TS
+GOTO @Lemon回收
+
+#IF
+CheckBagSize 5
+#ACT
+SENDUI 107
+MOV S$背包已满 0
+MOV S$已满快速回收 0
+
+
+[@Lemon吞噬SJ]
+#IF
+!SMALL $CUSTOMVALUE(95) 100
+#ACT
+CHANGECUSTOMVALUE 96 = 0
+BREAK
+#ELSEACT
+MOV P44 0
+LOADEXVAR P44 吞噬经验 $INC.$CUSTOMVALUE(95).1 ..\QUESTDIARY\数据文件\吞噬升级数据.txt
+
+#IF
+LARGE P44 0
+!SMALL $CUSTOMVALUE(96) $STR(P44)
+#ACT
+CHANGECUSTOMVALUE 96 - $STR(P44)
+CHANGECUSTOMVALUE 95 + 1
+SENDMSG 19 恭喜你,你的吞噬等级提升了!!
+#CALL [\游戏功能\临时属性.txt] @临时属性
+GOTO @Lemon吞噬SJ
+BREAK
+#ELSEACT
+SENDMSG 5 你当前吞噬等级:<$CUSTOMVALUE(95)>,经验:<$CUSTOMVALUE(96)>／<$STR(P44)>
+BREAK
+
+
+[@Lemon框选]
+#IF
+!CHECKTXT ..\QUESTDIARY\猪头回收\<$SCRIPTPARAM(1)>.txt
+#ACT
+BREAK
+
+#IFONE
+EQUAL $TASK(9) 4
+EQUAL $TASK(9) 5
+#ACT
+UpdateTask 9 5
+Navigation 303 201 点击快速回收#996#3
+
+
+#IF
+HasTask 14
+EQUAL $TASK(14) 4
+#ACT
+UpdateTask 14 5
+Navigation 303 201 点击快速回收#996#3
+
+#IF
+!POS $TABLE(HS_BL).LEIXING <$SCRIPTPARAM(1)>=0,
+!POS $TABLE(HS_BL).LEIXING <$SCRIPTPARAM(1)>=1,
+#ACT
+TABLE HS_BL LEIXING + <$SCRIPTPARAM(1)>=1,<$SCRIPTPARAM(1)>战士=1,<$SCRIPTPARAM(1)>法师=1,<$SCRIPTPARAM(1)>道士=1,
+MOV P99 0
+GOTO @Lemon写入&<$SCRIPTPARAM(1)>
+BREAK
+
+#IF
+POS $TABLE(HS_BL).LEIXING <$SCRIPTPARAM(1)>=1,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+REPLACETEXT S$总类型代替 <$SCRIPTPARAM(1)>=1, <$SCRIPTPARAM(1)>=0,
+REPLACETEXT S$总类型代替 <$SCRIPTPARAM(1)>战士=1, <$SCRIPTPARAM(1)>战士=0,
+REPLACETEXT S$总类型代替 <$SCRIPTPARAM(1)>法师=1, <$SCRIPTPARAM(1)>法师=0,
+REPLACETEXT S$总类型代替 <$SCRIPTPARAM(1)>道士=1, <$SCRIPTPARAM(1)>道士=0,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+MOV P99 0
+GOTO @Lemon删除&<$SCRIPTPARAM(1)>
+BREAK
+
+#IF
+POS $TABLE(HS_BL).LEIXING <$SCRIPTPARAM(1)>=0,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+REPLACETEXT S$总类型代替 <$SCRIPTPARAM(1)>=0, <$SCRIPTPARAM(1)>=1,
+REPLACETEXT S$总类型代替 <$SCRIPTPARAM(1)>战士=0, <$SCRIPTPARAM(1)>战士=1,
+REPLACETEXT S$总类型代替 <$SCRIPTPARAM(1)>法师=0, <$SCRIPTPARAM(1)>法师=1,
+REPLACETEXT S$总类型代替 <$SCRIPTPARAM(1)>道士=0, <$SCRIPTPARAM(1)>道士=1,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+MOV P99 0
+GOTO @Lemon写入&<$SCRIPTPARAM(1)>
+
+
+
+[@Lemon框选1]
+#IF
+!CHECKTXT ..\QUESTDIARY\猪头回收\<$SCRIPTPARAM(1)>.txt
+#ACT
+BREAK
+
+#IF
+!POS $TABLE(HS_BL).LEIXING <$SCRIPTPARAM(1)>=1,
+!POS $TABLE(HS_BL).LEIXING <$SCRIPTPARAM(1)>=0,
+#ACT
+TABLE HS_BL LEIXING + <$SCRIPTPARAM(1)>=1,
+MOV P99 0
+GOTO @Lemon写入&<$SCRIPTPARAM(1)>
+BREAK
+
+#IF
+POS $TABLE(HS_BL).LEIXING <$SCRIPTPARAM(1)>=1,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+REPLACETEXT S$总类型代替 <$SCRIPTPARAM(1)>=1, <$SCRIPTPARAM(1)>=0,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+MOV P99 0
+GOTO @Lemon删除&<$SCRIPTPARAM(1)>
+BREAK
+
+#IF
+POS $TABLE(HS_BL).LEIXING <$SCRIPTPARAM(1)>=0,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+REPLACETEXT S$总类型代替 <$SCRIPTPARAM(1)>=0, <$SCRIPTPARAM(1)>=1,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+MOV P99 0
+GOTO @Lemon写入&<$SCRIPTPARAM(1)>
+BREAK
+
+[@Lemon框选2]
+#IF
+POS $TABLE(HS_BL).ZBM <$SCRIPTPARAM(1)>,
+#ACT
+MOV S$装备名代替 $TABLE(HS_BL).ZBM
+REPLACETEXT S$装备名代替 <$SCRIPTPARAM(1)>,
+TABLE HS_BL ZBM = $STR(S$装备名代替)
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+REPLACETEXT S$总类型代替 <$STR(S$单选)><$STR(S$职业)>=1, <$STR(S$单选)><$STR(S$职业)>=0,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+GOTO @Lemon回收
+BREAK
+#ELSEACT
+TABLE HS_BL ZBM + <$SCRIPTPARAM(1)>,
+GOTO @Lemon回收
+BREAK
+
+
+
+
+[@Lemon写入]
+#IF
+TRUE
+#ACT
+MOV S0 
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$SCRIPTPARAM(1)>.txt S0 $STR(P99)
+
+#IF
+!EQUAL $STR(S0) 
+POS $TABLE(HS_BL).ZBM <$STR(S0)>,
+#ACT
+INC P99 1
+GOTO @Lemon写入&<$SCRIPTPARAM(1)>
+BREAK
+
+#IF
+!EQUAL $STR(S0) 
+!POS $TABLE(HS_BL).ZBM <$STR(S0)>,
+#ACT
+TABLE HS_BL ZBM + <$STR(S0)>,
+INC P99 1
+GOTO @Lemon写入&<$SCRIPTPARAM(1)>
+BREAK
+
+#IFONE
+POS $SCRIPTPARAM(1) 战士
+POS $SCRIPTPARAM(1) 法师
+POS $SCRIPTPARAM(1) 道士
+#ACT
+COPYTEXT $SCRIPTPARAM(1) 0 6 S11
+#ELSEACT
+GOTO @Lemon回收
+BREAK
+
+#IF
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>=1,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>战士=0,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>法师=0,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>道士=0,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+REPLACETEXT S$总类型代替 <$STR(S11)>=1, <$STR(S11)>=0,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+GOTO @Lemon回收
+BREAK
+
+#IF
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>=0,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>战士=1,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>法师=1,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>道士=1,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+REPLACETEXT S$总类型代替 <$STR(S11)>=0, <$STR(S11)>=1,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+GOTO @Lemon回收
+BREAK
+
+#IF
+!POS $TABLE(HS_BL).LEIXING <$STR(S11)>=1,
+!POS $TABLE(HS_BL).LEIXING <$STR(S11)>=0,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>战士=1,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>法师=1,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>道士=1,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+INC S$总类型代替 <$STR(S11)>=1,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+GOTO @Lemon回收
+BREAK
+#ELSEACT
+GOTO @Lemon回收
+BREAK
+
+
+
+[@Lemon删除]
+#IF
+TRUE
+#ACT
+MOV S0 
+READRANDOMSTR ..\QUESTDIARY\猪头回收\<$SCRIPTPARAM(1)>.txt S0 $STR(P99)
+
+#IF
+!EQUAL $STR(S0) 
+#ACT
+MOV S$装备名代替 $TABLE(HS_BL).ZBM
+REPLACETEXT S$装备名代替 <$STR(S0)>,
+TABLE HS_BL ZBM = $STR(S$装备名代替)
+INC P99 1
+GOTO @Lemon删除&<$SCRIPTPARAM(1)>
+BREAK
+
+#IFONE
+POS $SCRIPTPARAM(1) 战士
+POS $SCRIPTPARAM(1) 法师
+POS $SCRIPTPARAM(1) 道士
+#ACT
+COPYTEXT $SCRIPTPARAM(1) 0 6 S11
+#ELSEACT
+GOTO @Lemon回收
+BREAK
+
+#IF
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>=1,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>战士=0,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>法师=0,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>道士=0,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+REPLACETEXT S$总类型代替 <$STR(S11)>=1, <$STR(S11)>=0,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+GOTO @Lemon回收
+BREAK
+
+#IF
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>=0,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>战士=1,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>法师=1,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>道士=1,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+REPLACETEXT S$总类型代替 <$STR(S11)>=0, <$STR(S11)>=1,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+GOTO @Lemon回收
+BREAK
+
+#IF
+!POS $TABLE(HS_BL).LEIXING <$STR(S11)>=1,
+!POS $TABLE(HS_BL).LEIXING <$STR(S11)>=0,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>战士=1,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>法师=1,
+POS $TABLE(HS_BL).LEIXING <$STR(S11)>道士=1,
+#ACT
+MOV S$总类型代替 $TABLE(HS_BL).LEIXING
+INC S$总类型代替 <$STR(S11)>=1,
+TABLE HS_BL LEIXING = $STR(S$总类型代替)
+GOTO @Lemon回收
+BREAK
+#ELSEACT
+GOTO @Lemon回收
+BREAK
+
+
+
+
+
+[@防卡怪]
+#IF
+CHECK [661] 1
+#ACT
+SET [661] 0
+GOTO @Lemon回收
+BREAK
+#ELSEACT
+SET [661] 1
+GOTO @Lemon回收
+BREAK
+
+[@Lemon回收JP]
+#IF
+CHECK [662] 1
+#ACT
+SET [662] 0
+GOTO @Lemon回收
+BREAK
+#ELSEACT
+SET [662] 1
+GOTO @Lemon回收
+BREAK
+
+[@Lemon回收ZD]
+#IF
+CHECK [663] 1
+#ACT
+SET [663] 0
+GOTO @Lemon回收XS
+BREAK
+#ELSEACT
+SET [663] 1
+MOV S$已满快速回收 0
+GOTO @Lemon回收XS
+BREAK
+
+[@Lemon单选]
+#IF
+!CHECKTXT ..\QUESTDIARY\猪头回收\<$SCRIPTPARAM(1)>.txt
+#ACT
+BREAK
+#ELSEACT
+MOV S$单选 $SCRIPTPARAM(1)
+GOTO @Lemon回收XS
+BREAK
+
+[@Lemon职业呀]
+#IF
+TRUE
+#ACT
+MOV S$职业 $SCRIPTPARAM(1)
+GOTO @Lemon回收
+BREAK
+
+[@Lemon子GB]
+#IF
+TRUE
+#ACT
+MOV S$单选 
+MOV S$职业 
+GOTO @Lemon回收XS
+BREAK
+
+[@Lemon关闭HS]
+#IF
+SMALL N$包裹 2
+#ACT
+SELECTBAGITEMS
+MOV N$包裹 1
+MOV N$回收功能 0
+OPENUI 2011 1
+BREAK
+
+#IF
+EQUAL N$包裹 2
+#ACT
+SELECTBAGITEMS
+MOV N$回收功能 0
+OPENUI 2012 1
+BREAK
+
+#IF
+EQUAL N$包裹 3
+#ACT
+SELECTBAGITEMS
+MOV N$回收功能 0
+OPENUI 2013 1
+BREAK
+
+[@Lemon关闭]
+#IF
+TRUE
+#ACT
+OPENUI 2011 2
+MOV N$包裹 0
+MOV N$回收功能 0
+MOV N$清理功能 0
+SELECTBAGITEMS
+BREAK
+
+
+
+[@Lemon遍历XH]
+#IF
+EQUAL N$回收功能 0
+#ACT
+BREAK
+
+#IF
+EQUAL N$遍历勾选 1
+#ACT
+MOV N$遍历勾选 0
+GOTO @Lemon回收XS
+DELAYCALL 1 @Lemon遍历XH
+BREAK
+#ELSEACT
+DELAYCALL 1 @Lemon遍历XH
+BREAK
+
+
+
+[@BagRef_Ok]
+#IF
+EQUAL N$寄售行跳转 1
+#ACT
+MOV S$Lemon包裹
+MOV N$Lemon包裹 0
+GOTO @Lemon包裹JC
+MOV N$寄售行跳转 0
+BREAK
+
+#IF
+EQUAL N$包裹 1
+#ACT
+CLEARVAR S$格子位置 48
+MOV N$包裹位置 0
+MOV N$格子位置 0
+GOTO @Lemon回收WZ
+BREAK
+
+
+
+
+#IF
+EQUAL N$包裹 2
+#ACT
+CLEARVAR S$格子位置 48
+MOV N$包裹位置 48
+MOV N$格子位置 0
+GOTO @Lemon回收WZ
+BREAK
+
+#IF
+EQUAL N$包裹 3
+#ACT
+CLEARVAR S$格子位置 48
+MOV N$包裹位置 96
+MOV N$格子位置 0
+GOTO @Lemon回收WZ
+BREAK
+
+[@Lemon回收WZ]
+#IF
+LARGE N$格子位置 48
+#ACT
+BREAK
+
+#IF
+!EQUAL <$BAGITEM[<$INC.$STR(N$格子位置).$STR(N$包裹位置)>].MAKEINDEX> 
+POS $STR(S$Lemon包裹BL) <$BAGITEM[<$INC.$STR(N$格子位置).$STR(N$包裹位置)>].MAKEINDEX>,
+#ACT
+MOV S$格子位置_<$STR(N$格子位置)> bz
+INC N$格子位置 1
+GOTO @Lemon回收WZ
+#ELSEACT
+INC N$格子位置 1
+GOTO @Lemon回收WZ
+BREAK
+
+
+
+
+[@Lemon仓库JC]
+#IF
+LARGE N$仓库格子 120
+#ACT
+BREAK
+
+#IF
+!EQUAL <$STORAGEITEM[<$STR(N$仓库格子)>].MAKEINDEX> 
+POS $STR(S$Lemon包裹BL) <$STORAGEITEM[<$STR(N$仓库格子)>].MAKEINDEX>,
+#ACT
+MOV S$回收IDX <$STORAGEITEM[<$STR(N$仓库格子)>].MAKEINDEX>
+#ELSEACT
+INC N$仓库格子 1
+GOTO @Lemon仓库JC
+BREAK
+
+#IF
+POS $STR(S$Lemon包裹BL) <$STR(S$回收IDX)>,
+#ACT
+DEC S$Lemon包裹BL <$STR(S$回收IDX)>,
+SELECTBAGITEMS - $STR(S$回收IDX)
+MOV S77 <$STORAGEITEM[<$STR(S$回收IDX)>].STDNAME>
+MOV P77 <$STDITEM[<$STR(S77)>].GC1>
+LOADEXVAR S71 回收价格 $STR(S77) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S71) | S71
+DEC N$吞噬经验 $STR(S72)
+DEC N$游戏经验 $STR(S74)
+
+
+#IF
+POS $STR(S$充值装备) <$STR(S$回收IDX)>,
+#ACT
+DEC N$回收钻石 $STR(S73)
+DEC S$充值装备 <$STR(S$回收IDX)>,
+
+#IF
+!large p77 5
+CHECK [661] 0
+!POS $STR(S$充值装备) <$STR(S$回收IDX)>,
+#ACT
+DEC N$金币 $STR(S71)
+
+
+
+#IF
+large p77 5
+CHECK [661] 0
+!POS $STR(S$充值装备) <$STR(S$回收IDX)>,
+#ACT
+DEC N$绑定元宝 $STR(S71)
+
+#IF
+CHECK [662] 1
+LARGE <$STORAGEITEM[<$STR(N$仓库格子)>].VALUEEX(172)> 0
+#ACT
+MOV P71 0 
+LOADEXVAR P71 强化数量 <$STORAGEITEM[<$STR(N$仓库格子)>].VALUEEX(172)> ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+DEC N$强化石 $STR(P71)
+
+#IF
+TRUE
+#ACT
+INC N$仓库格子 1
+GOTO @Lemon仓库JC
+BREAK
+
+;=================================================================
+
+[@Lemon清理]
+#IF
+TRUE
+#ACT
+MOV N$回收功能 0
+MOV N$清理功能 1
+SELECTBAGITEMS
+GOTO @背包界面
+
+[@Lemon清理GB]
+#IF
+TRUE
+#ACT
+MOV N$清理功能 0
+GOTO @背包界面
+BREAK
+
+
+[@Lemon清理A]
+#IF
+EQUAL $PARAM(1) 1
+POS 特戒宝箱 $ITEMINFO[$PARAM(0)].NAME
+#ACT
+TAKENPCITEM 2 
+SENDMSG 19 该物品不允许清理
+BREAK
+
+#IF
+EQUAL $PARAM(1) 1
+POS -豹魔石-狮魔石-暗月妖狼石-怒啸神光虎石-黄金圣龙石- -<$ITEMINFO[$PARAM(0)].NAME>-
+#ACT
+TAKENPCITEM 2 
+SENDMSG 19 不允许清理灵兽石
+BREAK
+
+#IF
+EQUAL $PARAM(1) 1
+EQUAL <$ITEMINFO[$PARAM(0)].NAME> 惊喜礼包
+#ACT
+TAKENPCITEM 2 
+SENDMSG 19 不允许清理惊喜礼包
+BREAK
+
+#IF
+EQUAL $PARAM(1) 1
+EQUAL $PARAM(0) <$Human(新手任务记录1)>
+HasTask 1 2
+#ACT
+TAKENPCITEM 2 
+SENDMSG 19 不允许清理任务物品
+BREAK
+
+#IF
+EQUAL $PARAM(1) 2
+#ACT
+MOV S$清理 
+BREAK
+#ELSEACT
+MOV S$清理 $PARAM(0)
+BREAK
+
+[@Lemon清理AA]
+#IF
+CHECKITEMID $STR(S$清理)
+#ACT
+TAKEM $STR(S$清理)
+MOV S$清理 
+SENDMSG 19 删除成功
+BREAK
+#ELSEACT
+SENDMSG 19 请将物品拖入框内
+BREAK
+
+
+
+[@整理包裹]
+#IF
+TRUE
+#ACT
+MOV P37 0
+BAGSORT
+BAGREF 1
+BREAK
+
+[@仓库权限不够]
+#IF
+TRUE
+#ACT
+FUNC 1 @仓库不够
+BREAK
+
+[@Lemon包裹1]
+#IF
+TRUE
+#ACT
+MOV N$包裹 1
+MOV N$包一字色 67
+MOV N$包二字色 91
+MOV N$包三字色 91
+OPENUI 2011 1
+
+#IF
+EQUAL N$回收功能 1
+#ACT
+DELAYGOTO 5 @Lemon回收XS
+BREAK
+
+
+[@Lemon包裹2]
+#IF
+TRUE
+#ACT
+MOV N$包裹 2
+MOV N$包一字色 91
+MOV N$包二字色 67
+MOV N$包三字色 91
+OPENUI 2012 1
+
+#IF
+EQUAL N$回收功能 1
+#ACT
+DELAYGOTO 5 @Lemon回收XS
+BREAK
+
+
+[@Lemon包裹3]
+#IF
+TRUE
+#ACT
+MOV N$包裹 3
+MOV N$包一字色 91
+MOV N$包二字色 91
+MOV N$包三字色 67
+OPENUI 2013 1
+
+#IF
+EQUAL N$回收功能 1
+#ACT
+DELAYGOTO 5 @Lemon回收XS
+BREAK
+
+
+[@飘屏提示开关]
+#IF
+CHECK [664] 1
+#ACT
+SET [664] 0
+CHANGEMODE 40 0
+BREAK
+#ELSEACT
+SET [664] 1
+CHANGEMODE 40 1
+BREAK
+
+}

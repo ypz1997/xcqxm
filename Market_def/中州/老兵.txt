@@ -1,0 +1,158 @@
+[@main]
+#IF
+TRUE
+#ACT
+GOTO @手游端
+
+[@手游端]
+; #IF
+; LARGE $CustomValue(42) 0
+; #ACT
+; MOV N$二大陆字色 67
+; #ELSEACT
+; MOV N$二大陆字色 10
+
+#IF
+!HasTask 6
+#SAY
+; <Img|width=460|height=162|scale9l=10|scale9t=10|scale9r=10|bg=1|scale=1|scale9b=10|img=public/bg_npc_01.png|esc=0>
+<Img|x=-0.0|y=163.0|width=400|height=240|esc=0|bg=1|img=public/bg_dialogue_01.png|scale=1>
+; <RText|x=22.0|y=43.0|color=255|size=18|text=<这差事可真无聊，天天站在这里风吹雨淋，请问你/FCOLOR=255>\<找我有什么事吗？/FCOLOR=255>>
+; <Button|x=408.0|y=-3.0|scale=1|mimg=public/btn_close_01.png|nimg=public/btn_close_01.png|pimg=public/btn_close_01.png|size=18|color=255|link=@exit>
+<Button|x=350.0|y=162.0|scale=1|mimg=public/btn_close_01.png|nimg=public/btn_close_01.png|pimg=public/btn_close_01.png|size=18|color=255|link=@exit>
+; <RText|x=295.0|y=97.0|color=255|size=18|text=<前往沙城/@去到沙城>>
+<Button|x=28.0|y=202.0|width=150|height=50|pimg=public/1900000663.png|size=22|color=67|nimg=public/1900000663.png|scale=1|mimg=public/1900000663.png|text=中州|link=@去一大陆>
+<Button|x=214.0|y=202.0|width=150|height=50|pimg=public/1900000663.png|size=22|color=67|nimg=public/1900000663.png|scale=1|mimg=public/1900000663.png|text=黄金城|link=@去二大陆>
+<Button|x=28.0|y=346.0|width=150|height=50|pimg=public/1900000663.png|size=22|color=67|nimg=public/1900000663.png|scale=1|mimg=public/1900000663.png|text=中州战场|link=@中州战场传送>
+<Button|x=214.0|y=276.0|width=150|height=50|pimg=public/1900000663.png|size=22|color=67|nimg=public/1900000663.png|scale=1|mimg=public/1900000663.png|text=沙城|link=@去到沙城>
+<Button|x=28.0|y=276.0|width=150|height=50|pimg=public/1900000663.png|size=22|color=67|nimg=public/1900000663.png|scale=1|mimg=public/1900000663.png|text=西域奇境|link=@去三大陆>
+
+#IF
+HasTask 6
+EQUAL $TASK(6) 1
+CHECKJOB Warrior
+#ACT
+MOV S$新手技能1 烈火剑法
+MOV S$新手技能2 突斩
+#IF
+HasTask 6
+EQUAL $TASK(6) 1
+CHECKJOB Wizard
+#ACT
+MOV S$新手技能1 冰咆哮
+MOV S$新手技能2 风影盾
+#IF
+HasTask 6
+EQUAL $TASK(6) 1
+CHECKJOB Taos
+#ACT
+MOV S$新手技能1 召唤神兽
+MOV S$新手技能2 解毒术
+#IF
+HasTask 6
+EQUAL $TASK(6) 1
+#SAY
+<Button|x=413.0|y=0.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|show=0|move=0|bg=1|loadDelay=1|img=public/bg_npc_01.png|esc=1|_localZOrder=-2|reset=1>
+<RText|x=25|y=20|text=少侠想必已经知道了传世大陆的凶险，我推\荐你去我老友处修行些保命技能吧！\\>
+<Text|x=25.0|y=80.0|color=215|text=任务奖励：<$STR(S$新手技能1)>    <$STR(S$新手技能2)>>
+<Img|x=25.0|y=120.0|width=10|height=10|img=private/xjty.png|esc=0>
+<RText|id=999|x=45.0|y=110.0|color=251|size=18|text=<修行技能/@修行技能>>
+<Layout|id=1|x=6.1|y=7.1|width=200|height=150|link=@修行技能>
+
+#IF
+HasTask 6
+EQUAL $TASK(6) 1
+#ACT
+Navigation 80 999 领悟技能#5053#5 0 0
+
+[@修行技能]
+#IF
+HasTask 6
+EQUAL $JOBID 0
+EQUAL $TASK(6) 1
+#ACT
+SetTaskValue 6 I8 = 197
+SetTaskValue 6 S8 = 突斩
+SetTaskValue 6 I9 = 197
+SetTaskValue 6 S9 = 烈火剑法
+UpdateTask 6 2
+GONPC 497 245
+BREAK
+CLOSE
+
+#IF
+HasTask 6
+EQUAL $JOBID 1
+EQUAL $TASK(6) 1
+#ACT
+SetTaskValue 6 I8 = 197
+SetTaskValue 6 S8 = 冰咆哮
+SetTaskValue 6 I9 = 197
+SetTaskValue 6 S9 = 风影盾
+UpdateTask 6 2
+GONPC 497 245
+BREAK
+CLOSE
+
+#IF
+HasTask 6
+EQUAL $JOBID 2
+EQUAL $TASK(6) 1
+#ACT
+SetTaskValue 6 I8 = 197
+SetTaskValue 6 S8 = 召唤神兽
+SetTaskValue 6 I9 = 197
+SetTaskValue 6 S9 = 解毒术
+UpdateTask 6 2
+GONPC 497 245
+BREAK
+CLOSE
+
+[@去到沙城]
+#IF
+TRUE
+#ACT
+MAPMOVE 3 210 420 1
+BREAK
+CLOSE
+
+[@去一大陆]
+#IF
+TRUE
+#ACT
+MAPMOVE 0 470 225 1
+BREAK
+CLOSE
+
+[@去二大陆]
+#IF
+; LARGE $CustomValue(42) 0
+TRUE
+#ACT
+MAPMOVE HJC0001 97 70 1
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 需要境界：一转
+BREAK
+
+[@去三大陆]
+#IF
+; LARGE $CustomValue(42) 0
+TRUE
+#ACT
+MAPMOVE 5 410 71 2
+BREAK
+CLOSE
+#ELSEACT
+SENDMSG 19 需要境界：一转
+BREAK
+
+[@中州战场传送]
+#IF
+TRUE
+#ACT
+SENDMSG 19 5555
+
+[@去四大陆]

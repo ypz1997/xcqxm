@@ -1,0 +1,475 @@
+[@MAIN]
+#IF
+TRUE
+#ACT
+GOTO @跳转魔体
+
+
+[@魔盾主界面]
+#IF
+TRUE
+#ACT
+SETEQUIPCFG 01110 1 1 175 17
+ReadRandomStr ..\QuestDiary\文本读取\魔盾属性.txt S$魔盾属性提取 <$CustomValue(4)>
+SPLIT <$STR(S$魔盾属性提取)> | S$魔盾属性显示
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 3
+#ACT
+MOV N$魔盾材料X标 89
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 4
+#ACT
+MOV N$魔盾材料X标 84
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 5
+#ACT
+MOV N$魔盾材料X标 79
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 6
+#ACT
+MOV N$魔盾材料X标 74
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 7
+#ACT
+MOV N$魔盾材料X标 69
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 8
+#ACT
+MOV N$魔盾材料X标 64
+
+#IF
+EQUAL <$INC.<$LENGTH.$ITEMVALSUM(魔盾精粹).DURA>.<$LENGTH.$STR(S$魔盾属性显示_6)>> 9
+#ACT
+MOV N$魔盾材料X标 59
+
+
+
+#IF
+!SMALL $ITEMVALSUM(魔盾精粹).DURA $STR(S$魔盾属性显示_6)
+#ACT
+MOV N$魔盾材料颜色 222
+; MOV S$魔盾红点1 <Img|id=mdhd|x=120.0|y=8.0|esc=0|img=picpackage/3/17173.png|scale=1>
+; MOV S$魔盾红点 <Img|id=mthd|x=30.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV N$魔盾材料颜色 249
+; MOV S$魔盾红点1 
+; MOV S$魔盾红点 
+;---------------------------------------------------------------------------------------盾牌图赋值-----------------------------------------------------------------------
+#IF
+SMALL <$CustomValue(4)> 8
+#ACT
+MOV N$魔盾图片展示 34381
+
+#IF
+SMALL <$CustomValue(4)> 15
+LARGE <$CustomValue(4)> 7
+#ACT
+MOV N$魔盾图片展示 34382
+
+#IF
+LARGE <$CustomValue(4)> 14
+#ACT
+MOV N$魔盾图片展示 34383
+
+#IF
+EQUAL <$CustomValue(4)> 0
+#ACT
+MOV S$魔盾按钮字 激　　活
+#ELSEACT
+MOV S$魔盾按钮字 升　　级
+
+
+#IF
+TRUE
+#SAY
+<Img|show=5|bg=1|img=picpackage/3/01110.png|esc=0>
+<Img|x=0.0|y=0.0|img=picpackage/3/01111.png|scale=1|esc=0>
+<Button|id=md1|x=520|y=-5.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@EXIT>
+<Img|id=md2|x=0.0|y=43.0|img=public/title.png|scale=1|esc=0>
+<RText|id=md3|x=67.0|y=43.0|size=18|color=67|text=<魔盾属性/FCOLOR=67>>
+<Img|id=md4|x=12.0|y=303.0|width=187|scale=1|img=private/f10/bg_aution_chosen.png|esc=0>
+<Img|id=md5|x=0.0|y=306.0|img=public/title.png|scale=1|esc=0>
+<RText|id=md6|x=67.0|y=306.0|size=18|color=255|text=<升级条件/FCOLOR=67>>
+<Img|id=md7|x=81.0|y=78.0|width=110|height=27|esc=0|img=private/f10/bg_progress_01.png|scale=1>
+<Img|id=md8|x=81.0|y=115.0|width=110|height=27|esc=0|img=private/f10/bg_progress_01.png|scale=1>
+<Img|id=md9|x=81.0|y=152.0|width=110|height=27|esc=0|img=private/f10/bg_progress_01.png|scale=1>
+<Img|id=md10|x=81.0|y=189.0|width=110|height=27|esc=0|img=private/f10/bg_progress_01.png|scale=1>
+<Img|id=md11|x=100.0|y=226.0|width=90|height=27|scale=1|img=private/f10/bg_progress_01.png|esc=0>
+<Img|id=md12|x=101.0|y=263.0|width=90|height=27|scale=1|img=private/f10/bg_progress_01.png|esc=0>
+<RText|id=md13|x=20.0|y=77.0|size=17|color=255|text=<攻　击/FCOLOR=67>>
+<RText|id=md14|x=20.0|y=114.0|size=17|color=255|text=<防　御/FCOLOR=67>>
+<RText|id=md15|x=20.0|y=151.0|size=17|color=255|text=<魔　御/FCOLOR=67>>
+<RText|id=md16|x=20.0|y=188.0|size=17|color=255|text=<格挡cd/FCOLOR=67>>
+<RText|id=md17|x=20.0|y=225.0|size=17|color=255|text=<抵扣比例/FCOLOR=67>>
+<RText|id=md18|x=20.0|y=262.0|size=17|color=255|text=<经验倍数/FCOLOR=67>>
+<RText|id=md13f|x=85|y=78.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_0)>/FCOLOR=67>>
+<RText|id=md14f|x=85|y=116.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_1)>/FCOLOR=67>>
+<RText|id=md15f|x=85|y=153.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_2)>/FCOLOR=67>>
+<RText|id=md16f|x=85|y=190.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_3)>/FCOLOR=67>>
+<RText|id=md17f|x=105.0|y=227.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_4)>%/FCOLOR=67>>
+<RText|id=md18f|x=105|y=264.0|size=18|color=255|text=<<$STR(S$魔盾属性显示_5)>/FCOLOR=67>>
+<Img|id=md19|x=74.0|y=364.0|img=private/f10/bg_roles_02.png|esc=0|scale=1>
+<ItemShow|id=md25|x=71.0|y=360.0|width=70|height=70|itemid=1177|itemcount=1|name=魔盾精粹|bgtype=1|showtips=1>
+<RText|id=md19f|x=<$STR(N$魔盾材料X标)>|y=430.0|color=255|size=18|text=<<$ITEMVALSUM(魔盾精粹).DURA>/<$STR(S$魔盾属性显示_6)>/FCOLOR=<$STR(N$魔盾材料颜色)>>>
+<RText|id=md20|x=45.0|y=470.0|size=18|color=255|text=<魔盾等级：/FCOLOR=67><<$CustomValue(4)>级/FCOLOR=222>>
+<Button|id=md21|x=85.0|y=217.0|mimg=private/f10/att_introduction.png|pimg=private/f10/att_introduction.png|scale=1|size=18|color=255|nimg=private/f10/att_introduction.png>
+<Button|id=md21f|x=85.0|y=254.0|mimg=private/f10/att_introduction.png|pimg=private/f10/att_introduction.png|scale=1|size=18|color=255|nimg=private/f10/att_introduction.png>
+<Button|id=md22|x=464.0|y=48.0|color=255|mimg=private/f10/moti/motizhuanhuan.png|scale=1|size=18|pimg=private/f10/moti/motizhuanhuan.png|nimg=private/f10/moti/motizhuanhuan.png|link=@魔体主界面>
+<Frames|id=md23|x=150.0|y=47.0|count=0|speed=20|loop=-1|prefix=private/f10/moti/<$STR(N$魔盾图片展示)>_|scale=1|suffix=.png>
+<Button|id=md24|children={mdhd}|x=314.0|y=455.0|mimg=public/btn_push_01.png|scale=1|nimg=public/btn_push_01.png|color=67|pimg=public/btn_push_01.png|size=20|text=<$STR(S$魔盾按钮字)>|link=@魔盾升级>
+<RText|id=md26|x=85.0|y=217.0|size=18|color=255|text=<color=~魔体值存在时，可额外#0xffffe600$增加魔体值抵扣比例#0xffffe600$ 　　>>
+<RText|id=md27|x=85.0|y=254.0|size=18|color=255|text=<color=~提升魔盾等级可额外#0xffffe600$获得魔体经验值#0xffffe600$ 　　>>
+
+[@魔体主界面]
+#IF
+TRUE
+#ACT
+GOTO @跳转魔体
+BREAK
+
+[@跳转魔体]
+;---------------------------------------------------------------------------------------变量清理-----------------------------------------------------------------------
+#IF
+TRUE
+#ACT
+MOV S$魔体等级图1 
+MOV S$魔体等级图2 
+MOV S$魔体等级图3 
+
+ReadRandomStr ..\QuestDiary\文本读取\魔盾属性.txt S$魔盾属性提取 <$CustomValue(4)>
+SPLIT <$STR(S$魔盾属性提取)> | S$魔盾属性显示
+
+; #IF
+; !SMALL $ITEMVALSUM(魔盾精粹).DURA $STR(S$魔盾属性显示_6)
+; #ACT
+; MOV S$魔体红点 <Img|id=mthd|x=30.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+; MOV S$魔体红点1 <Img|id=tzmd|x=50.0|y=10.0|esc=0|img=picpackage/3/17173.png|scale=1>
+; #ELSEACT
+; MOV S$魔体红点
+; MOV S$魔体红点1 
+
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\魔体升级经验.txt N$魔体经验1 <$CustomValue(0)>
+ChangeCustomValue 1 = <$STR(N$魔体经验1)>
+ReadRandomStr ..\QuestDiary\文本读取\魔体属性.txt N$魔体值显示 <$CustomValue(0)>
+
+#IF 
+SMALL <$CustomValue(2)> <$DIV.<$CustomValue(1)>.100>
+#ACT
+MOV N$魔体经验值显示 0
+#ELSEACT
+MOV N$魔体经验值显示 <$DIV.<$CustomValue(2)>.<$DIV.<$CustomValue(1)>.100>>
+
+
+;---------------------------------------------------------------------------------------坐标赋值-----------------------------------------------------------------------
+#IF
+SMALL $CustomValue(0) 121
+LARGE $CustomValue(0) 99
+#ACT
+MOV N$魔体图X标 132
+MOV N$魔体图3X标 78
+MOV N$魔体图2X标 44
+MOV N$魔体图1X标 13
+
+
+#IF
+SMALL $CustomValue(0) 100
+LARGE $CustomValue(0) 9
+#ACT
+MOV N$魔体图X标 119
+MOV N$魔体图3X标 65
+MOV N$魔体图2X标 31
+
+;---------------------------------------------------------------------------------------等级图片赋值-----------------------------------------------------------------------
+#IF
+SMALL $CustomValue(0) 10
+#ACT
+MOV S$魔体等级图3 <$CustomValue(0)>
+MOV N$魔体图X标 109
+MOV N$魔体图3X标 55
+
+#IF
+SMALL $CustomValue(0) 100
+LARGE $CustomValue(0) 9
+#ACT
+CopyText <$CustomValue(0)> 2 1 N$魔体个位
+CopyText <$CustomValue(0)> 1 1 N$魔体十位
+
+MOV S$魔体等级图2 <$STR(N$魔体十位)>
+MOV S$魔体等级图3 <$STR(N$魔体个位)>
+
+#IF
+SMALL $CustomValue(0) 121
+LARGE $CustomValue(0) 99
+#ACT
+CopyText <$CustomValue(0)> 3 1 N$魔体个位
+CopyText <$CustomValue(0)> 2 1 N$魔体十位
+CopyText <$CustomValue(0)> 1 1 N$魔体百位
+MOV S$魔体等级图1 <$STR(N$魔体百位)>
+MOV S$魔体等级图2 <$STR(N$魔体十位)>
+MOV S$魔体等级图3 <$STR(N$魔体个位)>
+
+;---------------------------------------------------------------------------------------免伤值赋值-----------------------------------------------------------------------
+#IF
+SMALL $CustomValue(0) 1
+#ACT
+MOV N$魔体免伤值显示 0
+
+#IF
+SMALL $CustomValue(0) 11
+#ACT
+MOV N$魔体免伤值显示 10
+
+#IF
+SMALL $CustomValue(0) 16
+LARGE $CustomValue(0) 10
+#ACT
+MOV N$魔体免伤值显示 11
+
+#IF
+SMALL $CustomValue(0) 26
+LARGE $CustomValue(0) 15
+#ACT
+MOV N$魔体免伤值显示 13
+
+#IF
+SMALL $CustomValue(0) 36
+LARGE $CustomValue(0) 25
+#ACT
+MOV N$魔体免伤值显示 15
+
+#IF
+SMALL $CustomValue(0) 46
+LARGE $CustomValue(0) 35
+#ACT
+MOV N$魔体免伤值显示 17
+
+#IF
+SMALL $CustomValue(0) 56
+LARGE $CustomValue(0) 45
+#ACT
+MOV N$魔体免伤值显示 20
+
+#IF
+SMALL $CustomValue(0) 66
+LARGE $CustomValue(0) 55
+#ACT
+MOV N$魔体免伤值显示 23
+
+#IF
+SMALL $CustomValue(0) 76
+LARGE $CustomValue(0) 65
+#ACT
+MOV N$魔体免伤值显示 27
+
+#IF
+SMALL $CustomValue(0) 91
+LARGE $CustomValue(0) 75
+#ACT
+MOV N$魔体免伤值显示 35
+
+#IF
+SMALL $CustomValue(0) 106
+LARGE $CustomValue(0) 90
+#ACT
+MOV N$魔体免伤值显示 40
+
+#IF
+SMALL $CustomValue(0) 121
+LARGE $CustomValue(0) 105
+#ACT
+MOV N$魔体免伤值显示 45
+
+;---------------------------------------------------------------------------------------盾牌图赋值-----------------------------------------------------------------------
+#IF
+SMALL <$CustomValue(4)> 8
+#ACT
+MOV N$魔体盾牌展示 34387
+
+#IF
+SMALL <$CustomValue(4)> 15
+LARGE <$CustomValue(4)> 7
+#ACT
+MOV N$魔体盾牌展示 34392
+
+#IF
+LARGE <$CustomValue(4)> 14
+#ACT
+MOV N$魔体盾牌展示 34397
+
+
+#IF
+TRUE
+#SAY
+<Img|show=5|bg=1|img=picpackage/3/01110.png|esc=0>
+<Button|id=mt1|x=520.0|y=-5.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@EXIT>
+<Img|id=mt2|x=0.0|y=43.0|img=public/title.png|scale=1|esc=0>
+<RText|id=mt3|x=67.0|y=43.0|size=18|color=67|text=<魔体属性/FCOLOR=67>>
+<Img|id=mt4|x=13.0|y=282.0|width=187|scale=1|img=private/f10/bg_aution_chosen.png|esc=0>
+<Img|id=mt5|x=1.0|y=285.0|img=public/title.png|scale=1|esc=0>
+<RText|id=mt6|x=71.0|y=285.0|size=18|color=255|text=<属性说明/FCOLOR=67>>
+<RText|id=mt7|x=34.0|y=327.0|size=18|color=255|text=<击杀怪物即可增加/FCOLOR=67>\<魔体经验/FCOLOR=67>\<在魔体值存在时受/FCOLOR=67>\<到的伤害优先从魔/FCOLOR=67>\<体值扣除/FCOLOR=67>>
+<Img|id=mt8|x=78.0|y=166.0|width=110|height=27|img=private/f10/bg_progress_01.png|esc=0|scale=1>
+<Img|id=mt9|x=78.0|y=203.0|width=110|height=27|img=private/f10/bg_progress_01.png|esc=0|scale=1>
+<Img|id=mt10|x=78.0|y=240.0|width=110|height=27|img=private/f10/bg_progress_01.png|esc=0|scale=1>
+<RText|id=mt11|x=20.0|y=165.0|size=17|color=255|text=<经验值/FCOLOR=67>>
+<RText|id=mt12|x=20.0|y=202.0|size=18|color=255|text=<魔体值/FCOLOR=67>>
+<RText|id=mt13|x=20.0|y=239.0|size=18|color=255|text=<减伤比/FCOLOR=67>>
+<RText|id=mt11f|x=82|y=166.0|color=255|size=18|text=<<$STR(N$魔体经验值显示)>%/FCOLOR=67>>
+<RText|id=mt12f|x=82|y=203.0|color=255|size=18|text=<<$STR(N$魔体值显示)>/FCOLOR=67>>
+<RText|id=mt13f|x=82|y=240.0|color=255|size=18|text=<<$STR(N$魔体免伤值显示)>%/FCOLOR=67>>
+<Img|id=mt14|x=<$STR(N$魔体图X标)>|y=94.0|img=private/shenxiongqi/word_devildom_02.png|scale=1|esc=0>
+<Img|id=mt15|x=<$STR(N$魔体图3X标)>|y=87.0|img=public/shu<$STR(S$魔体等级图3)>.png|scale=1|esc=0>
+<Img|id=mt16|x=<$STR(N$魔体图2X标)>|y=87.0|img=public/shu<$STR(S$魔体等级图2)>.png|scale=1|esc=0>
+<Img|id=mt16f|x=<$STR(N$魔体图1X标)>|y=87.0|img=public/shu<$STR(S$魔体等级图1)>.png|scale=1|esc=0>
+<Button|id=mt17|children={tzmd}|x=464.0|y=48.0|color=255|mimg=private/f10/moti/modunzhuanhuan.png|scale=1|size=18|pimg=private/f10/moti/modunzhuanhuan.png|nimg=private/f10/moti/modunzhuanhuan.png|link=@魔盾主界面>
+<Img|id=mt18|x=296.0|y=124.0|img=private/f10/moti/nanmoti.png|esc=0|scale=1>
+<Frames|id=mt19|x=120.0|y=-4.0|count=0|speed=20|loop=-1|prefix=private/f10/moti/26522_|scale=1|suffix=.png>
+<Frames|id=mt20|x=180.0|y=64.0|width=400|height=400|speed=20|count=10|scale=1|prefix=private/f10/moti/<$STR(N$魔体盾牌展示)>_|loop=-1|suffix=.png>
+
+#IF
+SMALL $CustomValue(0) 120
+#ACT
+ReadRandomStr ..\QuestDiary\读取数据\魔体所需消耗.txt S$魔体_消耗数据 <$CustomValue(0)>
+SPLIT <$STR(S$魔体_消耗数据)> | S$魔体_货币数据
+
+#IF
+SMALL <$MONEY(1)> <$STR(S$魔体_货币数据_0)>
+#ACT
+MOV N$魔体升级颜色1 58
+#ELSEACT
+MOV N$魔体升级颜色1 218
+
+
+#IF
+SMALL <$INC.<$MONEY(2)>.<$MONEY(4)>> <$STR(S$魔体_货币数据_1)>
+#ACT
+MOV N$魔体升级颜色2 58
+#ELSEACT
+MOV N$魔体升级颜色2 218
+
+#IF
+SMALL $CustomValue(0) 120
+LARGE $CustomValue(0) 9
+#SAY
+<Text|children=2|x=369.0|y=384.0|size=18|color=<$STR(N$魔体升级颜色2)>|loadDelay=0|text=<$STR(S$魔体_货币数据_1)>>
+<ItemShow|id=2|x=-44.0|y=-8.0|width=40|height=40|itemid=<$STDITEM[元宝].LOOKS>|itemcount=1|name=元宝|showtips=1|bgtype=1>
+<Text|children=1|x=369.0|y=414.0|size=18|color=<$STR(N$魔体升级颜色1)>|loadDelay=0|text=<$STR(S$魔体_货币数据_0)>>
+<ItemShow|id=1|x=-44.0|y=-8.0|width=40|height=40|itemid=<$STDITEM[金币].LOOKS>|itemcount=1|name=金币|showtips=1|bgtype=1>
+<Button|x=324.0|y=442.0|bag=0|scale=1|nimg=public/btn_push_10.png|color=67|size=18|text=点击升级|link=@魔体付费升级>
+
+#IF
+SMALL $CustomValue(0) 10
+#SAY
+<Text|children=1|x=369.0|y=414.0|size=18|color=<$STR(N$魔体升级颜色1)>|loadDelay=0|text=<$STR(S$魔体_货币数据_0)>>
+<ItemShow|id=1|x=-44.0|y=-8.0|width=40|height=40|itemid=<$STDITEM[金币].LOOKS>|itemcount=1|name=金币|showtips=1|bgtype=1>
+<Button|x=324.0|y=442.0|bag=0|scale=1|nimg=public/btn_push_10.png|color=67|size=18|text=点击升级|link=@魔体免费升级>
+
+[@魔体免费升级]
+#IF
+SMALL $CustomValue(2) 120
+#ACT
+SENDMSG 19 魔体已满级
+BREAK
+
+#IF
+SMALL $CustomValue(2) $CustomValue(1)
+#ACT
+SENDMSG 19 魔体经验不足
+BREAK
+
+#IF
+SMALL <$MONEY(1)> <$STR(S$魔体_货币数据_0)>
+#ACT
+SENDMSG 19 升级需要<$STR(S$魔体_货币数据_0)>金币
+#ELSEACT
+MONEY 1 - <$STR(S$魔体_货币数据_0)>
+
+#IF
+!SMALL $CustomValue(2) $CustomValue(1)
+#ACT
+changeCustomValue 0 + 1
+changeCustomValue 2 - $CustomValue(1)
+ReadRandomStr ..\QuestDiary\文本读取\魔体升级经验.txt N$魔体经验1 <$CustomValue(0)>
+ChangeCustomValue 1 = <$STR(N$魔体经验1)>
+SENDMSG 19 升级成功
+GOTO @跳转魔体
+BREAK
+
+[@魔体升级]
+#IF
+SMALL $CustomValue(2) 120
+#ACT
+SENDMSG 19 魔体已满级
+BREAK
+
+#IF
+SMALL $CustomValue(2) $CustomValue(1)
+#ACT
+SENDMSG 19 魔体经验不足
+BREAK
+
+#IF
+SMALL <$MONEY(1)> <$STR(S$魔体_货币数据_0)>
+#ACT
+SENDMSG 19 升级需要<$STR(S$魔体_货币数据_0)>金币
+BREAK
+
+#IF
+SMALL <$INC.<$MONEY(2)>.<$MONEY(4)>> <$STR(S$魔体_货币数据_1)>
+#ACT
+SENDMSG 19 升级需要<$STR(S$魔体_货币数据_1)>元宝
+BREAK
+
+#IF
+!SMALL <$MONEY(4)> <$STR(S$魔体_货币数据_1)>
+#ACT
+MONEY 4 - <$STR(S$魔体_货币数据_1)>
+#ELSEACT
+MONEY 2 - <$DEC.<$STR(S$魔体_货币数据_1)>.<$MONEY(4)>>
+MONEY 4 - <$MONEY(4)>
+
+#IF
+!SMALL <$MONEY(1)> <$STR(S$魔体_货币数据_0)>
+#ACT
+MONEY 1 - <$STR(S$魔体_货币数据_0)>
+
+#IF
+!SMALL $CustomValue(2) $CustomValue(1)
+#ACT
+changeCustomValue 0 + 1
+changeCustomValue 2 - $CustomValue(1)
+ReadRandomStr ..\QuestDiary\文本读取\魔体升级经验.txt N$魔体经验1 <$CustomValue(0)>
+ChangeCustomValue 1 = <$STR(N$魔体经验1)>
+SENDMSG 19 升级成功
+; func 1 @临时属性
+GOTO @跳转魔体
+BREAK
+
+[@魔盾升级]
+#IF
+LARGE <$CustomValue(4)> 19
+#ACT
+SENDMSG 19 魔盾等级已满级，无法提升！
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(魔盾精粹).DURA <$STR(S$魔盾属性显示_6)>
+#ACT
+SENDMSG 19 魔盾精粹不足<$STR(S$魔盾属性显示_6)>个，无法提升！
+BREAK
+#ELSEACT
+TAKE 魔盾精粹 <$STR(S$魔盾属性显示_6)>
+ChangeCustomValue 4 + 1
+GOTO @魔盾主界面
+GOTO @临时属性
+GOTO @F10界面红点判断
+BREAK

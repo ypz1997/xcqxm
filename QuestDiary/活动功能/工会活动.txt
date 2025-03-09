@@ -1,0 +1,565 @@
+[@工会活动]
+{
+
+[@LemonGHYM]
+#IF
+TRUE
+#SAY
+<Img|x=120.0|y=30.0|move=0|img=public/frame_squared_outside.png|loadDelay=0|bg=1|move=2|children=<yd1,yd2,yd3,yd4,yd5,yd6,yd7,yd8,yd9,yd10,yd11,yd12,yd13,yd14,yd15,yd16,yd17,yd18,yd19,yd20,yd21,yd21,yd22,yd23,yd24,yd25,yd26,yd27,yd28,yd29,yd30,yd31,yd32,yd33,yd34,yd35,yd36,yd37,yd38,yd39,yd40,yd41,yd42,yd43,yd44,yd45,yd46,yd47,yd48,yd49,yd50>>
+<Button|x=807.0|y=0.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit|id=yd1>
+<Img|x=22.0|y=43.0|img=private/gonghuizhan/gonghuizhanmb.png|id=yd2>
+<Text|x=386.0|y=7.0|color=67|size=22|text=工会战争|id=yd3>
+<Text|x=386.0|y=7.0|color=67|size=22|text=工会战争|id=yd4>
+;--------------------
+<Text|x=675.0|y=80.0|color=67|size=18|text=活动说明|id=yd5>
+;=========================================================
+<ItemShow|x=190.0|y=103.0|itemid=26900|itemcount=1000|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=public\frame_charge_tiem.png|id=yd6>
+<ItemShow|x=260.0|y=103.0|itemid=1493|itemcount=15|name=灵兽精粹|bgtype=1|showtips=1|scale=1||bgtype=public\frame_charge_tiem.png|id=yd7>
+<ItemShow|x=360.0|y=103.0|itemid=51051|itemcount=1|name=100米充值3折券|bgtype=1|showtips=1|scale=0.8|bgtype=public\frame_charge_tiem.png|id=yd8>
+<ItemShow|x=430.0|y=103.0|itemid=51046|itemcount=2|name=5米充值代金券|bgtype=1|showtips=1|scale=0.8||bgtype=public\frame_charge_tiem.png|id=yd9>
+;-------
+<ItemShow|x=190.0|y=163.0|itemid=26900|itemcount=600|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=public\frame_charge_tiem.png|id=yd10>
+<ItemShow|x=260.0|y=163.0|itemid=1493|itemcount=6|name=灵兽精粹|bgtype=1|showtips=1|scale=1||bgtype=public\frame_charge_tiem.png|id=yd11>
+<ItemShow|x=360.0|y=163.0|itemid=51046|itemcount=2|name=5米充值代金券|bgtype=1|showtips=1|scale=0.8|bgtype=public\frame_charge_tiem.png|id=yd12>
+;-------
+<ItemShow|x=190.0|y=220.0|itemid=26900|itemcount=300|name=绑定元宝|bgtype=1|showtips=1|scale=1|bgtype=public\frame_charge_tiem.png|id=yd13>
+<ItemShow|x=260.0|y=220.0|itemid=1493|itemcount=6|name=灵兽精粹|bgtype=1|showtips=1|scale=1||bgtype=public\frame_charge_tiem.png|id=yd14>
+<ItemShow|x=360.0|y=220.0|itemid=51046|itemcount=1|name=5米充值代金券|bgtype=1|showtips=1|scale=0.8|bgtype=public\frame_charge_tiem.png|id=yd15>
+;-------
+<ItemShow|x=190.0|y=278.0|itemid=1493|itemcount=3|name=灵兽精粹|bgtype=1|showtips=1|scale=1|bgtype=public\frame_charge_tiem.png|id=yd16>
+<ItemShow|x=360.0|y=278.0|itemid=51043|itemcount=3|name=1米充值代金券|bgtype=1|showtips=1|scale=0.8|bgtype=public\frame_charge_tiem.png|id=yd17>
+;=========================================================
+<Text|x=600.0|y=120.0|color=67|size=18|text=通过采集宝箱/击杀地方行会|id=yd18>
+;------------
+<Text|x=600.0|y=160.0|color=67|size=18|text=活动时间结束或某一个行会|id=yd19>
+<Text|x=600.0|y=185.0|color=67|size=18|text=积分达到200时根据排行榜|id=yd20>
+<Text|x=600.0|y=210.0|color=67|size=18|text=发放奖励|id=yd21>
+;------------
+<Text|x=600.0|y=250.0|color=67|size=18|text=采集大型宝箱后需将令旗带|id=yd22>
+<Text|x=600.0|y=275.0|color=67|size=18|text=回复活点后获得积分|id=yd23>
+;------------
+<Text|x=600.0|y=315.0|color=67|size=18|text=击杀敌方玩家获得3积分|id=yd24>
+<Text|x=600.0|y=340.0|color=67|size=18|text=连杀获得额外积分|id=yd25>
+<Text|x=600.0|y=365.0|color=67|size=18|text=击杀携带令旗的玩家获得10|id=yd26>
+<Text|x=600.0|y=390.0|color=67|size=18|text=积分|id=yd27>
+;=========================================================
+<Button|x=650.0|y=454.0|color=67|scale=1|size=20|nimg=public/button/btn_push_01.png|pimg=public/button/btn_push_01.png|text=立即参与|link=@Lemon参与2|id=yd28>
+
+
+
+[@Lemon参与2]
+#IF
+!EQUAL G$Lemon活动 2
+#ACT
+MESSAGEBOX 活动已结束!
+BREAK
+
+#IF
+SMALL $LEVEL 60
+#ACT
+MESSAGEBOX 等级不足60级,暂时无法参加此活动!
+BREAK
+
+#IF
+EQUAL $GUILDNAME 无
+#ACT
+MESSAGEBOX 你没有行会,无法参加此活动!!
+BREAK
+#IF
+Random 1 2
+#ACT
+MAPMOVE GHZZ 20 62 2
+GOTO @Lemon工会PH
+SENDMSG 16 勇士<%s>进入了<%m>....
+BREAK
+#ELSEACT
+MAPMOVE GHZZ 48 32 2
+GOTO @Lemon工会PH
+SENDMSG 16 勇士<%s>进入了<%m>....
+BREAK
+
+
+
+;--------------------------倒计时提示
+[@LemonGHZB]
+#IF
+TRUE
+#ACT
+SENDMSG 19 活动将在计时结束后开始!
+BREAK
+
+;--------------------------工会活动进行显示
+[@LemonGHXS]
+#IF
+!EQUAL $M GHZZ
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6619.png|nimg=picpackage/3/6619.png|link=@LemonGHYM>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$工会战时间).$LONGDATE>|link=@LemonGHJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+;--------------------------自动关闭工会战图标
+[@LemonGHJS]
+#IF
+TRUE
+#ACT
+SENDUI 104
+BREAK
+
+
+;--------------------------工会战排行榜切换
+[@LemonGHPH]
+#IF
+EQUAL N$Lemon排行 1
+#ACT
+MOV N$Lemon排行 0
+HCALL $USERNAME @Lemon工会PH
+BREAK
+#ELSEACT
+MOV N$Lemon排行 1
+;-----------------------------------------------此处写两行是为了即时刷新排行数据
+HCALL $USERNAME @Lemon工会PH
+HCALL $USERNAME @Lemon工会PH
+BREAK
+
+
+
+
+
+
+
+[@Lemon工会积分]
+
+#IF
+SMALL $SCRIPTPARAM(1) 3
+#ACT
+SENDMSG 5 积分错误!
+BREAK
+
+#IF
+!CHECKVARLIST $GUILDNAME ..\QUESTDIARY\游戏数据\工会战行会.txt
+#ACT
+ADDVARLIST $GUILDNAME ..\QUESTDIARY\游戏数据\工会战行会.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+
+#IF
+POSINLIST |<$GUILDNAME>| ..\QUESTDIARY\游戏数据\工会战排行.txt S0
+#ACT
+SPLIT $STR(S0) | S1
+DELVARLIST $STR(S0) ..\QUESTDIARY\游戏数据\工会战排行.txt
+ADDVARLIST |<$GUILDNAME>|<$INC.$STR(S2).$SCRIPTPARAM(1)> ..\QUESTDIARY\游戏数据\工会战排行.txt
+#ELSEACT
+ADDVARLIST |<$GUILDNAME>|<$SCRIPTPARAM(1)> ..\QUESTDIARY\游戏数据\工会战排行.txt
+
+#IF
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt S0
+#ACT
+SPLIT $STR(S0) | S1
+DELVARLIST $STR(S0) ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+ADDVARLIST |<$USERNAME>|<$INC.$STR(S2).$SCRIPTPARAM(1)> ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+#ELSEACT
+ADDVARLIST |<$USERNAME>|<$SCRIPTPARAM(1)> ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+
+
+#IF
+TRUE
+#ACT
+MOV N$Lemon工会积分 0
+;---------------------------------此处写两行是为了即时刷新排行数据
+GOTO @Lemon工会PH 3
+GOTO @Lemon工会PH 3
+BREAK
+
+
+
+
+
+;=========================================================工会战争QM跳转
+[@Lemon活动TZ2]
+#IFONE
+!EQUAL G$Lemon活动 2
+SMALL G$工会战时间 $LONGDATE
+EQUAL $M GHZZ
+#ACT
+BREAK
+
+#IF
+LARGE $DEC.$STR(G$工会战时间).$LONGDATE 1800
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6619.png|nimg=picpackage/3/6619.png|link=@LemonGHZB|UiLevel=0>
+INC S$Lemon活动 <TIMETIPS|x=315|y=80.0|color=222|size=18|time=<$DEC^$DEC.$STR(G$工会战时间).$LONGDATE^1800>|link=@LemonGHXS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+#ELSEACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6619.png|nimg=picpackage/3/6619.png|link=@LemonGHYM|UiLevel=0>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$工会战时间).$LONGDATE>|link=@LemonGHJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+
+
+[@Lemon工会PH]
+#IF
+EQUAL N$Lemon排行 0
+#ACT
+MOV S$Lemon活动 <Button|x=-280.0|y=-310.0|pimg=private/jiqingkaohuo/icon_guild_rank.png|nimg=private/jiqingkaohuo/icon_guild_rank.png|link=@LemonGHPH|UiLevel=1>
+SENDUI 105 $STR(S$Lemon活动)
+BREAK
+#ELSEACT
+MOV S$Lemon活动 <Img|x=-567.0|y=-317.0|bg=1|img=private/gonghuizhan/bg_charge_item_06.png|loadDelay=0>
+INC S$Lemon活动 <Img|x=-457.0|y=-302.0|img=private/gonghuizhan/word_title_rank.png>
+INC S$Lemon活动 <Text|x=-545.0|y=-267.0|color=67|size=18|text=名次　行会　　　　#32积分>
+INC S$Lemon活动 <Button|x=-357.0|y=-72.0|pimg=private/jiqingkaohuo/btn_growbook_01.png|nimg=private/jiqingkaohuo/btn_growbook_01.png|link=@LemonGHPH>
+INC S$Lemon活动 <RText|x=-547.0|y=-62.0|color=67|size=18|text=我的排名#32<<$STR(S33)>/FCOLOR=255>>
+INC S$Lemon活动 <ListView|children=<ph1,ph2,ph3,ph4,ph5,ph6,ph7,ph8,ph9,ph10>|direction=1|x=-550.0|y=-230.0|width=220|height=145|reload=1|margin=5|loadDelay=0|img=public/9998.png>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02196.png|id=ph1|children=<ph1a1,ph1a2,ph1a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02197.png|id=ph2|children=<ph2a1,ph2a2,ph2a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02198.png|id=ph3|children=<ph3a1,ph3a2,ph3a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02199.png|id=ph4|children=<ph4a1,ph4a2,ph4a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02200.png|id=ph5|children=<ph5a1,ph5a2,ph5a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02201.png|id=ph6|children=<ph6a1,ph6a2,ph6a3>>
+INC S$Lemon活动 <Img|x=0.0|y=0.0|width=40|height=50|img=private/jishaboss/res.02202.png|id=ph7|children=<ph7a1,ph7a2,ph7a3>>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S11)>|id=ph1a1>
+INC S$Lemon活动 <Text|x=180.0|y=10.0|color=255|size=18|text=<$STR(S12)>|id=ph1a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S21)>|id=ph2a1>
+INC S$Lemon活动 <Text|x=180.0|y=10.0|color=255|size=18|text=<$STR(S22)>|id=ph2a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S31)>|id=ph3a1>
+INC S$Lemon活动 <Text|x=180.0|y=10.0|color=255|size=18|text=<$STR(S32)>|id=ph3a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S41)>|id=ph4a1>
+INC S$Lemon活动 <Text|x=180.0|y=10.0|color=255|size=18|text=<$STR(S42)>|id=ph4a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S51)>|id=ph5a1>
+INC S$Lemon活动 <Text|x=180.0|y=10.0|color=255|size=18|text=<$STR(S52)>|id=ph5a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S61)>|id=ph6a1>
+INC S$Lemon活动 <Text|x=180.0|y=10.0|color=255|size=18|text=<$STR(S62)>|id=ph6a2>
+INC S$Lemon活动 <Text|x=50.0|y=10.0|color=255|size=18|text=<$STR(S71)>|id=ph7a1>
+INC S$Lemon活动 <Text|x=180.0|y=10.0|color=255|size=18|text=<$STR(S72)>|id=ph7a2>
+CLEARVAR S1 99
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S1 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S2 1 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S3 2 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S4 3 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S5 4 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S6 5 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S7 6 0 2 |
+
+#IF
+POS $STR(S1) |
+#ACT
+SPLIT $STR(S1) | S11
+#IF
+POS $STR(S2) |
+#ACT
+SPLIT $STR(S2) | S21
+#IF
+POS $STR(S3) |
+#ACT
+SPLIT $STR(S3) | S31
+#IF
+POS $STR(S4) |
+#ACT
+SPLIT $STR(S4) | S41
+#IF
+POS $STR(S5) |
+#ACT
+SPLIT $STR(S5) | S51
+#IF
+POS $STR(S6) |
+#ACT
+SPLIT $STR(S6) | S61
+#IF
+POS $STR(S7) |
+#ACT
+SPLIT $STR(S7) | S71
+
+#IF
+EQUAL S11 $GUILDNAME
+#ACT
+MOV S33 1
+#IF
+EQUAL S21 $GUILDNAME
+#ACT
+MOV S33 2
+#IF
+EQUAL S31 $GUILDNAME
+#ACT
+MOV S33 3
+#IF
+EQUAL S41 $GUILDNAME
+#ACT
+MOV S33 4
+#IF
+EQUAL S51 $GUILDNAME
+#ACT
+MOV S33 5
+#IF
+EQUAL S61 $GUILDNAME
+#ACT
+MOV S33 6
+#IF
+EQUAL S71 $GUILDNAME
+#ACT
+MOV S33 7
+
+#IF
+!EQUAL S11 $GUILDNAME
+!EQUAL S21 $GUILDNAME
+!EQUAL S31 $GUILDNAME
+!EQUAL S41 $GUILDNAME
+!EQUAL S51 $GUILDNAME
+!EQUAL S61 $GUILDNAME
+!EQUAL S71 $GUILDNAME
+#ACT
+MOV S33 未上榜
+
+#IF
+TRUE
+#ACT
+SENDUI 105 $STR(S$Lemon活动)
+
+
+
+[@Lemon工会结束]
+#IF
+EQUAL $M GHZZ
+#ACT
+MAPMOVE 0 475 219 3
+SENDMSG 5 工会战争已经结束了!!
+
+#IF
+TRUE
+#ACT
+SENDUI 105
+SENDUI 104
+CLEARVAR S1 10
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S1 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S2 1 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S3 2 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S4 3 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S5 4 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S6 5 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S7 6 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S8 7 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S9 8 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S10 9 0 2 |
+
+#IF
+POS $STR(S1) |
+#ACT
+GETVALIDSTR $STR(S1) | S1 P1
+#IF
+POS $STR(S2) |
+#ACT
+GETVALIDSTR $STR(S2) | S2 P1
+#IF
+POS $STR(S3) |
+#ACT
+GETVALIDSTR $STR(S3) | S3 P1
+#IF
+POS $STR(S4) |
+#ACT
+GETVALIDSTR $STR(S4) | S4 P1
+#IF
+POS $STR(S5) |
+#ACT
+GETVALIDSTR $STR(S5) | S5 P1
+#IF
+POS $STR(S6) |
+#ACT
+GETVALIDSTR $STR(S6) | S6 P1
+#IF
+POS $STR(S7) |
+#ACT
+GETVALIDSTR $STR(S7) | S7 P1
+#IF
+POS $STR(S8) |
+#ACT
+GETVALIDSTR $STR(S8) | S8 P1
+#IF
+POS $STR(S9) |
+#ACT
+GETVALIDSTR $STR(S9) | S9 P1
+#IF
+POS $STR(S10) |
+#ACT
+GETVALIDSTR $STR(S10) | S10 P1
+
+;-------------------第1名会长 且参与了工会战获得了积分
+#IF
+IsGuildMaster
+EQUAL S1 $GUILDNAME
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+#ACT
+MailGIve 100米充值3折券 1 1
+MailGive 5米充值代金券 2 1
+MailGive 灵兽精粹 15 1
+MailGive 绑定元宝 1000 1
+SENDMAIL 44 行会战争奖励 恭喜您的行会在本次行会战争中,获得第一名，请点提取获取奖励!您是行会会长,额外获得奖励
+SENDMSG 16 工会战争:恭喜<%s>成功获得行会战争工会第一名奖励
+GOTO @Lemon工会结算
+BREAK
+;-------------------第1名行会 且参与了工会战获得了积分
+#IF
+!IsGuildMaster
+EQUAL S1 $GUILDNAME
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+#ACT
+MailGive 绑定元宝 1000 1
+MailGive 灵兽精粹 15 1
+SENDMAIL 44 行会战争奖励 恭喜您的行会在本次行会战争中,获得第一名，请点提取获取奖励!
+SENDMSG 16 工会战争:恭喜<%s>成功获得行会战争工会第一名奖励
+GOTO @Lemon工会结算
+BREAK
+
+;-------------------第2名会长 且参与了工会战获得了积分
+#IF
+IsGuildMaster
+EQUAL S2 $GUILDNAME
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+#ACT
+MailGive 5米充值代金券 2 1
+MailGive 灵兽精粹 6 1
+MailGive 绑定元宝 600 1
+SENDMAIL 44 行会战争奖励 恭喜您的行会在本次行会战争中,获得第2名，请点提取获取奖励!您是行会会长,额外获得奖励
+SENDMSG 16 工会战争:恭喜<%s>成功获得行会战争工会第2名奖励
+GOTO @Lemon工会结算
+BREAK
+;-------------------第2名行会 且参与了工会战获得了积分
+#IF
+!IsGuildMaster
+EQUAL S2 $GUILDNAME
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+#ACT
+MailGive 绑定元宝 600 1
+MailGive 灵兽精粹 6 1
+SENDMAIL 44 行会战争奖励 恭喜您的行会在本次行会战争中,获得第2名，请点提取获取奖励!
+SENDMSG 16 工会战争:恭喜<%s>成功获得行会战争工会第2名奖励
+GOTO @Lemon工会结算
+BREAK
+
+;-------------------第3名会长 且参与了工会战获得了积分
+#IF
+IsGuildMaster
+EQUAL S3 $GUILDNAME
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+#ACT
+MailGive 5米充值代金券 1 1
+MailGive 灵兽精粹 6 1
+MailGive 绑定元宝 300 1
+SENDMAIL 44 行会战争奖励 恭喜您的行会在本次行会战争中,获得第3名，请点提取获取奖励!您是行会会长,额外获得奖励
+SENDMSG 16 工会战争:恭喜<%s>成功获得行会战争工会第3名奖励
+GOTO @Lemon工会结算
+BREAK
+;-------------------第3名行会 且参与了工会战获得了积分
+#IF
+!IsGuildMaster
+EQUAL S3 $GUILDNAME
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+#ACT
+MailGive 绑定元宝 300 1
+MailGive 灵兽精粹 6 1
+SENDMAIL 44 行会战争奖励 恭喜您的行会在本次行会战争中,获得第3名，请点提取获取奖励!
+SENDMSG 16 工会战争:恭喜<%s>成功获得行会战争工会第3名奖励
+GOTO @Lemon工会结算
+BREAK
+
+;-------------------第4-6名会长 且参与了工会战获得了积分
+#IF
+IsGuildMaster
+POS -<$STR(S4)>-<$STR(S5)>-<$STR(S6)>-<$STR(S7)>-<$STR(S8)>-<$STR(S9)>-<$STR(S10)>- -<$GUILDNAME>-
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+#ACT
+MailGive 1米充值代金券 3 1
+MailGive 灵兽精粹 3 1
+SENDMAIL 44 行会战争奖励 恭喜您的行会在本次行会战争中,获得第4-6名，请点提取获取奖励!
+SENDMSG 16 工会战争:恭喜<%s>成功获得行会战争工会第4-6名奖励
+GOTO @Lemon工会结算
+BREAK
+;-------------------第4-6名行会 且参与了工会战获得了积分
+#IF
+!IsGuildMaster
+POS -<$STR(S4)>-<$STR(S5)>-<$STR(S6)>-<$STR(S7)>-<$STR(S8)>-<$STR(S9)>-<$STR(S10)>- -<$GUILDNAME>-
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt
+#ACT
+MailGive 灵兽精粹 3 1
+SENDMAIL 44 行会战争奖励 恭喜您的行会在本次行会战争中,获得第4-6名，请点提取获取奖励!
+SENDMSG 16 工会战争:恭喜<%s>成功获得行会战争工会第4-6名奖励
+GOTO @Lemon工会结算
+BREAK
+
+
+[@Lemon工会结算]
+#IF
+TRUE
+#SAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=186.0|y=66.0|bg=1|loadDelay=0|move=0|img=private/gonghuizhan/gonghuizhanzongjie.png|link=@exit>
+<Button|x=789.0|y=109.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+;===========================================================================
+<Button|x=312.0|y=220.0|color=255|size=20|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=<$STR(P2)>>
+<Button|x=507.0|y=215.0|color=255|size=20|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=<$STR(P1)>>
+<Button|x=700.0|y=220.0|color=255|size=20|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=<$STR(P3)>>
+<Button|x=312.0|y=270.0|color=255|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=<$STR(S2)>>
+<Button|x=505.0|y=265.0|color=255|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=<$STR(S1)>>
+<Button|x=700.0|y=270.0|color=255|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=<$STR(S3)>>
+;===========================================================================
+<RText|x=424.0|y=364.0|color=67|size=18|text=我的排名:<<$STR(S4)>/FCOLOR=222>　　得分:<<$STR(P0)>/FCOLOR=222>>
+#ACT
+CLEARVAR S0 4
+CLEARVAR P0 4
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt S1 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt S2 1 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt S3 2 0 2 |
+
+#IF
+POS $STR(S1) |
+#ACT
+GETVALIDSTR $STR(S1) | S1 P1
+#ELSEACT
+MOV S1 无
+MOV P1 0
+#IF
+POS $STR(S2) |
+#ACT
+GETVALIDSTR $STR(S2) | S2 P2
+#ELSEACT
+MOV S2 无
+MOV P2 0
+#IF
+POS $STR(S3) |
+#ACT
+GETVALIDSTR $STR(S3) | S3 P3
+#ELSEACT
+MOV S3 无
+MOV P3 0
+
+#IF
+POSINLIST |<$USERNAME>| ..\QUESTDIARY\游戏数据\工会战数据\<$GUILDNAME>.txt S0
+#ACT
+GETVALIDSTR $STR(S0) | S0 P0
+#ELSEACT
+MOV P0 0
+
+#IF
+EQUAL S1 $USERNAME
+#ACT
+MOV S4 1
+BREAK
+
+#IF
+EQUAL S2 $USERNAME
+#ACT
+MOV S4 2
+BREAK
+
+#IF
+EQUAL S3 $USERNAME
+#ACT
+MOV S4 3
+BREAK
+#ELSEACT
+MOV S4 未上榜
+BREAK
+
+
+
+
+
+}

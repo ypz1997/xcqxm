@@ -1,0 +1,154 @@
+[@包裹红点判断]
+{
+#IF
+TRUE
+#ACT
+MOV N$遍历判断序列号 
+LoopBagItems @开始遍历判断 N$遍历判断序列号
+BREAK
+
+[@开始遍历判断]
+;--------------技能书红点
+#IF
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].STDMODE 4
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].VALUEEX(173) 1
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 0
+
+#IF
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].STDMODE 4
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].SHAPE $JOBID
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].ANICOUNT 1003
+!CHECKMAGIC $ITEMINFO[$STR(N$遍历判断序列号)].STDNAME
+!SMALL $LEVEL $ITEMINFO[$STR(N$遍历判断序列号)].DuraMax
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+
+#IF
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].STDMODE 4
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].SHAPE $JOBID
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].ANICOUNT 1004
+#ACT
+MOV S$剥离后技能名 $ITEMINFO[$STR(N$遍历判断序列号)].STDNAME
+ReplaceText S$剥离后技能名 (
+ReplaceText S$剥离后技能名 级)
+ReplaceText S$剥离后技能名 专家
+ReplaceText S$剥离后技能名 大师
+ReplaceText S$剥离后技能名 宗师
+ReplaceText S$剥离后技能名 权威
+ReplaceText S$剥离后技能名 王者
+
+#IF
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].STDMODE 4
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].SHAPE $JOBID
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].ANICOUNT 1004
+CHECKSKILL $STR(S$剥离后技能名) = $ITEMINFO[$STR(N$遍历判断序列号)].AC1
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+;--------------法宝、凶器红点
+#IF
+POS -无量飞剑-八卦镜-招魂幡-紫金葫芦-番天印-七宝玲珑塔-赤明天帝-碧海天王-紫月圣君-耀阳圣尊-鬼炎-暗月-撼天-冥日- -<$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME>-
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].VALUEEX(173) 1
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 0
+
+#IF
+POS -无量飞剑-八卦镜-招魂幡-紫金葫芦-番天印-七宝玲珑塔-赤明天帝-碧海天王-紫月圣君-耀阳圣尊-鬼炎-暗月-撼天-冥日- -<$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME>-
+CheckVar Human <$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME>等级 = 0
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+;--------------特殊羽翼红点
+#IF
+POS -纵横之翼-传世之翼-魔焱之翼-恶魔之翼-幻灵凤羽-蓝冰之焱-神武仙翼-神王仙翼- -<$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME>-
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].VALUEEX(173) 1
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 0
+
+#IF
+POS -纵横之翼-传世之翼-魔焱之翼-恶魔之翼-幻灵凤羽-蓝冰之焱-神武仙翼-神王仙翼- -<$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME>-
+EQUAL <$TABLE(Lemon_YY).TS<$ITEMINFO[$STR(N$遍历判断序列号)].AC1>> 0
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+;--------------时装武器红点
+#IF
+POS <$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME> (时装)
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 0
+
+#IF
+POS <$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME> (时装)
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].AC2 1
+POS -<$JOBID>-99- -<$ITEMINFO[$STR(N$遍历判断序列号)].AC1>-
+EQUAL <$TABLE(SZ_WQ).WUQI<$ITEMINFO[$STR(N$遍历判断序列号)].MAC1>> 0
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+
+;--------------时装衣服红点
+#IF
+POS <$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME> (时装)
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].AC2 2
+EQUAL <$TABLE(SZ_YF).YIFU<$ITEMINFO[$STR(N$遍历判断序列号)].MAC1>> 0
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+;--------------时装足迹红点
+#IF
+POS <$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME> (时装)
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].AC2 3
+EQUAL <$TABLE(SZ_ZJ).ZUJI<$ITEMINFO[$STR(N$遍历判断序列号)].MAC1>> 0
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+;--------------时装常规顶戴红点
+#IF
+POS <$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME> (时装)
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].AC2 4
+EQUAL <$TABLE(SZ_CGDD).CGDD<$ITEMINFO[$STR(N$遍历判断序列号)].MAC1>> 0
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+;--------------时装活动顶戴红点
+#IF
+POS <$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME> (时装)
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].AC2 5
+EQUAL <$TABLE(SZ_HDDD).HDDD<$ITEMINFO[$STR(N$遍历判断序列号)].MAC1>> 0
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+;--------------坐骑红点
+#IF
+POS <$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME> (坐骑)
+EQUAL $ITEMINFO[$STR(N$遍历判断序列号)].VALUEEX(173) 1
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 0
+
+#IF
+POS <$ITEMINFO[$STR(N$遍历判断序列号)].STDNAME> (坐骑)
+EQUAL <$TABLE(Lemon_LS).LS<$ITEMINFO[$STR(N$遍历判断序列号)].AC1>> 0
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+;--------------其他无条件加红点的东西
+#IF
+CHECKVARLIST <$STR(N$遍历判断序列号)> ..\QuestDiary\红点功能\无条件加包裹红点的物品.txt
+#ACT
+UPGRADEUSERITEM $STR(N$遍历判断序列号) 173 = 1
+BREAK
+
+
+[@遍历惊喜礼包]
+#IF
+SMALL $LEVEL 60
+#ACT
+BREAK
+
+#IF
+TRUE
+#ACT
+MOV N$遍历惊喜礼包序列号 
+LoopBagItems @开始遍历惊喜礼包 N$遍历惊喜礼包序列号
+BREAK
+
+[@开始遍历惊喜礼包]
+#IF
+EQUAL $ITEMINFO[$STR(N$遍历惊喜礼包序列号)].STDNAME 惊喜礼包
+#ACT
+UPGRADEUSERITEM $STR(N$遍历惊喜礼包序列号) 173 = 1
+BREAK
+
+}

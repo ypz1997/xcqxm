@@ -1,0 +1,6600 @@
+[@红点判断]
+{
+
+[@顶部首冲按钮红点]
+#IF
+SMALL <$CustomValue(51)> 10
+#ACT
+BREAK
+#IF
+RANDOM 1
+#ACT
+MOV S$顶部伸缩红点5 0
+REDDEL 3000 6
+MOV S$首充红点_红点显示图片1 xx
+MOV S$首充红点_红点显示图片1_1 xx
+MOV S$首充红点_红点显示图片1_2 xx
+MOV S$首充红点_红点显示图片1_3 xx
+MOV S$首充红点_红点显示图片2 xx
+MOV S$首充红点_红点显示图片2_1 xx
+MOV S$首充红点_红点显示图片2_2 xx
+MOV S$首充红点_红点显示图片2_3 xx
+MOV S$首充红点_红点显示图片3 xx
+MOV S$首充红点_红点显示图片3_1 xx
+MOV S$首充红点_红点显示图片3_2 xx
+MOV S$首充红点_红点显示图片3_3 xx
+#IF
+!EQUAL <$HUMAN(首充_领取数据1)>
+#ACT
+SPLIT <$HUMAN(首充_领取数据1)> | S$首充红点_领取数据1
+MOV S$首充红点_领取时间1 <$STR(S$首充红点_领取数据1_0)>
+MOV N$首充红点_领取次数1 <$STR(S$首充红点_领取数据1_1)>
+#ELSEACT
+MOV S$首充红点_领取时间1 0
+MOV N$首充红点_领取次数1 0
+#IF
+!EQUAL <$HUMAN(首充_领取数据2)>
+#ACT
+SPLIT <$HUMAN(首充_领取数据2)> | S$首充红点_领取数据2
+MOV S$首充红点_领取时间2 <$STR(S$首充红点_领取数据2_0)>
+MOV N$首充红点_领取次数2 <$STR(S$首充红点_领取数据2_1)>
+#ELSEACT
+MOV S$首充红点_领取时间2 0
+MOV N$首充红点_领取次数2 0
+
+#IF
+!EQUAL <$HUMAN(首充_领取数据3)>
+#ACT
+SPLIT <$HUMAN(首充_领取数据3)> | S$首充红点_领取数据3
+MOV S$首充红点_领取时间3 <$STR(S$首充红点_领取数据3_0)>
+MOV N$首充红点_领取次数3 <$STR(S$首充红点_领取数据3_1)>
+#ELSEACT
+MOV S$首充红点_领取时间3 0
+MOV N$首充红点_领取次数3 0
+
+#IF
+!SMALL <$CustomValue(51)> 10
+!EQUAL S$首充红点_领取时间1 <$DATE>
+SMALL N$首充红点_领取次数1 3
+#ACT
+REDDOT 3000 6 50 10
+MOV S$顶部伸缩红点5 1
+MOV S$首充红点_红点显示图片1 icon_reddot_01
+MOV S$首充红点_红点显示图片1_<$INC.N$首充红点_领取次数1.1> icon_reddot_01
+#IF
+!SMALL <$CustomValue(51)> 30
+!EQUAL S$首充红点_领取时间2 <$DATE>
+SMALL N$首充红点_领取次数2 3
+#ACT
+REDDOT 3000 6 50 10
+MOV S$顶部伸缩红点5 1
+MOV S$首充红点_红点显示图片2 icon_reddot_01
+MOV S$首充红点_红点显示图片2_<$INC.N$首充红点_领取次数2.1> icon_reddot_01
+#IF
+!SMALL <$CustomValue(51)> 90
+!EQUAL S$首充红点_领取时间3 <$DATE>
+SMALL N$首充红点_领取次数3 3
+#ACT
+REDDOT 3000 6 50 10
+MOV S$顶部伸缩红点5 1
+MOV S$首充红点_红点显示图片3 icon_reddot_01
+MOV S$首充红点_红点显示图片3_<$INC.N$首充红点_领取次数3.1> icon_reddot_01
+
+[@顶部伸缩按钮红点]
+#IFONE
+EQUAL S$顶部伸缩红点1 1
+EQUAL S$顶部伸缩红点2 1
+EQUAL S$顶部伸缩红点3 1
+EQUAL S$顶部伸缩红点4 1
+EQUAL S$顶部伸缩红点5 1
+#ACT
+REDDOT 3001 0 -10 10
+
+
+[@顶部按钮会员红点]
+#IF
+SMALL $CustomValue(90) 5
+!SMALL $CustomValue(24) 3000
+#ACT
+SET [107] 1
+SET [108] 1
+SET [109] 1
+SET [110] 1
+SET [111] 1
+SET [112] 1
+SET [113] 1
+SET [114] 1
+SET [115] 1
+SET [116] 1
+SET [117] 1
+SET [118] 1
+SET [119] 1
+SET [120] 1
+SET [121] 1
+SET [122] 1
+
+
+#IF
+CHECK [107] 1
+CHECK [108] 1
+CHECK [109] 1
+CHECK [110] 1
+CHECK [125] 0
+#ACT
+MOV N$VIP红点1 1
+
+#IF
+EQUAL $CustomValue(90) 1
+CHECK [111] 1
+CHECK [112] 1
+CHECK [113] 1
+CHECK [114] 1
+CHECK [126] 0
+#ACT
+MOV N$VIP红点2 1
+
+#IF
+EQUAL $CustomValue(90) 2
+CHECK [115] 1
+CHECK [116] 1
+CHECK [117] 1
+CHECK [118] 1
+CHECK [127] 0
+#ACT
+MOV N$VIP红点3 1
+
+#IF
+EQUAL $CustomValue(90) 3
+CHECK [119] 1
+CHECK [120] 1
+CHECK [121] 1
+CHECK [122] 1
+CHECK [128] 0
+#ACT
+MOV N$VIP红点4 1
+
+#IF
+EQUAL $CustomValue(90) 4
+!SMALL $CustomValue(24) 3000
+CHECK [129] 0
+#ACT
+MOV N$VIP红点5 1
+
+#IF
+EQUAL $CustomValue(90) 5
+!SMALL $CustomValue(24) 16800
+CHECK [130] 0
+#ACT
+MOV N$VIP红点6 1
+
+#IF
+EQUAL $CustomValue(90) 6
+!SMALL $CustomValue(24) 32800
+CHECK [131] 0
+#ACT
+MOV N$VIP红点7 1
+
+#IF
+EQUAL $CustomValue(90) 7
+!SMALL $CustomValue(24) 64800
+CHECK [132] 0
+#ACT
+MOV N$VIP红点8 1
+
+#IF
+EQUAL $CustomValue(90) 8
+!SMALL $CustomValue(24) 106000
+CHECK [133] 0
+#ACT
+MOV N$VIP红点9 1
+
+#IF
+EQUAL $CustomValue(90) 9
+!SMALL $CustomValue(24) 312000
+CHECK [134] 0
+#ACT
+MOV N$VIP红点10 1
+
+#IF
+EQUAL $CustomValue(90) 10
+!SMALL $CustomValue(24) 518000
+CHECK [135] 0
+#ACT
+MOV N$VIP红点11 1
+
+#IF
+EQUAL $CustomValue(90) 11
+!SMALL $CustomValue(24) 824000
+CHECK [136] 0
+#ACT
+MOV N$VIP红点12 1
+
+#IF
+EQUAL $CustomValue(90) 12
+!SMALL $CustomValue(24) 1030000
+CHECK [137] 0
+#ACT
+MOV N$VIP红点13 1
+
+
+#IF
+EQUAL $CustomValue(90) 13
+!SMALL $CustomValue(24) 1536000
+CHECK [138] 0
+#ACT
+MOV N$VIP红点14 1
+
+
+#IF
+EQUAL $CustomValue(90) 14
+!SMALL $CustomValue(24) 3042000
+CHECK [139] 0
+#ACT
+MOV N$VIP红点15 1
+
+#IF
+EQUAL $CustomValue(90) 15
+!SMALL $CustomValue(24) 5048000
+CHECK [140] 0
+#ACT
+MOV N$VIP红点16 1
+
+#IF
+EQUAL $CustomValue(90) 16
+!SMALL $CustomValue(24) 8054000
+CHECK [141] 0
+#ACT
+MOV N$VIP红点17 1
+
+#IF
+EQUAL $CustomValue(90) 17
+!SMALL $CustomValue(24) 10060000
+CHECK [142] 0
+#ACT
+MOV N$VIP红点18 1
+
+#IF
+EQUAL $CustomValue(90) 18
+!SMALL $CustomValue(24) 15066000
+CHECK [143] 0
+#ACT
+MOV N$VIP红点19 1
+
+#IF
+EQUAL $CustomValue(90) 19
+!SMALL $CustomValue(24) 20072000
+CHECK [144] 0
+#ACT
+MOV N$VIP红点20 1
+
+#IF
+EQUAL $CustomValue(90) 20
+!SMALL $CustomValue(24) 30078000
+CHECK [145] 0
+#ACT
+MOV N$VIP红点21 1
+
+#IF
+EQUAL $CustomValue(90) 21
+!SMALL $CustomValue(24) 40000000
+CHECK [146] 0
+#ACT
+MOV N$VIP红点22 1
+
+#IF
+EQUAL $CustomValue(90) 22
+!SMALL $CustomValue(24) 55000000
+CHECK [147] 0
+#ACT
+MOV N$VIP红点23 1
+
+#IF
+EQUAL $CustomValue(90) 23
+!SMALL $CustomValue(24) 70000000
+CHECK [148] 0
+#ACT
+MOV N$VIP红点24 1
+
+#IF
+EQUAL $CustomValue(90) 24
+!SMALL $CustomValue(24) 85000000
+CHECK [149] 0
+#ACT
+MOV N$VIP红点25 1
+
+#IFONE
+EQUAL N$VIP红点1 1
+EQUAL N$VIP红点2 1
+EQUAL N$VIP红点3 1
+EQUAL N$VIP红点4 1
+EQUAL N$VIP红点5 1
+EQUAL N$VIP红点6 1
+EQUAL N$VIP红点7 1
+EQUAL N$VIP红点8 1
+EQUAL N$VIP红点9 1
+EQUAL N$VIP红点10 1
+EQUAL N$VIP红点11 1
+EQUAL N$VIP红点12 1
+EQUAL N$VIP红点13 1
+EQUAL N$VIP红点14 1
+EQUAL N$VIP红点15 1
+EQUAL N$VIP红点16 1
+EQUAL N$VIP红点17 1
+EQUAL N$VIP红点18 1
+EQUAL N$VIP红点19 1
+EQUAL N$VIP红点20 1
+EQUAL N$VIP红点21 1
+EQUAL N$VIP红点22 1
+EQUAL N$VIP红点23 1
+EQUAL N$VIP红点24 1
+EQUAL N$VIP红点25 1
+#ACT
+REDDOT 3000 4 50 10
+MOV S$顶部伸缩红点1 1
+#ELSEACT
+REDDEL 3000 4
+MOV S$顶部伸缩红点1 0
+
+[@顶部累充红点]
+
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 30
+CHECK [188] 0
+#ACT
+MOV S$领取奖励文字-1 可领取
+#ELSEACT
+MOV S$领取奖励文字-1 
+
+
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 98
+CHECK [189] 0
+#ACT
+MOV S$领取奖励文字-2 可领取
+#ELSEACT
+MOV S$领取奖励文字-2 
+
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 328
+CHECK [190] 0
+#ACT
+MOV S$领取奖励文字-3 可领取
+#ELSEACT
+MOV S$领取奖励文字-3 
+
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 648
+CHECK [191] 0
+#ACT
+MOV S$领取奖励文字-4 可领取
+#ELSEACT
+MOV S$领取奖励文字-4 
+
+#IF
+!SMALL G0 7
+!SMALL $CustomValue(49) 1298
+CHECK [192] 0
+#ACT
+MOV S$领取奖励文字-5 可领取
+#ELSEACT
+MOV S$领取奖励文字-5 
+
+
+
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 30
+CHECK [188] 0
+#ACT
+MOV S$领取奖励文字1 可领取
+#ELSEACT
+MOV S$领取奖励文字1 
+
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 198
+CHECK [189] 0
+#ACT
+MOV S$领取奖励文字2 可领取
+#ELSEACT
+MOV S$领取奖励文字2 
+
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 648
+CHECK [190] 0
+#ACT
+MOV S$领取奖励文字3 可领取
+#ELSEACT
+MOV S$领取奖励文字3 
+
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 1000
+CHECK [191] 0
+#ACT
+MOV S$领取奖励文字4 可领取
+#ELSEACT
+MOV S$领取奖励文字4 
+
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 3000
+CHECK [192] 0
+#ACT
+MOV S$领取奖励文字5 可领取
+#ELSEACT
+MOV S$领取奖励文字5 
+
+#IF
+SMALL G0 7
+!SMALL $CustomValue(49) 5000
+CHECK [193] 0
+#ACT
+MOV S$领取奖励文字6 可领取
+#ELSEACT
+MOV S$领取奖励文字6 
+
+#IF
+!SMALL $CustomValue(51) 6
+CHECK [642] 0
+#ACT
+MOV S$累计充值奖励文字1 可领取
+#ELSEACT
+MOV S$累计充值奖励文字1 
+
+#IF
+!SMALL $CustomValue(51) 30
+CHECK [643] 0
+#ACT
+MOV S$累计充值奖励文字2 可领取
+#ELSEACT
+MOV S$累计充值奖励文字2 
+
+#IF
+!SMALL $CustomValue(51) 98
+CHECK [644] 0
+#ACT
+MOV S$累计充值奖励文字3 可领取
+#ELSEACT
+MOV S$累计充值奖励文字3 
+
+#IF
+!SMALL $CustomValue(51) 198
+CHECK [645] 0
+#ACT
+MOV S$累计充值奖励文字4 可领取
+#ELSEACT
+MOV S$累计充值奖励文字4 
+
+#IF
+!SMALL $CustomValue(51) 648
+CHECK [646] 0
+#ACT
+MOV S$累计充值奖励文字5 可领取
+#ELSEACT
+MOV S$累计充值奖励文字5 
+
+#IF
+!SMALL $CustomValue(51) 1000
+CHECK [647] 0
+#ACT
+MOV S$累计充值奖励文字6 可领取
+#ELSEACT
+MOV S$累计充值奖励文字6 
+
+#IF
+!SMALL $CustomValue(51) 2000
+CHECK [648] 0
+#ACT
+MOV S$累计充值奖励文字7 可领取
+#ELSEACT
+MOV S$累计充值奖励文字7 
+
+#IF
+!SMALL $CustomValue(51) 3000
+CHECK [649] 0
+#ACT
+MOV S$累计充值奖励文字8 可领取
+#ELSEACT
+MOV S$累计充值奖励文字8 
+
+#IF
+!SMALL $CustomValue(51) 5000
+CHECK [650] 0
+#ACT
+MOV S$累计充值奖励文字9 可领取
+#ELSEACT
+MOV S$累计充值奖励文字9 
+
+#IF
+!SMALL $CustomValue(51) 10000
+CHECK [651] 0
+#ACT
+MOV S$累计充值奖励文字10 可领取
+#ELSEACT
+MOV S$累计充值奖励文字10 
+
+#IF
+!SMALL $CustomValue(51) 20000
+CHECK [652] 0
+#ACT
+MOV S$累计充值奖励文字11 可领取
+#ELSEACT
+MOV S$累计充值奖励文字11 
+
+#IF
+!SMALL $CustomValue(51) 30000
+CHECK [653] 0
+#ACT
+MOV S$累计充值奖励文字12 可领取
+#ELSEACT
+MOV S$累计充值奖励文字12 
+
+#IF
+!SMALL $CustomValue(51) 50000
+CHECK [654] 0
+#ACT
+MOV S$累计充值奖励文字13 可领取
+#ELSEACT
+MOV S$累计充值奖励文字13 
+
+#IF
+!SMALL $CustomValue(51) 80000
+CHECK [655] 0
+#ACT
+MOV S$累计充值奖励文字14 可领取
+#ELSEACT
+MOV S$累计充值奖励文字14 
+
+#IF
+!SMALL $CustomValue(51) 100000
+CHECK [656] 0
+#ACT
+MOV S$累计充值奖励文字15 可领取
+#ELSEACT
+MOV S$累计充值奖励文字15 
+
+#IFONE
+!EQUAL S$领取奖励文字-1 
+!EQUAL S$领取奖励文字-2 
+!EQUAL S$领取奖励文字-3 
+!EQUAL S$领取奖励文字-4 
+!EQUAL S$领取奖励文字-5 
+!EQUAL S$领取奖励文字1 
+!EQUAL S$领取奖励文字2 
+!EQUAL S$领取奖励文字3 
+!EQUAL S$领取奖励文字4 
+!EQUAL S$领取奖励文字5 
+!EQUAL S$领取奖励文字6 
+!EQUAL S$累计充值奖励文字1 
+!EQUAL S$累计充值奖励文字2 
+!EQUAL S$累计充值奖励文字3 
+!EQUAL S$累计充值奖励文字4 
+!EQUAL S$累计充值奖励文字5 
+!EQUAL S$累计充值奖励文字6 
+!EQUAL S$累计充值奖励文字7 
+!EQUAL S$累计充值奖励文字8 
+!EQUAL S$累计充值奖励文字9 
+!EQUAL S$累计充值奖励文字10 
+!EQUAL S$累计充值奖励文字11 
+!EQUAL S$累计充值奖励文字12 
+!EQUAL S$累计充值奖励文字13 
+!EQUAL S$累计充值奖励文字14 
+#ACT
+MOV S$顶部伸缩红点2 1
+REDDOT 3000 8 50 10
+#ELSEACT
+MOV S$顶部伸缩红点2 0
+REDDel 3000 8
+
+
+
+
+
+[@顶部福利活动红点]
+#IF
+LARGE $CustomValue(33) 0
+CHECK [258] 0
+#ACT
+MOV S$七日签到按钮红点 <Img|id=qrqd1|x=105.0|y=2.0|img=picpackage/3/17173.png|scale=1|esc=0>
+
+#IF
+LARGE $CustomValue(33) 1
+CHECK [259] 0
+#ACT
+MOV S$七日签到按钮红点 <Img|id=qrqd1|x=105.0|y=2.0|img=picpackage/3/17173.png|scale=1|esc=0>
+
+#IF
+LARGE $CustomValue(33) 2
+CHECK [260] 0
+#ACT
+MOV S$七日签到按钮红点 <Img|id=qrqd1|x=105.0|y=2.0|img=picpackage/3/17173.png|scale=1|esc=0>
+
+#IF
+LARGE $CustomValue(33) 3
+CHECK [261] 0
+#ACT
+MOV S$七日签到按钮红点 <Img|id=qrqd1|x=105.0|y=2.0|img=picpackage/3/17173.png|scale=1|esc=0>
+
+#IF
+LARGE $CustomValue(33) 4
+CHECK [262] 0
+#ACT
+MOV S$七日签到按钮红点 <Img|id=qrqd1|x=105.0|y=2.0|img=picpackage/3/17173.png|scale=1|esc=0>
+
+#IF
+LARGE $CustomValue(33) 5
+CHECK [263] 0
+#ACT
+MOV S$七日签到按钮红点 <Img|id=qrqd1|x=105.0|y=2.0|img=picpackage/3/17173.png|scale=1|esc=0>
+
+#IF
+LARGE $CustomValue(33) 6
+CHECK [264] 0
+#ACT
+MOV S$七日签到按钮红点 <Img|id=qrqd1|x=105.0|y=2.0|img=picpackage/3/17173.png|scale=1|esc=0>
+
+#IF
+CHECK [<$INC^226^$DATE.DAY>] 0
+#ACT
+MOV S$每日签到主按钮 <Img|id=mrqdhd1|x=63.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV s$每日签到红点-<$DATE.DAY> <Img|id=ssr<$DATE.DAY>-4|x=63.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV S$确定签到红点 <Img|id=9-1|x=110.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$每日签到红点-<$DATE.DAY> 
+MOV S$每日签到主按钮 
+MOV S$确定签到红点 
+
+#IFONE
+CHECK [<$INC^226^$DATE.DAY>] 0
+!EQUAL S$七日签到按钮红点 
+#ACT
+MOV S$福利面板按钮-1 <Img|id=flhdmb1|x=163.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$福利面板按钮-1 
+
+
+#IF
+TRUE
+#ACT
+MOV S$福利面板按钮-3 
+MOV N$战令红点计次 0
+LOOPGOTO @战令红点计算 100
+
+
+#IF
+CHECK [277] 1
+#ACT
+MOV S$福利面板按钮-4 
+MOV N$投资返利红点计次 0
+MOV S$投资面板红点 
+LOOPGOTO @投资返利红点计算 12
+
+#if
+CHECK [278] 0
+!SMALL $MONEY(2) 64888
+LARGE <$HFCOUNT> 0
+#ACT
+MOV s$免费购购买1 1
+#ELSEACT
+MOV s$免费购购买1 0
+
+#if
+CHECK [279] 0
+!SMALL $MONEY(2) 48888
+LARGE <$HFCOUNT> 0
+#ACT
+MOV s$免费购购买2 1
+#ELSEACT
+MOV s$免费购购买2 0
+
+#if
+CHECK [280] 0
+!SMALL $MONEY(2) 36888
+LARGE <$HFCOUNT> 0
+#ACT
+MOV s$免费购购买3 1
+#ELSEACT
+MOV s$免费购购买3 03
+
+#IFONE
+EQUAL s$免费购购买1 1
+EQUAL s$免费购购买2 1
+EQUAL s$免费购购买3 1
+#ACT
+MOV s$免费购购买按钮 <Img|id=mfgmbhd|x=105.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV s$免费购购买按钮 
+
+#IFONE
+!EQUAL s$免费购购买按钮 
+!EQUAL S$投资面板红点 
+#ACT
+MOV S$福利面板按钮-4 <Img|id=flhdmb4|x=163.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$福利面板按钮-4 
+
+
+#IF
+LARGE <$STR(N$离线经验值)> 29999
+#ACT
+MOV S$领取离线经验红点 <Img|id=lqlxjy|x=100.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV S$福利面板按钮-6 <Img|id=flhdmb6|x=163.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$领取离线经验红点 
+MOV S$福利面板按钮-6 
+
+
+#IF
+EQUAL $HUMAN(已抽奖次数) 0
+!SMALL $CUSTOMVALUE(94) 1
+!SMALL $MONEY(2) 2888
+#ACT
+MOV S$聚宝盆是否可抽取1 1
+#ELSEACT
+MOV S$聚宝盆是否可抽取1 0
+
+#IF
+EQUAL $HUMAN(已抽奖次数) 1
+!SMALL $CUSTOMVALUE(94) 1
+!SMALL $MONEY(2) 8888
+#ACT
+MOV S$聚宝盆是否可抽取2 1
+#ELSEACT
+MOV S$聚宝盆是否可抽取2 0
+
+#IF
+EQUAL $HUMAN(已抽奖次数) 2
+!SMALL $CUSTOMVALUE(94) 1
+!SMALL $MONEY(2) 48888
+#ACT
+MOV S$聚宝盆是否可抽取3 1
+#ELSEACT
+MOV S$聚宝盆是否可抽取3 0
+
+#IF
+EQUAL $HUMAN(已抽奖次数) 3
+!SMALL $CUSTOMVALUE(94) 1
+!SMALL $MONEY(2) 99999
+#ACT
+MOV S$聚宝盆是否可抽取4 1
+#ELSEACT
+MOV S$聚宝盆是否可抽取4 0
+
+#IF
+EQUAL $HUMAN(已抽奖次数) 4
+!SMALL $CUSTOMVALUE(94) 1
+!SMALL $MONEY(2) 288888
+#ACT
+MOV S$聚宝盆是否可抽取5 1
+#ELSEACT
+MOV S$聚宝盆是否可抽取5 0
+
+#IF
+EQUAL $HUMAN(已抽奖次数) 5
+!SMALL $CUSTOMVALUE(94) 1
+!SMALL $MONEY(2) 488888
+#ACT
+MOV S$聚宝盆是否可抽取6 1
+#ELSEACT
+MOV S$聚宝盆是否可抽取6 0
+
+#IF
+EQUAL $HUMAN(已抽奖次数) 6
+!SMALL $CUSTOMVALUE(94) 1
+!SMALL $MONEY(2) 999999
+#ACT
+MOV S$聚宝盆是否可抽取7 1
+#ELSEACT
+MOV S$聚宝盆是否可抽取7 0
+
+#IFONE
+EQUAL S$聚宝盆是否可抽取1 1
+EQUAL S$聚宝盆是否可抽取2 1
+EQUAL S$聚宝盆是否可抽取3 1
+EQUAL S$聚宝盆是否可抽取4 1
+EQUAL S$聚宝盆是否可抽取5 1
+EQUAL S$聚宝盆是否可抽取6 1
+EQUAL S$聚宝盆是否可抽取7 1
+#ACT
+MOV S$聚宝盆面板红点 <Img|id=jbpmbhd|x=65.0|y=5.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV S$福利面板按钮-7 <Img|id=flhdmb7|x=163.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$聚宝盆面板红点 
+MOV S$福利面板按钮-7 
+
+#IF
+SMALL $HUMAN(神秘商店刷新次数) 4
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店刷新文本.txt S$神秘商店刷新红点抽取 $HUMAN(神秘商店刷新次数)
+SPLIT $STR(S$神秘商店刷新红点抽取) | S$神秘商店刷新红点分割
+
+#IF
+SMALL $HUMAN(神秘商店刷新次数) 4
+!SMALL $MONEY(3) $STR(S$神秘商店刷新红点分割_1)
+#ACT
+MOV S$神秘商店红点 <Img|id=smsdhd|x=95.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV S$福利面板按钮-8 <Img|id=flhdmb8|x=163.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$神秘商店红点 
+MOV S$福利面板按钮-8 
+
+
+#IF
+SMALL <$INC.<$LENGTH.<$HUMAN(装备悬赏_已兑换装备ID字符串)>>.<$LENGTH.<$HUMAN(装备悬赏_无名额装备ID字符串)>>>  <$LENGTH.<$HUMAN(装备悬赏_已爆出装备ID字符串)>>
+#ACT
+MOV S$福利面板按钮-9 <Img|id=flhdmb9|x=163.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$福利面板按钮-9 
+
+
+#IF
+EQUAL G6 1
+#ACT
+MOV S$沙城红点 <Img|id=schd|x=120.0|y=5.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV S$福利面板按钮-10 <Img|id=flhdmb10|x=163.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$沙城红点 
+MOV S$福利面板按钮-10
+
+
+
+
+#IFONE
+!EQUAL S$福利面板按钮-1
+!EQUAL S$福利面板按钮-2
+!EQUAL S$福利面板按钮-3
+!EQUAL S$福利面板按钮-4
+!EQUAL S$福利面板按钮-5
+!EQUAL S$福利面板按钮-6
+!EQUAL S$福利面板按钮-7
+!EQUAL S$福利面板按钮-8
+!EQUAL S$福利面板按钮-9
+!EQUAL S$福利面板按钮-10
+#ACT
+REDDOT 3000 2 50 10
+MOV S$顶部伸缩红点3 1
+#ELSEACT
+REDDel 3000 2
+MOV S$顶部伸缩红点3 0
+
+
+
+
+
+
+
+[@战令红点计算]
+#IF
+CHECK [<$INC.301.$STR(N$战令红点计次)>] 1
+CHECK [<$INC.401.$STR(N$战令红点计次)>] 0
+#ACT
+MOV S$福利面板按钮-3 1
+INC N$战令红点计次 1
+MOV S$福利面板按钮-3 <Img|id=flhdmb3|x=163.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+BREAK
+#ELSEACT
+INC N$战令红点计次 1
+BREAK
+
+
+
+[@投资返利红点计算]
+#IF
+CHECK [277] 1
+CHECK [<$INC.265.$STR(N$投资返利红点计次)>] 0
+!SMALL $LEVEL <$INC.55.<$MULT.$STR(N$投资返利红点计次).5>>
+#ACT
+INC N$投资返利红点计次 1
+MOV S$投资领取红点<$str(N$投资返利红点计次)> <Img|id=tzlqhd<$str(N$投资返利红点计次)>|x=95.0|y=2.0|img=picpackage/3/17173.png|scale=1|esc=0>
+MOV S$投资面板红点 <Img|id=tzmbhd|x=105.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+INC N$投资返利红点计次 1
+MOV S$投资领取红点<$str(N$投资返利红点计次)> 
+
+
+
+[@顶部七日狂欢红点]
+#IF
+!LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+BREAK
+
+#IF
+CHECK [601] 0
+LARGE $LEVEL 59
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV S$七日等级目标1 1
+#ELSEACT
+MOV S$七日等级目标1 
+
+#IF
+CHECK [602] 0
+LARGE $LEVEL 64
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV S$七日等级目标2 1
+#ELSEACT
+MOV S$七日等级目标2 
+
+#IF
+CHECK [603] 0
+LARGE $LEVEL 69
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV S$七日等级目标3 1
+#ELSEACT
+MOV S$七日等级目标3 
+
+#IF
+CHECK [604] 0
+LARGE $LEVEL 74
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV S$七日等级目标4 1
+#ELSEACT
+MOV S$七日等级目标4 
+
+#IF
+CHECK [605] 0
+LARGE $LEVEL 79
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV S$七日等级目标5 1
+#ELSEACT
+MOV S$七日等级目标5 
+
+#IFONE
+!EQUAL S$七日等级目标1 
+!EQUAL S$七日等级目标2 
+!EQUAL S$七日等级目标3 
+!EQUAL S$七日等级目标4 
+!EQUAL S$七日等级目标5 
+#ACT
+MOV S$七日目标按钮1 <Img|id=qrmban1|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮1 
+
+#IF
+CHECK [606] 0
+!SMALL <$TABLE(Lemon_YY).BM> 5
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV s$七日羽翼目标1 1
+#ELSEACT
+MOV s$七日羽翼目标1 
+
+#IF
+CHECK [607] 0
+!SMALL <$TABLE(Lemon_YY).BM> 10
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV s$七日羽翼目标2 1
+#ELSEACT
+MOV s$七日羽翼目标2 
+
+#IF
+CHECK [608] 0
+!SMALL <$TABLE(Lemon_YY).BM> 15
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV s$七日羽翼目标3 1
+#ELSEACT
+MOV s$七日羽翼目标3 
+
+#IF
+CHECK [609] 0
+!SMALL <$TABLE(Lemon_YY).BM> 20
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV s$七日羽翼目标4 1
+#ELSEACT
+MOV s$七日羽翼目标4 
+
+#IF
+CHECK [610] 0
+!SMALL <$TABLE(Lemon_YY).BM> 30
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+#ACT
+MOV s$七日羽翼目标5 1
+#ELSEACT
+MOV s$七日羽翼目标5 
+
+#IFONE
+!EQUAL $STR(S$七日羽翼目标1) 
+!EQUAL $STR(S$七日羽翼目标2) 
+!EQUAL $STR(S$七日羽翼目标3) 
+!EQUAL $STR(S$七日羽翼目标4) 
+!EQUAL $STR(S$七日羽翼目标5) 
+#ACT
+MOV S$七日目标按钮2 <Img|id=qrmban2|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮2 
+
+#IF
+CHECK [611] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL <$TABLE(Lemon_LS2).ZB1> 5
+!SMALL <$TABLE(Lemon_LS2).ZB2> 5
+!SMALL <$TABLE(Lemon_LS2).ZB3> 5
+!SMALL <$TABLE(Lemon_LS2).ZB4> 5
+#ACT
+MOV s$七日灵兽目标1 1
+#ELSEACT
+MOV s$七日灵兽目标1 
+
+#IF
+CHECK [612] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL <$TABLE(Lemon_LS2).ZB1>10
+!SMALL <$TABLE(Lemon_LS2).ZB2> 10
+!SMALL <$TABLE(Lemon_LS2).ZB3> 10
+!SMALL <$TABLE(Lemon_LS2).ZB4> 10
+#ACT
+MOV s$七日灵兽目标2 1
+#ELSEACT
+MOV s$七日灵兽目标2 
+
+#IF
+CHECK [613] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL <$TABLE(Lemon_LS2).ZB1> 15
+!SMALL <$TABLE(Lemon_LS2).ZB2> 15
+!SMALL <$TABLE(Lemon_LS2).ZB3> 15
+!SMALL <$TABLE(Lemon_LS2).ZB4> 15
+#ACT
+MOV s$七日灵兽目标3 1
+#ELSEACT
+MOV s$七日灵兽目标3 
+
+#IF
+CHECK [614] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL <$TABLE(Lemon_LS2).ZB1> 20
+!SMALL <$TABLE(Lemon_LS2).ZB2> 20
+!SMALL <$TABLE(Lemon_LS2).ZB3> 20
+!SMALL <$TABLE(Lemon_LS2).ZB4> 20
+#ACT
+MOV s$七日灵兽目标4 1
+#ELSEACT
+MOV s$七日灵兽目标4 
+
+#IF
+CHECK [615] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL <$TABLE(Lemon_LS2).ZB1> 25
+!SMALL <$TABLE(Lemon_LS2).ZB2> 25
+!SMALL <$TABLE(Lemon_LS2).ZB3> 25
+!SMALL <$TABLE(Lemon_LS2).ZB4> 25
+#ACT
+MOV s$七日灵兽目标5 1
+#ELSEACT
+MOV s$七日灵兽目标5 
+
+#IFONE
+!EQUAL s$七日灵兽目标1 
+!EQUAL s$七日灵兽目标2 
+!EQUAL s$七日灵兽目标3 
+!EQUAL s$七日灵兽目标4 
+!EQUAL s$七日灵兽目标5 
+#ACT
+MOV S$七日目标按钮3 <Img|id=qrmban3|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮3 
+
+#IF
+CHECK [616] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL D73 9
+#ACT
+MOV s$七日特戒目标1 1
+#ELSEACT
+MOV s$七日特戒目标1 
+
+#IF
+CHECK [617] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL D73 15
+#ACT
+MOV s$七日特戒目标2 1
+#ELSEACT
+MOV s$七日特戒目标2 
+
+#IF
+CHECK [618] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL D73 21
+#ACT
+MOV s$七日特戒目标3 1
+#ELSEACT
+MOV s$七日特戒目标3 
+
+#IF
+CHECK [619] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL D73 27
+#ACT
+MOV s$七日特戒目标4 1
+#ELSEACT
+MOV s$七日特戒目标4 
+
+#IF
+CHECK [620] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL D73 33
+#ACT
+MOV s$七日特戒目标5 1
+#ELSEACT
+MOV s$七日特戒目标5 
+
+#IFONE
+!EQUAL s$七日特戒目标1 
+!EQUAL s$七日特戒目标2 
+!EQUAL s$七日特戒目标3 
+!EQUAL s$七日特戒目标4 
+!EQUAL s$七日特戒目标5 
+#ACT
+MOV S$七日目标按钮4 <Img|id=qrmban4|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮4 
+
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(无量飞剑等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(无量飞剑等级)
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(八卦镜等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(八卦镜等级)
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(招魂幡等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(招魂幡等级)
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(紫金葫芦等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(紫金葫芦等级)
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(番天印等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(番天印等级)
+
+#IF
+SMALL $STR(N$法宝最高等级) $HUMAN(七宝玲珑塔等级)
+#ACT
+MOV N$法宝最高等级 $HUMAN(七宝玲珑塔等级)
+
+#IF
+CHECK [621] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$法宝最高等级 10
+#ACT
+MOV s$七日法宝目标1 1
+#ELSEACT
+MOV s$七日法宝目标1 
+
+#IF
+CHECK [622] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$法宝最高等级 15
+#ACT
+MOV s$七日法宝目标2 1
+#ELSEACT
+MOV s$七日法宝目标2 
+
+#IF
+CHECK [623] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$法宝最高等级 20
+#ACT
+MOV s$七日法宝目标3 1
+#ELSEACT
+MOV s$七日法宝目标3 
+
+#IF
+CHECK [624] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$法宝最高等级 25
+#ACT
+MOV s$七日法宝目标4 1
+#ELSEACT
+MOV s$七日法宝目标4 
+
+#IF
+CHECK [625] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$法宝最高等级 30
+#ACT
+MOV s$七日法宝目标5 1
+#ELSEACT
+MOV s$七日法宝目标5 
+
+#IFONE
+!EQUAL s$七日法宝目标1 
+!EQUAL s$七日法宝目标2 
+!EQUAL s$七日法宝目标3 
+!EQUAL s$七日法宝目标4 
+!EQUAL s$七日法宝目标5 
+#ACT
+MOV S$七日目标按钮5 <Img|id=qrmban5|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮5 
+
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(撼天等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(撼天等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(暗月等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(暗月等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(冥日等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(冥日等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(鬼炎等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(鬼炎等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(碧海天王等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(碧海天王等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(赤明天帝等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(赤明天帝等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(紫月圣君等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(紫月圣君等级)
+
+#IF
+SMALL $STR(N$神器最高等级) $HUMAN(耀阳圣尊等级)
+#ACT
+MOV N$神器最高等级 $HUMAN(耀阳圣尊等级)
+
+#IF
+CHECK [626] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$神器最高等级 5
+#ACT
+MOV s$七日神器目标1 1
+#ELSEACT
+MOV s$七日神器目标1 
+
+#IF
+CHECK [627] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$神器最高等级 7
+#ACT
+MOV s$七日神器目标2 1
+#ELSEACT
+MOV s$七日神器目标2 
+
+#IF
+CHECK [628] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$神器最高等级 9
+#ACT
+MOV s$七日神器目标3 1
+#ELSEACT
+MOV s$七日神器目标3 
+
+#IF
+CHECK [629] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$神器最高等级 11
+#ACT
+MOV s$七日神器目标4 1
+#ELSEACT
+MOV s$七日神器目标4 
+
+#IF
+CHECK [630] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$神器最高等级 13
+#ACT
+MOV s$七日神器目标5 1
+#ELSEACT
+MOV s$七日神器目标5 
+
+#IFONE
+!EQUAL s$七日神器目标1 
+!EQUAL s$七日神器目标2 
+!EQUAL s$七日神器目标3 
+!EQUAL s$七日神器目标4 
+!EQUAL s$七日神器目标5 
+#ACT
+MOV S$七日目标按钮6 <Img|id=qrmban6|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮6 
+
+#IF
+CHECKUSEITEM 2
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(2)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(2)].GC1>
+
+#IF
+CHECKUSEITEM 11
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(11)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(11)].GC1>
+
+#IF
+CHECKUSEITEM 12
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(12)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(12)].GC1>
+
+#IF
+CHECKUSEITEM 13
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(13)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(13)].GC1>
+
+#IF
+CHECKUSEITEM 14
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(14)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(14)].GC1>
+
+#IF
+CHECKUSEITEM 19
+SMALL $STR(N$附件最高等级) <$ITEMINFO[$USEITEMMAKEINDEX(19)].GC1>
+#ACT
+MOV N$附件最高等级 <$ITEMINFO[$USEITEMMAKEINDEX(19)].GC1>
+
+
+#IF
+CHECK [631] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$附件最高等级 3
+#ACT
+MOV s$七日附件目标1 1
+#ELSEACT
+MOV s$七日附件目标1 
+
+#IF
+CHECK [632] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$附件最高等级 4
+#ACT
+MOV s$七日附件目标2 1
+#ELSEACT
+MOV s$七日附件目标2 
+
+#IF
+CHECK [633] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$附件最高等级 5
+#ACT
+MOV s$七日附件目标3 1
+#ELSEACT
+MOV s$七日附件目标3 
+
+#IF
+CHECK [634] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$附件最高等级 6
+#ACT
+MOV s$七日附件目标4 1
+#ELSEACT
+MOV s$七日附件目标4 
+
+#IF
+CHECK [635] 0
+LARGE <$DEC.$STR(G20).$LONGDATE> 0
+!SMALL N$附件最高等级 7
+#ACT
+MOV s$七日附件目标5 1
+#ELSEACT
+MOV s$七日附件目标5 
+
+#IFONE
+!EQUAL s$七日附件目标1 
+!EQUAL s$七日附件目标2 
+!EQUAL s$七日附件目标3 
+!EQUAL s$七日附件目标4 
+!EQUAL s$七日附件目标5 
+#ACT
+MOV S$七日目标按钮7 <Img|id=qrmban7|x=155.0|y=3.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$七日目标按钮7 
+
+
+#IFONE
+!EQUAL S$七日目标按钮1
+!EQUAL S$七日目标按钮2
+!EQUAL S$七日目标按钮3
+!EQUAL S$七日目标按钮4
+!EQUAL S$七日目标按钮5
+!EQUAL S$七日目标按钮6
+!EQUAL S$七日目标按钮7
+#ACT
+REDDOT 3000 3 50 10
+MOV S$顶部伸缩红点4 1
+#ELSEACT
+REDDel 3000 3
+MOV S$顶部伸缩红点4 0
+
+
+
+
+
+
+[@角色按钮红点判断]
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\魔盾属性.txt S$魔盾属性提取 <$CustomValue(4)>
+SPLIT <$STR(S$魔盾属性提取)> | S$魔盾属性显示
+#IF
+!SMALL $ITEMVALSUM(魔盾精粹).DURA $STR(S$魔盾属性显示_6)
+#ACT
+REDDOT 2000 0 35 10
+BREAK
+
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用1 <$INC.$CustomValue(5).1>
+SPLIT $STR(S$特戒面板专用1) | N$特戒面板显示1
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用2 <$INC.$CustomValue(6).1>
+SPLIT $STR(S$特戒面板专用2) | N$特戒面板显示2
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用3 <$INC.$CustomValue(7).1>
+SPLIT $STR(S$特戒面板专用3) | N$特戒面板显示3
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用4 <$INC.$CustomValue(8).1>
+SPLIT $STR(S$特戒面板专用4) | N$特戒面板显示4
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用5 <$INC.$CustomValue(9).1>
+SPLIT $STR(S$特戒面板专用5) | N$特戒面板显示5
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用6 <$INC.$CustomValue(10).1>
+SPLIT $STR(S$特戒面板专用6) | N$特戒面板显示6
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用7 <$INC.$CustomValue(11).1>
+SPLIT $STR(S$特戒面板专用7) | N$特戒面板显示7
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用8 <$INC.$CustomValue(12).1>
+SPLIT $STR(S$特戒面板专用8) | N$特戒面板显示8
+ReadRandomStr ..\QuestDiary\文本读取\特戒属性.txt S$特戒面板专用9 <$INC.$CustomValue(13).1>
+SPLIT $STR(S$特戒面板专用9) | N$特戒面板显示9
+
+#IFONE
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示1_20)>
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示2_20)>
+!SMALL $ITEMVALSUM(特戒精华).DURA <$STR(N$特戒面板显示3_20)>
+#ACT
+MOV S$特戒红点转生合区1 1
+#ELSEACT
+MOV S$特戒红点转生合区1 0
+
+#IFONE
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示4_20)>
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示5_20)>
+!SMALL $ITEMVALSUM(特戒精粹).DURA <$STR(N$特戒面板显示6_20)>
+#ACT
+MOV S$特戒红点转生合区2 1
+#ELSEACT
+MOV S$特戒红点转生合区2 0
+
+#IFONE
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示7_20)>
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示8_20)>
+!SMALL $ITEMVALSUM(特戒精魄).DURA <$STR(N$特戒面板显示9_20)>
+#ACT
+MOV S$特戒红点转生合区3 1
+#ELSEACT
+MOV S$特戒红点转生合区3 0
+
+#IF
+SMALL <$HFCOUNT> 1
+EQUAL S$特戒红点转生合区2 1
+#ACT
+MOV S$特戒红点转生合区2 0
+
+#IF
+SMALL <$HFCOUNT> 1
+!LARGE $CUSTOMVALUE(42) 1
+EQUAL S$特戒红点转生合区3 1
+#ACT
+MOV S$特戒红点转生合区3 0
+
+
+#IFONE
+EQUAL S$特戒红点转生合区1 1
+EQUAL S$特戒红点转生合区2 1
+EQUAL S$特戒红点转生合区3 1
+#ACT
+REDDOT 2000 0 35 10
+BREAK
+
+
+#IF
+TRUE
+#ACT
+ReadExcel ..\QuestDiary\文本读取\转生属性.xls <$INC.$CustomValue(42).1>
+MOV N$当前属性9 <$996(Excel).8>
+
+#IF
+LARGE $LEVEL 114
+LARGE $EXP 30000000
+LARGE $CustomValue(88) 0
+#ACT
+MOV S$转生红点1 1
+#ELSEACT
+MOV S$转生红点1 
+
+#IF
+!SMALL <$INC.$MONEY(2).$MONEY(4)> <$STR(N$当前属性9)>
+!SMALL $MONEY(10) <$STR(N$当前属性9)>
+#ACT
+MOV S$转生红点2 1
+SENDMSG 5 $STR(N$当前属性9)>
+#ELSEACT
+MOV S$转生红点2 
+
+
+#IFONE
+!EQUAL $STR(S$转生红点1) 
+!EQUAL $STR(S$转生红点2) 
+#ACT
+REDDOT 2000 0 35 10
+BREAK
+
+
+#if
+SMALL $TABLE(Lemon_YY).BM 100
+LARGE <$ITEMCOUNT(仙翎之羽)> 0
+#ACT
+MOV S$羽翼升级红点1 <Img|id=sjhd1|x=105.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+MOV S$羽翼升级红点2 <Img|id=sjhd2|x=105.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼升级红点1 
+MOV S$羽翼升级红点2 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC1 1
+EQUAL $TABLE(Lemon_YY).BM 10
+#ACT
+MOV S$羽翼技能解锁红点1 <Img|id=jshd1|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点1 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC2 1
+EQUAL $TABLE(Lemon_YY).BM 35
+#ACT
+MOV S$羽翼技能解锁红点2 <Img|id=jshd2|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点2 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC3 1
+EQUAL $TABLE(Lemon_YY).BM 55
+#ACT
+MOV S$羽翼技能解锁红点3 <Img|id=jshd3|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点3 
+
+#IF
+SMALL $TABLE(Lemon_YY).CC4 1
+EQUAL $TABLE(Lemon_YY).BM 55
+#ACT
+MOV S$羽翼技能解锁红点4 <Img|id=jshd4|x=45.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$羽翼技能解锁红点4 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS1 0
+CHECKITEM 纵横之翼
+#ACT
+MOV S$特殊羽翼激活红点1 <Img|id=yy1a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点1 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS2 0
+CHECKITEM 传世之翼
+#ACT
+MOV S$特殊羽翼激活红点2 <Img|id=yy2a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点2 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS3 0
+CHECKITEM 魔焱之翼
+#ACT
+MOV S$特殊羽翼激活红点3 <Img|id=yy3a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点3 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS4 0
+CHECKITEM 恶魔之翼
+#ACT
+MOV S$特殊羽翼激活红点4 <Img|id=yy4a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点4 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS5 0
+CHECKITEM 幻灵凤羽
+#ACT
+MOV S$特殊羽翼激活红点5 <Img|id=yy5a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点5 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS6 0
+CHECKITEM 蓝冰之焱
+#ACT
+MOV S$特殊羽翼激活红点6 <Img|id=yy6a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点6 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS7 0
+CHECKITEM 神武仙翼
+#ACT
+MOV S$特殊羽翼激活红点7 <Img|id=yy7a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点7 
+
+#IF
+EQUAL $TABLE(Lemon_YY).TS8 0
+CHECKITEM 神王仙翼
+#ACT
+MOV S$特殊羽翼激活红点8 <Img|id=yy8a4|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼激活红点8 
+
+
+#if
+LARGE $TABLE(Lemon_YY).TS1 0
+#ACT
+LOADEXVAR S$升星所需1 羽翼红点 <$TABLE(Lemon_YY).XJ1> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS2 0
+#ACT
+LOADEXVAR S$升星所需2 羽翼红点 <$TABLE(Lemon_YY).XJ2> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS3 0
+#ACT
+LOADEXVAR S$升星所需3 羽翼红点 <$TABLE(Lemon_YY).XJ3> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS4 0
+#ACT
+LOADEXVAR S$升星所需4 羽翼红点 <$TABLE(Lemon_YY).XJ4> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS5 0
+#ACT
+LOADEXVAR S$升星所需5 羽翼红点 <$TABLE(Lemon_YY).XJ5> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS6 0
+#ACT
+LOADEXVAR S$升星所需6 羽翼红点 <$TABLE(Lemon_YY).XJ6> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS7 0
+#ACT
+LOADEXVAR S$升星所需7 羽翼红点 <$TABLE(Lemon_YY).XJ7> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+#if
+LARGE $TABLE(Lemon_YY).TS8 0
+#ACT
+LOADEXVAR S$升星所需8 羽翼红点 <$TABLE(Lemon_YY).XJ8> ..\QUESTDIARY\红点功能\羽翼红点数据.txt
+
+
+#IF
+LARGE $TABLE(Lemon_YY).TS1 0
+CHECKITEM 纵横之翼 <$STR(S$升星所需1)>
+#ACT
+MOV S$特殊羽翼升星红点1 <Img|id=yy1a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点1 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS2 0
+CHECKITEM 传世之翼 <$STR(S$升星所需2)>
+#ACT
+MOV S$特殊羽翼升星红点2 <Img|id=yy2a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点2 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS3 0
+CHECKITEM 魔焱之翼 <$STR(S$升星所需3)>
+#ACT
+MOV S$特殊羽翼升星红点3 <Img|id=yy1a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点3 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS4 0
+CHECKITEM 恶魔之翼 <$STR(S$升星所需4)>
+#ACT
+MOV S$特殊羽翼升星红点4 <Img|id=yy4a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点4 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS5 0
+CHECKITEM 幻灵凤羽 <$STR(S$升星所需5)>
+#ACT
+MOV S$特殊羽翼升星红点5 <Img|id=yy5a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点5 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS6 0
+CHECKITEM 蓝冰之焱 <$STR(S$升星所需6)>
+#ACT
+MOV S$特殊羽翼升星红点6 <Img|id=yy6a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点6 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS7 0
+CHECKITEM 神武仙翼 <$STR(S$升星所需7)>
+#ACT
+MOV S$特殊羽翼升星红点7 <Img|id=yy7a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点7 
+
+#IF
+LARGE $TABLE(Lemon_YY).TS8 0
+CHECKITEM 神王仙翼 <$STR(S$升星所需8)>
+#ACT
+MOV S$特殊羽翼升星红点8 <Img|id=yy8a5|x=40.0|y=0.0|esc=0|img=picpackage/3/17173.png|scale=1>
+#ELSEACT
+MOV S$特殊羽翼升星红点8 
+
+
+
+;--------------------------------------------------------右侧3按钮红点
+#IFONE
+!EQUAL S$羽翼升级红点1 
+!EQUAL S$羽翼升级红点2 
+!EQUAL S$羽翼技能解锁红点1 
+!EQUAL S$羽翼技能解锁红点2 
+!EQUAL S$羽翼技能解锁红点3 
+!EQUAL S$羽翼技能解锁红点4 
+!EQUAL S$特殊羽翼激活红点1 
+!EQUAL S$特殊羽翼激活红点2 
+!EQUAL S$特殊羽翼激活红点3 
+!EQUAL S$特殊羽翼激活红点4 
+!EQUAL S$特殊羽翼激活红点5 
+!EQUAL S$特殊羽翼激活红点6 
+!EQUAL S$特殊羽翼激活红点7 
+!EQUAL S$特殊羽翼激活红点8 
+!EQUAL S$特殊羽翼升星红点1 
+!EQUAL S$特殊羽翼升星红点2 
+!EQUAL S$特殊羽翼升星红点3 
+!EQUAL S$特殊羽翼升星红点4 
+!EQUAL S$特殊羽翼升星红点5 
+!EQUAL S$特殊羽翼升星红点6 
+!EQUAL S$特殊羽翼升星红点7 
+!EQUAL S$特殊羽翼升星红点8 
+#ACT
+REDDOT 2000 0 35 10
+BREAK
+
+
+
+
+#IF
+TRUE
+#ACT
+REDDEL 2000 0
+BREAK
+
+
+[@图鉴红点]
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 0
+CHECKITEM 祈祷头盔图鉴
+#ACT
+MOV N$祈祷头盔图鉴红点1 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷头盔图鉴红点2 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷头盔图鉴红点3 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷头盔图鉴红点4 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷头盔图鉴红点5 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷头盔图鉴红点6 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 0
+CHECKITEM 祈祷项链图鉴
+#ACT
+MOV N$祈祷项链图鉴红点1 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷项链图鉴红点2 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷项链图鉴红点3 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷项链图鉴红点4 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷项链图鉴红点5 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷项链图鉴红点6 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 0
+CHECKITEM 祈祷手镯图鉴
+#ACT
+MOV N$祈祷手镯图鉴红点1 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷手镯图鉴红点2 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷手镯图鉴红点3 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷手镯图鉴红点4 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷手镯图鉴红点5 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷手镯图鉴红点6 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 0
+CHECKITEM 祈祷戒指图鉴
+#ACT
+MOV N$祈祷戒指图鉴红点1 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷戒指图鉴红点2 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷戒指图鉴红点3 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷戒指图鉴红点4 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷戒指图鉴红点5 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷戒指图鉴红点6 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$祈祷头盔图鉴红点1) 1
+EQUAL $STR(N$祈祷头盔图鉴红点2) 1
+EQUAL $STR(N$祈祷头盔图鉴红点3) 1
+EQUAL $STR(N$祈祷头盔图鉴红点4) 1
+EQUAL $STR(N$祈祷头盔图鉴红点5) 1
+EQUAL $STR(N$祈祷头盔图鉴红点6) 1
+EQUAL $STR(N$祈祷项链图鉴红点1) 1
+EQUAL $STR(N$祈祷项链图鉴红点2) 1
+EQUAL $STR(N$祈祷项链图鉴红点3) 1
+EQUAL $STR(N$祈祷项链图鉴红点4) 1
+EQUAL $STR(N$祈祷项链图鉴红点5) 1
+EQUAL $STR(N$祈祷项链图鉴红点6) 1
+EQUAL $STR(N$祈祷手镯图鉴红点1) 1
+EQUAL $STR(N$祈祷手镯图鉴红点2) 1
+EQUAL $STR(N$祈祷手镯图鉴红点3) 1
+EQUAL $STR(N$祈祷手镯图鉴红点4) 1
+EQUAL $STR(N$祈祷手镯图鉴红点5) 1
+EQUAL $STR(N$祈祷手镯图鉴红点6) 1
+EQUAL $STR(N$祈祷戒指图鉴红点1) 1
+EQUAL $STR(N$祈祷戒指图鉴红点2) 1
+EQUAL $STR(N$祈祷戒指图鉴红点3) 1
+EQUAL $STR(N$祈祷戒指图鉴红点4) 1
+EQUAL $STR(N$祈祷戒指图鉴红点5) 1
+EQUAL $STR(N$祈祷戒指图鉴红点6) 1
+#ACT
+MOV S$祈祷红点 1
+#ELSEACT
+MOV S$祈祷红点 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 0
+CHECKITEM 狂怒头盔图鉴
+#ACT
+MOV N$狂怒头盔图鉴红点1 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒头盔图鉴红点2 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒头盔图鉴红点3 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒头盔图鉴红点4 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒头盔图鉴红点5 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒头盔图鉴红点6 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 0
+CHECKITEM 狂怒项链图鉴
+#ACT
+MOV N$狂怒项链图鉴红点1 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒项链图鉴红点2 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒项链图鉴红点3 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒项链图鉴红点4 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒项链图鉴红点5 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒项链图鉴红点6 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 0
+CHECKITEM 狂怒手镯图鉴
+#ACT
+MOV N$狂怒手镯图鉴红点1 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒手镯图鉴红点2 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒手镯图鉴红点3 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒手镯图鉴红点4 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒手镯图鉴红点5 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒手镯图鉴红点6 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 0
+CHECKITEM 狂怒戒指图鉴
+#ACT
+MOV N$狂怒戒指图鉴红点1 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒戒指图鉴红点2 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒戒指图鉴红点3 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒戒指图鉴红点4 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒戒指图鉴红点5 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒戒指图鉴红点6 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$狂怒头盔图鉴红点1) 1
+EQUAL $STR(N$狂怒头盔图鉴红点2) 1
+EQUAL $STR(N$狂怒头盔图鉴红点3) 1
+EQUAL $STR(N$狂怒头盔图鉴红点4) 1
+EQUAL $STR(N$狂怒头盔图鉴红点5) 1
+EQUAL $STR(N$狂怒头盔图鉴红点6) 1
+EQUAL $STR(N$狂怒项链图鉴红点1) 1
+EQUAL $STR(N$狂怒项链图鉴红点2) 1
+EQUAL $STR(N$狂怒项链图鉴红点3) 1
+EQUAL $STR(N$狂怒项链图鉴红点4) 1
+EQUAL $STR(N$狂怒项链图鉴红点5) 1
+EQUAL $STR(N$狂怒项链图鉴红点6) 1
+EQUAL $STR(N$狂怒手镯图鉴红点1) 1
+EQUAL $STR(N$狂怒手镯图鉴红点2) 1
+EQUAL $STR(N$狂怒手镯图鉴红点3) 1
+EQUAL $STR(N$狂怒手镯图鉴红点4) 1
+EQUAL $STR(N$狂怒手镯图鉴红点5) 1
+EQUAL $STR(N$狂怒手镯图鉴红点6) 1
+EQUAL $STR(N$狂怒戒指图鉴红点1) 1
+EQUAL $STR(N$狂怒戒指图鉴红点2) 1
+EQUAL $STR(N$狂怒戒指图鉴红点3) 1
+EQUAL $STR(N$狂怒戒指图鉴红点4) 1
+EQUAL $STR(N$狂怒戒指图鉴红点5) 1
+EQUAL $STR(N$狂怒戒指图鉴红点6) 1
+#ACT
+MOV S$狂怒红点 1
+#ELSEACT
+MOV S$狂怒红点 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 0
+CHECKITEM 嗜血头盔图鉴
+#ACT
+MOV N$嗜血头盔图鉴红点1 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血头盔图鉴红点2 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血头盔图鉴红点3 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血头盔图鉴红点4 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血头盔图鉴红点5 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血头盔图鉴红点6 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 0
+CHECKITEM 嗜血项链图鉴
+#ACT
+MOV N$嗜血项链图鉴红点1 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血项链图鉴红点2 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血项链图鉴红点3 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血项链图鉴红点4 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血项链图鉴红点5 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血项链图鉴红点6 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 0
+CHECKITEM 嗜血手镯图鉴
+#ACT
+MOV N$嗜血手镯图鉴红点1 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血手镯图鉴红点2 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血手镯图鉴红点3 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血手镯图鉴红点4 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血手镯图鉴红点5 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血手镯图鉴红点6 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 0
+CHECKITEM 嗜血戒指图鉴
+#ACT
+MOV N$嗜血戒指图鉴红点1 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血戒指图鉴红点2 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血戒指图鉴红点3 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血戒指图鉴红点4 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血戒指图鉴红点5 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血戒指图鉴红点6 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$嗜血头盔图鉴红点1) 1
+EQUAL $STR(N$嗜血头盔图鉴红点2) 1
+EQUAL $STR(N$嗜血头盔图鉴红点3) 1
+EQUAL $STR(N$嗜血头盔图鉴红点4) 1
+EQUAL $STR(N$嗜血头盔图鉴红点5) 1
+EQUAL $STR(N$嗜血头盔图鉴红点6) 1
+EQUAL $STR(N$嗜血项链图鉴红点1) 1
+EQUAL $STR(N$嗜血项链图鉴红点2) 1
+EQUAL $STR(N$嗜血项链图鉴红点3) 1
+EQUAL $STR(N$嗜血项链图鉴红点4) 1
+EQUAL $STR(N$嗜血项链图鉴红点5) 1
+EQUAL $STR(N$嗜血项链图鉴红点6) 1
+EQUAL $STR(N$嗜血手镯图鉴红点1) 1
+EQUAL $STR(N$嗜血手镯图鉴红点2) 1
+EQUAL $STR(N$嗜血手镯图鉴红点3) 1
+EQUAL $STR(N$嗜血手镯图鉴红点4) 1
+EQUAL $STR(N$嗜血手镯图鉴红点5) 1
+EQUAL $STR(N$嗜血手镯图鉴红点6) 1
+EQUAL $STR(N$嗜血戒指图鉴红点1) 1
+EQUAL $STR(N$嗜血戒指图鉴红点2) 1
+EQUAL $STR(N$嗜血戒指图鉴红点3) 1
+EQUAL $STR(N$嗜血戒指图鉴红点4) 1
+EQUAL $STR(N$嗜血戒指图鉴红点5) 1
+EQUAL $STR(N$嗜血戒指图鉴红点6) 1
+#ACT
+MOV S$嗜血红点 1
+#ELSEACT
+MOV S$嗜血红点 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 0
+CHECKITEM 神秘头盔图鉴
+#ACT
+MOV N$神秘头盔图鉴红点1 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘头盔图鉴红点2 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘头盔图鉴红点3 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘头盔图鉴红点4 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘头盔图鉴红点5 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘头盔图鉴红点6 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 0
+CHECKITEM 神秘项链图鉴
+#ACT
+MOV N$神秘项链图鉴红点1 1
+#ELSEACT
+MOV N$神秘项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘项链图鉴红点2 1
+#ELSEACT
+MOV N$神秘项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘项链图鉴红点3 1
+#ELSEACT
+MOV N$神秘项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘项链图鉴红点4 1
+#ELSEACT
+MOV N$神秘项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘项链图鉴红点5 1
+#ELSEACT
+MOV N$神秘项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘项链图鉴红点6 1
+#ELSEACT
+MOV N$神秘项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 0
+CHECKITEM 神秘手镯图鉴
+#ACT
+MOV N$神秘手镯图鉴红点1 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘手镯图鉴红点2 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘手镯图鉴红点3 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘手镯图鉴红点4 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘手镯图鉴红点5 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘手镯图鉴红点6 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 0
+CHECKITEM 神秘戒指图鉴
+#ACT
+MOV N$神秘戒指图鉴红点1 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘戒指图鉴红点2 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘戒指图鉴红点3 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘戒指图鉴红点4 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘戒指图鉴红点5 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘戒指图鉴红点6 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$神秘头盔图鉴红点1) 1
+EQUAL $STR(N$神秘头盔图鉴红点2) 1
+EQUAL $STR(N$神秘头盔图鉴红点3) 1
+EQUAL $STR(N$神秘头盔图鉴红点4) 1
+EQUAL $STR(N$神秘头盔图鉴红点5) 1
+EQUAL $STR(N$神秘头盔图鉴红点6) 1
+EQUAL $STR(N$神秘项链图鉴红点1) 1
+EQUAL $STR(N$神秘项链图鉴红点2) 1
+EQUAL $STR(N$神秘项链图鉴红点3) 1
+EQUAL $STR(N$神秘项链图鉴红点4) 1
+EQUAL $STR(N$神秘项链图鉴红点5) 1
+EQUAL $STR(N$神秘项链图鉴红点6) 1
+EQUAL $STR(N$神秘手镯图鉴红点1) 1
+EQUAL $STR(N$神秘手镯图鉴红点2) 1
+EQUAL $STR(N$神秘手镯图鉴红点3) 1
+EQUAL $STR(N$神秘手镯图鉴红点4) 1
+EQUAL $STR(N$神秘手镯图鉴红点5) 1
+EQUAL $STR(N$神秘手镯图鉴红点6) 1
+EQUAL $STR(N$神秘戒指图鉴红点1) 1
+EQUAL $STR(N$神秘戒指图鉴红点2) 1
+EQUAL $STR(N$神秘戒指图鉴红点3) 1
+EQUAL $STR(N$神秘戒指图鉴红点4) 1
+EQUAL $STR(N$神秘戒指图鉴红点5) 1
+EQUAL $STR(N$神秘戒指图鉴红点6) 1
+#ACT
+MOV S$神秘红点 1
+#ELSEACT
+MOV S$神秘红点 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 0
+CHECKITEM 明王头盔图鉴
+#ACT
+MOV N$明王头盔图鉴红点1 1
+#ELSEACT
+MOV N$明王头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王头盔图鉴红点2 1
+#ELSEACT
+MOV N$明王头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王头盔图鉴红点3 1
+#ELSEACT
+MOV N$明王头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王头盔图鉴红点4 1
+#ELSEACT
+MOV N$明王头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王头盔图鉴红点5 1
+#ELSEACT
+MOV N$明王头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王头盔图鉴红点6 1
+#ELSEACT
+MOV N$明王头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 0
+CHECKITEM 明王项链图鉴
+#ACT
+MOV N$明王项链图鉴红点1 1
+#ELSEACT
+MOV N$明王项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王项链图鉴红点2 1
+#ELSEACT
+MOV N$明王项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王项链图鉴红点3 1
+#ELSEACT
+MOV N$明王项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王项链图鉴红点4 1
+#ELSEACT
+MOV N$明王项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王项链图鉴红点5 1
+#ELSEACT
+MOV N$明王项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王项链图鉴红点6 1
+#ELSEACT
+MOV N$明王项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 0
+CHECKITEM 明王手镯图鉴
+#ACT
+MOV N$明王手镯图鉴红点1 1
+#ELSEACT
+MOV N$明王手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王手镯图鉴红点2 1
+#ELSEACT
+MOV N$明王手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王手镯图鉴红点3 1
+#ELSEACT
+MOV N$明王手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王手镯图鉴红点4 1
+#ELSEACT
+MOV N$明王手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王手镯图鉴红点5 1
+#ELSEACT
+MOV N$明王手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王手镯图鉴红点6 1
+#ELSEACT
+MOV N$明王手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 0
+CHECKITEM 明王戒指图鉴
+#ACT
+MOV N$明王戒指图鉴红点1 1
+#ELSEACT
+MOV N$明王戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王戒指图鉴红点2 1
+#ELSEACT
+MOV N$明王戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王戒指图鉴红点3 1
+#ELSEACT
+MOV N$明王戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王戒指图鉴红点4 1
+#ELSEACT
+MOV N$明王戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王戒指图鉴红点5 1
+#ELSEACT
+MOV N$明王戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王戒指图鉴红点6 1
+#ELSEACT
+MOV N$明王戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$明王头盔图鉴红点1) 1
+EQUAL $STR(N$明王头盔图鉴红点2) 1
+EQUAL $STR(N$明王头盔图鉴红点3) 1
+EQUAL $STR(N$明王头盔图鉴红点4) 1
+EQUAL $STR(N$明王头盔图鉴红点5) 1
+EQUAL $STR(N$明王头盔图鉴红点6) 1
+EQUAL $STR(N$明王项链图鉴红点1) 1
+EQUAL $STR(N$明王项链图鉴红点2) 1
+EQUAL $STR(N$明王项链图鉴红点3) 1
+EQUAL $STR(N$明王项链图鉴红点4) 1
+EQUAL $STR(N$明王项链图鉴红点5) 1
+EQUAL $STR(N$明王项链图鉴红点6) 1
+EQUAL $STR(N$明王手镯图鉴红点1) 1
+EQUAL $STR(N$明王手镯图鉴红点2) 1
+EQUAL $STR(N$明王手镯图鉴红点3) 1
+EQUAL $STR(N$明王手镯图鉴红点4) 1
+EQUAL $STR(N$明王手镯图鉴红点5) 1
+EQUAL $STR(N$明王手镯图鉴红点6) 1
+EQUAL $STR(N$明王戒指图鉴红点1) 1
+EQUAL $STR(N$明王戒指图鉴红点2) 1
+EQUAL $STR(N$明王戒指图鉴红点3) 1
+EQUAL $STR(N$明王戒指图鉴红点4) 1
+EQUAL $STR(N$明王戒指图鉴红点5) 1
+EQUAL $STR(N$明王戒指图鉴红点6) 1
+#ACT
+MOV S$明王红点 1
+#ELSEACT
+MOV S$明王红点 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 0
+CHECKITEM 神御头盔图鉴
+#ACT
+MOV N$神御头盔图鉴红点1 1
+#ELSEACT
+MOV N$神御头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御头盔图鉴红点2 1
+#ELSEACT
+MOV N$神御头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御头盔图鉴红点3 1
+#ELSEACT
+MOV N$神御头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御头盔图鉴红点4 1
+#ELSEACT
+MOV N$神御头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御头盔图鉴红点5 1
+#ELSEACT
+MOV N$神御头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 5
+!SMALL $MONEY(8) 48800
+#ACT
+MOV N$神御头盔图鉴红点6 1
+#ELSEACT
+MOV N$神御头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 0
+CHECKITEM 神御项链图鉴
+#ACT
+MOV N$神御项链图鉴红点1 1
+#ELSEACT
+MOV N$神御项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御项链图鉴红点2 1
+#ELSEACT
+MOV N$神御项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御项链图鉴红点3 1
+#ELSEACT
+MOV N$神御项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御项链图鉴红点4 1
+#ELSEACT
+MOV N$神御项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御项链图鉴红点5 1
+#ELSEACT
+MOV N$神御项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 5
+!SMALL $MONEY(8) 48800
+#ACT
+MOV N$神御项链图鉴红点6 1
+#ELSEACT
+MOV N$神御项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 0
+CHECKITEM 神御手镯图鉴
+#ACT
+MOV N$神御手镯图鉴红点1 1
+#ELSEACT
+MOV N$神御手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御手镯图鉴红点2 1
+#ELSEACT
+MOV N$神御手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御手镯图鉴红点3 1
+#ELSEACT
+MOV N$神御手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御手镯图鉴红点4 1
+#ELSEACT
+MOV N$神御手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御手镯图鉴红点5 1
+#ELSEACT
+MOV N$神御手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 5
+!SMALL $MONEY(8) 44880
+#ACT
+MOV N$神御手镯图鉴红点6 1
+#ELSEACT
+MOV N$神御手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 0
+CHECKITEM 神御戒指图鉴
+#ACT
+MOV N$神御戒指图鉴红点1 1
+#ELSEACT
+MOV N$神御戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御戒指图鉴红点2 1
+#ELSEACT
+MOV N$神御戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御戒指图鉴红点3 1
+#ELSEACT
+MOV N$神御戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御戒指图鉴红点4 1
+#ELSEACT
+MOV N$神御戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御戒指图鉴红点5 1
+#ELSEACT
+MOV N$神御戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 5
+!SMALL $MONEY(8) 48800
+#ACT
+MOV N$神御戒指图鉴红点6 1
+#ELSEACT
+MOV N$神御戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$神御头盔图鉴红点1) 1
+EQUAL $STR(N$神御头盔图鉴红点2) 1
+EQUAL $STR(N$神御头盔图鉴红点3) 1
+EQUAL $STR(N$神御头盔图鉴红点4) 1
+EQUAL $STR(N$神御头盔图鉴红点5) 1
+EQUAL $STR(N$神御头盔图鉴红点6) 1
+EQUAL $STR(N$神御项链图鉴红点1) 1
+EQUAL $STR(N$神御项链图鉴红点2) 1
+EQUAL $STR(N$神御项链图鉴红点3) 1
+EQUAL $STR(N$神御项链图鉴红点4) 1
+EQUAL $STR(N$神御项链图鉴红点5) 1
+EQUAL $STR(N$神御项链图鉴红点6) 1
+EQUAL $STR(N$神御手镯图鉴红点1) 1
+EQUAL $STR(N$神御手镯图鉴红点2) 1
+EQUAL $STR(N$神御手镯图鉴红点3) 1
+EQUAL $STR(N$神御手镯图鉴红点4) 1
+EQUAL $STR(N$神御手镯图鉴红点5) 1
+EQUAL $STR(N$神御手镯图鉴红点6) 1
+EQUAL $STR(N$神御戒指图鉴红点1) 1
+EQUAL $STR(N$神御戒指图鉴红点2) 1
+EQUAL $STR(N$神御戒指图鉴红点3) 1
+EQUAL $STR(N$神御戒指图鉴红点4) 1
+EQUAL $STR(N$神御戒指图鉴红点5) 1
+EQUAL $STR(N$神御戒指图鉴红点6) 1
+#ACT
+MOV S$神御红点 1
+#ELSEACT
+MOV S$神御红点 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ1DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取1 <$TABLE(SL_TJ).TJ1DJ>
+SPLIT $STR(S$首领图鉴红点抽取1) | S$首领图鉴分割1
+
+#IF
+LARGE $TABLE(SL_TJ).TJ2DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取2 <$TABLE(SL_TJ).TJ2DJ>
+SPLIT $STR(S$首领图鉴红点抽取2) | S$首领图鉴分割2
+
+#IF
+LARGE $TABLE(SL_TJ).TJ3DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取3 <$TABLE(SL_TJ).TJ3DJ>
+SPLIT $STR(S$首领图鉴红点抽取3) | S$首领图鉴分割3
+
+#IF
+LARGE $TABLE(SL_TJ).TJ4DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取4 <$TABLE(SL_TJ).TJ4DJ>
+SPLIT $STR(S$首领图鉴红点抽取4) | S$首领图鉴分割4
+
+#IF
+LARGE $TABLE(SL_TJ).TJ5DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取5 <$TABLE(SL_TJ).TJ5DJ>
+SPLIT $STR(S$首领图鉴红点抽取5) | S$首领图鉴分割5
+
+#IF
+LARGE $TABLE(SL_TJ).TJ6DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取6 <$TABLE(SL_TJ).TJ6DJ>
+SPLIT $STR(S$首领图鉴红点抽取6) | S$首领图鉴分割6
+
+#IF
+LARGE $TABLE(SL_TJ).TJ7DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取7 <$TABLE(SL_TJ).TJ7DJ>
+SPLIT $STR(S$首领图鉴红点抽取7) | S$首领图鉴分割7
+
+#IF
+LARGE $TABLE(SL_TJ).TJ8DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取8 <$TABLE(SL_TJ).TJ8DJ>
+SPLIT $STR(S$首领图鉴红点抽取8) | S$首领图鉴分割8
+
+#IF
+LARGE $TABLE(SL_TJ).TJ9DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取9 <$TABLE(SL_TJ).TJ9DJ>
+SPLIT $STR(S$首领图鉴红点抽取9) | S$首领图鉴分割9
+
+#IF
+LARGE $TABLE(SL_TJ).TJ10DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取10 <$TABLE(SL_TJ).TJ10DJ>
+SPLIT $STR(S$首领图鉴红点抽取10) | S$首领图鉴分割10
+
+#IF
+LARGE $TABLE(SL_TJ).TJ11DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取11 <$TABLE(SL_TJ).TJ11DJ>
+SPLIT $STR(S$首领图鉴红点抽取11) | S$首领图鉴分割11
+
+#IF
+LARGE $TABLE(SL_TJ).TJ12DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取12 <$TABLE(SL_TJ).TJ12DJ>
+SPLIT $STR(S$首领图鉴红点抽取12) | S$首领图鉴分割12
+
+#IF
+LARGE $TABLE(SL_TJ).TJ13DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取13 <$TABLE(SL_TJ).TJ13DJ>
+SPLIT $STR(S$首领图鉴红点抽取13) | S$首领图鉴分割13
+
+#IF
+LARGE $TABLE(SL_TJ).TJ14DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取14 <$TABLE(SL_TJ).TJ14DJ>
+SPLIT $STR(S$首领图鉴红点抽取14) | S$首领图鉴分割14
+
+#IF
+LARGE $TABLE(SL_TJ).TJ15DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取15 <$TABLE(SL_TJ).TJ15DJ>
+SPLIT $STR(S$首领图鉴红点抽取15) | S$首领图鉴分割15
+
+#IF
+LARGE $TABLE(SL_TJ).TJ16DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取16 <$TABLE(SL_TJ).TJ16DJ>
+SPLIT $STR(S$首领图鉴红点抽取16) | S$首领图鉴分割16
+
+#IF
+LARGE $TABLE(SL_TJ).TJ17DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取17 <$TABLE(SL_TJ).TJ17DJ>
+SPLIT $STR(S$首领图鉴红点抽取17) | S$首领图鉴分割17
+
+#IF
+LARGE $TABLE(SL_TJ).TJ18DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取18 <$TABLE(SL_TJ).TJ18DJ>
+SPLIT $STR(S$首领图鉴红点抽取18) | S$首领图鉴分割18
+
+#IF
+LARGE $TABLE(SL_TJ).TJ1DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割1_5)
+#ACT
+MOV S$首领图鉴红点1 1
+#ELSEACT
+MOV S$首领图鉴红点1 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ2DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割2_5)
+#ACT
+MOV S$首领图鉴红点2 1
+#ELSEACT
+MOV S$首领图鉴红点2 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ3DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割3_5)
+#ACT
+MOV S$首领图鉴红点3 1
+#ELSEACT
+MOV S$首领图鉴红点3 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ4DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割4_5)
+#ACT
+MOV S$首领图鉴红点4 1
+#ELSEACT
+MOV S$首领图鉴红点4 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ5DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割5_5)
+#ACT
+MOV S$首领图鉴红点5 1
+#ELSEACT
+MOV S$首领图鉴红点5 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ6DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割6_5)
+#ACT
+MOV S$首领图鉴红点6 1
+#ELSEACT
+MOV S$首领图鉴红点6 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ7DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割7_5)
+#ACT
+MOV S$首领图鉴红点7 1
+#ELSEACT
+MOV S$首领图鉴红点7 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ8DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割8_5)
+#ACT
+MOV S$首领图鉴红点8 1
+#ELSEACT
+MOV S$首领图鉴红点8 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ9DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割9_5)
+#ACT
+MOV S$首领图鉴红点9 1
+#ELSEACT
+MOV S$首领图鉴红点9 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ10DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割10_5)
+#ACT
+MOV S$首领图鉴红点10 1
+#ELSEACT
+MOV S$首领图鉴红点10 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ11DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割11_5)
+#ACT
+MOV S$首领图鉴红点11 1
+#ELSEACT
+MOV S$首领图鉴红点11 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ12DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割12_5)
+#ACT
+MOV S$首领图鉴红点12 1
+#ELSEACT
+MOV S$首领图鉴红点12 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ13DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割13_5)
+#ACT
+MOV S$首领图鉴红点13 1
+#ELSEACT
+MOV S$首领图鉴红点13 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ14DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割14_5)
+#ACT
+MOV S$首领图鉴红点14 1
+#ELSEACT
+MOV S$首领图鉴红点14 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ15DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割15_5)
+#ACT
+MOV S$首领图鉴红点15 1
+#ELSEACT
+MOV S$首领图鉴红点15 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ16DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割16_5)
+#ACT
+MOV S$首领图鉴红点16 1
+#ELSEACT
+MOV S$首领图鉴红点16 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ17DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割17_5)
+#ACT
+MOV S$首领图鉴红点17 1
+#ELSEACT
+MOV S$首领图鉴红点17 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ18DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割18_5)
+#ACT
+MOV S$首领图鉴红点18 1
+#ELSEACT
+MOV S$首领图鉴红点18 0
+
+
+
+#IFONE
+EQUAL S$祈祷红点 1
+EQUAL S$狂怒红点 1
+EQUAL S$嗜血红点 1
+EQUAL S$神秘红点 1
+EQUAL S$神御红点 1
+EQUAL S$明王红点 1
+EQUAL S$首领图鉴红点1 1
+EQUAL S$首领图鉴红点2 1
+EQUAL S$首领图鉴红点3 1
+EQUAL S$首领图鉴红点4 1
+EQUAL S$首领图鉴红点5 1
+EQUAL S$首领图鉴红点6 1
+EQUAL S$首领图鉴红点7 1
+EQUAL S$首领图鉴红点8 1
+EQUAL S$首领图鉴红点9 1
+EQUAL S$首领图鉴红点10 1
+EQUAL S$首领图鉴红点11 1
+EQUAL S$首领图鉴红点12 1
+EQUAL S$首领图鉴红点13 1
+EQUAL S$首领图鉴红点14 1
+EQUAL S$首领图鉴红点15 1
+EQUAL S$首领图鉴红点16 1
+EQUAL S$首领图鉴红点17 1
+EQUAL S$首领图鉴红点18 1
+LARGE <$ITEMVALSUM(祈祷头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(尸霸图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(机关巨兽图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(蛇妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(逆魔之王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(通天教主图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(铁血魔王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(阿修罗神图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(赤阳魔尊图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(上古妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(血域魔尊图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(巨木王者图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(魔域妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(刑天真身图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(玄武真灵图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(无间之主图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(地底仙帝图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(绝毒蛛后图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(虚空古神图鉴卡).DURA> 0
+#act
+REDDOT 701 1_6 58 15
+#ELSEACT
+REDDEL 701 1_6
+
+
+
+
+[@强化红点]
+#IF
+CheckUseItem 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(0)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(0)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$衣服红点判断
+
+#IF
+CheckUseItem 1
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(1)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(1)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$武器红点判断
+
+#IF
+CheckUseItem 3
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(3)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(3)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$项链红点判断
+
+#IF
+CheckUseItem 4
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(4)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(4)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$头盔红点判断
+
+#IF
+CheckUseItem 5
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(5)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(5)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$左手红点判断
+
+#IF
+CheckUseItem 6
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(6)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(6)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$右手红点判断
+
+#IF
+CheckUseItem 7
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(7)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(7)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$左戒红点判断
+
+#IF
+CheckUseItem 8
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(8)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(8)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$右戒红点判断
+
+#IF
+CheckUseItem 9
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(9)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(9)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$靴子红点判断
+
+#IF
+CheckUseItem 10
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(10)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(10)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$腰带红点判断
+
+#IF
+CheckUseItem 11
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(11)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(11)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$宝石红点判断
+
+#IF
+CheckUseItem 13
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(13)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(13)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$护盾红点判断
+
+#IF
+CheckUseItem 14
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(14)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(14)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$魂珠红点判断
+
+#IF
+CheckUseItem 15
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(19)].Valueex(172)> 20
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\强化耗材.txt S$强化耗材 <$ITEMINFO[$USEITEMMAKEINDEX(19)].Valueex(172)>
+SPLIT $STR(S$强化耗材) | N$面具红点判断
+
+
+;===========================================================
+#IF
+CheckUseItem 0
+LARGE <$ITEMINFO[$USEITEMMAKEINDEX(0)].GC1> 3
+!SMALL <$ITEMVALSUM(玄铁).DURA> $STR(N$衣服红点判断_0)
+!SMALL $GOLDCOUNT $STR(N$衣服红点判断_1)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 1
+LARGE <$ITEMINFO[$USEITEMMAKEINDEX(1)].GC1> 3
+!SMALL <$ITEMVALSUM(玄铁).DURA> $STR(N$武器红点判断_0)
+!SMALL $GOLDCOUNT $STR(N$武器红点判断_1)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 3
+LARGE <$ITEMINFO[$USEITEMMAKEINDEX(3)].GC1> 3
+!SMALL <$ITEMVALSUM(玄铁).DURA> $STR(N$项链红点判断_0)
+!SMALL $GOLDCOUNT $STR(N$项链红点判断_1)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 4
+LARGE <$ITEMINFO[$USEITEMMAKEINDEX(4)].GC1> 3
+!SMALL <$ITEMVALSUM(玄铁).DURA> $STR(N$头盔红点判断_0)
+!SMALL $GOLDCOUNT $STR(N$头盔红点判断_1)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 5
+LARGE <$ITEMINFO[$USEITEMMAKEINDEX(5)].GC1> 3
+!SMALL <$ITEMVALSUM(玄铁).DURA> $STR(N$左手红点判断_0)
+!SMALL $GOLDCOUNT $STR(N$左手红点判断_1)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 6
+LARGE <$ITEMINFO[$USEITEMMAKEINDEX(6)].GC1> 3
+!SMALL <$ITEMVALSUM(玄铁).DURA> $STR(N$右手红点判断_0)
+!SMALL $GOLDCOUNT $STR(N$右手红点判断_1)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 7
+LARGE <$ITEMINFO[$USEITEMMAKEINDEX(7)].GC1> 3
+!SMALL <$ITEMVALSUM(玄铁).DURA> $STR(N$左戒红点判断_0)
+!SMALL $GOLDCOUNT $STR(N$左戒红点判断_1)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 8
+LARGE <$ITEMINFO[$USEITEMMAKEINDEX(8)].GC1> 3
+!SMALL <$ITEMVALSUM(玄铁).DURA> $STR(N$右戒红点判断_0)
+!SMALL $GOLDCOUNT $STR(N$右戒红点判断_1)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 9
+LARGE <$ITEMINFO[$USEITEMMAKEINDEX(9)].GC1> 3
+!SMALL <$ITEMVALSUM(玄铁).DURA> $STR(N$靴子红点判断_0)
+!SMALL $GOLDCOUNT $STR(N$靴子红点判断_1)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 10
+LARGE <$ITEMINFO[$USEITEMMAKEINDEX(10)].GC1> 3
+!SMALL <$ITEMVALSUM(玄铁).DURA> $STR(N$腰带红点判断_0)
+!SMALL $GOLDCOUNT $STR(N$腰带红点判断_1)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(2)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$勋章升级红点
+#ACT
+SPLIT $STR(S$勋章升级红点) | S$勋章升级红点分割
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(11)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$宝石升级红点
+#ACT
+SPLIT $STR(S$宝石升级红点) | S$宝石升级红点分割
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(14)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$魂珠升级红点
+#ACT
+SPLIT $STR(S$魂珠升级红点) | S$魂珠升级红点分割
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(12)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$护符升级红点
+#ACT
+SPLIT $STR(S$护符升级红点) | S$护符升级红点分割
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$盾牌升级红点
+#ACT
+SPLIT $STR(S$盾牌升级红点) | S$盾牌升级红点分割
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(19)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$面具升级红点
+#ACT
+SPLIT $STR(S$面具升级红点) | S$面具升级红点分割
+
+#IF
+CheckUseItem 2
+!SMALL <$ITEMVALSUM(特装精粹(攻)).DURA> $STR(S$勋章升级红点分割_4)
+!SMALL <$money(1)> $STR(S$勋章升级红点分割_5)
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 11
+!SMALL <$ITEMVALSUM(特装精粹(攻)).DURA> $STR(S$宝石升级红点分割_4)
+!SMALL <$money(1)> $STR(S$宝石升级红点分割_5)
+#act
+REDDOT 701 1_5 58 15
+BREAK
+#IF
+CheckUseItem 14
+!SMALL <$ITEMVALSUM(特装精粹(攻)).DURA> $STR(S$魂珠升级红点分割_4)
+!SMALL <$money(1)> $STR(S$魂珠升级红点分割_5)
+#act
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 12
+!SMALL <$ITEMVALSUM(特装精粹(防)).DURA> $STR(S$护符升级红点分割_4)
+!SMALL <$money(1)> $STR(S$护符升级红点分割_5)
+#act
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 13
+!SMALL <$ITEMVALSUM(特装精粹(防)).DURA> $STR(S$盾牌升级红点分割_4)
+!SMALL <$money(1)> $STR(S$盾牌升级红点分割_5)
+#act
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+CheckUseItem 19
+!SMALL <$ITEMVALSUM(特装精粹(防)).DURA> $STR(S$面具升级红点分割_4)
+!SMALL <$money(1)> $STR(S$面具升级红点分割_5)
+#act
+REDDOT 701 1_5 58 15
+BREAK
+
+
+
+
+
+
+#IF
+TRUE
+#ACT
+Mov S$遍历完成序列号1 
+MOV N$符石遍历1 0 
+MOV S$遍历完成物品名字1 |
+MOV N$P11 0
+LoopBagItems @符石遍历完成1 N$符石遍历1
+
+[@符石遍历完成1]
+#IF
+TRUE
+#ACT
+INC S$遍历完成序列号1 <$STR(N$符石遍历1)>,
+
+[@符石遍历完成1_End]
+#IF
+True
+#ACT
+SPLIT $STR(S$遍历完成序列号1) , S$符石红点分割1 N$符石红点分割次数1
+FOR N$P11 = $STR(N$符石红点分割次数1)
+INC S$遍历完成物品名字1 <$ITEMINFO[<$STR(S$符石红点分割1_<$STR(N$P11)>)>].NAME>|
+INC N$P11 1
+EndFor
+
+#IF
+CheckUseItem 0
+!EQUAL <$HUMAN(衣服符石1)> 
+#ACT
+LOADEXVAR S$符石衣服红点所需1 木符石 <$HUMAN(衣服符石1)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 0
+EQUAL <$HUMAN(衣服符石1)> 
+#ACT
+MOV S$符石衣服红点所需1 一阶木符石
+
+#IF
+CheckUseItem 0
+!EQUAL <$HUMAN(衣服符石2)> 
+#ACT
+LOADEXVAR S$符石衣服红点所需2 木符石 <$HUMAN(衣服符石2)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 0
+EQUAL <$HUMAN(衣服符石2)> 
+#ACT
+MOV S$符石衣服红点所需2 一阶木符石
+
+#IF
+CheckUseItem 0
+!EQUAL <$HUMAN(衣服符石3)> 
+#ACT
+LOADEXVAR S$符石衣服红点所需3 土符石 <$HUMAN(衣服符石3)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 0
+EQUAL <$HUMAN(衣服符石3)> 
+#ACT
+MOV S$符石衣服红点所需3 一阶土符石
+
+#IF
+CheckUseItem 0
+!EQUAL <$HUMAN(衣服符石4)> 
+#ACT
+LOADEXVAR S$符石衣服红点所需4 土符石 <$HUMAN(衣服符石4)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 0
+EQUAL <$HUMAN(衣服符石4)> 
+#ACT
+MOV S$符石衣服红点所需4 一阶土符石
+
+#IF
+CheckUseItem 0
+!EQUAL <$HUMAN(衣服符石5)> 
+#ACT
+LOADEXVAR S$符石衣服红点所需5 水符石 <$HUMAN(衣服符石5)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 0
+EQUAL <$HUMAN(衣服符石5)> 
+#ACT
+MOV S$符石衣服红点所需5 一阶水符石
+
+#IF
+CheckUseItem 1
+!EQUAL <$HUMAN(武器符石1)> 
+#ACT
+LOADEXVAR S$符石武器红点所需1 金符石 <$HUMAN(武器符石1)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 1
+EQUAL <$HUMAN(武器符石1)> 
+#ACT
+MOV S$符石武器红点所需1 一阶金符石
+
+#IF
+CheckUseItem 1
+!EQUAL <$HUMAN(武器符石2)> 
+#ACT
+LOADEXVAR S$符石武器红点所需2 木符石 <$HUMAN(武器符石2)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 1
+EQUAL <$HUMAN(武器符石2)> 
+#ACT
+MOV S$符石武器红点所需2 一阶金符石
+
+#IF
+CheckUseItem 1
+!EQUAL <$HUMAN(武器符石3)> 
+#ACT
+LOADEXVAR S$符石武器红点所需3 水符石 <$HUMAN(武器符石3)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 1
+EQUAL <$HUMAN(武器符石3)> 
+#ACT
+MOV S$符石武器红点所需3 一阶水符石
+
+#IF
+CheckUseItem 1
+!EQUAL <$HUMAN(武器符石4)> 
+#ACT
+LOADEXVAR S$符石武器红点所需4 火符石 <$HUMAN(武器符石4)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 1
+EQUAL <$HUMAN(武器符石4)> 
+#ACT
+MOV S$符石武器红点所需4 一阶火符石
+
+#IF
+CheckUseItem 1
+!EQUAL <$HUMAN(武器符石5)> 
+#ACT
+LOADEXVAR S$符石武器红点所需5 土符石 <$HUMAN(武器符石5)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 1
+EQUAL <$HUMAN(武器符石5)> 
+#ACT
+MOV S$符石武器红点所需5 一阶土符石
+
+#IF
+CheckUseItem 3
+!EQUAL <$HUMAN(项链符石1)> 
+#ACT
+LOADEXVAR S$符石项链红点所需1 金符石 <$HUMAN(项链符石1)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 3
+EQUAL <$HUMAN(项链符石1)> 
+#ACT
+MOV S$符石项链红点所需1 一阶金符石
+
+#IF
+CheckUseItem 3
+!EQUAL <$HUMAN(项链符石2)> 
+#ACT
+LOADEXVAR S$符石项链红点所需2 金符石 <$HUMAN(项链符石2)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 3
+EQUAL <$HUMAN(项链符石2)> 
+#ACT
+MOV S$符石项链红点所需2 一阶金符石
+
+#IF
+CheckUseItem 3
+!EQUAL <$HUMAN(项链符石3)> 
+#ACT
+LOADEXVAR S$符石项链红点所需3 水符石 <$HUMAN(项链符石3)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 3
+EQUAL <$HUMAN(项链符石3)> 
+#ACT
+MOV S$符石项链红点所需3 一阶水符石
+
+#IF
+CheckUseItem 3
+!EQUAL <$HUMAN(项链符石4)> 
+#ACT
+LOADEXVAR S$符石项链红点所需4 水符石 <$HUMAN(项链符石4)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 3
+EQUAL <$HUMAN(项链符石4)> 
+#ACT
+MOV S$符石项链红点所需4 一阶水符石
+
+#IF
+CheckUseItem 3
+!EQUAL <$HUMAN(项链符石5)> 
+#ACT
+LOADEXVAR S$符石项链红点所需5 土符石 <$HUMAN(项链符石5)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 3
+EQUAL <$HUMAN(项链符石5)> 
+#ACT
+MOV S$符石项链红点所需5 一阶土符石
+
+#IF
+CheckUseItem 4
+!EQUAL <$HUMAN(头盔符石1)> 
+#ACT
+LOADEXVAR S$符石头盔红点所需1 金符石 <$HUMAN(头盔符石1)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 4
+EQUAL <$HUMAN(头盔符石1)> 
+#ACT
+MOV S$符石头盔红点所需1 一阶金符石
+
+#IF
+CheckUseItem 4
+!EQUAL <$HUMAN(头盔符石2)> 
+#ACT
+LOADEXVAR S$符石头盔红点所需2 金符石 <$HUMAN(头盔符石2)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 4
+EQUAL <$HUMAN(头盔符石2)> 
+#ACT
+MOV S$符石头盔红点所需2 一阶金符石
+
+#IF
+CheckUseItem 4
+!EQUAL <$HUMAN(头盔符石3)> 
+#ACT
+LOADEXVAR S$符石头盔红点所需3 火符石 <$HUMAN(头盔符石3)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 4
+EQUAL <$HUMAN(头盔符石3)> 
+#ACT
+MOV S$符石头盔红点所需3 一阶火符石
+
+#IF
+CheckUseItem 4
+!EQUAL <$HUMAN(头盔符石4)> 
+#ACT
+LOADEXVAR S$符石头盔红点所需4 火符石 <$HUMAN(头盔符石4)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 4
+EQUAL <$HUMAN(头盔符石4)> 
+#ACT
+MOV S$符石头盔红点所需4 一阶火符石
+
+#IF
+CheckUseItem 4
+!EQUAL <$HUMAN(头盔符石5)> 
+#ACT
+LOADEXVAR S$符石头盔红点所需5 木符石 <$HUMAN(头盔符石5)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 4
+EQUAL <$HUMAN(头盔符石5)> 
+#ACT
+MOV S$符石头盔红点所需5 一阶木符石
+
+
+#IF
+CheckUseItem 5
+!EQUAL <$HUMAN(左手镯符石1)> 
+#ACT
+LOADEXVAR S$符石左手镯红点所需1 木符石 <$HUMAN(左手镯符石1)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 5
+EQUAL <$HUMAN(左手镯符石1)> 
+#ACT
+MOV S$符石左手镯红点所需1 一阶木符石
+
+#IF
+CheckUseItem 5
+!EQUAL <$HUMAN(左手镯符石2)> 
+#ACT
+LOADEXVAR S$符石左手镯红点所需2 木符石 <$HUMAN(左手镯符石2)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 5
+EQUAL <$HUMAN(左手镯符石2)> 
+#ACT
+MOV S$符石左手镯红点所需2 一阶木符石
+
+#IF
+CheckUseItem 5
+!EQUAL <$HUMAN(左手镯符石3)> 
+#ACT
+LOADEXVAR S$符石左手镯红点所需3 水符石 <$HUMAN(左手镯符石3)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 5
+EQUAL <$HUMAN(左手镯符石3)> 
+#ACT
+MOV S$符石左手镯红点所需3 一阶水符石
+
+#IF
+CheckUseItem 5
+!EQUAL <$HUMAN(左手镯符石4)> 
+#ACT
+LOADEXVAR S$符石左手镯红点所需4 水符石 <$HUMAN(左手镯符石4)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 5
+EQUAL <$HUMAN(左手镯符石4)> 
+#ACT
+MOV S$符石左手镯红点所需4 一阶水符石
+
+#IF
+CheckUseItem 5
+!EQUAL <$HUMAN(左手镯符石5)> 
+#ACT
+LOADEXVAR S$符石左手镯红点所需5 火符石 <$HUMAN(左手镯符石5)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 5
+EQUAL <$HUMAN(左手镯符石5)> 
+#ACT
+MOV S$符石左手镯红点所需5 一阶火符石
+
+
+#IF
+CheckUseItem 6
+!EQUAL <$HUMAN(右手镯符石1)> 
+#ACT
+LOADEXVAR S$符石右手镯红点所需1 木符石 <$HUMAN(右手镯符石1)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 6
+EQUAL <$HUMAN(右手镯符石1)> 
+#ACT
+MOV S$符石右手镯红点所需1 一阶木符石
+
+#IF
+CheckUseItem 6
+!EQUAL <$HUMAN(右手镯符石2)> 
+#ACT
+LOADEXVAR S$符石右手镯红点所需2 木符石 <$HUMAN(右手镯符石2)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 6
+EQUAL <$HUMAN(右手镯符石2)> 
+#ACT
+MOV S$符石右手镯红点所需2 一阶木符石
+
+#IF
+CheckUseItem 6
+!EQUAL <$HUMAN(右手镯符石3)> 
+#ACT
+LOADEXVAR S$符石右手镯红点所需3 水符石 <$HUMAN(右手镯符石3)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 6
+EQUAL <$HUMAN(右手镯符石3)> 
+#ACT
+MOV S$符石右手镯红点所需3 一阶水符石
+
+#IF
+CheckUseItem 6
+!EQUAL <$HUMAN(右手镯符石4)> 
+#ACT
+LOADEXVAR S$符石右手镯红点所需4 水符石 <$HUMAN(右手镯符石4)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 6
+EQUAL <$HUMAN(右手镯符石4)> 
+#ACT
+MOV S$符石右手镯红点所需4 一阶水符石
+
+#IF
+CheckUseItem 6
+!EQUAL <$HUMAN(右手镯符石5)> 
+#ACT
+LOADEXVAR S$符石右手镯红点所需5 火符石 <$HUMAN(右手镯符石5)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 6
+EQUAL <$HUMAN(右手镯符石5)> 
+#ACT
+MOV S$符石右手镯红点所需5 一阶火符石
+
+
+#IF
+CheckUseItem 7
+!EQUAL <$HUMAN(左戒指符石1)> 
+#ACT
+LOADEXVAR S$符石左戒指红点所需1 金符石 <$HUMAN(左戒指符石1)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 7
+EQUAL <$HUMAN(左戒指符石1)> 
+#ACT
+MOV S$符石左戒指红点所需1 一阶金符石
+
+#IF
+CheckUseItem 7
+!EQUAL <$HUMAN(左戒指符石2)> 
+#ACT
+LOADEXVAR S$符石左戒指红点所需2 水符石 <$HUMAN(左戒指符石2)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 7
+EQUAL <$HUMAN(左戒指符石2)> 
+#ACT
+MOV S$符石左戒指红点所需2 一阶水符石
+
+#IF
+CheckUseItem 7
+!EQUAL <$HUMAN(左戒指符石3)> 
+#ACT
+LOADEXVAR S$符石左戒指红点所需3 水符石 <$HUMAN(左戒指符石3)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 7
+EQUAL <$HUMAN(左戒指符石3)> 
+#ACT
+MOV S$符石左戒指红点所需3 一阶水符石
+
+#IF
+CheckUseItem 7
+!EQUAL <$HUMAN(左戒指符石4)> 
+#ACT
+LOADEXVAR S$符石左戒指红点所需4 火符石 <$HUMAN(左戒指符石4)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 7
+EQUAL <$HUMAN(左戒指符石4)> 
+#ACT
+MOV S$符石左戒指红点所需4 一阶火符石
+
+#IF
+CheckUseItem 7
+!EQUAL <$HUMAN(左戒指符石5)> 
+#ACT
+LOADEXVAR S$符石左戒指红点所需5 火符石 <$HUMAN(左戒指符石5)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 7
+EQUAL <$HUMAN(左戒指符石5)> 
+#ACT
+MOV S$符石左戒指红点所需5 一阶火符石
+
+#IF
+CheckUseItem 8
+!EQUAL <$HUMAN(右戒指符石1)> 
+#ACT
+LOADEXVAR S$符石右戒指红点所需1 金符石 <$HUMAN(右戒指符石1)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 8
+EQUAL <$HUMAN(右戒指符石1)> 
+#ACT
+MOV S$符石右戒指红点所需1 一阶金符石
+
+#IF
+CheckUseItem 8
+!EQUAL <$HUMAN(右戒指符石2)> 
+#ACT
+LOADEXVAR S$符石右戒指红点所需2 水符石 <$HUMAN(右戒指符石2)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 8
+EQUAL <$HUMAN(右戒指符石2)> 
+#ACT
+MOV S$符石右戒指红点所需2 一阶水符石
+
+#IF
+CheckUseItem 8
+!EQUAL <$HUMAN(右戒指符石3)> 
+#ACT
+LOADEXVAR S$符石右戒指红点所需3 水符石 <$HUMAN(右戒指符石3)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 8
+EQUAL <$HUMAN(右戒指符石3)> 
+#ACT
+MOV S$符石右戒指红点所需3 一阶水符石
+
+#IF
+CheckUseItem 8
+!EQUAL <$HUMAN(右戒指符石4)> 
+#ACT
+LOADEXVAR S$符石右戒指红点所需4 火符石 <$HUMAN(右戒指符石4)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 8
+EQUAL <$HUMAN(右戒指符石4)> 
+#ACT
+MOV S$符石右戒指红点所需4 一阶火符石
+
+#IF
+CheckUseItem 8
+!EQUAL <$HUMAN(右戒指符石5)> 
+#ACT
+LOADEXVAR S$符石右戒指红点所需5 火符石 <$HUMAN(右戒指符石5)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 8
+EQUAL <$HUMAN(右戒指符石5)> 
+#ACT
+MOV S$符石右戒指红点所需5 一阶火符石
+
+
+#IF
+CheckUseItem 9
+!EQUAL <$HUMAN(靴子符石1)> 
+#ACT
+LOADEXVAR S$符石靴子红点所需1 金符石 <$HUMAN(靴子符石1)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 9
+EQUAL <$HUMAN(靴子符石1)> 
+#ACT
+MOV S$符石靴子红点所需1 一阶金符石
+
+
+#IF
+CheckUseItem 9
+!EQUAL <$HUMAN(靴子符石2)> 
+#ACT
+LOADEXVAR S$符石靴子红点所需2 金符石 <$HUMAN(靴子符石2)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 9
+EQUAL <$HUMAN(靴子符石2)> 
+#ACT
+MOV S$符石靴子红点所需2 一阶金符石
+
+#IF
+CheckUseItem 9
+!EQUAL <$HUMAN(靴子符石3)> 
+#ACT
+LOADEXVAR S$符石靴子红点所需3 水符石 <$HUMAN(靴子符石3)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 9
+EQUAL <$HUMAN(靴子符石3)> 
+#ACT
+MOV S$符石靴子红点所需3 一阶水符石
+
+#IF
+CheckUseItem 9
+!EQUAL <$HUMAN(靴子符石4)> 
+#ACT
+LOADEXVAR S$符石靴子红点所需4 水符石 <$HUMAN(靴子符石4)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 9
+EQUAL <$HUMAN(靴子符石4)> 
+#ACT
+MOV S$符石靴子红点所需4 一阶水符石
+
+#IF
+CheckUseItem 9
+!EQUAL <$HUMAN(靴子符石5)> 
+#ACT
+LOADEXVAR S$符石靴子红点所需5 土符石 <$HUMAN(靴子符石5)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 9
+EQUAL <$HUMAN(靴子符石5)> 
+#ACT
+MOV S$符石靴子红点所需5 一阶土符石
+
+#IF
+CheckUseItem 10
+!EQUAL <$HUMAN(腰带符石1)> 
+#ACT
+LOADEXVAR S$符石腰带红点所需1 金符石 <$HUMAN(腰带符石1)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 10
+EQUAL <$HUMAN(腰带符石1)> 
+#ACT
+MOV S$符石腰带红点所需1 一阶金符石
+
+#IF
+CheckUseItem 10
+!EQUAL <$HUMAN(腰带符石2)> 
+#ACT
+LOADEXVAR S$符石腰带红点所需2 金符石 <$HUMAN(腰带符石2)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 10
+EQUAL <$HUMAN(腰带符石2)> 
+#ACT
+MOV S$符石腰带红点所需2 一阶金符石
+
+#IF
+CheckUseItem 10
+!EQUAL <$HUMAN(腰带符石3)> 
+#ACT
+LOADEXVAR S$符石腰带红点所需3 火符石 <$HUMAN(腰带符石3)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 10
+EQUAL <$HUMAN(腰带符石3)> 
+#ACT
+MOV S$符石腰带红点所需3 一阶火符石
+
+#IF
+CheckUseItem 10
+!EQUAL <$HUMAN(腰带符石4)> 
+#ACT
+LOADEXVAR S$符石腰带红点所需4 火符石 <$HUMAN(腰带符石4)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 10
+EQUAL <$HUMAN(腰带符石4)> 
+#ACT
+MOV S$符石腰带红点所需4 一阶火符石
+
+#IF
+CheckUseItem 10
+!EQUAL <$HUMAN(腰带符石5)> 
+#ACT
+LOADEXVAR S$符石腰带红点所需5 木符石 <$HUMAN(腰带符石5)> ..\QuestDiary\文本读取\符石红点.txt
+#IF
+CheckUseItem 10
+EQUAL <$HUMAN(腰带符石5)> 
+#ACT
+MOV S$符石腰带红点所需5 一阶木符石
+
+
+#IFONE
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石武器红点所需1)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石武器红点所需2)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石武器红点所需3)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石武器红点所需4)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石武器红点所需5)>|
+#ACT
+MOV N$FSHD1 1
+#ELSEACT
+MOV N$FSHD1 0
+
+#IFONE
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石衣服红点所需1)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石衣服红点所需2)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石衣服红点所需3)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石衣服红点所需4)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石衣服红点所需5)>|
+#ACT
+MOV N$FSHD2 1
+#ELSEACT
+MOV N$FSHD2 0
+
+#IFONE
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石头盔红点所需1)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石头盔红点所需2)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石头盔红点所需3)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石头盔红点所需4)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石头盔红点所需5)>|
+#ACT
+MOV N$FSHD3 1
+#ELSEACT
+MOV N$FSHD3 0
+
+#IFONE
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石项链红点所需1)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石项链红点所需2)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石项链红点所需3)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石项链红点所需4)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石项链红点所需5)>|
+#ACT
+MOV N$FSHD4 1
+#ELSEACT
+MOV N$FSHD4 0
+
+#IFONE
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石左手镯红点所需1)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石左手镯红点所需2)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石左手镯红点所需3)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石左手镯红点所需4)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石左手镯红点所需5)>|
+#ACT
+MOV N$FSHD5 1
+#ELSEACT
+MOV N$FSHD5 0
+
+#IFONE
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石右手镯红点所需1)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石右手镯红点所需2)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石右手镯红点所需3)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石右手镯红点所需4)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石右手镯红点所需5)>|
+#ACT
+MOV N$FSHD6 1
+#ELSEACT
+MOV N$FSHD6 0
+
+#IFONE
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石左戒指红点所需1)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石左戒指红点所需2)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石左戒指红点所需3)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石左戒指红点所需4)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石左戒指红点所需5)>|
+#ACT
+MOV N$FSHD7 1
+#ELSEACT
+MOV N$FSHD7 0
+
+#IFONE
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石右戒指红点所需1)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石右戒指红点所需2)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石右戒指红点所需3)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石右戒指红点所需4)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石右戒指红点所需5)>|
+#ACT
+MOV N$FSHD8 1
+#ELSEACT
+MOV N$FSHD8 0
+
+
+#IFONE
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石靴子红点所需1)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石靴子红点所需2)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石靴子红点所需3)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石靴子红点所需4)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石靴子红点所需5)>|
+#ACT
+MOV N$FSHD9 1
+#ELSEACT
+MOV N$FSHD9 0
+
+#IFONE
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石腰带红点所需1)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石腰带红点所需2)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石腰带红点所需3)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石腰带红点所需4)>|
+POS <$STR(S$遍历完成物品名字)> |<$str(S$符石腰带红点所需5)>|
+#ACT
+MOV N$FSHD10 1
+#ELSEACT
+MOV N$FSHD10 0
+
+
+
+#IFONE
+EQUAL $STR(N$FSHD1) 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(1)].GC1> 5
+#ACT
+MOV N$FSHD1 0
+
+#IFONE
+EQUAL $STR(N$FSHD2) 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(0)].GC1> 5
+#ACT
+MOV N$FSHD2 0
+
+#IFONE
+EQUAL $STR(N$FSHD3) 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(4)].GC1> 5
+#ACT
+MOV N$FSHD3 0
+
+#IFONE
+EQUAL $STR(N$FSHD4) 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(3)].GC1> 5
+#ACT
+MOV N$FSHD4 0
+
+#IFONE
+EQUAL $STR(N$FSHD5) 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(5)].GC1> 5
+#ACT
+MOV N$FSHD5 0
+
+#IFONE
+EQUAL $STR(N$FSHD6) 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(6)].GC1> 5
+#ACT
+MOV N$FSHD6 0
+
+#IFONE
+EQUAL $STR(N$FSHD7) 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(7)].GC1> 5
+#ACT
+MOV N$FSHD7 0
+
+#IFONE
+EQUAL $STR(N$FSHD8) 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(8)].GC1> 5
+#ACT
+MOV N$FSHD8 0
+
+#IFONE
+EQUAL $STR(N$FSHD9) 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(10)].GC1> 5
+#ACT
+MOV N$FSHD9 0
+
+#IFONE
+EQUAL $STR(N$FSHD10) 0
+SMALL <$ITEMINFO[$USEITEMMAKEINDEX(9)].GC1> 5
+#ACT
+MOV N$FSHD10 0
+
+#IFONE
+EQUAL $STR(N$FSHD1) 1
+EQUAL $STR(N$FSHD2) 1
+EQUAL $STR(N$FSHD3) 1
+EQUAL $STR(N$FSHD4) 1
+EQUAL $STR(N$FSHD5) 1
+EQUAL $STR(N$FSHD6) 1
+EQUAL $STR(N$FSHD7) 1
+EQUAL $STR(N$FSHD8) 1
+EQUAL $STR(N$FSHD9) 1
+EQUAL $STR(N$FSHD10) 1
+#ACT
+REDDOT 701 1_5 58 15
+BREAK
+
+#IF
+TRUE
+#ACT
+REDDEL 701 1_5
+BREAK
+
+
+[@神凶器红点判断]
+
+;=====================此处为升级神器红点检测==============================================
+#IFONE
+LARGE <$ITEMCOUNT[撼天]> 0
+LARGE <$ITEMCOUNT[暗月]> 0
+LARGE <$ITEMCOUNT[鬼炎]> 0
+LARGE <$ITEMCOUNT[冥日]> 0
+LARGE <$ITEMCOUNT[碧海天王]> 0
+LARGE <$ITEMCOUNT[紫月圣君]> 0
+LARGE <$ITEMCOUNT[耀阳圣尊]> 0
+LARGE <$ITEMCOUNT[赤明天帝]> 0
+#ACT
+RedDot 701 1_7 58 15
+#ELSEACT
+Reddel 701 1_7
+
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$撼天抽取 <$Human(撼天等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$暗月抽取 <$Human(暗月等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$冥日抽取 <$Human(冥日等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$鬼炎抽取 <$Human(鬼炎等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$碧海天王抽取 <$Human(碧海天王等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$赤明天帝抽取 <$Human(赤明天帝等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$紫月圣君抽取 <$Human(紫月圣君等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$耀阳圣尊抽取 <$Human(耀阳圣尊等级)>
+
+#IF
+!SMALL $Human(撼天等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$撼天抽取)
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+!SMALL $Human(暗月等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$暗月抽取)
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+!SMALL $Human(冥日等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$冥日抽取)
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+!SMALL $Human(鬼炎等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$鬼炎抽取)
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+!SMALL $Human(碧海天王等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$碧海天王抽取)
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+!SMALL $Human(赤明天帝等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$赤明天帝抽取)
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+!SMALL $Human(紫月圣君等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$紫月圣君抽取)
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+!SMALL $Human(耀阳圣尊等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$耀阳圣尊抽取)
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+;=====================此处为激活神器红点检测==============================================有确切激活物品时要完善
+#IF
+EQUAL $Human(撼天等级) 0
+CHECKITEM 撼天
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+EQUAL $Human(暗月等级) 0
+CHECKITEM 暗月
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+EQUAL $Human(冥日等级) 0
+CHECKITEM 冥日
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+EQUAL $Human(鬼炎等级) 0
+CHECKITEM 鬼炎
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+EQUAL $Human(碧海天王等级) 0
+CHECKITEM 碧海天王
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+EQUAL $Human(赤明天帝等级) 0
+CHECKITEM 赤明天帝
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+EQUAL $Human(紫月圣君等级) 0
+CHECKITEM 紫月圣君
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IF
+EQUAL $Human(耀阳圣尊等级) 0
+CHECKITEM 耀阳圣尊
+#ACT
+RedDot 701 1_7 58 15
+BREAK
+
+#IFONE
+LARGE <$ITEMCOUNT[撼天]> 0
+LARGE <$ITEMCOUNT[暗月]> 0
+LARGE <$ITEMCOUNT[鬼炎]> 0
+LARGE <$ITEMCOUNT[冥日]> 0
+LARGE <$ITEMCOUNT[碧海天王]> 0
+LARGE <$ITEMCOUNT[紫月圣君]> 0
+LARGE <$ITEMCOUNT[耀阳圣尊]> 0
+LARGE <$ITEMCOUNT[赤明天帝]> 0
+#ACT
+BREAK
+#ELSEACT
+Reddel 701 1_7
+BREAK
+
+
+
+[@法宝红点]
+#IF
+SMALL <$HUMAN(无量飞剑等级)> 60
+!SMALL <$HUMAN(无量飞剑等级)> 1
+!SMALL <$ITEMVALSUM(法宝精粹).DURA> 1
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(八卦镜等级)> 60
+!SMALL <$HUMAN(八卦镜等级)> 1
+!SMALL <$ITEMVALSUM(法宝精粹).DURA> 1
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(招魂幡等级)> 60
+!SMALL <$HUMAN(招魂幡等级)> 1
+!SMALL <$ITEMVALSUM(法宝精粹).DURA> 1
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(紫金葫芦等级)> 60
+!SMALL <$HUMAN(紫金葫芦等级)> 1
+!SMALL <$ITEMVALSUM(法宝精粹).DURA> 1
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(番天印等级)> 60
+!SMALL <$HUMAN(番天印等级)> 1
+!SMALL <$ITEMVALSUM(法宝精粹).DURA> 1
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(七宝琉璃塔等级)> 60
+!SMALL <$HUMAN(七宝琉璃塔等级)> 1
+!SMALL <$ITEMVALSUM(法宝精粹).DURA> 1
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(无量飞剑等级)> 1
+CHECKITEM 无量飞剑
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(八卦镜等级)> 1
+CHECKITEM 八卦镜
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(招魂幡等级)> 1
+CHECKITEM 招魂幡
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(番天印等级)> 1
+CHECKITEM 番天印
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(紫金葫芦等级)> 1
+CHECKITEM 紫金葫芦
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$HUMAN(七宝玲珑塔等级)> 1
+CHECKITEM 七宝玲珑塔
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$Human(无量飞剑星级)> 6
+CHECKITEM 无量飞剑
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$Human(八卦镜星级)> 6
+CHECKITEM 八卦镜
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$Human(招魂幡星级)> 6
+CHECKITEM 招魂幡
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$Human(番天印星级)> 6
+CHECKITEM 番天印
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$Human(紫金葫芦星级)> 6
+CHECKITEM 紫金葫芦
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+SMALL <$Human(七宝玲珑塔星级)> 6
+CHECKITEM 七宝玲珑塔
+#ACT
+RedDot 701 1_10 58 15
+BREAK
+
+#IF
+TRUE
+#ACT
+RedDel 701 1_10
+BREAK
+
+
+
+[@右侧伸缩红点]
+#IF
+!SMALL <$ITEMVALSUM(法宝精粹).DURA> 1
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IFONE
+LARGE <$ITEMCOUNT[撼天]> 0
+LARGE <$ITEMCOUNT[暗月]> 0
+LARGE <$ITEMCOUNT[鬼炎]> 0
+LARGE <$ITEMCOUNT[冥日]> 0
+LARGE <$ITEMCOUNT[碧海天王]> 0
+LARGE <$ITEMCOUNT[紫月圣君]> 0
+LARGE <$ITEMCOUNT[耀阳圣尊]> 0
+LARGE <$ITEMCOUNT[赤明天帝]> 0
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$撼天抽取 <$Human(撼天等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$暗月抽取 <$Human(暗月等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$冥日抽取 <$Human(冥日等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$鬼炎抽取 <$Human(鬼炎等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$碧海天王抽取 <$Human(碧海天王等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$赤明天帝抽取 <$Human(赤明天帝等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$紫月圣君抽取 <$Human(紫月圣君等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$耀阳圣尊抽取 <$Human(耀阳圣尊等级)>
+
+#IF
+LARGE G0 0
+!SMALL $Human(撼天等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$撼天抽取)
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IF
+LARGE G0 0
+!SMALL $Human(暗月等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$暗月抽取)
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IF
+LARGE G0 0
+!SMALL $Human(冥日等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$冥日抽取)
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IF
+LARGE G0 0
+!SMALL $Human(鬼炎等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$鬼炎抽取)
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IF
+LARGE G0 0
+!SMALL $Human(碧海天王等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$碧海天王抽取)
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IF
+LARGE G0 0
+!SMALL $Human(赤明天帝等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$赤明天帝抽取)
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IF
+LARGE G0 0
+!SMALL $Human(紫月圣君等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$紫月圣君抽取)
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IF
+LARGE G0 0
+!SMALL $Human(耀阳圣尊等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$耀阳圣尊抽取)
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 0
+CHECKITEM 祈祷头盔图鉴
+#ACT
+MOV N$祈祷头盔图鉴红点1 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷头盔图鉴红点2 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷头盔图鉴红点3 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷头盔图鉴红点4 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷头盔图鉴红点5 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDTKDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷头盔图鉴红点6 1
+#ELSEACT
+MOV N$祈祷头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 0
+CHECKITEM 祈祷项链图鉴
+#ACT
+MOV N$祈祷项链图鉴红点1 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷项链图鉴红点2 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷项链图鉴红点3 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷项链图鉴红点4 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷项链图鉴红点5 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDXLDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷项链图鉴红点6 1
+#ELSEACT
+MOV N$祈祷项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 0
+CHECKITEM 祈祷手镯图鉴
+#ACT
+MOV N$祈祷手镯图鉴红点1 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷手镯图鉴红点2 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷手镯图鉴红点3 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷手镯图鉴红点4 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷手镯图鉴红点5 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDSZDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷手镯图鉴红点6 1
+#ELSEACT
+MOV N$祈祷手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 0
+CHECKITEM 祈祷戒指图鉴
+#ACT
+MOV N$祈祷戒指图鉴红点1 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 1
+!SMALL $MONEY(8) 40
+#ACT
+MOV N$祈祷戒指图鉴红点2 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 2
+!SMALL $MONEY(8) 160
+#ACT
+MOV N$祈祷戒指图鉴红点3 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 3
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$祈祷戒指图鉴红点4 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 4
+!SMALL $MONEY(8) 1170
+#ACT
+MOV N$祈祷戒指图鉴红点5 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(QD_TZ).QDJZDJ 5
+!SMALL $MONEY(8) 1700
+#ACT
+MOV N$祈祷戒指图鉴红点6 1
+#ELSEACT
+MOV N$祈祷戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$祈祷头盔图鉴红点1) 1
+EQUAL $STR(N$祈祷头盔图鉴红点2) 1
+EQUAL $STR(N$祈祷头盔图鉴红点3) 1
+EQUAL $STR(N$祈祷头盔图鉴红点4) 1
+EQUAL $STR(N$祈祷头盔图鉴红点5) 1
+EQUAL $STR(N$祈祷头盔图鉴红点6) 1
+EQUAL $STR(N$祈祷项链图鉴红点1) 1
+EQUAL $STR(N$祈祷项链图鉴红点2) 1
+EQUAL $STR(N$祈祷项链图鉴红点3) 1
+EQUAL $STR(N$祈祷项链图鉴红点4) 1
+EQUAL $STR(N$祈祷项链图鉴红点5) 1
+EQUAL $STR(N$祈祷项链图鉴红点6) 1
+EQUAL $STR(N$祈祷手镯图鉴红点1) 1
+EQUAL $STR(N$祈祷手镯图鉴红点2) 1
+EQUAL $STR(N$祈祷手镯图鉴红点3) 1
+EQUAL $STR(N$祈祷手镯图鉴红点4) 1
+EQUAL $STR(N$祈祷手镯图鉴红点5) 1
+EQUAL $STR(N$祈祷手镯图鉴红点6) 1
+EQUAL $STR(N$祈祷戒指图鉴红点1) 1
+EQUAL $STR(N$祈祷戒指图鉴红点2) 1
+EQUAL $STR(N$祈祷戒指图鉴红点3) 1
+EQUAL $STR(N$祈祷戒指图鉴红点4) 1
+EQUAL $STR(N$祈祷戒指图鉴红点5) 1
+EQUAL $STR(N$祈祷戒指图鉴红点6) 1
+#ACT
+MOV S$祈祷红点 1
+#ELSEACT
+MOV S$祈祷红点 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 0
+CHECKITEM 狂怒头盔图鉴
+#ACT
+MOV N$狂怒头盔图鉴红点1 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒头盔图鉴红点2 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒头盔图鉴红点3 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒头盔图鉴红点4 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒头盔图鉴红点5 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNTKDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒头盔图鉴红点6 1
+#ELSEACT
+MOV N$狂怒头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 0
+CHECKITEM 狂怒项链图鉴
+#ACT
+MOV N$狂怒项链图鉴红点1 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒项链图鉴红点2 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒项链图鉴红点3 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒项链图鉴红点4 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒项链图鉴红点5 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNXLDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒项链图鉴红点6 1
+#ELSEACT
+MOV N$狂怒项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 0
+CHECKITEM 狂怒手镯图鉴
+#ACT
+MOV N$狂怒手镯图鉴红点1 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒手镯图鉴红点2 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒手镯图鉴红点3 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒手镯图鉴红点4 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒手镯图鉴红点5 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNSZDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒手镯图鉴红点6 1
+#ELSEACT
+MOV N$狂怒手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 0
+CHECKITEM 狂怒戒指图鉴
+#ACT
+MOV N$狂怒戒指图鉴红点1 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 1
+!SMALL $MONEY(8) 80
+#ACT
+MOV N$狂怒戒指图鉴红点2 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 2
+!SMALL $MONEY(8) 290
+#ACT
+MOV N$狂怒戒指图鉴红点3 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 3
+!SMALL $MONEY(8) 1029
+#ACT
+MOV N$狂怒戒指图鉴红点4 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 4
+!SMALL $MONEY(8) 2050
+#ACT
+MOV N$狂怒戒指图鉴红点5 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(KN_TZ).KNJZDJ 5
+!SMALL $MONEY(8) 2980
+#ACT
+MOV N$狂怒戒指图鉴红点6 1
+#ELSEACT
+MOV N$狂怒戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$狂怒头盔图鉴红点1) 1
+EQUAL $STR(N$狂怒头盔图鉴红点2) 1
+EQUAL $STR(N$狂怒头盔图鉴红点3) 1
+EQUAL $STR(N$狂怒头盔图鉴红点4) 1
+EQUAL $STR(N$狂怒头盔图鉴红点5) 1
+EQUAL $STR(N$狂怒头盔图鉴红点6) 1
+EQUAL $STR(N$狂怒项链图鉴红点1) 1
+EQUAL $STR(N$狂怒项链图鉴红点2) 1
+EQUAL $STR(N$狂怒项链图鉴红点3) 1
+EQUAL $STR(N$狂怒项链图鉴红点4) 1
+EQUAL $STR(N$狂怒项链图鉴红点5) 1
+EQUAL $STR(N$狂怒项链图鉴红点6) 1
+EQUAL $STR(N$狂怒手镯图鉴红点1) 1
+EQUAL $STR(N$狂怒手镯图鉴红点2) 1
+EQUAL $STR(N$狂怒手镯图鉴红点3) 1
+EQUAL $STR(N$狂怒手镯图鉴红点4) 1
+EQUAL $STR(N$狂怒手镯图鉴红点5) 1
+EQUAL $STR(N$狂怒手镯图鉴红点6) 1
+EQUAL $STR(N$狂怒戒指图鉴红点1) 1
+EQUAL $STR(N$狂怒戒指图鉴红点2) 1
+EQUAL $STR(N$狂怒戒指图鉴红点3) 1
+EQUAL $STR(N$狂怒戒指图鉴红点4) 1
+EQUAL $STR(N$狂怒戒指图鉴红点5) 1
+EQUAL $STR(N$狂怒戒指图鉴红点6) 1
+#ACT
+MOV S$狂怒红点 1
+#ELSEACT
+MOV S$狂怒红点 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 0
+CHECKITEM 嗜血头盔图鉴
+#ACT
+MOV N$嗜血头盔图鉴红点1 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血头盔图鉴红点2 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血头盔图鉴红点3 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血头盔图鉴红点4 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血头盔图鉴红点5 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXTKDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血头盔图鉴红点6 1
+#ELSEACT
+MOV N$嗜血头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 0
+CHECKITEM 嗜血项链图鉴
+#ACT
+MOV N$嗜血项链图鉴红点1 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血项链图鉴红点2 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血项链图鉴红点3 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血项链图鉴红点4 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血项链图鉴红点5 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXXLDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血项链图鉴红点6 1
+#ELSEACT
+MOV N$嗜血项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 0
+CHECKITEM 嗜血手镯图鉴
+#ACT
+MOV N$嗜血手镯图鉴红点1 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血手镯图鉴红点2 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血手镯图鉴红点3 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血手镯图鉴红点4 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血手镯图鉴红点5 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXSZDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血手镯图鉴红点6 1
+#ELSEACT
+MOV N$嗜血手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 0
+CHECKITEM 嗜血戒指图鉴
+#ACT
+MOV N$嗜血戒指图鉴红点1 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 1
+!SMALL $MONEY(8) 144
+#ACT
+MOV N$嗜血戒指图鉴红点2 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 2
+!SMALL $MONEY(8) 500
+#ACT
+MOV N$嗜血戒指图鉴红点3 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 3
+!SMALL $MONEY(8) 1760
+#ACT
+MOV N$嗜血戒指图鉴红点4 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 4
+!SMALL $MONEY(8) 3520
+#ACT
+MOV N$嗜血戒指图鉴红点5 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SX_TZ).SXJZDJ 5
+!SMALL $MONEY(8) 5115
+#ACT
+MOV N$嗜血戒指图鉴红点6 1
+#ELSEACT
+MOV N$嗜血戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$嗜血头盔图鉴红点1) 1
+EQUAL $STR(N$嗜血头盔图鉴红点2) 1
+EQUAL $STR(N$嗜血头盔图鉴红点3) 1
+EQUAL $STR(N$嗜血头盔图鉴红点4) 1
+EQUAL $STR(N$嗜血头盔图鉴红点5) 1
+EQUAL $STR(N$嗜血头盔图鉴红点6) 1
+EQUAL $STR(N$嗜血项链图鉴红点1) 1
+EQUAL $STR(N$嗜血项链图鉴红点2) 1
+EQUAL $STR(N$嗜血项链图鉴红点3) 1
+EQUAL $STR(N$嗜血项链图鉴红点4) 1
+EQUAL $STR(N$嗜血项链图鉴红点5) 1
+EQUAL $STR(N$嗜血项链图鉴红点6) 1
+EQUAL $STR(N$嗜血手镯图鉴红点1) 1
+EQUAL $STR(N$嗜血手镯图鉴红点2) 1
+EQUAL $STR(N$嗜血手镯图鉴红点3) 1
+EQUAL $STR(N$嗜血手镯图鉴红点4) 1
+EQUAL $STR(N$嗜血手镯图鉴红点5) 1
+EQUAL $STR(N$嗜血手镯图鉴红点6) 1
+EQUAL $STR(N$嗜血戒指图鉴红点1) 1
+EQUAL $STR(N$嗜血戒指图鉴红点2) 1
+EQUAL $STR(N$嗜血戒指图鉴红点3) 1
+EQUAL $STR(N$嗜血戒指图鉴红点4) 1
+EQUAL $STR(N$嗜血戒指图鉴红点5) 1
+EQUAL $STR(N$嗜血戒指图鉴红点6) 1
+#ACT
+MOV S$嗜血红点 1
+#ELSEACT
+MOV S$嗜血红点 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 0
+CHECKITEM 神秘头盔图鉴
+#ACT
+MOV N$神秘头盔图鉴红点1 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘头盔图鉴红点2 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘头盔图鉴红点3 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘头盔图鉴红点4 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘头盔图鉴红点5 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMTKDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘头盔图鉴红点6 1
+#ELSEACT
+MOV N$神秘头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 0
+CHECKITEM 神秘项链图鉴
+#ACT
+MOV N$神秘项链图鉴红点1 1
+#ELSEACT
+MOV N$神秘项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘项链图鉴红点2 1
+#ELSEACT
+MOV N$神秘项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘项链图鉴红点3 1
+#ELSEACT
+MOV N$神秘项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘项链图鉴红点4 1
+#ELSEACT
+MOV N$神秘项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘项链图鉴红点5 1
+#ELSEACT
+MOV N$神秘项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMXLDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘项链图鉴红点6 1
+#ELSEACT
+MOV N$神秘项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 0
+CHECKITEM 神秘手镯图鉴
+#ACT
+MOV N$神秘手镯图鉴红点1 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘手镯图鉴红点2 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘手镯图鉴红点3 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘手镯图鉴红点4 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘手镯图鉴红点5 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMSZDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘手镯图鉴红点6 1
+#ELSEACT
+MOV N$神秘手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 0
+CHECKITEM 神秘戒指图鉴
+#ACT
+MOV N$神秘戒指图鉴红点1 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 1
+!SMALL $MONEY(8) 210
+#ACT
+MOV N$神秘戒指图鉴红点2 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 2
+!SMALL $MONEY(8) 750
+#ACT
+MOV N$神秘戒指图鉴红点3 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 3
+!SMALL $MONEY(8) 2040
+#ACT
+MOV N$神秘戒指图鉴红点4 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 4
+!SMALL $MONEY(8) 5292
+#ACT
+MOV N$神秘戒指图鉴红点5 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SM_TZ).SMJZDJ 5
+!SMALL $MONEY(8) 7673
+#ACT
+MOV N$神秘戒指图鉴红点6 1
+#ELSEACT
+MOV N$神秘戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$神秘头盔图鉴红点1) 1
+EQUAL $STR(N$神秘头盔图鉴红点2) 1
+EQUAL $STR(N$神秘头盔图鉴红点3) 1
+EQUAL $STR(N$神秘头盔图鉴红点4) 1
+EQUAL $STR(N$神秘头盔图鉴红点5) 1
+EQUAL $STR(N$神秘头盔图鉴红点6) 1
+EQUAL $STR(N$神秘项链图鉴红点1) 1
+EQUAL $STR(N$神秘项链图鉴红点2) 1
+EQUAL $STR(N$神秘项链图鉴红点3) 1
+EQUAL $STR(N$神秘项链图鉴红点4) 1
+EQUAL $STR(N$神秘项链图鉴红点5) 1
+EQUAL $STR(N$神秘项链图鉴红点6) 1
+EQUAL $STR(N$神秘手镯图鉴红点1) 1
+EQUAL $STR(N$神秘手镯图鉴红点2) 1
+EQUAL $STR(N$神秘手镯图鉴红点3) 1
+EQUAL $STR(N$神秘手镯图鉴红点4) 1
+EQUAL $STR(N$神秘手镯图鉴红点5) 1
+EQUAL $STR(N$神秘手镯图鉴红点6) 1
+EQUAL $STR(N$神秘戒指图鉴红点1) 1
+EQUAL $STR(N$神秘戒指图鉴红点2) 1
+EQUAL $STR(N$神秘戒指图鉴红点3) 1
+EQUAL $STR(N$神秘戒指图鉴红点4) 1
+EQUAL $STR(N$神秘戒指图鉴红点5) 1
+EQUAL $STR(N$神秘戒指图鉴红点6) 1
+#ACT
+MOV S$神秘红点 1
+#ELSEACT
+MOV S$神秘红点 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 0
+CHECKITEM 明王头盔图鉴
+#ACT
+MOV N$明王头盔图鉴红点1 1
+#ELSEACT
+MOV N$明王头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王头盔图鉴红点2 1
+#ELSEACT
+MOV N$明王头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王头盔图鉴红点3 1
+#ELSEACT
+MOV N$明王头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王头盔图鉴红点4 1
+#ELSEACT
+MOV N$明王头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王头盔图鉴红点5 1
+#ELSEACT
+MOV N$明王头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWTKDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王头盔图鉴红点6 1
+#ELSEACT
+MOV N$明王头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 0
+CHECKITEM 明王项链图鉴
+#ACT
+MOV N$明王项链图鉴红点1 1
+#ELSEACT
+MOV N$明王项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王项链图鉴红点2 1
+#ELSEACT
+MOV N$明王项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王项链图鉴红点3 1
+#ELSEACT
+MOV N$明王项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王项链图鉴红点4 1
+#ELSEACT
+MOV N$明王项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王项链图鉴红点5 1
+#ELSEACT
+MOV N$明王项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWXLDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王项链图鉴红点6 1
+#ELSEACT
+MOV N$明王项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 0
+CHECKITEM 明王手镯图鉴
+#ACT
+MOV N$明王手镯图鉴红点1 1
+#ELSEACT
+MOV N$明王手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王手镯图鉴红点2 1
+#ELSEACT
+MOV N$明王手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王手镯图鉴红点3 1
+#ELSEACT
+MOV N$明王手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王手镯图鉴红点4 1
+#ELSEACT
+MOV N$明王手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王手镯图鉴红点5 1
+#ELSEACT
+MOV N$明王手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWSZDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王手镯图鉴红点6 1
+#ELSEACT
+MOV N$明王手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 0
+CHECKITEM 明王戒指图鉴
+#ACT
+MOV N$明王戒指图鉴红点1 1
+#ELSEACT
+MOV N$明王戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 1
+!SMALL $MONEY(8) 350
+#ACT
+MOV N$明王戒指图鉴红点2 1
+#ELSEACT
+MOV N$明王戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 2
+!SMALL $MONEY(8) 1500
+#ACT
+MOV N$明王戒指图鉴红点3 1
+#ELSEACT
+MOV N$明王戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 3
+!SMALL $MONEY(8) 4800
+#ACT
+MOV N$明王戒指图鉴红点4 1
+#ELSEACT
+MOV N$明王戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 4
+!SMALL $MONEY(8) 13500
+#ACT
+MOV N$明王戒指图鉴红点5 1
+#ELSEACT
+MOV N$明王戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(MW_TZ).MWJZDJ 5
+!SMALL $MONEY(8) 25600
+#ACT
+MOV N$明王戒指图鉴红点6 1
+#ELSEACT
+MOV N$明王戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$明王头盔图鉴红点1) 1
+EQUAL $STR(N$明王头盔图鉴红点2) 1
+EQUAL $STR(N$明王头盔图鉴红点3) 1
+EQUAL $STR(N$明王头盔图鉴红点4) 1
+EQUAL $STR(N$明王头盔图鉴红点5) 1
+EQUAL $STR(N$明王头盔图鉴红点6) 1
+EQUAL $STR(N$明王项链图鉴红点1) 1
+EQUAL $STR(N$明王项链图鉴红点2) 1
+EQUAL $STR(N$明王项链图鉴红点3) 1
+EQUAL $STR(N$明王项链图鉴红点4) 1
+EQUAL $STR(N$明王项链图鉴红点5) 1
+EQUAL $STR(N$明王项链图鉴红点6) 1
+EQUAL $STR(N$明王手镯图鉴红点1) 1
+EQUAL $STR(N$明王手镯图鉴红点2) 1
+EQUAL $STR(N$明王手镯图鉴红点3) 1
+EQUAL $STR(N$明王手镯图鉴红点4) 1
+EQUAL $STR(N$明王手镯图鉴红点5) 1
+EQUAL $STR(N$明王手镯图鉴红点6) 1
+EQUAL $STR(N$明王戒指图鉴红点1) 1
+EQUAL $STR(N$明王戒指图鉴红点2) 1
+EQUAL $STR(N$明王戒指图鉴红点3) 1
+EQUAL $STR(N$明王戒指图鉴红点4) 1
+EQUAL $STR(N$明王戒指图鉴红点5) 1
+EQUAL $STR(N$明王戒指图鉴红点6) 1
+#ACT
+MOV S$明王红点 1
+#ELSEACT
+MOV S$明王红点 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 0
+CHECKITEM 神御头盔图鉴
+#ACT
+MOV N$神御头盔图鉴红点1 1
+#ELSEACT
+MOV N$神御头盔图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御头盔图鉴红点2 1
+#ELSEACT
+MOV N$神御头盔图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御头盔图鉴红点3 1
+#ELSEACT
+MOV N$神御头盔图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御头盔图鉴红点4 1
+#ELSEACT
+MOV N$神御头盔图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御头盔图鉴红点5 1
+#ELSEACT
+MOV N$神御头盔图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYTKDJ 5
+!SMALL $MONEY(8) 48800
+#ACT
+MOV N$神御头盔图鉴红点6 1
+#ELSEACT
+MOV N$神御头盔图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 0
+CHECKITEM 神御项链图鉴
+#ACT
+MOV N$神御项链图鉴红点1 1
+#ELSEACT
+MOV N$神御项链图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御项链图鉴红点2 1
+#ELSEACT
+MOV N$神御项链图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御项链图鉴红点3 1
+#ELSEACT
+MOV N$神御项链图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御项链图鉴红点4 1
+#ELSEACT
+MOV N$神御项链图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御项链图鉴红点5 1
+#ELSEACT
+MOV N$神御项链图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYXLDJ 5
+!SMALL $MONEY(8) 48800
+#ACT
+MOV N$神御项链图鉴红点6 1
+#ELSEACT
+MOV N$神御项链图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 0
+CHECKITEM 神御手镯图鉴
+#ACT
+MOV N$神御手镯图鉴红点1 1
+#ELSEACT
+MOV N$神御手镯图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御手镯图鉴红点2 1
+#ELSEACT
+MOV N$神御手镯图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御手镯图鉴红点3 1
+#ELSEACT
+MOV N$神御手镯图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御手镯图鉴红点4 1
+#ELSEACT
+MOV N$神御手镯图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御手镯图鉴红点5 1
+#ELSEACT
+MOV N$神御手镯图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYSZDJ 5
+!SMALL $MONEY(8) 44880
+#ACT
+MOV N$神御手镯图鉴红点6 1
+#ELSEACT
+MOV N$神御手镯图鉴红点6 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 0
+CHECKITEM 神御戒指图鉴
+#ACT
+MOV N$神御戒指图鉴红点1 1
+#ELSEACT
+MOV N$神御戒指图鉴红点1 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 1
+!SMALL $MONEY(8) 600
+#ACT
+MOV N$神御戒指图鉴红点2 1
+#ELSEACT
+MOV N$神御戒指图鉴红点2 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 2
+!SMALL $MONEY(8) 2100
+#ACT
+MOV N$神御戒指图鉴红点3 1
+#ELSEACT
+MOV N$神御戒指图鉴红点3 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 3
+!SMALL $MONEY(8) 6700
+#ACT
+MOV N$神御戒指图鉴红点4 1
+#ELSEACT
+MOV N$神御戒指图鉴红点4 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 4
+!SMALL $MONEY(8) 21000
+#ACT
+MOV N$神御戒指图鉴红点5 1
+#ELSEACT
+MOV N$神御戒指图鉴红点5 0
+
+#IF
+EQUAL $TABLE(SY_TZ).SYJZDJ 5
+!SMALL $MONEY(8) 48800
+#ACT
+MOV N$神御戒指图鉴红点6 1
+#ELSEACT
+MOV N$神御戒指图鉴红点6 0
+
+#IFONE
+EQUAL $STR(N$神御头盔图鉴红点1) 1
+EQUAL $STR(N$神御头盔图鉴红点2) 1
+EQUAL $STR(N$神御头盔图鉴红点3) 1
+EQUAL $STR(N$神御头盔图鉴红点4) 1
+EQUAL $STR(N$神御头盔图鉴红点5) 1
+EQUAL $STR(N$神御头盔图鉴红点6) 1
+EQUAL $STR(N$神御项链图鉴红点1) 1
+EQUAL $STR(N$神御项链图鉴红点2) 1
+EQUAL $STR(N$神御项链图鉴红点3) 1
+EQUAL $STR(N$神御项链图鉴红点4) 1
+EQUAL $STR(N$神御项链图鉴红点5) 1
+EQUAL $STR(N$神御项链图鉴红点6) 1
+EQUAL $STR(N$神御手镯图鉴红点1) 1
+EQUAL $STR(N$神御手镯图鉴红点2) 1
+EQUAL $STR(N$神御手镯图鉴红点3) 1
+EQUAL $STR(N$神御手镯图鉴红点4) 1
+EQUAL $STR(N$神御手镯图鉴红点5) 1
+EQUAL $STR(N$神御手镯图鉴红点6) 1
+EQUAL $STR(N$神御戒指图鉴红点1) 1
+EQUAL $STR(N$神御戒指图鉴红点2) 1
+EQUAL $STR(N$神御戒指图鉴红点3) 1
+EQUAL $STR(N$神御戒指图鉴红点4) 1
+EQUAL $STR(N$神御戒指图鉴红点5) 1
+EQUAL $STR(N$神御戒指图鉴红点6) 1
+#ACT
+MOV S$神御红点 1
+#ELSEACT
+MOV S$神御红点 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ1DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取1 <$TABLE(SL_TJ).TJ1DJ>
+SPLIT $STR(S$首领图鉴红点抽取1) | S$首领图鉴分割1
+
+#IF
+LARGE $TABLE(SL_TJ).TJ2DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取2 <$TABLE(SL_TJ).TJ2DJ>
+SPLIT $STR(S$首领图鉴红点抽取2) | S$首领图鉴分割2
+
+#IF
+LARGE $TABLE(SL_TJ).TJ3DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取3 <$TABLE(SL_TJ).TJ3DJ>
+SPLIT $STR(S$首领图鉴红点抽取3) | S$首领图鉴分割3
+
+#IF
+LARGE $TABLE(SL_TJ).TJ4DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取4 <$TABLE(SL_TJ).TJ4DJ>
+SPLIT $STR(S$首领图鉴红点抽取4) | S$首领图鉴分割4
+
+#IF
+LARGE $TABLE(SL_TJ).TJ5DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取5 <$TABLE(SL_TJ).TJ5DJ>
+SPLIT $STR(S$首领图鉴红点抽取5) | S$首领图鉴分割5
+
+#IF
+LARGE $TABLE(SL_TJ).TJ6DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取6 <$TABLE(SL_TJ).TJ6DJ>
+SPLIT $STR(S$首领图鉴红点抽取6) | S$首领图鉴分割6
+
+#IF
+LARGE $TABLE(SL_TJ).TJ7DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取7 <$TABLE(SL_TJ).TJ7DJ>
+SPLIT $STR(S$首领图鉴红点抽取7) | S$首领图鉴分割7
+
+#IF
+LARGE $TABLE(SL_TJ).TJ8DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取8 <$TABLE(SL_TJ).TJ8DJ>
+SPLIT $STR(S$首领图鉴红点抽取8) | S$首领图鉴分割8
+
+#IF
+LARGE $TABLE(SL_TJ).TJ9DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取9 <$TABLE(SL_TJ).TJ9DJ>
+SPLIT $STR(S$首领图鉴红点抽取9) | S$首领图鉴分割9
+
+#IF
+LARGE $TABLE(SL_TJ).TJ10DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取10 <$TABLE(SL_TJ).TJ10DJ>
+SPLIT $STR(S$首领图鉴红点抽取10) | S$首领图鉴分割10
+
+#IF
+LARGE $TABLE(SL_TJ).TJ11DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取11 <$TABLE(SL_TJ).TJ11DJ>
+SPLIT $STR(S$首领图鉴红点抽取11) | S$首领图鉴分割11
+
+#IF
+LARGE $TABLE(SL_TJ).TJ12DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取12 <$TABLE(SL_TJ).TJ12DJ>
+SPLIT $STR(S$首领图鉴红点抽取12) | S$首领图鉴分割12
+
+#IF
+LARGE $TABLE(SL_TJ).TJ13DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取13 <$TABLE(SL_TJ).TJ13DJ>
+SPLIT $STR(S$首领图鉴红点抽取13) | S$首领图鉴分割13
+
+#IF
+LARGE $TABLE(SL_TJ).TJ14DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取14 <$TABLE(SL_TJ).TJ14DJ>
+SPLIT $STR(S$首领图鉴红点抽取14) | S$首领图鉴分割14
+
+#IF
+LARGE $TABLE(SL_TJ).TJ15DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取15 <$TABLE(SL_TJ).TJ15DJ>
+SPLIT $STR(S$首领图鉴红点抽取15) | S$首领图鉴分割15
+
+#IF
+LARGE $TABLE(SL_TJ).TJ16DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取16 <$TABLE(SL_TJ).TJ16DJ>
+SPLIT $STR(S$首领图鉴红点抽取16) | S$首领图鉴分割16
+
+#IF
+LARGE $TABLE(SL_TJ).TJ17DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取17 <$TABLE(SL_TJ).TJ17DJ>
+SPLIT $STR(S$首领图鉴红点抽取17) | S$首领图鉴分割17
+
+#IF
+LARGE $TABLE(SL_TJ).TJ18DJ 0
+#ACT
+READRANDOMSTR ..\QuestDiary\文本读取\首领图鉴属性.txt S$首领图鉴红点抽取18 <$TABLE(SL_TJ).TJ18DJ>
+SPLIT $STR(S$首领图鉴红点抽取18) | S$首领图鉴分割18
+
+#IF
+LARGE $TABLE(SL_TJ).TJ1DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割1_5)
+#ACT
+MOV S$首领图鉴红点1 1
+#ELSEACT
+MOV S$首领图鉴红点1 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ2DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割2_5)
+#ACT
+MOV S$首领图鉴红点2 1
+#ELSEACT
+MOV S$首领图鉴红点2 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ3DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割3_5)
+#ACT
+MOV S$首领图鉴红点3 1
+#ELSEACT
+MOV S$首领图鉴红点3 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ4DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割4_5)
+#ACT
+MOV S$首领图鉴红点4 1
+#ELSEACT
+MOV S$首领图鉴红点4 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ5DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割5_5)
+#ACT
+MOV S$首领图鉴红点5 1
+#ELSEACT
+MOV S$首领图鉴红点5 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ6DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割6_5)
+#ACT
+MOV S$首领图鉴红点6 1
+#ELSEACT
+MOV S$首领图鉴红点6 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ7DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割7_5)
+#ACT
+MOV S$首领图鉴红点7 1
+#ELSEACT
+MOV S$首领图鉴红点7 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ8DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割8_5)
+#ACT
+MOV S$首领图鉴红点8 1
+#ELSEACT
+MOV S$首领图鉴红点8 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ9DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割9_5)
+#ACT
+MOV S$首领图鉴红点9 1
+#ELSEACT
+MOV S$首领图鉴红点9 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ10DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割10_5)
+#ACT
+MOV S$首领图鉴红点10 1
+#ELSEACT
+MOV S$首领图鉴红点10 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ11DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割11_5)
+#ACT
+MOV S$首领图鉴红点11 1
+#ELSEACT
+MOV S$首领图鉴红点11 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ12DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割12_5)
+#ACT
+MOV S$首领图鉴红点12 1
+#ELSEACT
+MOV S$首领图鉴红点12 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ13DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割13_5)
+#ACT
+MOV S$首领图鉴红点13 1
+#ELSEACT
+MOV S$首领图鉴红点13 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ14DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割14_5)
+#ACT
+MOV S$首领图鉴红点14 1
+#ELSEACT
+MOV S$首领图鉴红点14 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ15DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割15_5)
+#ACT
+MOV S$首领图鉴红点15 1
+#ELSEACT
+MOV S$首领图鉴红点15 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ16DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割16_5)
+#ACT
+MOV S$首领图鉴红点16 1
+#ELSEACT
+MOV S$首领图鉴红点16 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ17DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割17_5)
+#ACT
+MOV S$首领图鉴红点17 1
+#ELSEACT
+MOV S$首领图鉴红点17 0
+
+#IF
+LARGE $TABLE(SL_TJ).TJ18DJ 0
+!SMALL $MONEY(9) $STR(S$首领图鉴分割18_5)
+#ACT
+MOV S$首领图鉴红点18 1
+#ELSEACT
+MOV S$首领图鉴红点18 0
+
+
+
+#IFONE
+EQUAL S$祈祷红点 1
+EQUAL S$狂怒红点 1
+EQUAL S$嗜血红点 1
+EQUAL S$神秘红点 1
+EQUAL S$神御红点 1
+EQUAL S$明王红点 1
+EQUAL S$首领图鉴红点1 1
+EQUAL S$首领图鉴红点2 1
+EQUAL S$首领图鉴红点3 1
+EQUAL S$首领图鉴红点4 1
+EQUAL S$首领图鉴红点5 1
+EQUAL S$首领图鉴红点6 1
+EQUAL S$首领图鉴红点7 1
+EQUAL S$首领图鉴红点8 1
+EQUAL S$首领图鉴红点9 1
+EQUAL S$首领图鉴红点10 1
+EQUAL S$首领图鉴红点11 1
+EQUAL S$首领图鉴红点12 1
+EQUAL S$首领图鉴红点13 1
+EQUAL S$首领图鉴红点14 1
+EQUAL S$首领图鉴红点15 1
+EQUAL S$首领图鉴红点16 1
+EQUAL S$首领图鉴红点17 1
+EQUAL S$首领图鉴红点18 1
+LARGE <$ITEMVALSUM(祈祷头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(祈祷戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(狂怒戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(嗜血戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神秘戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(明王戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御头盔图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御项链图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御手镯图鉴).DURA> 0
+LARGE <$ITEMVALSUM(神御戒指图鉴).DURA> 0
+LARGE <$ITEMVALSUM(尸霸图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(机关巨兽图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(蛇妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(逆魔之王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(通天教主图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(铁血魔王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(阿修罗神图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(赤阳魔尊图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(上古妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(血域魔尊图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(巨木王者图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(魔域妖王图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(刑天真身图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(玄武真灵图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(无间之主图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(地底仙帝图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(绝毒蛛后图鉴卡).DURA> 0
+LARGE <$ITEMVALSUM(虚空古神图鉴卡).DURA> 0
+#ACT
+RedDot 200 0 50 15
+BREAK
+
+#IF
+TRUE
+#ACT
+RedDel 200 0
+BREAK
+
+
+}

@@ -1,0 +1,315 @@
+[@main]
+#IF
+TRUE
+#ACT
+GOTO @绿色封号面板
+
+[@绿色封号面板]
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$封号职业 战士
+MOV S$封号职业攻击 攻击
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$封号职业 法师
+MOV S$封号职业攻击 魔法
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$封号职业 道士
+MOV S$封号职业攻击 道术
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\绿色封号<$STR(S$封号职业)>.txt S$绿色封号抽取1 $HUMAN(绿色封号等级)
+SPLIT $STR(S$绿色封号抽取1) | S$绿色封号分割1
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\绿色封号<$STR(S$封号职业)>.txt S$绿色封号抽取2 <$INC.$HUMAN(绿色封号等级).1>
+SPLIT $STR(S$绿色封号抽取2) | S$绿色封号分割2
+
+#IF
+EQUAL $DATE.WEEK 1
+#ACT
+MOV S$封号任务 完成1次每日副本
+
+#IF
+EQUAL $DATE.WEEK 2
+#ACT
+MOV S$封号任务 完成1次捐献功能
+
+#IF
+EQUAL $DATE.WEEK 3
+#ACT
+MOV S$封号任务 完成1次每日副本
+
+#IF
+EQUAL $DATE.WEEK 4
+#ACT
+MOV S$封号任务 完成1次捐献功能
+
+#IF
+EQUAL $DATE.WEEK 5
+#ACT
+MOV S$封号任务 完成1次每日副本
+
+#IF
+EQUAL $DATE.WEEK 6
+#ACT
+MOV S$封号任务 完成1次捐献功能
+
+#IF
+EQUAL $DATE.WEEK 7
+#ACT
+MOV S$封号任务 完成1次每日副本
+
+#IF
+EQUAL $DATE.WEEK 1
+CHECK [199] 1
+#ACT
+MOV S$每日任务情况 <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+
+#IF
+EQUAL $DATE.WEEK 1
+CHECK [199] 0
+#ACT
+MOV S$每日任务情况 
+
+
+#IF
+EQUAL $DATE.WEEK 3
+CHECK [199] 1
+#ACT
+MOV S$每日任务情况 <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+
+#IF
+EQUAL $DATE.WEEK 3
+CHECK [199] 0
+#ACT
+MOV S$每日任务情况 
+
+#IF
+EQUAL $DATE.WEEK 5
+CHECK [199] 1
+#ACT
+MOV S$每日任务情况 <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+
+#IF
+EQUAL $DATE.WEEK 5
+CHECK [199] 0
+#ACT
+MOV S$每日任务情况 
+
+
+#IF
+EQUAL $DATE.WEEK 2
+LARGE $CustomValue(19) 999
+#ACT
+MOV S$每日任务情况 <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+
+#IF
+EQUAL $DATE.WEEK 2
+!LARGE $CustomValue(19) 999
+#ACT
+MOV S$每日任务情况 
+
+
+#IF
+EQUAL $DATE.WEEK 4
+LARGE $CustomValue(19) 999
+#ACT
+MOV S$每日任务情况 <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+
+#IF
+EQUAL $DATE.WEEK 4
+!LARGE $CustomValue(19) 999
+#ACT
+MOV S$每日任务情况 
+
+#IF
+EQUAL $DATE.WEEK 6
+LARGE $CustomValue(19) 999
+#ACT
+MOV S$每日任务情况 <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+
+#IF
+EQUAL $DATE.WEEK 6
+!LARGE $CustomValue(19) 999
+#ACT
+MOV S$每日任务情况 
+
+
+#IF
+EQUAL $DATE.WEEK 7
+LARGE $CustomValue(19) 999
+
+; CHECK [198] 1
+#ACT
+MOV S$每日任务情况 <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+; MOV S$每日任务情况 <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+
+#IF
+EQUAL $DATE.WEEK 7
+!LARGE $CustomValue(19) 999
+
+; CHECK [198] 0
+#ACT
+MOV S$每日任务情况 
+
+#IF
+EQUAL $STR(S$每日任务情况) <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+CHECK [197] 0
+#ACT
+MOV N$绿色封号解锁按钮 3
+
+#IF
+!EQUAL $STR(S$每日任务情况) <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+CHECK [197] 0
+#ACT
+MOV N$绿色封号解锁按钮 4
+
+#IF
+EQUAL $STR(S$每日任务情况) <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+CHECK [197] 1
+#ACT
+MOV N$绿色封号解锁按钮 5
+
+#IF
+EQUAL $STR(S$每日任务情况) <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+CHECK [196] 0
+#ACT
+SET [196] 1
+changeCustomValue 86 + 1
+SENDMSG 19 每日任务完成，获得复活次数1
+#IF
+TRUE
+#SAY
+<Img|id=1|children={2,3,4,5,6,7,8,9,10,11,12,13,14,15,f15,16,17,18,19,20,21,22,23,24,25,f25,26,99}|x=177.0|y=34.0|scale=1|bg=1|img=private/lvsefenghao/fenghaomb.png|loadDelay=0|esc=0>
+<Button|id=2|x=129.0|y=102.0|width=40|height=40|pimg=public/00000.png|mimg=public/00000.png|scale=1|nimg=public/00000.png|size=18|color=222|text=<$HUMAN(绿色封号等级)>>
+<Button|id=3|x=492.0|y=102.0|width=40|height=40|rotate=0|scale=1|pimg=public/00000.png|mimg=public/00000.png|color=222|nimg=public/00000.png|size=18|text=<$INC.$HUMAN(绿色封号等级).1>>
+<Button|id=4|x=180.0|y=110.0|width=140|height=40|scale=1|mimg=public/00000.png|pimg=public/00000.png|nimg=public/00000.png|size=17|color=222|text=<$STR(S$绿色封号分割1_3)>>
+<Button|id=5|x=545.0|y=110.0|width=140|height=40|pimg=public/00000.png|mimg=public/00000.png|scale=1|nimg=public/00000.png|size=17|color=222|text=<$STR(S$绿色封号分割2_3)>>
+<RText|id=6|x=165.0|y=153.0|color=255|size=18|text=<<$STR(S$封号职业攻击)>/FCOLOR=95>     <<$STR(S$绿色封号分割1_1)>-<$STR(S$绿色封号分割1_1)>/FCOLOR=255>>
+<RText|id=7|x=165.0|y=179.0|color=255|size=18|text=<防御/FCOLOR=95>     <<$STR(S$绿色封号分割1_0)>-<$STR(S$绿色封号分割1_0)>/FCOLOR=255>>
+<RText|id=8|x=165.0|y=205.0|color=255|size=18|text=<魔防/FCOLOR=95>     <<$STR(S$绿色封号分割1_0)>-<$STR(S$绿色封号分割1_0)>/FCOLOR=255>>
+<RText|id=9|x=165.0|y=231.0|color=255|size=18|text=<免伤/FCOLOR=95>     <<$STR(S$绿色封号分割1_5)>/FCOLOR=255>>
+<RText|id=10|x=165.0|y=257.0|color=255|size=18|text=<血量/FCOLOR=95>     <<$STR(S$绿色封号分割1_2)>/FCOLOR=255>>
+<RText|id=11|x=530.0|y=153.0|color=255|size=18|text=<<$STR(S$封号职业攻击)>/FCOLOR=95>     <<$STR(S$绿色封号分割2_1)>-<$STR(S$绿色封号分割2_1)>/FCOLOR=255>>
+<RText|id=12|x=530.0|y=179.0|color=255|size=18|text=<防御/FCOLOR=95>     <<$STR(S$绿色封号分割2_0)>-<$STR(S$绿色封号分割2_0)>/FCOLOR=255>>
+<RText|id=13|x=530.0|y=205.0|color=255|size=18|text=<魔防/FCOLOR=95>     <<$STR(S$绿色封号分割2_0)>-<$STR(S$绿色封号分割2_0)>/FCOLOR=255>>
+<RText|id=14|x=530.0|y=231.0|color=255|size=18|text=<免伤/FCOLOR=95>     <<$STR(S$绿色封号分割2_5)>/FCOLOR=255>>
+<RText|id=15|x=530.0|y=257.0|color=255|size=18|text=<血量/FCOLOR=95>     <<$STR(S$绿色封号分割2_2)>/FCOLOR=255>>
+<Text|id=f15|x=310.0|y=336.0|color=67|size=18|text=封号经验值>
+<Button|id=16|x=382.0|y=334.0|width=100|height=28|rotate=0|pimg=public/00000.png|mimg=public/00000.png|scale=1|nimg=public/00000.png|size=18|color=222|text=<$Money(7)>/<$STR(S$绿色封号分割2_6)>>
+<Button|id=17|children={an1}|x=325.0|y=367.0|rotate=0|nimg=public/btn_push_11.png|color=255|mimg=public/btn_push_11.png|size=18|pimg=public/btn_push_11.png|scale=1|link=@绿色封号升级>
+<Img|id=an1|x=36.0|y=11.0|img=private/lvsefenghao/btn_push_16.png|scale=1|esc=0>
+<Text|id=18|x=130.0|y=446.0|color=67|size=18|text=<$STR(S$封号任务)>>
+<Text|id=19|x=130.0|y=514.0|color=67|size=18|text=死亡复活次数1次>
+<$STR(S$每日任务情况)>
+<RText|id=21|x=453.0|y=430.0|color=255|size=18|text=<   每日零点封号属性失效/FCOLOR=67>\<需完成每日任务后重新解锁/FCOLOR=67>>
+<Button|id=22|x=488.0|y=490.0|scale=1|nimg=private/lvsefenghao/btn_push_1<$STR(N$绿色封号解锁按钮)>.png|mimg=private/lvsefenghao/btn_push_1<$STR(N$绿色封号解锁按钮)>.png|size=18|color=255|pimg=private/lvsefenghao/btn_push_1<$STR(N$绿色封号解锁按钮)>.png|link=@解锁封号>
+<RText|id=25|x=600.0|y=370.0|color=255|size=18|text=<获取途径/@获取途径>>
+<RText|id=f25|x=600.0|y=370.0|color=255|size=18|text=<color=~完成会员任务可获得封号经验值#0xffa3cf62$ 　　　　　　>>
+<Button|id=26|x=680.0|y=28.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|size=18|nimg=public/btn_close_01.png|link=@exit>
+
+#IF
+EQUAL <$STR(S$每日任务情况)> 
+#say
+<Button|id=99|x=319.0|y=441.0|scale=1|bag=0|nimg=public/btn_bg_4.png|size=18|color=67|text=立即完成|link=@立即完成当前任务>
+
+#IF
+CHECK [197] 0
+#SAY
+<Img|id=23|x=125.0|y=148.0|img=private/lvsefenghao/suotou.png|scale=1|esc=0>
+<Img|id=24|x=488.0|y=148.0|img=private/lvsefenghao/suotou.png|scale=1|esc=0>
+
+[@立即完成当前任务]
+#IF
+EQUAL $DATE.WEEK 1
+CHECK [199] 1
+#ACT
+SENDMSG 19 今日任务已完成
+BREAK
+
+#IFONE
+EQUAL $DATE.WEEK 1
+EQUAL $DATE.WEEK 3
+EQUAL $DATE.WEEK 5
+EQUAL $DATE.WEEK 7
+#ACT
+QueryMsg 消耗100元宝立即完成 @立即完成每日副本
+BREAK
+
+
+#IFONE
+EQUAL $DATE.WEEK 2
+EQUAL $DATE.WEEK 4
+EQUAL $DATE.WEEK 6
+#ACT
+QueryMsg 消耗100元宝立即完成 @立即完成每日捐献
+BREAK
+
+[@立即完成每日副本1]
+#IF
+SMALL <$MONEY(2)> 100
+#ACT
+SENDMSG 19 元宝不足100
+BREAK
+#elseACT
+MONEY 2 - 100
+SET [199] 1
+SENDMSG 19 今日任务已完成
+GOTO @绿色封号面板
+Break
+
+
+[@立即完成每日捐献1]
+#IF
+SMALL <$MONEY(2)> 100
+#ACT
+SENDMSG 19 元宝不足100
+BREAK
+#elseACT
+MONEY 2 - 100
+changeCustomValue 19 + 1000
+SENDMSG 19 今日任务已完成
+GOTO @绿色封号面板
+Break
+
+[@绿色封号升级]
+#IF
+!SMALL $Money(7) $STR(S$绿色封号分割2_6)
+#ACT
+Money 7 - $STR(S$绿色封号分割2_6)
+FengHao <$STR(S$绿色封号分割2_4)> <$STR(S$绿色封号分割2_3)>
+CalcVar Human 绿色封号等级 + 1 1
+SENDMSG 19 封号升级成功
+#CALL [\游戏功能\临时属性.txt] @临时属性
+GOTO @main
+BREAK
+#ELSEACT
+SENDMSG 19 你的封号经验值不足
+BREAK
+
+
+[@解锁封号]
+#IF
+EQUAL $STR(S$每日任务情况) <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+CHECK [197] 0
+#ACT
+SET [197] 1
+FengHao <$STR(S$绿色封号分割1_4)> <$STR(S$绿色封号分割1_3)>
+SENDMSG 19 解锁成功临时属性生效
+#CALL [\游戏功能\临时属性.txt] @临时属性
+GOTO @main
+BREAK
+
+#IF
+EQUAL $STR(S$每日任务情况) <Img|id=20|x=280.0|y=442.0|img=private/lvsefenghao/icon_5color_complete.png|scale=1|esc=0>
+CHECK [197] 1
+#ACT
+SENDMSG 19 你已经解锁过了
+BREAK

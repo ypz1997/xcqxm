@@ -1,0 +1,277 @@
+[@阵营活动]
+
+{
+[@LemonZYYM]
+
+#IF
+TRUE
+#SAY
+<Img|children={yd1,yd2,yd3,yd5,yd6,yd7,yd8,yd9,yd10,yd12,yd13,yd14,yd15,yd16,yd17}|x=120.0|y=30.0|loadDelay=0|img=public/frame_squared_outside.png|bg=1|move=2>
+<Button|id=yd1|x=807.0|y=-3.0|pimg=public/button/btn_close_01.png|nimg=public/button/btn_close_01.png|link=@exit>
+<Img|id=yd2|x=22.0|y=46.0|img=private/zhenyingzhan/zhenyingzhanmb.png>
+<Text|id=yd3|x=393.0|y=7.0|color=67|size=22|text=阵 营 战>
+<Text|id=yd5|x=684.0|y=75.0|color=67|size=18|text=活动说明>
+<Text|id=yd6|x=618.0|y=110.0|color=67|size=18|text=获胜条件:>
+<Text|id=yd7|x=618.0|y=135.0|size=18|color=67|text=击破敌方水晶>
+<Text|id=yd8|x=618.0|y=175.0|color=67|size=18|text=进入活动地图时自动随机>
+<Text|id=yd9|x=618.0|y=200.0|color=67|size=18|text=分配阵营>
+<Text|id=yd10|x=618.0|y=240.0|size=18|color=67|text=摧毁敌方防御塔可获得大>
+<Text|id=yd12|x=618.0|y=265.0|size=18|color=67|text=量充值代金券和羽翼材料>
+<ItemShow|id=yd13|x=200.0|y=460.0|itemid=26930|itemcount=600|showtips=1|bgtype=private\F10\bg_roles_02.png|name=绑定元宝|scale=1>
+<ItemShow|id=yd14|x=280.0|y=460.0|itemid=125|itemcount=10|showtips=1|bgtype=private\F10\bg_roles_02.png|name=仙翎之羽|scale=1>
+<ItemShow|id=yd15|x=600.0|y=460.0|itemid=26930|itemcount=400|showtips=1|bgtype=private\F10\bg_roles_02.png|name=绑定元宝|scale=1>
+<ItemShow|id=yd16|x=680.0|y=460.0|itemid=125|itemcount=6|showtips=1|bgtype=private\F10\bg_roles_02.png|name=仙翎之羽|scale=1>
+<Button|id=yd17|x=655.0|y=375.0|pimg=public/button/btn_push_01.png|nimg=public/button/btn_push_01.png|scale=1|color=67|size=20|text=立即参与|link=@Lemon参与3>
+
+
+
+
+[@Lemon参与3]
+#IF
+!EQUAL G$Lemon活动 3
+#ACT
+MESSAGEBOX 活动已结束!
+BREAK
+
+#IF
+SMALL $LEVEL 60
+#ACT
+MESSAGEBOX 等级不足60级,暂时无法参加此活动!
+BREAK
+
+#IF
+EQUAL $M ZYZ
+#ACT
+SENDMSG 19 你已经在活动地图了
+BREAK
+
+
+#IF
+CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营红方玩家.txt
+#ACT
+CHANGENAMECOLOR 21
+GMEXECUTE AttackMode 1
+MAPMOVE ZYZ 34 62 2
+SENDMSG 16 玩家<%s>进入了<%m>....
+BREAK
+
+#IF
+CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营蓝方玩家.txt
+#ACT
+CHANGENAMECOLOR 154
+GMEXECUTE AttackMode 1
+MAPMOVE ZYZ 85 87 2
+SENDMSG 16 玩家<%s>进入了<%m>....
+BREAK
+
+#IF
+EQUAL G$Lemon红方 $STR(G$Lemon蓝方)
+#ACT
+INC G$Lemon红方 1
+ADDVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营红方玩家.txt
+GOTO @Lemon参与3
+BREAK
+
+#IF
+LARGE G$Lemon红方 $STR(G$Lemon蓝方)
+#ACT
+INC G$Lemon蓝方 1
+ADDVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营蓝方玩家.txt
+GOTO @Lemon参与3
+BREAK
+
+#IF
+SMALL G$Lemon红方 $STR(G$Lemon蓝方)
+#ACT
+INC G$Lemon红方 1
+ADDVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营红方玩家.txt
+GOTO @Lemon参与3
+BREAK
+
+
+
+
+
+
+
+
+[@Lemon活动TZ3]
+#IFONE
+!EQUAL G$Lemon活动 3
+SMALL G$阵营战时间 $LONGDATE
+EQUAL $M ZYZ
+#ACT
+BREAK
+
+;#IF
+;LARGE $DEC.$STR(G$阵营战时间).$LONGDATE 1800
+;#ACT
+;MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6620.png|nimg=picpackage/3/6620.png|link=@LemonZYZB|UiLevel=0>
+;INC S$Lemon活动 <TIMETIPS|x=315|y=80.0|color=222|size=18|time=<$DEC^$DEC.$STR(G$阵营战时间).$LONGDATE^1800>|link=@LemonZYXS>
+;SENDUI 104 $STR(S$Lemon活动)
+;BREAK
+#ELSEACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6620.png|nimg=picpackage/3/6620.png|link=@LemonZYYM|UiLevel=0>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$阵营战时间).$LONGDATE>|link=@LemonZYJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+
+;--------------------------倒计时提示
+[@LemonZYZB]
+#IF
+TRUE
+#ACT
+SENDMSG 19 活动将在计时结束后开始!
+BREAK
+
+;--------------------------阵营活动进行显示
+[@LemonZYXS]
+#IF
+!EQUAL $M ZYZ
+EQUAL G$Lemon活动 3
+#ACT
+MOV S$Lemon活动 <Button|x=300.0|y=10.0|pimg=picpackage/3/6620.png|nimg=picpackage/3/6620.png|link=@LemonZYYM>
+INC S$Lemon活动 <TIMETIPS|x=310|y=80.0|color=222|size=18|time=<$DEC.$STR(G$阵营战时间).$LONGDATE>|link=@LemonZYJS>
+SENDUI 104 $STR(S$Lemon活动)
+BREAK
+;--------------------------自动关闭阵营战图标
+[@LemonZYJS]
+#IF
+TRUE
+#ACT
+SENDUI 104
+BREAK
+
+
+
+
+
+[@Lemon阵营JS红]
+#IF
+EQUAL $M ZYZ
+#ACT
+MAPMOVE 0 475 219 3
+SENDMSG 5 阵营战结束了!!
+SENDUI 104
+#ELSEACT
+SENDUI 104
+
+#IF
+CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营红方玩家.txt
+#SAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=280.0|y=126.0|bg=1|loadDelay=0|img=private/zhenyingzhan/bg_recycle_01.png|link=@exit>
+<Button|x=760.0|y=189.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+<Img|x=490.0|y=145.0|img=private/zhenyingzhan/word_league_sucess.png>
+<Img|x=480.0|y=240.0|img=private/zhenyingzhan/bg_storm_title_03.png>
+;===========================================================================
+<ItemShow|x=485.0|y=310.0|itemid=26930|itemcount=600|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png>
+<ItemShow|x=585.0|y=310.0|itemid=1325|itemcount=10|name=仙翎之羽|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png>
+#ACT
+MailGive 仙翎之羽 10 1
+MailGive 元宝 600
+SENDMAIL 404 胜方奖励 恭喜您的阵营在本次阵营战中获得胜利，请点提取!
+SENDMSG 16 恭喜<%s>获得阵营战胜方奖励....
+
+
+#IF
+CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营蓝方玩家.txt
+#SAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=280.0|y=126.0|bg=1|loadDelay=0|move=0|img=private/zhenyingzhan/bg_escort_03.png|link=@exit>
+<Button|x=760.0|y=189.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+<Img|x=490.0|y=145.0|img=private/zhenyingzhan/word_league_fail.png>
+<Img|x=480.0|y=240.0|img=private/zhenyingzhan/bg_storm_title_03.png>
+;===========================================================================
+<ItemShow|x=485.0|y=310.0|itemid=26930|itemcount=400|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png>
+<ItemShow|x=585.0|y=310.0|itemid=1325|itemcount=6|name=仙翎之羽|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png>
+#ACT
+MailGive 仙翎之羽 6 1
+MailGive 元宝 400
+SENDMAIL 44 败方奖励 您的阵营在本次阵营战中虽然失败，但依然可获得奖励!请点提取!
+SENDMSG 16 很遗憾<%s>获得阵营战败方奖励....
+
+
+
+
+
+
+[@Lemon阵营JS蓝]
+#IF
+EQUAL $M ZYZ
+#ACT
+MAPMOVE 0 475 219 3
+SENDMSG 5 阵营战结束了!!
+SENDUI 104
+#ELSEACT
+SENDUI 104
+
+#IF
+CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营蓝方玩家.txt
+#SAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=280.0|y=126.0|bg=1|loadDelay=0|move=0|img=private/zhenyingzhan/bg_recycle_01.png|link=@exit>
+<Button|x=760.0|y=189.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+<Img|x=490.0|y=145.0|img=private/zhenyingzhan/word_league_sucess.png>
+<Img|x=480.0|y=240.0|img=private/zhenyingzhan/bg_storm_title_03.png>
+;===========================================================================
+<ItemShow|x=485.0|y=310.0|itemid=26930|itemcount=600|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png>
+<ItemShow|x=585.0|y=310.0|itemid=1325|itemcount=10|name=仙翎之羽|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png>
+#ACT
+MailGive 仙翎之羽 10 1
+MailGive 元宝 600
+SENDMAIL 404 胜方奖励 恭喜您的阵营在本次阵营战中获得胜利，请点提取!
+SENDMSG 16 恭喜<%s>获得阵营战胜方奖励....
+
+
+#IF
+CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营红方玩家.txt
+#SAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=280.0|y=126.0|bg=1|loadDelay=0|move=0|img=private/zhenyingzhan/bg_escort_03.png|link=@exit>
+<Button|x=760.0|y=189.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+<Img|x=490.0|y=145.0|img=private/zhenyingzhan/word_league_fail.png>
+<Img|x=480.0|y=240.0|img=private/zhenyingzhan/bg_storm_title_03.png>
+;===========================================================================
+<ItemShow|x=485.0|y=310.0|itemid=26930|itemcount=400|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png>
+<ItemShow|x=585.0|y=310.0|itemid=1325|itemcount=6|name=仙翎之羽|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png>
+#ACT
+MailGive 仙翎之羽 6 1
+MailGive 元宝 400
+SENDMAIL 44 败方奖励 您的阵营在本次阵营战中虽然失败，但依然可获得奖励!请点提取!
+SENDMSG 16 很遗憾<%s>获得阵营战败方奖励....
+
+
+[@Lemon阵营JS平]
+#IF
+EQUAL $M ZYZ
+#ACT
+MAPMOVE 0 475 219 3
+SENDMSG 5 阵营战结束了!!
+SENDUI 104
+#ELSEACT
+SENDUI 104
+
+#IFONE
+CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营红方玩家.txt
+CHECKVARLIST $USERNAME ..\QUESTDIARY\游戏数据\阵营蓝方玩家.txt
+#SAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=280.0|y=126.0|bg=1|loadDelay=0|move=0|img=private/zhenyingzhan/bg_escort_03.png|link=@exit>
+<Button|x=760.0|y=189.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+<Img|x=490.0|y=145.0|img=private/zhenyingzhan/word_league_fail.png>
+<Img|x=480.0|y=240.0|img=private/zhenyingzhan/bg_storm_title_03.png>
+;===========================================================================
+<ItemShow|x=485.0|y=310.0|itemid=26930|itemcount=400|name=元宝|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png>
+<ItemShow|x=585.0|y=310.0|itemid=1325|itemcount=6|name=仙翎之羽|bgtype=1|showtips=1|scale=1|bgtype=private/hefuhuodong/frame_starup_item.png>
+#ACT
+MailGive 仙翎之羽 6 1
+MailGive 元宝 400
+SENDMAIL 44 平局奖励 您的阵营在本次阵营战中获得平局，但依然可获得奖励!请点提取!
+SENDMSG 16 <%s>获得阵营战平局奖励....
+
+
+
+
+
+}

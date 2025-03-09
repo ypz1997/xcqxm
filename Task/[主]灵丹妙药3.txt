@@ -1,0 +1,9 @@
+[setup]
+MainTitle = 主线任务
+MainID=3
+IsMain=0
+stepcount = 1
+title = [　]灵丹妙药
+ID = 3
+stepstitle1 = 　\<color=green 去找><药店掌柜/@@goto 1 药店掌柜 222,267><color=green 购买一些药品>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=26.0|y=115.0|width=70|height=70|itemid=793|itemcount=2|name=天山雪莲|showtips=1|bgtype=private/dataosha/laminated1.png|scale=1><ItemShow|x=96.0|y=115.0|width=70|height=70|itemid=794|itemcount=2|name=深海灵礁|showtips=1|bgtype=private/dataosha/laminated1.png|scale=1><ItemShow|x=166.0|y=115.0|width=70|height=70|itemid=950|itemcount=200000|name=金币|showtips=1|bgtype=private/dataosha/laminated1.png|scale=1>
+

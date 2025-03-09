@@ -1,0 +1,10 @@
+[setup]
+MainTitle = 主线任务
+MainID=10
+IsMain=0
+stepcount = 2
+title = [　]四象系统
+ID = 10
+stepstitle1 = 　\<color=green 激活四象系统的所有圣兽>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle2 = <color=green 已完成四象激活任务>\<color=green 任务奖励：>\　\　\　　　　　  <点击领取/@XXXXX>\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=74.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>
+

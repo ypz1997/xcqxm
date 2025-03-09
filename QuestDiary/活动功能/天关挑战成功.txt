@@ -1,0 +1,241 @@
+[@天关挑战成功_Main]
+{
+    ;参数 S$天关_跨脚本参数传递_挑战开始日期
+    ;参数 N$天关_跨脚本参数传递_当前挑战关卡
+    ;参数 N$天关_跨脚本参数传递_天关总层数
+    ;参数 S$天关_跨脚本参数传递_首通奖励数组字符串
+    ;参数 S$天关_跨脚本参数传递_每日奖励数组字符串
+    #IF
+    RANDOM 1
+    #ACT
+    GOTO @天关挑战成功_读取奖励
+    GOTO @天关挑战成功_领取奖励
+    GOTO @天关挑战成功_修改数据
+    GOTO @天关挑战成功_展示奖励
+
+    #IF
+    EQUAL $CLIENTFLAG 1
+    #ACT
+    GOTO @天关挑战成功_PC界面
+    #ELSEACT
+    GOTO @天关挑战成功_手机界面
+
+    [@天关挑战成功_手机界面]
+    #IF
+    RANDOM 1
+    #SAY
+    <Img|show=5|y=-50|img=private/tianguan/img_bg1.png|loadDelay=0|bg=1|reset=1|_localZOrder=-2|move=0>
+    <Text|x=112|y=80|color=218|size=18|text=恭喜您挑战第<$STR(N$天关_跨脚本参数传递_当前挑战关卡)>层成功,获得以下奖励>
+    <$STR(S$天关挑战成功_关卡奖励UI字符串)>
+    <Text|x=107|y=182|color=161|size=18|text=提示:奖励已发送至您的邮箱,请及时领取>
+
+    #IF
+    EQUAL <$HUMAN(天关_已通关层数)> <$STR(N$天关_跨脚本参数传递_天关总层数)>
+    #SAY
+    <Button|x=197|y=220|color=255|scale=1|size=18|nimg=public/btn_bg2.png|link=@天关挑战成功_退出>
+    <Img|x=244|y=230|scale=1|esc=0|img=private/tianguan/img_tc.png>
+    #ELSESAY
+    <Button|x=107|y=220|color=255|scale=1|size=18|nimg=public/btn_bg2.png|link=@天关挑战成功_退出>
+    <Button|x=287|y=220|color=255|scale=1|size=18|nimg=public/btn_bg2.png|link=@天关挑战成功_下一层>
+    <Img|x=154|y=230|scale=1|esc=0|img=private/tianguan/img_tc.png>
+    <Img|x=322|y=230|scale=1|esc=0|img=private/tianguan/img_xyc.png>
+
+    [@天关挑战成功_PC界面]NPC(63199)
+    #IF
+    RANDOM 1
+    #ACT
+    MOV S$天关挑战成功_关卡奖励UI字符串TEMP <$STR(S$天关挑战成功_关卡奖励UI字符串PC)>
+    ReplaceText S$天关挑战成功_关卡奖励UI字符串TEMP ~ #32
+    #SAY
+    <offx=|88|y=|112|fontsize=|18|xy=|1|><COLOR=4ae74a 恭喜您挑战第<$STR(N$天关_跨脚本参数传递_当前挑战关卡)>层成功,获得以下奖励><|off>\
+    <$STR(S$天关挑战成功_关卡奖励UI字符串TEMP)>
+    <offx=|83|y=|214|fontsize=|18|xy=|1|><COLOR=f7f7de 提示:奖励已发送至您的邮箱,请及时领取><|off>\
+    #IF
+    EQUAL <$HUMAN(天关_已通关层数)> <$STR(N$天关_跨脚本参数传递_天关总层数)>
+    #SAY
+    <@@!XYBTN 1,00080,1,00081,1,00082,173,251,/@天关挑战成功_退出>\
+    <@@!XYITM 1,60012,220,261>\
+    #ELSESAY
+    <@@!XYBTN 1,00080,1,00081,1,00082,83,251,/@天关挑战成功_退出>\
+    <@@!XYITM 1,60012,130,261>\
+    <@@!XYBTN 1,00080,1,00081,1,00082,263,251,/@天关挑战成功_下一层>\
+    <@@!XYITM 1,60013,298,261>\
+
+    [@天关挑战成功_退出]
+    #IF 
+    EQUAL <$M> ntg2100
+    #ACT
+    MAPMOVE 0 473 222 0
+
+    #IF
+    RANDOM 1
+    #ACT
+    close
+
+    [@天关挑战成功_下一层]
+    #IF
+    !EQUAL $CLIENTFLAG 1
+    EQUAL <$M> ntg2100
+    #ACT
+    GONPC 34 28
+    close
+    BREAK
+    
+    #IF
+    EQUAL $CLIENTFLAG 1
+    EQUAL <$M> ntg2100
+    #ACT
+    MAPMOVE ntg2100 33 31 0
+    close
+    BREAK
+
+    #IF
+    !EQUAL $CLIENTFLAG 1
+    EQUAL <$M> 0
+    #ACT
+    GONPC 456 234
+    close
+    BREAK
+
+    #IF
+    RANDOM 1
+    #ACT
+    close
+
+    [@天关挑战成功_修改数据]
+    ;挑战开始时间和结束时间是同一天 说明没有经历12点清零，正常修改数据 否则修改昨日数据
+    #IF
+    EQUAL <$STR(S$天关_跨脚本参数传递_挑战开始日期)> <$TABLE(XM_SJ).RQ01>
+    #ACT
+    CALCVAR HUMAN 天关_今日通关层数 + 1 1
+    MOV N$天关挑战成功_通关层数 <$HUMAN(天关_今日通关层数)>
+    GOTO @天关挑战成功_写入排行榜
+    #ELSEACT
+    CALCVAR HUMAN 天关_昨日通关层数 + 1 1
+    MOV N$天关挑战成功_通关层数 <$HUMAN(天关_昨日通关层数)>
+
+    #IF
+    LARGE N$天关挑战成功_通关层数 <$HUMAN(天关_历史最高层数)>
+    #ACT
+    CALCVAR HUMAN 天关_历史最高层数 = <$STR(N$天关挑战成功_通关层数)> 1
+
+    [@天关挑战成功_写入排行榜]
+    #IF
+    PosInlist <$USERID> ../QuestDiary/数据文件/排名数据/天关排行榜.txt S$天关挑战成功_老排行数据
+    #ACT
+    DELVARLIST <$STR(S$天关挑战成功_老排行数据)> ../QuestDiary/数据文件/排名数据/天关排行榜.txt
+
+    #IF
+    RANDOM 1
+    #ACT
+    ADDVARLIST <$USERID>|<$STR(N$天关挑战成功_通关层数)>|<$USERNAME> ../QuestDiary/数据文件/排名数据/天关排行榜.txt
+
+
+    [@天关挑战成功_读取奖励]
+    #IF
+    RANDOM 1
+    #ACT
+    SPLIT <$STR(S$天关_跨脚本参数传递_首通奖励数组字符串)> | S$天关挑战成功_首通奖励数组 N$天关挑战成功_首通奖励数组长度
+    SPLIT <$STR(S$天关_跨脚本参数传递_每日奖励数组字符串)> | S$天关挑战成功_每日奖励数组 N$天关挑战成功_每日奖励数组长度
+
+    #IF
+    LARGE <$STR(N$天关_跨脚本参数传递_当前挑战关卡)> <$HUMAN(天关_历史最高层数)>
+    #ACT
+    MOV N$天关挑战成功_循环增量 0
+    FOR N$天关挑战成功_循环增量 = <$STR(N$天关挑战成功_首通奖励数组长度)>
+    SPLIT <$STR(S$天关挑战成功_首通奖励数组_<$STR(N$天关挑战成功_循环增量)>)> * S$天关挑战成功_单首通奖励
+    MOV S$天关挑战成功_首通奖励名称<$STR(N$天关挑战成功_循环增量)> <$STR(S$天关挑战成功_单首通奖励_0)>
+    MOV N$天关挑战成功_首通奖励数量<$STR(N$天关挑战成功_循环增量)> <$STR(S$天关挑战成功_单首通奖励_1)>
+    INC N$天关挑战成功_循环增量 1
+    ENDFOR
+    #ELSEACT
+    MOV N$天关挑战成功_首通奖励数组长度 0
+
+    #IF
+    RANDOM 1
+    #ACT
+    MOV N$天关挑战成功_循环增量 0
+    FOR N$天关挑战成功_循环增量 = <$STR(N$天关挑战成功_每日奖励数组长度)>
+    SPLIT <$STR(S$天关挑战成功_每日奖励数组_<$STR(N$天关挑战成功_循环增量)>)> * S$天关挑战成功_单每日奖励
+    MOV S$天关挑战成功_每日奖励名称<$STR(N$天关挑战成功_循环增量)> <$STR(S$天关挑战成功_单每日奖励_0)>
+    MOV N$天关挑战成功_每日奖励数量<$STR(N$天关挑战成功_循环增量)> <$STR(S$天关挑战成功_单每日奖励_1)>
+    INC N$天关挑战成功_循环增量 1
+    ENDFOR
+
+    [@天关挑战成功_领取奖励]
+    #IF
+    RANDOM 1
+    #ACT
+    MOV N$天关挑战成功_循环增量 0
+    FOR N$天关挑战成功_循环增量 = <$STR(N$天关挑战成功_首通奖励数组长度)>
+    MAILGIVE <$STR(S$天关挑战成功_首通奖励名称<$STR(N$天关挑战成功_循环增量)>)> <$STR(N$天关挑战成功_首通奖励数量<$STR(N$天关挑战成功_循环增量)>)> 1
+    INC N$天关挑战成功_循环增量 1
+    ENDFOR
+
+    #IF
+    RANDOM 1
+    #ACT
+    MOV N$天关挑战成功_循环增量 0
+    FOR N$天关挑战成功_循环增量 = <$STR(N$天关挑战成功_每日奖励数组长度)>
+    MAILGIVE <$STR(S$天关挑战成功_每日奖励名称<$STR(N$天关挑战成功_循环增量)>)> <$STR(N$天关挑战成功_每日奖励数量<$STR(N$天关挑战成功_循环增量)>)> 1
+    INC N$天关挑战成功_循环增量 1
+    ENDFOR
+
+    #IF
+    RANDOM 1
+    #ACT
+    SENDMAIL 99 天关<$STR(N$天关_跨脚本参数传递_当前挑战关卡)>层奖励 恭喜您获得闯天关第<$STR(N$天关_跨脚本参数传递_当前挑战关卡)>层奖励,请点击领取
+
+    [@天关挑战成功_展示奖励]
+    #IF
+    RANDOM 1
+    #ACT
+    MOV N$天关挑战成功_奖励数量 <$INC.N$天关挑战成功_首通奖励数组长度.N$天关挑战成功_每日奖励数组长度>
+    MOV N$天关挑战成功_背景图片宽度 535
+    MOV N$天关挑战成功_奖励图片宽度 62
+    MOV N$天关挑战成功_X坐标间隔 72
+    MOV N$天关挑战成功_奖励总宽度 <$INC.<$MULT.<$DEC.N$天关挑战成功_奖励数量.1>.N$天关挑战成功_X坐标间隔>.N$天关挑战成功_奖励图片宽度>
+    MOV N$天关挑战成功_X坐标 <$DIV.<$DEC.N$天关挑战成功_背景图片宽度.N$天关挑战成功_奖励总宽度>.2>
+    MOV N$天关挑战成功_Y坐标 114
+    MOV N$天关挑战成功_X坐标PC <$DEC.<$DIV.<$DEC.N$天关挑战成功_背景图片宽度.N$天关挑战成功_奖励总宽度>.2>.24>
+    MOV N$天关挑战成功_Y坐标PC 145
+    MOV S$天关挑战成功_关卡奖励UI字符串
+    MOV S$天关挑战成功_关卡奖励UI字符串PC
+    ;首通
+    #IF
+    RANDOM 1
+    #ACT
+    MOV N$天关挑战成功_循环增量 0
+    FOR N$天关挑战成功_循环增量 = <$STR(N$天关挑战成功_首通奖励数组长度)> 
+    MOV N$天关挑战成功_奖励LOOKS <$STDITEM(<$STR(S$天关挑战成功_首通奖励名称<$STR(N$天关挑战成功_循环增量)>)>).Looks>
+    INC S$天关挑战成功_关卡奖励UI字符串 <Img|children={stjl<$STR(N$天关挑战成功_循环增量)>.1,stjl<$STR(N$天关挑战成功_循环增量)>.2}|x=<$STR(N$天关挑战成功_X坐标)>|y=114|scale=1|esc=0|img=private/tianguan/img_grid.png>
+    INC S$天关挑战成功_关卡奖励UI字符串 <ItemShow|id=stjl<$STR(N$天关挑战成功_循环增量)>.1|x=0|y=0|itemid=<$STR(N$天关挑战成功_奖励LOOKS)>|itemcount=<$STR(N$天关挑战成功_首通奖励数量<$STR(N$天关挑战成功_循环增量)>)>|name=<$STR(S$天关挑战成功_首通奖励名称<$STR(N$天关挑战成功_循环增量)>)>|bgtype=1|showtips=1>
+    INC S$天关挑战成功_关卡奖励UI字符串 <Img|id=stjl<$STR(N$天关挑战成功_循环增量)>.2|x=0|y=0|scale=1|esc=0|img=private/tianguan/img_st.png>
+    INC N$天关挑战成功_X坐标 <$STR(N$天关挑战成功_X坐标间隔)>
+    ;==========================PC
+    INC S$天关挑战成功_关卡奖励UI字符串PC <@@!XYITM~1,60009,<$STR(N$天关挑战成功_X坐标PC)>,145>\
+    INC S$天关挑战成功_关卡奖励UI字符串PC <@@!XYPIC~<$STR(S$天关挑战成功_首通奖励名称<$STR(N$天关挑战成功_循环增量)>)>,1,<$INC.N$天关挑战成功_X坐标PC.15>,161>\
+    INC S$天关挑战成功_关卡奖励UI字符串PC <@@!XYITM~1,60011,<$STR(N$天关挑战成功_X坐标PC)>,145>\
+    INC S$天关挑战成功_关卡奖励UI字符串PC <offx=|<$DEC.<$INC.N$天关挑战成功_X坐标PC.62>.<$MULT.<$LENGTH.<$STR(N$天关挑战成功_首通奖励数量<$STR(N$天关挑战成功_循环增量)>)>>.8>>|y=|191|fontsize=|16|xy=|1|><COLOR=f7f7de~<$STR(N$天关挑战成功_首通奖励数量<$STR(N$天关挑战成功_循环增量)>)>><|off>\
+    INC N$天关挑战成功_X坐标PC <$STR(N$天关挑战成功_X坐标间隔)>
+    INC N$天关挑战成功_循环增量 1
+    ENDFOR
+    ;每日通关
+    #IF
+    RANDOM 1
+    #ACT
+    MOV N$天关挑战成功_循环增量 0
+    FOR N$天关挑战成功_循环增量 = <$STR(N$天关挑战成功_每日奖励数组长度)> 
+    MOV N$天关挑战成功_奖励LOOKS <$STDITEM(<$STR(S$天关挑战成功_每日奖励名称<$STR(N$天关挑战成功_循环增量)>)>).Looks>
+    INC S$天关挑战成功_关卡奖励UI字符串 <Img|children={mrjl<$STR(N$天关挑战成功_循环增量)>.1}|x=<$STR(N$天关挑战成功_X坐标)>|y=114|scale=1|esc=0|img=private/tianguan/img_grid.png>
+    INC S$天关挑战成功_关卡奖励UI字符串 <ItemShow|id=mrjl<$STR(N$天关挑战成功_循环增量)>.1|x=0|y=0|itemid=<$STR(N$天关挑战成功_奖励LOOKS)>|itemcount=<$STR(N$天关挑战成功_每日奖励数量<$STR(N$天关挑战成功_循环增量)>)>|name=<$STR(S$天关挑战成功_每日奖励名称<$STR(N$天关挑战成功_循环增量)>)>|bgtype=1|showtips=1>
+    INC N$天关挑战成功_X坐标 <$STR(N$天关挑战成功_X坐标间隔)>
+    ;==========================PC
+    INC S$天关挑战成功_关卡奖励UI字符串PC <@@!XYITM~1,60009,<$STR(N$天关挑战成功_X坐标PC)>,145>\
+    INC S$天关挑战成功_关卡奖励UI字符串PC <@@!XYPIC~<$STR(S$天关挑战成功_每日奖励名称<$STR(N$天关挑战成功_循环增量)>)>,1,<$INC.N$天关挑战成功_X坐标PC.15>,161>\
+    INC S$天关挑战成功_关卡奖励UI字符串PC <offx=|<$DEC.<$INC.N$天关挑战成功_X坐标PC.62>.<$MULT.<$LENGTH.<$STR(N$天关挑战成功_每日奖励数量<$STR(N$天关挑战成功_循环增量)>)>>.8>>|y=|191|fontsize=|16|xy=|1|><COLOR=f7f7de~<$STR(N$天关挑战成功_每日奖励数量<$STR(N$天关挑战成功_循环增量)>)>><|off>\
+    INC N$天关挑战成功_X坐标PC <$STR(N$天关挑战成功_X坐标间隔)>
+    INC N$天关挑战成功_循环增量 1
+    ENDFOR
+
+}

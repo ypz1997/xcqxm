@@ -1,0 +1,58 @@
+[@MAIN]
+#IF
+TRUE
+#SAY
+<Img|id=1|children={2,3,4,5,6,7,8,9,10,11,22,23}|x=152.0|y=78.0|scale=1|bg=1|img=private/hefuhuodong/shacheng.png|loadDelay=0|esc=0>
+<Img|id=2|x=-21.0|y=-45.0|img=public/frame_squared_outside.png|esc=0|scale=1>
+<Img|id=3|x=-59.0|y=-69.0|esc=0|_localZOrder=1|img=public/frame_pattern_dragon.png|scale=1>
+<Button|id=4|x=782.0|y=-50.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ListView|id=5|children={an1,an2,an3,an4,an5,an6,an7,an8,an9,an10}|x=0.0|y=4.0|width=190|height=500|bounce=0|_localZOrder=0|loadDelay=0|img=picpackage/3/9998.png>
+<Button|id=an10|children={flhdmb10}|x=152.0|y=83.0|pimg=public/btn_chosen_02.png|mimg=public/btn_chosen_02.png|scale=1|color=67|size=18|nimg=public/btn_chosen_02.png|text=沙      城|link=@XXXXXXX>
+<$STR(S$福利面板按钮-10)>
+;===============================================================
+<RText|x=380.0|y=195.0|color=67|size=20|text=占领行会：<<$STR(S45)>/FCOLOR=222>>
+;===============================================================
+<RText|x=414.0|y=310.0|color=67|size=20|text=<沙城会长顶戴/@xxx>>
+<Img|x=363.0|y=340.0|scale=1|img=picpackage/3/77790.png>
+<RText|x=414.0|y=440.0|color=67|size=20|text=<沙城成员顶戴/@xxx>>
+<Img|x=363.0|y=470.0|scale=1|img=picpackage/3/77791.png>
+<RText|x=436.0|y=310.0|color=67|size=20|text=<color=~沙城霸主#0xffffff00$攻击倍数+1.03#0xffffffff$攻击10-10#0xffffffff$道术10-10#0xffffffff$魔法10-10#0xffffffff$防御10-10#0xffffffff$魔御10-10#0xffffffff$生命值+500#0xffffffff$切割伤害+100#0xffffffff$ 　　　　　　>>
+<RText|x=436.0|y=370.0|color=67|size=20|text=<color=~沙城霸主#0xffffff00$攻击倍数+1.03#0xffffffff$攻击10-10#0xffffffff$道术10-10#0xffffffff$魔法10-10#0xffffffff$防御10-10#0xffffffff$魔御10-10#0xffffffff$生命值+500#0xffffffff$切割伤害+100#0xffffffff$ 　　　　　　>>
+<RText|x=436.0|y=440.0|color=67|size=20|text=<color=~荣耀沙城#0xffffff00$攻击2-2#0xffffffff$道术2-2#0xffffffff$魔法2-2#0xffffffff$防御1-1#0xffffffff$魔御1-1#0xffffffff$生命值+50#0xffffffff$切割伤害+10#0xffffffff$ 　　　　　　>>
+<RText|x=436.0|y=500.0|color=67|size=20|text=<color=~荣耀沙城#0xffffff00$攻击2-2#0xffffffff$道术2-2#0xffffffff$魔法2-2#0xffffffff$防御1-1#0xffffffff$魔御1-1#0xffffffff$生命值+50#0xffffffff$切割伤害+10#0xffffffff$ 　　　　　　>>
+;===============================================================
+<Button|x=645.0|y=380.0|nimg=private/hefuhuodong/hb_40.png|pimg=private/hefuhuodong/hb_40.png|color=251|size=18|text=<$STR(S46)>>
+<RText|x=372.0|y=550.0|color=67|size=20|text=攻城时间：<20:00 - 21:00/FCOLOR=222>>
+<Button|x=670.0|y=440.0|color=67|scale=1|size=22|nimg=public/button/btn_push_01.png|pimg=public/button/btn_push_01.png|text=前往沙城|link=@前往沙城|id=22|children={schd}>
+<Button|x=520.0|y=440.0|color=67|scale=1|size=22|nimg=public/button/btn_push_01.png|pimg=public/button/btn_push_01.png|text=沙城奖励|link=@沙城奖励|id=23>
+
+;===========沙城红点
+
+#IF
+EQUAL A245 
+#ACT
+MOV S45 暂无行会
+#ELSEACT
+MOV S45 $STR(A245)
+
+#IF
+EQUAL A246 
+#ACT
+MOV S46 暂无
+#ELSEACT
+MOV S46 $STR(A246)
+
+
+[@沙城奖励]
+#IF
+TRUE
+#ACT
+MessageBox 城主奖励元宝8888,成员奖励元宝3888\攻沙战役当晚21点在线的沙城行会成员玩家\才有资格收到系统发放的奖励
+BREAK
+
+[@前往沙城]
+#IF
+TRUE
+#ACT
+MAPMOVE 3 210 420 1
+BREAK

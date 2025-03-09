@@ -1,0 +1,706 @@
+[@main]
+; #IFONE
+; !DAYOFWEEK sat
+; !DAYOFWEEK sun
+; #ACT
+; SENDMSG 19 周六周日神秘商店开放
+; BREAK
+
+; #IFONE
+; DAYOFWEEK sat
+; DAYOFWEEK sun
+; #ACT
+; GOTO @神秘商店面板
+#ACT
+GOTO @神秘商店面板
+
+[@神秘商店面板]
+#IF
+TRUE
+#ACT
+GOTO @神秘商店显示面板
+
+[@神秘商店显示面板]
+
+#IF
+CHECK [288] 1
+CHECK [289] 1
+CHECK [290] 1
+CHECK [291] 1
+CHECK [292] 1
+CHECK [293] 1
+CHECK [294] 1
+CHECK [295] 1
+#ACT
+SET [288] 0
+SET [289] 0
+SET [290] 0
+SET [291] 0
+SET [292] 0
+SET [293] 0
+SET [294] 0
+SET [295] 0
+CalcVar Human 神秘商店可刷新次数 - 1 1
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取1 1 108
+SPLIT $STR(S$神秘商店抽取1) | S$神秘商店分割1
+TABLE XM_DY YHWP0 = <$STR(S$神秘商店分割1_0)>
+TABLE XM_DY YHWP1 = <$STR(S$神秘商店分割1_1)>
+TABLE XM_DY YHWP2 = <$STR(S$神秘商店分割1_2)>
+TABLE XM_DY YHWP3 = <$STR(S$神秘商店分割1_3)>
+TABLE XM_DY YHWP4 = <$STR(S$神秘商店分割1_4)>
+TABLE XM_DY YHWP5 = <$STR(S$神秘商店分割1_5)>
+CalcVar Human 神秘商店物品1 = <Text|id=sd1-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DY).YHWP0>><Text|id=sd1-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DY).YHWP3><$TABLE(XM_DY).YHWP4>><Button|id=sd1-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品1&神秘商店1=<$TABLE(XM_DY).YHWP0>&神秘商店2=<$TABLE(XM_DY).YHWP1>1&神秘商店3=<$TABLE(XM_DY).YHWP2>&神秘商店4=<$TABLE(XM_DY).YHWP3>&神秘商店5=<$TABLE(XM_DY).YHWP4>><ItemShow|id=sd1-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DY).YHWP5>|itemcount=<$TABLE(XM_DY).YHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DY).YHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取2 1 105
+SPLIT $STR(S$神秘商店抽取2) | S$神秘商店分割2
+TABLE XM_DE EHWP0 = <$STR(S$神秘商店分割2_0)>
+TABLE XM_DE EHWP1 = <$STR(S$神秘商店分割2_1)>
+TABLE XM_DE EHWP2 = <$STR(S$神秘商店分割2_2)>
+TABLE XM_DE EHWP3 = <$STR(S$神秘商店分割2_3)>
+TABLE XM_DE EHWP4 = <$STR(S$神秘商店分割2_4)>
+TABLE XM_DE EHWP5 = <$STR(S$神秘商店分割2_5)>
+CalcVar Human 神秘商店物品2 = <Text|id=sd2-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DE).EHWP0>><Text|id=sd2-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DE).EHWP3><$TABLE(XM_DE).EHWP4>><Button|id=sd2-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品2&神秘商店1=<$TABLE(XM_DE).EHWP0>&神秘商店2=<$TABLE(XM_DE).EHWP1>&神秘商店3=<$TABLE(XM_DE).EHWP2>&神秘商店4=<$TABLE(XM_DE).EHWP3>&神秘商店5=<$TABLE(XM_DE).EHWP4>><ItemShow|id=sd2-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DE).EHWP5>|itemcount=<$TABLE(XM_DE).EHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DE).EHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取3 1 106
+SPLIT $STR(S$神秘商店抽取3) | S$神秘商店分割3
+TABLE XM_DS SHWP0 = <$STR(S$神秘商店分割3_0)>
+TABLE XM_DS SHWP1 = <$STR(S$神秘商店分割3_1)>
+TABLE XM_DS SHWP2 = <$STR(S$神秘商店分割3_2)>
+TABLE XM_DS SHWP3 = <$STR(S$神秘商店分割3_3)>
+TABLE XM_DS SHWP4 = <$STR(S$神秘商店分割3_4)>
+TABLE XM_DS SHWP5 = <$STR(S$神秘商店分割3_5)>
+CalcVar Human 神秘商店物品3 = <Text|id=sd3-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DS).SHWP0>><Text|id=sd3-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DS).SHWP3><$TABLE(XM_DS).SHWP4>><Button|id=sd3-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品3&神秘商店1=<$TABLE(XM_DS).SHWP0>&神秘商店2=<$TABLE(XM_DS).SHWP1>&神秘商店3=<$TABLE(XM_DS).SHWP2>&神秘商店4=<$TABLE(XM_DS).SHWP3>&神秘商店5=<$TABLE(XM_DS).SHWP4>><ItemShow|id=sd3-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DS).SHWP5>|itemcount=<$TABLE(XM_DS).SHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DS).SHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取4 1 105
+SPLIT $STR(S$神秘商店抽取4) | S$神秘商店分割4
+TABLE XM_SD SIHWP0 = <$STR(S$神秘商店分割4_0)>
+TABLE XM_SD SIHWP1 = <$STR(S$神秘商店分割4_1)>
+TABLE XM_SD SIHWP2 = <$STR(S$神秘商店分割4_2)>
+TABLE XM_SD SIHWP3 = <$STR(S$神秘商店分割4_3)>
+TABLE XM_SD SIHWP4 = <$STR(S$神秘商店分割4_4)>
+TABLE XM_SD SIHWP5 = <$STR(S$神秘商店分割4_5)>
+CalcVar Human 神秘商店物品4 = <Text|id=sd4-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_SD).SIHWP0>><Text|id=sd4-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_SD).SIHWP3><$TABLE(XM_SD).SIHWP4>><Button|id=sd4-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品4&神秘商店1=<$TABLE(XM_SD).SIHWP0>&神秘商店2=<$TABLE(XM_SD).SIHWP1>&神秘商店3=<$TABLE(XM_SD).SIHWP2>&神秘商店4=<$TABLE(XM_SD).SIHWP3>&神秘商店5=<$TABLE(XM_SD).SIHWP4>><ItemShow|id=sd4-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_SD).SIHWP5>|itemcount=<$TABLE(XM_SD).SIHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_SD).SIHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取5 1 106
+SPLIT $STR(S$神秘商店抽取5) | S$神秘商店分割5
+TABLE XM_DW WHWP0 = <$STR(S$神秘商店分割5_0)>
+TABLE XM_DW WHWP1 = <$STR(S$神秘商店分割5_1)>
+TABLE XM_DW WHWP2 = <$STR(S$神秘商店分割5_2)>
+TABLE XM_DW WHWP3 = <$STR(S$神秘商店分割5_3)>
+TABLE XM_DW WHWP4 = <$STR(S$神秘商店分割5_4)>
+TABLE XM_DW WHWP5 = <$STR(S$神秘商店分割5_5)>
+CalcVar Human 神秘商店物品5 = <Text|id=sd5-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DW).WHWP0>><Text|id=sd5-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DW).WHWP3><$TABLE(XM_DW).WHWP4>><Button|id=sd5-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品5&神秘商店1=<$TABLE(XM_DW).WHWP0>&神秘商店2=<$TABLE(XM_DW).WHWP1>&神秘商店3=<$TABLE(XM_DW).WHWP2>&神秘商店4=<$TABLE(XM_DW).WHWP3>&神秘商店5=<$TABLE(XM_DW).WHWP4>><ItemShow|id=sd5-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DW).WHWP5>|itemcount=<$TABLE(XM_DW).WHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DW).WHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取6 1 106
+SPLIT $STR(S$神秘商店抽取6) | S$神秘商店分割6
+TABLE XM_DL LHWP0 = <$STR(S$神秘商店分割6_0)>
+TABLE XM_DL LHWP1 = <$STR(S$神秘商店分割6_1)>
+TABLE XM_DL LHWP2 = <$STR(S$神秘商店分割6_2)>
+TABLE XM_DL LHWP3 = <$STR(S$神秘商店分割6_3)>
+TABLE XM_DL LHWP4 = <$STR(S$神秘商店分割6_4)>
+TABLE XM_DL LHWP5 = <$STR(S$神秘商店分割6_5)>
+CalcVar Human 神秘商店物品6 = <Text|id=sd6-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DL).LHWP0>><Text|id=sd6-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DL).LHWP3><$TABLE(XM_DL).LHWP4>><Button|id=sd6-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品6&神秘商店1=<$TABLE(XM_DL).LHWP0>&神秘商店2=<$TABLE(XM_DL).LHWP1>&神秘商店3=<$TABLE(XM_DL).LHWP2>&神秘商店4=<$TABLE(XM_DL).LHWP3>&神秘商店5=<$TABLE(XM_DL).LHWP4>><ItemShow|id=sd6-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DL).LHWP5>|itemcount=<$TABLE(XM_DL).LHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DL).LHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取7 1 106
+SPLIT $STR(S$神秘商店抽取7) | S$神秘商店分割7
+TABLE XM_DQ QHWP0 = <$STR(S$神秘商店分割7_0)>
+TABLE XM_DQ QHWP1 = <$STR(S$神秘商店分割7_1)>
+TABLE XM_DQ QHWP2 = <$STR(S$神秘商店分割7_2)>
+TABLE XM_DQ QHWP3 = <$STR(S$神秘商店分割7_3)>
+TABLE XM_DQ QHWP4 = <$STR(S$神秘商店分割7_4)>
+TABLE XM_DQ QHWP5 = <$STR(S$神秘商店分割7_5)>
+CalcVar Human 神秘商店物品7 = <Text|id=sd7-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DQ).QHWP0>><Text|id=sd7-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DQ).QHWP3><$TABLE(XM_DQ).QHWP4>><Button|id=sd7-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品7&神秘商店1=<$TABLE(XM_DQ).QHWP0>&神秘商店2=<$TABLE(XM_DQ).QHWP1>&神秘商店3=<$TABLE(XM_DQ).QHWP2>&神秘商店4=<$TABLE(XM_DQ).QHWP3>&神秘商店5=<$TABLE(XM_DQ).QHWP4>><ItemShow|id=sd7-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DQ).QHWP5>|itemcount=<$TABLE(XM_DQ).QHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DQ).QHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取8 1 106
+SPLIT $STR(S$神秘商店抽取8) | S$神秘商店分割8
+TABLE XM_DB BHWP0 = <$STR(S$神秘商店分割8_0)>
+TABLE XM_DB BHWP1 = <$STR(S$神秘商店分割8_1)>
+TABLE XM_DB BHWP2 = <$STR(S$神秘商店分割8_2)>
+TABLE XM_DB BHWP3 = <$STR(S$神秘商店分割8_3)>
+TABLE XM_DB BHWP4 = <$STR(S$神秘商店分割8_4)>
+TABLE XM_DB BHWP5 = <$STR(S$神秘商店分割8_5)>
+CalcVar Human 神秘商店物品8 = <Text|id=sd8-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DB).BHWP0>><Text|id=sd8-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DB).BHWP3><$TABLE(XM_DB).BHWP4>><Button|id=sd8-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品8&神秘商店1=<$TABLE(XM_DB).BHWP0>&神秘商店2=<$TABLE(XM_DB).BHWP1>&神秘商店3=<$TABLE(XM_DB).BHWP2>&神秘商店4=<$TABLE(XM_DB).BHWP3>&神秘商店5=<$TABLE(XM_DB).BHWP4>><ItemShow|id=sd8-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DB).BHWP5>|itemcount=<$TABLE(XM_DB).BHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DB).BHWP0>> 1
+
+
+
+#IF
+; SMALL $HUMAN(神秘商店刷新次数) 8
+TRUE
+#ACT
+; ReadRandomStr ..\QuestDiary\文本读取\神秘商店刷新文本.txt S$神秘商店刷新抽取 $HUMAN(神秘商店刷新次数)
+; SPLIT $STR(S$神秘商店刷新抽取) | S$神秘商店刷新分割
+; #ELSEACT
+MOV S$神秘商店刷新分割_0 绑元
+MOV S$神秘商店刷新分割_1 100
+
+#IF
+TRUE
+#SAY
+<Img|id=1|children={2,3,4,5,6,7,8,9,10}|x=152.0|y=78.0|loadDelay=0|bg=1|img=private/fulihuodong/shenmishangdianmb.png|scale=1|_localZOrder=-1|esc=0>
+<Img|id=2|x=-21.0|y=-45.0|img=public/frame_squared_outside.png|esc=0|scale=1>
+<Img|id=3|x=-59.0|y=-69.0|esc=0|_localZOrder=1|img=public/frame_pattern_dragon.png|scale=1>
+<Button|id=4|x=782.0|y=-50.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ListView|id=5|children={an1,an2,an3,an4,an5,an6,an7,an8,an9,an10}|x=0.0|y=4.0|width=190|height=500|bounce=0|_localZOrder=0|loadDelay=0|img=picpackage/3/9998.png>
+; <Button|id=an1|children={flhdmb1}|x=152.0|y=83.0|pimg=public/btn_chosen_0<$STR(N$福利左侧按钮1)>.png|mimg=public/btn_chosen_0<$STR(N$福利左侧按钮1)>.png|scale=1|color=67|size=18|nimg=public/btn_chosen_0<$STR(N$福利左侧按钮1)>.png|text=签到|link=@福利活动>
+; <$STR(S$福利面板按钮-1)>
+; <Button|id=an2|children={flhdmb2}|x=152.0|y=83.0|pimg=public/btn_chosen_0<$STR(N$福利左侧按钮2)>.png|mimg=public/btn_chosen_0<$STR(N$福利左侧按钮2)>.png|scale=1|color=67|size=18|nimg=public/btn_chosen_0<$STR(N$福利左侧按钮2)>.png|text=月卡|link=@月卡面板>
+; <$STR(S$福利面板按钮-2)>
+; <Button|id=an3|children={flhdmb3}|x=152.0|y=83.0|pimg=public/btn_chosen_0<$STR(N$福利左侧按钮3)>.png|mimg=public/btn_chosen_0<$STR(N$福利左侧按钮3)>.png|scale=1|color=67|size=18|nimg=public/btn_chosen_0<$STR(N$福利左侧按钮3)>.png|text=战令|link=@战令面板>
+; <$STR(S$福利面板按钮-3)>
+; <Button|id=an4|children={flhdmb4}|x=152.0|y=83.0|pimg=public/btn_chosen_0<$STR(N$福利左侧按钮4)>.png|mimg=public/btn_chosen_0<$STR(N$福利左侧按钮4)>.png|scale=1|color=67|size=18|nimg=public/btn_chosen_0<$STR(N$福利左侧按钮4)>.png|text=投资返利|link=@投资返利面板>
+; <$STR(S$福利面板按钮-4)>
+; <Button|id=an5|children={flhdmb5}|x=152.0|y=83.0|pimg=public/btn_chosen_0<$STR(N$福利左侧按钮5)>.png|mimg=public/btn_chosen_0<$STR(N$福利左侧按钮5)>.png|scale=1|color=67|size=18|nimg=public/btn_chosen_0<$STR(N$福利左侧按钮5)>.png|text=开服礼包|link=@第一天礼包>
+; <$STR(S$福利面板按钮-5)>
+; ;<Button|id=an6|children={flhdmb6}|x=152.0|y=83.0|pimg=public/btn_chosen_0<$STR(N$福利左侧按钮6)>.png|mimg=public/btn_chosen_0<$STR(N$福利左侧按钮6)>.png|scale=1|color=67|size=18|nimg=public/btn_chosen_0<$STR(N$福利左侧按钮6)>.png|text=经验找回|link=@经验找回面板>
+; <$STR(S$福利面板按钮-6)>
+; <Button|id=an7|children={flhdmb7}|x=152.0|y=83.0|pimg=public/btn_chosen_0<$STR(N$福利左侧按钮7)>.png|mimg=public/btn_chosen_0<$STR(N$福利左侧按钮7)>.png|scale=1|color=67|size=18|nimg=public/btn_chosen_0<$STR(N$福利左侧按钮7)>.png|text=聚宝盆|link=@聚宝盆面板>
+; <$STR(S$福利面板按钮-7)>
+<Button|id=an8|children={flhdmb8}|x=152.0|y=83.0|pimg=public/btn_chosen_02.png|mimg=public/btn_chosen_02.png|scale=1|color=67|size=18|nimg=public/btn_chosen_02.png|text=神秘商店|link=@XXXXXX>
+<$STR(S$福利面板按钮-8)>
+; <Button|id=an9|children={flhdmb9}|x=152.0|y=83.0|pimg=public/btn_chosen_0<$STR(N$福利左侧按钮9)>.png|mimg=public/btn_chosen_0<$STR(N$福利左侧按钮9)>.png|scale=1|color=67|size=18|nimg=public/btn_chosen_0<$STR(N$福利左侧按钮9)>.png|text=装备悬赏|link=@个人首曝_装备悬赏>
+; <$STR(S$福利面板按钮-9)>
+; <Button|id=an10|children={flhdmb10}|x=152.0|y=83.0|pimg=public/btn_chosen_0<$STR(N$福利左侧按钮10)>.png|mimg=public/btn_chosen_0<$STR(N$福利左侧按钮10)>.png|scale=1|color=67|size=18|nimg=public/btn_chosen_0<$STR(N$福利左侧按钮10)>.png|text=沙      城|link=@福利活动攻城>
+; <$STR(S$福利面板按钮-10)>
+<Button|id=7|children={smsdhd}|x=560.0|y=452.0|color=255|mimg=private/fulihuodong/btn_lijishuaxin.png|scale=1|size=18|pimg=private/fulihuodong/btn_lijishuaxin.png|nimg=private/fulihuodong/btn_lijishuaxin.png|link=@神秘商店刷新&神秘商店刷新1=<$STR(S$神秘商店刷新分割_0)>&神秘商店刷新2=<$STR(S$神秘商店刷新分割_1)>>
+<RText|id=8|x=686.0|y=461.0|color=255|size=18|text=<<$STR(S$神秘商店刷新分割_0)>/FCOLOR=67><<$STR(S$神秘商店刷新分割_1)>/FCOLOR=67>>
+<RText|id=10|x=440.0|y=461.0|color=255|size=18|text=<刷新次数:/FCOLOR=67><<$HUMAN(神秘商店可刷新次数)>/FCOLOR=218>>
+<ListView|id=9|children={sd1,sd2,sd3,sd4,sd5,sd6,sd7,sd8,}|x=209.0|y=120.0|width=603|height=330|rotate=0|colcount=2|colmargin=303|colheight=82|bounce=0>
+
+<Img|id=sd1|children={sd1-1,sd1-2,sd1-3,sd1-4}|x=363.0|y=199.0|esc=0|scale=1|img=private/fulihuodong/bg_store_item_03.png>
+<$Human(神秘商店物品1)>
+
+<Img|id=sd2|children={sd2-1,sd2-2,sd2-3,sd2-4}|x=363.0|y=199.0|esc=0|scale=1|img=private/fulihuodong/bg_store_item_03.png>
+<$Human(神秘商店物品2)>
+
+<Img|id=sd3|children={sd3-1,sd3-2,sd3-3,sd3-4}|x=363.0|y=199.0|esc=0|scale=1|img=private/fulihuodong/bg_store_item_03.png>
+<$Human(神秘商店物品3)>
+
+<Img|id=sd4|children={sd4-1,sd4-2,sd4-3,sd4-4}|x=363.0|y=199.0|esc=0|scale=1|img=private/fulihuodong/bg_store_item_03.png>
+<$Human(神秘商店物品4)>
+
+<Img|id=sd5|children={sd5-1,sd5-2,sd5-3,sd5-4}|x=363.0|y=199.0|esc=0|scale=1|img=private/fulihuodong/bg_store_item_03.png>
+<$Human(神秘商店物品5)>
+
+<Img|id=sd6|children={sd6-1,sd6-2,sd6-3,sd6-4}|x=363.0|y=199.0|esc=0|scale=1|img=private/fulihuodong/bg_store_item_03.png>
+<$Human(神秘商店物品6)>
+
+<Img|id=sd7|children={sd7-1,sd7-2,sd7-3,sd7-4}|x=363.0|y=199.0|esc=0|scale=1|img=private/fulihuodong/bg_store_item_03.png>
+<$Human(神秘商店物品7)>
+
+<Img|id=sd8|children={sd8-1,sd8-2,sd8-3,sd8-4}|x=363.0|y=199.0|esc=0|scale=1|img=private/fulihuodong/bg_store_item_03.png>
+<$Human(神秘商店物品8)>
+
+
+[@购买神秘商店物品1]
+#IF
+CHECK [288] 1
+#ACT
+SENDMSG 19 商品已出售
+BREAK
+
+#IF
+SMALL $<$STR(S$神秘商店3)> <$STR(S$神秘商店5)>
+#ACT
+SENDMSG 19 你的<$STR(S$神秘商店4)>不足
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 金币
+#ACT
+SET [288] 1
+take 金币 <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<$STR(S$神秘商店1)>
+CalcVar Human 神秘商店物品1 = <Text|id=sd1-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DY).YHWP0>><Text|id=sd1-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DY).YHWP3><$TABLE(XM_DY).YHWP4>><Button|id=sd1-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品1&神秘商店1=<$TABLE(XM_DY).YHWP0>&神秘商店2=<$TABLE(XM_DY).YHWP1>&神秘商店3=<$TABLE(XM_DY).YHWP2>&神秘商店4=<$TABLE(XM_DY).YHWP3>&神秘商店5=<$TABLE(XM_DY).YHWP4>><ItemShow|id=sd1-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DY).YHWP5>|itemcount=<$TABLE(XM_DY).YHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DY).YHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 绑元
+#ACT
+SET [288] 1
+BINDGAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<$STR(S$神秘商店1)>
+CalcVar Human 神秘商店物品1 = <Text|id=sd1-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DY).YHWP0>><Text|id=sd1-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DY).YHWP3><$TABLE(XM_DY).YHWP4>><Button|id=sd1-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品1&神秘商店1=<$TABLE(XM_DY).YHWP0>&神秘商店2=<$TABLE(XM_DY).YHWP1>&神秘商店3=<$TABLE(XM_DY).YHWP2>&神秘商店4=<$TABLE(XM_DY).YHWP3>&神秘商店5=<$TABLE(XM_DY).YHWP4>><ItemShow|id=sd1-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DY).YHWP5>|itemcount=<$TABLE(XM_DY).YHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DY).YHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 元宝
+#ACT
+SET [288] 1
+GAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<$STR(S$神秘商店1)>
+CalcVar Human 神秘商店物品1 = <Text|id=sd1-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DY).YHWP0>><Text|id=sd1-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DY).YHWP3><$TABLE(XM_DY).YHWP4>><Button|id=sd1-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品1&神秘商店1=<$TABLE(XM_DY).YHWP0>&神秘商店2=<$TABLE(XM_DY).YHWP1>&神秘商店3=<$TABLE(XM_DY).YHWP2>&神秘商店4=<$TABLE(XM_DY).YHWP3>&神秘商店5=<$TABLE(XM_DY).YHWP4>><ItemShow|id=sd1-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DY).YHWP5>|itemcount=<$TABLE(XM_DY).YHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DY).YHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+
+[@购买神秘商店物品2]
+
+#IF
+CHECK [289] 1
+#ACT
+SENDMSG 19 商品已出售
+BREAK
+
+#IF
+SMALL $<$STR(S$神秘商店3)> <$STR(S$神秘商店5)>
+#ACT
+SENDMSG 19 你的<<$STR(S$神秘商店4)>>不足
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 金币
+#ACT
+SET [289] 1
+take 金币 <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品2 = <Text|id=sd2-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DE).EHWP0>><Text|id=sd2-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DE).EHWP3><$TABLE(XM_DE).EHWP4>><Button|id=sd2-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品2&神秘商店1=<$TABLE(XM_DE).EHWP0>&神秘商店2=<$TABLE(XM_DE).EHWP1>&神秘商店3=<$TABLE(XM_DE).EHWP2>&神秘商店4=<$TABLE(XM_DE).EHWP3>&神秘商店5=<$TABLE(XM_DE).EHWP4>><ItemShow|id=sd2-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DE).EHWP5>|itemcount=<$TABLE(XM_DE).EHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DE).EHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 绑元
+#ACT
+SET [289] 1
+BINDGAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品2 = <Text|id=sd2-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DE).EHWP0>><Text|id=sd2-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DE).EHWP3><$TABLE(XM_DE).EHWP4>><Button|id=sd2-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品2&神秘商店1=<$TABLE(XM_DE).EHWP0>&神秘商店2=<$TABLE(XM_DE).EHWP1>&神秘商店3=<$TABLE(XM_DE).EHWP2>&神秘商店4=<$TABLE(XM_DE).EHWP3>&神秘商店5=<$TABLE(XM_DE).EHWP4>><ItemShow|id=sd2-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DE).EHWP5>|itemcount=<$TABLE(XM_DE).EHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DE).EHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 元宝
+#ACT
+SET [289] 1
+GAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品2 = <Text|id=sd2-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DE).EHWP0>><Text|id=sd2-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DE).EHWP3><$TABLE(XM_DE).EHWP4>><Button|id=sd2-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品2&神秘商店1=<$TABLE(XM_DE).EHWP0>&神秘商店2=<$TABLE(XM_DE).EHWP1>&神秘商店3=<$TABLE(XM_DE).EHWP2>&神秘商店4=<$TABLE(XM_DE).EHWP3>&神秘商店5=<$TABLE(XM_DE).EHWP4>><ItemShow|id=sd2-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DE).EHWP5>|itemcount=<$TABLE(XM_DE).EHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DE).EHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+
+[@购买神秘商店物品3]
+#IF
+CHECK [290] 1
+#ACT
+SENDMSG 19 商品已出售
+BREAK
+
+#IF
+SMALL $<$STR(S$神秘商店3)> <$STR(S$神秘商店5)>
+#ACT
+SENDMSG 19 你的<<$STR(S$神秘商店4)>>不足
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 金币
+#ACT
+SET [290] 1
+take 金币 <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品3 = <Text|id=sd3-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DS).SHWP0>><Text|id=sd3-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DS).SHWP3><$TABLE(XM_DS).SHWP4>><Button|id=sd3-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品3&神秘商店1=<$TABLE(XM_DS).SHWP0>&神秘商店2=<$TABLE(XM_DS).SHWP1>&神秘商店3=<$TABLE(XM_DS).SHWP2>&神秘商店4=<$TABLE(XM_DS).SHWP3>&神秘商店5=<$TABLE(XM_DS).SHWP4>><ItemShow|id=sd3-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DS).SHWP5>|itemcount=<$TABLE(XM_DS).SHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DS).SHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 绑元
+#ACT
+SET [290] 1
+BINDGAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品3 = <Text|id=sd3-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DS).SHWP0>><Text|id=sd3-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DS).SHWP3><$TABLE(XM_DS).SHWP4>><Button|id=sd3-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品3&神秘商店1=<$TABLE(XM_DS).SHWP0>&神秘商店2=<$TABLE(XM_DS).SHWP1>&神秘商店3=<$TABLE(XM_DS).SHWP2>&神秘商店4=<$TABLE(XM_DS).SHWP3>&神秘商店5=<$TABLE(XM_DS).SHWP4>><ItemShow|id=sd3-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DS).SHWP5>|itemcount=<$TABLE(XM_DS).SHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DS).SHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 元宝
+#ACT
+SET [290] 1
+GAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品3 = <Text|id=sd3-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DS).SHWP0>><Text|id=sd3-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DS).SHWP3><$TABLE(XM_DS).SHWP4>><Button|id=sd3-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品3&神秘商店1=<$TABLE(XM_DS).SHWP0>&神秘商店2=<$TABLE(XM_DS).SHWP1>&神秘商店3=<$TABLE(XM_DS).SHWP2>&神秘商店4=<$TABLE(XM_DS).SHWP3>&神秘商店5=<$TABLE(XM_DS).SHWP4>><ItemShow|id=sd3-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DS).SHWP5>|itemcount=<$TABLE(XM_DS).SHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DS).SHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+
+[@购买神秘商店物品4]
+#IF
+CHECK [291] 1
+#ACT
+SENDMSG 19 商品已出售
+BREAK
+
+#IF
+SMALL $<$STR(S$神秘商店3)> <$STR(S$神秘商店5)>
+#ACT
+SENDMSG 19 你的<<$STR(S$神秘商店4)>>不足
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 金币
+#ACT
+SET [291] 1
+take 金币 <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品4 = <Text|id=sd4-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_SD).SIHWP0>><Text|id=sd4-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_SD).SIHWP3><$TABLE(XM_SD).SIHWP4>><Button|id=sd4-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品4&神秘商店1=<$TABLE(XM_SD).SIHWP0>&神秘商店2=<$TABLE(XM_SD).SIHWP1>&神秘商店3=<$TABLE(XM_SD).SIHWP2>&神秘商店4=<$TABLE(XM_SD).SIHWP3>&神秘商店5=<$TABLE(XM_SD).SIHWP4>><ItemShow|id=sd4-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_SD).SIHWP5>|itemcount=<$TABLE(XM_SD).SIHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_SD).SIHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 绑元
+#ACT
+SET [291] 1
+BINDGAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品4 = <Text|id=sd4-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_SD).SIHWP0>><Text|id=sd4-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_SD).SIHWP3><$TABLE(XM_SD).SIHWP4>><Button|id=sd4-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品4&神秘商店1=<$TABLE(XM_SD).SIHWP0>&神秘商店2=<$TABLE(XM_SD).SIHWP1>&神秘商店3=<$TABLE(XM_SD).SIHWP2>&神秘商店4=<$TABLE(XM_SD).SIHWP3>&神秘商店5=<$TABLE(XM_SD).SIHWP4>><ItemShow|id=sd4-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_SD).SIHWP5>|itemcount=<$TABLE(XM_SD).SIHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_SD).SIHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 元宝
+#ACT
+SET [291] 1
+GAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品4 = <Text|id=sd4-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_SD).SIHWP0>><Text|id=sd4-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_SD).SIHWP3><$TABLE(XM_SD).SIHWP4>><Button|id=sd4-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品4&神秘商店1=<$TABLE(XM_SD).SIHWP0>&神秘商店2=<$TABLE(XM_SD).SIHWP1>&神秘商店3=<$TABLE(XM_SD).SIHWP2>&神秘商店4=<$TABLE(XM_SD).SIHWP3>&神秘商店5=<$TABLE(XM_SD).SIHWP4>><ItemShow|id=sd4-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_SD).SIHWP5>|itemcount=<$TABLE(XM_SD).SIHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_SD).SIHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+
+[@购买神秘商店物品5]
+#IF
+CHECK [292] 1
+#ACT
+SENDMSG 19 商品已出售
+BREAK
+
+#IF
+SMALL $<$STR(S$神秘商店3)> <$STR(S$神秘商店5)>
+#ACT
+SENDMSG 19 你的<<$STR(S$神秘商店4)>>不足
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 金币
+#ACT
+SET [292] 1
+take 金币 <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品5 = <Text|id=sd5-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DW).WHWP0>><Text|id=sd5-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DW).WHWP3><$TABLE(XM_DW).WHWP4>><Button|id=sd5-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品5&神秘商店1=<$TABLE(XM_DW).WHWP0>&神秘商店2=<$TABLE(XM_DW).WHWP1>&神秘商店3=<$TABLE(XM_DW).WHWP2>&神秘商店4=<$TABLE(XM_DW).WHWP3>&神秘商店5=<$TABLE(XM_DW).WHWP4>><ItemShow|id=sd5-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DW).WHWP5>|itemcount=<$TABLE(XM_DW).WHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DW).WHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 绑元
+#ACT
+SET [292] 1
+BINDGAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品5 = <Text|id=sd5-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DW).WHWP0>><Text|id=sd5-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DW).WHWP3><$TABLE(XM_DW).WHWP4>><Button|id=sd5-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品5&神秘商店1=<$TABLE(XM_DW).WHWP0>&神秘商店2=<$TABLE(XM_DW).WHWP1>&神秘商店3=<$TABLE(XM_DW).WHWP2>&神秘商店4=<$TABLE(XM_DW).WHWP3>&神秘商店5=<$TABLE(XM_DW).WHWP4>><ItemShow|id=sd5-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DW).WHWP5>|itemcount=<$TABLE(XM_DW).WHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DW).WHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 元宝
+#ACT
+SET [292] 1
+GAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品5 = <Text|id=sd5-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DW).WHWP0>><Text|id=sd5-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DW).WHWP3><$TABLE(XM_DW).WHWP4>><Button|id=sd5-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品5&神秘商店1=<$TABLE(XM_DW).WHWP0>&神秘商店2=<$TABLE(XM_DW).WHWP1>&神秘商店3=<$TABLE(XM_DW).WHWP2>&神秘商店4=<$TABLE(XM_DW).WHWP3>&神秘商店5=<$TABLE(XM_DW).WHWP4>><ItemShow|id=sd5-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DW).WHWP5>|itemcount=<$TABLE(XM_DW).WHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DW).WHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+[@购买神秘商店物品6]
+#IF
+CHECK [293] 1
+#ACT
+SENDMSG 19 商品已出售
+BREAK
+
+#IF
+SMALL $<$STR(S$神秘商店3)> <$STR(S$神秘商店5)>
+#ACT
+SENDMSG 19 你的<<$STR(S$神秘商店4)>>不足
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 金币
+#ACT
+SET [293] 1
+take 金币 <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品6 = <Text|id=sd6-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DL).LHWP0>><Text|id=sd6-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DL).LHWP3><$TABLE(XM_DL).LHWP4>><Button|id=sd6-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品6&神秘商店1=<$TABLE(XM_DL).LHWP0>&神秘商店2=<$TABLE(XM_DL).LHWP1>&神秘商店3=<$TABLE(XM_DL).LHWP2>&神秘商店4=<$TABLE(XM_DL).LHWP3>&神秘商店5=<$TABLE(XM_DL).LHWP4>><ItemShow|id=sd6-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DL).LHWP5>|itemcount=<$TABLE(XM_DL).LHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DL).LHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 绑元
+#ACT
+SET [293] 1
+BINDGAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品6 = <Text|id=sd6-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DL).LHWP0>><Text|id=sd6-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DL).LHWP3><$TABLE(XM_DL).LHWP4>><Button|id=sd6-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品6&神秘商店1=<$TABLE(XM_DL).LHWP0>&神秘商店2=<$TABLE(XM_DL).LHWP1>&神秘商店3=<$TABLE(XM_DL).LHWP2>&神秘商店4=<$TABLE(XM_DL).LHWP3>&神秘商店5=<$TABLE(XM_DL).LHWP4>><ItemShow|id=sd6-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DL).LHWP5>|itemcount=<$TABLE(XM_DL).LHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DL).LHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 元宝
+#ACT
+SET [293] 1
+GAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品6 = <Text|id=sd6-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DL).LHWP0>><Text|id=sd6-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DL).LHWP3><$TABLE(XM_DL).LHWP4>><Button|id=sd6-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品6&神秘商店1=<$TABLE(XM_DL).LHWP0>&神秘商店2=<$TABLE(XM_DL).LHWP1>&神秘商店3=<$TABLE(XM_DL).LHWP2>&神秘商店4=<$TABLE(XM_DL).LHWP3>&神秘商店5=<$TABLE(XM_DL).LHWP4>><ItemShow|id=sd6-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DL).LHWP5>|itemcount=<$TABLE(XM_DL).LHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DL).LHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+[@购买神秘商店物品7]
+#IF
+CHECK [294] 1
+#ACT
+SENDMSG 19 商品已出售
+BREAK
+
+#IF
+SMALL $<$STR(S$神秘商店3)> <$STR(S$神秘商店5)>
+#ACT
+SENDMSG 19 你的<<$STR(S$神秘商店4)>>不足
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 金币
+#ACT
+SET [294] 1
+take 金币 <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品7 = <Text|id=sd7-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DQ).QHWP0>><Text|id=sd7-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DQ).QHWP3><$TABLE(XM_DQ).QHWP4>><Button|id=sd7-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品7&神秘商店1=<$TABLE(XM_DQ).QHWP0>&神秘商店2=<$TABLE(XM_DQ).QHWP1>&神秘商店3=<$TABLE(XM_DQ).QHWP2>&神秘商店4=<$TABLE(XM_DQ).QHWP3>&神秘商店5=<$TABLE(XM_DQ).QHWP4>><ItemShow|id=sd7-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DQ).QHWP5>|itemcount=<$TABLE(XM_DQ).QHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DQ).QHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 绑元
+#ACT
+SET [294] 1
+BINDGAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品7 = <Text|id=sd7-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DQ).QHWP0>><Text|id=sd7-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DQ).QHWP3><$TABLE(XM_DQ).QHWP4>><Button|id=sd7-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品7&神秘商店1=<$TABLE(XM_DQ).QHWP0>&神秘商店2=<$TABLE(XM_DQ).QHWP1>&神秘商店3=<$TABLE(XM_DQ).QHWP2>&神秘商店4=<$TABLE(XM_DQ).QHWP3>&神秘商店5=<$TABLE(XM_DQ).QHWP4>><ItemShow|id=sd7-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DQ).QHWP5>|itemcount=<$TABLE(XM_DQ).QHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DQ).QHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 元宝
+#ACT
+SET [294] 1
+GAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品7 = <Text|id=sd7-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DQ).QHWP0>><Text|id=sd7-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DQ).QHWP3><$TABLE(XM_DQ).QHWP4>><Button|id=sd7-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品7&神秘商店1=<$TABLE(XM_DQ).QHWP0>&神秘商店2=<$TABLE(XM_DQ).QHWP1>&神秘商店3=<$TABLE(XM_DQ).QHWP2>&神秘商店4=<$TABLE(XM_DQ).QHWP3>&神秘商店5=<$TABLE(XM_DQ).QHWP4>><ItemShow|id=sd7-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DQ).QHWP5>|itemcount=<$TABLE(XM_DQ).QHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DQ).QHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+
+[@购买神秘商店物品8]
+#IF
+CHECK [295] 1
+#ACT
+SENDMSG 19 商品已出售
+BREAK
+
+#IF
+SMALL $<$STR(S$神秘商店3)> <$STR(S$神秘商店5)>
+#ACT
+SENDMSG 19 你的<<$STR(S$神秘商店4)>>不足
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 金币
+#ACT
+SET [295] 1
+take 金币 <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品8 = <Text|id=sd8-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DB).BHWP0>><Text|id=sd8-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DB).BHWP3><$TABLE(XM_DB).BHWP4>><Button|id=sd8-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品8&神秘商店1=<$TABLE(XM_DB).BHWP0>&神秘商店2=<$TABLE(XM_DB).BHWP1>&神秘商店3=<$TABLE(XM_DB).BHWP2>&神秘商店4=<$TABLE(XM_DB).BHWP3>&神秘商店5=<$TABLE(XM_DB).BHWP4>><ItemShow|id=sd8-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DB).BHWP5>|itemcount=<$TABLE(XM_DB).BHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DB).BHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 绑元
+#ACT
+SET [295] 1
+BINDGAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品8 = <Text|id=sd8-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DB).BHWP0>><Text|id=sd8-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DB).BHWP3><$TABLE(XM_DB).BHWP4>><Button|id=sd8-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品8&神秘商店1=<$TABLE(XM_DB).BHWP0>&神秘商店2=<$TABLE(XM_DB).BHWP1>&神秘商店3=<$TABLE(XM_DB).BHWP2>&神秘商店4=<$TABLE(XM_DB).BHWP3>&神秘商店5=<$TABLE(XM_DB).BHWP4>><ItemShow|id=sd8-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DB).BHWP5>|itemcount=<$TABLE(XM_DB).BHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DB).BHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店4)> 元宝
+#ACT
+SET [295] 1
+GAMEGOLD - <$STR(S$神秘商店5)>
+GIVE <$STR(S$神秘商店1)> <$STR(S$神秘商店2)> 1
+SENDMSG 19 购买了<<$STR(S$神秘商店1)>>
+CalcVar Human 神秘商店物品8 = <Text|id=sd8-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DB).BHWP0>><Text|id=sd8-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DB).BHWP3><$TABLE(XM_DB).BHWP4>><Button|id=sd8-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_02.png|scale=1|pimg=private/fulihuodong/btn_smsd_02.png|size=18|nimg=private/fulihuodong/btn_smsd_02.png|link=@购买神秘商店物品8&神秘商店1=<$TABLE(XM_DB).BHWP0>&神秘商店2=<$TABLE(XM_DB).BHWP1>&神秘商店3=<$TABLE(XM_DB).BHWP2>&神秘商店4=<$TABLE(XM_DB).BHWP3>&神秘商店5=<$TABLE(XM_DB).BHWP4>><ItemShow|id=sd8-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DB).BHWP5>|itemcount=<$TABLE(XM_DB).BHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DB).BHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK
+
+
+
+
+
+
+[@神秘商店刷新]
+#IF
+!LARGE <$HUMAN(神秘商店可刷新次数)> 0
+#ACT
+SENDMSG 19 刷新次数不足
+BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店刷新1)> 绑元
+SMALL <$INC.$MONEY(2).$MONEY(4)> <$STR(S$神秘商店刷新2)>
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+; #IF
+; EQUAL <$STR(S$神秘商店刷新1)> 元宝
+; SMALL $GAMEGOLD <$STR(S$神秘商店刷新2)>
+; #ACT
+; SENDMSG 19 元宝不足
+; BREAK
+
+#IF
+EQUAL <$STR(S$神秘商店刷新1)> 绑元
+SMALL $MONEY(4) <$STR(S$神秘商店刷新2)>
+#ACT
+MONEY 2 - <$DEC.$STR(S$神秘商店刷新2).$MONEY(4)>
+BINDGAMEGOLD - $MONEY(4)
+
+#IF
+EQUAL <$STR(S$神秘商店刷新1)> 绑元
+!SMALL $MONEY(4) <$STR(S$神秘商店刷新2)>
+#ACT
+MONEY 4 - $STR(S$神秘商店刷新2)
+
+; #IF
+; EQUAL <$STR(S$神秘商店刷新1)> 元宝
+; !SMALL $MONEY(2) <$STR(S$神秘商店刷新2)>
+; #ACT
+; MONEY 2 - $STR(S$神秘商店刷新2)
+
+
+#IF
+TRUE
+#ACT
+SET [288] 0
+SET [289] 0
+SET [290] 0
+SET [291] 0
+SET [292] 0
+SET [293] 0
+SET [294] 0
+SET [295] 0
+CalcVar Human 神秘商店可刷新次数 - 1 1
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取1 1 108
+SPLIT $STR(S$神秘商店抽取1) | S$神秘商店分割1
+TABLE XM_DY YHWP0 = <$STR(S$神秘商店分割1_0)>
+TABLE XM_DY YHWP1 = <$STR(S$神秘商店分割1_1)>
+TABLE XM_DY YHWP2 = <$STR(S$神秘商店分割1_2)>
+TABLE XM_DY YHWP3 = <$STR(S$神秘商店分割1_3)>
+TABLE XM_DY YHWP4 = <$STR(S$神秘商店分割1_4)>
+TABLE XM_DY YHWP5 = <$STR(S$神秘商店分割1_5)>
+CalcVar Human 神秘商店物品1 = <Text|id=sd1-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DY).YHWP0>><Text|id=sd1-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DY).YHWP3><$TABLE(XM_DY).YHWP4>><Button|id=sd1-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品1&神秘商店1=<$TABLE(XM_DY).YHWP0>&神秘商店2=<$TABLE(XM_DY).YHWP1>1&神秘商店3=<$TABLE(XM_DY).YHWP2>&神秘商店4=<$TABLE(XM_DY).YHWP3>&神秘商店5=<$TABLE(XM_DY).YHWP4>><ItemShow|id=sd1-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DY).YHWP5>|itemcount=<$TABLE(XM_DY).YHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DY).YHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取2 1 105
+SPLIT $STR(S$神秘商店抽取2) | S$神秘商店分割2
+TABLE XM_DE EHWP0 = <$STR(S$神秘商店分割2_0)>
+TABLE XM_DE EHWP1 = <$STR(S$神秘商店分割2_1)>
+TABLE XM_DE EHWP2 = <$STR(S$神秘商店分割2_2)>
+TABLE XM_DE EHWP3 = <$STR(S$神秘商店分割2_3)>
+TABLE XM_DE EHWP4 = <$STR(S$神秘商店分割2_4)>
+TABLE XM_DE EHWP5 = <$STR(S$神秘商店分割2_5)>
+CalcVar Human 神秘商店物品2 = <Text|id=sd2-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DE).EHWP0>><Text|id=sd2-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DE).EHWP3><$TABLE(XM_DE).EHWP4>><Button|id=sd2-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品2&神秘商店1=<$TABLE(XM_DE).EHWP0>&神秘商店2=<$TABLE(XM_DE).EHWP1>&神秘商店3=<$TABLE(XM_DE).EHWP2>&神秘商店4=<$TABLE(XM_DE).EHWP3>&神秘商店5=<$TABLE(XM_DE).EHWP4>><ItemShow|id=sd2-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DE).EHWP5>|itemcount=<$TABLE(XM_DE).EHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DE).EHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取3 1 106
+SPLIT $STR(S$神秘商店抽取3) | S$神秘商店分割3
+TABLE XM_DS SHWP0 = <$STR(S$神秘商店分割3_0)>
+TABLE XM_DS SHWP1 = <$STR(S$神秘商店分割3_1)>
+TABLE XM_DS SHWP2 = <$STR(S$神秘商店分割3_2)>
+TABLE XM_DS SHWP3 = <$STR(S$神秘商店分割3_3)>
+TABLE XM_DS SHWP4 = <$STR(S$神秘商店分割3_4)>
+TABLE XM_DS SHWP5 = <$STR(S$神秘商店分割3_5)>
+CalcVar Human 神秘商店物品3 = <Text|id=sd3-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DS).SHWP0>><Text|id=sd3-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DS).SHWP3><$TABLE(XM_DS).SHWP4>><Button|id=sd3-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品3&神秘商店1=<$TABLE(XM_DS).SHWP0>&神秘商店2=<$TABLE(XM_DS).SHWP1>&神秘商店3=<$TABLE(XM_DS).SHWP2>&神秘商店4=<$TABLE(XM_DS).SHWP3>&神秘商店5=<$TABLE(XM_DS).SHWP4>><ItemShow|id=sd3-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DS).SHWP5>|itemcount=<$TABLE(XM_DS).SHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DS).SHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取4 1 105
+SPLIT $STR(S$神秘商店抽取4) | S$神秘商店分割4
+TABLE XM_SD SIHWP0 = <$STR(S$神秘商店分割4_0)>
+TABLE XM_SD SIHWP1 = <$STR(S$神秘商店分割4_1)>
+TABLE XM_SD SIHWP2 = <$STR(S$神秘商店分割4_2)>
+TABLE XM_SD SIHWP3 = <$STR(S$神秘商店分割4_3)>
+TABLE XM_SD SIHWP4 = <$STR(S$神秘商店分割4_4)>
+TABLE XM_SD SIHWP5 = <$STR(S$神秘商店分割4_5)>
+CalcVar Human 神秘商店物品4 = <Text|id=sd4-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_SD).SIHWP0>><Text|id=sd4-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_SD).SIHWP3><$TABLE(XM_SD).SIHWP4>><Button|id=sd4-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品4&神秘商店1=<$TABLE(XM_SD).SIHWP0>&神秘商店2=<$TABLE(XM_SD).SIHWP1>&神秘商店3=<$TABLE(XM_SD).SIHWP2>&神秘商店4=<$TABLE(XM_SD).SIHWP3>&神秘商店5=<$TABLE(XM_SD).SIHWP4>><ItemShow|id=sd4-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_SD).SIHWP5>|itemcount=<$TABLE(XM_SD).SIHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_SD).SIHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取5 1 106
+SPLIT $STR(S$神秘商店抽取5) | S$神秘商店分割5
+TABLE XM_DW WHWP0 = <$STR(S$神秘商店分割5_0)>
+TABLE XM_DW WHWP1 = <$STR(S$神秘商店分割5_1)>
+TABLE XM_DW WHWP2 = <$STR(S$神秘商店分割5_2)>
+TABLE XM_DW WHWP3 = <$STR(S$神秘商店分割5_3)>
+TABLE XM_DW WHWP4 = <$STR(S$神秘商店分割5_4)>
+TABLE XM_DW WHWP5 = <$STR(S$神秘商店分割5_5)>
+CalcVar Human 神秘商店物品5 = <Text|id=sd5-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DW).WHWP0>><Text|id=sd5-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DW).WHWP3><$TABLE(XM_DW).WHWP4>><Button|id=sd5-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品5&神秘商店1=<$TABLE(XM_DW).WHWP0>&神秘商店2=<$TABLE(XM_DW).WHWP1>&神秘商店3=<$TABLE(XM_DW).WHWP2>&神秘商店4=<$TABLE(XM_DW).WHWP3>&神秘商店5=<$TABLE(XM_DW).WHWP4>><ItemShow|id=sd5-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DW).WHWP5>|itemcount=<$TABLE(XM_DW).WHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DW).WHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取6 1 106
+SPLIT $STR(S$神秘商店抽取6) | S$神秘商店分割6
+TABLE XM_DL LHWP0 = <$STR(S$神秘商店分割6_0)>
+TABLE XM_DL LHWP1 = <$STR(S$神秘商店分割6_1)>
+TABLE XM_DL LHWP2 = <$STR(S$神秘商店分割6_2)>
+TABLE XM_DL LHWP3 = <$STR(S$神秘商店分割6_3)>
+TABLE XM_DL LHWP4 = <$STR(S$神秘商店分割6_4)>
+TABLE XM_DL LHWP5 = <$STR(S$神秘商店分割6_5)>
+CalcVar Human 神秘商店物品6 = <Text|id=sd6-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DL).LHWP0>><Text|id=sd6-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DL).LHWP3><$TABLE(XM_DL).LHWP4>><Button|id=sd6-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品6&神秘商店1=<$TABLE(XM_DL).LHWP0>&神秘商店2=<$TABLE(XM_DL).LHWP1>&神秘商店3=<$TABLE(XM_DL).LHWP2>&神秘商店4=<$TABLE(XM_DL).LHWP3>&神秘商店5=<$TABLE(XM_DL).LHWP4>><ItemShow|id=sd6-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DL).LHWP5>|itemcount=<$TABLE(XM_DL).LHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DL).LHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取7 1 106
+SPLIT $STR(S$神秘商店抽取7) | S$神秘商店分割7
+TABLE XM_DQ QHWP0 = <$STR(S$神秘商店分割7_0)>
+TABLE XM_DQ QHWP1 = <$STR(S$神秘商店分割7_1)>
+TABLE XM_DQ QHWP2 = <$STR(S$神秘商店分割7_2)>
+TABLE XM_DQ QHWP3 = <$STR(S$神秘商店分割7_3)>
+TABLE XM_DQ QHWP4 = <$STR(S$神秘商店分割7_4)>
+TABLE XM_DQ QHWP5 = <$STR(S$神秘商店分割7_5)>
+CalcVar Human 神秘商店物品7 = <Text|id=sd7-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DQ).QHWP0>><Text|id=sd7-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DQ).QHWP3><$TABLE(XM_DQ).QHWP4>><Button|id=sd7-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品7&神秘商店1=<$TABLE(XM_DQ).QHWP0>&神秘商店2=<$TABLE(XM_DQ).QHWP1>&神秘商店3=<$TABLE(XM_DQ).QHWP2>&神秘商店4=<$TABLE(XM_DQ).QHWP3>&神秘商店5=<$TABLE(XM_DQ).QHWP4>><ItemShow|id=sd7-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DQ).QHWP5>|itemcount=<$TABLE(XM_DQ).QHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DQ).QHWP0>> 1
+
+ReadRandomStr ..\QuestDiary\文本读取\神秘商店文本.txt S$神秘商店抽取8 1 106
+SPLIT $STR(S$神秘商店抽取8) | S$神秘商店分割8
+TABLE XM_DB BHWP0 = <$STR(S$神秘商店分割8_0)>
+TABLE XM_DB BHWP1 = <$STR(S$神秘商店分割8_1)>
+TABLE XM_DB BHWP2 = <$STR(S$神秘商店分割8_2)>
+TABLE XM_DB BHWP3 = <$STR(S$神秘商店分割8_3)>
+TABLE XM_DB BHWP4 = <$STR(S$神秘商店分割8_4)>
+TABLE XM_DB BHWP5 = <$STR(S$神秘商店分割8_5)>
+CalcVar Human 神秘商店物品8 = <Text|id=sd8-1|x=81|y=9|color=67|size=18|text=<$TABLE(XM_DB).BHWP0>><Text|id=sd8-2|x=81.0|y=48.0|color=67|size=18|text=<$TABLE(XM_DB).BHWP3><$TABLE(XM_DB).BHWP4>><Button|id=sd8-3|x=199.0|y=19.0|rotate=0|color=255|mimg=private/fulihuodong/btn_smsd_01.png|scale=1|pimg=private/fulihuodong/btn_smsd_01.png|size=18|nimg=private/fulihuodong/btn_smsd_01.png|link=@购买神秘商店物品8&神秘商店1=<$TABLE(XM_DB).BHWP0>&神秘商店2=<$TABLE(XM_DB).BHWP1>&神秘商店3=<$TABLE(XM_DB).BHWP2>&神秘商店4=<$TABLE(XM_DB).BHWP3>&神秘商店5=<$TABLE(XM_DB).BHWP4>><ItemShow|id=sd8-4|x=5.0|y=6.0|width=70|height=70|rotate=0|itemid=<$TABLE(XM_DB).BHWP5>|itemcount=<$TABLE(XM_DB).BHWP1>|showtips=1|bgtype=1|name=<$TABLE(XM_DB).BHWP0>> 1
+GOTO @神秘商店显示面板
+BREAK

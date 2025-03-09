@@ -1,0 +1,10 @@
+[setup]
+MainTitle = 主线任务
+MainID=6
+IsMain=0
+stepcount = 2
+title = [　]技高一筹
+ID = 6
+stepstitle1 = 　\<color=green 到中州找到><老兵/@@goto 0 老兵 473,221><color=green 了解传奇世界>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0>
+stepstitle2 = 　\<color=green 去找><书店掌柜/@@goto 0 书店掌柜 497,245><color=green 领悟高级技能>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=60.0|y=115.0|width=70|height=70|itemid=<$TASKVAL(6).I8>|itemcount=1|name=<$TASKVAL(6).S8>|showtips=1|bgtype=private/dataosha/laminated1.png|scale=1><ItemShow|x=130.0|y=115.0|width=70|height=70|itemid=<$TASKVAL(6).I9>|itemcount=1|name=<$TASKVAL(6).S9>|showtips=1|bgtype=private/dataosha/laminated1.png|scale=1>
+

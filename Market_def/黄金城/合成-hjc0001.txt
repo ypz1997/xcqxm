@@ -1,0 +1,592 @@
+[@MAIN]
+#IF
+TRUE
+#ACT
+GOTO @合成
+
+[@合成]
+
+#IF
+TRUE
+#ACT
+goto @合成功能
+[@合成功能]
+#IF
+EQUAL <$HUMAN(神秘卷轴获得)> ??
+#ACT
+Var STRING Human 神秘卷轴获得
+CALCVAR HUMAN 神秘卷轴获得 = 5|5|5|5 1
+#IF
+TRUE
+#ACT
+MOV S$合成_一级菜单页面 
+MOV S$合成_二级菜单页面 
+MOV S$合成_三级菜单页面 
+MOV n$合成_二级菜单现行选中 0
+MOV n$合成_三级菜单现行选中 0
+MOV N$合成_现行选中项 0
+;卷轴为默认第一菜单，写死的数据
+GOTO @合成_一级菜单点击&合成_一级菜单ID=0&合成_一级按钮名称=卷轴
+[@合成_主页面]
+#IF
+TRUE
+#ACT
+SPLIT 卷轴|召唤令|符石 | S$合成_一级菜单分割 N$合成_一级菜单NUM
+#SAY
+<Button|x=931.0|y=34.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=126.0|y=39.0|show=0|reset=1|bg=1|move=0|img=public/frame_squared_outside.png|_localZOrder=-2|loadDelay=1|esc=1>
+<Img|x=148.0|y=83.0|img=private/hecheng/fushihecheng.png|esc=0>
+<Img|children={hcbtn_1,hcbtn_2}|x=976|y=81.6|scale=1|img=public/btn_push_09.png|esc=0|link=0>
+<Img|children={fjbtn_1,fjbtn_2}|x=976|y=158.6|scale=1|img=public/btn_push_08.png|esc=0|link=@分解>
+<RText|id=hcbtn_1|x=18|y=18|color=255|size=18|text=<合/FCOLOR=67>\<成/FCOLOR=67>>
+<RText|id=fjbtn_1|x=18|y=18|color=255|size=18|text=<分/FCOLOR=67>\<解/FCOLOR=67>>
+<Layout|id=hcbtn_2|x=0.0|y=0.0|width=56|height=87|color=|link=0>
+<Layout|id=fjbtn_2|x=0.0|y=0.0|width=56|height=87|color=|link=@分解>
+<Text|x=553.0|y=45.0|color=67|size=22|text=合成>
+#IF
+TRUE
+#ACT
+MOV N$合成_循环计次 0
+MOV S$合成_一级菜单页面
+MOV S$合成_一级菜单children
+for N$合成_循环计次 = <$STR(N$合成_一级菜单NUM)>
+INC S$合成_一级菜单页面 <Img|id={$STR(N$合成_循环计次)}|x=0.0|y=0.0|children={img_<$STR(n$合成_循环计次)>_0,img_<$STR(n$合成_循环计次)>_1}|width=160|height=50|scale=1|img=public/duanzaoanniu2.png|link=@合成_一级菜单点击&合成_一级菜单ID=<$str(N$合成_循环计次)>&合成_一级按钮名称={$STR(s$合成_一级菜单分割_<$STR(N$合成_循环计次)>)}>
+INC S$合成_一级菜单页面 <Button|id=img_<$STR(n$合成_循环计次)>_1|x=0.0|y=0.0|width=160|height=50|nimg=|color=67|size=18|text={$STR(s$合成_一级菜单分割_<$STR(N$合成_循环计次)>)}|link=@合成_一级菜单点击&合成_一级菜单ID=<$str(N$合成_循环计次)>&合成_一级按钮名称={$STR(s$合成_一级菜单分割_<$STR(N$合成_循环计次)>)}>
+INC S$合成_一级菜单children <$STR(N$合成_循环计次)>,<$STR(S$合成_二级菜单children<$STR(N$合成_循环计次)>)>,
+INC N$合成_循环计次 1
+endfor
+INC S$合成_一级菜单页面 <Img|id=img_<$STR(n$合成_一级菜单现行选中)>_0|x=0.0|y=0.0|width=160|height=50|scale=1|img=public/duanzaoanniu1.png>
+#IF
+TRUE
+#say
+<ListView|x=164.0|y=101.0|children={<$STR(S$合成_一级菜单children)>}|width=160|height=480|img=public/9998.png|color=|margin=0|direction=1|loadDelay=0>
+<$STR(S$合成_一级菜单页面)>
+<$STR(S$合成_二级菜单页面)>
+<ListView|x=336.0|y=104.0|children={<$STR(S$合成_三级菜单children)>}|width=225|height=480|img=public/9998.png|color=|margin=0|direction=1|loadDelay=0>
+<$STR(S$合成_三级菜单页面)>
+<$STR(S$合成_合成页面)>
+<Button|x=692.0|y=515.0|color=67|size=18|nimg=public/btn_push_13.png|text=合成>	
+[@合成_一级菜单点击]
+#IF
+TRUE
+#ACT
+MOV n$合成_一级菜单现行选中 <$STR(S$合成_一级菜单ID)>
+MOV n$合成_二级菜单现行选中 0
+MOV n$合成_三级菜单现行选中 0
+GOTO @合成_二级菜单
+[@合成_二级菜单]
+#IF
+small <$STR(n$合成_二级菜单现行选中)> 1
+#ACT
+GOTO @合成_二级菜单点击&合成_二级菜单按钮ID=1
+
+#IF
+TRUE
+#ACT
+MOV N$合成_循环计次 0
+FOR N$合成_循环计次 = N$合成_一级菜单NUM
+MOV S$合成_二级菜单children<$STR(N$合成_循环计次)>
+MOV S$合成_二级菜单页面 
+INC N$合成_循环计次 1
+ENDFOR
+#IF 
+TRUE
+#ACT
+MOV N$合成_循环计次 1
+MOV S$合成_二级菜单页面 
+FOR N$合成_循环计次 = <$TXTLINE(..\QuestDiary\读取数据\<$STR(S$合成_一级按钮名称)>合成数据.txt)>
+ReadRandomStr ..\QuestDiary\读取数据\<$STR(S$合成_一级按钮名称)>合成数据.txt S$合成_二级菜单数据 <$STR(N$合成_循环计次)>
+split <$STR(S$合成_二级菜单数据)> % s$合成_二级菜单物品数据
+INC S$合成_二级菜单页面 <Layout|id=<$STR(s$合成_一级菜单ID)>_<$STR(N$合成_循环计次)>|children={<$STR(s$合成_一级菜单ID)>_<$STR(N$合成_循环计次)>_a,<$STR(s$合成_一级菜单ID)>_<$STR(N$合成_循环计次)>_b,<$STR(s$合成_一级菜单ID)>_<$STR(N$合成_循环计次)>_c}|x=169.0|y=310.0|width=160|height=35|color=>
+INC S$合成_二级菜单页面 <Button|id=<$STR(s$合成_一级菜单ID)>_<$STR(N$合成_循环计次)>_c|x=0.0|y=0.0|width=160|height=35|size=18|color=67|nimg=|text={$STR(s$合成_二级菜单物品数据_0)}|link=@合成_二级菜单点击&合成_二级菜单按钮ID={$STR(N$合成_循环计次)}&合成_二级菜单名={$STR(s$合成_二级菜单物品数据_0)}>
+INC S$合成_二级菜单children<$STR(s$合成_一级菜单ID)> <$STR(s$合成_一级菜单ID)>_<$STR(N$合成_循环计次)>,
+INC N$合成_循环计次 1
+ENDFOR
+INC S$合成_二级菜单页面 <Img|id=<$STR(s$合成_一级菜单ID)>_<$STR(n$合成_二级菜单现行选中)>_a|x=10.0|y=2.5|img=public/hongdi.png|esc=0>
+;INC S$合成_二级菜单页面 <Img|id=<$STR(s$合成_一级菜单ID)>_<$STR(n$合成_二级菜单现行选中)>_b|x=0.0|y=-1.0|img=public/900000667.png|esc=0>
+GOTO @合成_主页面
+[@合成_二级菜单点击]
+#IF
+EQUAL <$STR(S$合成_二级菜单按钮ID)> 1
+#ACT
+ReadRandomStr ..\QuestDiary\读取数据\<$STR(S$合成_一级按钮名称)>合成数据.txt S$合成_二级菜单数据 <$STR(S$合成_二级菜单按钮ID)>
+split <$STR(S$合成_二级菜单数据)> % s$合成_二级菜单物品数据
+MOV S$合成_二级菜单名 <$STR(s$合成_二级菜单物品数据_0)>
+#IF
+TRUE
+#ACT
+MOV n$合成_二级菜单现行选中 <$STR(S$合成_二级菜单按钮ID)>
+MOV n$合成_三级菜单现行选中 0
+GOTO @合成_二级菜单
+GOTO @合成_三级菜单
+[@合成_三级菜单]
+#IF
+PosInlist <$STR(S$合成_二级菜单名)> ..\QuestDiary\读取数据\<$STR(S$合成_一级按钮名称)>合成数据.txt S$合成_三级菜单数据 N$合成_三级菜单数据行号
+#ACT
+MOV N$合成_循环计次 0
+MOV S$合成_三级菜单页面 
+MOV S$合成_三级菜单children
+split <$STR(S$合成_三级菜单数据)> = S$合成_三级菜单数据一次分割
+split <$STR(S$合成_三级菜单数据一次分割_0)> % S$合成_三级菜单数据二次分割
+split <$STR(S$合成_三级菜单数据二次分割_1)> * S$合成_三级菜单数据最终分割 N$合成_三级菜单数据NUM
+#IF
+POS <$str(s$合成_一级按钮名称)> 技能
+#ACT
+FOR N$合成_循环计次 = <$STR(N$合成_三级菜单数据NUM)>
+MOV S$合成_三级菜单展示物品名 <$STR(S$合成_二级菜单名)><$STR(S$合成_三级菜单数据最终分割_<$STR(N$合成_循环计次)>)>
+INC S$合成_三级菜单页面 <Img|id={$STR(S$合成_一级菜单ID)}_0_{$STR(N$合成_循环计次)}|x=339.0|y=105.0|children={<$STR(s$合成_一级菜单ID)>_0_<$STR(n$合成_循环计次)>_3,<$STR(S$合成_一级菜单ID)>_0_<$STR(N$合成_循环计次)>_0,<$STR(S$合成_一级菜单ID)>_0_<$STR(N$合成_循环计次)>_1,<$STR(S$合成_一级菜单ID)>_0_<$STR(N$合成_循环计次)>_2}|height=70|esc=0|img=private/duanzao/67.png|link=@合成_三级菜单点击&合成_合成材料配置项={$STR(N$合成_三级菜单数据行号)}&合成_合成材料位置={$STR(N$合成_循环计次)}&合成_预合成物品名={$STR(S$合成_三级菜单展示物品名)}>
+INC S$合成_三级菜单页面 <Img|id={$STR(S$合成_一级菜单ID)}_0_{$STR(N$合成_循环计次)}_0|x=3|y=3|scale=1|img=private\f10\bg_roles_02.png>
+INC S$合成_三级菜单页面 <ItemShow|id={$STR(S$合成_一级菜单ID)}_0_{$STR(N$合成_循环计次)}_1|x=0.0|y=0.0|width=70|height=70|itemid={$STDITEM[<$STR(s$合成_三级菜单展示物品名)>].looks}|itemcount=1|name={$STR(s$合成_三级菜单展示物品名)}|showtips=1|link=@合成_三级菜单点击&合成_合成材料配置项={$STR(N$合成_三级菜单数据行号)}&合成_合成材料位置={$STR(N$合成_循环计次)}&合成_预合成物品名={$STR(S$合成_三级菜单展示物品名)}>
+INC S$合成_三级菜单页面 <Button|id={$STR(S$合成_一级菜单ID)}_0_{$STR(N$合成_循环计次)}_2|x=65.0|y=19.0|width=150|height=30|color=255|size=18|nimg=|text={$STR(s$合成_三级菜单展示物品名)}|link=@合成_三级菜单点击&合成_合成材料配置项={$STR(N$合成_三级菜单数据行号)}&合成_合成材料位置={$STR(N$合成_循环计次)}&合成_预合成物品名={$STR(S$合成_三级菜单展示物品名)}>
+INC S$合成_三级菜单children <$STR(S$合成_一级菜单ID)>_0_<$STR(N$合成_循环计次)>,
+INC N$合成_循环计次 1
+ENDFOR
+INC S$合成_三级菜单页面 <Img|id=<$STR(s$合成_一级菜单ID)>_0_<$STR(n$合成_三级菜单现行选中)>_3|width=220|height=70|x=0.0|y=0.0|img=private/duanzao/251.png|esc=0>
+GOTO @合成_主页面
+#ELSEACT
+FOR N$合成_循环计次 = <$STR(N$合成_三级菜单数据NUM)>
+MOV S$合成_三级菜单展示物品名 <$STR(S$合成_三级菜单数据最终分割_<$STR(N$合成_循环计次)>)><$STR(S$合成_二级菜单名)>
+INC S$合成_三级菜单页面 <Img|id={$STR(S$合成_一级菜单ID)}_0_{$STR(N$合成_循环计次)}|x=339.0|y=105.0|children={<$STR(s$合成_一级菜单ID)>_0_<$STR(n$合成_循环计次)>_3,<$STR(S$合成_一级菜单ID)>_0_<$STR(N$合成_循环计次)>_0,<$STR(S$合成_一级菜单ID)>_0_<$STR(N$合成_循环计次)>_1,<$STR(S$合成_一级菜单ID)>_0_<$STR(N$合成_循环计次)>_2}|height=70|esc=0|img=private/duanzao/67.png|link=@合成_三级菜单点击&合成_合成材料配置项={$STR(N$合成_三级菜单数据行号)}&合成_合成材料位置={$STR(N$合成_循环计次)}&合成_预合成物品名={$STR(S$合成_三级菜单展示物品名)}>
+INC S$合成_三级菜单页面 <Img|id={$STR(S$合成_一级菜单ID)}_0_{$STR(N$合成_循环计次)}_0|x=3|y=3|scale=1|img=private\f10\bg_roles_02.png>
+INC S$合成_三级菜单页面 <ItemShow|id={$STR(S$合成_一级菜单ID)}_0_{$STR(N$合成_循环计次)}_1|x=0.0|y=0.0|width=70|height=70|itemid={$STDITEM[<$STR(s$合成_三级菜单展示物品名)>].looks}|itemcount=1|name={$STR(s$合成_三级菜单展示物品名)}|showtips=1|link=@合成_三级菜单点击&合成_合成材料配置项={$STR(N$合成_三级菜单数据行号)}&合成_合成材料位置={$STR(N$合成_循环计次)}&合成_预合成物品名={$STR(S$合成_三级菜单展示物品名)}>
+INC S$合成_三级菜单页面 <Button|id={$STR(S$合成_一级菜单ID)}_0_{$STR(N$合成_循环计次)}_2|x=65.0|y=19.0|width=150|hseight=30|color=255|size=18|nimg=|text={$STR(s$合成_三级菜单展示物品名)}|link=@合成_三级菜单点击&合成_合成材料配置项={$STR(N$合成_三级菜单数据行号)}&合成_合成材料位置={$STR(N$合成_循环计次)}&合成_预合成物品名={$STR(S$合成_三级菜单展示物品名)}>
+INC S$合成_三级菜单children <$STR(S$合成_一级菜单ID)>_0_<$STR(N$合成_循环计次)>,
+INC N$合成_循环计次 1
+ENDFOR
+INC S$合成_三级菜单页面 <Img|id=<$STR(s$合成_一级菜单ID)>_0_<$STR(n$合成_三级菜单现行选中)>_3|width=220|height=70|x=0.0|y=0.0|img=private/duanzao/251.png|esc=0>
+GOTO @合成_主页面
+#IF
+equal <$str(n$合成_三级菜单现行选中)> 0
+!POS <$str(s$合成_一级按钮名称)> 技能
+#ACT
+goto @合成_合成物品页面&合成_合成材料配置项=<$STR(N$合成_三级菜单数据行号)>&合成_合成材料位置=0&合成_预合成物品名=<$STR(S$合成_三级菜单数据最终分割_0)><$STR(S$合成_二级菜单名)>
+#IF
+equal <$str(n$合成_三级菜单现行选中)> 0
+POS <$str(s$合成_一级按钮名称)> 技能
+#ACT
+goto @合成_合成物品页面&合成_合成材料配置项=<$STR(N$合成_三级菜单数据行号)>&合成_合成材料位置=0&合成_预合成物品名=<$STR(S$合成_二级菜单名)><$STR(S$合成_三级菜单数据最终分割_0)>
+[@合成_三级菜单点击]
+#IF
+TRUE
+#ACT
+MOV n$合成_三级菜单现行选中 <$STR(S$合成_合成材料位置)>
+GOTO @合成_三级菜单
+GOTO @合成_合成物品页面
+[@合成_合成物品页面]
+#IF
+TRUE
+#ACT
+MOV n$合成_三级菜单现行选中 <$STR(S$合成_合成材料位置)>
+#IF
+TRUE
+#ACT
+MOV S$合成_扣除货币 
+MOV N$合成_扣除货币数量 0
+MOV N$合成_扣除物品数量 0
+MOV S$合成_扣除物品 
+MOV N$合成_循环计次1 0
+MOV N$合成_物品检测结果 0
+MOV N$合成_货币检测结果 0
+ReadRandomStr ..\QuestDiary\读取数据\<$STR(S$合成_一级按钮名称)>合成数据.txt S$合成_合成材料数据集 <$STR(S$合成_合成材料配置项)>
+split <$STR(S$合成_合成材料数据集)> = S$合成_选中物品类别
+split <$STR(S$合成_选中物品类别_1)> * S$合成_选中物品合成材料1
+split <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> % S$合成_选中物品合成材料2 N$合成_合成所需材料数
+
+MOV S$合成_合成页面 <ItemShow|x=731.0|y=245.0|width=70|height=70|itemid={$STDITEM(<$STR(s$合成_预合成物品名)>).looks}|itemcount=1|name={$STR(S$合成_预合成物品名)}|bgtype=1|showtips=1>
+
+#IF
+POS <$STR(s$合成_预合成物品名)> 神秘卷轴
+#ACT
+CopyText <$STR(s$合成_预合成物品名)> 1 1 S$合成_神秘卷轴等级
+split <$HUMAN(神秘卷轴获得)> | S$合成_神秘卷轴限制
+INC S$合成_合成页面 <Text|x=565.0|y=100.0|color=67|size=18|text=各等级神秘卷轴每日只能合成5次>
+INC S$合成_合成页面 <Text|x=565.0|y=120.0|color=67|size=18|text=当前剩余合成{$STR(S$合成_神秘卷轴限制_<$DEC.<$STR(S$合成_神秘卷轴等级)>.1>)}次>
+#ELSEACT
+INC S$合成_合成页面 <Button|x=692.0|y=515.0|color=67|size=18|nimg=public/btn_push_13.png|text=合成|link=@合成_合成物品&合成_合成扣除物品行={$STR(S$合成_合成材料配置项)}&合成_合成扣除物品列={$STR(S$合成_合成材料位置)}&合成_预合成物品={$STR(S$合成_预合成物品名)}>
+#IF
+POS <$STR(s$合成_预合成物品名)> 神秘卷轴
+LARGE <$STR(S$合成_神秘卷轴限制_<$DEC.<$STR(S$合成_神秘卷轴等级)>.1>)> 0
+#ACT
+INC S$合成_合成页面 <Button|x=692.0|y=515.0|color=67|size=18|nimg=public/btn_push_13.png|text=合成|link=@合成_合成物品&合成_合成扣除物品行={$STR(S$合成_合成材料配置项)}&合成_合成扣除物品列={$STR(S$合成_合成材料位置)}&合成_预合成物品={$STR(S$合成_预合成物品名)}>
+#IFONE
+pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 金币
+pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 元宝
+pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 绑定元宝
+pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 绑定金币
+#ACT
+DEC N$合成_合成所需材料数 1
+MOV N$合成_循环计次 0
+split 58|218 | S$合成_材料文本颜色
+FOR N$合成_循环计次 = N$合成_合成所需材料数
+split <$str(S$合成_选中物品合成材料2_<$STR(N$合成_循环计次)>)> & S$合成_选中物品合成材料3
+INC S$合成_合成页面 <Img|x={$INC.<$DEC.772.<$mult.40.N$合成_合成所需材料数>>.<$MULT.N$合成_循环计次.80>}|y=370.0|scale=1|img=private\f10\bg_roles_02.png>
+INC S$合成_合成页面 <ItemShow|x={$INC.<$DEC.772.<$mult.40.N$合成_合成所需材料数>>.<$MULT.N$合成_循环计次.80>}|y=370.0|width=70|height=70|itemid={$STDITEM(<$STR(s$合成_选中物品合成材料3_0)>).looks}|itemcount=1|name={$STR(S$合成_选中物品合成材料3_0)}|showtips=1|bgtype=1>
+INC S$合成_合成页面 <Button|x={$INC.<$DEC.772.<$mult.40.N$合成_合成所需材料数>>.<$MULT.N$合成_循环计次.80>}|y=410.0|color={$STR(S$合成_材料文本颜色_<$CEIL.<$DEC.<$INC.<$ITEMCOUNT[<$STR(s$合成_选中物品合成材料3_0)>]>.1>.<$STR(S$合成_选中物品合成材料3_1)>>.<$INC.<$ITEMCOUNT[<$STR(s$合成_选中物品合成材料3_0)>]>.1>>)}|width=70|height=70|size=18|nimg=|text={$ITEMCOUNT[<$STR(s$合成_选中物品合成材料3_0)>]}/{$STR(S$合成_选中物品合成材料3_1)}>
+
+INC N$合成_循环计次 1
+ENDFOR
+split <$str(S$合成_选中物品合成材料2_<$STR(N$合成_循环计次)>)> & S$合成_选中物品合成材料3
+#IF
+!EQUAL <$str(S$合成_选中物品合成材料2_<$STR(N$合成_循环计次)>)>
+CHECKMONEY <$STR(s$合成_选中物品合成材料3_0)> > <$DEC.<$STR(s$合成_选中物品合成材料3_1)>.1>
+#ACT
+MOV N$合成_合成金额颜色 218
+#ELSEACT
+MOV N$合成_合成金额颜色 58
+#IFONE
+pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 金币
+pos -<$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)>- -元宝-
+pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 绑定金币 
+#ACT
+MOV S$合成_合成所需费用 <$STR(s$合成_选中物品合成材料3_0)>:<$Money(<$STR(s$合成_选中物品合成材料3_0)>)>/<$STR(S$合成_选中物品合成材料3_1)>
+INC S$合成_合成页面 <RText|x={$DEC.835.<$mult.<$LENGTH.<$STR(S$合成_合成所需费用)>>.9>}|y=463.0|color=255|size=18|text=<{$STR(s$合成_选中物品合成材料3_0)}:/FCOLOR=67><{$Money(<$STR(s$合成_选中物品合成材料3_0)>)}/{$STR(S$合成_选中物品合成材料3_1)}/FCOLOR={$STR(N$合成_合成金额颜色)}>>
+MOV N$合成_循环计次 0
+INC S$合成_合成页面 <$STR(S$合成_合成成功)>
+GOTO @合成_主页面
+
+#IF
+pos <$STR(s$合成_选中物品合成材料3_0)> 绑定元宝
+!EQUAL <$str(S$合成_选中物品合成材料2_<$STR(N$合成_循环计次)>)>
+!small <$INC.<$money(4)>.<$money(2)>> <$STR(s$合成_选中物品合成材料3_1)>
+#ACT
+MOV N$合成_合成金额颜色 218
+#IF
+pos <$STR(s$合成_选中物品合成材料3_0)> 绑定元宝
+!EQUAL <$str(S$合成_选中物品合成材料2_<$STR(N$合成_循环计次)>)>
+small <$INC.<$money(4)>.<$money(2)>> <$STR(s$合成_选中物品合成材料3_1)>
+#ACT
+MOV N$合成_合成金额颜色 58
+#IF
+pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 绑定元宝
+#ACT
+MOV S$合成_合成所需费用 <$STR(s$合成_选中物品合成材料3_0)>:<$Money(<$STR(s$合成_选中物品合成材料3_0)>)>/<$STR(S$合成_选中物品合成材料3_1)>
+INC S$合成_合成页面 <RText|x={$DEC.835.<$mult.<$LENGTH.<$STR(S$合成_合成所需费用)>>.9>}|y=463.0|color=255|size=18|text=<{$STR(s$合成_选中物品合成材料3_0)}:/FCOLOR=67><{$INC.<$Money(<$STR(s$合成_选中物品合成材料3_0)>)>.<$money(2)>}/{$STR(S$合成_选中物品合成材料3_1)}/FCOLOR={$STR(N$合成_合成金额颜色)}>>
+MOV N$合成_循环计次 0
+INC S$合成_合成页面 <$STR(S$合成_合成成功)>
+GOTO @合成_主页面
+
+
+#IF
+!pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 金币
+!pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 元宝
+!pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 绑定元宝
+!pos <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成材料位置)>)> 绑定金币
+#ACT
+MOV N$合成_循环计次 0
+FOR N$合成_循环计次 = N$合成_合成所需材料数
+split 58|218 | S$合成_材料文本颜色
+split <$str(S$合成_选中物品合成材料2_<$STR(N$合成_循环计次)>)> & S$合成_选中物品合成材料3
+INC S$合成_合成页面 <Img|x={$INC.<$DEC.772.<$mult.40.N$合成_合成所需材料数>>.<$MULT.N$合成_循环计次.80>}|y=370.0|scale=1|img=private\f10\bg_roles_02.png>
+INC S$合成_合成页面 <ItemShow|x={$INC.<$DEC.772.<$mult.40.N$合成_合成所需材料数>>.<$MULT.N$合成_循环计次.80>}|y=370.0|width=70|height=70|itemid={$STDITEM(<$STR(s$合成_选中物品合成材料3_0)>).looks}|itemcount={$STR(S$合成_选中物品合成材料3_1)}|name={$STR(S$合成_选中物品合成材料3_0)}|bgtype=1|showtips=1>
+INC S$合成_合成页面 <Button|x={$INC.<$DEC.772.<$mult.40.N$合成_合成所需材料数>>.<$MULT.N$合成_循环计次.80>}|y=410.0|color={$STR(S$合成_材料文本颜色_<$CEIL.<$DEC.<$INC.<$ITEMCOUNT[<$STR(s$合成_选中物品合成材料3_0)>]>.1>.<$STR(S$合成_选中物品合成材料3_1)>>.<$INC.<$ITEMCOUNT[<$STR(s$合成_选中物品合成材料3_0)>]>.1>>)}|width=70|height=70|size=18|nimg=|text={$ITEMCOUNT[<$STR(s$合成_选中物品合成材料3_0)>]}/{$STR(S$合成_选中物品合成材料3_1)}>
+INC N$合成_循环计次 1
+ENDFOR
+MOV N$合成_循环计次 0
+INC S$合成_合成页面 <$STR(S$合成_合成成功)>
+GOTO @合成_主页面
+#IF
+TRUE
+#ACT
+MOV S$合成_合成成功 
+[@合成_合成物品]
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\读取数据\<$STR(S$合成_一级按钮名称)>合成数据.txt S$合成_合成材料数据集 <$STR(S$合成_合成扣除物品行)>
+split <$STR(S$合成_合成材料数据集)> = S$合成_选中物品类别
+split <$STR(S$合成_选中物品类别_1)> * S$合成_选中物品合成材料1
+split <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成扣除物品列)>)> % S$合成_选中物品合成材料2 N$合成_合成所需材料数
+split <$str(S$合成_选中物品合成材料2_<$STR(N$合成_循环计次1)>)> & S$合成_选中物品合成材料3
+
+#IFONE
+pos <$STR(S$合成_选中物品合成材料3_0)> 金币
+pos <$STR(S$合成_选中物品合成材料3_0)> 元宝
+pos <$STR(S$合成_选中物品合成材料3_0)> 绑定元宝
+pos <$STR(S$合成_选中物品合成材料3_0)> 绑定金币
+#ACT
+MOV N$合成_货币检测结果 0
+GOTO @合成_货币检测&合成_通过货币名检测=<$STR(S$合成_选中物品合成材料3_0)>&合成_通过货币数量检测=<$STR(S$合成_选中物品合成材料3_1)>
+
+#IF
+EQUAL <$STR(N$合成_货币检测结果)> 1
+#ACT
+MOV N$合成_循环计次1 0
+MOV N$合成_货币检测结果 0
+MOV S$合成_扣除货币 
+MOV N$合成_扣除货币数量 0
+sendmsg 19 你的<$STR(S$合成_选中物品合成材料3_0)>不足，无法合成该物品！
+BREAK
+
+#IF
+!EQUAL <$STR(S$合成_选中物品合成材料3_0)> 金币
+!EQUAL <$STR(S$合成_选中物品合成材料3_0)> 元宝
+!EQUAL <$STR(S$合成_选中物品合成材料3_0)> 绑定元宝
+!EQUAL <$STR(S$合成_选中物品合成材料3_0)> 绑定金币 
+#ACT
+MOV N$合成_物品检测结果 0
+GOTO @合成_物品检测&合成_通过物品名检测=<$STR(S$合成_选中物品合成材料3_0)>&合成_通过物品数量检测=<$STR(S$合成_选中物品合成材料3_1)>
+
+#IF
+EQUAL <$STR(N$合成_物品检测结果)> 1
+#ACT
+MOV N$合成_循环计次1 0
+MOV N$合成_物品检测结果 0
+MOV S$合成_扣除物品 
+MOV N$合成_扣除物品数量 0
+sendmsg 19 你的<$STR(S$合成_选中物品合成材料3_0)>不足，无法合成该物品！
+BREAK
+
+#IF
+SMALL <$STR(N$合成_循环计次1)> <$DEC.N$合成_合成所需材料数.1>
+#ACT
+INC N$合成_循环计次1 1
+GOTO @合成_合成物品
+BREAK
+;---------------------------------------------------------------------------------------
+#IF
+CheckBagSize 1
+#ACT
+#ELSEACT
+sendmsg 19 包裹空间不足!请清理包裹后再合成!
+break
+
+#IF
+!equal <$str(N$合成_物品检测结果)> 1
+#ACT
+split <$STR(S$合成_扣除物品)> , S$合成_物品文本 N$合成_物品文本数量
+split <$STR(S$合成_扣除物品数量)> , S$合成_物品金额 N$合成_物品金额数量
+MOV N$合成_循环计次3
+FOR N$合成_循环计次3 = <$STR(N$合成_物品文本数量)>
+;sendmsg 5 <$STR(S$合成_物品文本_<$STR(N$合成_循环计次3)>)>------<$STR(S$合成_物品金额_<$STR(N$合成_循环计次3)>)>
+TAKE <$STR(S$合成_物品文本_<$STR(N$合成_循环计次3)>)> <$STR(S$合成_物品金额_<$STR(N$合成_循环计次3)>)>
+INC N$合成_循环计次3 1
+endfor
+#ELSEACT
+MOV S$合成_扣除货币 
+MOV S$合成_扣除货币数量  
+MOV S$合成_扣除物品数量  
+MOV S$合成_扣除物品 
+MOV N$合成_循环计次1 0
+MOV N$合成_物品检测结果 0
+MOV N$合成_货币检测结果 0
+break
+
+#IFONE
+POS <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成扣除物品列)>)> 金币
+POS <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成扣除物品列)>)> 元宝
+POS <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成扣除物品列)>)> 绑定元宝
+POS <$STR(S$合成_选中物品合成材料1_<$STR(S$合成_合成扣除物品列)>)> 绑定金币 
+#ACT
+MOV N$合成_循环计次3
+split <$STR(S$合成_扣除货币)> , S$合成_货币文本 N$合成_货币文本数量
+split <$STR(S$合成_扣除货币数量)> , S$合成_货币金额 N$合成_货币金额数量
+
+loopgoto @合成_货币扣除 <$STR(N$合成_货币文本数量)>
+
+#IF
+TRUE
+#ACT
+give <$str(s$合成_预合成物品)> 1 1
+
+
+#IF
+POS <$str(s$合成_预合成物品)> 神秘卷轴
+#ACT
+CopyText <$STR(s$合成_预合成物品名)> 1 1 S$合成_神秘卷轴等级
+split <$HUMAN(神秘卷轴获得)> | S$合成_神秘卷轴变量
+MOV S$合成_神秘卷轴变量_<$DEC.<$STR(S$合成_神秘卷轴等级)>.1> <$dec.S$合成_神秘卷轴变量_<$DEC.<$STR(S$合成_神秘卷轴等级)>.1>.1>
+CALCVAR HUMAN 神秘卷轴获得 = <$STR(S$合成_神秘卷轴变量_0)>|<$STR(S$合成_神秘卷轴变量_1)>|<$STR(S$合成_神秘卷轴变量_2)>|<$STR(S$合成_神秘卷轴变量_3)> 1
+;--------------------------------------------------------------------------------------------------------------
+#IF
+TRUE
+#ACT
+MOV S$合成_扣除货币 
+MOV S$合成_扣除货币数量  
+MOV S$合成_扣除物品数量  
+MOV S$合成_扣除物品 
+MOV N$合成_循环计次1 0
+MOV N$合成_物品检测结果 0
+MOV N$合成_货币检测结果 0
+MOV S$合成_合成成功 <Frames|x=312.0|y=202.0|count=11|loop=1|scale=1|suffix=.png|prefix=public/hc_|speed=10>
+GOTO @合成_合成物品页面
+
+[@合成_货币检测]
+#IF
+checkmoney <$STR(S$合成_通过货币名检测)> < <$STR(S$合成_通过货币数量检测)>
+#ACT
+MOV N$合成_货币检测结果 1
+INC S$合成_扣除货币 <$STR(S$合成_通过货币名检测)>,
+INC S$合成_扣除货币数量 0,
+#ELSEACT
+INC S$合成_扣除货币 <$STR(S$合成_通过货币名检测)>,
+INC S$合成_扣除货币数量 <$STR(S$合成_通过货币数量检测)>,
+#IF
+EQUAL <$STR(S$合成_通过货币名检测)> 绑定元宝
+EQUAL <$str(N$合成_货币检测结果)> 1
+!SMALL <$INC.<$money(4)>.<$money(2)>> <$STR(S$合成_通过货币数量检测)>
+#ACT
+mov N$合成_货币检测结果 0
+INC S$合成_扣除货币 <$STR(S$合成_通过货币名检测)>,元宝
+INC S$合成_扣除货币数量 <$money(4)>,<$DEC.<$STR(S$合成_通过货币数量检测)>.<$money(4)>>
+[@合成_物品检测]
+#IF
+small <$ITEMCOUNT[<$STR(S$合成_通过物品名检测)>]> <$STR(s$合成_通过物品数量检测)>
+#ACT
+MOV N$合成_物品检测结果 1
+INC S$合成_扣除物品 <$STR(S$合成_通过物品名检测)>,
+INC S$合成_扣除物品数量 0,
+#ELSEACT
+INC S$合成_扣除物品 <$STR(S$合成_通过物品名检测)>,
+INC S$合成_扣除物品数量 <$STR(S$合成_通过物品数量检测)>,
+
+[@合成_货币扣除]
+#IF
+TRUE
+#ACT
+MOV S$合成_扣除货币种类 <$STR(S$合成_货币文本_<$STR(N$合成_循环计次3)>)>
+MOV N$合成_扣除货币金额 <$STR(S$合成_货币金额_<$STR(N$合成_循环计次3)>)>
+money <$STR(S$合成_货币文本_<$STR(N$合成_循环计次3)>)> - <$STR(S$合成_货币金额_<$STR(N$合成_循环计次3)>)>
+INC N$合成_循环计次3 1
+
+[@分解]
+#IF
+TRUE
+#ACT
+MOV N$分解_一级菜单现行选中 0
+MOV N$分解_三级菜单现行选中 0
+GOTO @分解_一级菜单选择
+[@分解功能]
+#IF
+TRUE
+#ACT
+MOV N$分解_循环计次2 0
+MOV N$分解_循环计次3 0
+MOV S$分解_三级菜单页面  
+GOTO @分解_分解数据&分解_一级菜单选中项=<$STR(N$分解_一级菜单现行选中)>
+#SAY
+<Button|x=931.0|y=34.0|nimg=public/button/btn_close_01.png|_localZOrder=0|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=126.0|y=39.0|show=0|reset=1|bg=1|move=0|img=public/frame_squared_outside.png|_localZOrder=-2|loadDelay=1|esc=1>
+<Img|x=148.0|y=83.0|img=private/hecheng/fushihecheng.png|esc=0>
+<Img|children={hcbtn_1,hcbtn_2}|x=976|y=81.6|scale=1|img=public/btn_push_08.png|esc=0|link=@合成功能>
+<Img|children={fjbtn_1,fjbtn_2}|x=976|y=158.6|scale=1|img=public/btn_push_09.png|esc=0|link=0>
+<RText|id=hcbtn_1|x=18|y=18|color=255|size=18|text=<合/FCOLOR=67>\<成/FCOLOR=67>>
+<RText|id=fjbtn_1|x=18|y=18|color=255|size=18|text=<分/FCOLOR=67>\<解/FCOLOR=67>>
+<Layout|id=hcbtn_2|x=0.0|y=0.0|width=56|height=87|color=|link=@合成功能>
+<Layout|id=fjbtn_2|x=0.0|y=0.0|width=56|height=87|color=|link=0>
+<Text|x=553.0|y=45.0|color=67|size=22|text=分解>
+#IF
+TRUE
+#ACT
+split 战士技能|法师技能|道士技能 | s$分解_技能职业分类 N$分解_职业数量
+MOV N$分解_计次循环1 0
+MOV S$分解_职业选择按钮
+FOR N$分解_计次循环1 = <$STR(N$分解_职业数量)>
+INC S$分解_职业选择按钮 <Img|id=fj{$STR(N$分解_计次循环1)}|x=0.0|y=0.0|children={fjimg<$STR(N$分解_计次循环1)>_1,fjimg<$STR(N$分解_计次循环1)>_0}|width=160|height=50|scale=1|img=public/duanzaoanniu2.png|link=@分解_一级菜单选择&分解_一级菜单选择>
+INC S$分解_职业选择按钮 <Button|id=fjimg<$STR(N$分解_计次循环1)>_0|x=0.0|y=0.0|width=160|height=50|nimg=|color=67|size=18|text={$STR(s$分解_技能职业分类_<$STR(N$分解_计次循环1)>)}|link=@分解_一级菜单选择&分解_一级菜单选择=<$STR(N$分解_计次循环1)>>
+INC S$分解_一级菜单children fj<$STR(N$分解_计次循环1)>,
+INC N$分解_计次循环1 1
+ENDFOR
+INC S$分解_职业选择按钮 <Img|id=fjimg<$STR(N$分解_一级菜单现行选中)>_1|x=0.0|y=0.0|width=160|height=50|scale=1|img=public/duanzaoanniu1.png>
+#IF
+TRUE
+#ACT
+#SAY
+<ListView|x=164.0|y=101.0|children={<$STR(S$分解_一级菜单children)>}|width=160|height=480|img=public/9998.png|color=|margin=0|direction=1|loadDelay=0>
+<$STR(S$分解_职业选择按钮)>
+<ListView|x=336.0|y=104.0|children={<$STR(S$分解_三级菜单children)>}|width=225|height=480|img=public/9998.png|color=|margin=0|direction=1|loadDelay=0>
+<$STR(S$分解_三级菜单页面)>
+<Img|id=fjjn<$STR(N$分解_三级菜单现行选中)>_3|width=220|height=70|x=0.0|y=0.0|img=private/duanzao/251.png|esc=0>
+<Button|x=692.0|y=515.0|color=67|size=18|nimg=public/btn_push_13.png|text=分解>	
+<$STR(S$分解_分解页面)>
+[@分解_一级菜单选择]
+#IF
+TRUE
+#ACT
+MOV N$分解_一级菜单现行选中 <$STR(S$分解_一级菜单选择)>
+MOV N$分解_三级菜单现行选中 0
+MOV S$分解_三级菜单页面
+MOV S$分解_分解页面
+split 战士|法师|道士 | s$分解_技能职业分类
+split 初级剑法|抗拒火环|治疗术 | s$分解_初始技能名
+GOTO @分解_分解页面&分解_分解物品名=<$STR(s$分解_初始技能名_<$STR(N$分解_一级菜单现行选中)>)>&分解_分解物品职业=<$STR(N$分解_一级菜单现行选中)>&分解_三级菜单选中项=0>
+[@分解_分解数据]
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\读取数据\技能分解数据.txt S$分解_分解物品展示数据 <$STR(N$分解_循环计次2)>
+MOV S$分解_技能展示数据
+#IF
+POS <$STR(S$分解_分解物品展示数据)> *<$STR(N$分解_一级菜单现行选中)>
+#ACT
+split <$STR(S$分解_分解物品展示数据)> = S$分解_数据拆分1
+INC S$分解_技能展示数据 <$STR(S$分解_数据拆分1_0)>
+INC S$分解_三级菜单页面 <Img|id=fjjn{$STR(N$分解_循环计次3)}|x=339.0|y=105.0|children={fjjn<$STR(N$分解_循环计次3)>_3,fjjn<$STR(N$分解_循环计次3)>_0,fjjn<$STR(N$分解_循环计次3)>_1,fjjn<$STR(N$分解_循环计次3)>_2}|height=70|esc=0|img=private/duanzao/67.png|link=0>
+INC S$分解_三级菜单页面 <Img|id=fjjn{$STR(N$分解_循环计次3)}_0|x=3|y=3|scale=1|img=private\f10\bg_roles_02.png>
+INC S$分解_三级菜单页面 <ItemShow|id=fjjn{$STR(N$分解_循环计次3)}_1|x=0.0|y=0.0|width=70|height=70|itemid={$STDITEM[<$STR(s$分解_数据拆分1_0)>].looks}|itemcount=1|name={$STR(s$分解_数据拆分1_0)}|showtips=1|link=0>
+INC S$分解_三级菜单页面 <Button|id=fjjn{$STR(N$分解_循环计次3)}_2|x=65.0|y=19.0|width=150|height=30|color=255|size=18|nimg=|text={$STR(s$分解_数据拆分1_0)}|link=@分解_分解页面&分解_分解物品名=<$STR(s$分解_数据拆分1_0)>&分解_分解物品职业=<$STR(N$分解_一级菜单现行选中)>&分解_三级菜单选中项=<$STR(N$分解_循环计次3)>>
+INC S$分解_三级菜单children fjjn<$STR(N$分解_循环计次3)>,
+INC N$分解_循环计次3 1
+#IF
+small <$STR(N$分解_循环计次2)> <$TXTLINE(..\QuestDiary\读取数据\技能分解数据.txt)>
+#ACT
+INC N$分解_循环计次2 1
+GOTO @分解_分解数据
+
+[@分解_分解页面]
+#IF
+TRUE
+#ACT
+MOV N$分解_三级菜单现行选中 <$STR(S$分解_三级菜单选中项)>
+MOV S$分解_分解页面  
+split 战士|法师|道士 | S$分解_物品职业
+ReadConfigFileItem ..\QuestDiary\读取数据\技能分解数据.txt <$STR(S$分解_物品职业_<$STR(S$分解_分解物品职业)>)>技能 <$STR(S$分解_分解物品名)> S$分解_单独物品数据
+INC S$分解_分解页面 <ItemShow|x=731.0|y=245.0|width=70|height=70|itemid={$STDITEM(<$STR(S$分解_分解物品名)>).looks}|itemcount=<$ITEMCOUNT[<$STR(S$分解_分解物品名)>]>|name={$STR(S$分解_分解物品名)}|bgtype=1|showtips=1>
+split <$STR(S$分解_单独物品数据)> * S$分解_分解获得材料展示
+INC S$分解_分解页面 <Img|x=732|y=370.0|scale=1|img=private\f10\bg_roles_02.png>
+#IF
+small <$ITEMCOUNT[<$STR(S$分解_分解物品名)>]> 1
+#ACT
+MOV S$分解_文字颜色 58
+#ELSEACT
+MOV S$分解_文字颜色 218
+#IF
+TRUE
+#ACT
+INC S$分解_分解页面 <Button|x=690|y=325|width=150|height=30|color={$STR(S$分解_文字颜色)}|size=18|nimg=|text=分解:{$STR(S$分解_分解物品名)}>
+INC S$分解_分解页面 <ItemShow|x=732|y=370.0|width=70|height=70|itemid={$STDITEM(书页).looks}|itemcount={$STR(S$分解_分解获得材料展示_0)}|name=书页|showtips=1|bgtype=1>
+INC S$分解_分解页面 <Button|x=692.0|y=515.0|color=67|size=18|nimg=public/btn_push_13.png|text=分解|link=@分解_物品分解&分解_当前选择职业={$STR(S$分解_物品职业_<$STR(S$分解_分解物品职业)>)}&分解_分解物品名称={$STR(S$分解_分解物品名)}>
+goto @分解功能
+[@分解_物品分解]
+#IF
+small <$ITEMCOUNT[<$STR(S$分解_分解物品名称)>]> 1
+true
+#ACT
+sendmsg 19 包裹中物品数量不足！
+break
+#IF
+!CheckBagSize 1
+#ACT
+sendmsg 19 包裹空间不足,请先清理包裹！
+BREAK
+#IF
+TRUE
+#ACT
+ReadConfigFileItem ..\QuestDiary\读取数据\技能分解数据.txt <$STR(S$分解_当前选择职业)>技能 <$STR(S$分解_分解物品名称)> S$分解_最终分解数据
+split <$STR(S$分解_最终分解数据)> * S$分解_给与物品数量
+TAKE <$STR(S$分解_分解物品名称)> 1
+give 书页 <$STR(S$分解_给与物品数量_0)> 1
+
+#IF
+TRUE
+#ACT
+goto @分解_分解页面
+
+
+
+
+
+
+
+
+
+

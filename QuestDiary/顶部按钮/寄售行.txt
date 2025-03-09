@@ -1,0 +1,3356 @@
+[@寄售行]
+{
+#IF
+TRUE
+#ACT
+MOV S$Lemon分类A 全部
+MOV S$Lemon分类B 
+MOV N$Lemon分类B 0
+MOV S$Lemon单件 
+MOV S$Lemon寄售0_0 
+MOV S$Lemon上架 
+MOV N$Lemon上架 
+MOV N$Lemon上架加减 0
+MOV S$Lemon下架 
+MOV S$Lemon排序A 
+MOV S$Lemon排序B 
+MOV S$Lemon排序C 
+MOV N$Lemon翻页 1
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon上架XS]
+#IF
+SMALL $CustomValue(90) 6
+#ACT
+SENDMSG 19 VIP等级不足6级,无法使用上架功能!!
+BREAK
+
+#IF
+TRUE
+#SAY
+<Img|x=125.0|y=10.0|show=0|bg=1|move=0|img=private/jishouhang/jishouhangmb2.png|loadDelay=0>
+<Button|x=938.0|y=13.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Text|x=340.0|y=115.0|color=10|size=18|text=寄售货架(<$STR(P10)>/10)>
+<Text|x=780.0|y=115.0|color=10|size=18|text=选择寄售道具>
+;==============================================================================
+<Button|x=150.0|y=52.0|color=10|scale=1.1|size=18|nimg=public/btn_push_06.png|pimg=public/btn_push_05.png|text=世界寄售|link=@寄售行>
+<Button|x=260.0|y=52.0|color=67|scale=1.1|size=18|nimg=public/btn_push_05.png|pimg=public/btn_push_06.png|text=我的上架>
+;==============================================================================
+<ListView|children=<bg1,bg2,bg3,bg4,bg5,bg6,bg7,bg8,bg9,bg10,bg11,bg12,bg13,bg14,bg15>|direction=1|x=700.0|y=150.0|width=280|height=340|reload=1|margin=10|loadDelay=0|img=public/9998.png>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg1|children=<bg1a1,bg1a2,bg1a3,bg1a4,bg1a5,bg1a6,bg1a7,bg1a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg1a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg1a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg1a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg2|children=<bg2a1,bg2a2,bg2a3,bg2a4,bg2a5,bg2a6,bg2a7,bg2a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg2a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg2a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg2a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg3|children=<bg3a1,bg3a2,bg3a3,bg3a4,bg3a5,bg3a6,bg3a7,bg3a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg3a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg3a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg3a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg4|children=<bg4a1,bg4a2,bg4a3,bg4a4,bg4a5,bg4a6,bg4a7,bg4a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg4a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg4a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg4a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg5|children=<bg5a1,bg5a2,bg5a3,bg5a4,bg5a5,bg5a6,bg5a7,bg5a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg5a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg5a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg5a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg6|children=<bg6a1,bg6a2,bg6a3,bg6a4,bg6a5,bg6a6,bg6a7,bg6a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg6a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg6a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg6a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg6|children=<bg6a1,bg6a2,bg6a3,bg6a4,bg6a5,bg6a6,bg6a7,bg6a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg6a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg6a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg6a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg7|children=<bg7a1,bg7a2,bg7a3,bg7a4,bg7a5,bg7a6,bg7a7,bg7a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg7a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg7a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg7a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg8|children=<bg8a1,bg8a2,bg8a3,bg8a4,bg8a5,bg8a6,bg8a7,bg8a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg8a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg8a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg8a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg9|children=<bg9a1,bg9a2,bg9a3,bg9a4,bg9a5,bg9a6,bg9a7,bg9a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg9a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg9a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg9a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg10|children=<bg10a1,bg10a2,bg10a3,bg10a4,bg10a5,bg10a6,bg10a7,bg10a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg10a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg10a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg10a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg11|children=<bg11a1,bg11a2,bg11a3,bg11a4,bg11a5,bg11a6,bg11a7,bg11a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg11a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg11a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg11a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg12|children=<bg12a1,bg12a2,bg12a3,bg12a4,bg12a5,bg12a6,bg12a7,bg12a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg12a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg12a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg12a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg13|children=<bg13a1,bg13a2,bg13a3,bg13a4,bg13a5,bg13a6,bg13a7,bg13a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg13a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg13a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg13a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg14|children=<bg14a1,bg14a2,bg14a3,bg14a4,bg14a5,bg14a6,bg14a7,bg14a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg14a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg14a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg14a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg15|children=<bg15a1,bg15a2,bg15a3,bg15a4,bg15a5,bg15a6,bg15a7,bg15a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg15a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg15a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg15a3>
+;============================================================================
+<ListView|children=<sj1,sj2,sj3,sj4,sj5>|direction=1|x=157.0|y=145.0|width=530|height=340|reload=1|margin=10|loadDelay=0|img=public/9998.png>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P11).1>.png|link=@Lemon上架A&1|id=sj1|children=<sj1a1,sj1a2,sj1a3,sj1a4,sj1a5,sj1a6,sj1a7,sj1a8,sj1a9,sj1a10,sj1a11,sj1a12,sj1a13,sj1a14,sj1a15,sj1a16,sj1a17,sj1a18>>
+<Img|x=264.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P12).1>.png|link=@Lemon上架A&2|id=sj1a1>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P13).1>.png|link=@Lemon上架A&3|id=sj2|children=<sj2a1,sj2a2,sj2a3,sj2a4,sj2a5,sj2a6,sj2a7,sj2a8,sj2a9,sj2a10,sj2a11,sj2a12,sj2a13,sj2a14,sj2a15,sj2a16,sj2a17,sj2a18>>
+<Img|x=264.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P14).1>.png|link=@Lemon上架A&4|id=sj2a1>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P15).1>.png|link=@Lemon上架A&5|id=sj3|children=<sj3a1,sj3a2,sj3a3,sj3a4,sj3a5,sj3a6,sj3a7,sj3a8,sj3a9,sj3a10,sj3a11,sj3a12,sj3a13,sj3a14,sj3a15,sj3a16,sj3a17,sj3a18>>
+<Img|x=264.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P16).1>.png|link=@Lemon上架A&6|id=sj3a1>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P17).1>.png|link=@Lemon上架A&7|id=sj4|children=<sj4a1,sj4a2,sj4a3,sj4a4,sj4a5,sj4a6,sj4a7,sj4a8,sj4a9,sj4a10,sj4a11,sj4a12,sj4a13,sj4a14,sj4a15,sj4a16,sj4a17,sj4a18>>
+<Img|x=264.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P18).1>.png|link=@Lemon上架A&8|id=sj4a1>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P19).1>.png|link=@Lemon上架A&9|id=sj5|children=<sj5a1,sj5a2,sj5a3,sj5a4,sj5a5,sj5a6,sj5a7,sj5a8,sj5a9,sj5a10,sj5a11,sj5a12,sj5a13,sj5a14,sj5a15,sj5a16,sj5a17,sj5a18>>
+<Img|x=264.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P20).1>.png|link=@Lemon上架A&10|id=sj5a1>
+;============================================================================
+<Text|x=170.0|y=520.0|color=67|size=18|text=你的寄售所得:<$STR(N$Lemon所得)>>
+<Button|x=340.0|y=510.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=提取|link=@Lemon所得>
+<Text|x=425.0|y=520.0|color=10|size=18|text=(系统扣除20%手续费)>
+#ACT
+CLEARVAR P10 30
+MOV N$Lemon所得 0
+LOADEXVAR N$Lemon所得 $USERID 寄售所得 ..\QUESTDIARY\寄售数据\寄售个人数据.txt
+
+#IF
+POSINLIST <$USERID> ../QuestDiary/寄售数据/个人寄售信息数据.txt S$寄售行_个人寄售数据数组字符串
+#ACT
+CLEARVAR S$Lemon上架0 10
+CLEARVAR S$Lemon上架1 10
+CLEARVAR S$Lemon上架2 10
+CLEARVAR S$Lemon上架3 10
+CLEARVAR S$Lemon上架4 10
+CLEARVAR S$Lemon上架5 10
+CLEARVAR S$Lemon上架6 10
+CLEARVAR S$Lemon上架7 10
+CLEARVAR S$Lemon上架8 10
+CLEARVAR S$Lemon上架9 10
+MOV S$寄售行_个人寄售数据数组_0
+MOV S$寄售行_个人寄售数据数组_1
+MOV S$寄售行_个人寄售数据数组_2
+MOV S$寄售行_个人寄售数据数组_3
+MOV S$寄售行_个人寄售数据数组_4
+MOV S$寄售行_个人寄售数据数组_5
+MOV S$寄售行_个人寄售数据数组_6
+MOV S$寄售行_个人寄售数据数组_7
+MOV S$寄售行_个人寄售数据数组_8
+MOV S$寄售行_个人寄售数据数组_9
+SPLIT <$STR(S$寄售行_个人寄售数据数组字符串)> & S$寄售行_个人寄售数据数组 N$寄售行_个人寄售数据数组长度
+MOV P10 <$STR(N$寄售行_个人寄售数据数组长度)>
+MOV S$Lemon上架0_0 <$STR(S$寄售行_个人寄售数据数组_0)>
+MOV S$Lemon上架1_0 <$STR(S$寄售行_个人寄售数据数组_1)>
+MOV S$Lemon上架2_0 <$STR(S$寄售行_个人寄售数据数组_2)>
+MOV S$Lemon上架3_0 <$STR(S$寄售行_个人寄售数据数组_3)>
+MOV S$Lemon上架4_0 <$STR(S$寄售行_个人寄售数据数组_4)>
+MOV S$Lemon上架5_0 <$STR(S$寄售行_个人寄售数据数组_5)>
+MOV S$Lemon上架6_0 <$STR(S$寄售行_个人寄售数据数组_6)>
+MOV S$Lemon上架7_0 <$STR(S$寄售行_个人寄售数据数组_7)>
+MOV S$Lemon上架8_0 <$STR(S$寄售行_个人寄售数据数组_8)>
+MOV S$Lemon上架9_0 <$STR(S$寄售行_个人寄售数据数组_9)>
+#ELSEACT
+MOV P10 0
+CLEARVAR S$Lemon上架0 10
+CLEARVAR S$Lemon上架1 10
+CLEARVAR S$Lemon上架2 10
+CLEARVAR S$Lemon上架3 10
+CLEARVAR S$Lemon上架4 10
+CLEARVAR S$Lemon上架5 10
+CLEARVAR S$Lemon上架6 10
+CLEARVAR S$Lemon上架7 10
+CLEARVAR S$Lemon上架8 10
+CLEARVAR S$Lemon上架9 10
+
+
+#IF
+POS $STR(S$Lemon上架0_0) |
+#SAY
+<Text|x=85.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架0_2)>|id=sj1a2>
+<ItemShow|x=10.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架0_3)>|name=<$STR(S$Lemon上架0_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj1a3>
+<Text|x=85.0|y=32.0|color=67|size=18|text=价格:|id=sj1a4>
+<Img|x=130.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj1a5>
+<Text|x=155.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架0_4)>|id=sj1a6>
+<Button|x=170.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架0_0)>&<$STR(S$Lemon上架0_1)>&<$STR(S$Lemon上架0_2)>&<$STR(S$Lemon上架0_3)>&<$STR(S$Lemon上架0_4)>&<$STR(S$Lemon上架0_5)>&<$STR(S$Lemon上架0_6)>&<$STR(S$Lemon上架0_7)>|id=sj1a7>
+#ACT
+MOV P11 1
+SPLIT $STR(S$Lemon上架0_0) | S$Lemon上架0
+
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架0_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架0_0)>|<$STR(S$Lemon上架0_1)>|<$STR(S$Lemon上架0_2)>|<$STR(S$Lemon上架0_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=80.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架0_0)>&<$STR(S$Lemon上架0_1)>&<$STR(S$Lemon上架0_2)>&<$STR(S$Lemon上架0_3)>&<$STR(S$Lemon上架0_4)>&<$STR(S$Lemon上架0_5)>&<$STR(S$Lemon上架0_6)>&<$STR(S$Lemon上架0_7)>|id=sj1a8>
+;------------------------------------------------------------------------------------------------------------------------
+#IF
+POS $STR(S$Lemon上架1_0) |
+#SAY
+<Text|x=349.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架1_2)>|id=sj1a9>
+<ItemShow|x=274.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架1_3)>|name=<$STR(S$Lemon上架1_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj1a10>
+<Text|x=349.0|y=32.0|color=67|size=18|text=价格:|id=sj1a11>
+<Img|x=394.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj1a12>
+<Text|x=419.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架1_4)>|id=sj1a13>
+<Button|x=434.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架1_0)>&<$STR(S$Lemon上架1_1)>&<$STR(S$Lemon上架1_2)>&<$STR(S$Lemon上架1_3)>&<$STR(S$Lemon上架1_4)>&<$STR(S$Lemon上架1_5)>&<$STR(S$Lemon上架1_6)>&<$STR(S$Lemon上架1_7)>|id=sj1a14>
+#ACT
+MOV P12 1
+SPLIT $STR(S$Lemon上架1_0) | S$Lemon上架1
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架1_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架1_0)>|<$STR(S$Lemon上架1_1)>|<$STR(S$Lemon上架1_2)>|<$STR(S$Lemon上架1_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=344.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架1_0)>&<$STR(S$Lemon上架1_1)>&<$STR(S$Lemon上架1_2)>&<$STR(S$Lemon上架1_3)>&<$STR(S$Lemon上架1_4)>&<$STR(S$Lemon上架1_5)>&<$STR(S$Lemon上架1_6)>&<$STR(S$Lemon上架1_7)>|id=sj1a15>
+;=========================================================================================
+#IF
+POS $STR(S$Lemon上架2_0) |
+#SAY
+<Text|x=85.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架2_2)>|id=sj2a2>
+<ItemShow|x=10.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架2_3)>|name=<$STR(S$Lemon上架2_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj2a3>
+<Text|x=85.0|y=32.0|color=67|size=18|text=价格:|id=sj2a4>
+<Img|x=130.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj2a5>
+<Text|x=155.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架2_4)>|id=sj2a6>
+<Button|x=170.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架2_0)>&<$STR(S$Lemon上架2_1)>&<$STR(S$Lemon上架2_2)>&<$STR(S$Lemon上架2_3)>&<$STR(S$Lemon上架2_4)>&<$STR(S$Lemon上架2_5)>&<$STR(S$Lemon上架2_6)>&<$STR(S$Lemon上架2_7)>|id=sj2a7>
+#ACT
+MOV P13 1
+SPLIT $STR(S$Lemon上架2_0) | S$Lemon上架2
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架2_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架2_0)>|<$STR(S$Lemon上架2_1)>|<$STR(S$Lemon上架2_2)>|<$STR(S$Lemon上架2_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=80.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架2_0)>&<$STR(S$Lemon上架2_1)>&<$STR(S$Lemon上架2_2)>&<$STR(S$Lemon上架2_3)>&<$STR(S$Lemon上架2_4)>&<$STR(S$Lemon上架2_5)>&<$STR(S$Lemon上架2_6)>&<$STR(S$Lemon上架2_7)>|id=sj2a8>
+;------------------------------------------------------------------------------------------------------------------------
+#IF
+POS $STR(S$Lemon上架3_0) |
+#SAY
+<Text|x=349.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架3_2)>|id=sj2a9>
+<ItemShow|x=274.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架3_3)>|name=<$STR(S$Lemon上架3_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj2a10>
+<Text|x=349.0|y=32.0|color=67|size=18|text=价格:|id=sj2a11>
+<Img|x=394.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj2a12>
+<Text|x=419.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架3_4)>|id=sj2a13>
+<Button|x=434.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架3_0)>&<$STR(S$Lemon上架3_1)>&<$STR(S$Lemon上架3_2)>&<$STR(S$Lemon上架3_3)>&<$STR(S$Lemon上架3_4)>&<$STR(S$Lemon上架3_5)>&<$STR(S$Lemon上架3_6)>&<$STR(S$Lemon上架3_7)>|id=sj2a14>
+#ACT
+MOV P14 1
+SPLIT $STR(S$Lemon上架3_0) | S$Lemon上架3
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架3_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架3_0)>|<$STR(S$Lemon上架3_1)>|<$STR(S$Lemon上架3_2)>|<$STR(S$Lemon上架3_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=344.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架3_0)>&<$STR(S$Lemon上架3_1)>&<$STR(S$Lemon上架3_2)>&<$STR(S$Lemon上架3_3)>&<$STR(S$Lemon上架3_4)>&<$STR(S$Lemon上架3_5)>&<$STR(S$Lemon上架3_6)>&<$STR(S$Lemon上架3_7)>|id=sj2a15>
+;=========================================================================================
+#IF
+POS $STR(S$Lemon上架4_0) |
+#SAY
+<Text|x=85.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架4_2)>|id=sj3a2>
+<ItemShow|x=10.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架4_3)>|name=<$STR(S$Lemon上架4_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj3a3>
+<Text|x=85.0|y=32.0|color=67|size=18|text=价格:|id=sj3a4>
+<Img|x=130.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj3a5>
+<Text|x=155.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架4_4)>|id=sj3a6>
+<Button|x=170.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架4_0)>&<$STR(S$Lemon上架4_1)>&<$STR(S$Lemon上架4_2)>&<$STR(S$Lemon上架4_3)>&<$STR(S$Lemon上架4_4)>&<$STR(S$Lemon上架4_5)>&<$STR(S$Lemon上架4_6)>&<$STR(S$Lemon上架4_7)>|id=sj3a7>
+#ACT
+MOV P15 1
+SPLIT $STR(S$Lemon上架4_0) | S$Lemon上架4
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架4_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架4_0)>|<$STR(S$Lemon上架4_1)>|<$STR(S$Lemon上架4_2)>|<$STR(S$Lemon上架4_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=80.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架4_0)>&<$STR(S$Lemon上架4_1)>&<$STR(S$Lemon上架4_2)>&<$STR(S$Lemon上架4_3)>&<$STR(S$Lemon上架4_4)>&<$STR(S$Lemon上架4_5)>&<$STR(S$Lemon上架4_6)>&<$STR(S$Lemon上架4_7)>|id=sj3a8>
+;------------------------------------------------------------------------------------------------------------------------
+#IF
+POS $STR(S$Lemon上架5_0) |
+#SAY
+<Text|x=349.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架5_2)>|id=sj3a9>
+<ItemShow|x=274.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架5_3)>|name=<$STR(S$Lemon上架5_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj3a10>
+<Text|x=349.0|y=32.0|color=67|size=18|text=价格:|id=sj3a11>
+<Img|x=394.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj3a12>
+<Text|x=419.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架5_4)>|id=sj3a13>
+<Button|x=434.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架5_0)>&<$STR(S$Lemon上架5_1)>&<$STR(S$Lemon上架5_2)>&<$STR(S$Lemon上架5_3)>&<$STR(S$Lemon上架5_4)>&<$STR(S$Lemon上架5_5)>&<$STR(S$Lemon上架5_6)>&<$STR(S$Lemon上架5_7)>|id=sj3a14>
+#ACT
+MOV P16 1
+SPLIT $STR(S$Lemon上架5_0) | S$Lemon上架5
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架5_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架5_0)>|<$STR(S$Lemon上架5_1)>|<$STR(S$Lemon上架5_2)>|<$STR(S$Lemon上架5_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=344.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架5_0)>&<$STR(S$Lemon上架5_1)>&<$STR(S$Lemon上架5_2)>&<$STR(S$Lemon上架5_3)>&<$STR(S$Lemon上架5_4)>&<$STR(S$Lemon上架5_5)>&<$STR(S$Lemon上架5_6)>&<$STR(S$Lemon上架5_7)>|id=sj3a15>
+;=========================================================================================
+#IF
+POS $STR(S$Lemon上架6_0) |
+#SAY
+<Text|x=85.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架6_2)>|id=sj4a2>
+<ItemShow|x=10.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架6_3)>|name=<$STR(S$Lemon上架6_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj4a3>
+<Text|x=85.0|y=32.0|color=67|size=18|text=价格:|id=sj4a4>
+<Img|x=130.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj4a5>
+<Text|x=155.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架6_4)>|id=sj4a6>
+<Button|x=170.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架6_0)>&<$STR(S$Lemon上架6_1)>&<$STR(S$Lemon上架6_2)>&<$STR(S$Lemon上架6_3)>&<$STR(S$Lemon上架6_4)>&<$STR(S$Lemon上架6_5)>&<$STR(S$Lemon上架6_6)>&<$STR(S$Lemon上架6_7)>|id=sj4a7>
+#ACT
+MOV P17 1
+SPLIT $STR(S$Lemon上架6_0) | S$Lemon上架6
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架6_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架6_0)>|<$STR(S$Lemon上架6_1)>|<$STR(S$Lemon上架6_2)>|<$STR(S$Lemon上架6_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=80.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架6_0)>&<$STR(S$Lemon上架6_1)>&<$STR(S$Lemon上架6_2)>&<$STR(S$Lemon上架6_3)>&<$STR(S$Lemon上架6_4)>&<$STR(S$Lemon上架6_5)>&<$STR(S$Lemon上架6_6)>&<$STR(S$Lemon上架6_7)>|id=sj4a8>
+;------------------------------------------------------------------------------------------------------------------------
+#IF
+POS $STR(S$Lemon上架7_0) |
+#SAY
+<Text|x=349.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架7_2)>|id=sj4a9>
+<ItemShow|x=274.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架7_3)>|name=<$STR(S$Lemon上架7_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj4a10>
+<Text|x=349.0|y=32.0|color=67|size=18|text=价格:|id=sj4a11>
+<Img|x=394.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj4a12>
+<Text|x=419.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架7_4)>|id=sj4a13>
+<Button|x=434.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架7_0)>&<$STR(S$Lemon上架7_1)>&<$STR(S$Lemon上架7_2)>&<$STR(S$Lemon上架7_3)>&<$STR(S$Lemon上架7_4)>&<$STR(S$Lemon上架7_5)>&<$STR(S$Lemon上架7_6)>&<$STR(S$Lemon上架7_7)>|id=sj4a14>
+#ACT
+MOV P18 1
+SPLIT $STR(S$Lemon上架7_0) | S$Lemon上架7
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架7_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架7_0)>|<$STR(S$Lemon上架7_1)>|<$STR(S$Lemon上架7_2)>|<$STR(S$Lemon上架7_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=344.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架7_0)>&<$STR(S$Lemon上架7_1)>&<$STR(S$Lemon上架7_2)>&<$STR(S$Lemon上架7_3)>&<$STR(S$Lemon上架7_4)>&<$STR(S$Lemon上架7_5)>&<$STR(S$Lemon上架7_6)>&<$STR(S$Lemon上架7_7)>|id=sj4a15>
+;=========================================================================================
+#IF
+POS $STR(S$Lemon上架8_0) |
+#SAY
+<Text|x=85.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架8_2)>|id=sj5a2>
+<ItemShow|x=10.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架8_3)>|name=<$STR(S$Lemon上架8_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj5a3>
+<Text|x=85.0|y=32.0|color=67|size=18|text=价格:|id=sj5a4>
+<Img|x=130.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj5a5>
+<Text|x=155.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架8_4)>|id=sj5a6>
+<Button|x=170.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架8_0)>&<$STR(S$Lemon上架8_1)>&<$STR(S$Lemon上架8_2)>&<$STR(S$Lemon上架8_3)>&<$STR(S$Lemon上架8_4)>&<$STR(S$Lemon上架8_5)>&<$STR(S$Lemon上架8_6)>&<$STR(S$Lemon上架8_7)>|id=sj5a7>
+#ACT
+MOV P19 1
+SPLIT $STR(S$Lemon上架8_0) | S$Lemon上架8
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架8_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架8_0)>|<$STR(S$Lemon上架8_1)>|<$STR(S$Lemon上架8_2)>|<$STR(S$Lemon上架8_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=80.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架8_0)>&<$STR(S$Lemon上架8_1)>&<$STR(S$Lemon上架8_2)>&<$STR(S$Lemon上架8_3)>&<$STR(S$Lemon上架8_4)>&<$STR(S$Lemon上架8_5)>&<$STR(S$Lemon上架8_6)>&<$STR(S$Lemon上架8_7)>|id=sj5a8>
+;------------------------------------------------------------------------------------------------------------------------
+#IF
+POS $STR(S$Lemon上架9_0) |
+#SAY
+<Text|x=349.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架9_2)>|id=sj5a9>
+<ItemShow|x=274.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架9_3)>|name=<$STR(S$Lemon上架9_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj5a10>
+<Text|x=349.0|y=32.0|color=67|size=18|text=价格:|id=sj5a11>
+<Img|x=394.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj5a12>
+<Text|x=419.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架9_4)>|id=sj5a13>
+<Button|x=434.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架9_0)>&<$STR(S$Lemon上架9_1)>&<$STR(S$Lemon上架9_2)>&<$STR(S$Lemon上架9_3)>&<$STR(S$Lemon上架9_4)>&<$STR(S$Lemon上架9_5)>&<$STR(S$Lemon上架9_6)>&<$STR(S$Lemon上架9_7)>|id=sj5a14>
+#ACT
+MOV P20 1
+SPLIT $STR(S$Lemon上架9_0) | S$Lemon上架9
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架9_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架9_0)>|<$STR(S$Lemon上架9_1)>|<$STR(S$Lemon上架9_2)>|<$STR(S$Lemon上架9_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=344.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架9_0)>&<$STR(S$Lemon上架9_1)>&<$STR(S$Lemon上架9_2)>&<$STR(S$Lemon上架9_3)>&<$STR(S$Lemon上架9_4)>&<$STR(S$Lemon上架9_5)>&<$STR(S$Lemon上架9_6)>&<$STR(S$Lemon上架9_7)>|id=sj5a15>
+;=========================================================================================
+
+#IF
+POS $STR(S$Lemon包裹) |
+#ACT
+CLEARVAR S$Lemon包裹 60
+SPLIT $STR(S$Lemon包裹) | S$Lemon包裹
+#ELSEACT
+CLEARVAR S$Lemon包裹 60
+
+#IF
+large $STR(S$Lemon包裹_0) 0
+CHECKITEMID $STR(S$Lemon包裹_0)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_0)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=0|id=bg1a4>
+#IF
+large $STR(S$Lemon包裹_1) 0
+CHECKITEMID $STR(S$Lemon包裹_1)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_1)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=1|id=bg1a5>
+#IF
+large $STR(S$Lemon包裹_2) 0
+CHECKITEMID $STR(S$Lemon包裹_2)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_2)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=2|id=bg1a6>
+#IF
+large $STR(S$Lemon包裹_3) 0
+CHECKITEMID $STR(S$Lemon包裹_3)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_3)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=3|id=bg1a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_4) 0
+CHECKITEMID $STR(S$Lemon包裹_4)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_4)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=4|id=bg2a4>
+#IF
+large $STR(S$Lemon包裹_5) 0
+CHECKITEMID $STR(S$Lemon包裹_5)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_5)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=5|id=bg2a5>
+#IF
+large $STR(S$Lemon包裹_6) 0
+CHECKITEMID $STR(S$Lemon包裹_6)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_6)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=6|id=bg2a6>
+#IF
+large $STR(S$Lemon包裹_7) 0
+CHECKITEMID $STR(S$Lemon包裹_7)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_7)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=7|id=bg2a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_8) 0
+CHECKITEMID $STR(S$Lemon包裹_8)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_8)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=8|id=bg3a4>
+#IF
+large $STR(S$Lemon包裹_9) 0
+CHECKITEMID $STR(S$Lemon包裹_9)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_9)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=9|id=bg3a5>
+#IF
+large $STR(S$Lemon包裹_10) 0
+CHECKITEMID $STR(S$Lemon包裹_10)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_10)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=10|id=bg3a6>
+#IF
+large $STR(S$Lemon包裹_11) 0
+CHECKITEMID $STR(S$Lemon包裹_11)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_11)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=11|id=bg3a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_12) 0
+CHECKITEMID $STR(S$Lemon包裹_12)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_12)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=12|id=bg4a4>
+#IF
+large $STR(S$Lemon包裹_13) 0
+CHECKITEMID $STR(S$Lemon包裹_13)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_13)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=13|id=bg4a5>
+#IF
+large $STR(S$Lemon包裹_14) 0
+CHECKITEMID $STR(S$Lemon包裹_14)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_14)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=14|id=bg4a6>
+#IF
+large $STR(S$Lemon包裹_15) 0
+CHECKITEMID $STR(S$Lemon包裹_15)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_15)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=15|id=bg4a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_16) 0
+CHECKITEMID $STR(S$Lemon包裹_16)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_16)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=16|id=bg5a4>
+#IF
+large $STR(S$Lemon包裹_17) 0
+CHECKITEMID $STR(S$Lemon包裹_17)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_17)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=17|id=bg5a5>
+#IF
+large $STR(S$Lemon包裹_18) 0
+CHECKITEMID $STR(S$Lemon包裹_18)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_18)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=18|id=bg5a6>
+#IF
+large $STR(S$Lemon包裹_19) 0
+CHECKITEMID $STR(S$Lemon包裹_19)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_19)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=19|id=bg5a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_20) 0
+CHECKITEMID $STR(S$Lemon包裹_20)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_20)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=20|id=bg6a4>
+#IF
+large $STR(S$Lemon包裹_21) 0
+CHECKITEMID $STR(S$Lemon包裹_21)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_21)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=21|id=bg6a5>
+#IF
+large $STR(S$Lemon包裹_22) 0
+CHECKITEMID $STR(S$Lemon包裹_22)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_22)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=22|id=bg6a6>
+#IF
+large $STR(S$Lemon包裹_23) 0
+CHECKITEMID $STR(S$Lemon包裹_23)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_23)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=23|id=bg6a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_24) 0
+CHECKITEMID $STR(S$Lemon包裹_24)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_24)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=24|id=bg7a4>
+#IF
+large $STR(S$Lemon包裹_25) 0
+CHECKITEMID $STR(S$Lemon包裹_25)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_25)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=25|id=bg7a5>
+#IF
+large $STR(S$Lemon包裹_26) 0
+CHECKITEMID $STR(S$Lemon包裹_26)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_26)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=26|id=bg7a6>
+#IF
+large $STR(S$Lemon包裹_27) 0
+CHECKITEMID $STR(S$Lemon包裹_27)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_27)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=27|id=bg7a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_28) 0
+CHECKITEMID $STR(S$Lemon包裹_28)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_28)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=28|id=bg8a4>
+#IF
+large $STR(S$Lemon包裹_29) 0
+CHECKITEMID $STR(S$Lemon包裹_29)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_29)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=29|id=bg8a5>
+#IF
+large $STR(S$Lemon包裹_30) 0
+CHECKITEMID $STR(S$Lemon包裹_30)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_30)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=30|id=bg8a6>
+#IF
+large $STR(S$Lemon包裹_31) 0
+CHECKITEMID $STR(S$Lemon包裹_31)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_31)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=31|id=bg8a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_32) 0
+CHECKITEMID $STR(S$Lemon包裹_32)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_32)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=32|id=bg9a4>
+#IF
+large $STR(S$Lemon包裹_33) 0
+CHECKITEMID $STR(S$Lemon包裹_33)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_33)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=33|id=bg9a5>
+#IF
+large $STR(S$Lemon包裹_34) 0
+CHECKITEMID $STR(S$Lemon包裹_34)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_34)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=34|id=bg9a6>
+#IF
+large $STR(S$Lemon包裹_35) 0
+CHECKITEMID $STR(S$Lemon包裹_35)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_35)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=35|id=bg9a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_36) 0
+CHECKITEMID $STR(S$Lemon包裹_36)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_36)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=36|id=bg10a4>
+#IF
+large $STR(S$Lemon包裹_37) 0
+CHECKITEMID $STR(S$Lemon包裹_37)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_37)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=37|id=bg10a5>
+#IF
+large $STR(S$Lemon包裹_38) 0
+CHECKITEMID $STR(S$Lemon包裹_38)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_38)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=38|id=bg10a6>
+#IF
+large $STR(S$Lemon包裹_39) 0
+CHECKITEMID $STR(S$Lemon包裹_39)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_39)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=39|id=bg10a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_40) 0
+CHECKITEMID $STR(S$Lemon包裹_40)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_40)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=40|id=bg11a4>
+#IF
+large $STR(S$Lemon包裹_41) 0
+CHECKITEMID $STR(S$Lemon包裹_41)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_41)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=41|id=bg11a5>
+#IF
+large $STR(S$Lemon包裹_42) 0
+CHECKITEMID $STR(S$Lemon包裹_42)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_42)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=42|id=bg11a6>
+#IF
+large $STR(S$Lemon包裹_43) 0
+CHECKITEMID $STR(S$Lemon包裹_43)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_43)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=43|id=bg11a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_44) 0
+CHECKITEMID $STR(S$Lemon包裹_44)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_44)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=44|id=bg12a4>
+#IF
+large $STR(S$Lemon包裹_45) 0
+CHECKITEMID $STR(S$Lemon包裹_45)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_45)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=45|id=bg12a5>
+#IF
+large $STR(S$Lemon包裹_46) 0
+CHECKITEMID $STR(S$Lemon包裹_46)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_46)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=46|id=bg12a6>
+#IF
+large $STR(S$Lemon包裹_47) 0
+CHECKITEMID $STR(S$Lemon包裹_47)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_47)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=47|id=bg12a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_48) 0
+CHECKITEMID $STR(S$Lemon包裹_48)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_48)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=48|id=bg13a4>
+#IF
+large $STR(S$Lemon包裹_49) 0
+CHECKITEMID $STR(S$Lemon包裹_49)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_49)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=49|id=bg13a5>
+#IF
+large $STR(S$Lemon包裹_50) 0
+CHECKITEMID $STR(S$Lemon包裹_50)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_50)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=50|id=bg13a6>
+#IF
+large $STR(S$Lemon包裹_51) 0
+CHECKITEMID $STR(S$Lemon包裹_51)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_51)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=51|id=bg13a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_52) 0
+CHECKITEMID $STR(S$Lemon包裹_52)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_52)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=52|id=bg14a4>
+#IF
+large $STR(S$Lemon包裹_53) 0
+CHECKITEMID $STR(S$Lemon包裹_53)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_53)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=53|id=bg14a5>
+#IF
+large $STR(S$Lemon包裹_54) 0
+CHECKITEMID $STR(S$Lemon包裹_54)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_54)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=54|id=bg14a6>
+#IF
+large $STR(S$Lemon包裹_55) 0
+CHECKITEMID $STR(S$Lemon包裹_55)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_55)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=55|id=bg14a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_56) 0
+CHECKITEMID $STR(S$Lemon包裹_56)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_56)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=56|id=bg15a4>
+#IF
+large $STR(S$Lemon包裹_57) 0
+CHECKITEMID $STR(S$Lemon包裹_57)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_57)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=57|id=bg15a5>
+#IF
+large $STR(S$Lemon包裹_58) 0
+CHECKITEMID $STR(S$Lemon包裹_58)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_58)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=58|id=bg15a6>
+#IF
+large $STR(S$Lemon包裹_59) 0
+CHECKITEMID $STR(S$Lemon包裹_59)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_59)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=59|id=bg15a7>
+;----------------------------------------------------------------------------------------
+
+#IF
+large $STR(S$Lemon上架) 0
+CHECKITEMID $STR(S$Lemon上架)
+#SAY
+<Layout|x=125|y=10|width=880|height=580|link=@xxx>
+<Img|x=400.0|y=30.0|show=0|bg=0|move=0|img=private/jishouhang/backgroundone.png|loadDelay=0>
+<Button|x=670.0|y=33.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@Lemon上架GB>
+<Text|x=520.0|y=42.0|color=67|size=20|text=上架道具>
+;============================================================
+<Button|x=544.0|y=120.0|nimg=private/jishouhang/1.png|pimg=private/jishouhang/1.png|color=67|size=18|text=<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>>
+<GoodsShow|x=530.0|y=160.0|index=<$STR(S$Lemon上架)>|showtips=1|bgtype=public\icon_props_01.png>
+<Text|x=580.0|y=205.0|color=255|size=16|text=<$STR(N$Lemon上架SL)>>
+;============================================================
+<Text|x=525.0|y=260.0|color=67|size=18|text=上架数量>
+<Button|x=475.0|y=300.0|nimg=private/jishouhang/btn_minus_01.png|pimg=private/jishouhang/btn_minus_01.png|link=@Lemon上架->
+<Button|x=618.0|y=300.0|nimg=private/jishouhang/btn_plus_02.png|pimg=private/jishouhang/btn_plus_02_01.png|link=@Lemon上架+>
+<Img|x=520.0|y=300.0|img=private/jishouhang/bg_store_input.png>
+<Button|x=544.0|y=295.0|nimg=private/jishouhang/1.png|pimg=private/jishouhang/1.png|color=255|size=18|text=<$STR(N$Lemon上架)>>
+;============================================================
+<Text|x=473.0|y=390.0|color=67|size=18|text=价格>
+<Img|x=520.0|y=390.0|img=private/jishouhang/bg_store_input.png>
+<Img|x=620.0|y=390.0|img=public/icon_currency_ingot_02.png>
+<Input|x=520.0|y=390.0|width=85|height=28|type=1|size=14|maxcount=5|mincount=1|color=255|inputid=5|place=请输入价格|placecolor=255>
+<Button|x=545.0|y=420.0|nimg=private/jishouhang/1.png|pimg=private/jishouhang/1.png|color=222|size=18|text=允许上架价格区间:<$MULT.<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>.$STR(N$Lemon上架)>-<$MULT.<$MULT^<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>^3>.$STR(N$Lemon上架)>>
+;============================================================
+<Button|x=430.0|y=480.0|nimg=public/button/btn_push_10.png|pimg=public/button/btn_push_10.png|color=67|size=20|text=取消|link=@Lemon上架GB>
+<Button|x=585.0|y=480.0|nimg=public/button/btn_push_10.png|pimg=public/button/btn_push_10.png|color=67|size=20|text=上架|link=@Lemon上架Z>
+
+
+
+
+[@Lemon所得]
+#IF
+TRUE
+#ACT
+MOV N$Lemon所得 0
+LOADEXVAR N$Lemon所得 $USERID 寄售所得 ..\QUESTDIARY\寄售数据\寄售个人数据.txt
+
+#IF
+LARGE N$Lemon所得 0
+#ACT
+GAMEGOLD + $DIV.$MULT^$STR(N$Lemon所得)^8.10
+SENDMSG 19 提取寄售所得成功!
+SENDMSG 7 提取寄售所得成功!元宝+<$DIV.$MULT^$STR(N$Lemon所得)^8.10>
+INSERTVARLIST 0 玩家:<$USERNAME>提取寄售所得元宝(已扣除20%)"<$DIV.$MULT^$STR(N$Lemon所得)^8.10>个,提取时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\提取<$DATE>.txt"
+SAVEEXVAR 0 $USERID 寄售所得 ..\QUESTDIARY\寄售数据\寄售个人数据.txt
+GOTO @Lemon上架XS
+BREAK
+#ELSEACT
+SENDMSG 19 没有可提取的寄售所得!
+BREAK
+
+[@Lemon上架Z]
+#IF
+LARGE P10 9
+#ACT
+MOV S$Lemon上架 
+SENDMSG 19 货架已满
+BREAK
+
+#IF
+!CHECKITEMID $STR(S$Lemon上架)
+#ACT
+MOV S$Lemon上架 
+BREAK
+
+#IF
+!CHECKVARLIST <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].NAME> ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+#ACT
+MOV S$Lemon上架 
+SENDMSG 19 此道具不允许上架寄售!
+BREAK
+
+#IFONE
+SMALL <$ITEMINFO[<$STR(S$Lemon上架)>].GC1> 5
+#ACT
+SENDMSG 19 此物品上架异常,请联系管理员!
+BREAK
+
+#IF
+SMALL N$Lemon上架 1
+#ACT
+SENDMSG 19 请先设置上架数量!!
+BREAK
+
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].Reserved> 256
+SMALL <$ITEMINFO[<$STR(S$Lemon上架)>].DURA> $STR(N$Lemon上架)
+#ACT
+SENDMSG 19 道具数量不足!!
+BREAK
+
+#IFONE
+SMALL $NPCINPUT(5) <$MULT.<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>.$STR(N$Lemon上架)>
+LARGE $NPCINPUT(5) <$MULT.<$MULT^<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>^3>.$STR(N$Lemon上架)>
+#ACT
+SENDMSG 19 此物品上架价格区间:<$MULT.<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>.$STR(N$Lemon上架)>-<$MULT.<$MULT^<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>^3>.$STR(N$Lemon上架)>元宝
+SENDMSG 19 请重新设置价格
+BREAK
+#ELSEACT
+MOV S$Lemon上架FLA 
+MOV S$Lemon上架FLB 
+
+#IF
+POS -5-6- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 武器
+#IF
+POS -10-11- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 衣服
+#IF
+POS -15- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 头盔
+#IF
+POS -19-20-21- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 项链
+#IF
+POS -22-23- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 戒指
+#IF
+POS -24-26- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 手镯
+#IF
+POS -58- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 腰带
+#IF
+POS -81- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 靴子
+
+;----------------------------------------------材料
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].Reserved> 256
+#ACT
+MOV S$Lemon上架FLA 材料
+MOV S$Lemon上架FLB 无
+
+;----------------------------------------------神器
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].ANICOUNT> 9528
+#ACT
+MOV S$Lemon上架FLA 神器
+MOV S$Lemon上架FLB 无
+;----------------------------------------------法宝
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].ANICOUNT> 9527
+#ACT
+MOV S$Lemon上架FLA 法宝
+MOV S$Lemon上架FLB 无
+
+#IFONE
+EQUAL S$Lemon上架FLA 
+EQUAL S$Lemon上架FLB 
+#ACT
+SENDMSG 19 此物品上架异常,请联系管理员!
+BREAK
+
+#IF
+POS $STR(S$Lemon包裹BL) <$STR(S$Lemon上架)>,
+#ACT
+MOV S$回收IDX $STR(S$Lemon上架)
+FUNC 1 @Lemon回收QX
+
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].Reserved> 256
+#ACT
+GOTO @寄售行_增加世界寄售&寄售行_参数_新增数据=<$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|<$STR(N$Lemon上架)>|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)>
+; INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|<$STR(N$Lemon上架)>|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\个人数据\<$USERID>.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|<$STR(N$Lemon上架)>|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\全部.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|<$STR(N$Lemon上架)>|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|<$STR(N$Lemon上架)>|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\<$STR(S$Lemon上架FLA)>.txt
+INSERTVARLIST 0 玩家:<$USERNAME>上架"<<$STR(S$Lemon上架)>].NAME>>*<$STR(N$Lemon上架)>"售价:<$NPCINPUT(5)>,上架时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\上架<$DATE>.txt
+UPGRADEUSERITEM $STR(S$Lemon上架) 20 - $STR(N$Lemon上架)
+MOV S$Lemon上架 
+MOV N$Lemon上架 0
+MOV N$Lemon上架加减 0
+SENDMSG 19 上架成功!
+BAGREF 2
+DELAYGOTO 100 @Lemon上架XS
+BREAK
+#ELSEACT
+GOTO @寄售行_增加世界寄售&寄售行_参数_新增数据=<$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)>
+; INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\个人数据\<$USERID>.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\全部.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\<$STR(S$Lemon上架FLA)>.txt
+INSERTVARLIST 0 玩家:<$USERNAME>上架"<<$STR(S$Lemon上架)>].NAME>>*<$STR(N$Lemon上架)>"售价:<$NPCINPUT(5)>,上架时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\上架<$DATE>.txt
+
+#IF
+!EQUAL S$Lemon上架FLB 无
+#ACT
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\<$STR(S$Lemon上架FLB)>.txt
+TAKEM $STR(S$Lemon上架)
+MOV S$Lemon上架 
+MOV N$Lemon上架 0
+MOV N$Lemon上架加减 0
+SENDMSG 19 上架成功!
+BAGREF 2
+DELAYGOTO 100 @Lemon上架XS
+;GOTO @Lemon上架XS
+BREAK
+#ELSEACT
+TAKEM $STR(S$Lemon上架)
+SENDMSG 19 上架成功!
+MOV S$Lemon上架 
+MOV N$Lemon上架 0
+MOV N$Lemon上架加减 0
+BAGREF 2
+DELAYGOTO 100 @Lemon上架XS
+;GOTO @Lemon上架XS
+BREAK
+
+
+
+
+
+[@Lemon上架-]
+#IF
+!CHECKITEMID $STR(S$Lemon上架)
+#ACT
+BREAK
+
+;-------------------------检测不是叠加
+#IFONE
+!EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+!EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].Reserved> 256
+#ACT
+BREAK
+
+#IF
+LARGE N$Lemon上架 100
+#ACT
+DEC N$Lemon上架加减 100
+GOTO @Lemon上架XS
+GOTO @Lemon选中SJ
+BREAK
+
+[@Lemon上架+]
+#IF
+!CHECKITEMID $STR(S$Lemon上架)
+#ACT
+BREAK
+
+#IFONE
+!EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+!EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].Reserved> 256
+#ACT
+BREAK
+
+#IF
+!SMALL <$ITEMINFO[<$STR(S$Lemon上架)>].DURA> $INC.$STR(N$Lemon上架).100
+#ACT
+INC N$Lemon上架加减 100
+GOTO @Lemon上架XS
+GOTO @Lemon选中SJ
+BREAK
+#ELSEACT
+SENDMSG 19 道具数量不足
+BREAK
+
+
+[@Lemon上架GB]
+#IF
+TRUE
+#ACT
+MOV S$Lemon上架
+GOTO @Lemon上架XS
+BREAK
+
+[@Lemon选中SJ]
+#IF
+LARGE P10 9
+#ACT
+MOV S$Lemon上架 
+SENDMSG 19 货架已满
+BREAK
+
+#IF
+!CHECKITEMID <$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>
+#ACT
+MOV S$Lemon上架 
+SENDMSG 5 数据错误!
+BREAK
+
+#IF
+!CHECKVARLIST <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].NAME> ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+#ACT
+MOV S$Lemon上架 
+SENDMSG 19 此道具不允许上架寄售!-<$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].NAME>
+BREAK
+
+#IFONE
+EQUAL <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].ITEMEXT(59)> 1
+EQUAL <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].ITEMEXT(59)> 3
+#ACT
+MOV S$Lemon上架 
+SENDMSG 19 绑定物品不允许上架!
+BREAK
+
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].Reserved> 256
+#ACT
+MOV S$Lemon上架 <$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>
+MOV N$Lemon上架 <$STR(N$Lemon上架加减)>
+MOV N$Lemon上架SL <$STR(N$Lemon上架加减)>
+GOTO @Lemon上架XS
+BREAK
+#ELSEACT
+MOV S$Lemon上架 <$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>
+MOV N$Lemon上架 1
+MOV N$Lemon上架SL 1
+GOTO @Lemon上架XS
+BREAK
+
+
+
+
+
+; [@Lemon上架CX]
+; #IF
+; POSINLIST &<$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)>& ..\QUESTDIARY\寄售数据\个人寄售信息数据.txt S$Lemon下架
+; #ACT
+; CLEARVAR S$Lemon下架 10
+; SPLIT $STR(S$Lemon下架) | S$Lemon下架
+; #ELSEACT
+; SENDMSG 19 数据异常！
+; BREAK
+
+; #IF
+; !CHECKVARLIST $STR(S$Lemon下架) ..\QUESTDIARY\寄售数据\全部.txt
+; !CHECKVARLIST $STR(S$Lemon下架) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_6)>.txt
+; !CHECKVARLIST $STR(S$Lemon下架) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_2)>.txt
+; #ACT
+; INSERTVARLIST 0 $STR(S$Lemon下架) ..\QUESTDIARY\寄售数据\全部.txt
+; INSERTVARLIST 0 $STR(S$Lemon下架) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_6)>.txt
+; INSERTVARLIST 0 $STR(S$Lemon下架) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_6)>.txt
+; SENDMSG 19 上架成功!
+; INSERTVARLIST 0 玩家:<$STR(S$Lemon下架_5)>合区后重新上架"<$STR(S$Lemon下架_2)>*<$STR(S$Lemon下架_3)>"售价:<$STR(S$Lemon下架_4)>,重新上架时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\重新上架<$DATE>.txt
+; #ELSEACT
+; SENDMSG 19 当前在售,无需重新上架!
+; BREAK
+
+; #IF
+; !EQUAL S$Lemon下架_7 无
+; !EQUAL S$Lemon下架_7 
+; #ACT
+; INSERTVARLIST 0 $STR(S$Lemon下架) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_7)>.txt
+; GOTO @Lemon上架XS
+; BREAK
+; #ELSEACT
+; GOTO @Lemon上架XS
+; BREAK
+
+
+
+
+
+
+[@Lemon下架]
+#IF
+POSINLIST <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)> ..\QUESTDIARY\寄售数据\个人寄售信息数据.txt S$Lemon个人寄售数据数组
+#ACT
+CLEARVAR S$Lemon下架 10
+MOV S$Lemon下架1 <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)>
+SPLIT $STR(S$Lemon下架1) | S$Lemon下架
+#ELSEACT
+SENDMSG 1 <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)>
+SENDMSG 19 数据异常！
+BREAK
+
+#IF
+EQUAL <$STDITEM(<$STR(S$Lemon下架_2)>).STDMODE> 46
+EQUAL <$STDITEM(<$STR(S$Lemon下架_2)>).Reserved> 256
+#ACT
+MOV P33 1
+#ELSEACT
+MOV P33 $STR(S$Lemon下架_3)
+
+#IF
+!CHECKBAGSIZE $STR(P33)
+#ACT
+SENDMSG 19 需<$STR(P33)>个包裹位置！
+BREAK
+#ELSEACT
+GIVE $STR(S$Lemon下架_2) $STR(S$Lemon下架_3)
+GOTO @寄售行_删除个人寄售数据&寄售行_参数_删除数据=<$STR(S$Lemon下架1)>
+; DELVARLIST $STR(S$Lemon下架) ..\QUESTDIARY\寄售数据\个人数据\<$USERID>.txt
+DELVARLIST $STR(S$Lemon下架1) ..\QUESTDIARY\寄售数据\全部.txt
+DELVARLIST $STR(S$Lemon下架1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_2)>.txt
+DELVARLIST $STR(S$Lemon下架1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_6)>.txt
+DELVARLIST $STR(S$Lemon下架1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_7)>.txt
+SENDMSG 19 下架成功!
+INSERTVARLIST 0 玩家:<$STR(S$Lemon下架_5)>下架了"<$STR(S$Lemon下架_2)>*<$STR(S$Lemon下架_3)>"售价:<$STR(S$Lemon下架_4)>,下架时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\下架<$DATE>.txt
+GOTO @Lemon上架XS
+BREAK
+
+;寄售行_参数_删除数据
+[@寄售行_删除个人寄售数据]
+#IF
+POSINLIST <$STR(S$寄售行_参数_删除数据)> ..\QUESTDIARY\寄售数据\个人寄售信息数据.txt S$寄售行_个人寄售数据
+#ACT
+DELVARLIST <$STR(S$寄售行_个人寄售数据)> ../QuestDiary/寄售数据/个人寄售信息数据.txt
+REPLACETEXT S$寄售行_个人寄售数据 <$STR(S$寄售行_参数_删除数据)>&
+ADDVARLIST <$STR(S$寄售行_个人寄售数据)> ../QuestDiary/寄售数据/个人寄售信息数据.txt
+
+
+;寄售行_参数_新增数据
+[@寄售行_增加世界寄售]
+#IF
+PosInlist <$USERID> ../QuestDiary/寄售数据/个人寄售信息数据.txt S$寄售行_老个人寄售数据
+#ACT
+MOV S$寄售行_新个人寄售数据 <$STR(S$寄售行_老个人寄售数据)><$STR(S$寄售行_参数_新增数据)>&
+DELVARLIST <$STR(S$寄售行_老个人寄售数据)> ../QuestDiary/寄售数据/个人寄售信息数据.txt
+#ELSEACT
+MOV S$寄售行_新个人寄售数据 <$STR(S$寄售行_参数_新增数据)>&
+
+#IF
+RANDOM 1
+#ACT
+ADDVARLIST <$STR(S$寄售行_新个人寄售数据)> ../QuestDiary/寄售数据/个人寄售信息数据.txt
+
+
+
+
+[@Lemon上架A]
+#IF
+LARGE $SCRIPTPARAM(1) P10
+#ACT
+SENDMSG 19 请在右侧选择上架道具
+BREAK
+
+
+
+[@Lemon包裹JC]
+#IF
+LARGE N$Lemon包裹 126
+#ACT
+BREAK
+
+
+#IF
+CHECKVARLIST <$BAGITEM(<$STR(N$Lemon包裹)>).NAME> ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+#ACT
+INC S$Lemon包裹 <$BAGITEM(<$STR(N$Lemon包裹)>).MAKEINDEX>|
+INC N$Lemon包裹 1
+GOTO @Lemon包裹JC
+BREAK
+#ELSEACT
+INC N$Lemon包裹 1
+GOTO @Lemon包裹JC
+BREAK
+
+[@寄售行_世界寄售]
+#IF
+RANDOM 1
+#ACT
+MOV S$寄售行_世界寄售UI字符串
+MOV N$寄售行_循环增量 0
+LOOPGOTO @寄售行_世界寄售循环 100
+
+[@寄售行_世界寄售循环]
+#IF
+POS <$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_0)> |
+#ACT
+SPLIT <$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_0)> | S$Lemon寄售<$STR(N$寄售行_循环增量)>
+INC S$寄售行_世界寄售UI字符串 <ItemShow|x=0.0|y=0.0|itemid=0|itemcount=<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_3)>|name=<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=js<$STR(N$寄售行_循环增量)>|children=<js<$STR(N$寄售行_循环增量)>a1,js<$STR(N$寄售行_循环增量)>a2,js<$STR(N$寄售行_循环增量)>a3,js<$STR(N$寄售行_循环增量)>a4,js<$STR(N$寄售行_循环增量)>a5,js<$STR(N$寄售行_循环增量)>a6,js<$STR(N$寄售行_循环增量)>a7>>
+INC S$寄售行_世界寄售UI字符串 <Text|x=70.0|y=20.0|color=67|size=18|text=<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_2)>|id=js<$STR(N$寄售行_循环增量)>a2>
+INC S$寄售行_世界寄售UI字符串 <Img|x=290.0|y=20.0|img=public/icon_currency_ingot_02.png|id=js<$STR(N$寄售行_循环增量)>a3>
+INC S$寄售行_世界寄售UI字符串 <Text|x=315.0|y=20.0|color=67|size=18|text=<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_4)>|id=js<$STR(N$寄售行_循环增量)>a4>
+INC S$寄售行_世界寄售UI字符串 <Button|x=520.0|y=10.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=购买|link=@Lemon购买&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_0)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_1)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_2)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_3)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_4)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_5)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_6)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_7)>|id=js<$STR(N$寄售行_循环增量)>a5>
+INC S$寄售行_世界寄售UI字符串 <Img|x=0.0|y=70.0|width=660|img=private/jishouhang/bg_hhzy_01_2.png|id=js<$STR(N$寄售行_循环增量)>a6>
+
+#IF
+EQUAL <$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_1)> <$USERID>
+#ACT
+INC S$寄售行_世界寄售UI字符串 <Text|x=70.0|y=0.0|color=10|size=14|text=我的物品|id=js<$STR(N$寄售行_循环增量)>a1>
+#ELSEACT
+INC S$寄售行_世界寄售UI字符串 <Text|x=70.0|y=0.0|color=10|size=14|text=<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_5)>|id=js<$STR(N$寄售行_循环增量)>a1>
+
+#IF
+RANDOM 1
+#ACT
+INC N$寄售行_循环增量 1
+
+[@Lemon寄售XS]
+
+#IF
+TRUE
+#SAY
+<Img|x=125.0|y=10.0|show=0|bg=1|move=0|img=private/jishouhang/jishouhangmb1.png|loadDelay=0>
+<Button|x=938.0|y=13.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Text|x=365.0|y=110.0|color=67|size=18|text=竞拍道具>
+<Text|x=590.0|y=110.0|color=67|size=18|text=竞拍价格>
+<Text|x=850.0|y=110.0|color=67|size=18|text=操作>
+;==============================================================================
+<Input|x=725.0|y=65.0|width=120|height=26|type=0|size=16|maxcount=14|mincount=1|color=67|inputid=4|place=请输入物品名|placecolor=255>
+<Button|x=860.0|y=55.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=确认|link=@Lemon搜索>
+;==============================================================================
+<Button|x=150.0|y=52.0|color=67|scale=1.1|size=18|nimg=public/btn_push_05.png|pimg=public/btn_push_06.png|text=世界寄售>
+<Button|x=260.0|y=52.0|color=10|scale=1.1|size=18|nimg=public/btn_push_06.png|pimg=public/btn_push_05.png|text=我的上架|link=@Lemon上架DJ>
+;==============================================================================
+;==============================================================================
+<ListView|children=<js0,js1,js2,js3,js4,js5,js6,js7,js8,js9,js10,js11,js12,js13,js14,js15,js16,js17,js18,js19,js20,js21,js22,js23,js24,js25,js26,js27,js28,js29,js30,js31,js32,js33,js34,js35,js36,js37,js38,js39,js40,js41,js42,js43,js44,js45,js46,js47,js48,js49,js50,js51,js52,js53,js54,js55,js56,js57,js58,js59,js60,js61,js62,js63,js64,js65,js66,js67,js68,js69,js70,js71,js72,js73,js74,js75,js76,js77,js78,js79,js80,js81,js82,js83,js84,js85,js86,js87,js88,js89,js90,js91,js92,js93,js94,js95,js96,js97,js98,js99,js100,>|direction=1|x=300.0|y=150.0|width=660|height=335|reload=1|margin=15|loadDelay=0|img=public/9998.png>
+;===============================================================
+#ACT
+CLEARVAR P0 99
+CLEARVAR S0 99
+;==================================================================================================================================================================================
+#IF
+EQUAL S$Lemon分类A 全部
+#SAY
+<Button|x=150.0|y=110.0|color=67|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu1.png|pimg=private/jishouhang/xiaoanniu2.png|text=全部|link=@Lemon分类A&全部>
+<Button|x=150.0|y=160.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=装备|link=@Lemon分类A&装备>
+<Button|x=150.0|y=210.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=材料|link=@Lemon分类A&材料>
+<Button|x=150.0|y=260.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=神器|link=@Lemon分类A&神器>
+<Button|x=150.0|y=310.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=法宝|link=@Lemon分类A&法宝>
+;-------------------------------------
+#IF
+EQUAL S$Lemon分类A 装备
+#SAY
+<Button|x=150.0|y=110.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=全部|link=@Lemon分类A&全部>
+<Button|x=150.0|y=160.0|color=67|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu1.png|pimg=private/jishouhang/xiaoanniu2.png|text=装备|link=@Lemon分类A&装备>
+<Button|x=150.0|y=413.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=材料|link=@Lemon分类A&材料>
+<Button|x=150.0|y=463.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=神器|link=@Lemon分类A&神器>
+<Button|x=150.0|y=513.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=法宝|link=@Lemon分类A&法宝>
+;---------------------------------------------------
+<ListView|children=<fl1,fl2,fl3,fl4,fl5,fl6,fl7,fl8,fl9,fl10,fl11,fl12,fl13,fl14,fl15,fl16,fl17,fl18,fl19,fl20>|direction=1|x=150.0|y=220.0|width=140|height=190|reload=1|margin=10|loadDelay=0|img=jnhc/33.png>
+;===============================================================
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S1)>.png|pimg=private/jishouhang/<$STR(S1)>.png|color=<$INC.$STR(P1).10>|size=18|text=武器|link=@Lemon分类B&武器&1|id=fl1>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S2)>.png|pimg=private/jishouhang/<$STR(S2)>.png|color=<$INC.$STR(P2).10>|size=18|text=衣服|link=@Lemon分类B&衣服&2|id=fl2>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S3)>.png|pimg=private/jishouhang/<$STR(S3)>.png|color=<$INC.$STR(P3).10>|size=18|text=头盔|link=@Lemon分类B&头盔&3|id=fl3>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S4)>.png|pimg=private/jishouhang/<$STR(S4)>.png|color=<$INC.$STR(P4).10>|size=18|text=项链|link=@Lemon分类B&项链&4|id=fl4>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S5)>.png|pimg=private/jishouhang/<$STR(S5)>.png|color=<$INC.$STR(P5).10>|size=18|text=手镯|link=@Lemon分类B&手镯&5|id=fl5>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S6)>.png|pimg=private/jishouhang/<$STR(S6)>.png|color=<$INC.$STR(P6).10>|size=18|text=戒指|link=@Lemon分类B&戒指&6|id=fl6>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S7)>.png|pimg=private/jishouhang/<$STR(S7)>.png|color=<$INC.$STR(P7).10>|size=18|text=靴子|link=@Lemon分类B&靴子&7|id=fl7>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S8)>.png|pimg=private/jishouhang/<$STR(S8)>.png|color=<$INC.$STR(P8).10>|size=18|text=腰带|link=@Lemon分类B&腰带&8|id=fl8>
+;-------------------------------------
+#IF
+EQUAL S$Lemon分类A 材料
+#SAY
+<Button|x=150.0|y=110.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=全部|link=@Lemon分类A&全部>
+<Button|x=150.0|y=160.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=装备|link=@Lemon分类A&装备>
+<Button|x=150.0|y=210.0|color=67|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu1.png|pimg=private/jishouhang/xiaoanniu2.png|text=材料|link=@Lemon分类A&材料>
+<Button|x=150.0|y=260.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=神器|link=@Lemon分类A&神器>
+<Button|x=150.0|y=310.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=法宝|link=@Lemon分类A&法宝>
+;-------------------------------------
+#IF
+EQUAL S$Lemon分类A 神器
+#SAY
+<Button|x=150.0|y=110.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=全部|link=@Lemon分类A&全部>
+<Button|x=150.0|y=160.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=装备|link=@Lemon分类A&装备>
+<Button|x=150.0|y=210.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=材料|link=@Lemon分类A&材料>
+<Button|x=150.0|y=260.0|color=67|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu1.png|pimg=private/jishouhang/xiaoanniu2.png|text=神器|link=@Lemon分类A&神器>
+<Button|x=150.0|y=310.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=法宝|link=@Lemon分类A&法宝>
+;-------------------------------------
+#IF
+EQUAL S$Lemon分类A 法宝
+#SAY
+<Button|x=150.0|y=110.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=全部|link=@Lemon分类A&全部>
+<Button|x=150.0|y=160.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=装备|link=@Lemon分类A&装备>
+<Button|x=150.0|y=210.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=材料|link=@Lemon分类A&材料>
+<Button|x=150.0|y=260.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=神器|link=@Lemon分类A&神器>
+<Button|x=150.0|y=310.0|color=67|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu1.png|pimg=private/jishouhang/xiaoanniu2.png|text=法宝|link=@Lemon分类A&法宝>
+;-------------------------------------
+#IF
+LARGE N$Lemon分类B 0
+#ACT
+MOV S1 touming
+MOV S2 touming
+MOV S3 touming
+MOV S4 touming
+MOV S5 touming
+MOV S6 touming
+MOV S7 touming
+MOV S8 touming
+MOV P<$STR(N$Lemon分类B)> 57
+MOV S<$STR(N$Lemon分类B)> hongdi
+
+
+#IF
+EQUAL $STR(S$Lemon排序A) -1
+#SAY
+<Button|x=790.0|y=520.0|nimg=private/jishouhang/btn_szjm_01_4.png|pimg=private/jishouhang/btn_szjm_01_4.png|link=@Lemon排序>
+<Button|x=830.0|y=515.0|nimg=private/jishouhang/1.png|pimg=private/jishouhang/1.png|color=67|size=18|text=价格排序|link=@Lemon排序>
+#ELSESAY
+<Button|x=790.0|y=520.0|nimg=private/jishouhang/btn_szjm_01_3.png|pimg=private/jishouhang/btn_szjm_01_3.png|link=@Lemon排序>
+<Button|x=830.0|y=515.0|nimg=private/jishouhang/1.png|pimg=private/jishouhang/1.png|color=67|size=18|text=价格排序|link=@Lemon排序>
+
+
+;==================================================================================================================================================================================
+;----------------------------------------------------------------------------搜索
+#IF
+!EQUAL S$Lemon单件 
+CHECKVARLIST $STR(S$Lemon单件) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+CHECKTXT ..\QUESTDIARY\寄售数据\<$STR(S$Lemon单件)>.txt
+#ACT
+MOV S$Lemon文本 $STR(S$Lemon单件)
+GOTO @Lemon文本DQ
+;----------------------------------------------------------------------------分类
+#IF
+EQUAL S$Lemon单件 
+POS -武器-衣服-头盔-项链-手镯-戒指-靴子-腰带- -<$STR(S$Lemon分类B)>- 
+CHECKTXT ..\QUESTDIARY\寄售数据\<$STR(S$Lemon分类B)>.txt
+#ACT
+MOV S$Lemon文本 $STR(S$Lemon分类B)
+GOTO @Lemon文本DQ
+;----------------------------------------------------------------------------分类
+#IF
+EQUAL S$Lemon单件 
+EQUAL S$Lemon分类B 
+POS -全部-装备-材料-法宝-神器- -<$STR(S$Lemon分类A)>- 
+CHECKTXT ..\QUESTDIARY\寄售数据\<$STR(S$Lemon分类A)>.txt
+#ACT
+MOV S$Lemon文本 $STR(S$Lemon分类A)
+GOTO @Lemon文本DQ
+
+
+#IF
+!POS $STR(S$Lemon寄售0_0) |
+#SAY
+<Text|x=400.0|y=260.0|color=67|size=20|text=当前暂无此类物品寄售信息!!!>
+#ACT
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+GOTO @寄售行_世界寄售
+#SAY
+<$STR(S$寄售行_世界寄售UI字符串)>
+
+#IF
+LARGE $TXTLINE(..\QUESTDIARY\寄售数据\<$STR(S$Lemon文本)>.txt) 100
+#ACT
+MOV N$Lemon行数 $TXTLINE(..\QUESTDIARY\寄售数据\<$STR(S$Lemon文本)>.txt)
+MOV N$Lemon页数 $DIV.$STR(N$Lemon行数).100
+#ELSEACT
+MOV N$Lemon行数 0
+MOV N$Lemon页数 1
+
+#IF
+LARGE $STR(N$Lemon行数) 100
+LARGE $MOD.$STR(N$Lemon行数).100
+#ACT
+INC N$Lemon页数 1
+
+#IF
+LARGE N$Lemon页数 1
+#SAY
+<Button|x=0.0|y=0.0|scale=1|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|color=67|size=18|text=上页|link=@Lemon翻页-|id=js100|children=<js100a1,js100a2,js100a3,js100a4>>
+<Text|x=125.0|y=10.0|color=222|size=18|text=<$STR(N$Lemon翻页)>＼<$STR(N$Lemon页数)>|id=js100a1>
+<Button|x=200.0|y=0.0|scale=1|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|color=67|size=18|text=下页|link=@Lemon翻页+|id=js100a2>
+
+
+
+[@Lemon翻页-]
+#IFONE
+SMALL N$Lemon页数 2
+SMALL N$Lemon翻页 2
+#ACT
+SENDMSG 19 翻页到头了
+BREAK
+#ELSEACT
+DEC N$Lemon翻页 1
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon翻页+]
+#IF
+!SMALL N$Lemon翻页 $STR(N$Lemon页数)
+#ACT
+SENDMSG 19 翻页到头了
+BREAK
+#ELSEACT
+INC N$Lemon翻页 1
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon购买]
+#IF
+POSINLIST <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)> ..\QUESTDIARY\寄售数据\全部.txt
+POSINLIST <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)> ..\QUESTDIARY\寄售数据\个人寄售信息数据.txt
+#ACT
+CLEARVAR S$Lemon购买 10
+MOV S$Lemon购买1 <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)>
+SPLIT $STR(S$Lemon购买1) | S$Lemon购买
+#ELSEACT
+SENDMSG 19 商品已被其他玩家买走了!
+GOTO @Lemon寄售XS
+BREAK
+
+#IF
+EQUAL $USERID $STR(S$Lemon购买_1)
+#ACT
+SENDMSG 19 无法购买自己寄售的物品!
+BREAK
+#IF
+SMALL $CustomValue(90) 5
+#ACT
+SENDMSG 19 VIP等级不足5级,无法购买!!
+BREAK
+#IF
+EQUAL <$STDITEM(<$STR(S$Lemon购买_2)>).STDMODE> 46
+EQUAL <$STDITEM(<$STR(S$Lemon购买_2)>).Reserved> 256
+#ACT
+MOV P33 1
+#ELSEACT
+MOV P33 $STR(S$Lemon购买_3)
+
+#IF
+!CHECKBAGSIZE $STR(P33)
+#ACT
+SENDMSG 19 需<$STR(P33)>个包裹位置！
+BREAK
+
+#IF
+SMALL $GAMEGOLD $STR(S$Lemon购买_4)
+#ACT
+SENDMSG 19 你的元宝不足!
+BREAK
+#ELSEACT
+GAMEGOLD - $STR(S$Lemon购买_4)
+GIVE $STR(S$Lemon购买_2) $STR(S$Lemon购买_3)
+GOTO @寄售行_删除个人寄售数据&寄售行_参数_删除数据=<$STR(S$Lemon购买1)>
+; DELVARLIST $STR(S$Lemon购买) ..\QUESTDIARY\寄售数据\个人数据\<$STR(S$Lemon购买_1)>.txt
+DELVARLIST $STR(S$Lemon购买1) ..\QUESTDIARY\寄售数据\全部.txt
+DELVARLIST $STR(S$Lemon购买1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon购买_2)>.txt
+DELVARLIST $STR(S$Lemon购买1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon购买_6)>.txt
+DELVARLIST $STR(S$Lemon购买1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon购买_7)>.txt
+$STR(S$Lemon购买_5).SENDMSG 7 你的"<$STR(S$Lemon购买_2)>"已出售,获得元宝+<$STR(S$Lemon购买_4)>
+MOV P0 0
+LOADEXVAR P0 $STR(S$Lemon购买_1) 寄售所得 ..\QUESTDIARY\寄售数据\寄售个人数据.txt
+SAVEEXVAR $INC.$STR(P0).$STR(S$Lemon购买_4) $STR(S$Lemon购买_1) 寄售所得 ..\QUESTDIARY\寄售数据\寄售个人数据.txt
+INSERTVARLIST 0 玩家:<$USERNAME>购买了<$STR(S$Lemon购买_5)>出售的"<$STR(S$Lemon购买_2)>*<$STR(S$Lemon购买_3)>"售价:<$STR(S$Lemon购买_4)>,购买时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\购买<$DATE>.txt
+SENDMSG 19 购买成功!
+GOTO @Lemon寄售XS
+BREAK
+
+
+[@Lemon分类A]
+#IF
+EQUAL S$Lemon分类A $SCRIPTPARAM(1)
+#ACT
+BREAK
+#ELSEACT
+MOV S$Lemon排序A 
+MOV S$Lemon排序B 
+MOV S$Lemon排序C 
+MOV S$Lemoin单件 
+MOV N$Lemon翻页 1
+MOV S$Lemon分类A $SCRIPTPARAM(1)
+MOV S$Lemon分类B 
+MOV N$Lemon分类B 0
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon分类B]
+#IF
+EQUAL S$Lemon分类B $SCRIPTPARAM(1)
+#ACT
+BREAK
+#ELSEACT
+MOV S$Lemon排序A 
+MOV S$Lemon排序B 
+MOV S$Lemon排序C 
+MOV S$Lemoin单件 
+MOV N$Lemon翻页 1
+MOV S$Lemon分类A 装备
+MOV S$Lemon分类B $SCRIPTPARAM(1)
+MOV N$Lemon分类B $SCRIPTPARAM(2)
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon搜索]
+#IFONE
+!CHECKVARLIST $NPCINPUT(4) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+SMALL $TXTLINE(..\QUESTDIARY\寄售数据\<$NPCINPUT(4)>.txt) 1
+#ACT
+;SetNpcInput 4 
+MESSAGEBOX 没有找到"<$NPCINPUT(4)>"的寄售信息!
+BREAK
+#ELSEACT
+MOV S$Lemon单件 $NPCINPUT(4)
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon排序]
+
+#IF
+EQUAL S$Lemon排序A 
+#ACT
+MOV S$Lemon排序A -1
+MOV S$Lemon排序B 4
+MOV S$Lemon排序C |
+GOTO @Lemon寄售XS
+BREAK
+
+#IF
+EQUAL $STR(S$Lemon排序A) -1 
+#ACT
+MOV S$Lemon排序A 0
+MOV S$Lemon排序B 4
+MOV S$Lemon排序C |
+GOTO @Lemon寄售XS
+BREAK
+
+#IF
+EQUAL $STR(S$Lemon排序A) 0 
+#ACT
+MOV S$Lemon排序A -1
+MOV S$Lemon排序B 4
+MOV S$Lemon排序C |
+GOTO @Lemon寄售XS
+BREAK
+
+
+[@Lemon文本DQ]
+#IF
+TRUE
+#ACT
+CLEARVAR S$Lemon寄售0 8
+CLEARVAR S$Lemon寄售1 8
+CLEARVAR S$Lemon寄售2 8
+CLEARVAR S$Lemon寄售3 8
+CLEARVAR S$Lemon寄售4 8
+CLEARVAR S$Lemon寄售5 8
+CLEARVAR S$Lemon寄售6 8
+CLEARVAR S$Lemon寄售7 8
+CLEARVAR S$Lemon寄售8 8
+CLEARVAR S$Lemon寄售9 8
+CLEARVAR S$Lemon寄售10 8
+;----------
+CLEARVAR S$Lemon寄售11 8
+CLEARVAR S$Lemon寄售12 8
+CLEARVAR S$Lemon寄售13 8
+CLEARVAR S$Lemon寄售14 8
+CLEARVAR S$Lemon寄售15 8
+CLEARVAR S$Lemon寄售16 8
+CLEARVAR S$Lemon寄售17 8
+CLEARVAR S$Lemon寄售18 8
+CLEARVAR S$Lemon寄售19 8
+CLEARVAR S$Lemon寄售20 8
+;----------
+CLEARVAR S$Lemon寄售21 8
+CLEARVAR S$Lemon寄售22 8
+CLEARVAR S$Lemon寄售23 8
+CLEARVAR S$Lemon寄售24 8
+CLEARVAR S$Lemon寄售25 8
+CLEARVAR S$Lemon寄售26 8
+CLEARVAR S$Lemon寄售27 8
+CLEARVAR S$Lemon寄售28 8
+CLEARVAR S$Lemon寄售29 8
+CLEARVAR S$Lemon寄售30 8
+;----------
+CLEARVAR S$Lemon寄售31 8
+CLEARVAR S$Lemon寄售32 8
+CLEARVAR S$Lemon寄售33 8
+CLEARVAR S$Lemon寄售34 8
+CLEARVAR S$Lemon寄售35 8
+CLEARVAR S$Lemon寄售36 8
+CLEARVAR S$Lemon寄售37 8
+CLEARVAR S$Lemon寄售38 8
+CLEARVAR S$Lemon寄售39 8
+CLEARVAR S$Lemon寄售40 8
+;----------
+CLEARVAR S$Lemon寄售41 8
+CLEARVAR S$Lemon寄售42 8
+CLEARVAR S$Lemon寄售43 8
+CLEARVAR S$Lemon寄售44 8
+CLEARVAR S$Lemon寄售45 8
+CLEARVAR S$Lemon寄售46 8
+CLEARVAR S$Lemon寄售47 8
+CLEARVAR S$Lemon寄售48 8
+CLEARVAR S$Lemon寄售49 8
+CLEARVAR S$Lemon寄售50 8
+;----------
+CLEARVAR S$Lemon寄售51 8
+CLEARVAR S$Lemon寄售52 8
+CLEARVAR S$Lemon寄售53 8
+CLEARVAR S$Lemon寄售54 8
+CLEARVAR S$Lemon寄售55 8
+CLEARVAR S$Lemon寄售56 8
+CLEARVAR S$Lemon寄售57 8
+CLEARVAR S$Lemon寄售58 8
+CLEARVAR S$Lemon寄售59 8
+CLEARVAR S$Lemon寄售60 8
+;----------
+CLEARVAR S$Lemon寄售61 8
+CLEARVAR S$Lemon寄售62 8
+CLEARVAR S$Lemon寄售63 8
+CLEARVAR S$Lemon寄售64 8
+CLEARVAR S$Lemon寄售65 8
+CLEARVAR S$Lemon寄售66 8
+CLEARVAR S$Lemon寄售67 8
+CLEARVAR S$Lemon寄售68 8
+CLEARVAR S$Lemon寄售69 8
+CLEARVAR S$Lemon寄售70 8
+;----------
+CLEARVAR S$Lemon寄售71 8
+CLEARVAR S$Lemon寄售72 8
+CLEARVAR S$Lemon寄售73 8
+CLEARVAR S$Lemon寄售74 8
+CLEARVAR S$Lemon寄售75 8
+CLEARVAR S$Lemon寄售76 8
+CLEARVAR S$Lemon寄售77 8
+CLEARVAR S$Lemon寄售78 8
+CLEARVAR S$Lemon寄售79 8
+CLEARVAR S$Lemon寄售80 8
+;----------
+CLEARVAR S$Lemon寄售81 8
+CLEARVAR S$Lemon寄售82 8
+CLEARVAR S$Lemon寄售83 8
+CLEARVAR S$Lemon寄售84 8
+CLEARVAR S$Lemon寄售85 8
+CLEARVAR S$Lemon寄售86 8
+CLEARVAR S$Lemon寄售87 8
+CLEARVAR S$Lemon寄售88 8
+CLEARVAR S$Lemon寄售89 8
+CLEARVAR S$Lemon寄售90 8
+;----------
+CLEARVAR S$Lemon寄售91 8
+CLEARVAR S$Lemon寄售92 8
+CLEARVAR S$Lemon寄售93 8
+CLEARVAR S$Lemon寄售94 8
+CLEARVAR S$Lemon寄售95 8
+CLEARVAR S$Lemon寄售96 8
+CLEARVAR S$Lemon寄售97 8
+CLEARVAR S$Lemon寄售98 8
+CLEARVAR S$Lemon寄售99 8
+;----------
+MOV P44 0
+MOV P45 $TXTLINE(..\QUESTDIARY\寄售数据\<$STR(S$Lemon文本)>.txt)
+MOV P46 $DEC.$STR(N$Lemon翻页).1
+MULT P46 100
+GOTO @Lemon文本DQ2
+
+
+[@Lemon文本DQ2]
+#IFONE
+LARGE P46 $STR(P45)
+LARGE P44 100 
+#ACT
+BREAK
+#ELSEACT
+READRANDOMSTR ..\QUESTDIARY\寄售数据\<$STR(S$Lemon文本)>.txt S$Lemon寄售<$STR(P44)>_0 <$STR(P46)> <$STR(S$Lemon排序A)> <$STR(S$Lemon排序B)> <$STR(S$Lemon排序C)>
+INC P44 1
+INC P46 1
+GOTO @Lemon文本DQ2
+BREAK
+
+[@Lemon上架DJ]
+#IF
+TRUE
+#ACT
+MOV N$寄售行跳转 1
+MOV S$Lemon上架 
+MOV N$Lemon上架
+MOV S$Lemon下架 
+BAGREF 2
+DELAYGOTO 100 @Lemon上架XS
+BREAK
+
+
+
+}[@寄售行]
+{
+#IF
+TRUE
+#ACT
+MOV S$Lemon分类A 全部
+MOV S$Lemon分类B 
+MOV N$Lemon分类B 0
+MOV S$Lemon单件 
+MOV S$Lemon寄售0_0 
+MOV S$Lemon上架 
+MOV N$Lemon上架 
+MOV N$Lemon上架加减 0
+MOV S$Lemon下架 
+MOV S$Lemon排序A 
+MOV S$Lemon排序B 
+MOV S$Lemon排序C 
+MOV N$Lemon翻页 1
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon上架XS]
+#IF
+SMALL $CustomValue(90) 6
+#ACT
+SENDMSG 19 VIP等级不足6级,无法使用上架功能!!
+BREAK
+
+#IF
+TRUE
+#SAY
+<Img|x=125.0|y=10.0|show=0|bg=1|move=0|img=private/jishouhang/jishouhangmb2.png|loadDelay=0>
+<Button|x=938.0|y=13.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Text|x=340.0|y=115.0|color=10|size=18|text=寄售货架(<$STR(P10)>/10)>
+<Text|x=780.0|y=115.0|color=10|size=18|text=选择寄售道具>
+;==============================================================================
+<Button|x=150.0|y=52.0|color=10|scale=1.1|size=18|nimg=public/btn_push_06.png|pimg=public/btn_push_05.png|text=世界寄售|link=@寄售行>
+<Button|x=260.0|y=52.0|color=67|scale=1.1|size=18|nimg=public/btn_push_05.png|pimg=public/btn_push_06.png|text=我的上架>
+;==============================================================================
+<ListView|children=<bg1,bg2,bg3,bg4,bg5,bg6,bg7,bg8,bg9,bg10,bg11,bg12,bg13,bg14,bg15>|direction=1|x=700.0|y=150.0|width=280|height=340|reload=1|margin=10|loadDelay=0|img=public/9998.png>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg1|children=<bg1a1,bg1a2,bg1a3,bg1a4,bg1a5,bg1a6,bg1a7,bg1a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg1a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg1a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg1a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg2|children=<bg2a1,bg2a2,bg2a3,bg2a4,bg2a5,bg2a6,bg2a7,bg2a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg2a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg2a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg2a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg3|children=<bg3a1,bg3a2,bg3a3,bg3a4,bg3a5,bg3a6,bg3a7,bg3a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg3a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg3a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg3a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg4|children=<bg4a1,bg4a2,bg4a3,bg4a4,bg4a5,bg4a6,bg4a7,bg4a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg4a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg4a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg4a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg5|children=<bg5a1,bg5a2,bg5a3,bg5a4,bg5a5,bg5a6,bg5a7,bg5a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg5a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg5a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg5a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg6|children=<bg6a1,bg6a2,bg6a3,bg6a4,bg6a5,bg6a6,bg6a7,bg6a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg6a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg6a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg6a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg6|children=<bg6a1,bg6a2,bg6a3,bg6a4,bg6a5,bg6a6,bg6a7,bg6a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg6a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg6a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg6a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg7|children=<bg7a1,bg7a2,bg7a3,bg7a4,bg7a5,bg7a6,bg7a7,bg7a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg7a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg7a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg7a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg8|children=<bg8a1,bg8a2,bg8a3,bg8a4,bg8a5,bg8a6,bg8a7,bg8a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg8a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg8a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg8a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg9|children=<bg9a1,bg9a2,bg9a3,bg9a4,bg9a5,bg9a6,bg9a7,bg9a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg9a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg9a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg9a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg10|children=<bg10a1,bg10a2,bg10a3,bg10a4,bg10a5,bg10a6,bg10a7,bg10a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg10a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg10a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg10a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg11|children=<bg11a1,bg11a2,bg11a3,bg11a4,bg11a5,bg11a6,bg11a7,bg11a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg11a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg11a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg11a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg12|children=<bg12a1,bg12a2,bg12a3,bg12a4,bg12a5,bg12a6,bg12a7,bg12a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg12a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg12a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg12a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg13|children=<bg13a1,bg13a2,bg13a3,bg13a4,bg13a5,bg13a6,bg13a7,bg13a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg13a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg13a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg13a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg14|children=<bg14a1,bg14a2,bg14a3,bg14a4,bg14a5,bg14a6,bg14a7,bg14a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg14a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg14a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg14a3>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=public/1900000651.png|id=bg15|children=<bg15a1,bg15a2,bg15a3,bg15a4,bg15a5,bg15a6,bg15a7,bg15a8>>
+<Img|x=66.0|y=0.0|img=public/1900000651.png|id=bg15a1>
+<Img|x=132.0|y=0.0|img=public/1900000651.png|id=bg15a2>
+<Img|x=198.0|y=0.0|img=public/1900000651.png|id=bg15a3>
+;============================================================================
+<ListView|children=<sj1,sj2,sj3,sj4,sj5>|direction=1|x=157.0|y=145.0|width=530|height=340|reload=1|margin=10|loadDelay=0|img=public/9998.png>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P11).1>.png|link=@Lemon上架A&1|id=sj1|children=<sj1a1,sj1a2,sj1a3,sj1a4,sj1a5,sj1a6,sj1a7,sj1a8,sj1a9,sj1a10,sj1a11,sj1a12,sj1a13,sj1a14,sj1a15,sj1a16,sj1a17,sj1a18>>
+<Img|x=264.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P12).1>.png|link=@Lemon上架A&2|id=sj1a1>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P13).1>.png|link=@Lemon上架A&3|id=sj2|children=<sj2a1,sj2a2,sj2a3,sj2a4,sj2a5,sj2a6,sj2a7,sj2a8,sj2a9,sj2a10,sj2a11,sj2a12,sj2a13,sj2a14,sj2a15,sj2a16,sj2a17,sj2a18>>
+<Img|x=264.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P14).1>.png|link=@Lemon上架A&4|id=sj2a1>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P15).1>.png|link=@Lemon上架A&5|id=sj3|children=<sj3a1,sj3a2,sj3a3,sj3a4,sj3a5,sj3a6,sj3a7,sj3a8,sj3a9,sj3a10,sj3a11,sj3a12,sj3a13,sj3a14,sj3a15,sj3a16,sj3a17,sj3a18>>
+<Img|x=264.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P16).1>.png|link=@Lemon上架A&6|id=sj3a1>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P17).1>.png|link=@Lemon上架A&7|id=sj4|children=<sj4a1,sj4a2,sj4a3,sj4a4,sj4a5,sj4a6,sj4a7,sj4a8,sj4a9,sj4a10,sj4a11,sj4a12,sj4a13,sj4a14,sj4a15,sj4a16,sj4a17,sj4a18>>
+<Img|x=264.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P18).1>.png|link=@Lemon上架A&8|id=sj4a1>
+;------------------------------------------------------------------------
+<Img|x=0.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P19).1>.png|link=@Lemon上架A&9|id=sj5|children=<sj5a1,sj5a2,sj5a3,sj5a4,sj5a5,sj5a6,sj5a7,sj5a8,sj5a9,sj5a10,sj5a11,sj5a12,sj5a13,sj5a14,sj5a15,sj5a16,sj5a17,sj5a18>>
+<Img|x=264.0|y=0.0|img=private/jishouhang/jshxk<$INC.$STR(P20).1>.png|link=@Lemon上架A&10|id=sj5a1>
+;============================================================================
+<Text|x=170.0|y=520.0|color=67|size=18|text=你的寄售所得:<$STR(N$Lemon所得)>>
+<Button|x=340.0|y=510.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=提取|link=@Lemon所得>
+<Text|x=425.0|y=520.0|color=10|size=18|text=(系统扣除20%手续费)>
+#ACT
+CLEARVAR P10 30
+MOV N$Lemon所得 0
+LOADEXVAR N$Lemon所得 $USERID 寄售所得 ..\QUESTDIARY\寄售数据\寄售个人数据.txt
+
+#IF
+POSINLIST <$USERID> ../QuestDiary/寄售数据/个人寄售信息数据.txt S$寄售行_个人寄售数据数组字符串
+#ACT
+CLEARVAR S$Lemon上架0 10
+CLEARVAR S$Lemon上架1 10
+CLEARVAR S$Lemon上架2 10
+CLEARVAR S$Lemon上架3 10
+CLEARVAR S$Lemon上架4 10
+CLEARVAR S$Lemon上架5 10
+CLEARVAR S$Lemon上架6 10
+CLEARVAR S$Lemon上架7 10
+CLEARVAR S$Lemon上架8 10
+CLEARVAR S$Lemon上架9 10
+MOV S$寄售行_个人寄售数据数组_0
+MOV S$寄售行_个人寄售数据数组_1
+MOV S$寄售行_个人寄售数据数组_2
+MOV S$寄售行_个人寄售数据数组_3
+MOV S$寄售行_个人寄售数据数组_4
+MOV S$寄售行_个人寄售数据数组_5
+MOV S$寄售行_个人寄售数据数组_6
+MOV S$寄售行_个人寄售数据数组_7
+MOV S$寄售行_个人寄售数据数组_8
+MOV S$寄售行_个人寄售数据数组_9
+SPLIT <$STR(S$寄售行_个人寄售数据数组字符串)> & S$寄售行_个人寄售数据数组 N$寄售行_个人寄售数据数组长度
+MOV P10 <$STR(N$寄售行_个人寄售数据数组长度)>
+MOV S$Lemon上架0_0 <$STR(S$寄售行_个人寄售数据数组_0)>
+MOV S$Lemon上架1_0 <$STR(S$寄售行_个人寄售数据数组_1)>
+MOV S$Lemon上架2_0 <$STR(S$寄售行_个人寄售数据数组_2)>
+MOV S$Lemon上架3_0 <$STR(S$寄售行_个人寄售数据数组_3)>
+MOV S$Lemon上架4_0 <$STR(S$寄售行_个人寄售数据数组_4)>
+MOV S$Lemon上架5_0 <$STR(S$寄售行_个人寄售数据数组_5)>
+MOV S$Lemon上架6_0 <$STR(S$寄售行_个人寄售数据数组_6)>
+MOV S$Lemon上架7_0 <$STR(S$寄售行_个人寄售数据数组_7)>
+MOV S$Lemon上架8_0 <$STR(S$寄售行_个人寄售数据数组_8)>
+MOV S$Lemon上架9_0 <$STR(S$寄售行_个人寄售数据数组_9)>
+#ELSEACT
+MOV P10 0
+CLEARVAR S$Lemon上架0 10
+CLEARVAR S$Lemon上架1 10
+CLEARVAR S$Lemon上架2 10
+CLEARVAR S$Lemon上架3 10
+CLEARVAR S$Lemon上架4 10
+CLEARVAR S$Lemon上架5 10
+CLEARVAR S$Lemon上架6 10
+CLEARVAR S$Lemon上架7 10
+CLEARVAR S$Lemon上架8 10
+CLEARVAR S$Lemon上架9 10
+
+
+#IF
+POS $STR(S$Lemon上架0_0) |
+#SAY
+<Text|x=85.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架0_2)>|id=sj1a2>
+<ItemShow|x=10.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架0_3)>|name=<$STR(S$Lemon上架0_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj1a3>
+<Text|x=85.0|y=32.0|color=67|size=18|text=价格:|id=sj1a4>
+<Img|x=130.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj1a5>
+<Text|x=155.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架0_4)>|id=sj1a6>
+<Button|x=170.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架0_0)>&<$STR(S$Lemon上架0_1)>&<$STR(S$Lemon上架0_2)>&<$STR(S$Lemon上架0_3)>&<$STR(S$Lemon上架0_4)>&<$STR(S$Lemon上架0_5)>&<$STR(S$Lemon上架0_6)>&<$STR(S$Lemon上架0_7)>|id=sj1a7>
+#ACT
+MOV P11 1
+SPLIT $STR(S$Lemon上架0_0) | S$Lemon上架0
+
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架0_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架0_0)>|<$STR(S$Lemon上架0_1)>|<$STR(S$Lemon上架0_2)>|<$STR(S$Lemon上架0_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=80.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架0_0)>&<$STR(S$Lemon上架0_1)>&<$STR(S$Lemon上架0_2)>&<$STR(S$Lemon上架0_3)>&<$STR(S$Lemon上架0_4)>&<$STR(S$Lemon上架0_5)>&<$STR(S$Lemon上架0_6)>&<$STR(S$Lemon上架0_7)>|id=sj1a8>
+;------------------------------------------------------------------------------------------------------------------------
+#IF
+POS $STR(S$Lemon上架1_0) |
+#SAY
+<Text|x=349.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架1_2)>|id=sj1a9>
+<ItemShow|x=274.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架1_3)>|name=<$STR(S$Lemon上架1_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj1a10>
+<Text|x=349.0|y=32.0|color=67|size=18|text=价格:|id=sj1a11>
+<Img|x=394.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj1a12>
+<Text|x=419.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架1_4)>|id=sj1a13>
+<Button|x=434.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架1_0)>&<$STR(S$Lemon上架1_1)>&<$STR(S$Lemon上架1_2)>&<$STR(S$Lemon上架1_3)>&<$STR(S$Lemon上架1_4)>&<$STR(S$Lemon上架1_5)>&<$STR(S$Lemon上架1_6)>&<$STR(S$Lemon上架1_7)>|id=sj1a14>
+#ACT
+MOV P12 1
+SPLIT $STR(S$Lemon上架1_0) | S$Lemon上架1
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架1_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架1_0)>|<$STR(S$Lemon上架1_1)>|<$STR(S$Lemon上架1_2)>|<$STR(S$Lemon上架1_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=344.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架1_0)>&<$STR(S$Lemon上架1_1)>&<$STR(S$Lemon上架1_2)>&<$STR(S$Lemon上架1_3)>&<$STR(S$Lemon上架1_4)>&<$STR(S$Lemon上架1_5)>&<$STR(S$Lemon上架1_6)>&<$STR(S$Lemon上架1_7)>|id=sj1a15>
+;=========================================================================================
+#IF
+POS $STR(S$Lemon上架2_0) |
+#SAY
+<Text|x=85.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架2_2)>|id=sj2a2>
+<ItemShow|x=10.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架2_3)>|name=<$STR(S$Lemon上架2_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj2a3>
+<Text|x=85.0|y=32.0|color=67|size=18|text=价格:|id=sj2a4>
+<Img|x=130.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj2a5>
+<Text|x=155.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架2_4)>|id=sj2a6>
+<Button|x=170.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架2_0)>&<$STR(S$Lemon上架2_1)>&<$STR(S$Lemon上架2_2)>&<$STR(S$Lemon上架2_3)>&<$STR(S$Lemon上架2_4)>&<$STR(S$Lemon上架2_5)>&<$STR(S$Lemon上架2_6)>&<$STR(S$Lemon上架2_7)>|id=sj2a7>
+#ACT
+MOV P13 1
+SPLIT $STR(S$Lemon上架2_0) | S$Lemon上架2
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架2_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架2_0)>|<$STR(S$Lemon上架2_1)>|<$STR(S$Lemon上架2_2)>|<$STR(S$Lemon上架2_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=80.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架2_0)>&<$STR(S$Lemon上架2_1)>&<$STR(S$Lemon上架2_2)>&<$STR(S$Lemon上架2_3)>&<$STR(S$Lemon上架2_4)>&<$STR(S$Lemon上架2_5)>&<$STR(S$Lemon上架2_6)>&<$STR(S$Lemon上架2_7)>|id=sj2a8>
+;------------------------------------------------------------------------------------------------------------------------
+#IF
+POS $STR(S$Lemon上架3_0) |
+#SAY
+<Text|x=349.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架3_2)>|id=sj2a9>
+<ItemShow|x=274.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架3_3)>|name=<$STR(S$Lemon上架3_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj2a10>
+<Text|x=349.0|y=32.0|color=67|size=18|text=价格:|id=sj2a11>
+<Img|x=394.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj2a12>
+<Text|x=419.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架3_4)>|id=sj2a13>
+<Button|x=434.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架3_0)>&<$STR(S$Lemon上架3_1)>&<$STR(S$Lemon上架3_2)>&<$STR(S$Lemon上架3_3)>&<$STR(S$Lemon上架3_4)>&<$STR(S$Lemon上架3_5)>&<$STR(S$Lemon上架3_6)>&<$STR(S$Lemon上架3_7)>|id=sj2a14>
+#ACT
+MOV P14 1
+SPLIT $STR(S$Lemon上架3_0) | S$Lemon上架3
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架3_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架3_0)>|<$STR(S$Lemon上架3_1)>|<$STR(S$Lemon上架3_2)>|<$STR(S$Lemon上架3_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=344.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架3_0)>&<$STR(S$Lemon上架3_1)>&<$STR(S$Lemon上架3_2)>&<$STR(S$Lemon上架3_3)>&<$STR(S$Lemon上架3_4)>&<$STR(S$Lemon上架3_5)>&<$STR(S$Lemon上架3_6)>&<$STR(S$Lemon上架3_7)>|id=sj2a15>
+;=========================================================================================
+#IF
+POS $STR(S$Lemon上架4_0) |
+#SAY
+<Text|x=85.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架4_2)>|id=sj3a2>
+<ItemShow|x=10.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架4_3)>|name=<$STR(S$Lemon上架4_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj3a3>
+<Text|x=85.0|y=32.0|color=67|size=18|text=价格:|id=sj3a4>
+<Img|x=130.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj3a5>
+<Text|x=155.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架4_4)>|id=sj3a6>
+<Button|x=170.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架4_0)>&<$STR(S$Lemon上架4_1)>&<$STR(S$Lemon上架4_2)>&<$STR(S$Lemon上架4_3)>&<$STR(S$Lemon上架4_4)>&<$STR(S$Lemon上架4_5)>&<$STR(S$Lemon上架4_6)>&<$STR(S$Lemon上架4_7)>|id=sj3a7>
+#ACT
+MOV P15 1
+SPLIT $STR(S$Lemon上架4_0) | S$Lemon上架4
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架4_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架4_0)>|<$STR(S$Lemon上架4_1)>|<$STR(S$Lemon上架4_2)>|<$STR(S$Lemon上架4_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=80.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架4_0)>&<$STR(S$Lemon上架4_1)>&<$STR(S$Lemon上架4_2)>&<$STR(S$Lemon上架4_3)>&<$STR(S$Lemon上架4_4)>&<$STR(S$Lemon上架4_5)>&<$STR(S$Lemon上架4_6)>&<$STR(S$Lemon上架4_7)>|id=sj3a8>
+;------------------------------------------------------------------------------------------------------------------------
+#IF
+POS $STR(S$Lemon上架5_0) |
+#SAY
+<Text|x=349.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架5_2)>|id=sj3a9>
+<ItemShow|x=274.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架5_3)>|name=<$STR(S$Lemon上架5_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj3a10>
+<Text|x=349.0|y=32.0|color=67|size=18|text=价格:|id=sj3a11>
+<Img|x=394.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj3a12>
+<Text|x=419.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架5_4)>|id=sj3a13>
+<Button|x=434.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架5_0)>&<$STR(S$Lemon上架5_1)>&<$STR(S$Lemon上架5_2)>&<$STR(S$Lemon上架5_3)>&<$STR(S$Lemon上架5_4)>&<$STR(S$Lemon上架5_5)>&<$STR(S$Lemon上架5_6)>&<$STR(S$Lemon上架5_7)>|id=sj3a14>
+#ACT
+MOV P16 1
+SPLIT $STR(S$Lemon上架5_0) | S$Lemon上架5
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架5_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架5_0)>|<$STR(S$Lemon上架5_1)>|<$STR(S$Lemon上架5_2)>|<$STR(S$Lemon上架5_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=344.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架5_0)>&<$STR(S$Lemon上架5_1)>&<$STR(S$Lemon上架5_2)>&<$STR(S$Lemon上架5_3)>&<$STR(S$Lemon上架5_4)>&<$STR(S$Lemon上架5_5)>&<$STR(S$Lemon上架5_6)>&<$STR(S$Lemon上架5_7)>|id=sj3a15>
+;=========================================================================================
+#IF
+POS $STR(S$Lemon上架6_0) |
+#SAY
+<Text|x=85.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架6_2)>|id=sj4a2>
+<ItemShow|x=10.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架6_3)>|name=<$STR(S$Lemon上架6_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj4a3>
+<Text|x=85.0|y=32.0|color=67|size=18|text=价格:|id=sj4a4>
+<Img|x=130.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj4a5>
+<Text|x=155.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架6_4)>|id=sj4a6>
+<Button|x=170.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架6_0)>&<$STR(S$Lemon上架6_1)>&<$STR(S$Lemon上架6_2)>&<$STR(S$Lemon上架6_3)>&<$STR(S$Lemon上架6_4)>&<$STR(S$Lemon上架6_5)>&<$STR(S$Lemon上架6_6)>&<$STR(S$Lemon上架6_7)>|id=sj4a7>
+#ACT
+MOV P17 1
+SPLIT $STR(S$Lemon上架6_0) | S$Lemon上架6
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架6_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架6_0)>|<$STR(S$Lemon上架6_1)>|<$STR(S$Lemon上架6_2)>|<$STR(S$Lemon上架6_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=80.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架6_0)>&<$STR(S$Lemon上架6_1)>&<$STR(S$Lemon上架6_2)>&<$STR(S$Lemon上架6_3)>&<$STR(S$Lemon上架6_4)>&<$STR(S$Lemon上架6_5)>&<$STR(S$Lemon上架6_6)>&<$STR(S$Lemon上架6_7)>|id=sj4a8>
+;------------------------------------------------------------------------------------------------------------------------
+#IF
+POS $STR(S$Lemon上架7_0) |
+#SAY
+<Text|x=349.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架7_2)>|id=sj4a9>
+<ItemShow|x=274.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架7_3)>|name=<$STR(S$Lemon上架7_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj4a10>
+<Text|x=349.0|y=32.0|color=67|size=18|text=价格:|id=sj4a11>
+<Img|x=394.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj4a12>
+<Text|x=419.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架7_4)>|id=sj4a13>
+<Button|x=434.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架7_0)>&<$STR(S$Lemon上架7_1)>&<$STR(S$Lemon上架7_2)>&<$STR(S$Lemon上架7_3)>&<$STR(S$Lemon上架7_4)>&<$STR(S$Lemon上架7_5)>&<$STR(S$Lemon上架7_6)>&<$STR(S$Lemon上架7_7)>|id=sj4a14>
+#ACT
+MOV P18 1
+SPLIT $STR(S$Lemon上架7_0) | S$Lemon上架7
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架7_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架7_0)>|<$STR(S$Lemon上架7_1)>|<$STR(S$Lemon上架7_2)>|<$STR(S$Lemon上架7_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=344.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架7_0)>&<$STR(S$Lemon上架7_1)>&<$STR(S$Lemon上架7_2)>&<$STR(S$Lemon上架7_3)>&<$STR(S$Lemon上架7_4)>&<$STR(S$Lemon上架7_5)>&<$STR(S$Lemon上架7_6)>&<$STR(S$Lemon上架7_7)>|id=sj4a15>
+;=========================================================================================
+#IF
+POS $STR(S$Lemon上架8_0) |
+#SAY
+<Text|x=85.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架8_2)>|id=sj5a2>
+<ItemShow|x=10.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架8_3)>|name=<$STR(S$Lemon上架8_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj5a3>
+<Text|x=85.0|y=32.0|color=67|size=18|text=价格:|id=sj5a4>
+<Img|x=130.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj5a5>
+<Text|x=155.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架8_4)>|id=sj5a6>
+<Button|x=170.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架8_0)>&<$STR(S$Lemon上架8_1)>&<$STR(S$Lemon上架8_2)>&<$STR(S$Lemon上架8_3)>&<$STR(S$Lemon上架8_4)>&<$STR(S$Lemon上架8_5)>&<$STR(S$Lemon上架8_6)>&<$STR(S$Lemon上架8_7)>|id=sj5a7>
+#ACT
+MOV P19 1
+SPLIT $STR(S$Lemon上架8_0) | S$Lemon上架8
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架8_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架8_0)>|<$STR(S$Lemon上架8_1)>|<$STR(S$Lemon上架8_2)>|<$STR(S$Lemon上架8_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=80.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架8_0)>&<$STR(S$Lemon上架8_1)>&<$STR(S$Lemon上架8_2)>&<$STR(S$Lemon上架8_3)>&<$STR(S$Lemon上架8_4)>&<$STR(S$Lemon上架8_5)>&<$STR(S$Lemon上架8_6)>&<$STR(S$Lemon上架8_7)>|id=sj5a8>
+;------------------------------------------------------------------------------------------------------------------------
+#IF
+POS $STR(S$Lemon上架9_0) |
+#SAY
+<Text|x=349.0|y=2.0|color=67|size=18|text=<$STR(S$Lemon上架9_2)>|id=sj5a9>
+<ItemShow|x=274.0|y=37.0|itemid=0|itemcount=<$STR(S$Lemon上架9_3)>|name=<$STR(S$Lemon上架9_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=sj5a10>
+<Text|x=349.0|y=32.0|color=67|size=18|text=价格:|id=sj5a11>
+<Img|x=394.0|y=34.0|img=public/icon_currency_ingot_02.png|id=sj5a12>
+<Text|x=419.0|y=32.0|color=67|size=18|text=<$STR(S$Lemon上架9_4)>|id=sj5a13>
+<Button|x=434.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=下架|link=@Lemon下架&<$STR(S$Lemon上架9_0)>&<$STR(S$Lemon上架9_1)>&<$STR(S$Lemon上架9_2)>&<$STR(S$Lemon上架9_3)>&<$STR(S$Lemon上架9_4)>&<$STR(S$Lemon上架9_5)>&<$STR(S$Lemon上架9_6)>&<$STR(S$Lemon上架9_7)>|id=sj5a14>
+#ACT
+MOV P20 1
+SPLIT $STR(S$Lemon上架9_0) | S$Lemon上架9
+
+#IF
+CHECKVARLIST $STR(S$Lemon上架9_2) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+!POSINLIST <$STR(S$Lemon上架9_0)>|<$STR(S$Lemon上架9_1)>|<$STR(S$Lemon上架9_2)>|<$STR(S$Lemon上架9_3)>| ..\QUESTDIARY\寄售数据\全部.txt
+#SAY
+<Button|x=344.0|y=65.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=上架|link=@Lemon上架CX&<$STR(S$Lemon上架9_0)>&<$STR(S$Lemon上架9_1)>&<$STR(S$Lemon上架9_2)>&<$STR(S$Lemon上架9_3)>&<$STR(S$Lemon上架9_4)>&<$STR(S$Lemon上架9_5)>&<$STR(S$Lemon上架9_6)>&<$STR(S$Lemon上架9_7)>|id=sj5a15>
+;=========================================================================================
+
+#IF
+POS $STR(S$Lemon包裹) |
+#ACT
+CLEARVAR S$Lemon包裹 60
+SPLIT $STR(S$Lemon包裹) | S$Lemon包裹
+#ELSEACT
+CLEARVAR S$Lemon包裹 60
+
+#IF
+large $STR(S$Lemon包裹_0) 0
+CHECKITEMID $STR(S$Lemon包裹_0)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_0)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=0|id=bg1a4>
+#IF
+large $STR(S$Lemon包裹_1) 0
+CHECKITEMID $STR(S$Lemon包裹_1)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_1)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=1|id=bg1a5>
+#IF
+large $STR(S$Lemon包裹_2) 0
+CHECKITEMID $STR(S$Lemon包裹_2)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_2)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=2|id=bg1a6>
+#IF
+large $STR(S$Lemon包裹_3) 0
+CHECKITEMID $STR(S$Lemon包裹_3)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_3)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=3|id=bg1a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_4) 0
+CHECKITEMID $STR(S$Lemon包裹_4)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_4)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=4|id=bg2a4>
+#IF
+large $STR(S$Lemon包裹_5) 0
+CHECKITEMID $STR(S$Lemon包裹_5)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_5)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=5|id=bg2a5>
+#IF
+large $STR(S$Lemon包裹_6) 0
+CHECKITEMID $STR(S$Lemon包裹_6)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_6)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=6|id=bg2a6>
+#IF
+large $STR(S$Lemon包裹_7) 0
+CHECKITEMID $STR(S$Lemon包裹_7)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_7)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=7|id=bg2a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_8) 0
+CHECKITEMID $STR(S$Lemon包裹_8)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_8)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=8|id=bg3a4>
+#IF
+large $STR(S$Lemon包裹_9) 0
+CHECKITEMID $STR(S$Lemon包裹_9)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_9)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=9|id=bg3a5>
+#IF
+large $STR(S$Lemon包裹_10) 0
+CHECKITEMID $STR(S$Lemon包裹_10)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_10)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=10|id=bg3a6>
+#IF
+large $STR(S$Lemon包裹_11) 0
+CHECKITEMID $STR(S$Lemon包裹_11)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_11)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=11|id=bg3a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_12) 0
+CHECKITEMID $STR(S$Lemon包裹_12)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_12)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=12|id=bg4a4>
+#IF
+large $STR(S$Lemon包裹_13) 0
+CHECKITEMID $STR(S$Lemon包裹_13)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_13)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=13|id=bg4a5>
+#IF
+large $STR(S$Lemon包裹_14) 0
+CHECKITEMID $STR(S$Lemon包裹_14)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_14)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=14|id=bg4a6>
+#IF
+large $STR(S$Lemon包裹_15) 0
+CHECKITEMID $STR(S$Lemon包裹_15)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_15)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=15|id=bg4a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_16) 0
+CHECKITEMID $STR(S$Lemon包裹_16)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_16)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=16|id=bg5a4>
+#IF
+large $STR(S$Lemon包裹_17) 0
+CHECKITEMID $STR(S$Lemon包裹_17)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_17)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=17|id=bg5a5>
+#IF
+large $STR(S$Lemon包裹_18) 0
+CHECKITEMID $STR(S$Lemon包裹_18)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_18)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=18|id=bg5a6>
+#IF
+large $STR(S$Lemon包裹_19) 0
+CHECKITEMID $STR(S$Lemon包裹_19)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_19)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=19|id=bg5a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_20) 0
+CHECKITEMID $STR(S$Lemon包裹_20)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_20)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=20|id=bg6a4>
+#IF
+large $STR(S$Lemon包裹_21) 0
+CHECKITEMID $STR(S$Lemon包裹_21)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_21)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=21|id=bg6a5>
+#IF
+large $STR(S$Lemon包裹_22) 0
+CHECKITEMID $STR(S$Lemon包裹_22)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_22)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=22|id=bg6a6>
+#IF
+large $STR(S$Lemon包裹_23) 0
+CHECKITEMID $STR(S$Lemon包裹_23)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_23)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=23|id=bg6a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_24) 0
+CHECKITEMID $STR(S$Lemon包裹_24)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_24)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=24|id=bg7a4>
+#IF
+large $STR(S$Lemon包裹_25) 0
+CHECKITEMID $STR(S$Lemon包裹_25)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_25)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=25|id=bg7a5>
+#IF
+large $STR(S$Lemon包裹_26) 0
+CHECKITEMID $STR(S$Lemon包裹_26)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_26)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=26|id=bg7a6>
+#IF
+large $STR(S$Lemon包裹_27) 0
+CHECKITEMID $STR(S$Lemon包裹_27)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_27)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=27|id=bg7a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_28) 0
+CHECKITEMID $STR(S$Lemon包裹_28)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_28)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=28|id=bg8a4>
+#IF
+large $STR(S$Lemon包裹_29) 0
+CHECKITEMID $STR(S$Lemon包裹_29)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_29)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=29|id=bg8a5>
+#IF
+large $STR(S$Lemon包裹_30) 0
+CHECKITEMID $STR(S$Lemon包裹_30)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_30)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=30|id=bg8a6>
+#IF
+large $STR(S$Lemon包裹_31) 0
+CHECKITEMID $STR(S$Lemon包裹_31)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_31)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=31|id=bg8a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_32) 0
+CHECKITEMID $STR(S$Lemon包裹_32)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_32)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=32|id=bg9a4>
+#IF
+large $STR(S$Lemon包裹_33) 0
+CHECKITEMID $STR(S$Lemon包裹_33)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_33)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=33|id=bg9a5>
+#IF
+large $STR(S$Lemon包裹_34) 0
+CHECKITEMID $STR(S$Lemon包裹_34)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_34)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=34|id=bg9a6>
+#IF
+large $STR(S$Lemon包裹_35) 0
+CHECKITEMID $STR(S$Lemon包裹_35)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_35)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=35|id=bg9a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_36) 0
+CHECKITEMID $STR(S$Lemon包裹_36)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_36)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=36|id=bg10a4>
+#IF
+large $STR(S$Lemon包裹_37) 0
+CHECKITEMID $STR(S$Lemon包裹_37)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_37)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=37|id=bg10a5>
+#IF
+large $STR(S$Lemon包裹_38) 0
+CHECKITEMID $STR(S$Lemon包裹_38)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_38)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=38|id=bg10a6>
+#IF
+large $STR(S$Lemon包裹_39) 0
+CHECKITEMID $STR(S$Lemon包裹_39)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_39)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=39|id=bg10a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_40) 0
+CHECKITEMID $STR(S$Lemon包裹_40)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_40)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=40|id=bg11a4>
+#IF
+large $STR(S$Lemon包裹_41) 0
+CHECKITEMID $STR(S$Lemon包裹_41)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_41)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=41|id=bg11a5>
+#IF
+large $STR(S$Lemon包裹_42) 0
+CHECKITEMID $STR(S$Lemon包裹_42)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_42)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=42|id=bg11a6>
+#IF
+large $STR(S$Lemon包裹_43) 0
+CHECKITEMID $STR(S$Lemon包裹_43)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_43)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=43|id=bg11a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_44) 0
+CHECKITEMID $STR(S$Lemon包裹_44)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_44)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=44|id=bg12a4>
+#IF
+large $STR(S$Lemon包裹_45) 0
+CHECKITEMID $STR(S$Lemon包裹_45)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_45)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=45|id=bg12a5>
+#IF
+large $STR(S$Lemon包裹_46) 0
+CHECKITEMID $STR(S$Lemon包裹_46)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_46)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=46|id=bg12a6>
+#IF
+large $STR(S$Lemon包裹_47) 0
+CHECKITEMID $STR(S$Lemon包裹_47)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_47)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=47|id=bg12a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_48) 0
+CHECKITEMID $STR(S$Lemon包裹_48)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_48)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=48|id=bg13a4>
+#IF
+large $STR(S$Lemon包裹_49) 0
+CHECKITEMID $STR(S$Lemon包裹_49)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_49)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=49|id=bg13a5>
+#IF
+large $STR(S$Lemon包裹_50) 0
+CHECKITEMID $STR(S$Lemon包裹_50)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_50)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=50|id=bg13a6>
+#IF
+large $STR(S$Lemon包裹_51) 0
+CHECKITEMID $STR(S$Lemon包裹_51)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_51)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=51|id=bg13a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_52) 0
+CHECKITEMID $STR(S$Lemon包裹_52)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_52)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=52|id=bg14a4>
+#IF
+large $STR(S$Lemon包裹_53) 0
+CHECKITEMID $STR(S$Lemon包裹_53)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_53)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=53|id=bg14a5>
+#IF
+large $STR(S$Lemon包裹_54) 0
+CHECKITEMID $STR(S$Lemon包裹_54)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_54)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=54|id=bg14a6>
+#IF
+large $STR(S$Lemon包裹_55) 0
+CHECKITEMID $STR(S$Lemon包裹_55)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_55)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=55|id=bg14a7>
+;----------------------------------------------------------------------------------------
+#IF
+large $STR(S$Lemon包裹_56) 0
+CHECKITEMID $STR(S$Lemon包裹_56)
+#SAY
+<GoodsShow|x=0.0|y=0.0|index=<$STR(S$Lemon包裹_56)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=56|id=bg15a4>
+#IF
+large $STR(S$Lemon包裹_57) 0
+CHECKITEMID $STR(S$Lemon包裹_57)
+#SAY
+<GoodsShow|x=66.0|y=0.0|index=<$STR(S$Lemon包裹_57)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=57|id=bg15a5>
+#IF
+large $STR(S$Lemon包裹_58) 0
+CHECKITEMID $STR(S$Lemon包裹_58)
+#SAY
+<GoodsShow|x=132.0|y=0.0|index=<$STR(S$Lemon包裹_58)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=58|id=bg15a6>
+#IF
+large $STR(S$Lemon包裹_59) 0
+CHECKITEMID $STR(S$Lemon包裹_59)
+#SAY
+<GoodsShow|x=198.0|y=0.0|index=<$STR(S$Lemon包裹_59)>|showtips=0|bgtype=1|link=@Lemon选中SJ&寄售包裹编号=59|id=bg15a7>
+;----------------------------------------------------------------------------------------
+
+#IF
+large $STR(S$Lemon上架) 0
+CHECKITEMID $STR(S$Lemon上架)
+#SAY
+<Layout|x=125|y=10|width=880|height=580|link=@xxx>
+<Img|x=400.0|y=30.0|show=0|bg=0|move=0|img=private/jishouhang/backgroundone.png|loadDelay=0>
+<Button|x=670.0|y=33.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@Lemon上架GB>
+<Text|x=520.0|y=42.0|color=67|size=20|text=上架道具>
+;============================================================
+<Button|x=544.0|y=120.0|nimg=private/jishouhang/1.png|pimg=private/jishouhang/1.png|color=67|size=18|text=<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>>
+<GoodsShow|x=530.0|y=160.0|index=<$STR(S$Lemon上架)>|showtips=1|bgtype=public\icon_props_01.png>
+<Text|x=580.0|y=205.0|color=255|size=16|text=<$STR(N$Lemon上架SL)>>
+;============================================================
+<Text|x=525.0|y=260.0|color=67|size=18|text=上架数量>
+<Button|x=475.0|y=300.0|nimg=private/jishouhang/btn_minus_01.png|pimg=private/jishouhang/btn_minus_01.png|link=@Lemon上架->
+<Button|x=618.0|y=300.0|nimg=private/jishouhang/btn_plus_02.png|pimg=private/jishouhang/btn_plus_02_01.png|link=@Lemon上架+>
+<Img|x=520.0|y=300.0|img=private/jishouhang/bg_store_input.png>
+<Button|x=544.0|y=295.0|nimg=private/jishouhang/1.png|pimg=private/jishouhang/1.png|color=255|size=18|text=<$STR(N$Lemon上架)>>
+;============================================================
+<Text|x=473.0|y=390.0|color=67|size=18|text=价格>
+<Img|x=520.0|y=390.0|img=private/jishouhang/bg_store_input.png>
+<Img|x=620.0|y=390.0|img=public/icon_currency_ingot_02.png>
+<Input|x=520.0|y=390.0|width=85|height=28|type=1|size=14|maxcount=5|mincount=1|color=255|inputid=5|place=请输入价格|placecolor=255>
+<Button|x=545.0|y=420.0|nimg=private/jishouhang/1.png|pimg=private/jishouhang/1.png|color=222|size=18|text=允许上架价格区间:<$MULT.<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>.$STR(N$Lemon上架)>-<$MULT.<$MULT^<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>^3>.$STR(N$Lemon上架)>>
+;============================================================
+<Button|x=430.0|y=480.0|nimg=public/button/btn_push_10.png|pimg=public/button/btn_push_10.png|color=67|size=20|text=取消|link=@Lemon上架GB>
+<Button|x=585.0|y=480.0|nimg=public/button/btn_push_10.png|pimg=public/button/btn_push_10.png|color=67|size=20|text=上架|link=@Lemon上架Z>
+
+
+
+
+[@Lemon所得]
+#IF
+TRUE
+#ACT
+MOV N$Lemon所得 0
+LOADEXVAR N$Lemon所得 $USERID 寄售所得 ..\QUESTDIARY\寄售数据\寄售个人数据.txt
+
+#IF
+LARGE N$Lemon所得 0
+#ACT
+GAMEGOLD + $DIV.$MULT^$STR(N$Lemon所得)^8.10
+SENDMSG 19 提取寄售所得成功!
+SENDMSG 7 提取寄售所得成功!元宝+<$DIV.$MULT^$STR(N$Lemon所得)^8.10>
+INSERTVARLIST 0 玩家:<$USERNAME>提取寄售所得元宝(已扣除20%)"<$DIV.$MULT^$STR(N$Lemon所得)^8.10>个,提取时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\提取<$DATE>.txt"
+SAVEEXVAR 0 $USERID 寄售所得 ..\QUESTDIARY\寄售数据\寄售个人数据.txt
+GOTO @Lemon上架XS
+BREAK
+#ELSEACT
+SENDMSG 19 没有可提取的寄售所得!
+BREAK
+
+[@Lemon上架Z]
+#IF
+LARGE P10 9
+#ACT
+MOV S$Lemon上架 
+SENDMSG 19 货架已满
+BREAK
+
+#IF
+!CHECKITEMID $STR(S$Lemon上架)
+#ACT
+MOV S$Lemon上架 
+BREAK
+
+#IF
+!CHECKVARLIST <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].NAME> ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+#ACT
+MOV S$Lemon上架 
+SENDMSG 19 此道具不允许上架寄售!
+BREAK
+
+#IFONE
+SMALL <$ITEMINFO[<$STR(S$Lemon上架)>].GC1> 5
+#ACT
+SENDMSG 19 此物品上架异常,请联系管理员!
+BREAK
+
+#IF
+SMALL N$Lemon上架 1
+#ACT
+SENDMSG 19 请先设置上架数量!!
+BREAK
+
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].Reserved> 256
+SMALL <$ITEMINFO[<$STR(S$Lemon上架)>].DURA> $STR(N$Lemon上架)
+#ACT
+SENDMSG 19 道具数量不足!!
+BREAK
+
+#IFONE
+SMALL $NPCINPUT(5) <$MULT.<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>.$STR(N$Lemon上架)>
+LARGE $NPCINPUT(5) <$MULT.<$MULT^<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>^3>.$STR(N$Lemon上架)>
+#ACT
+SENDMSG 19 此物品上架价格区间:<$MULT.<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>.$STR(N$Lemon上架)>-<$MULT.<$MULT^<$ITEMINFO[<$STR(S$Lemon上架)>].GC2>^3>.$STR(N$Lemon上架)>元宝
+SENDMSG 19 请重新设置价格
+BREAK
+#ELSEACT
+MOV S$Lemon上架FLA 
+MOV S$Lemon上架FLB 
+
+#IF
+POS -5-6- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 武器
+#IF
+POS -10-11- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 衣服
+#IF
+POS -15- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 头盔
+#IF
+POS -19-20-21- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 项链
+#IF
+POS -22-23- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 戒指
+#IF
+POS -24-26- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 手镯
+#IF
+POS -58- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 腰带
+#IF
+POS -81- -<$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE>-
+#ACT
+MOV S$Lemon上架FLA 装备
+MOV S$Lemon上架FLB 靴子
+
+;----------------------------------------------材料
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].Reserved> 256
+#ACT
+MOV S$Lemon上架FLA 材料
+MOV S$Lemon上架FLB 无
+
+;----------------------------------------------神器
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].ANICOUNT> 9528
+#ACT
+MOV S$Lemon上架FLA 神器
+MOV S$Lemon上架FLB 无
+;----------------------------------------------法宝
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].ANICOUNT> 9527
+#ACT
+MOV S$Lemon上架FLA 法宝
+MOV S$Lemon上架FLB 无
+
+#IFONE
+EQUAL S$Lemon上架FLA 
+EQUAL S$Lemon上架FLB 
+#ACT
+SENDMSG 19 此物品上架异常,请联系管理员!
+BREAK
+
+#IF
+POS $STR(S$Lemon包裹BL) <$STR(S$Lemon上架)>,
+#ACT
+MOV S$回收IDX $STR(S$Lemon上架)
+FUNC 1 @Lemon回收QX
+
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].Reserved> 256
+#ACT
+GOTO @寄售行_增加世界寄售&寄售行_参数_新增数据=<$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|<$STR(N$Lemon上架)>|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)>
+; INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|<$STR(N$Lemon上架)>|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\个人数据\<$USERID>.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|<$STR(N$Lemon上架)>|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\全部.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|<$STR(N$Lemon上架)>|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|<$STR(N$Lemon上架)>|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\<$STR(S$Lemon上架FLA)>.txt
+INSERTVARLIST 0 玩家:<$USERNAME>上架"<<$STR(S$Lemon上架)>].NAME>>*<$STR(N$Lemon上架)>"售价:<$NPCINPUT(5)>,上架时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\上架<$DATE>.txt
+UPGRADEUSERITEM $STR(S$Lemon上架) 20 - $STR(N$Lemon上架)
+MOV S$Lemon上架 
+MOV N$Lemon上架 0
+MOV N$Lemon上架加减 0
+SENDMSG 19 上架成功!
+BAGREF 2
+DELAYGOTO 100 @Lemon上架XS
+BREAK
+#ELSEACT
+GOTO @寄售行_增加世界寄售&寄售行_参数_新增数据=<$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)>
+; INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\个人数据\<$USERID>.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\全部.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>.txt
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\<$STR(S$Lemon上架FLA)>.txt
+INSERTVARLIST 0 玩家:<$USERNAME>上架"<<$STR(S$Lemon上架)>].NAME>>*<$STR(N$Lemon上架)>"售价:<$NPCINPUT(5)>,上架时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\上架<$DATE>.txt
+
+#IF
+!EQUAL S$Lemon上架FLB 无
+#ACT
+INSERTVARLIST 0 <$LONGDATE>|<$USERID>|<$ITEMINFO[<$STR(S$Lemon上架)>].NAME>|1|<$NPCINPUT(5)>|<$USERNAME>|<$STR(S$Lemon上架FLA)>|<$STR(S$Lemon上架FLB)> ..\QUESTDIARY\寄售数据\<$STR(S$Lemon上架FLB)>.txt
+TAKEM $STR(S$Lemon上架)
+MOV S$Lemon上架 
+MOV N$Lemon上架 0
+MOV N$Lemon上架加减 0
+SENDMSG 19 上架成功!
+BAGREF 2
+DELAYGOTO 100 @Lemon上架XS
+;GOTO @Lemon上架XS
+BREAK
+#ELSEACT
+TAKEM $STR(S$Lemon上架)
+SENDMSG 19 上架成功!
+MOV S$Lemon上架 
+MOV N$Lemon上架 0
+MOV N$Lemon上架加减 0
+BAGREF 2
+DELAYGOTO 100 @Lemon上架XS
+;GOTO @Lemon上架XS
+BREAK
+
+
+
+
+
+[@Lemon上架-]
+#IF
+!CHECKITEMID $STR(S$Lemon上架)
+#ACT
+BREAK
+
+;-------------------------检测不是叠加
+#IFONE
+!EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+!EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].Reserved> 256
+#ACT
+BREAK
+
+#IF
+LARGE N$Lemon上架 100
+#ACT
+DEC N$Lemon上架加减 100
+GOTO @Lemon上架XS
+GOTO @Lemon选中SJ
+BREAK
+
+[@Lemon上架+]
+#IF
+!CHECKITEMID $STR(S$Lemon上架)
+#ACT
+BREAK
+
+#IFONE
+!EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].STDMODE> 46
+!EQUAL <$ITEMINFO[<$STR(S$Lemon上架)>].Reserved> 256
+#ACT
+BREAK
+
+#IF
+!SMALL <$ITEMINFO[<$STR(S$Lemon上架)>].DURA> $INC.$STR(N$Lemon上架).100
+#ACT
+INC N$Lemon上架加减 100
+GOTO @Lemon上架XS
+GOTO @Lemon选中SJ
+BREAK
+#ELSEACT
+SENDMSG 19 道具数量不足
+BREAK
+
+
+[@Lemon上架GB]
+#IF
+TRUE
+#ACT
+MOV S$Lemon上架
+GOTO @Lemon上架XS
+BREAK
+
+[@Lemon选中SJ]
+#IF
+LARGE P10 9
+#ACT
+MOV S$Lemon上架 
+SENDMSG 19 货架已满
+BREAK
+
+#IF
+!CHECKITEMID <$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>
+#ACT
+MOV S$Lemon上架 
+SENDMSG 5 数据错误!
+BREAK
+
+#IF
+!CHECKVARLIST <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].NAME> ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+#ACT
+MOV S$Lemon上架 
+SENDMSG 19 此道具不允许上架寄售!-<$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].NAME>
+BREAK
+
+#IFONE
+EQUAL <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].ITEMEXT(59)> 1
+EQUAL <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].ITEMEXT(59)> 3
+#ACT
+MOV S$Lemon上架 
+SENDMSG 19 绑定物品不允许上架!
+BREAK
+
+#IF
+EQUAL <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].STDMODE> 46
+EQUAL <$ITEMINFO[<$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>].Reserved> 256
+#ACT
+MOV S$Lemon上架 <$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>
+MOV N$Lemon上架 <$STR(N$Lemon上架加减)>
+MOV N$Lemon上架SL <$STR(N$Lemon上架加减)>
+GOTO @Lemon上架XS
+BREAK
+#ELSEACT
+MOV S$Lemon上架 <$STR(S$Lemon包裹_<$STR(S$寄售包裹编号)>)>
+MOV N$Lemon上架 1
+MOV N$Lemon上架SL 1
+GOTO @Lemon上架XS
+BREAK
+
+
+
+
+[@Lemon下架]
+#IF
+POSINLIST <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)> ..\QUESTDIARY\寄售数据\个人寄售信息数据.txt S$Lemon个人寄售数据数组
+#ACT
+CLEARVAR S$Lemon下架 10
+MOV S$Lemon下架1 <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)>
+SPLIT $STR(S$Lemon下架1) | S$Lemon下架
+#ELSEACT
+SENDMSG 1 <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)>
+SENDMSG 19 数据异常！
+BREAK
+
+#IF
+EQUAL <$STDITEM(<$STR(S$Lemon下架_2)>).STDMODE> 46
+EQUAL <$STDITEM(<$STR(S$Lemon下架_2)>).Reserved> 256
+#ACT
+MOV P33 1
+#ELSEACT
+MOV P33 $STR(S$Lemon下架_3)
+
+#IF
+!CHECKBAGSIZE $STR(P33)
+#ACT
+SENDMSG 19 需<$STR(P33)>个包裹位置！
+BREAK
+#ELSEACT
+GIVE $STR(S$Lemon下架_2) $STR(S$Lemon下架_3)
+GOTO @寄售行_删除个人寄售数据&寄售行_参数_删除数据=<$STR(S$Lemon下架1)>
+; DELVARLIST $STR(S$Lemon下架) ..\QUESTDIARY\寄售数据\个人数据\<$USERID>.txt
+DELVARLIST $STR(S$Lemon下架1) ..\QUESTDIARY\寄售数据\全部.txt
+DELVARLIST $STR(S$Lemon下架1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_2)>.txt
+DELVARLIST $STR(S$Lemon下架1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_6)>.txt
+DELVARLIST $STR(S$Lemon下架1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon下架_7)>.txt
+SENDMSG 19 下架成功!
+INSERTVARLIST 0 玩家:<$STR(S$Lemon下架_5)>下架了"<$STR(S$Lemon下架_2)>*<$STR(S$Lemon下架_3)>"售价:<$STR(S$Lemon下架_4)>,下架时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\下架<$DATE>.txt
+GOTO @Lemon上架XS
+BREAK
+
+;寄售行_参数_删除数据
+[@寄售行_删除个人寄售数据]
+#IF
+POSINLIST <$STR(S$寄售行_参数_删除数据)> ..\QUESTDIARY\寄售数据\个人寄售信息数据.txt S$寄售行_个人寄售数据
+#ACT
+DELVARLIST <$STR(S$寄售行_个人寄售数据)> ../QuestDiary/寄售数据/个人寄售信息数据.txt
+REPLACETEXT S$寄售行_个人寄售数据 <$STR(S$寄售行_参数_删除数据)>&
+ADDVARLIST <$STR(S$寄售行_个人寄售数据)> ../QuestDiary/寄售数据/个人寄售信息数据.txt
+
+
+;寄售行_参数_新增数据
+[@寄售行_增加世界寄售]
+#IF
+PosInlist <$USERID> ../QuestDiary/寄售数据/个人寄售信息数据.txt S$寄售行_老个人寄售数据
+#ACT
+MOV S$寄售行_新个人寄售数据 <$STR(S$寄售行_老个人寄售数据)><$STR(S$寄售行_参数_新增数据)>&
+DELVARLIST <$STR(S$寄售行_老个人寄售数据)> ../QuestDiary/寄售数据/个人寄售信息数据.txt
+#ELSEACT
+MOV S$寄售行_新个人寄售数据 <$STR(S$寄售行_参数_新增数据)>&
+
+#IF
+RANDOM 1
+#ACT
+ADDVARLIST <$STR(S$寄售行_新个人寄售数据)> ../QuestDiary/寄售数据/个人寄售信息数据.txt
+
+
+
+
+[@Lemon上架A]
+#IF
+LARGE $SCRIPTPARAM(1) P10
+#ACT
+SENDMSG 19 请在右侧选择上架道具
+BREAK
+
+
+
+[@Lemon包裹JC]
+#IF
+LARGE N$Lemon包裹 126
+#ACT
+BREAK
+
+
+#IF
+CHECKVARLIST <$BAGITEM(<$STR(N$Lemon包裹)>).NAME> ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+#ACT
+INC S$Lemon包裹 <$BAGITEM(<$STR(N$Lemon包裹)>).MAKEINDEX>|
+INC N$Lemon包裹 1
+GOTO @Lemon包裹JC
+BREAK
+#ELSEACT
+INC N$Lemon包裹 1
+GOTO @Lemon包裹JC
+BREAK
+
+[@寄售行_世界寄售]
+#IF
+RANDOM 1
+#ACT
+MOV S$寄售行_世界寄售UI字符串
+MOV N$寄售行_循环增量 0
+LOOPGOTO @寄售行_世界寄售循环 99
+
+[@寄售行_世界寄售循环]
+#IF
+POS <$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_0)> |
+#ACT
+SPLIT <$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_0)> | S$Lemon寄售<$STR(N$寄售行_循环增量)>
+INC S$寄售行_世界寄售UI字符串 <ItemShow|x=0.0|y=0.0|itemid=0|itemcount=<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_3)>|name=<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_2)>|bgtype=1|showtips=1|scale=1|bgtype=public\icon_props_01.png|id=js<$STR(N$寄售行_循环增量)>|children=<js<$STR(N$寄售行_循环增量)>a1,js<$STR(N$寄售行_循环增量)>a2,js<$STR(N$寄售行_循环增量)>a3,js<$STR(N$寄售行_循环增量)>a4,js<$STR(N$寄售行_循环增量)>a5,js<$STR(N$寄售行_循环增量)>a6,js<$STR(N$寄售行_循环增量)>a7>>
+INC S$寄售行_世界寄售UI字符串 <Text|x=70.0|y=0.0|color=10|size=14|text=<$STR(S$Lemon卖家名)>|id=js<$STR(N$寄售行_循环增量)>a1>
+INC S$寄售行_世界寄售UI字符串 <Text|x=70.0|y=20.0|color=67|size=18|text=<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_2)>|id=js<$STR(N$寄售行_循环增量)>a2>
+INC S$寄售行_世界寄售UI字符串 <Img|x=290.0|y=20.0|img=public/icon_currency_ingot_02.png|id=js<$STR(N$寄售行_循环增量)>a3>
+INC S$寄售行_世界寄售UI字符串 <Text|x=315.0|y=20.0|color=67|size=18|text=<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_4)>|id=js<$STR(N$寄售行_循环增量)>a4>
+INC S$寄售行_世界寄售UI字符串 <Button|x=520.0|y=10.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=购买|link=@Lemon购买&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_0)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_1)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_2)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_3)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_4)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_5)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_6)>&<$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_7)>|id=js<$STR(N$寄售行_循环增量)>a5>
+INC S$寄售行_世界寄售UI字符串 <Img|x=0.0|y=70.0|width=660|img=private/jishouhang/bg_hhzy_01_2.png|id=js<$STR(N$寄售行_循环增量)>a6>
+#IF
+EQUAL S$Lemon寄售<$STR(N$寄售行_循环增量)>_1 $USERID 
+#ACT
+MOV S$Lemon卖家名 我的物品
+#ELSEACT
+MOV S$Lemon卖家名 <$STR(S$Lemon寄售<$STR(N$寄售行_循环增量)>_5)>
+
+#IF
+RANDOM 1
+#ACT
+INC N$寄售行_循环增量 1
+
+[@Lemon寄售XS]
+#IF
+SMALL $CustomValue(90) 5
+#ACT
+SENDMSG 19 VIP等级不足5级,无法使用寄售行功能!!
+BREAK
+
+#IF
+TRUE
+#SAY
+<Img|x=125.0|y=10.0|show=0|bg=1|move=0|img=private/jishouhang/jishouhangmb1.png|loadDelay=0>
+<Button|x=938.0|y=13.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Text|x=365.0|y=110.0|color=67|size=18|text=竞拍道具>
+<Text|x=590.0|y=110.0|color=67|size=18|text=竞拍价格>
+<Text|x=850.0|y=110.0|color=67|size=18|text=操作>
+;==============================================================================
+<Input|x=725.0|y=65.0|width=120|height=26|type=0|size=16|maxcount=14|mincount=1|color=67|inputid=4|place=请输入物品名|placecolor=255>
+<Button|x=860.0|y=55.0|color=67|scale=1|size=18|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|text=确认|link=@Lemon搜索>
+;==============================================================================
+<Button|x=150.0|y=52.0|color=67|scale=1.1|size=18|nimg=public/btn_push_05.png|pimg=public/btn_push_06.png|text=世界寄售>
+<Button|x=260.0|y=52.0|color=10|scale=1.1|size=18|nimg=public/btn_push_06.png|pimg=public/btn_push_05.png|text=我的上架|link=@Lemon上架DJ>
+;==============================================================================
+;==============================================================================
+<ListView|children=<js0,js1,js2,js3,js4,js5,js6,js7,js8,js9,js10,js11,js12,js13,js14,js15,js16,js17,js18,js19,js20,js21,js22,js23,js24,js25,js26,js27,js28,js29,js30,js31,js32,js33,js34,js35,js36,js37,js38,js39,js40,js41,js42,js43,js44,js45,js46,js47,js48,js49,js50,js51,js52,js53,js54,js55,js56,js57,js58,js59,js60,js61,js62,js63,js64,js65,js66,js67,js68,js69,js70,js71,js72,js73,js74,js75,js76,js77,js78,js79,js80,js81,js82,js83,js84,js85,js86,js87,js88,js89,js90,js91,js92,js93,js94,js95,js96,js97,js98,js99,js100,>|direction=1|x=300.0|y=150.0|width=660|height=335|reload=1|margin=15|loadDelay=0|img=public/9998.png>
+;===============================================================
+#ACT
+CLEARVAR P0 99
+CLEARVAR S0 99
+;==================================================================================================================================================================================
+#IF
+EQUAL S$Lemon分类A 全部
+#SAY
+<Button|x=150.0|y=110.0|color=67|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu1.png|pimg=private/jishouhang/xiaoanniu2.png|text=全部|link=@Lemon分类A&全部>
+<Button|x=150.0|y=160.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=装备|link=@Lemon分类A&装备>
+<Button|x=150.0|y=210.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=材料|link=@Lemon分类A&材料>
+<Button|x=150.0|y=260.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=神器|link=@Lemon分类A&神器>
+<Button|x=150.0|y=310.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=法宝|link=@Lemon分类A&法宝>
+;-------------------------------------
+#IF
+EQUAL S$Lemon分类A 装备
+#SAY
+<Button|x=150.0|y=110.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=全部|link=@Lemon分类A&全部>
+<Button|x=150.0|y=160.0|color=67|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu1.png|pimg=private/jishouhang/xiaoanniu2.png|text=装备|link=@Lemon分类A&装备>
+<Button|x=150.0|y=413.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=材料|link=@Lemon分类A&材料>
+<Button|x=150.0|y=463.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=神器|link=@Lemon分类A&神器>
+<Button|x=150.0|y=513.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=法宝|link=@Lemon分类A&法宝>
+;---------------------------------------------------
+<ListView|children=<fl1,fl2,fl3,fl4,fl5,fl6,fl7,fl8,fl9,fl10,fl11,fl12,fl13,fl14,fl15,fl16,fl17,fl18,fl19,fl20>|direction=1|x=150.0|y=220.0|width=140|height=190|reload=1|margin=10|loadDelay=0|img=jnhc/33.png>
+;===============================================================
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S1)>.png|pimg=private/jishouhang/<$STR(S1)>.png|color=<$INC.$STR(P1).10>|size=18|text=武器|link=@Lemon分类B&武器&1|id=fl1>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S2)>.png|pimg=private/jishouhang/<$STR(S2)>.png|color=<$INC.$STR(P2).10>|size=18|text=衣服|link=@Lemon分类B&衣服&2|id=fl2>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S3)>.png|pimg=private/jishouhang/<$STR(S3)>.png|color=<$INC.$STR(P3).10>|size=18|text=头盔|link=@Lemon分类B&头盔&3|id=fl3>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S4)>.png|pimg=private/jishouhang/<$STR(S4)>.png|color=<$INC.$STR(P4).10>|size=18|text=项链|link=@Lemon分类B&项链&4|id=fl4>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S5)>.png|pimg=private/jishouhang/<$STR(S5)>.png|color=<$INC.$STR(P5).10>|size=18|text=手镯|link=@Lemon分类B&手镯&5|id=fl5>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S6)>.png|pimg=private/jishouhang/<$STR(S6)>.png|color=<$INC.$STR(P6).10>|size=18|text=戒指|link=@Lemon分类B&戒指&6|id=fl6>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S7)>.png|pimg=private/jishouhang/<$STR(S7)>.png|color=<$INC.$STR(P7).10>|size=18|text=靴子|link=@Lemon分类B&靴子&7|id=fl7>
+<Button|x=0.0|y=0.0|width=120|height=25|scale=1|nimg=private/jishouhang/<$STR(S8)>.png|pimg=private/jishouhang/<$STR(S8)>.png|color=<$INC.$STR(P8).10>|size=18|text=腰带|link=@Lemon分类B&腰带&8|id=fl8>
+;-------------------------------------
+#IF
+EQUAL S$Lemon分类A 材料
+#SAY
+<Button|x=150.0|y=110.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=全部|link=@Lemon分类A&全部>
+<Button|x=150.0|y=160.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=装备|link=@Lemon分类A&装备>
+<Button|x=150.0|y=210.0|color=67|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu1.png|pimg=private/jishouhang/xiaoanniu2.png|text=材料|link=@Lemon分类A&材料>
+<Button|x=150.0|y=260.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=神器|link=@Lemon分类A&神器>
+<Button|x=150.0|y=310.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=法宝|link=@Lemon分类A&法宝>
+;-------------------------------------
+#IF
+EQUAL S$Lemon分类A 神器
+#SAY
+<Button|x=150.0|y=110.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=全部|link=@Lemon分类A&全部>
+<Button|x=150.0|y=160.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=装备|link=@Lemon分类A&装备>
+<Button|x=150.0|y=210.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=材料|link=@Lemon分类A&材料>
+<Button|x=150.0|y=260.0|color=67|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu1.png|pimg=private/jishouhang/xiaoanniu2.png|text=神器|link=@Lemon分类A&神器>
+<Button|x=150.0|y=310.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=法宝|link=@Lemon分类A&法宝>
+;-------------------------------------
+#IF
+EQUAL S$Lemon分类A 法宝
+#SAY
+<Button|x=150.0|y=110.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=全部|link=@Lemon分类A&全部>
+<Button|x=150.0|y=160.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=装备|link=@Lemon分类A&装备>
+<Button|x=150.0|y=210.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=材料|link=@Lemon分类A&材料>
+<Button|x=150.0|y=260.0|color=10|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu2.png|pimg=private/jishouhang/xiaoanniu1.png|text=神器|link=@Lemon分类A&神器>
+<Button|x=150.0|y=310.0|color=67|height=50|scale=1|size=20|nimg=private/jishouhang/xiaoanniu1.png|pimg=private/jishouhang/xiaoanniu2.png|text=法宝|link=@Lemon分类A&法宝>
+;-------------------------------------
+#IF
+LARGE N$Lemon分类B 0
+#ACT
+MOV S1 touming
+MOV S2 touming
+MOV S3 touming
+MOV S4 touming
+MOV S5 touming
+MOV S6 touming
+MOV S7 touming
+MOV S8 touming
+MOV P<$STR(N$Lemon分类B)> 57
+MOV S<$STR(N$Lemon分类B)> hongdi
+
+
+#IF
+EQUAL $STR(S$Lemon排序A) -1
+#SAY
+<Button|x=790.0|y=520.0|nimg=private/jishouhang/btn_szjm_01_4.png|pimg=private/jishouhang/btn_szjm_01_4.png|link=@Lemon排序>
+<Button|x=830.0|y=515.0|nimg=private/jishouhang/1.png|pimg=private/jishouhang/1.png|color=67|size=18|text=价格排序|link=@Lemon排序>
+#ELSESAY
+<Button|x=790.0|y=520.0|nimg=private/jishouhang/btn_szjm_01_3.png|pimg=private/jishouhang/btn_szjm_01_3.png|link=@Lemon排序>
+<Button|x=830.0|y=515.0|nimg=private/jishouhang/1.png|pimg=private/jishouhang/1.png|color=67|size=18|text=价格排序|link=@Lemon排序>
+
+
+;==================================================================================================================================================================================
+;----------------------------------------------------------------------------搜索
+#IF
+!EQUAL S$Lemon单件 
+CHECKVARLIST $STR(S$Lemon单件) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+CHECKTXT ..\QUESTDIARY\寄售数据\<$STR(S$Lemon单件)>.txt
+#ACT
+MOV S$Lemon文本 $STR(S$Lemon单件)
+GOTO @Lemon文本DQ
+;----------------------------------------------------------------------------分类
+#IF
+EQUAL S$Lemon单件 
+POS -武器-衣服-头盔-项链-手镯-戒指-靴子-腰带- -<$STR(S$Lemon分类B)>- 
+CHECKTXT ..\QUESTDIARY\寄售数据\<$STR(S$Lemon分类B)>.txt
+#ACT
+MOV S$Lemon文本 $STR(S$Lemon分类B)
+GOTO @Lemon文本DQ
+;----------------------------------------------------------------------------分类
+#IF
+EQUAL S$Lemon单件 
+EQUAL S$Lemon分类B 
+POS -全部-装备-材料-法宝-神器- -<$STR(S$Lemon分类A)>- 
+CHECKTXT ..\QUESTDIARY\寄售数据\<$STR(S$Lemon分类A)>.txt
+#ACT
+MOV S$Lemon文本 $STR(S$Lemon分类A)
+GOTO @Lemon文本DQ
+
+
+#IF
+!POS $STR(S$Lemon寄售0_0) |
+#SAY
+<Text|x=400.0|y=260.0|color=67|size=20|text=当前暂无此类物品寄售信息!!!>
+#ACT
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+GOTO @寄售行_世界寄售
+#SAY
+<$STR(S$寄售行_世界寄售UI字符串)>
+
+#IF
+LARGE $TXTLINE(..\QUESTDIARY\寄售数据\<$STR(S$Lemon文本)>.txt) 100
+#ACT
+MOV N$Lemon行数 $TXTLINE(..\QUESTDIARY\寄售数据\<$STR(S$Lemon文本)>.txt)
+MOV N$Lemon页数 $DIV.$STR(N$Lemon行数).100
+#ELSEACT
+MOV N$Lemon行数 0
+MOV N$Lemon页数 1
+
+#IF
+LARGE $STR(N$Lemon行数) 100
+LARGE $MOD.$STR(N$Lemon行数).100
+#ACT
+INC N$Lemon页数 1
+
+#IF
+LARGE N$Lemon页数 1
+#SAY
+<Button|x=0.0|y=0.0|scale=1|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|color=67|size=18|text=上页|link=@Lemon翻页-|id=js100|children=<js100a1,js100a2,js100a3,js100a4>>
+<Text|x=125.0|y=10.0|color=222|size=18|text=<$STR(N$Lemon翻页)>＼<$STR(N$Lemon页数)>|id=js100a1>
+<Button|x=200.0|y=0.0|scale=1|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|color=67|size=18|text=下页|link=@Lemon翻页+|id=js100a2>
+
+
+
+[@Lemon翻页-]
+#IFONE
+SMALL N$Lemon页数 2
+SMALL N$Lemon翻页 2
+#ACT
+SENDMSG 19 翻页到头了
+BREAK
+#ELSEACT
+DEC N$Lemon翻页 1
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon翻页+]
+#IF
+!SMALL N$Lemon翻页 $STR(N$Lemon页数)
+#ACT
+SENDMSG 19 翻页到头了
+BREAK
+#ELSEACT
+INC N$Lemon翻页 1
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon购买]
+
+#IF
+POSINLIST <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)> ..\QUESTDIARY\寄售数据\全部.txt
+POSINLIST <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)> ..\QUESTDIARY\寄售数据\个人寄售信息数据.txt
+#ACT
+CLEARVAR S$Lemon购买 10
+MOV S$Lemon购买1 <$SCRIPTPARAM(1)>|<$SCRIPTPARAM(2)>|<$SCRIPTPARAM(3)>|<$SCRIPTPARAM(4)>|<$SCRIPTPARAM(5)>|<$SCRIPTPARAM(6)>|<$SCRIPTPARAM(7)>|<$SCRIPTPARAM(8)>
+SPLIT $STR(S$Lemon购买1) | S$Lemon购买
+#ELSEACT
+SENDMSG 19 商品已被其他玩家买走了!
+GOTO @Lemon寄售XS
+BREAK
+
+#IF
+EQUAL $USERID $STR(S$Lemon购买_1)
+#ACT
+SENDMSG 19 无法购买自己寄售的物品!
+BREAK
+#IF
+SMALL $CustomValue(90) 5
+#ACT
+SENDMSG 19 VIP等级不足5级,无法购买!!
+BREAK
+#IF
+EQUAL <$STDITEM(<$STR(S$Lemon购买_2)>).STDMODE> 46
+EQUAL <$STDITEM(<$STR(S$Lemon购买_2)>).Reserved> 256
+#ACT
+MOV P33 1
+#ELSEACT
+MOV P33 $STR(S$Lemon购买_3)
+
+#IF
+!CHECKBAGSIZE $STR(P33)
+#ACT
+SENDMSG 19 需<$STR(P33)>个包裹位置！
+BREAK
+
+#IF
+SMALL $GAMEGOLD $STR(S$Lemon购买_4)
+#ACT
+SENDMSG 19 你的元宝不足!
+BREAK
+#ELSEACT
+GAMEGOLD - $STR(S$Lemon购买_4)
+GIVE $STR(S$Lemon购买_2) $STR(S$Lemon购买_3)
+GOTO @寄售行_删除个人寄售数据&寄售行_参数_删除数据=<$STR(S$Lemon购买1)>
+; DELVARLIST $STR(S$Lemon购买) ..\QUESTDIARY\寄售数据\个人数据\<$STR(S$Lemon购买_1)>.txt
+DELVARLIST $STR(S$Lemon购买1) ..\QUESTDIARY\寄售数据\全部.txt
+DELVARLIST $STR(S$Lemon购买1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon购买_2)>.txt
+DELVARLIST $STR(S$Lemon购买1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon购买_6)>.txt
+DELVARLIST $STR(S$Lemon购买1) ..\QUESTDIARY\寄售数据\<$STR(S$Lemon购买_7)>.txt
+$STR(S$Lemon购买_5).SENDMSG 7 你的"<$STR(S$Lemon购买_2)>"已出售,获得元宝+<$STR(S$Lemon购买_4)>
+MOV P0 0
+LOADEXVAR P0 $STR(S$Lemon购买_1) 寄售所得 ..\QUESTDIARY\寄售数据\寄售个人数据.txt
+SAVEEXVAR $INC.$STR(P0).$STR(S$Lemon购买_4) $STR(S$Lemon购买_1) 寄售所得 ..\QUESTDIARY\寄售数据\寄售个人数据.txt
+INSERTVARLIST 0 玩家:<$USERNAME>购买了<$STR(S$Lemon购买_5)>出售的"<$STR(S$Lemon购买_2)>*<$STR(S$Lemon购买_3)>"售价:<$STR(S$Lemon购买_4)>,购买时间:<$DATETIME> ..\QUESTDIARY\寄售数据\寄售日志\购买<$DATE>.txt
+SENDMSG 19 购买成功!
+GOTO @Lemon寄售XS
+BREAK
+
+
+[@Lemon分类A]
+#IF
+EQUAL S$Lemon分类A $SCRIPTPARAM(1)
+#ACT
+BREAK
+#ELSEACT
+MOV S$Lemon排序A 
+MOV S$Lemon排序B 
+MOV S$Lemon排序C 
+MOV S$Lemoin单件 
+MOV N$Lemon翻页 1
+MOV S$Lemon分类A $SCRIPTPARAM(1)
+MOV S$Lemon分类B 
+MOV N$Lemon分类B 0
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon分类B]
+#IF
+EQUAL S$Lemon分类B $SCRIPTPARAM(1)
+#ACT
+BREAK
+#ELSEACT
+MOV S$Lemon排序A 
+MOV S$Lemon排序B 
+MOV S$Lemon排序C 
+MOV S$Lemoin单件 
+MOV N$Lemon翻页 1
+MOV S$Lemon分类A 装备
+MOV S$Lemon分类B $SCRIPTPARAM(1)
+MOV N$Lemon分类B $SCRIPTPARAM(2)
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon搜索]
+#IFONE
+!CHECKVARLIST $NPCINPUT(4) ..\QUESTDIARY\寄售数据\寄售允许物品.txt
+SMALL $TXTLINE(..\QUESTDIARY\寄售数据\<$NPCINPUT(4)>.txt) 1
+#ACT
+;SetNpcInput 4 
+MESSAGEBOX 没有找到"<$NPCINPUT(4)>"的寄售信息!
+BREAK
+#ELSEACT
+MOV S$Lemon单件 $NPCINPUT(4)
+GOTO @Lemon寄售XS
+BREAK
+
+[@Lemon排序]
+
+#IF
+EQUAL S$Lemon排序A 
+#ACT
+MOV S$Lemon排序A -1
+MOV S$Lemon排序B 4
+MOV S$Lemon排序C |
+GOTO @Lemon寄售XS
+BREAK
+
+#IF
+EQUAL $STR(S$Lemon排序A) -1 
+#ACT
+MOV S$Lemon排序A 0
+MOV S$Lemon排序B 4
+MOV S$Lemon排序C |
+GOTO @Lemon寄售XS
+BREAK
+
+#IF
+EQUAL $STR(S$Lemon排序A) 0 
+#ACT
+MOV S$Lemon排序A -1
+MOV S$Lemon排序B 4
+MOV S$Lemon排序C |
+GOTO @Lemon寄售XS
+BREAK
+
+
+[@Lemon文本DQ]
+#IF
+TRUE
+#ACT
+CLEARVAR S$Lemon寄售0 8
+CLEARVAR S$Lemon寄售1 8
+CLEARVAR S$Lemon寄售2 8
+CLEARVAR S$Lemon寄售3 8
+CLEARVAR S$Lemon寄售4 8
+CLEARVAR S$Lemon寄售5 8
+CLEARVAR S$Lemon寄售6 8
+CLEARVAR S$Lemon寄售7 8
+CLEARVAR S$Lemon寄售8 8
+CLEARVAR S$Lemon寄售9 8
+CLEARVAR S$Lemon寄售10 8
+;----------
+CLEARVAR S$Lemon寄售11 8
+CLEARVAR S$Lemon寄售12 8
+CLEARVAR S$Lemon寄售13 8
+CLEARVAR S$Lemon寄售14 8
+CLEARVAR S$Lemon寄售15 8
+CLEARVAR S$Lemon寄售16 8
+CLEARVAR S$Lemon寄售17 8
+CLEARVAR S$Lemon寄售18 8
+CLEARVAR S$Lemon寄售19 8
+CLEARVAR S$Lemon寄售20 8
+;----------
+CLEARVAR S$Lemon寄售21 8
+CLEARVAR S$Lemon寄售22 8
+CLEARVAR S$Lemon寄售23 8
+CLEARVAR S$Lemon寄售24 8
+CLEARVAR S$Lemon寄售25 8
+CLEARVAR S$Lemon寄售26 8
+CLEARVAR S$Lemon寄售27 8
+CLEARVAR S$Lemon寄售28 8
+CLEARVAR S$Lemon寄售29 8
+CLEARVAR S$Lemon寄售30 8
+;----------
+CLEARVAR S$Lemon寄售31 8
+CLEARVAR S$Lemon寄售32 8
+CLEARVAR S$Lemon寄售33 8
+CLEARVAR S$Lemon寄售34 8
+CLEARVAR S$Lemon寄售35 8
+CLEARVAR S$Lemon寄售36 8
+CLEARVAR S$Lemon寄售37 8
+CLEARVAR S$Lemon寄售38 8
+CLEARVAR S$Lemon寄售39 8
+CLEARVAR S$Lemon寄售40 8
+;----------
+CLEARVAR S$Lemon寄售41 8
+CLEARVAR S$Lemon寄售42 8
+CLEARVAR S$Lemon寄售43 8
+CLEARVAR S$Lemon寄售44 8
+CLEARVAR S$Lemon寄售45 8
+CLEARVAR S$Lemon寄售46 8
+CLEARVAR S$Lemon寄售47 8
+CLEARVAR S$Lemon寄售48 8
+CLEARVAR S$Lemon寄售49 8
+CLEARVAR S$Lemon寄售50 8
+;----------
+CLEARVAR S$Lemon寄售51 8
+CLEARVAR S$Lemon寄售52 8
+CLEARVAR S$Lemon寄售53 8
+CLEARVAR S$Lemon寄售54 8
+CLEARVAR S$Lemon寄售55 8
+CLEARVAR S$Lemon寄售56 8
+CLEARVAR S$Lemon寄售57 8
+CLEARVAR S$Lemon寄售58 8
+CLEARVAR S$Lemon寄售59 8
+CLEARVAR S$Lemon寄售60 8
+;----------
+CLEARVAR S$Lemon寄售61 8
+CLEARVAR S$Lemon寄售62 8
+CLEARVAR S$Lemon寄售63 8
+CLEARVAR S$Lemon寄售64 8
+CLEARVAR S$Lemon寄售65 8
+CLEARVAR S$Lemon寄售66 8
+CLEARVAR S$Lemon寄售67 8
+CLEARVAR S$Lemon寄售68 8
+CLEARVAR S$Lemon寄售69 8
+CLEARVAR S$Lemon寄售70 8
+;----------
+CLEARVAR S$Lemon寄售71 8
+CLEARVAR S$Lemon寄售72 8
+CLEARVAR S$Lemon寄售73 8
+CLEARVAR S$Lemon寄售74 8
+CLEARVAR S$Lemon寄售75 8
+CLEARVAR S$Lemon寄售76 8
+CLEARVAR S$Lemon寄售77 8
+CLEARVAR S$Lemon寄售78 8
+CLEARVAR S$Lemon寄售79 8
+CLEARVAR S$Lemon寄售80 8
+;----------
+CLEARVAR S$Lemon寄售81 8
+CLEARVAR S$Lemon寄售82 8
+CLEARVAR S$Lemon寄售83 8
+CLEARVAR S$Lemon寄售84 8
+CLEARVAR S$Lemon寄售85 8
+CLEARVAR S$Lemon寄售86 8
+CLEARVAR S$Lemon寄售87 8
+CLEARVAR S$Lemon寄售88 8
+CLEARVAR S$Lemon寄售89 8
+CLEARVAR S$Lemon寄售90 8
+;----------
+CLEARVAR S$Lemon寄售91 8
+CLEARVAR S$Lemon寄售92 8
+CLEARVAR S$Lemon寄售93 8
+CLEARVAR S$Lemon寄售94 8
+CLEARVAR S$Lemon寄售95 8
+CLEARVAR S$Lemon寄售96 8
+CLEARVAR S$Lemon寄售97 8
+CLEARVAR S$Lemon寄售98 8
+CLEARVAR S$Lemon寄售99 8
+;----------
+MOV P44 0
+MOV P45 $TXTLINE(..\QUESTDIARY\寄售数据\<$STR(S$Lemon文本)>.txt)
+MOV P46 $DEC.$STR(N$Lemon翻页).1
+MULT P46 100
+GOTO @Lemon文本DQ2
+
+
+[@Lemon文本DQ2]
+#IFONE
+LARGE P46 $STR(P45)
+LARGE P44 100 
+#ACT
+BREAK
+#ELSEACT
+READRANDOMSTR ..\QUESTDIARY\寄售数据\<$STR(S$Lemon文本)>.txt S$Lemon寄售<$STR(P44)>_0 <$STR(P46)> <$STR(S$Lemon排序A)> <$STR(S$Lemon排序B)> <$STR(S$Lemon排序C)>
+INC P44 1
+INC P46 1
+GOTO @Lemon文本DQ2
+BREAK
+
+[@Lemon上架DJ]
+#IF
+TRUE
+#ACT
+MOV N$寄售行跳转 1
+MOV S$Lemon上架 
+MOV N$Lemon上架
+MOV S$Lemon下架 
+BAGREF 2
+DELAYGOTO 100 @Lemon上架XS
+BREAK
+
+
+
+}

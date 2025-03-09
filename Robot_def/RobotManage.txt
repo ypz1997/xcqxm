@@ -1,0 +1,2132 @@
+#CALL [\活动功能\镖车活动.txt] @镖车活动
+#CALL [\红点功能\红点判断.txt] @红点判断
+
+[@每日数据恢复]
+#IF
+LARGE G2 0
+#ACT
+INC G2 1
+
+#IF
+EQUAL G2 5
+#ACT
+MOV G2 2
+
+#if
+equal G3 0
+#act
+mov G3 1
+
+#if
+equal G4 0
+#act
+mov G4 1
+
+#if
+equal G5 0
+#act
+mov G5 1
+
+
+#IF
+RANDOM 1
+#ACT
+INC G0 1
+MOV G$大逃杀计时 0
+GMEXECUTE 在线提问 @恢复个人变量
+GOTO @爆率_全局变量刷新函数
+GMEXECUTE 在线提问 @VIP爆物上限初始化
+GMEXECUTE 在线提问 @个人装备掉落计分
+CalcVar GLOBAL BOSS召唤令通天教主召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令铁血魔王召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令阿修罗神召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令赤阳魔尊召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令上古妖王召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令血域魔尊召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令巨木王者召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令魔域妖王召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令刑天真身召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令玄武真灵召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令无间之主召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令地底仙帝召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令绝毒蛛后召唤次数 = 0 1
+CalcVar GLOBAL BOSS召唤令虚空古神召唤次数 = 0 1
+ClearNameList ../QuestDiary/数据文件/排名数据/天关排行榜.txt
+#IF
+TRUE
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\军衔捐献昨日.txt
+FILECOPY  ..\QUESTDIARY\游戏数据\军衔捐献今日.txt ..\QUESTDIARY\游戏数据\军衔捐献昨日.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\军衔捐献今日.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\军衔捐献税收.txt
+MOV G52 $STR(G51)
+MOV G51 0
+CLEARVAR A251 260
+GMEXECUTE 在线提问 @临时属性
+SENDMSG 14 军衔排行榜已重置,昨日军衔捐献前三名可领取税收奖励了!
+SENDMSG 16 军衔排行榜已重置,昨日军衔捐献前三名可领取税收奖励了!
+BREAK
+
+
+[@爆率_全局变量刷新函数]
+#IF
+Small $STR(G0) 91
+#ACT
+MOV G$循环计次 0
+ReadRandomStr ..\QuestDiary\爆率数据\全局每日掉落上限.txt A$每日爆率数据变量 $STR(G0)
+LoopGoto @爆率_全局变量循环赋值 14
+MOV A$每日爆率数据变量 
+break
+#ELSEACT
+MOV G$循环计次 0
+ReadRandomStr ..\QuestDiary\爆率数据\全局每日掉落上限.txt A$每日爆率数据变量 91
+LoopGoto @爆率_全局变量循环赋值 14
+MOV A$每日爆率数据变量 
+break
+
+
+[@爆率_全局变量循环赋值]
+#IF
+TRUE
+#ACT
+SPLIT <$STR(A$每日爆率数据变量)> & A$数据接受1
+SPLIT <$STR(A$数据接受1_<$STR(G$循环计次)>)> | A$数据接受2
+CalcVar Global Ring<$STR(G$循环计次)> = <$STR(A$数据接受2_6)> 1
+CalcVar Global Bracelet<$STR(G$循环计次)> = <$STR(A$数据接受2_7)> 1
+CalcVar Global Helmet<$STR(G$循环计次)> = <$STR(A$数据接受2_0)> 1
+CalcVar Global Belt<$STR(G$循环计次)> = <$STR(A$数据接受2_1)> 1
+CalcVar Global Clothing<$STR(G$循环计次)> = <$STR(A$数据接受2_2)> 1
+CalcVar Global Weapon<$STR(G$循环计次)> = <$STR(A$数据接受2_3)> 1
+CalcVar Global Necklace<$STR(G$循环计次)> = <$STR(A$数据接受2_4)> 1
+CalcVar Global Boots<$STR(G$循环计次)> = <$STR(A$数据接受2_5)> 1
+Inc G$循环计次 1
+break
+
+
+[@每秒触发]
+#IF
+TRUE
+#ACT
+GMEXECUTE 在线提问 @CD时间
+GOTO @五一活动怪物掉落开关
+#IF
+EQUAL <$MAPMONCOUNT(0).东门保罗大帝> 0
+CheckVar Global 章鱼王1_刷新总秒数 > 0
+#ACT
+CALCVAR Global 章鱼王1_刷新总秒数 - 1 1
+CALCVAR Global 章鱼王1_刷新小时 = <$DIV.<$GLOBAL(章鱼王1_刷新总秒数)>.3600> 1
+CALCVAR Global 章鱼王1_刷新分钟 = <$DIV.<$MOD.<$GLOBAL(章鱼王1_刷新总秒数)>.3600>.60> 1
+CALCVAR Global 章鱼王1_刷新秒数 = <$MOD.<$GLOBAL(章鱼王1_刷新总秒数)>.60> 1
+SetNpcName 99 东门保罗大帝墓碑\复活剩余时间<$GLOBAL(章鱼王1_刷新小时)>时<$GLOBAL(章鱼王1_刷新分钟)>分钟<$GLOBAL(章鱼王1_刷新秒数)>秒$249
+
+#IF
+EQUAL <$MAPMONCOUNT(0).东门保罗大帝> 0
+CheckVar Global 章鱼王1_刷新总秒数 < 1
+#ACT
+PARAM1 0
+PARAM2 574
+PARAM3 343
+MonGen 东门保罗大帝 1 0 东门保罗大帝
+SetNpcName 99 东门保罗大帝墓碑\已刷新$222
+
+#IF
+EQUAL <$MAPMONCOUNT(0).西门保罗大帝> 0
+CheckVar Global 章鱼王2_刷新总秒数 > 0
+#ACT
+CALCVAR Global 章鱼王2_刷新总秒数 - 1 1
+CALCVAR Global 章鱼王2_刷新小时 = <$DIV.<$GLOBAL(章鱼王2_刷新总秒数)>.3600> 1
+CALCVAR Global 章鱼王2_刷新分钟 = <$DIV.<$MOD.<$GLOBAL(章鱼王2_刷新总秒数)>.3600>.60> 1
+CALCVAR Global 章鱼王2_刷新秒数 = <$MOD.<$GLOBAL(章鱼王2_刷新总秒数)>.60> 1
+SetNpcName 100 西门保罗大帝墓碑\复活剩余时间<$GLOBAL(章鱼王2_刷新小时)>时<$GLOBAL(章鱼王2_刷新分钟)>分钟<$GLOBAL(章鱼王2_刷新秒数)>秒$249
+
+#IF
+EQUAL <$MAPMONCOUNT(0).西门保罗大帝> 0
+CheckVar Global 章鱼王2_刷新总秒数 < 1
+#ACT
+PARAM1 0
+PARAM2 367
+PARAM3 119
+MonGen 西门保罗大帝 1 0 西门保罗大帝
+SetNpcName 100 西门保罗大帝墓碑\已刷新$222
+break
+
+
+[@五一活动怪物掉落开关]
+#IF
+LARGE $LONGDATE 1714348800
+SMALL $LONGDATE 1714953600
+#ACT
+MOV G90 1
+break
+#ELSEACT
+MOV G90 0
+break
+
+[@怪物攻城提示15]
+#IF
+TRUE
+#ACT
+SENDMSG 1 “击杀(574.343)的东门保罗大帝和(367.119)的西门保罗大帝可以在15分钟后开启怪物攻城活动！”
+SENDMSG 9 击杀(574.343)的东门保罗大帝和(367.119)的西门保罗大帝可以在15分钟后开启怪物攻城活动！
+BREAK
+
+[@怪物攻城提示5]
+#IF
+TRUE
+#ACT
+SENDMSG 1 “击杀(574.343)的东门保罗大帝和(367.119)的西门保罗大帝可以在5分钟后开启怪物攻城活动！”
+SENDMSG 9 击杀(574.343)的东门保罗大帝和(367.119)的西门保罗大帝可以在5分钟后开启怪物攻城活动！
+BREAK
+
+[@怪物攻城]
+#IF
+EQUAL <$MAPMONCOUNT(0).东门保罗大帝> 0
+EQUAL <$MAPMONCOUNT(0).西门保罗大帝> 0
+#ACT
+SENDMSG 1 “怪物攻城活动已开启！”
+SENDMSG 9 怪物攻城活动已开启！
+GMEXECUTE 在线提问 @前往怪物攻城活动
+MISSION 0 509 261
+PARAM1 509
+PARAM2 261
+PARAM3 9
+PARAM4 18
+MOBPLACE 5阶攻城精英 招魂使
+MISSION 0 509 261
+PARAM1 509
+PARAM2 261
+PARAM3 5
+PARAM4 18
+MOBPLACE 6阶攻城精英 幽影武士
+MISSION 0 509 261
+PARAM1 509
+PARAM2 261
+PARAM3 4
+PARAM4 18
+MOBPLACE 7阶攻城精英 黑袍修罗
+MISSION 0 509 261
+PARAM1 509
+PARAM2 261
+PARAM3 3
+PARAM4 18
+MOBPLACE 8阶攻城精英 驭冰游神
+MISSION 0 509 261
+PARAM1 509
+PARAM2 261
+PARAM3 3
+PARAM4 18
+MOBPLACE 9阶攻城精英 上古巫神
+MISSION 0 509 261
+PARAM1 509
+PARAM2 261
+PARAM3 1
+PARAM4 18
+MOBPLACE 8阶攻城Boss 赤阳魔尊
+
+[@怪物攻城刷新15]
+#IF
+TRUE
+#ACT
+SENDMSG 1 “怪物攻城将在15分钟后关闭！”
+SENDMSG 9 怪物攻城将在15分钟后关闭！
+BREAK
+[@怪物攻城刷新5]
+#IF
+TRUE
+#ACT
+SENDMSG 1 “怪物攻城将在5分钟后关闭！”
+SENDMSG 9 怪物攻城将在5分钟后关闭！
+BREAK
+[@怪物攻城结束刷新]
+#IF
+TRUE
+#ACT
+SENDMSG 1 “怪物攻城活动已关闭！”
+SENDMSG 9 怪物攻城活动已关闭！
+CLEARMISSION
+CLEARMAPBODY 0
+CLEARMAPMON 0 招魂使
+CLEARMAPMON 0 幽影武士
+CLEARMAPMON 0 黑袍修罗
+CLEARMAPMON 0 驭冰游神
+CLEARMAPMON 0 上古巫神
+CLEARMAPMON 0 赤阳魔尊
+BREAK
+
+[@每10秒触发]
+#IF
+TRUE
+#ACT
+GMEXECUTE 在线提问 @护符生命恢复
+BREAK
+
+[@每分触发]
+#IF
+LARGE $HFCOUNT 0
+#ACT
+GMEXECUTE 在线提问 @合服在线时间
+
+#IF
+RANDOM 1
+#ACT
+INC G1 1
+GMEXECUTE 在线提问 @在线时间
+GMEXECUTE 在线提问 @每分钟触发函数
+
+#IF
+LARGE $MAPMONCOUNT[3].沙城战福利BOSS 0
+#ACT
+SENDMSG 14 沙城战福利BOSS已刷新在沙城皇宫门口，所有人可前往击杀
+BREAK
+#ELSEACT
+BREAK
+
+
+[@大逃杀开始]
+#IF
+TRUE
+#ACT
+MOV G$Lemon活动 5
+MOV G$逃杀时间 $INC.$LONGDATE.120
+MOV G$逃杀状态 1
+MOV S44 $STR(A244)
+MOV A244 
+HCALL $STR(S44) @临时属性
+$STR(S44).SENDUI 106
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\逃杀进入玩家.txt
+;----------------------------
+GMEXECUTE 在线提问 @Lemon活动TZ5
+SENDMSG 14 大逃杀将在1分钟后进入等待时间....
+SENDMSG 16 大逃杀将在1分钟后进入等待时间...
+BREAK
+
+[@大逃杀正式开始播报]
+#IF
+TRUE
+#ACT
+SENDMSG 14 大逃杀正式开始
+BREAK
+
+
+[@每2秒触发]
+#IF
+TRUE
+#ACT
+GMEXECUTE 在线提问 @每2秒提问触发
+
+#IF
+!SMALL <$MAPHUMCOUNT(QGD001).ALL> 1
+#ACT
+SETMAPLIGHTZONE QGD001 33 61 0 3 21
+
+#IF
+!SMALL <$MAPHUMCOUNT(QGD002).ALL> 1
+#ACT
+SETMAPLIGHTZONE QGD002 33 61 0 3 21
+
+
+#IF
+!SMALL <$MAPHUMCOUNT(QGD003).ALL> 1
+#ACT
+SETMAPLIGHTZONE QGD003 33 61 0 3 21
+
+#IF
+!SMALL <$MAPHUMCOUNT(QGD004).ALL> 1
+#ACT
+SETMAPLIGHTZONE QGD004 33 61 0 3 21
+
+
+#IF
+LARGE G78 1000000000
+SMALL G78 $LONGDATE
+LARGE $HFCOUNT 0
+#ACT
+MOV G78 0
+SENDMSG 14 合服排行活动已结束,奖励已邮件发放!
+SENDMSG 16 合服排行活动已结束,奖励已邮件发放!
+GOTO @Lemon计算BS
+DELAYCALL 1 @Lemon计算CZ
+
+;--------------------------------大逃杀
+#IF
+EQUAL G$逃杀状态 1
+SMALL G$逃杀时间 $LONGDATE
+SMALL $MAPHUMCOUNT(DTS).PLAYER 1
+#ACT
+MOV G$逃杀状态 0
+CLEARMAPITEM DTS
+
+#IF
+EQUAL G$逃杀状态 1
+#ACT
+INC D44 2
+#ELSEACT
+MOV D44 0
+
+
+#IF
+EQUAL D44 178
+#ACT
+CLEARMAPITEM DTS
+
+#IF
+EQUAL D44 180
+#ACT
+MOV D44 0
+;----------------------------------------------------------------------单BUFF
+RANDOMSTR 强攻,25|圣盾,25|治愈,25|暴击,25 S0
+DROPITEMDOWN $STR(S0) 1  DTS(29,36,10) 0 0
+RANDOMSTR 强攻,25|圣盾,25|治愈,25|暴击,25 S0
+DROPITEMDOWN $STR(S0) 1  DTS(34,41,10) 0 0
+RANDOMSTR 强攻,25|圣盾,25|治愈,25|暴击,25 S0
+DROPITEMDOWN $STR(S0) 1  DTS(39,46,10) 0 0
+RANDOMSTR 强攻,25|圣盾,25|治愈,25|暴击,25 S0
+DROPITEMDOWN $STR(S0) 1  DTS(44,51,10) 0 0
+RANDOMSTR 强攻,25|圣盾,25|治愈,25|暴击,25 S0
+DROPITEMDOWN $STR(S0) 1  DTS(49,46,10) 0 0
+;-------
+RANDOMSTR 强攻,25|圣盾,25|治愈,25|暴击,25 S0
+DROPITEMDOWN $STR(S0) 1  DTS(35,28,10) 0 0
+RANDOMSTR 强攻,25|圣盾,25|治愈,25|暴击,25 S0
+DROPITEMDOWN $STR(S0) 1  DTS(40,33,10) 0 0
+RANDOMSTR 强攻,25|圣盾,25|治愈,25|暴击,25 S0
+DROPITEMDOWN $STR(S0) 1  DTS(45,38,10) 0 0
+RANDOMSTR 强攻,25|圣盾,25|治愈,25|暴击,25 S0
+DROPITEMDOWN $STR(S0) 1  DTS(50,43,10) 0 0
+RANDOMSTR 强攻,25|圣盾,25|治愈,25|暴击,25 S0
+DROPITEMDOWN $STR(S0) 1  DTS(55,48,10) 0 0
+;----------------------------------------------------------------------群BUFF
+DROPITEMDOWN 冰冻 1  DTS(35,36,10) 0 0
+DROPITEMDOWN 巫毒 1  DTS(40,41,10) 0 0
+DROPITEMDOWN 战意 1  DTS(45,46,10) 0 0
+DROPITEMDOWN 免防 1  DTS(50,51,10) 0 0
+SENDMSG 16 大逃杀:BUFF加成已刷新在大逃杀地图内.....
+
+#IF
+EQUAL G$逃杀状态 1
+SMALL G$逃杀时间 $LONGDATE
+EQUAL $MAPHUMCOUNT(DTS).PLAYER 1
+#ACT
+GMEXECUTE 在线提问 @Lemon第一TS
+
+;--------------------------------------------------------------------------工会战
+#IF
+!EQUAL G$Lemon活动 2
+#ACT
+BREAK
+#ELSEACT
+MOV S1 
+MOV P1 0
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战排行.txt S1 0 0 2 |
+
+#IF
+POS $STR(S1) |
+#ACT
+GETVALIDSTR $STR(S1) | S1 P1
+
+#IF
+!SMALL P1 200
+#ACT
+GOTO @工会战结束
+BREAK
+
+
+;-------------------------------------------------大宝箱刷新
+#IF
+LARGE $DIV.$STR(G$工会战积分).50 $STR(G$工会战宝箱)
+SMALL $G宝箱大刷新 1
+#ACT
+INC G$工会战宝箱 1
+MOV G$宝箱大刷新 1
+MOV D44 15
+SENDMSG 14 工会战争:大宝箱将在15秒后刷新!!
+GOTO @Lemon宝箱大SX
+;-------------------------------------------------中宝箱刷新
+#IF
+EQUAL G$宝箱1001死亡 1
+SMALL G$宝箱1001复活 $LONGDATE
+#ACT
+MOV G$宝箱1001死亡 0
+SETNPCNAME 1001 宝箱(中)
+SETNPCAPPR 1001 47
+SENDMSG 16 1个中宝箱已可以采集
+
+#IF
+EQUAL G$宝箱1002死亡 1
+SMALL G$宝箱1002复活 $LONGDATE
+#ACT
+MOV G$宝箱1002死亡 0
+SETNPCNAME 1002 宝箱(中)
+SETNPCAPPR 1002 47
+SENDMSG 16 1个中宝箱已可以采集
+
+#IF
+EQUAL G$宝箱1003死亡 1
+SMALL G$宝箱1003复活 $LONGDATE
+#ACT
+MOV G$宝箱1003死亡 0
+SETNPCNAME 1003 宝箱(中)
+SETNPCAPPR 1003 47
+SENDMSG 16 1个中宝箱已可以采集
+
+#IF
+EQUAL G$宝箱1004死亡 1
+SMALL G$宝箱1004复活 $LONGDATE
+#ACT
+MOV G$宝箱1004死亡 0
+SETNPCNAME 1004 宝箱(中)
+SETNPCAPPR 1004 47
+SENDMSG 16 1个中宝箱已可以采集
+
+#IF
+EQUAL G$宝箱1005死亡 1
+SMALL G$宝箱1005复活 $LONGDATE
+#ACT
+MOV G$宝箱1005死亡 0
+SETNPCNAME 1005 宝箱(中)
+SETNPCAPPR 1005 47
+SENDMSG 16 1个中宝箱已可以采集
+;-------------------------------------------------小宝箱刷新
+#IF
+EQUAL G$宝箱1006死亡 1
+SMALL G$宝箱1006复活 $LONGDATE
+#ACT
+MOV G$宝箱1006死亡 0
+SETNPCNAME 1006 宝箱(小)
+SETNPCAPPR 1006 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1007死亡 1
+SMALL G$宝箱1007复活 $LONGDATE
+#ACT
+MOV G$宝箱1007死亡 0
+SETNPCNAME 1007 宝箱(小)
+SETNPCAPPR 1007 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1008死亡 1
+SMALL G$宝箱1008复活 $LONGDATE
+#ACT
+MOV G$宝箱1008死亡 0
+SETNPCNAME 1008 宝箱(小)
+SETNPCAPPR 1008 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1009死亡 1
+SMALL G$宝箱1009复活 $LONGDATE
+#ACT
+MOV G$宝箱1009死亡 0
+SETNPCNAME 1009宝箱(小)
+SETNPCAPPR 1009 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1010死亡 1
+SMALL G$宝箱1010复活 $LONGDATE
+#ACT
+MOV G$宝箱1010死亡 0
+SETNPCNAME 1010 宝箱(小)
+SETNPCAPPR 1010 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1011死亡 1
+SMALL G$宝箱1011复活 $LONGDATE
+#ACT
+MOV G$宝箱1011死亡 0
+SETNPCNAME 1011 宝箱(小)
+SETNPCAPPR 1011 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1012死亡 1
+SMALL G$宝箱1012复活 $LONGDATE
+#ACT
+MOV G$宝箱1012死亡 0
+SETNPCNAME 1012 宝箱(小)
+SETNPCAPPR 1012 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1013死亡 1
+SMALL G$宝箱1013复活 $LONGDATE
+#ACT
+MOV G$宝箱1013死亡 0
+SETNPCNAME 1013 宝箱(小)
+SETNPCAPPR 1013 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1014死亡 1
+SMALL G$宝箱1014复活 $LONGDATE
+#ACT
+MOV G$宝箱1014死亡 0
+SETNPCNAME 1014 宝箱(小)
+SETNPCAPPR 1014 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1015死亡 1
+SMALL G$宝箱1015复活 $LONGDATE
+#ACT
+MOV G$宝箱1015死亡 0
+SETNPCNAME 1015 宝箱(小)
+SETNPCAPPR 1015 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1016死亡 1
+SMALL G$宝箱1016复活 $LONGDATE
+#ACT
+MOV G$宝箱1016死亡 0
+SETNPCNAME 1016 宝箱(小)
+SETNPCAPPR 1016 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1017死亡 1
+SMALL G$宝箱1017复活 $LONGDATE
+#ACT
+MOV G$宝箱1017死亡 0
+SETNPCNAME 1017 宝箱(小)
+SETNPCAPPR 1017 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1018死亡 1
+SMALL G$宝箱1018复活 $LONGDATE
+#ACT
+MOV G$宝箱1018死亡 0
+SETNPCNAME 1018 宝箱(小)
+SETNPCAPPR 1018 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1019死亡 1
+SMALL G$宝箱1019复活 $LONGDATE
+#ACT
+MOV G$宝箱1019死亡 0
+SETNPCNAME 1019 宝箱(小)
+SETNPCAPPR 1019 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1020死亡 1
+SMALL G$宝箱1020复活 $LONGDATE
+#ACT
+MOV G$宝箱1020死亡 0
+SETNPCNAME 1020 宝箱(小)
+SETNPCAPPR 1020 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1021死亡 1
+SMALL G$宝箱1021复活 $LONGDATE
+#ACT
+MOV G$宝箱1021死亡 0
+SETNPCNAME 1021 宝箱(小)
+SETNPCAPPR 1021 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1022死亡 1
+SMALL G$宝箱1022复活 $LONGDATE
+#ACT
+MOV G$宝箱1022死亡 0
+SETNPCNAME 1022 宝箱(小)
+SETNPCAPPR 1022 163
+SENDMSG 16 1个小宝箱已可以采集
+;-------------------------------------------------
+#IF
+EQUAL G$宝箱1023死亡 1
+SMALL G$宝箱1023复活 $LONGDATE
+#ACT
+MOV G$宝箱1023死亡 0
+SETNPCNAME 1023 宝箱(小)
+SETNPCAPPR 1023 163
+SENDMSG 16 1个小宝箱已可以采集
+
+
+[@回馈魔王开始]
+#IF
+TRUE
+#ACT
+MOV G$魔王总伤害 0
+MOV N$Lemon魔王SH 0
+
+#IF
+POS -1-3-5- -<$DATE.WEEK>-
+#ACT
+MOV G$Lemon回馈 100
+MOV G$Lemon魔王HP 0
+MOV S$Lemon回馈BS 回馈魔王·一百元
+#IF
+POS -2-4-6- -<$DATE.WEEK>-
+#ACT
+MOV G$Lemon回馈 150
+MOV G$Lemon魔王HP 0
+MOV S$Lemon回馈BS 回馈魔王·一百五
+#IF
+EQUAL $DATE.WEEK 7
+#ACT
+MOV G$Lemon回馈 300
+MOV G$Lemon魔王HP 0
+MOV S$Lemon回馈BS 回馈魔王·三百元
+#IF
+TRUE
+#ACT
+MOV G$Lemon活动 6
+MOV G$回馈时间 $INC.$LONGDATE.1560
+CLEARMAPMON HKMW
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\回馈魔王排行.txt
+MONGENEX HKMW 25 25 $STR(S$Lemon回馈BS) 0 1
+SENDMSG 14 海兽来袭活动开始了,本次海兽携带了<$STR(G$Lemon回馈)>元代金券,打折券,材料,元宝等!!
+SENDMSG 16 海兽来袭活动开始了,本次海兽携带了<$STR(G$Lemon回馈)>元代金券,打折券,材料,元宝等!!
+GMEXECUTE 在线提问 @Lemon活动TZ6
+BREAK
+
+
+[@回馈魔王结束]
+#IF
+EQUAL G$Lemon活动 6
+#ACT
+CLEARMAPMON HKMW
+MOV G$Lemon活动 0
+GMEXECUTE 在线提问 @Lemon回馈JS
+SENDMSG 14 海兽来袭活动结束了
+BREAK
+
+[@双倍押镖开始]
+#IF
+TRUE
+#ACT
+MOV G$Lemon活动 7
+SENDMSG 14 双倍押镖活动开始了
+BREAK
+
+[@双倍押镖结束]
+#IF
+TRUE
+#ACT
+MOV G$Lemon活动 0
+SENDMSG 14 双倍押镖活动结束了
+BREAK
+
+
+
+[@工会战开始]
+#IF
+TRUE
+#ACT
+MOV G$Lemon活动 2
+MOV G$工会战积分 0
+MOV G$工会战宝箱 0
+MOV G$工会战时间 $INC.$LONGDATE.1860
+;==========================================重置变量
+MOV G$宝箱大刷新 0
+MOV G$宝箱1000状态 0
+MOV G$宝箱1000死亡 0
+MOV G$宝箱1001状态 0
+MOV G$宝箱1001死亡 0
+MOV G$宝箱1002状态 0
+MOV G$宝箱1002死亡 0
+MOV G$宝箱1003状态 0
+MOV G$宝箱1003死亡 0
+MOV G$宝箱1004状态 0
+MOV G$宝箱1004死亡 0
+MOV G$宝箱1005状态 0
+MOV G$宝箱1005死亡 0
+MOV G$宝箱1006状态 0
+MOV G$宝箱1006死亡 0
+MOV G$宝箱1007状态 0
+MOV G$宝箱1007死亡 0
+MOV G$宝箱1008状态 0
+MOV G$宝箱1008死亡 0
+MOV G$宝箱1009状态 0
+MOV G$宝箱1009死亡 0
+MOV G$宝箱1010状态 0
+MOV G$宝箱1010死亡 0
+MOV G$宝箱1011状态 0
+MOV G$宝箱1011死亡 0
+MOV G$宝箱1012状态 0
+MOV G$宝箱1012死亡 0
+MOV G$宝箱1013状态 0
+MOV G$宝箱1013死亡 0
+MOV G$宝箱1014状态 0
+MOV G$宝箱1014死亡 0
+MOV G$宝箱1015状态 0
+MOV G$宝箱1015死亡 0
+MOV G$宝箱1016状态 0
+MOV G$宝箱1016死亡 0
+MOV G$宝箱1017状态 0
+MOV G$宝箱1017死亡 0
+MOV G$宝箱1018状态 0
+MOV G$宝箱1018死亡 0
+MOV G$宝箱1019状态 0
+MOV G$宝箱1019死亡 0
+MOV G$宝箱1020状态 0
+MOV G$宝箱1020死亡 0
+MOV G$宝箱1021状态 0
+MOV G$宝箱1021死亡 0
+MOV G$宝箱1022状态 0
+MOV G$宝箱1022死亡 0
+MOV G$宝箱1023状态 0
+MOV G$宝箱1023死亡 0
+;==========================================重置外观和名字
+;------------大宝箱
+SETNPCNAME 1000 　　
+SETNPCAPPR 1000 233
+;------------中宝箱
+SETNPCNAME 1001 宝箱(中)
+SETNPCAPPR 1001 47
+SETNPCNAME 1002 宝箱(中)
+SETNPCAPPR 1002 47
+SETNPCNAME 1003 宝箱(中)
+SETNPCAPPR 1003 47
+SETNPCNAME 1004 宝箱(中)
+SETNPCAPPR 1004 47
+SETNPCNAME 1005 宝箱(中)
+SETNPCAPPR 1005 47
+;------------小宝箱
+SETNPCNAME 1006 宝箱(小)
+SETNPCAPPR 1006 163
+SETNPCNAME 1007 宝箱(小)
+SETNPCAPPR 1007 163
+SETNPCNAME 1008 宝箱(小)
+SETNPCAPPR 1008 163
+SETNPCNAME 1009 宝箱(小)
+SETNPCAPPR 1009 163
+SETNPCNAME 1010 宝箱(小)
+SETNPCAPPR 1010 163
+SETNPCNAME 1011 宝箱(小)
+SETNPCAPPR 1011 163
+SETNPCNAME 1012 宝箱(小)
+SETNPCAPPR 1012 163
+SETNPCNAME 1013 宝箱(小)
+SETNPCAPPR 1013 163
+SETNPCNAME 1014 宝箱(小)
+SETNPCAPPR 1014 163
+SETNPCNAME 1015 宝箱(小)
+SETNPCAPPR 1015 163
+SETNPCNAME 1016 宝箱(小)
+SETNPCAPPR 1016 163
+SETNPCNAME 1017 宝箱(小)
+SETNPCAPPR 1017 163
+SETNPCNAME 1018 宝箱(小)
+SETNPCAPPR 1018 163
+SETNPCNAME 1019 宝箱(小)
+SETNPCAPPR 1019 163
+SETNPCNAME 1020 宝箱(小)
+SETNPCAPPR 1020 163
+SETNPCNAME 1021 宝箱(小)
+SETNPCAPPR 1021 163
+SETNPCNAME 1022 宝箱(小)
+SETNPCAPPR 1022 163
+SETNPCNAME 1023 宝箱(小)
+SETNPCAPPR 1023 163
+;======================================================清理文本数据
+CLEARVAR S0 9
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战行会.txt S0 0
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战行会.txt S1 1
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战行会.txt S2 2
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战行会.txt S3 3
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战行会.txt S4 4
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战行会.txt S5 5
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战行会.txt S6 6
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战行会.txt S7 7
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战行会.txt S8 8
+READRANDOMSTR ..\QUESTDIARY\游戏数据\工会战行会.txt S9 9
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战排行.txt
+;---------------------------------
+GMEXECUTE 在线提问 @Lemon活动TZ2
+
+#IF
+!EQUAL S0 
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$STR(S0)>.txt
+#IF
+!EQUAL S1 
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$STR(S1)>.txt
+#IF
+!EQUAL S2 
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$STR(S2)>.txt
+#IF
+!EQUAL S3 
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$STR(S3)>.txt
+#IF
+!EQUAL S4 
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$STR(S4)>.txt
+#IF
+!EQUAL S5 
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$STR(S5)>.txt
+#IF
+!EQUAL S6 
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$STR(S6)>.txt
+#IF
+!EQUAL S7 
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$STR(S7)>.txt
+#IF
+!EQUAL S8 
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$STR(S8)>.txt
+#IF
+!EQUAL S9 
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\工会战数据\<$STR(S9)>.txt
+
+
+[@工会战结束]
+#IF
+EQUAL G$Lemon活动 2
+#ACT
+MOV G$工会战时间 0
+MOV G$Lemon活动 0
+GMEXECUTE 在线提问 @Lemon工会结束
+SENDMSG 14 工会战争结束了,奖励将通过邮件的方式发送.........
+BREAK
+
+
+
+[@Lemon宝箱大SX]
+#IF
+LARGE D44 0
+#ACT
+DEC D44 1
+SETNPCNAME 1000 倒计时:<$STR(D44)>秒
+SENDMSG 16 工会战争:大宝箱将在<$STR(D44)>秒后刷新!!
+DELAYCALL 1 @Lemon宝箱大SX
+BREAK
+#ELSEACT
+MOV G$宝箱大刷新 2
+SETNPCNAME 1000 宝箱(大)
+SETNPCAPPR 1000 233
+SENDMSG 14 工会战:大宝箱已刷新!!
+BREAK
+
+
+[@激情烤火开始]
+#IF
+TRUE
+#ACT
+MOV G$Lemon活动 1
+MOV G$烤火人数 0
+MOV G$烤火时间 $INC.$LONGDATE.960
+;---------------------------------
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\烤火积分排行.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\烤火杀人排行.txt
+;---------------------------------
+GMEXECUTE 在线提问 @Lemon活动TZ1
+SENDMSG 14 激情烤火活动将在1分钟后开始!!!
+DELAYCALL 60 @Lemon烤火YH
+
+[@Lemon烤火YH]
+#IF
+EQUAL G$Lemon活动 1
+#ACT
+;---------------------------------火堆光圈
+SETMAPLIGHTZONE JQKH 19 27 0 60 21
+;---------------------------------安全区光圈
+SETMAPLIGHTZONE JQKH 16 39 0 60 4
+SETMAPLIGHTZONE JQKH 17 39 0 60 4
+SETMAPLIGHTZONE JQKH 18 39 0 60 4
+SETMAPLIGHTZONE JQKH 19 39 0 60 4
+SETMAPLIGHTZONE JQKH 20 39 0 60 4
+SETMAPLIGHTZONE JQKH 21 39 0 60 4
+SETMAPLIGHTZONE JQKH 22 39 0 60 4
+SETMAPLIGHTZONE JQKH 23 39 0 60 4
+SENDMSG 14 激情烤火活动正在进行中........
+DELAYCALL 60 @Lemon烤火YH
+
+[@激情烤火结束]
+#IF
+EQUAL G$Lemon活动 1
+#ACT
+MOV G$Lemon活动 0
+GMEXECUTE 在线提问 @Lemon烤火
+CLEARVAR S0 16
+MOV P1 0
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火积分排行.txt S1 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火积分排行.txt S2 1 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火积分排行.txt S3 2 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火积分排行.txt S4 3 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火积分排行.txt S5 4 0 2 |
+;---------------------------------
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火杀人排行.txt S11 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火杀人排行.txt S12 1 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火杀人排行.txt S13 2 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火杀人排行.txt S14 3 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\烤火杀人排行.txt S15 4 0 2 |
+#ELSEACT
+BREAK
+
+;--------------------------积分排行奖励
+#IF
+POS $STR(S1) |
+#ACT
+GETVALIDSTR $STR(S1) | S1 P1
+$STR(S1).MailGIve 1米充值代金券 2
+$STR(S1).MailGive 0.2米充值代金券 3
+$STR(S1).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火积分第一名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S1)>成功获得激情烤火积分第一名,获得高额奖励
+
+#IF
+POS $STR(S2) |
+#ACT
+GETVALIDSTR $STR(S2) | S2 P1
+$STR(S2).MailGIve 1米充值代金券 1
+$STR(S2).MailGIve 0.5米充值代金券 1
+$STR(S2).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火积分第二名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S2)>成功获得激情烤火积分第二名,获得高额奖励
+
+#IF
+POS $STR(S3) |
+#ACT
+GETVALIDSTR $STR(S3) | S3 P1
+$STR(S3).MailGIve 0.5米充值代金券 2
+$STR(S3).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火积分第三名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S3)>成功获得激情烤火积分第三名,获得高额奖励
+
+#IF
+POS $STR(S4) |
+#ACT
+GETVALIDSTR $STR(S4) | S4 P1
+$STR(S4).MailGIve 0.1米充值代金券 3
+$STR(S4).MailGIve 0.2米充值代金券 2
+$STR(S4).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火积分第四名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S4)>成功获得激情烤火积分第四名,获得高额奖励
+
+#IF
+POS $STR(S5) |
+#ACT
+GETVALIDSTR $STR(S5) | S5 P1
+$STR(S5).MailGIve 0.1米充值代金券 3
+$STR(S5).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火积分第五名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S5)>成功获得激情烤火积分第五名,获得高额奖励
+
+;--------------------------杀人排行奖励
+#IF
+POS $STR(S11) |
+#ACT
+GETVALIDSTR $STR(S11) | S11 P1
+$STR(S11).MailGIve 1米充值代金券 2
+$STR(S11).MailGIve 0.2米充值代金券 3
+$STR(S11).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火杀人第一名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S11)>成功获得激情烤火杀人第一名,获得高额奖励
+
+#IF
+POS $STR(S12) |
+#ACT
+GETVALIDSTR $STR(S12) | S12 P1
+$STR(S12).MailGIve 1米充值代金券 1
+$STR(S12).MailGIve 0.5米充值代金券 1
+$STR(S12).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火杀人第二名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S12)>成功获得激情烤火杀人第二名,获得高额奖励
+
+#IF
+POS $STR(S13) |
+#ACT
+GETVALIDSTR $STR(S13) | S13 P1
+$STR(S13).MailGIve 0.5米充值代金券 2
+$STR(S13).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火杀人第三名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S13)>成功获得激情烤火杀人第三名,获得高额奖励
+
+#IF
+POS $STR(S14) |
+#ACT
+GETVALIDSTR $STR(S14) | S4 P1
+$STR(S14).MailGIve 0.1米充值代金券 3
+$STR(S14).MailGIve 0.2米充值代金券 2
+$STR(S14).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火杀人第四名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S14)>成功获得激情烤火杀人第四名,获得高额奖励
+
+#IF
+POS $STR(S15) |
+#ACT
+GETVALIDSTR $STR(S15) | S5 P1
+$STR(S15).MailGIve 0.1米充值代金券 3
+$STR(S15).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火杀人第五名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S15)>成功获得激情烤火杀人第五名,获得高额奖励
+
+#IF
+!EQUAL S1 
+EQUAL S1 $STR(S11)
+#ACT
+$STR(S1).MailGIve 30米充值2折券 1
+$STR(S1).SENDMAIL 44 激情烤火奖励 恭喜您获得激情烤火积分和杀人双榜第一名，请点提取获取奖励!
+SENDMSG 16 恭喜<$STR(S1)>获得积分和杀人排行双第一,额外获得奖励:30米充值2折券*1
+BREAK
+
+[@特戒夺宝开始]
+#IF
+TRUE
+#ACT
+MOV G$Lemon活动 4
+MOV G$夺宝时间 $INC.$LONGDATE.960
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\特戒夺宝玩家.txt
+;----------------------------
+CLEARMAPMON TJDB
+MONGENEX TJDB 36 60 特戒使者 0 1
+;----------------------------
+GMEXECUTE 在线提问 @Lemon活动TZ4
+SENDMSG 14 特戒夺宝将在1分钟后正式开始....
+SENDMSG 16 特戒夺宝将在1分钟后正式开始....
+BREAK
+
+[@特戒夺宝结束]
+#IF
+EQUAL G$Lemon活动 4
+#ACT
+MOV G$Lemon活动 0
+CLEARMAPMON TJDB
+GMEXECUTE 在线提问 @Lemon特戒JS
+SENDMSG 14 特戒夺宝活动已结束....
+SENDMSG 16 特戒夺宝活动已结束....
+BREAK
+
+
+[@阵营战开始]
+#IF
+TRUE
+#ACT
+MOV G$Lemon活动 3
+MOV G$Lemon红方 0
+MOV G$Lemon蓝方 0
+MOV G$阵营战时间 $INC.$LONGDATE.1860
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\阵营红方玩家.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\阵营蓝方玩家.txt
+CLEARMAPMON ZYZ
+MONGENEX ZYZ 54 40 水晶柱·红 0 1
+MONGENEX ZYZ 46 40 水晶塔·红 0 1
+MONGENEX ZYZ 55 49 水晶塔·红 0 1
+MONGENEX ZYZ 40 46 水晶塔·红 0 1
+MONGENEX ZYZ 48 54 水晶塔·红 0 1
+MONGENEX ZYZ 39 57 水晶塔·红 0 1
+;----------------------------
+MONGENEX ZYZ 64 109 水晶柱·蓝 0 1
+MONGENEX ZYZ 63 101 水晶塔·蓝 0 1
+MONGENEX ZYZ 72 110 水晶塔·蓝 0 1
+MONGENEX ZYZ 70 94 水晶塔·蓝 0 1
+MONGENEX ZYZ 80 104 水晶塔·蓝 0 1
+MONGENEX ZYZ 81 91 水晶塔·蓝 0 1
+;----------------------------
+MONGENEX ZYZ 53 61 　 0 1
+MONGENEX ZYZ 53 62 　 0 1
+MONGENEX ZYZ 54 62 　 0 1
+MONGENEX ZYZ 52 63 　 0 1
+MONGENEX ZYZ 53 63 　 0 1
+MONGENEX ZYZ 54 63 　 0 1
+MONGENEX ZYZ 53 63 　 0 1
+MONGENEX ZYZ 52 63 　 0 1
+MONGENEX ZYZ 51 63 　 0 1
+MONGENEX ZYZ 50 64 　 0 1
+MONGENEX ZYZ 51 64 　 0 1
+MONGENEX ZYZ 52 64 　 0 1
+MONGENEX ZYZ 53 64 　 0 1
+MONGENEX ZYZ 54 64 　 0 1
+MONGENEX ZYZ 55 64 　 0 1
+MONGENEX ZYZ 56 64 　 0 1
+MONGENEX ZYZ 57 65 　 0 1
+MONGENEX ZYZ 56 65 　 0 1
+MONGENEX ZYZ 55 65 　 0 1
+MONGENEX ZYZ 54 65 　 0 1
+MONGENEX ZYZ 53 65 　 0 1
+MONGENEX ZYZ 52 65 　 0 1
+MONGENEX ZYZ 51 65 　 0 1
+MONGENEX ZYZ 50 65 　 0 1
+MONGENEX ZYZ 49 65 　 0 1
+MONGENEX ZYZ 49 66 　 0 1
+MONGENEX ZYZ 50 66 　 0 1
+MONGENEX ZYZ 51 66 　 0 1
+MONGENEX ZYZ 52 66 　 0 1
+MONGENEX ZYZ 53 66 　 0 1
+MONGENEX ZYZ 54 66 　 0 1
+MONGENEX ZYZ 55 66 　 0 1
+MONGENEX ZYZ 56 66 　 0 1
+MONGENEX ZYZ 57 66 　 0 1
+MONGENEX ZYZ 57 66 　 0 1
+MONGENEX ZYZ 58 66 　 0 1
+MONGENEX ZYZ 59 67 　 0 1
+MONGENEX ZYZ 58 67 　 0 1
+MONGENEX ZYZ 57 67 　 0 1
+MONGENEX ZYZ 56 67 　 0 1
+MONGENEX ZYZ 55 67 　 0 1
+MONGENEX ZYZ 54 67 　 0 1
+MONGENEX ZYZ 53 67 　 0 1
+MONGENEX ZYZ 52 67 　 0 1
+MONGENEX ZYZ 51 67 　 0 1
+MONGENEX ZYZ 50 67 　 0 1
+MONGENEX ZYZ 49 67 　 0 1
+MONGENEX ZYZ 48 68 　 0 1
+MONGENEX ZYZ 49 68 　 0 1
+MONGENEX ZYZ 50 68 　 0 1
+MONGENEX ZYZ 51 68 　 0 1
+MONGENEX ZYZ 52 68 　 0 1
+MONGENEX ZYZ 53 68 　 0 1
+MONGENEX ZYZ 54 68 　 0 1
+MONGENEX ZYZ 55 68 　 0 1
+MONGENEX ZYZ 56 68 　 0 1
+MONGENEX ZYZ 57 68 　 0 1
+MONGENEX ZYZ 58 68 　 0 1
+MONGENEX ZYZ 59 68 　 0 1
+MONGENEX ZYZ 60 68 　 0 1
+MONGENEX ZYZ 61 69 　 0 1
+MONGENEX ZYZ 60 69 　 0 1
+MONGENEX ZYZ 59 69 　 0 1
+MONGENEX ZYZ 58 69 　 0 1
+MONGENEX ZYZ 57 69 　 0 1
+MONGENEX ZYZ 54 69 　 0 1
+MONGENEX ZYZ 53 69 　 0 1
+MONGENEX ZYZ 52 69 　 0 1
+MONGENEX ZYZ 51 69 　 0 1
+MONGENEX ZYZ 50 69 　 0 1
+MONGENEX ZYZ 49 69 　 0 1
+MONGENEX ZYZ 48 69 　 0 1
+MONGENEX ZYZ 47 69 　 0 1
+MONGENEX ZYZ 48 70 　 0 1
+MONGENEX ZYZ 49 70 　 0 1
+MONGENEX ZYZ 50 70 　 0 1
+MONGENEX ZYZ 51 70 　 0 1
+MONGENEX ZYZ 52 70 　 0 1
+MONGENEX ZYZ 53 70 　 0 1
+MONGENEX ZYZ 54 70 　 0 1
+MONGENEX ZYZ 57 70 　 0 1
+MONGENEX ZYZ 58 70 　 0 1
+MONGENEX ZYZ 59 70 　 0 1
+MONGENEX ZYZ 60 70 　 0 1
+MONGENEX ZYZ 61 70 　 0 1
+MONGENEX ZYZ 62 70 　 0 1
+MONGENEX ZYZ 63 71 　 0 1
+MONGENEX ZYZ 62 71 　 0 1
+MONGENEX ZYZ 61 71 　 0 1
+MONGENEX ZYZ 60 71 　 0 1
+MONGENEX ZYZ 59 71 　 0 1
+MONGENEX ZYZ 58 71 　 0 1
+MONGENEX ZYZ 57 71 　 0 1
+MONGENEX ZYZ 56 71 　 0 1
+MONGENEX ZYZ 55 71 　 0 1
+MONGENEX ZYZ 54 71 　 0 1
+MONGENEX ZYZ 53 71 　 0 1
+MONGENEX ZYZ 52 71 　 0 1
+MONGENEX ZYZ 51 71 　 0 1
+MONGENEX ZYZ 50 71 　 0 1
+MONGENEX ZYZ 49 71 　 0 1
+MONGENEX ZYZ 50 72 　 0 1
+MONGENEX ZYZ 51 72 　 0 1
+MONGENEX ZYZ 52 72 　 0 1
+MONGENEX ZYZ 53 72 　 0 1
+MONGENEX ZYZ 54 72 　 0 1
+MONGENEX ZYZ 55 72 　 0 1
+MONGENEX ZYZ 56 72 　 0 1
+MONGENEX ZYZ 57 72 　 0 1
+MONGENEX ZYZ 58 72 　 0 1
+MONGENEX ZYZ 59 72 　 0 1
+MONGENEX ZYZ 60 72 　 0 1
+MONGENEX ZYZ 61 72 　 0 1
+MONGENEX ZYZ 62 72 　 0 1
+MONGENEX ZYZ 63 72 　 0 1
+MONGENEX ZYZ 64 72 　 0 1
+MONGENEX ZYZ 65 73 　 0 1
+MONGENEX ZYZ 64 73 　 0 1
+MONGENEX ZYZ 63 73 　 0 1
+MONGENEX ZYZ 62 73 　 0 1
+MONGENEX ZYZ 61 73 　 0 1
+MONGENEX ZYZ 60 73 　 0 1
+MONGENEX ZYZ 59 73 　 0 1
+MONGENEX ZYZ 58 73 　 0 1
+MONGENEX ZYZ 57 73 　 0 1
+MONGENEX ZYZ 56 73 　 0 1
+MONGENEX ZYZ 55 73 　 0 1
+MONGENEX ZYZ 54 73 　 0 1
+MONGENEX ZYZ 53 73 　 0 1
+MONGENEX ZYZ 52 73 　 0 1
+MONGENEX ZYZ 51 73 　 0 1
+MONGENEX ZYZ 52 74 　 0 1
+MONGENEX ZYZ 53 74 　 0 1
+MONGENEX ZYZ 54 74 　 0 1
+MONGENEX ZYZ 55 74 　 0 1
+MONGENEX ZYZ 56 74 　 0 1
+MONGENEX ZYZ 57 74 　 0 1
+MONGENEX ZYZ 58 74 　 0 1
+MONGENEX ZYZ 59 74 　 0 1
+MONGENEX ZYZ 60 74 　 0 1
+MONGENEX ZYZ 61 74 　 0 1
+MONGENEX ZYZ 62 74 　 0 1
+MONGENEX ZYZ 63 74 　 0 1
+MONGENEX ZYZ 64 74 　 0 1
+MONGENEX ZYZ 65 74 　 0 1
+MONGENEX ZYZ 66 74 　 0 1
+MONGENEX ZYZ 67 75 　 0 1
+MONGENEX ZYZ 67 75 　 0 1
+MONGENEX ZYZ 66 75 　 0 1
+MONGENEX ZYZ 65 75 　 0 1
+MONGENEX ZYZ 64 75 　 0 1
+MONGENEX ZYZ 63 75 　 0 1
+MONGENEX ZYZ 62 75 　 0 1
+MONGENEX ZYZ 61 75 　 0 1
+MONGENEX ZYZ 60 75 　 0 1
+MONGENEX ZYZ 59 75 　 0 1
+MONGENEX ZYZ 58 75 　 0 1
+MONGENEX ZYZ 57 75 　 0 1
+MONGENEX ZYZ 56 75 　 0 1
+MONGENEX ZYZ 55 75 　 0 1
+MONGENEX ZYZ 54 75 　 0 1
+MONGENEX ZYZ 53 75 　 0 1
+MONGENEX ZYZ 54 76 　 0 1
+MONGENEX ZYZ 55 76 　 0 1
+MONGENEX ZYZ 56 76 　 0 1
+MONGENEX ZYZ 57 76 　 0 1
+MONGENEX ZYZ 58 76 　 0 1
+MONGENEX ZYZ 59 76 　 0 1
+MONGENEX ZYZ 60 76 　 0 1
+MONGENEX ZYZ 61 76 　 0 1
+MONGENEX ZYZ 62 76 　 0 1
+MONGENEX ZYZ 63 76 　 0 1
+MONGENEX ZYZ 64 76 　 0 1
+MONGENEX ZYZ 65 76 　 0 1
+MONGENEX ZYZ 66 76 　 0 1
+MONGENEX ZYZ 67 76 　 0 1
+MONGENEX ZYZ 68 76 　 0 1
+MONGENEX ZYZ 69 77 　 0 1
+MONGENEX ZYZ 68 77 　 0 1
+MONGENEX ZYZ 67 77 　 0 1
+MONGENEX ZYZ 66 77 　 0 1
+MONGENEX ZYZ 65 77 　 0 1
+MONGENEX ZYZ 64 77 　 0 1
+MONGENEX ZYZ 63 77 　 0 1
+MONGENEX ZYZ 62 77 　 0 1
+MONGENEX ZYZ 61 77 　 0 1
+MONGENEX ZYZ 60 77 　 0 1
+MONGENEX ZYZ 59 77 　 0 1
+MONGENEX ZYZ 58 77 　 0 1
+MONGENEX ZYZ 57 77 　 0 1
+MONGENEX ZYZ 56 77 　 0 1
+MONGENEX ZYZ 55 77 　 0 1
+MONGENEX ZYZ 56 78 　 0 1
+MONGENEX ZYZ 57 78 　 0 1
+MONGENEX ZYZ 58 78 　 0 1
+MONGENEX ZYZ 59 78 　 0 1
+MONGENEX ZYZ 60 78 　 0 1
+MONGENEX ZYZ 61 78 　 0 1
+MONGENEX ZYZ 62 78 　 0 1
+MONGENEX ZYZ 63 78 　 0 1
+MONGENEX ZYZ 64 78 　 0 1
+MONGENEX ZYZ 65 78 　 0 1
+MONGENEX ZYZ 66 78 　 0 1
+MONGENEX ZYZ 67 78 　 0 1
+MONGENEX ZYZ 68 78 　 0 1
+MONGENEX ZYZ 69 78 　 0 1
+MONGENEX ZYZ 70 78 　 0 1
+MONGENEX ZYZ 71 79 　 0 1
+MONGENEX ZYZ 70 79 　 0 1
+MONGENEX ZYZ 69 79 　 0 1
+MONGENEX ZYZ 68 79 　 0 1
+MONGENEX ZYZ 67 79 　 0 1
+MONGENEX ZYZ 64 79 　 0 1
+MONGENEX ZYZ 63 79 　 0 1
+MONGENEX ZYZ 62 79 　 0 1
+MONGENEX ZYZ 61 79 　 0 1
+MONGENEX ZYZ 60 79 　 0 1
+MONGENEX ZYZ 59 79 　 0 1
+MONGENEX ZYZ 58 79 　 0 1
+MONGENEX ZYZ 57 79 　 0 1
+MONGENEX ZYZ 58 80 　 0 1
+MONGENEX ZYZ 59 80 　 0 1
+MONGENEX ZYZ 60 80 　 0 1
+MONGENEX ZYZ 61 80 　 0 1
+MONGENEX ZYZ 62 80 　 0 1
+MONGENEX ZYZ 63 80 　 0 1
+MONGENEX ZYZ 64 80 　 0 1
+MONGENEX ZYZ 67 80 　 0 1
+MONGENEX ZYZ 68 80 　 0 1
+MONGENEX ZYZ 69 80 　 0 1
+MONGENEX ZYZ 70 80 　 0 1
+MONGENEX ZYZ 71 80 　 0 1
+MONGENEX ZYZ 72 80 　 0 1
+MONGENEX ZYZ 71 81 　 0 1
+MONGENEX ZYZ 70 81 　 0 1
+MONGENEX ZYZ 69 81 　 0 1
+MONGENEX ZYZ 68 81 　 0 1
+MONGENEX ZYZ 67 81 　 0 1
+MONGENEX ZYZ 66 81 　 0 1
+MONGENEX ZYZ 65 81 　 0 1
+MONGENEX ZYZ 64 81 　 0 1
+MONGENEX ZYZ 63 81 　 0 1
+MONGENEX ZYZ 62 81 　 0 1
+MONGENEX ZYZ 61 81 　 0 1
+MONGENEX ZYZ 60 81 　 0 1
+MONGENEX ZYZ 59 81 　 0 1
+MONGENEX ZYZ 60 82 　 0 1
+MONGENEX ZYZ 61 82 　 0 1
+MONGENEX ZYZ 62 82 　 0 1
+MONGENEX ZYZ 63 82 　 0 1
+MONGENEX ZYZ 64 82 　 0 1
+MONGENEX ZYZ 65 82 　 0 1
+MONGENEX ZYZ 66 82 　 0 1
+MONGENEX ZYZ 67 82 　 0 1
+MONGENEX ZYZ 68 82 　 0 1
+MONGENEX ZYZ 69 82 　 0 1
+MONGENEX ZYZ 70 82 　 0 1
+MONGENEX ZYZ 69 83 　 0 1
+MONGENEX ZYZ 68 83 　 0 1
+MONGENEX ZYZ 67 83 　 0 1
+MONGENEX ZYZ 66 83 　 0 1
+MONGENEX ZYZ 65 83 　 0 1
+MONGENEX ZYZ 64 83 　 0 1
+MONGENEX ZYZ 63 83 　 0 1
+MONGENEX ZYZ 62 83 　 0 1
+MONGENEX ZYZ 61 83 　 0 1
+MONGENEX ZYZ 62 84 　 0 1
+MONGENEX ZYZ 63 84 　 0 1
+MONGENEX ZYZ 64 84 　 0 1
+MONGENEX ZYZ 65 84 　 0 1
+MONGENEX ZYZ 66 84 　 0 1
+MONGENEX ZYZ 67 84 　 0 1
+MONGENEX ZYZ 68 84 　 0 1
+MONGENEX ZYZ 67 85 　 0 1
+MONGENEX ZYZ 66 85 　 0 1
+MONGENEX ZYZ 65 85 　 0 1
+MONGENEX ZYZ 64 85 　 0 1
+MONGENEX ZYZ 63 85 　 0 1
+MONGENEX ZYZ 64 86 　 0 1
+MONGENEX ZYZ 65 86 　 0 1
+MONGENEX ZYZ 66 86 　 0 1
+MONGENEX ZYZ 65 87 　 0 1
+;----------------------------
+GMEXECUTE 在线提问 @Lemon活动TZ3
+SENDMSG 14 阵营战将在1分钟后正式开始....
+SENDMSG 16 阵营战将在1分钟后正式开始....
+BREAK
+
+[@阵营战清中间格挡怪]
+#IF
+TRUE
+#ACT
+CLEARMAPMON ZYZ 　
+BREAK
+
+[@阵营战结束]
+#IF
+EQUAL G$Lemon活动 3
+#ACT
+MOV G$Lemon活动 0
+GMEXECUTE 在线提问 @Lemon阵营JS平
+SENDMSG 14 阵营战结束了!
+BREAK
+
+
+[@Lemon计算CZ]
+#IF
+TRUE
+#ACT
+CLEARVAR S0 99
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行1.txt S1 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行2.txt S2 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行3.txt S3 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S4 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S5 1 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S6 2 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S7 3 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S8 4 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S9 5 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行4.txt S10 6 0 2 |
+
+#IF
+POS $STR(S1) |
+#ACT
+SPLIT $STR(S1) | S11
+DEC S11 ~
+DELVARLIST $STR(S1) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+GOTO @Lemon奖励CZ&1&1
+
+#IF
+POS $STR(S2) |
+#ACT
+SPLIT $STR(S2) | S11
+DEC S11 ~
+DELVARLIST $STR(S2) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+GOTO @Lemon奖励CZ&2&2
+
+#IF
+POS $STR(S3) |
+#ACT
+SPLIT $STR(S3) | S11
+DEC S11 ~
+DELVARLIST $STR(S3) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+GOTO @Lemon奖励CZ&3&3
+#IF
+POS $STR(S4) |
+#ACT
+SPLIT $STR(S4) | S11
+DEC S11 ~
+DELVARLIST $STR(S4) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+GOTO @Lemon奖励CZ&4&4
+#IF
+POS $STR(S5) |
+#ACT
+SPLIT $STR(S5) | S11
+DEC S11 ~
+DELVARLIST $STR(S5) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+GOTO @Lemon奖励CZ&5&4
+#IF
+POS $STR(S6) |
+#ACT
+SPLIT $STR(S6) | S11
+DEC S11 ~
+DELVARLIST $STR(S6) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+GOTO @Lemon奖励CZ&6&4
+#IF
+POS $STR(S7) |
+#ACT
+SPLIT $STR(S7) | S11
+DEC S11 ~
+DELVARLIST $STR(S7) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+GOTO @Lemon奖励CZ&7&4
+#IF
+POS $STR(S8) |
+#ACT
+SPLIT $STR(S8) | S11
+DEC S11 ~
+DELVARLIST $STR(S8) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+GOTO @Lemon奖励CZ&8&4
+#IF
+POS $STR(S9) |
+#ACT
+SPLIT $STR(S9) | S11
+DEC S11 ~
+DELVARLIST $STR(S9) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+GOTO @Lemon奖励CZ&9&4
+#IF
+POS $STR(S10) |
+#ACT
+SPLIT $STR(S10) | S11
+DEC S11 ~
+DELVARLIST $STR(S10) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt
+GOTO @Lemon奖励CZ&10&4
+
+#IF
+TRUE
+#ACT
+MOV N$Lemon排行XH 0
+GOTO @Lemon排行XH2
+BREAK
+
+[@Lemon排行XH2]
+#IF
+LARGE N$Lemon排行XH $TXTLINE(..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt)
+#ACT
+BREAK
+#ELSEACT
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\合服充值排行.txt S21 $STR(N$Lemon排行XH)
+
+#IF
+POS $STR(S21) |
+#ACT
+SPLIT $STR(S21) | S11
+DEC S11 ~
+GOTO @Lemon奖励CZ&0&5
+INC N$Lemon排行XH 1
+GOTO @Lemon排行XH2
+BREAK
+#ELSEACT
+INC N$Lemon排行XH 1
+GOTO @Lemon排行XH2
+BREAK
+
+[@Lemon奖励CZ]
+#IF
+EQUAL S11 
+#ACT
+BREAK
+#ELSEACT
+MOV S44 $HUMANINFO[$STR(S11)].$USERNAME
+
+#IF
+!CHECKONLINE $STR(S44)
+#ACT
+ADDVARLIST $STR(S11) ..\QUESTDIARY\游戏数据\合服排行\合服充值排行离线<$SCRIPTPARAM(2)>.txt
+BREAK
+
+;------------------第一名奖励 合区1-8次奖励
+#IF
+EQUAL $HFCOUNT 1
+EQUAL $SCRIPTPARAM(2) 1
+#ACT
+$STR(S44).MailGive 元宝 3000
+$STR(S44).MailGive 法宝精粹 50 1
+$STR(S44).MailGive 七阶装备自选箱 2 1
+$STR(S44).MailGive 法宝自选箱 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL $HFCOUNT 2
+EQUAL $SCRIPTPARAM(2) 1
+#ACT
+$STR(S44).MailGive 元宝 3000
+$STR(S44).MailGive 凶器精粹 50 1
+$STR(S44).MailGive 凶器自选箱 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL $HFCOUNT 3
+EQUAL $SCRIPTPARAM(2) 1
+#ACT
+$STR(S44).MailGive 元宝 3000
+$STR(S44).MailGive 传世红人(时装) 1 1
+$STR(S44).MailGive 衣服时装自选箱 1 1
+$STR(S44).MailGive 武器时装自选箱 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL $HFCOUNT 4
+EQUAL $SCRIPTPARAM(2) 1
+#ACT
+$STR(S44).MailGive 元宝 3000
+$STR(S44).MailGive 紫金葫芦 1 1
+$STR(S44).MailGive 十二阶装备自选箱 2 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+POS -5-6-7- -<$HFCOUNT>-
+EQUAL $SCRIPTPARAM(2) 1
+#ACT
+$STR(S44).MailGive 元宝 3000
+$STR(S44).MailGive 魔体经验券(10万) 2 1
+$STR(S44).MailGive 魔体经验券(30万) 5 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+LARGE $HFCOUNT 7
+EQUAL $SCRIPTPARAM(2) 1
+#ACT
+$STR(S44).MailGive 元宝 3000
+$STR(S44).MailGive 耀阳圣尊 1 1
+$STR(S44).MailGive 十五阶装备自选箱 2 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+;------------------第2名奖励 合区1-8次奖励
+#IF
+EQUAL $HFCOUNT 1
+EQUAL $SCRIPTPARAM(2) 2
+#ACT
+$STR(S44).MailGive 元宝 2500
+$STR(S44).MailGive 法宝精粹 50 1
+$STR(S44).MailGive 七阶装备自选箱 2 1
+$STR(S44).MailGive 法宝自选箱 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+#IF
+EQUAL $HFCOUNT 2
+EQUAL $SCRIPTPARAM(2) 2
+#ACT
+$STR(S44).MailGive 元宝 2500
+$STR(S44).MailGive 凶器精粹 50 1
+$STR(S44).MailGive 赤明天帝 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+#IF
+EQUAL $HFCOUNT 3
+EQUAL $SCRIPTPARAM(2) 2
+#ACT
+$STR(S44).MailGive 元宝 2000
+$STR(S44).MailGive 武器时装自选箱 1 1
+$STR(S44).MailGive 传世红人(时装) 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+#IF
+EQUAL $HFCOUNT 4
+EQUAL $SCRIPTPARAM(2) 2
+#ACT
+$STR(S44).MailGive 元宝 2000
+$STR(S44).MailGive 十一阶装备自选箱 2 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+#IF
+POS -5-6-7- -<$HFCOUNT>-
+EQUAL $SCRIPTPARAM(2) 2
+#ACT
+$STR(S44).MailGive 元宝 2000
+$STR(S44).MailGive 魔体经验券(10万) 1 1
+$STR(S44).MailGive 魔体经验券(30万) 2 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+#IF
+LARGE $HFCOUNT 7
+EQUAL $SCRIPTPARAM(2) 2
+#ACT
+$STR(S44).MailGive 元宝 2000
+$STR(S44).MailGive 十五阶装备自选箱 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+;------------------第3名奖励 合区1-8次奖励
+#IF
+EQUAL $HFCOUNT 1
+EQUAL $SCRIPTPARAM(2) 3
+#ACT
+$STR(S44).MailGive 元宝 2000
+$STR(S44).MailGive 法宝精粹 50 1
+$STR(S44).MailGive 无量飞剑 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL $HFCOUNT 2
+EQUAL $SCRIPTPARAM(2) 3
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).MailGive 凶器精粹 30 1
+$STR(S44).MailGive 撼天 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL $HFCOUNT 3
+EQUAL $SCRIPTPARAM(2) 3
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).MailGive 传世红人(时装) 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL $HFCOUNT 4
+EQUAL $SCRIPTPARAM(2) 3
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).MailGive 十阶装备自选箱 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+POS -5-6-7- -<$HFCOUNT>-
+EQUAL $SCRIPTPARAM(2) 3
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).MailGive 魔体经验券(10万) 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+LARGE $HFCOUNT 7
+EQUAL $SCRIPTPARAM(2) 3
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).MailGive 十三阶装备自选箱 1 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+;------------------第4-10名奖励
+#IF
+EQUAL $HFCOUNT 1
+EQUAL $SCRIPTPARAM(2) 4
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).MailGive 法宝精粹 30 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL $HFCOUNT 2
+EQUAL $SCRIPTPARAM(2) 4
+#ACT
+$STR(S44).MailGive 绑定元宝 1000
+$STR(S44).MailGive 凶器精粹 10 1
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL $HFCOUNT 3
+EQUAL $SCRIPTPARAM(2) 4
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+EQUAL $HFCOUNT 4
+EQUAL $SCRIPTPARAM(2) 4
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+POS -5-6-7- -<$HFCOUNT>-
+EQUAL $SCRIPTPARAM(2) 4
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+#IF
+LARGE $HFCOUNT 7
+EQUAL $SCRIPTPARAM(2) 4
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+;------------------参与奖
+#IF
+EQUAL $SCRIPTPARAM(2) 5
+#ACT
+$STR(S44).MailGive 绑定元宝 200
+$STR(S44).SENDMAIL 44 充值排行奖励 恭喜您在合服充值排行活动中获得参与奖，绑定元宝已直接发放!
+BREAK
+
+[@Lemon计算BS]
+#IF
+TRUE
+#ACT
+CLEARVAR S0 99
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行1.txt S1 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行2.txt S2 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S3 0 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S4 1 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S5 2 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S6 3 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S7 4 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S8 5 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S9 6 0 2 |
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行3.txt S10 7 0 2 |
+
+#IF
+POS $STR(S1) |
+#ACT
+SPLIT $STR(S1) | S11
+DEC S11 ~
+DELVARLIST $STR(S1) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+GOTO @Lemon奖励FF&1&1
+
+#IF
+POS $STR(S2) |
+#ACT
+SPLIT $STR(S2) | S11
+DEC S11 ~
+DELVARLIST $STR(S2) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+GOTO @Lemon奖励FF&2&2
+
+#IF
+POS $STR(S3) |
+#ACT
+SPLIT $STR(S3) | S11
+DEC S11 ~
+DELVARLIST $STR(S3) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+GOTO @Lemon奖励FF&3&2
+
+#IF
+POS $STR(S4) |
+#ACT
+SPLIT $STR(S4) | S11
+DEC S11 ~
+DELVARLIST $STR(S4) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+GOTO @Lemon奖励FF&4&3
+
+#IF
+POS $STR(S5) |
+#ACT
+SPLIT $STR(S5) | S11
+DEC S11 ~
+DELVARLIST $STR(S5) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+GOTO @Lemon奖励FF&5&3
+
+#IF
+POS $STR(S6) |
+#ACT
+SPLIT $STR(S6) | S11
+DEC S11 ~
+DELVARLIST $STR(S6) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+GOTO @Lemon奖励FF&6&3
+
+#IF
+POS $STR(S7) |
+#ACT
+SPLIT $STR(S7) | S11
+DEC S11 ~
+DELVARLIST $STR(S7) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+GOTO @Lemon奖励FF&7&3
+
+#IF
+POS $STR(S8) |
+#ACT
+SPLIT $STR(S8) | S11
+DEC S11 ~
+DELVARLIST $STR(S8) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+GOTO @Lemon奖励FF&8&3
+
+#IF
+POS $STR(S9) |
+#ACT
+SPLIT $STR(S9) | S11
+DEC S11 ~
+DELVARLIST $STR(S9) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+GOTO @Lemon奖励FF&9&3
+
+#IF
+POS $STR(S10) |
+#ACT
+SPLIT $STR(S10) | S11
+DEC S11 ~
+DELVARLIST $STR(S10) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt
+GOTO @Lemon奖励FF&10&3
+
+
+#IF
+TRUE
+;LARGE $TXTLINE(..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt) 0
+#ACT
+MOV N$Lemon排行XH 0
+GOTO @Lemon排行XH
+BREAK
+
+[@Lemon排行XH]
+#IF
+LARGE N$Lemon排行XH $TXTLINE(..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt)
+#ACT
+BREAK
+#ELSEACT
+READRANDOMSTR ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行.txt S21 $STR(N$Lemon排行XH)
+
+#IF
+POS $STR(S21) |
+#ACT
+SPLIT $STR(S21) | S11
+DEC S11 ~
+GOTO @Lemon奖励FF&0&4
+INC N$Lemon排行XH 1
+GOTO @Lemon排行XH
+BREAK
+#ELSEACT
+INC N$Lemon排行XH 1
+GOTO @Lemon排行XH
+BREAK
+
+
+[@Lemon奖励FF]
+#IF
+EQUAL S11 
+#ACT
+BREAK
+#ELSEACT
+MOV S44 $HUMANINFO[$STR(S11)].$USERNAME
+
+#IF
+!CHECKONLINE $STR(S44)
+#ACT
+ADDVARLIST $STR(S11) ..\QUESTDIARY\游戏数据\合服排行\击杀BOSS排行离线<$SCRIPTPARAM(2)>.txt
+BREAK
+
+;------------------第一名奖励
+#IF
+EQUAL $SCRIPTPARAM(2) 1
+#ACT
+$STR(S44).MailGive 元宝 1000
+$STR(S44).MailGive 阿修罗神图鉴卡 1 1
+$STR(S44).MailGive 赤阳魔尊图鉴卡 1 1
+$STR(S44).MailGive 图鉴神御礼包(套) 1 1
+$STR(S44).SENDMAIL 44 击杀BOSS奖励 恭喜您在合服击杀BOSS排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+;------------------第2-3名奖励
+#IF
+EQUAL $SCRIPTPARAM(2) 2
+#ACT
+$STR(S44).MailGive 元宝 500
+$STR(S44).MailGive 阿修罗神图鉴卡 1 1
+$STR(S44).MailGive 图鉴神秘礼包(套) 1 1
+$STR(S44).SENDMAIL 44 击杀BOSS奖励 恭喜您在合服击杀BOSS排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+;------------------第4-10名奖励
+#IF
+EQUAL $SCRIPTPARAM(2) 3
+#ACT
+$STR(S44).MailGive 元宝 200
+$STR(S44).MailGive 阿修罗神图鉴卡 1 1
+$STR(S44).MailGive 图鉴狂怒随机礼包 2 1
+$STR(S44).SENDMAIL 44 击杀BOSS奖励 恭喜您在合服击杀BOSS排行活动中获得第<$SCRIPTPARAM(1)>名，请点提取获取奖励!
+BREAK
+
+;------------------参与奖
+#IF
+EQUAL $SCRIPTPARAM(2) 4
+#ACT
+$STR(S44).MailGive 图鉴狂怒随机礼包 1 1
+$STR(S44).SENDMAIL 44 击杀BOSS奖励 恭喜您在合服击杀BOSS排行活动中获得参与奖，请点提取获取奖励!
+BREAK
+
+
+
+
+
+
+
+;--------------------------------------------------------------------------------沙城
+[@攻城提示]
+#IF
+EQUAL G0 2
+#ACT
+SENDMSG 1 (*)沙城战役将在今晚20点开始，沙城奖励丰厚！所有行会都可参与攻城,请做好准备！
+SENDMSG 9 (*)沙城战役将在今晚20点开始，沙城奖励丰厚！所有行会都可参与攻城,请做好准备！
+SENDMSG 14 (*)沙城战役将在今晚20点开始，沙城奖励丰厚！所有行会都可参与攻城,请做好准备！
+SENDMAIL 996 沙城战提醒 沙城战役将在今晚20点开始，所有(当日20点之前建立的)行会都可参与攻城，请做好准备！沙城奖励丰厚！
+BREAK
+
+#IF
+EQUAL G2 2
+#ACT
+SENDMSG 1 (*)沙城战役将在今晚20点开始，沙城奖励丰厚！所有行会都可参与攻城,请做好准备！
+SENDMSG 9 (*)沙城战役将在今晚20点开始，沙城奖励丰厚！所有行会都可参与攻城,请做好准备！
+SENDMSG 14 (*)沙城战役将在今晚20点开始，沙城奖励丰厚！所有行会都可参与攻城,请做好准备！
+SENDMAIL 996 沙城战提醒 沙城战役将在今晚20点开始，所有(当日20点之前建立的)行会都可参与攻城，请做好准备！沙城奖励丰厚！
+BREAK
+
+[@开始攻城]
+#IF
+EQUAL G0 2
+#ACT
+MOV G6 1
+ADDCASTLEWARGUILD ALL 沙城 0
+SENDMSG 1 (*)沙城战役已开始，请所有行会成员前往沙城区域！
+SENDMSG 9 (*)沙城战役已开始，请所有行会成员前往沙城区域！
+SENDMSG 14 (*)沙城战役已开始，请所有行会成员前往沙城区域！
+BREAK
+
+#IF
+EQUAL G2 2
+#ACT
+MOV G6 1
+ADDCASTLEWARGUILD ALL 沙城 0
+SENDMSG 1 (*)沙城战役已开始，请所有行会成员前往沙城区域！
+SENDMSG 9 (*)沙城战役已开始，请所有行会成员前往沙城区域！
+SENDMSG 14 (*)沙城战役已开始，请所有行会成员前往沙城区域！
+BREAK
+
+[@攻城结束]
+#IF
+EQUAL G0 2
+#ACT
+MOV G6 0
+SENDMSG 1 (*)本次攻沙已结束，成功夺取沙城的行会成员可查看邮箱领取攻沙奖励！
+SENDMSG 9 (*)本次攻沙已结束，成功夺取沙城的行会成员可查看邮箱领取攻沙奖励！
+SENDMSG 14 (*)本次攻沙已结束，成功夺取沙城的行会成员可查看邮箱领取攻沙奖励！
+BREAK
+
+#IF
+EQUAL G2 2
+#ACT
+MOV G6 0
+SENDMSG 1 (*)本次攻沙已结束,成功夺取沙城的行会成员可查看邮箱领取攻杀奖励!
+SENDMSG 9 (*)本次攻沙已结束,成功夺取沙城的行会成员可查看邮箱领取攻杀奖励!
+SENDMSG 14 (*)本次攻沙已结束,成功夺取沙城的行会成员可查看邮箱领取攻杀奖励!
+BREAK
+
+[@攻城战开始]
+;--------------------------清理沙城行会记录及其属性
+#IF
+TRUE
+#ACT
+MOV A245 
+MOV A246 
+GMEXECUTE 在线提问 @Lemon沙城红点
+BREAK
+
+[@攻城战结束]
+#IF
+TRUE
+#ACT
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包记录.txt
+;-----------------------
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额1.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额2.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额3.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额4.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额5.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额6.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额7.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额8.txt
+;-----------------------
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家1.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家2.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家3.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家4.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家5.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家6.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家7.txt
+CLEARNAMELIST ..\QUESTDIARY\游戏数据\沙城红包\沙城红包玩家8.txt
+;-----------------------
+FILECOPY ..\QUESTDIARY\数据文件\沙城红包金额.txt ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额1.txt
+FILECOPY ..\QUESTDIARY\数据文件\沙城红包金额.txt ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额2.txt
+FILECOPY ..\QUESTDIARY\数据文件\沙城红包金额.txt ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额3.txt
+FILECOPY ..\QUESTDIARY\数据文件\沙城红包金额.txt ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额4.txt
+FILECOPY ..\QUESTDIARY\数据文件\沙城红包金额.txt ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额5.txt
+FILECOPY ..\QUESTDIARY\数据文件\沙城红包金额.txt ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额6.txt
+FILECOPY ..\QUESTDIARY\数据文件\沙城红包金额.txt ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额7.txt
+FILECOPY ..\QUESTDIARY\数据文件\沙城红包金额.txt ..\QUESTDIARY\游戏数据\沙城红包\沙城红包金额8.txt
+;-----------------------
+SENDMSG 14 沙城战结束，沙城战福利BOSS已刷新在沙城皇宫门口，所有人可前往击杀
+SENDMSG 14 沙城战结束，沙城战福利BOSS已刷新在沙城皇宫门口，所有人可前往击杀
+SENDMSG 16 沙城战结束，沙城战福利BOSS已刷新在沙城皇宫门口，所有人可前往击杀
+MonGenEx 3 172 378 沙城战福利BOSS 0 1
+GMEXECUTE 在线提问 @Lemon写入沙城
+
+#IF
+TRUE
+#ACT
+GMEXECUTE 在线提问 @Lemon沙城红点
+GMEXECUTE 在线提问 @确定新沙城城主
+BREAK
+
+
+[@_物品掉落触发]
+;===================物品爆出提醒
+#IF
+TRUE
+#ACT
+MOV S$装备爆出_地图 <$PARAM(1)>
+MOV S$装备爆出_怪物 <$PARAM(3)>
+MOV S$装备爆出_物品 <$PARAM(4)>
+MOV S$装备爆出_玩家 <$PARAM(10)>
+MOV S$装备爆出_X <$PARAM(8)>
+MOV S$装备爆出_Y <$PARAM(9)>
+
+#IF
+LARGE <$STDITEM(<$STR(S$装备爆出_物品)>).GC1> 8
+#ACT
+SENDMSG 14 恭喜<<$STR(S$装备爆出_玩家)>>在<<$STR(S$装备爆出_地图)>(<$STR(S$装备爆出_X)>,<$STR(S$装备爆出_Y)>)>处击杀了<<$STR(S$装备爆出_怪物)>>爆出了<<$STR(S$装备爆出_物品)>>
+
+#IF
+LARGE <$STDITEM(<$STR(S$装备爆出_物品)>).GC1> 4
+#ACT
+SENDMSG 16 恭喜<<$STR(S$装备爆出_玩家)>>在<<$STR(S$装备爆出_地图)>(<$STR(S$装备爆出_X)>,<$STR(S$装备爆出_Y)>)>处击杀了<<$STR(S$装备爆出_怪物)>>爆出了<<$STR(S$装备爆出_物品)>>
+
+;========装备悬赏
+#IF
+RANDOM 1
+#ACT
+MOV S$装备悬赏物品掉落触发机器人_物品名 <$PARAM(5)>
+MOV S$装备悬赏物品掉落触发机器人_玩家名 <$PARAM(10)>
+ReplaceText S$装备悬赏物品掉落触发机器人_物品名 ( [
+ReplaceText S$装备悬赏物品掉落触发机器人_物品名 ) ]
+
+#IF
+!EQUAL <$GetTypeBRow(cfg_zhuangbeixuanshang,1,<$STR(S$装备悬赏物品掉落触发机器人_物品名)>)> -1
+#ACT
+HCall <$STR(S$装备悬赏物品掉落触发机器人_玩家名)> @装备悬赏QM_装备爆出&装备悬赏QM_参数_装备名=<$STR(S$装备悬赏物品掉落触发机器人_物品名)>
+BREAK

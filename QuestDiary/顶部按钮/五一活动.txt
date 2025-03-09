@@ -1,0 +1,303 @@
+[@五一活动]
+{
+#IF
+TRUE
+#SAY
+<Img|id=1|children={2,3,4,5,6,7,9,tu1}|x=152.0|y=78.0|esc=0|bg=1|img=private/fulihuodong/touzimianban.png|loadDelay=0|scale=1>
+<Img|id=2|x=-21.0|y=-45.0|img=public/frame_squared_outside.png|esc=0|scale=1>
+<Img|id=3|x=-59.0|y=-69.0|esc=0|_localZOrder=1|img=public/frame_pattern_dragon.png|scale=1>
+<Button|id=4|x=782.0|y=-50.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Button|id=5|x=0.0|y=4.0|scale=1|nimg=public/btn_chosen_02.png|pimg=public/btn_chosen_02.png|size=18|color=67|text=活动礼包|link=@五一活动>
+<Button|id=6|x=0.0|y=65.0|scale=1|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|size=18|color=67|text=活动兑换|link=@活动兑换>
+<Button|id=7|x=0.0|y=126.0|scale=1|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|size=18|color=67|text=五一矿工|link=@五一矿工>
+<Img|id=tu1|x=338.0|y=3.0|img=private/fulihuodong/zhuangbeixuanshangzi.png|scale=1|esc=0>
+<ListView|id=9|children={a10,b10,c10,d10,e10,f10}|x=211.0|y=161.0|width=600|height=320|direction=2>
+
+<Img|id=a10|children={a11,a12,a13,a14,a15,a16}|x=0.0|y=0.0|esc=0|scale=1|img=private/fulihuodong/bg_cross_10.png>
+<Img|id=a11|x=33.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Img|id=a12|x=126.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Button|id=a13|x=56.0|y=211.0|pimg=private/fulihuodong/69goumai.png|color=255|size=18|nimg=public/69goumai.png|scale=1|link=@够买技能礼包1>
+<RText|id=a14|x=70.0|y=55.0|color=255|size=20|text=<技能礼包/FCOLOR=67>>
+<ItemShow|id=a15|x=34.0|y=117.0|width=70|height=70|rotate=0|itemid=763|itemcount=688|showtips=1|bgtype=1|name=书页>
+<ItemShow|id=a16|x=127.0|y=117.0|width=70|height=70|rotate=0|itemid=907|itemcount=2|showtips=1|bgtype=1|name=月光宝盒(小)>
+
+
+<Img|id=b10|children={b11,b12,b13,b14,b15,b16}|x=0.0|y=0.0|esc=0|scale=1|img=private/fulihuodong/bg_cross_10.png>
+<Img|id=b11|x=33.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Img|id=b12|x=126.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Button|id=b13|x=56.0|y=211.0|pimg=private/fulihuodong/129goumai.png|color=255|size=18|nimg=public/129goumai.png|scale=1|link=@够买技能礼包2>
+<RText|id=b14|x=70.0|y=55.0|color=255|size=20|text=<技能礼包/FCOLOR=67>>
+<ItemShow|id=b15|x=34.0|y=117.0|width=70|height=70|rotate=0|itemid=763|itemcount=1288|showtips=1|bgtype=1|name=书页>
+<ItemShow|id=b16|x=127.0|y=117.0|width=70|height=70|rotate=0|itemid=907|itemcount=2|showtips=1|bgtype=1|name=月光宝盒(大)>
+
+<Img|id=c10|children={c11,c12,c13,c14,c15,c16}|x=0.0|y=0.0|esc=0|scale=1|img=private/fulihuodong/bg_cross_10.png>
+<Img|id=c11|x=33.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Img|id=c12|x=126.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Button|id=c13|x=56.0|y=211.0|pimg=private/fulihuodong/649goumai.png|color=255|size=18|nimg=public/649goumai.png|scale=1|link=@够买时装礼包1>
+<RText|id=c14|x=25.0|y=55.0|color=255|size=20|text=<          时装礼包/FCOLOR=67>\<赠送64900绑定元宝/FCOLOR=222>>
+<ItemShow|id=c15|x=34.0|y=117.0|width=70|height=70|rotate=0|itemid=51063|itemcount=1|bgtype=1|showtips=1|name=武器时装自选箱>
+<ItemShow|id=c16|x=127.0|y=117.0|width=70|height=70|rotate=0|itemid=50014|itemcount=1|showtips=1|bgtype=1|name=心心相印(时装)>
+
+<Img|id=d10|children={d11,d12,d13,d14,d15,d16}|x=0.0|y=0.0|esc=0|scale=1|img=private/fulihuodong/bg_cross_10.png>
+<Img|id=d11|x=33.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Img|id=d12|x=126.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Button|id=d13|x=56.0|y=211.0|pimg=private/fulihuodong/649goumai.png|color=255|size=18|nimg=public/649goumai.png|scale=1|link=@够买时装礼包2>
+<RText|id=d14|x=25.0|y=55.0|color=255|size=20|text=<          时装礼包/FCOLOR=67>\<赠送64900绑定元宝/FCOLOR=222>>
+<ItemShow|id=d15|x=34.0|y=117.0|width=70|height=70|rotate=0|itemid=51062|itemcount=1|bgtype=1|showtips=1|name=衣服时装自选箱>
+<ItemShow|id=d16|x=127.0|y=117.0|width=70|height=70|rotate=0|itemid=1|itemcount=1|showtips=1|bgtype=1|name=花影缤纷(时装)>
+
+<Img|id=e10|children={e11,e12,e13,e14,e15,e16}|x=0.0|y=0.0|esc=0|scale=1|img=private/fulihuodong/bg_cross_10.png>
+<Img|id=e11|x=33.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Img|id=e12|x=126.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Button|id=e13|x=56.0|y=211.0|pimg=private/fulihuodong/69goumai.png|color=255|size=18|nimg=public/69goumai.png|scale=1|link=@够买灵兽礼包1>
+<RText|id=e14|x=75.0|y=55.0|color=255|size=18|text=<坐骑礼包/FCOLOR=67>>
+<ItemShow|id=e15|x=34.0|y=117.0|width=70|height=70|rotate=0|itemid=1493|itemcount=688|bgtype=1|showtips=1|name=灵兽精粹>
+<ItemShow|id=e16|x=127.0|y=117.0|width=70|height=70|rotate=0|itemid=907|itemcount=2|showtips=1|bgtype=1|name=月光宝盒(小)>
+
+<Img|id=f10|children={f11,f12,f13,f14,f15,f16}|x=0.0|y=0.0|esc=0|scale=1|img=private/fulihuodong/bg_cross_10.png>
+<Img|id=f11|x=33.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Img|id=f12|x=126.0|y=115.0|img=private/fulihuodong/frame_tips_02.png|scale=1|esc=0>
+<Button|id=f13|x=56.0|y=211.0|pimg=private/fulihuodong/649goumai.png|color=255|size=18|nimg=public/649goumai.png|scale=1|link=@够买灵兽礼包2>
+<RText|id=f14|x=25.0|y=55.0|color=255|size=20|text=<          坐骑礼包/FCOLOR=67>\<赠送64900绑定元宝/FCOLOR=222>>
+<ItemShow|id=f15|x=34.0|y=117.0|width=70|height=70|rotate=0|itemid=6020|itemcount=2|bgtype=1|showtips=1|name=坐骑升星石>
+<ItemShow|id=f16|x=127.0|y=117.0|width=70|height=70|rotate=0|itemid=6962|itemcount=1|showtips=1|bgtype=1|name=黄金圣龙(坐骑)>
+
+[@够买技能礼包1]
+#IF
+TRUE
+#ACT
+Pullpay 69 1 19 400 400
+Break
+
+[@够买技能礼包2]
+#IF
+TRUE
+#ACT
+Pullpay 129 1 19 400 400
+Break
+
+[@够买时装礼包1]
+#IF
+TRUE
+#ACT
+Pullpay 649 1 19 400 400
+Break
+
+[@够买时装礼包2]
+#IF
+TRUE
+#ACT
+Pullpay 649 1 20 400 400
+Break
+
+[@够买灵兽礼包1]
+#IF
+TRUE
+#ACT
+Pullpay 69 1 21 400 400
+Break
+
+[@够买灵兽礼包2]
+#IF
+TRUE
+#ACT
+Pullpay 649 1 21 400 400
+Break
+
+
+
+
+[@活动兑换]
+<Img|id=1|children={2,3,4,5,6,7,9,tu1}|x=152.0|y=78.0|esc=0|bg=1|img=private/fulihuodong/touzimianban.png|loadDelay=0|scale=1>
+<Img|id=2|x=-21.0|y=-45.0|img=public/frame_squared_outside.png|esc=0|scale=1>
+<Img|id=3|x=-59.0|y=-69.0|esc=0|_localZOrder=1|img=public/frame_pattern_dragon.png|scale=1>
+<Button|id=4|x=782.0|y=-50.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Button|id=5|x=0.0|y=4.0|scale=1|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|size=18|color=67|text=活动礼包|link=@五一活动>
+<Button|id=6|x=0.0|y=65.0|scale=1|nimg=public/btn_chosen_02.png|pimg=public/btn_chosen_02.png|size=18|color=67|text=活动兑换|link=@活动兑换>
+<Button|id=7|x=0.0|y=126.0|scale=1|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|size=18|color=67|text=五一矿工|link=@五一矿工>
+<Img|id=tu1|x=338.0|y=3.0|img=private/fulihuodong/zhuangbeixuanshangzi.png|scale=1|esc=0>
+<ListView|id=9|children={10,15,20}|x=209.0|y=165.0|width=606|height=326|direction=1>
+<Layout|id=10|children={10-1,11-1,12-1,13-1,14-1}|x=3.0|y=0.0|width=600|height=160|color=>
+<Img|id=10-1|children={10-2,10-3,10-4}|x=1.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=10-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=月光宝盒(大)&五一兑换所需=40>
+<ItemShow|id=10-3|x=25.0|y=35.0|width=70|height=70|itemid=907|itemcount=1|name=月光宝盒(大)|showtips=1|bgtype=1>
+<RText|id=10-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><40/FCOLOR=222>>
+
+<Img|id=11-1|children={11-2,11-3,11-4}|x=121.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=11-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=月光宝盒(小)&五一兑换所需=20>
+<ItemShow|id=11-3|x=25.0|y=35.0|width=70|height=70|itemid=907|itemcount=1|name=月光宝盒(小)|showtips=1|bgtype=1>
+<RText|id=11-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><20/FCOLOR=222>>
+
+<Img|id=12-1|children={12-2,12-3,12-4}|x=241.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=12-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=坐骑升星石&五一兑换所需=300>
+<ItemShow|id=12-3|x=25.0|y=35.0|width=70|height=70|itemid=6020|itemcount=1|name=坐骑升星石|showtips=1|bgtype=1>
+<RText|id=12-4|x=10.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><300个/FCOLOR=222>>
+
+<Img|id=13-1|children={13-2,13-3,13-4}|x=361.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=13-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=特戒精魄&五一兑换所需=3>
+<ItemShow|id=13-3|x=25.0|y=35.0|width=70|height=70|itemid=489|itemcount=1|name=特戒精魄|showtips=1|bgtype=1>
+<RText|id=13-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><3个/FCOLOR=222>>
+
+<Img|id=14-1|children={14-2,14-3,14-4}|x=481.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=14-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=特戒精粹&五一兑换所需=2>
+<ItemShow|id=14-3|x=25.0|y=35.0|width=70|height=70|itemid=490|itemcount=1|name=特戒精粹|showtips=1|bgtype=1>
+<RText|id=14-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><2个/FCOLOR=222>>
+
+
+<Layout|id=15|children={15-1,16-1,17-1,18-1,19-1}|x=3.0|y=0.0|width=600|height=160|color=>
+<Img|id=15-1|children={15-2,15-3,15-4}|x=1.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=15-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=特戒精华&五一兑换所需=1>
+<ItemShow|id=15-3|x=25.0|y=35.0|width=70|height=70|itemid=491|itemcount=1|name=特戒精华|showtips=1|bgtype=1>
+<RText|id=15-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><1个/FCOLOR=222>>
+
+<Img|id=16-1|children={16-2,16-3,16-4}|x=121.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=16-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=凶器精粹&五一兑换所需=1>
+<ItemShow|id=16-3|x=25.0|y=35.0|width=70|height=70|itemid=25898|itemcount=1|name=凶器精粹|showtips=1|bgtype=1>
+<RText|id=16-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><1个/FCOLOR=222>>
+
+<Img|id=17-1|children={17-2,17-3,17-4}|x=241.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=17-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=法宝精粹&五一兑换所需=1>
+<ItemShow|id=17-3|x=25.0|y=35.0|width=70|height=70|itemid=30272|itemcount=1|name=法宝精粹|showtips=1|bgtype=1>
+<RText|id=17-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><1个/FCOLOR=222>>
+
+<Img|id=18-1|children={18-2,18-3,18-4}|x=361.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=18-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=魔盾精粹&五一兑换所需=1>
+<ItemShow|id=18-3|x=25.0|y=35.0|width=70|height=70|itemid=1177|itemcount=1|name=魔盾精粹|showtips=1|bgtype=1>
+<RText|id=18-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><1个/FCOLOR=222>>
+
+<Img|id=19-1|children={19-2,19-3,19-4}|x=481.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=19-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=灵兽精粹&五一兑换所需=1>
+<ItemShow|id=19-3|x=25.0|y=35.0|width=70|height=70|itemid=1493|itemcount=1|name=灵兽精粹|showtips=1|bgtype=1>
+<RText|id=19-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><1个/FCOLOR=222>>
+
+
+<Layout|id=20|children={20-1,21-1,22-1,23-1,24-1}|x=3.0|y=0.0|width=600|height=160|color=>
+<Img|id=20-1|children={20-2,20-3,20-4}|x=1.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=20-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=特装精粹(防)&五一兑换所需=1>
+<ItemShow|id=20-3|x=25.0|y=35.0|width=70|height=70|itemid=26747|itemcount=1|name=特装精粹(防)|showtips=1|bgtype=1>
+<RText|id=20-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><1个/FCOLOR=222>>
+
+<Img|id=21-1|children={21-2,21-3,21-4}|x=121.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=21-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=特装精粹(攻)&五一兑换所需=1>
+<ItemShow|id=21-3|x=25.0|y=35.0|width=70|height=70|itemid=26748|itemcount=1|name=特装精粹(攻)|showtips=1|bgtype=1>
+<RText|id=21-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><1个/FCOLOR=222>>
+
+<Img|id=22-1|children={22-2,22-3,22-4}|x=241.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=22-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=书页&五一兑换所需=1>
+<ItemShow|id=22-3|x=25.0|y=35.0|width=70|height=70|itemid=763|itemcount=1|name=书页|showtips=1|bgtype=1>
+<RText|id=22-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><1个/FCOLOR=222>>
+
+<Img|id=23-1|children={23-2,23-3,23-4}|x=361.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=23-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=圣灵宝石&五一兑换所需=20>
+<ItemShow|id=23-3|x=25.0|y=35.0|width=70|height=70|itemid=1021|itemcount=1|name=圣灵宝石|showtips=1|bgtype=1>
+<RText|id=23-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><20个/FCOLOR=222>>
+
+<Img|id=24-1|children={24-2,24-3,24-4}|x=481.0|y=2.0|scale=1|esc=0|img=private/npcbj/bg_rechargepack_02.png>
+<Button|id=24-2|x=21.0|y=110.0|width=80|height=35|pimg=public/yuekaanniu1.png|scale=1|color=255|nimg=public/yuekaanniu1.png|size=18|text=兑换|link=@五一兑换&五一兑换物品=圣灵精华&五一兑换所需=10>
+<ItemShow|id=24-3|x=25.0|y=35.0|width=70|height=70|itemid=1060|itemcount=1|name=圣灵精华|showtips=1|bgtype=1>
+<RText|id=24-4|x=14.0|y=1.0|color=255|size=18|text=<令牌：/FCOLOR=67><10个/FCOLOR=222>>
+
+
+[@五一兑换]
+#IF
+!CheckBagSize 1
+#ACT
+SENDMSG 19 包裹空间不足!
+BREAK
+
+#IF
+SMALL $ITEMVALSUM(5.1活动令牌).DURA $STR(S$五一兑换所需)
+#ACT
+SENDMSG 19 你的令牌不足!
+BREAK
+#ELSEACT
+TAKE 5.1活动令牌 $STR(S$五一兑换所需)
+GIVE $STR(S$五一兑换物品) 1 1
+SENDMSG 19 消耗<$STR(S$五一兑换所需)>令牌兑换1个<$STR(S$五一兑换物品)>
+BREAK
+
+
+
+
+[@五一矿工]
+<Img|id=1|children={2,3,4,5,6,7,8,9,tu1,10,11,12,13,14,15,16,17,18}|x=152.0|y=78.0|esc=0|bg=1|img=private/fulihuodong/touzimianban.png|loadDelay=0|scale=1>
+<Img|id=2|x=-21.0|y=-45.0|img=public/frame_squared_outside.png|esc=0|scale=1>
+<Img|id=3|x=-59.0|y=-69.0|esc=0|_localZOrder=1|img=public/frame_pattern_dragon.png|scale=1>
+<Button|id=4|x=782.0|y=-50.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Button|id=5|x=0.0|y=4.0|scale=1|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|color=67|size=18|text=活动礼包|link=@五一活动>
+<Button|id=6|x=0.0|y=65.0|scale=1|nimg=public/btn_chosen_01.png|pimg=public/btn_chosen_01.png|color=67|size=18|text=活动兑换|link=@活动兑换>
+<Button|id=7|x=0.0|y=126.0|scale=1|nimg=public/btn_chosen_02.png|pimg=public/btn_chosen_02.png|color=67|size=18|text=五一矿工|link=@五一矿工>
+<Img|id=tu1|x=338.0|y=3.0|img=private/fulihuodong/zhuangbeixuanshangzi.png|scale=1|esc=0>
+<Img|id=8|x=228.0|y=166.0|width=150|height=150|scale=1|img=public/43514.png|esc=0>
+<RText|id=9|x=520.0|y=172.0|size=20|color=151|text=<活动介绍/FCOLOR=151>>
+<RText|id=10|x=423.0|y=210.0|color=255|size=18|text=<活动时间：/FCOLOR=67><4月29日--5月5日/FCOLOR=222>>
+<RText|id=11|x=421.0|y=250.0|color=255|size=18|text=<活动产出：/FCOLOR=67><绑元，金币，经验，魔体经验，/FCOLOR=222>\<                  充值代金券，各种材料/FCOLOR=222>>
+<RText|id=12|x=421.0|y=310.0|color=255|size=18|text=<活动规则：/FCOLOR=67><活动期间每天每个角色有15分钟/FCOLOR=222>\<                  时间进入挖矿地图挖矿/FCOLOR=222>>
+<RText|id=18|x=421.0|y=370.0|color=255|size=18|text=<剩余时间：/FCOLOR=67><<$FLOOR.$CustomValue(99).60>分<$MOD.$CustomValue(99).60>秒/FCOLOR=222>>
+<Img|id=13|x=250.0|y=334.0|img=private/fulihuodong/6158db6d_10118.png|esc=0|scale=1>
+<ItemShow|id=14|x=265.0|y=334.0|width=70|height=70|itemid=1546|itemcount=1|name=鹤嘴锄(卓越)|showtips=1|bgtype=1>
+<Button|id=15|x=240.0|y=427.0|scale=1|nimg=public/69goumai.png|mimg=public/69goumai.png|size=18|color=255|pimg=public/69goumai.png|link=@购买鹤嘴锄>
+<Button|id=16|x=545.0|y=427.0|scale=1|nimg=public/jinru.png|mimg=public/jinru.png|size=18|color=255|pimg=public/jinru.png|link=@传送到挖矿地图>
+<Img|id=17|x=394.0|y=160.0|width=340|height=6|rotate=90|esc=0|scale=1|img=private/junxian/da-1.png>
+
+
+[@购买鹤嘴锄]
+#IF
+TRUE
+#ACT
+Pullpay 69 1 20 400 400
+Break
+
+[@传送到挖矿地图]
+#IF
+LARGE $INC.$LONGDATE.28800 1714348800
+SMALL $INC.$LONGDATE.28800 1714953600
+#ACT
+#ELSEACT
+SENDMSG 19 活动未开始或已结束!
+BREAK
+
+#IF
+CHECK [20] 0
+#ACT
+GOTO @没买鹤嘴锄
+BREAK
+#ELSEACT
+GOTO @已买鹤嘴锄
+
+
+
+[@没买鹤嘴锄]
+#IFONE
+EQUAL <$ITEMINFO[<$USEITEMMAKEINDEX(1)>].NAME> 鹤嘴锄(普通)
+CHECKITEM 鹤嘴锄(普通) 1
+#ACT
+#ELSEACT
+GIVE 鹤嘴锄(普通) 1 1
+#IF
+LARGE $CUSTOMVALUE(99) 0
+#ACT
+MAP T013
+BREAK
+#ELSEACT
+SENDMSG 19 今天挖矿时间已用尽
+BREAK
+
+[@已买鹤嘴锄]
+#IFONE
+EQUAL <$ITEMINFO[$USEITEMMAKEINDEX(1)].NAME > 鹤嘴锄(卓越)
+CHECKITEM 鹤嘴锄(卓越) 1
+#ACT
+#ELSEACT
+GIVE 鹤嘴锄(卓越) 1 1
+
+#IF
+LARGE $CUSTOMVALUE(99) 0
+#ACT
+MAP T013
+BREAK
+#ELSEACT
+SENDMSG 19 今天挖矿时间已用尽
+BREAK
+
+}

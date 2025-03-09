@@ -1,0 +1,505 @@
+[@商城]
+{
+#IF
+LARGE <$TXTLINE(..\QuestDiary\文本读取\商城物品.txt)> 0
+#ACT
+MOV N$商店循环次数 0
+MOV S$商品列表 
+MOV S$商城组件编号 
+LoopGoto @建立商城模版 <$TXTLINE(..\QuestDiary\文本读取\商城物品.txt)>
+GOTO @商城主面板
+[@建立商城模版]
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\商城物品.txt S$商城物品抽取 $STR(N$商店循环次数)
+SPLIT $STR(S$商城物品抽取) | S$商城物品分割
+INC N$商店循环次数 1
+
+#IF
+CHECK [226] 1
+#ACT
+MOV N$商城_折扣灰色 0
+MOV N$原价颜色 71
+MOV N$折扣颜色 67
+#ELSEACT
+MOV N$商城_折扣灰色 1
+MOV N$原价颜色 67
+MOV N$折扣颜色 71
+
+#IF
+EQUAL $STR(S$商城物品分割_0) 太阳神水
+#ACT
+INC S$商城组件编号 sp<$STR(N$商店循环次数)>,
+INC S$商品列表 <Layout|id=sp<$STR(N$商店循环次数)>|children={sp<$STR(N$商店循环次数)>-1,sp<$STR(N$商店循环次数)>-2,sp<$STR(N$商店循环次数)>-3,sp<$STR(N$商店循环次数)>-4,sp<$STR(N$商店循环次数)>-5,sp<$STR(N$商店循环次数)>-6,sp<$STR(N$商店循环次数)>-7,sp<$STR(N$商店循环次数)>-8}|x=356.0|y=194.0|width=300|height=84>
+INC S$商品列表 <Img|id=sp<$STR(N$商店循环次数)>-1|x=1.0|y=1.0|img=private/shangcheng/bg_store_item_03.png|esc=0|scale=1>
+INC S$商品列表 <ItemShow|id=sp<$STR(N$商店循环次数)>-2|x=5.0|y=7.0|width=70|height=70|itemid=<$STR(S$商城物品分割_2)>|itemcount=<$STR(S$商城物品分割_3)>|name=<$STR(S$商城物品分割_0)>|showtips=1|bgtype=1>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-3|x=83.0|y=5.0|color=255|size=18|text=<<$STR(S$商城物品分割_0)>/FCOLOR=67>>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-4|x=83.0|y=28.0|color=255|size=18|text=<<$STR(S$商城物品分割_5)>/FCOLOR=67>>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-5|x=83.0|y=51.0|color=<$STR(N$原价颜色)>|size=18|text=原价:<$DIV.$STR(S$商城物品分割_1).10000>万>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-6|x=180.0|y=51.0|color=<$STR(N$折扣颜色)>|size=18|text=折扣价:<$DIV.<$MUlt.<$DIV.$STR(S$商城物品分割_1).10000>.80>.100>万>
+INC S$商品列表 <Img|id=sp<$STR(N$商店循环次数)>-7|x=180.0|y=10.0|grey=<$STR(N$商城_折扣灰色)>|scale=1|img=private/shangcheng/nkzk.png>
+INC S$商品列表 <Layout|id=sp<$STR(N$商店循环次数)>-8|x=78.0|y=2.0|width=220|height=80|rotate=0|link=@购买物品&商品名字=<$STR(S$商城物品分割_0)>&商品价格=<$STR(S$商城物品分割_1)>&商品LOOKS=<$STR(S$商城物品分割_2)>&商品每组数量=<$STR(S$商城物品分割_3)>&商品限购说明=<$STR(S$商城物品分割_4)>&商品够买货币=<$STR(S$商城物品分割_5)>>
+BREAK
+
+#IF
+EQUAL $STR(S$商城物品分割_0) 治疗药水
+!SMALL <$HFCOUNT> 1
+#ACT
+INC S$商城组件编号 sp<$STR(N$商店循环次数)>,
+INC S$商品列表 <Layout|id=sp<$STR(N$商店循环次数)>|children={sp<$STR(N$商店循环次数)>-1,sp<$STR(N$商店循环次数)>-2,sp<$STR(N$商店循环次数)>-3,sp<$STR(N$商店循环次数)>-4,sp<$STR(N$商店循环次数)>-5,sp<$STR(N$商店循环次数)>-6,sp<$STR(N$商店循环次数)>-7,sp<$STR(N$商店循环次数)>-8}|x=356.0|y=194.0|width=300|height=84>
+INC S$商品列表 <Img|id=sp<$STR(N$商店循环次数)>-1|x=1.0|y=1.0|img=private/shangcheng/bg_store_item_03.png|esc=0|scale=1>
+INC S$商品列表 <ItemShow|id=sp<$STR(N$商店循环次数)>-2|x=5.0|y=7.0|width=70|height=70|itemid=<$STR(S$商城物品分割_2)>|itemcount=<$STR(S$商城物品分割_3)>|name=<$STR(S$商城物品分割_0)>|showtips=1|bgtype=1>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-3|x=83.0|y=5.0|color=255|size=18|text=<<$STR(S$商城物品分割_0)>/FCOLOR=67>>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-4|x=83.0|y=28.0|color=255|size=18|text=<<$STR(S$商城物品分割_5)>/FCOLOR=67>>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-5|x=83.0|y=51.0|color=<$STR(N$原价颜色)>|size=18|text=原价:<$DIV.$STR(S$商城物品分割_1).10000>万>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-6|x=180.0|y=51.0|color=<$STR(N$折扣颜色)>|size=18|text=折扣价:<$DIV.<$MUlt.<$DIV.$STR(S$商城物品分割_1).10000>.80>.100>万>
+INC S$商品列表 <Img|id=sp<$STR(N$商店循环次数)>-7|x=180.0|y=10.0|grey=<$STR(N$商城_折扣灰色)>|scale=1|img=private/shangcheng/nkzk.png>
+INC S$商品列表 <Layout|id=sp<$STR(N$商店循环次数)>-8|x=78.0|y=2.0|width=220|height=80|rotate=0|link=@购买物品&商品名字=<$STR(S$商城物品分割_0)>&商品价格=<$STR(S$商城物品分割_1)>&商品LOOKS=<$STR(S$商城物品分割_2)>&商品每组数量=<$STR(S$商城物品分割_3)>&商品限购说明=<$STR(S$商城物品分割_4)>&商品够买货币=<$STR(S$商城物品分割_5)>>
+BREAK
+
+#IF
+EQUAL $STR(S$商城物品分割_0) 治疗神水
+!SMALL <$HFCOUNT> 2
+#ACT
+INC S$商城组件编号 sp<$STR(N$商店循环次数)>,
+INC S$商品列表 <Layout|id=sp<$STR(N$商店循环次数)>|children={sp<$STR(N$商店循环次数)>-1,sp<$STR(N$商店循环次数)>-2,sp<$STR(N$商店循环次数)>-3,sp<$STR(N$商店循环次数)>-4,sp<$STR(N$商店循环次数)>-5,sp<$STR(N$商店循环次数)>-6,sp<$STR(N$商店循环次数)>-7,sp<$STR(N$商店循环次数)>-8}|x=356.0|y=194.0|width=300|height=84>
+INC S$商品列表 <Img|id=sp<$STR(N$商店循环次数)>-1|x=1.0|y=1.0|img=private/shangcheng/bg_store_item_03.png|esc=0|scale=1>
+INC S$商品列表 <ItemShow|id=sp<$STR(N$商店循环次数)>-2|x=5.0|y=7.0|width=70|height=70|itemid=<$STR(S$商城物品分割_2)>|itemcount=<$STR(S$商城物品分割_3)>|name=<$STR(S$商城物品分割_0)>|showtips=1|bgtype=1>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-3|x=83.0|y=5.0|color=255|size=18|text=<<$STR(S$商城物品分割_0)>/FCOLOR=67>>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-4|x=83.0|y=28.0|color=255|size=18|text=<<$STR(S$商城物品分割_5)>/FCOLOR=67>>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-5|x=83.0|y=51.0|color=<$STR(N$原价颜色)>|size=18|text=原价:<$DIV.$STR(S$商城物品分割_1).10000>万>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-6|x=180.0|y=51.0|color=<$STR(N$折扣颜色)>|size=18|text=折扣价:<$DIV.<$MUlt.<$DIV.$STR(S$商城物品分割_1).10000>.80>.100>万>
+INC S$商品列表 <Img|id=sp<$STR(N$商店循环次数)>-7|x=180.0|y=10.0|grey=<$STR(N$商城_折扣灰色)>|scale=1|img=private/shangcheng/nkzk.png>
+INC S$商品列表 <Layout|id=sp<$STR(N$商店循环次数)>-8|x=78.0|y=2.0|width=220|height=80|rotate=0|link=@购买物品&商品名字=<$STR(S$商城物品分割_0)>&商品价格=<$STR(S$商城物品分割_1)>&商品LOOKS=<$STR(S$商城物品分割_2)>&商品每组数量=<$STR(S$商城物品分割_3)>&商品限购说明=<$STR(S$商城物品分割_4)>&商品够买货币=<$STR(S$商城物品分割_5)>>
+break
+
+#IF
+!EQUAL $STR(S$商城物品分割_0) 治疗药水
+!EQUAL $STR(S$商城物品分割_0) 治疗神水
+!EQUAL $STR(S$商城物品分割_0) 太阳神水
+#ACT
+INC S$商城组件编号 sp<$STR(N$商店循环次数)>,
+INC S$商品列表 <Layout|id=sp<$STR(N$商店循环次数)>|children={sp<$STR(N$商店循环次数)>-1,sp<$STR(N$商店循环次数)>-2,sp<$STR(N$商店循环次数)>-7,sp<$STR(N$商店循环次数)>-3,sp<$STR(N$商店循环次数)>-4,sp<$STR(N$商店循环次数)>-5,sp<$STR(N$商店循环次数)>-6,sp<$STR(N$商店循环次数)>-8}|x=356.0|y=194.0|width=300|height=84>
+INC S$商品列表 <Img|id=sp<$STR(N$商店循环次数)>-1|x=1.0|y=1.0|img=private/shangcheng/bg_store_item_03.png|esc=0|scale=1>
+INC S$商品列表 <ItemShow|id=sp<$STR(N$商店循环次数)>-2|x=5.0|y=7.0|width=70|height=70|itemid=<$STR(S$商城物品分割_2)>|itemcount=<$STR(S$商城物品分割_3)>|name=<$STR(S$商城物品分割_0)>|showtips=1|bgtype=1>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-3|x=83.0|y=5.0|color=255|size=18|text=<<$STR(S$商城物品分割_0)>/FCOLOR=67>>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-4|x=83.0|y=28.0|color=255|size=18|text=<<$STR(S$商城物品分割_5)>/FCOLOR=67>>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-5|x=83.0|y=51.0|color=<$STR(N$原价颜色)>|size=18|text=原价:<$STR(S$商城物品分割_1)>>
+INC S$商品列表 <RText|id=sp<$STR(N$商店循环次数)>-6|x=180.0|y=51.0|color=<$STR(N$折扣颜色)>|size=18|text=折扣价:<$DIV.<$MUlt.$STR(S$商城物品分割_1).80>.100>>
+INC S$商品列表 <Img|id=sp<$STR(N$商店循环次数)>-7|x=180.0|y=10.0|grey=<$STR(N$商城_折扣灰色)>|scale=1|img=private/shangcheng/nkzk.png>
+INC S$商品列表 <Layout|id=sp<$STR(N$商店循环次数)>-8|x=78.0|y=2.0|width=220|height=80|rotate=0|link=@购买物品&商品名字=<$STR(S$商城物品分割_0)>&商品价格=<$STR(S$商城物品分割_1)>&商品LOOKS=<$STR(S$商城物品分割_2)>&商品每组数量=<$STR(S$商城物品分割_3)>&商品限购说明=<$STR(S$商城物品分割_4)>&商品够买货币=<$STR(S$商城物品分割_5)>>
+break
+
+
+[@商城主面板]
+#IF
+TRUE
+#SAY
+<Img|id=sc2|children={sc3,sc4,sc5,sc6,sc7,sc8,sc9,sc10,sc11,sc12}|x=128.0|y=27.0|rotate=0|loadDelay=0|img=public/frame_squared_outside.png|bg=1|esc=0|scale=1>
+<Button|id=sc3|x=813.0|y=-3.0|pimg=public/btn_close_01.png|scale=1|color=255|size=18|nimg=public/btn_close_01.png|link=@exit>
+<Img|id=sc4|x=21.0|y=44.0|img=private/shangcheng/shangcheng2.png|esc=0|scale=1>
+<Img|id=sc5|x=21.0|y=92.0|width=200|height=460|esc=0|img=private/shangcheng/bg_store_char.png|scale=1>
+;<Button|id=sc6|x=23.0|y=45.0|pimg=private/shangcheng/anniu0.png|nimg=private/shangcheng/anniu0.png|scale=1|size=18|color=255|text=元宝商城>
+;<Button|id=sc7|x=119.0|y=45.0|pimg=private/shangcheng/anniu1.png|scale=1|size=18|nimg=private/shangcheng/anniu1.png|color=255>
+<Img|id=sc8|x=422.0|y=14.0|img=private/shangcheng/mingzi.png|esc=0|scale=1>
+<Text|id=sc9|x=228.0|y=519.0|size=20|color=67|text=元宝：$STM(MONEY_2)>
+<Text|id=sc10|x=434.0|y=520.0|size=20|color=67|text=绑定元宝：$STM(MONEY_4)>
+<Text|id=sc11|x=646.0|y=520.0|size=20|color=67|text=金币：$STM(MONEY_1)>
+<ListView|id=sc12|children={<$STR(S$商城组件编号)>}|x=231.0|y=96.0|width=618|height=411|direction=0|colcount=2|colmargin=310|colheight=85|img=picpackage/3/9998.png>
+<$STR(S$商品列表)>
+
+#IF
+EQUAL S$2001 1
+CHECK [226] 1
+#ACT
+MOV S$商城_商品总价 <RText|id=er8|x=83.0|y=157.0|color=67|size=18|text=总价：<$DIV.<$MULT.<$MULT.<$Str(S$商品价格)>.$STR(N$商城购买数量)>.80>.100>>
+#IF
+EQUAL S$2001 1
+CHECK [226] 0
+#ACT
+MOV S$商城_商品总价 <RText|id=er8|x=83.0|y=157.0|color=67|size=18|text=总价：<$MULT.<$Str(S$商品价格)>.$STR(N$商城购买数量)>>
+#IF
+EQUAL S$2001 1
+#SAY
+<Img|id=er1|children={er2,er3,er4,er5,er7,er8,er9,er10,er11,er12,er13}|x=440.0|y=146.0|width=240|img=private/page_store_ui/bg_store_popup.png|scale=1|esc=1|link=@XXXXX>
+<Button|id=er2|x=80.0|y=200.0|scale=1|nimg=private/page_store_ui/bg_store_input.png|pimg=private/page_store_ui/bg_store_input.png|color=255|size=18|text=<$str(N$商城购买数量)>|link=@输入购买数量>
+<Img|id=er3|x=47.0|y=161.0|img=private/page_store_ui/icon_gold_01.png|scale=1|esc=0>
+<Img|id=er4|x=85.0|y=77.0|img=public/item_bg1.png|scale=1|esc=0>
+<Button|id=er5|x=43.0|y=19.0|width=150|height=30|size=18|color=67|nimg=public/huangdi.png|pimg=public/huangdi.png|scale=1|text=<$Str(S$商品名字)>>
+<ItemShow|id=er7|x=82.0|y=76.0|width=70|height=70|itemid=<$Str(S$商品LOOKS)>|itemcount=<$Str(S$商品每组数量)>|name=<$Str(S$商品名字)>|showtips=1|bgtype=1>
+<$STR(S$商城_商品总价)>
+<Button|id=er9|x=29.0|y=200.0|scale=1|nimg=private/shangcheng/btn_minus_01.png|pimg=private/shangcheng/btn_minus_01.png|size=18|color=255|link=@商城购买数量减>
+<Button|id=er10|x=183.0|y=200.0|rotate=0|scale=1|pimg=private/shangcheng/btn_plus_02.png|color=255|nimg=private/shangcheng/btn_plus_02.png|size=18|link=@商城购买数量加>
+<Text|id=er11|x=73.0|y=233.0|size=16|color=67|text=<$STR(S$商品限购说明)>>
+<Button|id=er12|x=64.0|y=264.0|pimg=private/shangcheng/btn_push_10.png|nimg=private/shangcheng/btn_push_10.png|scale=1|size=18|color=67|text=购   买|link=@确定购买物品>
+<Button|id=er13|x=190.0|y=5.0|scale=1|nimg=public/btn_close_01.png|pimg=public/btn_close_01.png|size=18|color=255|link=@返回商城>
+
+
+
+[@确定购买物品]
+#IF
+!CheckBagSize 5
+#ACT
+SENDMSG 19 包裹空间不足5个
+BREAK
+
+#IF
+EQUAL <$Str(S$商品名字)> 书页
+LARGE $HUMAN(书页每日限购) 300
+#ACT
+SENDMSG 19 今日购买已达上限
+BREAK
+
+
+#IF
+CHECK [226] 0
+#ACT
+MOV N$商品实际应付价格 <$MULT.<$Str(S$商品价格)>.$STR(N$商城购买数量)>
+#ELSEACT
+MOV N$商品实际应付价格 <$DIV.<$MULT.<$MULT.<$Str(S$商品价格)>.$STR(N$商城购买数量)>.80>.100>
+
+
+#IF
+EQUAL <$STR(S$商品够买货币)> 绑定元宝
+SMALL <$INC.$Money(2).$Money(4)> <$Str(N$商品实际应付价格)>
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+EQUAL <$STR(S$商品够买货币)> 元宝
+SMALL <$Money(2)> <$Str(N$商品实际应付价格)>
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+EQUAL <$STR(S$商品够买货币)> 金币
+SMALL <$Money(1)> <$Str(N$商品实际应付价格)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+
+
+#IF
+POS <$Str(S$商品名字)> 书页
+SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+CALCVAR HUMAN 书页每日限购 + $STR(N$商城购买数量) 1
+Money 2 - <$DEC.$Str(N$商品实际应付价格).$Money(4)>
+Money 4 - $Money(4)
+GIVE <$Str(S$商品名字)> <$STR(N$商城购买数量)> 1
+MOV S$2001 
+GOTO @商城主面板
+BREAK
+
+
+#IF
+POS <$Str(S$商品名字)> 书页
+!SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+CALCVAR HUMAN 书页每日限购 + $STR(N$商城购买数量) 1
+Money 4 - $Str(N$商品实际应付价格)
+GIVE <$Str(S$商品名字)> <$STR(N$商城购买数量)> 1
+MOV S$2001 
+GOTO @商城主面板
+BREAK
+
+#IF
+POS -秘境挑战卷-技能神殿传送卷- -<$Str(S$商品名字)>-
+EQUAL <$STR(S$商品够买货币)> 金币
+#ACT
+Money 1 - <$Str(N$商品实际应付价格)>
+GIVE <$Str(S$商品名字)> <$STR(N$商城购买数量)> 1
+MOV S$2001 
+GOTO @商城主面板
+BREAK
+
+#IF
+POS -太阳神水-治疗药水-治疗神水- -<$Str(S$商品名字)>-
+#ACT
+Money 1 - <$Str(N$商品实际应付价格)>
+GIVE <$Str(S$商品名字)> <$MULT.$STR(N$商城购买数量).99> 1
+MOV S$2001 
+GOTO @商城主面板
+BREAK
+
+#IF
+POS -回城神石- -<$Str(S$商品名字)>-
+!SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+Money 4 - <$Str(N$商品实际应付价格)>
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+ChoosePos 0 471 222 <$PARAM(10)>
+MOV S$2001 
+GOTO @商城主面板
+BREAK
+
+#IF
+POS -回城神石- -<$Str(S$商品名字)>-
+SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+Money 2 - <$DEC.<$Str(N$商品实际应付价格)>.$Money(4)>
+Money 4 - $Money(4)
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+ChoosePos 0 471 222 <$PARAM(10)>
+MOV S$2001 
+GOTO @商城主面板
+BREAK
+
+
+#IF
+POS -随机神石- -<$Str(S$商品名字)>-
+!SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+Money 4 - <$Str(N$商品实际应付价格)>
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+SET [0] 0
+DelFunBtn 2 3
+GOTO @商城主面板
+BREAK
+
+
+#IF
+POS -随机神石- -<$Str(S$商品名字)>-
+SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+Money 2 - <$DEC.<$Str(N$商品实际应付价格)>.$Money(4)>
+Money 4 - $Money(4)
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+SET [0] 0
+DelFunBtn 2 3
+GOTO @商城主面板
+BREAK
+
+
+#IF
+POS -道尊神符- -<$Str(S$商品名字)>-
+!SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+Money 4 - <$Str(N$商品实际应付价格)>
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+SET [4] 0
+DelFunBtn 2 6
+GOTO @商城主面板
+BREAK
+
+
+#IF
+POS -道尊神符- -<$Str(S$商品名字)>-
+SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+Money 2 - <$DEC.<$Str(N$商品实际应付价格)>.$Money(4)>
+Money 4 - $Money(4)
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+SET [4] 0
+DelFunBtn 2 6
+GOTO @商城主面板
+BREAK
+
+
+
+#IF
+POS -道尊灵毒(红)- -<$Str(S$商品名字)>-
+!SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+Money 4 - <$Str(N$商品实际应付价格)>
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+GOTO @检测毒粉
+GOTO @商城主面板
+BREAK
+
+
+#IF
+POS -道尊灵毒(红)- -<$Str(S$商品名字)>-
+SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+Money 2 - <$DEC.<$Str(N$商品实际应付价格)>.$Money(4)>
+Money 4 - $Money(4)
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+GOTO @检测毒粉
+GOTO @商城主面板
+BREAK
+
+
+
+#IF
+POS -道尊灵毒(绿)- -<$Str(S$商品名字)>-
+!SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+Money 4 - <$Str(N$商品实际应付价格)>
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+GOTO @检测毒粉
+GOTO @商城主面板
+BREAK
+
+
+#IF
+POS -道尊灵毒(绿)- -<$Str(S$商品名字)>-
+SMALL $Money(4) <$Str(N$商品实际应付价格)>
+#ACT
+Money 2 - <$DEC.<$Str(N$商品实际应付价格)>.$Money(4)>
+Money 4 - $Money(4)
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+GOTO @检测毒粉
+GOTO @商城主面板
+BREAK
+
+#IF
+!SMALL $Money(4) <$Str(N$商品实际应付价格)>
+EQUAL <$STR(S$商品够买货币)> 绑定元宝
+#ACT
+Money 4 - <$Str(N$商品实际应付价格)>
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+GOTO @商城主面板
+BREAK
+
+
+#IF
+SMALL $Money(4) <$Str(N$商品实际应付价格)>
+EQUAL <$STR(S$商品够买货币)> 绑定元宝
+#ACT
+Money 2 - <$DEC.<$Str(N$商品实际应付价格)>.$Money(4)>
+Money 4 - $Money(4)
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+GOTO @商城主面板
+BREAK
+
+#IF
+!SMALL $Money(2) <$Str(N$商品实际应付价格)>
+EQUAL <$STR(S$商品够买货币)> 元宝
+#ACT
+Money 2 - <$Str(N$商品实际应付价格)>
+GIVE <$Str(S$商品名字)> $STR(N$商城购买数量) 1
+MOV S$2001 
+GOTO @商城主面板
+BREAK
+
+
+
+[@检测毒粉]
+#IF
+CheckItem 道尊灵毒(红) 1
+#ACT
+SET [2] 0
+
+#IF
+CheckItem 道尊灵毒(绿) 1
+#ACT
+SET [3] 0
+
+#IF
+CHECK [2] 0
+CHECK [3] 0
+#ACT
+DelFunBtn 2 5
+BREAK
+
+[@购买物品]
+#IF
+TRUE
+#ACT
+MOV S$2001 1
+MOV N$商城购买数量 1
+GOTO @商城主面板
+Break
+
+
+
+[@返回商城]
+#IF
+true
+#ACT
+MOV S$2001 
+GOTO @商城主面板
+Break
+
+
+[@输入购买数量]
+#IF
+True
+#ACT
+QueryVal 1 1 2 @商城确定输入 输入购买数量：
+Break
+
+[@商城确定输入]
+#IF
+SMALL M1 1
+#ACT
+SENDMSG 19 最少购买1个
+GOTO @商城主面板
+Break
+
+#IF
+EQUAL <$Str(S$商品名字)> 书页
+LARGE M1 <$DEC.50.$HUMAN(书页每日限购)>
+#ACT
+SENDMSG 19 今日还可购买<$DEC.50.$HUMAN(书页每日限购)>张书页
+GOTO @商城主面板
+Break
+#ELSEACT
+MOV N$商城购买数量 $STR(M1)
+GOTO @商城主面板
+Break
+
+
+[@商城购买数量减]
+#IF
+LARGE <$str(N$商城购买数量)> 1
+#ACT
+DEC N$商城购买数量 1
+GOTO @商城主面板
+BREAK
+#ELSEACT
+SENDMSG 19 最少购买1个
+GOTO @商城主面板
+BREAK
+
+
+
+[@商城购买数量加]
+#IF
+EQUAL <$Str(S$商品名字)> 书页
+SMALL <$str(N$商城购买数量)> <$DEC.50.$HUMAN(书页每日限购)>
+#ACT
+INC N$商城购买数量 1
+GOTO @商城主面板
+BREAK
+
+#IF
+!EQUAL <$Str(S$商品名字)> 书页
+!LARGE <$str(N$商城购买数量)> 98
+#ACT
+INC N$商城购买数量 1
+GOTO @商城主面板
+BREAK
+
+#IF
+EQUAL <$Str(S$商品名字)> 书页
+!SMALL <$str(N$商城购买数量)> <$DEC.50.$HUMAN(书页每日限购)>
+#ACT
+SENDMSG 19 今日还可购买<$DEC.50.$HUMAN(书页每日限购)>张书页
+GOTO @商城主面板
+BREAK
+
+#IF
+!EQUAL <$Str(S$商品名字)> 书页
+LARGE <$str(N$商城购买数量)> 98
+#ACT
+SENDMSG 19 单次最大购买99个
+GOTO @商城主面板
+BREAK
+
+}

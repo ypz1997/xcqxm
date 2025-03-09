@@ -1,0 +1,15 @@
+[@main]
+<1/@11>
+[@11]
+#if
+true
+#act
+starttimer 1
+loopgoto @112 5
+stoptimer 1 p10
+sendmsg 5 <$str(p10)>
+[@112]
+#if
+true
+#act
+func 1 @¡Ÿ ± Ù–‘

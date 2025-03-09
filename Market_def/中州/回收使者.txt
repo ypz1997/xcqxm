@@ -1,0 +1,25 @@
+[@main]
+#IF
+HasTask 9
+EQUAL $TASK(9) 1
+#ACT
+UpdateTask 9 2
+Navigation 100 0 请打开包裹#99#3 0 0
+BREAK
+
+
+#IF
+TRUE
+#ACT
+MOV N$包一字色 67
+MOV N$包二字色 91
+MOV N$包三字色 91
+DELAYGOTO 300 @包裹
+BREAK
+
+[@包裹]
+#IF
+TRUE
+#ACT
+OPENUI 2011 1
+BREAK

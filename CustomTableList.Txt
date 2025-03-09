@@ -1,0 +1,89 @@
+;表名　字段1:类型　字段2:类型
+XM_SJ		RQ01:Date	RQ02:Date	RQ03:Date	RQ04:Date
+HS_BL                       LEIXING:LongText     ZBM:LongText
+XM_RQ		YQL1:INT
+XM_DY		YHWP0:Char	YHWP1:Char	YHWP2:Char	YHWP3:Char	YHWP4:Char	YHWP5:Char	YHWP:Char
+XM_DE		EHWP0:Char	EHWP1:Char	EHWP2:Char	EHWP3:Char	EHWP4:Char	EHWP5:Char	EHWP:Char
+XM_DS		SHWP0:Char	SHWP1:Char	SHWP2:Char	SHWP3:Char	SHWP4:Char	SHWP5:Char	SHWP:Char
+XM_SD		SIHWP0:Char	SIHWP1:Char	SIHWP2:Char	SIHWP3:Char	SIHWP4:Char	SIHWP5:Char	SIHWP:Char
+XM_DW		WHWP0:Char	WHWP1:Char	WHWP2:Char	WHWP3:Char	WHWP4:Char	WHWP5:Char	WHWP:Char
+XM_DL		LHWP0:Char	LHWP1:Char	LHWP2:Char	LHWP3:Char	LHWP4:Char	LHWP5:Char	LHWP:Char
+XM_DQ		QHWP0:Char	QHWP1:Char	QHWP2:Char	QHWP3:Char	QHWP4:Char	QHWP5:Char	QHWP:Char
+XM_DB		BHWP0:Char	BHWP1:Char	BHWP2:Char	BHWP3:Char	BHWP4:Char	BHWP5:Char	BHWP:Char
+QD_TZ		QDTKDJ:INT	QDXLDJ:INT	QDSZDJ:INT	QDJZDJ:INT
+KN_TZ		KNTKDJ:INT	KNXLDJ:INT	KNSZDJ:INT	KNJZDJ:INT
+SX_TZ		SXTKDJ:INT	SXXLDJ:INT	SXSZDJ:INT	SXJZDJ:INT
+SM_TZ		SMTKDJ:INT	SMXLDJ:INT	SMSZDJ:INT	SMJZDJ:INT
+SY_TZ		SYTKDJ:INT	SYXLDJ:INT	SYSZDJ:INT	SYJZDJ:INT
+MW_TZ		MWTKDJ:INT	MWXLDJ:INT	MWSZDJ:INT	MWJZDJ:INT
+SL_TJ		TJ1DJ:INT		TJ2DJ:INT		TJ3DJ:INT		TJ4DJ:INT		TJ5DJ:INT		TJ6DJ:INT		TJ7DJ:INT		TJ8DJ:INT		TJ9DJ:INT		TJ10DJ:INT	TJ11DJ:INT	TJ12DJ:INT	TJ13DJ:INT	TJ14DJ:INT	TJ15DJ:INT	TJ16DJ:INT	TJ17DJ:INT	TJ18DJ:INT
+Lemon_LS		LS:INT		DJ:INT		LS1:INT		LS2:INT		LS3:INT		LS4:INT		LS5:INT	
+Lemon_LS2	ZB:INT		ZB1:INT		ZB2:INT		ZB3:INT		ZB4:INT
+Lemon_LS3	LS1:INT		LS2:INT		LS3:INT		LS4:INT		LS5:INT
+Lemon_YY	BM:INT    JY:INT	CC1:INT	CC2:INT	CC3:INT	CC4:INT	CCLV1:INT    CCLV2:INT    CCLV3:INT   CCLV4:INT	CCSZ1:INT    CCSZ2:INT    CCSZ3:INT   CCSZ4:INT    CD:INT    RQ:DATA     XL:INT     TS1:INT      TS2:INT      TS3:INT      TS4:INT      TS5:INT      TS6:INT      TS7:INT      TS8:INT      XJ1:INT      XJ2:INT      XJ3:INT      XJ4:INT      XJ5:INT      XJ6:INT      XJ7:INT  XJ8:INT
+SZ_WQ                    WUQI1:Int                 WUQI2:Int               WUQI3:Int               WUQI4:Int                  WUQI5:Int                WUQI6:Int                 WUQI7:Int               WUQI8:Int
+SZ_YF                      YIFU1:Int                   YIFU2:Int                 YIFU3:Int                 YIFU4:Int                    YIFU5:Int                  YIFU6:Int                   YIFU7:Int                 YIFU8:Int
+SZ_ZJ                      ZUJI1:Int                    ZUJI2:Int                  ZUJI3:Int                 ZUJI4:Int                     ZUJI5:Int                   ZUJI6:Int                   ZUJI7:Int                  ZUJI8:Int
+SZ_CGDD                CGDD1:Int                 CGDD2:Int               CGDD3:Int               CGDD4:Int                  CGDD5:Int                 CGDD6:Int                 CGDD7:Int               CGDD8:Int               CGDD9:Int               CGDD10:Int               CGDD11:Int               CGDD12:Int               CGDD13:Int               CGDD14:Int               CGDD15:Int               CGDD16:Int               CGDD17:Int               CGDD18:Int               CGDD19:Int               CGDD20:Int
+SZ_HDDD                HDDD1:Int                 HDDD2:Int              HDDD3:Int               HDDD4:Int                  HDDD5:Int                 HDDD6:Int                 HDDD7:Int              HDDD8:Int               HDDD9:Int               HDDD10:Int               HDDD11:Int               HDDD12:Int               HDDD13:Int               HDDD14:Int               HDDD15:Int               HDDD16:Int               HDDD17:Int               HDDD18:Int               HDDD19:Int               HDDD20:Int
+BOSS_ZhaoHL             TTJZ:Int	TXMW:Int	AXLS:Int	CYMZ:Int	SGYW:Int	XYMZ:Int	HBYL:Int	MYYW:Int	XTZS:Int	XWYL:Int	WJZZ:Int	DDXD:Int	JDZH:Int	XKGS:Int
+PlayerDailyOutput0_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput1_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput2_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput3_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput4_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput5_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput6_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput7_0 Ring:INT Bracelet:INsT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput8_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput9_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput10_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput11_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput12_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput13_0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput0_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput1_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput2_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput3_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput4_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput5_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput6_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput7_1 Ring:INT Bracelet:INsT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput8_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput9_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput10_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput11_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput12_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput13_1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput0_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput1_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput2_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput3_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput4_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput5_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput6_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput7_2 Ring:INT Bracelet:INsT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput8_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput9_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput10_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput11_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput12_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerDailyOutput13_2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput0 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput1 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput2 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput3 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput4 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput5 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput6 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput7 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput8 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput9 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput10 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput11 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput12 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+PlayerALLOutput13 Ring:INT Bracelet:INT Helmet:INT Belt:INT Clothing:INT Weapon:INT Necklace:INT Boots:INT
+XL_MZY		XLMZY0:Char		XLMZY1:Char		XLMZY2:Char		XLMZY3:Char		XLMZY4:Char		XLMZY5:Char		XLMZY6:Char		XLMZY7:Char		XLMZY8:Char		XLMZY9:Char		XLMZY10:Char
+XL_MZE		XLMZE0:Char		XLMZE1:Char		XLMZE2:Char		XLMZE3:Char		XLMZE4:Char		XLMZE5:Char		XLMZE6:Char		XLMZE7:Char		XLMZE8:Char		XLMZE9:Char		XLMZE10:Char
+XL_BHY		XLBHY0:INT		XLBHY1:INT		XLBHY2:INT		XLBHY3:INT		XLBHY4:INT		XLBHY5:INT		XLBHY6:INT		XLBHY7:INT		XLBHY8:INT		XLBHY9:INT		XLBHY10:INT
+XL_BHE		XLBHE0:INT		XLBHE1:INT		XLBHE2:INT		XLBHE3:INT		XLBHE4:INT		XLBHE5:INT		XLBHE6:INT		XLBHE7:INT		XLBHE8:INT		XLBHE9:INT		XLBHE10:INT

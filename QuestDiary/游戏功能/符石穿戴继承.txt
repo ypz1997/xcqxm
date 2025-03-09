@@ -1,0 +1,404 @@
+[@符石穿戴继承]
+{
+
+#IF
+EQUAL <$STR(S$PARAM1)> 0
+!EQUAL <$HUMAN(衣服符石1)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(衣服符石1)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 183 = $INC.11.$STR(N$镶嵌位置1符石等级)
+SENDMSG 5 <$ITEMINFO[<$STR(S$PARAM0)>].GC1>
+#IF
+EQUAL <$STR(S$PARAM1)> 0
+!EQUAL <$HUMAN(衣服符石2)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(衣服符石2)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 184 = $INC.11.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 0
+!EQUAL <$HUMAN(衣服符石3)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(衣服符石3)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 185 = $INC.41.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 0
+!EQUAL <$HUMAN(衣服符石4)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(衣服符石4)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 186 = $INC.41.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 0
+!EQUAL <$HUMAN(衣服符石5)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(衣服符石5)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 187 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 1
+!EQUAL <$HUMAN(武器符石1)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(武器符石1)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 183 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 1
+!EQUAL <$HUMAN(武器符石2)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(武器符石2)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 184 = $INC.11.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 1
+!EQUAL <$HUMAN(武器符石3)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(武器符石3)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 185 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 1
+!EQUAL <$HUMAN(武器符石4)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(武器符石4)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 186 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 1
+!EQUAL <$HUMAN(武器符石5)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(武器符石5)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 187 = $INC.41.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 3
+!EQUAL <$HUMAN(项链符石1)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(项链符石1)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 183 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 3
+!EQUAL <$HUMAN(项链符石2)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(项链符石2)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 184 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 3
+!EQUAL <$HUMAN(项链符石3)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(项链符石3)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 185 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 3
+!EQUAL <$HUMAN(项链符石4)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(项链符石4)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 186 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 3
+!EQUAL <$HUMAN(项链符石5)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(项链符石5)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 187 = $INC.41.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 4
+!EQUAL <$HUMAN(头盔符石1)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(头盔符石1)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 183 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 4
+!EQUAL <$HUMAN(头盔符石2)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(头盔符石2)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 184 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 4
+!EQUAL <$HUMAN(头盔符石3)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(头盔符石3)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 185 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 4
+!EQUAL <$HUMAN(头盔符石4)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(头盔符石4)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 186 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 4
+!EQUAL <$HUMAN(头盔符石5)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(头盔符石5)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 187 = $INC.41.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 5
+!EQUAL <$HUMAN(左手镯符石1)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(左手镯符石1)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 183 = $INC.11.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 5
+!EQUAL <$HUMAN(左手镯符石2)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(左手镯符石2)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 184 = $INC.11.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 5
+!EQUAL <$HUMAN(左手镯符石3)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(左手镯符石3)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 185 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 5
+!EQUAL <$HUMAN(左手镯符石4)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(左手镯符石4)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 186 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 5
+!EQUAL <$HUMAN(左手镯符石5)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(左手镯符石5)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 187 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 6
+!EQUAL <$HUMAN(右手镯符石1)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(右手镯符石1)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 183 = $INC.11.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 6
+!EQUAL <$HUMAN(右手镯符石2)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(右手镯符石2)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 184 = $INC.11.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 6
+!EQUAL <$HUMAN(右手镯符石3)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(右手镯符石3)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 185 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 6
+!EQUAL <$HUMAN(右手镯符石4)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(右手镯符石4)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 186 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 6
+!EQUAL <$HUMAN(右手镯符石5)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(右手镯符石5)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 187 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 7
+!EQUAL <$HUMAN(左戒指符石1)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(左戒指符石1)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 183 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 7
+!EQUAL <$HUMAN(左戒指符石2)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(左戒指符石2)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 184 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 7
+!EQUAL <$HUMAN(左戒指符石3)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(左戒指符石3)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 185 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 7
+!EQUAL <$HUMAN(左戒指符石4)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(左戒指符石4)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 186 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 7
+!EQUAL <$HUMAN(左戒指符石5)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(左戒指符石5)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 187 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 8
+!EQUAL <$HUMAN(右戒指符石1)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(右戒指符石1)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 183 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 8
+!EQUAL <$HUMAN(右戒指符石2)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(右戒指符石2)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 184 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 8
+!EQUAL <$HUMAN(右戒指符石3)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(右戒指符石3)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 185 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 8
+!EQUAL <$HUMAN(右戒指符石4)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(右戒指符石4)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 186 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 8
+!EQUAL <$HUMAN(右戒指符石5)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(右戒指符石5)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 187 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 9
+!EQUAL <$HUMAN(靴子符石1)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(靴子符石1)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 183 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 9
+!EQUAL <$HUMAN(靴子符石2)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(靴子符石2)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 184 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 9
+!EQUAL <$HUMAN(靴子符石3)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(靴子符石3)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 185 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 9
+!EQUAL <$HUMAN(靴子符石4)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(靴子符石4)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 186 = $INC.21.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 9
+!EQUAL <$HUMAN(靴子符石5)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(靴子符石5)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 187 = $INC.41.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 10
+!EQUAL <$HUMAN(腰带符石1)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(腰带符石1)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 183 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 10
+!EQUAL <$HUMAN(腰带符石2)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(腰带符石2)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 184 = $INC.1.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 10
+!EQUAL <$HUMAN(腰带符石3)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(腰带符石3)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 185 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 10
+!EQUAL <$HUMAN(腰带符石4)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(腰带符石4)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 186 = $INC.31.$STR(N$镶嵌位置1符石等级)
+
+#IF
+EQUAL <$STR(S$PARAM1)> 10
+!EQUAL <$HUMAN(腰带符石5)> 
+LARGE <$ITEMINFO[<$STR(S$PARAM0)>].GC1> 4
+#ACT
+LOADEXVAR N$镶嵌位置1符石等级 镶嵌的符石 <$HUMAN(腰带符石5)> ..\QuestDiary\文本读取\镶嵌符石等级.txt
+UPGRADEUSERITEM <$STR(S$PARAM0)> 187 = $INC.11.$STR(N$镶嵌位置1符石等级)
+
+}

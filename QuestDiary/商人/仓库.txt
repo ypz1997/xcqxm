@@ -1,0 +1,428 @@
+[@保管物品]
+{
+你想保管什么东西呢？\\\
+<返 回/@main>
+}
+
+[@取出物品]
+{
+你是要把东西拿回去吧？\
+从下面的列表里挑吧。\
+　\
+　\
+<返 回/@main>
+}
+
+[@快捷存取]
+{
+你是要把东西拿回去吧？\
+从下面的列表里挑吧。\\
+<返 回/@main>
+}
+
+[@捆扎物品]
+{
+
+一看你就是有钱人！\
+行，我来帮你，你要干什么呢？\\
+用金条<交换/@_CK_jttojz>金砖\
+用金砖<交换/@_CK_jztojt>金条\
+用金币<交换/@_CK_changegold>金条 \
+用金条<交换/@_CK_changemoney>金币 \
+用金币<交换/@_CK_changejz>金砖 \
+<打包/@_CK_bind> \
+<离 开/@exit>
+
+[@_CK_bind]
+目前我能捆的只有卷轴、药水、道符\
+你要捆吗？ \
+要捆东西需要100金币. \\
+<捆/@_CK_p_bind>药水 \
+<捆/@_CK_z_bind>卷书 \
+<捆/@_CK_f_bind>道符（大）\
+
+[@_CK_f_bind]
+#IF
+Checkitem 道符（大） 6
+#ACT
+take 道符（大） 6
+give 道符包 1
+#SAY
+已经捆好了...我的技术不错吧.. \
+以后还有要捆的，就来找我吧.. \\
+<继续捆/@_CK_bind> \
+<离 开/@exit>
+#ELSESAY
+你没有带足够的道符（大），怎么帮你打包? \
+等准备好道符（大）后，再来找我吧. \\
+<离 开/@exit>
+
+[@_CK_p_bind]
+<捆/@bind&金创药(大量)&金创药(大)包>金创药(大量)\
+<捆/@bind&魔法药(大量)&魔法药(大量)>魔法药(大量)\
+<捆/@bind&金创药(中量)&金创药(中量)>金创药(中量)\
+<捆/@bind&魔法药(中量)&魔法药(中量)>魔法药(中量)\
+<捆/@bind&金创药(小量)&金创药(小量)>金创药(小量)\
+<捆/@bind&魔法药(小量)&魔法药(小量)>魔法药(小量)\
+<捆/@bind&特级金创药&6&特级金创药>特级金创药\
+<捆/@bind&特级魔法药&6&特级魔法药>特级魔法药\
+<返 回/@_CK_bind>
+
+[@_CK_z_bind]
+<捆/@bind1&地牢卷轴&地牢逃脱卷包>地牢卷轴\
+<捆/@bind1&随机卷轴&随机传送卷包>随机卷轴 \
+<捆/@bind1&回城卷轴&回城卷包>回城卷轴 \
+<捆/@bind1&沙城回城卷轴&行会回城卷包>沙城回城卷轴 \
+<返 回/@_CK_bind>
+
+[@bind1]
+#IF
+Checkitem $SCRIPTPARAM(1) 6
+#ACT
+take $SCRIPTPARAM(1) 6
+give $SCRIPTPARAM(2) 1
+#SAY
+已经捆好了...我的技术不错吧.. \
+以后还有要捆的，就来找我吧.. \\
+<继续捆/@_CK_z_bind> \
+<离 开/@exit>
+#ELSESAY
+你都没有可以捆的卷轴，还捆什么? \
+等准备好之后，再来找我吧.. \\
+<离 开/@exit>
+
+[@bind]
+#IF
+Checkitem $SCRIPTPARAM(1) 6
+#ACT
+take $SCRIPTPARAM(1) 6
+give $SCRIPTPARAM(2) 1
+#SAY
+已经捆好了...我的技术不错吧.. \
+以后还有要捆的，就来找我吧.. \\
+<继续捆/@_CK_p_bind> \
+<离 开/@exit>
+#ELSESAY
+你都没有要捆的药水，还捆什么? \
+等准备好药水之后再来找我吧..\\
+<离 开/@exit>
+
+[@_CK_changejz]
+#IF
+checkgold 5005000
+#SAY
+你要用金币换成金砖?\
+好的，我帮你换\
+但是要支付手续费\
+费用是10000金币，你还换吗？\\
+<交换/@changejz>\
+<离开/@exit>
+#ELSESAY
+你连这点钱都没有，还换什么？\
+等你有足够的钱，再来找我吧\\
+<返回/@main>
+
+[@changejz]
+#IF
+checkbagsize 1
+#ACT
+#ELSESAY
+你的包裹空位不够！\\
+<返回/@main>\
+<离开/@exit>
+#ELSEACT
+break
+#IF
+checkgold 5010000
+#SAY
+金币已经换好金砖了.\
+还换吗？\\
+<交换/@changejz>\
+<离开/@exit>
+#ACT
+take 金币 5010000
+give 金砖 1
+break
+#ELSESAY
+你连这点钱都没有，还换什么？\
+等你有足够的钱，再来找我吧\\
+<返回/@main>
+
+[@_CK_changemoney]
+#IF
+Checkitem 金条 1
+#SAY
+你要把金条换成金币?\
+好的，我给你换\
+不过需要支付手续费\
+费用是2000金币，你还换吗吗？\\
+<交换/@changemoney>\
+<离开/@exit>
+#ELSESAY
+你都没有金条还换什么?\
+想骗我？走开！\\
+<离 开/@exit>
+
+[@changemoney]
+#IF
+Checkgold 4002000
+#SAY
+我也很想给你换，\
+但是你钱都快拿不动了，我没办法给你换。\\
+<离 开/@exit>
+#ACT
+break
+#IF 
+checkitem 金条 1
+#ACT
+take 金条 1
+give 金币 998000
+#SAY
+金条已经换好金币了.\
+还换吗？\\
+<交换/@changemoney>\
+<离开/@exit>
+#ELSESAY
+你都没有金条还换什么?\
+想骗我？走开！\\
+<离 开/@exit>
+
+[@_CK_changegold]
+#IF
+Checkgold 1002000
+#SAY
+你要用金币换成金条?\
+好的，我帮你换\
+但是要支付手续费\
+费用是2000金币，你还换吗？\\
+<交换/@changegold>\
+<离开/@exit>
+#ELSESAY
+你连这点钱都没有，还换什么？\
+等你有足够的钱，再来找我吧\\
+<返回/@main>
+
+[@changegold]
+#IF
+checkbagsize 1
+#ACT
+#ELSESAY
+你的包裹空位不够！\\
+<返回/@main>\
+<离开/@exit>
+#ELSEACT
+break
+#IF
+checkgold 1002000
+checkbagsize 1
+#SAY
+金币已经换好金条了.\
+还换吗？\\
+<交换/@changegold>\
+<离开/@exit>
+#ACT
+take 金币 1002000
+give 金条 1
+#ELSESAY
+你连这点钱都没有，还换什么？\
+等你有足够的钱，再来找我吧\\
+<返回/@main>
+
+[@_CK_jztojt]
+#IF
+Checkitem 金砖 1
+#SAY
+你要用金砖换成金条？\
+好的，我帮你换\
+但是要支付手续费\
+费用是5000金币，你还换吗？\\
+<交换/@jztojt1>\
+<离开/@exit>
+#ELSESAY
+你没有金砖还换什么?\
+想骗我？走开！\\
+<离开/@exit>
+
+[@jztojt1]
+#IF
+checkbagsize 4
+#ACT
+#ELSESAY
+你的包裹空位不够！\\
+<返回/@main>\
+<离开/@exit>
+#ELSEACT
+break
+#IF
+checkitem 金砖 1
+checkgold 5000
+#SAY
+金砖已经换好金条了.\
+你还有什么事情？\\
+<返回/@main>\
+<离开/@exit>
+#ACT
+take 金币 5000
+take 金砖 1
+give 金条 5
+break
+#ELSESAY
+你连这点钱都没有，还换什么？\
+等你有足够的钱，再来找我吧\\
+<返回/@main>
+
+[@_CK_jttojz]
+#IF
+Checkitem 金条 5
+#SAY
+你要用金条换成金砖？\
+好的，我帮你换\
+但是要支付手续费\
+费用是5000金币，你还换吗？\\
+<交换/@jttojz1>\
+<离开/@exit>
+#ELSESAY
+你没有金条还换什么? \
+想骗我？走开！ \\
+<离 开/@exit>
+
+[@jttojz1]
+#IF
+Checkitem 金条 5
+Checkgold 5000
+#SAY
+金条已经换好金砖了.\
+你还有什么事情？\\
+<返回/@main>\
+<离开/@exit>
+#ACT
+take 金币 5000
+take 金条 5
+give 金砖 1
+#ELSESAY
+你连这点钱都没有，还换什么？\
+等你有足够的钱，再来找我吧\\
+<返回/@main>
+
+}
+
+[@宝石仓库]
+{
+
+来来来，只要是红、绿、蓝三种颜色的宝石，放在宝石\
+仓库里是可就安全了。不过每种宝石可是只能放200颗。\
+多了可就放不下咯。\
+你身上的宝石<color=green 都会被一次收走>，不过要是你仓库已经满\
+了的话，<color=green 多出的还都在你包裹里>。\
+<查看宝石数量/@_CK_checkgolditem>\
+<存放宝石/@_CK_storegemAll>\
+<取出宝石/@_CK_takegold>\
+<返回/@main>
+
+[@_CK_takegold]
+<取出红宝石/@applygetgem&红宝石&0>\
+<取出蓝宝石/@applygetgem&蓝宝石&1>\
+<取出绿宝石/@applygetgem&绿宝石&2>\
+<返回/@宝石仓库>
+
+[@applygetgem]
+#ACT
+MOV S0 $SCRIPTPARAM(1)
+MOV P0 $SCRIPTPARAM(2) 
+QUERYVAL 1 1 3 @取出宝石 请输入你要取出的<$SCRIPTPARAM(1)>的个数
+
+[@取出宝石]
+#IF
+SMALL $STR(M1) 1
+#SAY
+数量不在1-200之间!\
+<返回/@_CK_takegold>
+#ACT
+break
+#IF
+LARGE $STR(M1) 200
+#SAY
+数量不在1-200之间!\
+<返回/@_CK_takegold>
+#ACT
+break
+#IF
+CheckGemCount $STR(P0) < $STR(M1)
+#SAY
+如果我没有看错的话，你的仓库里应该没有那么多<$STR(S0)>!\
+<返回/@_CK_takegold>
+#ACT
+break
+#IF
+CHECKBAGSIZE $STR(M1)
+CheckGemCount $STR(P0) \ $STR(M1)
+#SAY
+<$STR(S0)>已经到了你的包裹中了!\
+<返回/@_CK_takegold>
+#ACT
+GemCount $STR(P0) - $STR(M1)
+GIVE $STR(S0) $STR(M1)
+break
+#ELSESAY
+你的包裹里放不下这么多宝石，请整理好包裹再取宝石。\
+<返回/@_CK_takegold>
+
+;大于或者等于 \
+
+[@_CK_storegemAll]
+#IF
+RANDOM 1
+#ACT
+MOV P3 0
+MOV P0 200
+MOV P1 200
+MOV P2 200
+DEC P0 $GEMCOUNT(0)
+DEC P1 $GEMCOUNT(1)
+DEC P2 $GEMCOUNT(2)
+#IF
+LARGE $ITEMCOUNT(红宝石) 0
+CheckGemCount 0 < 200
+#ACT
+take 红宝石 $STR(P0)
+GemCount 0 + $PARAM(12)
+SENDMSG 5 你成功存放了<$PARAM(12)>颗红宝石
+MOV P3 1
+#IF
+LARGE $ITEMCOUNT(蓝宝石) 0
+CheckGemCount 1 < 200
+#ACT
+take 蓝宝石 $STR(P1)
+GemCount 1 + $PARAM(12)
+SENDMSG 5 你成功存放了<$PARAM(12)>颗蓝宝石
+MOV P3 1
+#IF
+LARGE $ITEMCOUNT(绿宝石) 0
+CheckGemCount 2 < 200
+#ACT
+take 绿宝石 $STR(P2)
+GemCount 2 + $PARAM(12)
+SENDMSG 5 你成功存放了<$PARAM(12)>颗绿宝石
+MOV P3 1
+#IF
+LARGE P3 0
+#SAY
+你的宝石已经成功存放，可以随时提取。\\
+<查看宝石数量/@_CK_checkgolditem>\
+<取出宝石/@_CK_takegold>\
+<返回/@main>
+#ELSESAY
+宝石存放失败！\
+可能原因：\
+1、您的包裹内没有任何宝石；\
+2、您的宝石仓库容量已满，无法存放更多宝石。\\
+<返回/@main>
+
+[@_CK_checkgolditem]
+你现在拥有：\
+<$GEMCOUNT(0)>颗红宝石\
+<$GEMCOUNT(1)>颗蓝宝石\
+<$GEMCOUNT(2)>颗绿宝石\ 
+<返回/@_CK_goldsave>
+
+}

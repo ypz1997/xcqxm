@@ -1,0 +1,379 @@
+;数据文件：..\QuestDiary\自定义功能\攻略活动.txt
+;数据文件配置说明:活动名称|活动日期|活动时间|展示装备1|展示装备2|展示装备3|展示装备4|传送地图编号|X坐标|Y坐标|条件说明|参与等级|活动说明
+[@攻略活动]
+{
+;-------初始化活动页面变量-------
+#IF
+TRUE
+#ACT
+MOV S$活动_文本颜色_活动栏 161
+MOV S$活动_文本颜色_介绍栏 161
+MOV S$活动数据路径 ..\QuestDiary\自定义功能\攻略活动.txt
+MOV N$页签按钮1 1
+MOV N$页签按钮2 2
+MOV S$切换页面  
+MOV S$活动_数据页面  
+MOV S$攻略_数据页面  
+MOV S$活动_主容器子窗口 {
+MOV S$活动_次容器子窗口 
+MOV N$活动_传送按钮变量  
+MOV N$活动数据行数 0
+MOV N$活动循环计次 0
+MOV N$活动插入变量 0
+MOV N$滚动框颜色 0
+MOV N$活动选中变量 -1
+MOV S$活动内容
+MOV S$开启条件
+MOV S$参与等级
+MOV S$传送地图
+MOV S$传送地图_X
+MOV S$传送地图_Y
+MOV S$奖励物品1  
+MOV S$奖励物品2  
+MOV S$奖励物品3  
+MOV S$奖励物品4  
+;-------启动主窗口-------
+;GOTO @活动日历按钮
+GOTO @选择活动&选中页面=0
+;-------加载活动数据-------
+[@加载活动数据]
+#ACT
+MOV N$活动数据行数 $TXTLINE(<$STR(S$活动数据路径)>)
+MOV N$活动循环计次 0
+MOV S$活动_数据页面  
+LoopGoto @活动循环 <$str(N$活动数据行数)>
+INC S$活动_主容器子窗口 }
+
+[@活动循环]
+#IF
+true
+#ACT
+ReadRandomStr <$STR(S$活动数据路径)> S$临时文本 $STR(N$活动循环计次)
+SPLIT $STR(S$临时文本) | S$临时接收
+#IF
+true
+#ACT
+MOV S$活动_次容器子窗口 children={<$STR(N$活动循环计次)>_5,<$STR(N$活动循环计次)>_1,<$STR(N$活动循环计次)>_2,<$STR(N$活动循环计次)>_3,<$STR(N$活动循环计次)>_4}
+INC S$活动_主容器子窗口 <$STR(N$活动循环计次)>,
+Inc S$活动_数据页面 <Layout|id={$STR(N$活动循环计次)}|x=0|y=0|{$STR(S$活动_次容器子窗口)}|width=615|height=30|scale=1|img=>
+Inc S$活动_数据页面 <Button|id={$STR(N$活动循环计次)}_1|x=30|y=0|width=100|height=30|mimg=|pimg=|nimg=|scale=1|size=18|color={$STR(S$活动_文本颜色_活动栏)}|text={$STR(S$临时接收_0)}>
+Inc S$活动_数据页面 <Button|id={$STR(N$活动循环计次)}_2|x=177.0|y=0|width=80|height=30|mimg=|pimg=|nimg=|scale=1|size=18|color={$STR(S$活动_文本颜色_活动栏)}|text={$STR(S$临时接收_1)}>
+Inc S$活动_数据页面 <Button|id={$STR(N$活动循环计次)}_3|x=365.0|y=0|width=100|height=30|mimg=|pimg=|nimg=|scale=1|size=18|color={$STR(S$活动_文本颜色_活动栏)}|text={$STR(S$临时接收_2)}>
+
+#IF
+EQUAL <$str(G$Lemon活动)> <$INC.N$活动循环计次.1>
+#ACT
+;Inc S$活动_数据页面 <Text|id={$STR(N$活动循环计次)}_4|x=565.0|y=2.0|color=218|size=18|text=已开启|link=@点击前往活动>
+Inc S$活动_数据页面 <Button|id={$STR(N$活动循环计次)}_4||x=545.0|y=-3.0|mimg=public/btn_push_11.png|scale=1|pimg=public/btn_push_11.png|nimg=public/btn_push_11.png|width=100|height=35|size=16|color=218|inputid=1|text=前往|link=@前往活动地图&当前活动状态=开启&当前前往活动名称=<$str(N$活动循环计次)>>
+#ELSEACT
+;Inc S$活动_数据页面 <Text|id={$STR(N$活动循环计次)}_4|x=565.0|y=2.0|color=58|size=18|text=未开启|link=@点击前往活动>
+Inc S$活动_数据页面 <Button|id={$STR(N$活动循环计次)}_4||x=545.0|y=-3.0|mimg=public/btn_push_11.png|scale=1|pimg=public/btn_push_11.png|nimg=public/btn_push_11.png|width=100|height=35|size=16|color=58|inputid=1|text=未开启|link=@前往活动地图&当前活动状态=未开启>
+
+
+#IF
+EQUAL <$str(N$活动选中变量)> <$str(N$活动循环计次)>
+#ACT
+Inc S$活动_数据页面 <Button|id={$STR(N$活动循环计次)}_5|x=0|y=0|width=660|height=32|mimg=private/gonglue/glyt.png|pimg=private/gonglue/glyt.png|nimg=private/gonglue/glyt.png|scale=1|size=16|color=255|text=|link=@选择活动&{$STR(N$活动循环计次)}>
+#ELSEACT
+Inc S$活动_数据页面 <Button|id={$STR(N$活动循环计次)}_5|x=0|y=0|width=660|height=32|mimg=|pimg=|nimg=|scale=1|size=18|color=255|text=|link=@选择活动&选中页面={$STR(N$活动循环计次)}>
+#IF
+TRUE
+#ACT
+Inc N$活动循环计次 1
+;-------选择活动函数-------
+[@选择活动]
+#ACT
+MOV S$活动_数据页面  
+MOV N$活动选中变量 <$STR(S$选中页面)>
+ReadRandomStr $STR(S$活动数据路径) S$临时文本 $STR(N$活动选中变量)
+SPLIT $STR(S$临时文本) | S$临时接收
+MOV S$奖励物品1 <ItemShow|x=620.0|y=446.0|width=70|height=70|itemid=<$STDITEM[<$STR(S$临时接收_3)>].LOOKS>|itemcount=1|name=<$STR(S$临时接收_3)>|bgtype=1|showtips=1>
+MOV S$奖励物品2 <ItemShow|x=700.0|y=446.0|width=70|height=70|itemid=<$STDITEM[<$STR(S$临时接收_3)>].LOOKS>|itemcount=1|name=<$STR(S$临时接收_4)>|bgtype=1|showtips=1>
+MOV S$奖励物品3 <ItemShow|x=780.0|y=446.0|width=70|height=70|itemid=<$STDITEM[<$STR(S$临时接收_3)>].LOOKS>|itemcount=1|name=<$STR(S$临时接收_5)>|bgtype=1|showtips=1>
+MOV S$奖励物品4 <ItemShow|x=860.0|y=446.0|width=70|height=70|itemid=<$STDITEM[<$STR(S$临时接收_3)>].LOOKS>|itemcount=1|name=<$STR(S$临时接收_6)>|bgtype=1|showtips=1>
+MOV S$传送地图 $STR(S$临时接收_7)
+MOV S$传送地图_X $STR(S$临时接收_8)
+MOV S$传送地图_Y $STR(S$临时接收_9)
+MOV S$开启条件 $STR(S$临时接收_10)
+MOV S$参与等级 $STR(S$临时接收_11)
+MOV S$活动内容 $STR(S$临时接收_12)
+GOTO @活动日历按钮
+;-------定义活动日历按钮执行函数-------
+;-------定义活动日历按钮执行函数-------
+[@前往活动地图]
+#IF
+EQUAL <$STR(S$当前活动状态)> 未开启
+#ACT
+MessageBox 当前活动未开始
+break
+
+
+;-------------------------------------------激情烤火
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 0
+!EQUAL <$str(G$Lemon活动)> 1
+#ACT
+MESSAGEBOX 活动已结束!
+GOTO @攻略活动
+break
+
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 0
+EQUAL <$str(G$Lemon活动)> 1
+MIN 31 46
+#ACT
+GOTO @LemonKSYM
+break
+
+;-------------------------------------------公会巅峰战
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 1
+!EQUAL <$str(G$Lemon活动)> 2
+#ACT
+MESSAGEBOX 活动已结束!
+GOTO @攻略活动
+break
+
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 1
+EQUAL <$str(G$Lemon活动)> 2
+MIN 31 59
+#ACT
+GOTO @LemonGHYM
+break
+
+;-------------------------------------------阵营竞技场
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 2
+!EQUAL <$str(G$Lemon活动)> 3
+#ACT
+MESSAGEBOX 活动已结束!
+GOTO @攻略活动
+break
+
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 2
+EQUAL <$str(G$Lemon活动)> 3
+MIN 31 59
+#ACT
+GOTO @LemonZYYM
+break
+
+;-------------------------------------------特戒夺宝
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 3
+!EQUAL <$str(G$Lemon活动)> 4
+#ACT
+MESSAGEBOX 活动已结束!
+GOTO @攻略活动
+break
+
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 3
+EQUAL <$str(G$Lemon活动)> 4
+MIN 31 46
+#ACT
+GOTO @LemonDBYM
+break
+
+;-------------------------------------------大逃杀
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 4
+!EQUAL <$str(G$Lemon活动)> 5
+#ACT
+MESSAGEBOX 活动已结束!
+GOTO @攻略活动
+break
+
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 4
+EQUAL <$str(G$Lemon活动)> 5
+#ACT
+GOTO @LemonTSYM
+break
+
+;-------------------------------------------海兽来袭
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 5
+!EQUAL <$str(G$Lemon活动)> 6
+#ACT
+MESSAGEBOX 活动已结束!
+GOTO @攻略活动
+break
+
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 5
+EQUAL <$str(G$Lemon活动)> 6
+MIN 06 36
+#ACT
+GOTO @LemonHKYM
+break
+
+;-------------------------------------------押镖
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 6
+!EQUAL <$str(G$Lemon活动)> 7
+#ACT
+MESSAGEBOX 活动已结束!
+GOTO @攻略活动
+break
+
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 6
+EQUAL <$str(G$Lemon活动)> 7
+#ACT
+QueryMsg 确定前往押镖吗？ @Lemon运镖QW
+CLOSE
+break
+;-------------------------------------------怪物攻城
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 7
+!EQUAL <$str(G$Lemon活动)> 8
+#ACT
+FUNC 2 @前往怪物攻城活动
+CLOSE
+break
+
+#IF
+EQUAL <$STR(S$当前前往活动名称)> 7
+EQUAL <$str(G$Lemon活动)> 8
+#ACT
+FUNC 2 @前往怪物攻城活动
+CLOSE
+break
+
+
+#IF
+!Small <$LEVEL> $SCRIPTPARAM(4)
+!EQUAL G$活动<$STR($SCRIPTPARAM(6))> 0
+#ACT
+MapMove $SCRIPTPARAM(1) $SCRIPTPARAM(2) $SCRIPTPARAM(3) 10
+CLOSE
+#ELSEACT
+SendMSG 19 您的等级不够或未满足活动条件，无法参加本活动！
+break
+[@活动日历按钮]
+#IF
+TRUE
+#ACT
+GOTO @加载活动数据
+MOV S$页签按钮图1 private/gonglue/btn_announce_chosen.png
+MOV S$页签按钮图2 private/gonglue/btn_announce.png
+MOV S$页签按钮图3 private/gonglue/btn_announce.png
+MOV S$切换页面 <ListView|children={$STR(S$活动_主容器子窗口)}|x=265.0|y=85.0|loadDelay=0|width=660|height=300|direction=1|bounce=1|margin=8|img=|color=>
+INC S$切换页面 $STR(S$活动_数据页面)
+INC S$切换页面 <ListView|children={text_1}|x=275.0|y=430.0|loadDelay=0|width=358|height=100|direction=1|bounce=1|margin=10|img=picpackage/3/9998.png>
+INC S$切换页面 <Text|id=text_1|x=0|y=0|color={$STR(S$活动_文本颜色_介绍栏)}|size=18|text={$STR(S$活动内容)}>
+INC S$切换页面 <Img|x=620.0|y=446.0|scale=1|img=public/fjfqk.png>
+INC S$切换页面 <Img|x=700|y=446.0|scale=1|img=public/fjfqk.png>
+INC S$切换页面 <Img|x=780|y=446.0|scale=1|img=public/fjfqk.png>
+INC S$切换页面 <Img|x=860|y=446.0|scale=1|img=public/fjfqk.png>
+;INC S$切换页面 <Button|x=714.0|y=527.0|mimg=public/btn_push_11.png|scale=1|pimg=public/btn_push_11.png|nimg=public/btn_push_11.png|size=18|color=67|inputid=1|text=前往|link=@前往活动地图&{$STR(S$传送地图)}&{$STR(S$传送地图_X)}&{$STR(S$传送地图_Y)}&{$STR(S$参与等级)}&{$STR(S$开启条件)}&{$STR(N$活动选中变量)}>
+INC S$切换页面 <Layout|id=glgban|x=853.0|y=61.0|width=68|height=68|link=@exit>
+INC S$切换页面 $STR(S$奖励物品1)
+INC S$切换页面 $STR(S$奖励物品2)
+INC S$切换页面 $STR(S$奖励物品3)
+INC S$切换页面 $STR(S$奖励物品4)
+GOTO @MainPage
+;-------游戏攻略按钮执行函数-------
+[@游戏攻略按钮]
+#IF
+TRUE
+#ACT
+MOV S$页签按钮图1 private/gonglue/btn_announce.png
+MOV S$页签按钮图2 private/gonglue/btn_announce_chosen.png
+MOV S$页签按钮图3 private/gonglue/btn_announce.png
+MOV S$切换页面 <Img|id=glsy|x=137.0|y=0.0|width=705|height=517|esc=0|img=private/gonglue/bg_growbook_01.png|scale=1>
+INC S$切换页面 <RText|id=glycn|x=162.0|y=28.0|size=21|color=255|text=<管理员郑重承诺：/FCOLOR=70>>
+INC S$切换页面 <RText|id=glnrd1d|x=162.0|y=69.0|size=18|color=255|text=<①本服所有怪物均可掉落/FCOLOR=140><元宝/FCOLOR=222><；所有/FCOLOR=140>\<装备均可回收为/FCOLOR=140><元宝/FCOLOR=222><！/FCOLOR=140>>
+INC S$切换页面 <RText|id=glnrd2d|x=162.0|y=126.0|size=18|color=255|text=<②本服所有装备均可通过/FCOLOR=140><击杀BOSS/FCOLOR=222>\<掉落；无隐藏条件无隐藏装备。/FCOLOR=140>>
+INC S$切换页面 <RText|id=glnrd3d|x=162.0|y=183.0|size=18|color=255|text=<③本服所有怪物均有概率掉落/FCOLOR=140><充值代/FCOLOR=222>\<金券/FCOLOR=222><，代金券使用后直接获得/FCOLOR=140>\<对应额度/FCOLOR=140><真充/FCOLOR=222><！/FCOLOR=140>>
+INC S$切换页面 <RText|id=glnrd4d|x=162.0|y=266.0|size=18|color=255|text=<④本服为独家长期服，不是快餐服，/FCOLOR=140>\<散人也能当大哥，屌丝也能做老板。/FCOLOR=140>>
+INC S$切换页面 <RText|id=gljbgl|x=162.0|y=329.0|size=21|color=255|text=<基本攻略：/FCOLOR=70>>
+INC S$切换页面 <RText|id=glnrd5d|x=162.0|y=370.0|size=18|color=255|text=<①上线领取/FCOLOR=140><首充/@弹出首充><奖励，升级打宝快人/FCOLOR=140>\<一步/FCOLOR=140>>
+INC S$切换页面 <RText|id=glnrd6d|x=162.0|y=427.0|size=18|color=255|text=<②尽早激活/FCOLOR=140><狂暴之力/FCOLOR=222><大幅提升战力；/FCOLOR=140>\<还可通过狂暴许愿尽早获得理想装备/FCOLOR=140>>
+INC S$切换页面 <RText|id=glnrd7d|x=511.0|y=28.0|size=18|color=255|text=<③玩即送VIP4；后续VIP等级可通过/FCOLOR=140>\<每日任务提升，白嫖也能满级VIP。/FCOLOR=140>>
+INC S$切换页面 <RText|id=gljjgl|x=512.0|y=90.0|size=21|color=255|text=<进阶攻略：/FCOLOR=70>>
+INC S$切换页面 <RText|id=glnrd8d|x=512.0|y=131.0|size=18|color=255|text=<①VIP5及以上时，每日/FCOLOR=140><充值代金券/FCOLOR=222><数量/FCOLOR=140>\<大幅提升且可额外使用大额代金券/FCOLOR=140>>
+INC S$切换页面 <RText|id=glnrd9d|x=512.0|y=188.0|size=18|color=255|text=<②/FCOLOR=140><免费购/@弹出免费购><内时装购买立即/FCOLOR=140><返还元宝/FCOLOR=222><；返/FCOLOR=140>\<还元宝后可用于四象/神兵宝甲等级提升/FCOLOR=140>\<大幅加快前期升级刷宝节奏。/FCOLOR=140>>
+INC S$切换页面 <RText|id=glnrd10d|x=512.0|y=269.0|size=18|color=255|text=<③/FCOLOR=140><月卡季卡年/@弹出月卡><对应/FCOLOR=140><自动范围拾取/自动回/FCOLOR=222>\<收物品/自动使用道具/FCOLOR=222><；挂机托管必备！/FCOLOR=140>>
+INC S$切换页面 <RText|id=glnrd11d|x=512.0|y=324.0|size=18|color=255|text=<④/FCOLOR=140><战令/@弹出战令><是本服附件养成必不可缺的一环/FCOLOR=140>\<激活战令挂机收益立刻翻倍。/FCOLOR=140>>
+INC S$切换页面 <RText|id=glycgl|x=512.0|y=388.0|size=21|color=255|text=<养成攻略：/FCOLOR=70>>
+INC S$切换页面 <RText|id=glnrd12d|x=511.0|y=429.0|size=18|color=255|text=<★/FCOLOR=242><力荐开通VIP5/FCOLOR=140><★/FCOLOR=242><力荐激活狂暴之力/FCOLOR=140>\<★/FCOLOR=242><利用交易行坐等收米/FCOLOR=140><★/FCOLOR=242><元宝先升切割/FCOLOR=140>>
+INC S$切换页面 <Layout|id=glgban|x=853.0|y=61.0|width=68|height=68|link=@exit>
+GOTO @MainPage
+;--------------------------------------------------宝宝介绍------------------------------------------------------
+[@宝宝介绍]
+#IF
+TRUE
+#ACT
+split chuji|zhongji|gaoji|zhuanjiaji|dashiji|zongshiji|quanweiji|wangzheji | S$宝宝介绍_宝宝等级图片 N$宝宝介绍_宝宝数量
+split 111|111|111|113|342|814|814|814 | S$宝宝介绍_宝宝图片1
+split 223|207|117|331|429|553|804|781 | S$宝宝介绍_宝宝图片2
+split -15&-10|-15&-10|-15&-10|-15&-40|-15&-10|-15&-10|-15&-10|-15&-10 | S$宝宝介绍_宝宝坐标数组1
+split -20&-10|-20&-10|-20&-10|-20&-10|-20&-10|-20&-10|-20&-10|-20&-10 | S$宝宝介绍_宝宝坐标数组2
+#IF
+TRUE
+#ACT
+MOV S$页签按钮图1 private/gonglue/btn_announce.png
+MOV S$页签按钮图2 private/gonglue/btn_announce.png
+MOV S$页签按钮图3 private/gonglue/btn_announce_chosen.png
+MOV S$宝宝展示列表child1 children={
+MOV S$宝宝展示列表child2 children={
+MOV S$切换页面 <Img|x=250.0|y=45.0|img=private/gonglue/baobaojieshaomb.png|esc=0>
+#IF
+TRUE
+#ACT
+MOV N$宝宝展示列表循环计数 0
+FOR N$宝宝展示列表循环计数 > <$DEC.N$宝宝介绍_宝宝数量.1>
+split <$STR(S$宝宝介绍_宝宝坐标数组1_<$STR(N$宝宝展示列表循环计数)>)> & S$宝宝介绍_宝宝坐标
+INC S$切换页面 <Layout|id=bb1_{$STR(N$宝宝展示列表循环计数)}|children={bbzs3_{$STR(N$宝宝展示列表循环计数)},bbzs1_<$STR(N$宝宝展示列表循环计数)>,bbzs2_<$STR(N$宝宝展示列表循环计数)>}|x=407.0|y=162.0|width=210|height=200|color=>
+INC S$切换页面 <Effect|id=bbzs2_{$STR(N$宝宝展示列表循环计数)}|x={$STR(S$宝宝介绍_宝宝坐标_0)}|y={$STR(S$宝宝介绍_宝宝坐标_1)}|effectid={$STR(S$宝宝介绍_宝宝图片1_<$STR(N$宝宝展示列表循环计数)>)}|effecttype=2|dir=4|act=0|speed=1|sex=0|scale=1>
+INC S$切换页面 <Img|id=bbzs1_{$STR(N$宝宝展示列表循环计数)}|x=70.0|y=180.0|img=private/gonglue/{$STR(S$宝宝介绍_宝宝等级图片_<$STR(N$宝宝展示列表循环计数)>)}.png|esc=0>
+INC S$切换页面 <Img|id=bbzs3_{$STR(N$宝宝展示列表循环计数)}|x=10.0|y=100.0|img=private/gonglue/baobaodizuo.png|esc=0>
+INC S$宝宝展示列表child1 bb1_<$STR(N$宝宝展示列表循环计数)>,
+INC N$宝宝展示列表循环计数 1
+ENDFOR
+#IF
+TRUE
+#ACT
+MOV N$宝宝展示列表循环计数 0
+FOR N$宝宝展示列表循环计数 > <$DEC.N$宝宝介绍_宝宝数量.1>
+split <$STR(S$宝宝介绍_宝宝坐标数组2_<$STR(N$宝宝展示列表循环计数)>)> & S$宝宝介绍_宝宝坐标
+INC S$切换页面 <Effect|id=klzs2_{$STR(N$宝宝展示列表循环计数)}|x={$STR(S$宝宝介绍_宝宝坐标_0)}|y=-10|effectid={$STR(S$宝宝介绍_宝宝图片2_<$STR(N$宝宝展示列表循环计数)>)}|effecttype=2|dir=4|act=0|speed=1|sex=0|scale=1>
+INC S$切换页面 <Layout|id=bb2_{$STR(N$宝宝展示列表循环计数)}|children={klzs3_{$STR(N$宝宝展示列表循环计数)},klzs1_<$STR(N$宝宝展示列表循环计数)>,klzs2_<$STR(N$宝宝展示列表循环计数)>}|x=407.0|y=162.0|width=210|height=200|color=>
+INC S$切换页面 <Img|id=klzs1_{$STR(N$宝宝展示列表循环计数)}|x=70.0|y=180.0|img=private/gonglue/{$STR(S$宝宝介绍_宝宝等级图片_<$STR(N$宝宝展示列表循环计数)>)}.png|esc=0>
+INC S$切换页面 <Img|id=klzs3_{$STR(N$宝宝展示列表循环计数)}|x=10.0|y=100.0|img=private/gonglue/baobaodizuo.png|esc=0>
+INC S$宝宝展示列表child2 bb2_<$STR(N$宝宝展示列表循环计数)>,
+INC N$宝宝展示列表循环计数 1
+ENDFOR
+#IF
+TRUE
+#ACT
+INC S$宝宝展示列表child1 }
+INC S$宝宝展示列表child2 }
+INC S$切换页面 <ListView|{$STR(S$宝宝展示列表child1)}|x=308.0|direction=2|y=60.0|width=620|height=225|img=picpackage/3/9998.png|loadDelay=0>
+INC S$切换页面 <ListView|{$STR(S$宝宝展示列表child2)}|x=308.0|y=310.0|direction=2|width=620|height=225|img=picpackage/3/9998.png|loadDelay=0>
+INC S$切换页面 <Layout|id=glgban|x=853.0|y=61.0|width=68|height=68|link=@exit>
+GOTO @MainPage
+;--------------------------------------------------宝宝介绍end---------------------------------------------------
+;-------主页面加载函数-------
+[@MainPage]
+#IF
+TRUE
+#ACT
+#SAY
+<Layout|x=547.0|y=0.0|width=80|height=80|_localZOrder=-1|link=@exit>
+<Img|children={glsy,glzed1,glzed2,glzed3,glzez1,glzez2,glzez3,glycn,glnrd1d,glnrd2d,glnrd3d,glnrd4d,gljbgl,glnrd5d,glnrd6d,glnrd7d,gljjgl,glnrd8d,glnrd9d,glnrd10d,glnrd11d,glycgl,glnrd12d,glgban}|x=105.0|y=37.0|scale=1|bg=1|esc=0|img=private/gonglue/rilimb.png|loadDelay=0>
+<Button|x=960|y=50|nimg=|_localZOrder=0|pimg=|link=@exit>
+<Img|id=glzed1|x=130.0|y=77.0|width=140|height=51|rotate=90|esc=0|img={$STR(S$页签按钮图1)}|scale=1>
+<Img|id=glzed2|x=130.0|y=220.0|width=140|height=51|rotate=90|esc=0|img={$STR(S$页签按钮图2)}|scale=1>
+<Img|id=glzed3|x=130.0|y=363.0|width=140|height=51|rotate=90|esc=0|img={$STR(S$页签按钮图3)}|scale=1>
+<RText|id=glzez1|x=94.0|y=90.0|size=20|color=255|text=<活/FCOLOR=67>\<动/FCOLOR=67>\<日/FCOLOR=67>\<历/FCOLOR=67>>
+<RText|id=glzez2|x=94.0|y=233.0|size=20|color=255|text=<必/FCOLOR=67>\<读/FCOLOR=67>\<攻/FCOLOR=67>\<略/FCOLOR=67>>
+<RText|id=glzez3|x=94.0|y=376.0|size=20|color=255|text=<道/FCOLOR=67>\<士/FCOLOR=67>\<宝/FCOLOR=67>\<宝/FCOLOR=67>>
+<$STR(S$切换页面)>
+<Layout|x=185.0|y=113.0|width=51|height=140|color=|link=@活动日历按钮>
+<Layout|x=185.0|y=256.0|width=51|height=140|color=|link=@游戏攻略按钮>
+<Layout|x=185.0|y=399.0|width=51|height=140|color=|link=@宝宝介绍>
+}

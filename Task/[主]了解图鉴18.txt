@@ -1,0 +1,11 @@
+[setup]
+MainTitle = 主线任务
+MainID=18
+IsMain=0
+stepcount = 4
+title = [　]了解图鉴
+ID = 18
+stepstitle1 = 　\<color=green 前往><尸王殿/@XXXXX><color=green 击杀<$TASKVAL(18).I0>/1只尸霸>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=146|itemcount=1|name=祈祷头盔图鉴|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle2 = 　\<color=green 点击领取><color=green 祈祷头盔图鉴/@XXXXX>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=146|itemcount=1|name=祈祷头盔图鉴|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle3 = 　\<color=green 打开><图鉴/@前往图鉴><color=green 点亮祈祷头盔图鉴>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>
+stepstitle4 = 　\<color=green 已完成激活图鉴的任务>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>  <点击领取/@XXXXX>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=128.0|y=100.0|width=70|height=70|itemid=26900|itemcount=500|name=绑定元宝|showtips=1|bgtype=public/clk.png|scale=1>

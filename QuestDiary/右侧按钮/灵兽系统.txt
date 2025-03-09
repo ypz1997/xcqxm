@@ -1,0 +1,1572 @@
+[@灵兽系统]
+{
+#IF
+EQUAL $TABLE(Lemon_LS).LS1 1
+SMALL $TABLE(Lemon_LS3).LS1 1
+#ACT
+TABLE Lemon_LS3 LS1 = 1
+#IF
+EQUAL $TABLE(Lemon_LS).LS2 1
+SMALL $TABLE(Lemon_LS3).LS2 1
+#ACT
+TABLE Lemon_LS3 LS2 = 1
+#IF
+EQUAL $TABLE(Lemon_LS).LS3 1
+SMALL $TABLE(Lemon_LS3).LS3 1
+#ACT
+TABLE Lemon_LS3 LS3 = 1
+#IF
+EQUAL $TABLE(Lemon_LS).LS4 1
+SMALL $TABLE(Lemon_LS3).LS4 1
+#ACT
+TABLE Lemon_LS3 LS4 = 1
+#IF
+EQUAL $TABLE(Lemon_LS).LS5 1
+SMALL $TABLE(Lemon_LS3).LS5 1
+#ACT
+TABLE Lemon_LS3 LS5 = 1
+
+
+#IF
+TRUE
+#SAY
+<Img|x=86.0|y=-5.0|show=0|bg=1|move=0|img=private/lingshou/lingshoudamb.png|loadDelay=0|reset=1>
+#IF
+!EQUAL N$灵兽材料购买 1
+#SAY
+<Button|x=621.0|y=43.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+#ELSESAY
+<Button|x=621.0|y=43.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png>
+
+#IF
+TRUE
+#SAY
+<Img|x=124.0|y=93.0|img=private/lingshou/lingshoushengjimb.png>
+;=================================================================
+<Button|x=50.0|y=90.0|nimg=private/lingshou/fenlei1.png|pimg=private/lingshou/fenlei1.png>
+<Button|x=50.0|y=245.0|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png>
+<Button|x=50.0|y=400.0|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png>
+;--------------
+<RText|x=68.0|y=110.0|color=67|size=20|text=灵\兽\升\级>
+<RText|x=68.0|y=265.0|color=67|size=20|text=灵\兽\装\备>
+<RText|x=68.0|y=420.0|color=67|size=20|text=灵\兽\品\阶>
+;--------------
+<Layout|x=58.0|y=91.0|width=40|height=150|rotate=0|link=@xxx>
+<Layout|x=58.0|y=247.0|width=40|height=150|rotate=0|link=@Lemon灵兽ZB>
+<Layout|x=58.0|y=402.0|width=40|height=150|rotate=0|link=@Lemon灵兽PJ>
+
+;=================================================================
+<ListView|children=<jn0,jn1,jn2,jn3,jn4>|x=138.0|y=490.0|width=275|height=100|direction=2|bounce=1|reload=1|margin=24|loadDelay=0|img=picpackage/3/9998.png>
+<ItemShow|x=0.0|y=0.0|width=70|height=70|itemid=1222|itemcount=1|name=翱风斩|bgtype=1|showtips=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=jn1>
+<ItemShow|x=0.0|y=0.0|width=70|height=70|itemid=1222|itemcount=1|name=纵雷诀|bgtype=1|showtips=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=jn2>
+<ItemShow|x=0.0|y=0.0|width=70|height=70|itemid=1222|itemcount=1|name=毒凌波|bgtype=1|showtips=1|bgtype=private/hefuhuodong/frame_starup_item.png|id=jn3>
+
+
+
+;=================================================================
+#IF
+TRUE
+#SAY
+<Text|x=435.0|y=150.0|color=67|size=18|text=攻击>
+<Text|x=490.0|y=150.0|color=255|size=18|text=<$STR(P1)>-<$STR(P2)>>
+<Text|x=590.0|y=150.0|color=222|size=18|text=<$STR(P21)>-<$STR(P22)>>
+;-----------
+<Text|x=435.0|y=180.0|color=67|size=18|text=防御>
+<Text|x=490.0|y=180.0|color=255|size=18|text=<$STR(P3)>-<$STR(P4)>>
+<Text|x=590.0|y=180.0|color=222|size=18|text=<$STR(P23)>-<$STR(P24)>>
+;-----------
+<Text|x=435.0|y=210.0|color=67|size=18|text=魔御>
+<Text|x=490.0|y=210.0|color=255|size=18|text=<$STR(P5)>-<$STR(P6)>>
+<Text|x=590.0|y=210.0|color=222|size=18|text=<$STR(P25)>-<$STR(P26)>>
+;-----------
+<Text|x=435.0|y=240.0|color=67|size=18|text=血量>
+<Text|x=490.0|y=240.0|color=255|size=18|text=<$STR(P7)>>
+<Text|x=590.0|y=240.0|color=222|size=18|text=<$STR(P27)>>
+;-----------
+<Img|x=565.0|y=154.0|img=picpackage/3/17174.png>
+<Img|x=565.0|y=184.0|img=picpackage/3/17174.png>
+<Img|x=565.0|y=214.0|img=picpackage/3/17174.png>
+<Img|x=565.0|y=244.0|img=picpackage/3/17174.png>
+;=================================================================
+<ListView|children=<sx1,sx2,sx3,sx4,sx5>|x=435.0|y=320.0|width=220|height=100|direction=1|bounce=1|reload=1|margin=5|loadDelay=0|img=picpackage/3/9998.png>
+;--------------------
+<RText|x=0.0|y=0.0|color=67|size=18|text=生命加成+　<<$STR(P8)>%/FCOLOR=255>|id=sx1|children=<sx1a1,sx1a2,sx1a3>>
+<Img|x=150.0|y=4.0|img=picpackage/3/17174.png|id=sx1a2>
+<Text|x=170.0|y=0.0|color=222|size=18|text=<$STR(P28)>%|id=sx1a3>
+;-----------
+<RText|x=0.0|y=0.0|color=67|size=18|text=攻击下限+　<<$STR(P9)>%/FCOLOR=255>|id=sx2|children=<sx2a1,sx2a2,sx2a3>>
+<Img|x=150.0|y=4.0|img=picpackage/3/17174.png|id=sx2a2>
+<Text|x=170.0|y=0.0|color=222|size=18|text=<$STR(P29)>%|id=sx2a3>
+;-----------
+<RText|x=0.0|y=0.0|color=67|size=18|text=攻击上限+　<<$STR(P10)>%/FCOLOR=255>|id=sx3|children=<sx3a1,sx3a2,sx3a3>>
+<Img|x=150.0|y=4.0|img=picpackage/3/17174.png|id=sx3a2>
+<Text|x=170.0|y=0.0|color=222|size=18|text=<$STR(P30)>%|id=sx3a3>
+;-----------
+<RText|x=0.0|y=0.0|color=67|size=18|text=双防下限+　<<$STR(P11)>%/FCOLOR=255>|id=sx4|children=<sx4a1,sx4a2,sx4a3>>
+<Img|x=150.0|y=4.0|img=picpackage/3/17174.png|id=sx4a2>
+<Text|x=170.0|y=0.0|color=222|size=18|text=<$STR(P31)>%|id=sx4a3>
+;-----------
+<RText|x=0.0|y=0.0|color=67|size=18|text=双防上限+　<<$STR(P12)>%/FCOLOR=255>|id=sx5|children=<sx5a1,sx5a2,sx5a3>>
+<Img|x=150.0|y=4.0|img=picpackage/3/17174.png|id=sx5a2>
+<Text|x=170.0|y=0.0|color=222|size=18|text=<$STR(P32)>%|id=sx5a3>
+;=================================================================
+<ListView|children=<ls1,ls2,ls3,ls4,ls5>|x=702.0|y=100.0|width=310|height=390|direction=1|bounce=1|reload=1|margin=0|loadDelay=0|img=picpackage/3/9998.png>
+;--------------------
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls1|children=<ls1a1,ls1a2,ls1a3,ls1a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls2|children=<ls2a1,ls2a2,ls2a3,ls2a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls3|children=<ls3a1,ls3a2,ls3a3,ls3a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls4|children=<ls4a1,ls4a2,ls4a3,ls4a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls5|children=<ls5a1,ls5a2,ls5a3,ls5a4>>
+;=================================================================
+<Text|x=715.0|y=500.0|color=67|size=18|text=灵兽来源:\通过升级VIP等级、连充奖励获得更\酷炫的灵兽>
+#ACT
+MOV N$Lemon灵兽选择 1
+MOV S$Lemon界面刷新 灵兽系统
+CLEARVAR P0 40
+READEXCEL ..\QUESTDIARY\数据文件\灵兽升级数据.XLS <$INC.<$TABLE(Lemon_LS).DJ>.1>
+MOV P1 $996(EXCEL).1
+MOV P2 $996(EXCEL).2
+MOV P3 $996(EXCEL).3
+MOV P4 $996(EXCEL).4
+MOV P5 $996(EXCEL).5
+MOV P6 $996(EXCEL).6
+MOV P7 $996(EXCEL).7
+MOV P8 $996(EXCEL).8
+MOV P9 $996(EXCEL).9
+MOV P10 $996(EXCEL).10
+MOV P11 $996(EXCEL).11
+MOV P12 $996(EXCEL).12
+READEXCEL ..\QUESTDIARY\数据文件\灵兽升级数据.XLS <$INC.<$TABLE(Lemon_LS).DJ>.2>
+MOV P21 $996(EXCEL).1
+MOV P22 $996(EXCEL).2
+MOV P23 $996(EXCEL).3
+MOV P24 $996(EXCEL).4
+MOV P25 $996(EXCEL).5
+MOV P26 $996(EXCEL).6
+MOV P27 $996(EXCEL).7
+MOV P28 $996(EXCEL).8
+MOV P29 $996(EXCEL).9
+MOV P30 $996(EXCEL).10
+MOV P31 $996(EXCEL).11
+MOV P32 $996(EXCEL).12
+MOV P33 $996(EXCEL).13
+
+#IF
+!SMALL $ITEMCOUNT[灵兽精粹] $STR(P33)
+#ACT
+MOV P34 222
+#ELSEACT
+MOV P34 249
+
+#IF
+SMALL P33 10
+SMALL $TABLE(Lemon_LS).DJ 100
+#SAY
+<Text|x=480.0|y=475.0|color=67|size=18|text=消耗>
+<ItemShow|x=520.0|y=470.0|width=30|height=30|itemid=1493|itemcount=1|name=灵兽精粹|bgtype=1|showtips=1>
+<RText|x=566|y=475.0|color=<$STR(P34)>|size=18|text=<$ITEMCOUNT[灵兽精粹]>/<$STR(P33)>>
+;=================================================================
+#IF
+LARGE P33 9
+SMALL P33 100
+SMALL $TABLE(Lemon_LS).DJ 100
+#SAY
+<Text|x=475.0|y=475.0|color=67|size=18|text=消耗>
+<ItemShow|x=520.0|y=470.0|width=30|height=30|itemid=1493|itemcount=1|name=灵兽精粹|bgtype=1|showtips=1>
+<RText|x=566|y=475.0|color=<$STR(P34)>|size=18|text=<$ITEMCOUNT[灵兽精粹]>/<$STR(P33)>>
+;=================================================================
+#IF
+LARGE P33 99
+SMALL $TABLE(Lemon_LS).DJ 100
+#SAY
+<Text|x=470.0|y=475.0|color=67|size=18|text=消耗>
+<ItemShow|x=520.0|y=470.0|width=30|height=30|itemid=1493|itemcount=1|name=灵兽精粹|bgtype=1|showtips=1>
+<RText|x=556|y=475.0|color=<$STR(P34)>|size=18|text=<$ITEMCOUNT[灵兽精粹]>/<$STR(P33)>>
+;=================================================================
+
+#IF
+EQUAL N$Lemon升级成功 1
+#SAY
+<Frames|x=150.0|y=160.0|speed=10|count=11|prefix=public/sj_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon升级成功 0
+
+;=================================================================
+#IF
+SMALL $TABLE(Lemon_LS).DJ 100
+#SAY
+<Button|x=470.0|y=545.0|pimg=public/btn_push_11.png|nimg=public/btn_push_11.png|size=20|color=67|text=升     级|link=@Lemon升级&<$STR(P33)>>
+
+;=================================================================
+;------------------豹
+#IF
+EQUAL $TABLE(Lemon_LS).LS1 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/01661.png|id=ls1a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级迅天雷豹|id=ls1a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/01660.png|id=ls1a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=迅天雷豹(未拥有)|id=ls1a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls1a4>
+;------------------狮
+#IF
+EQUAL $TABLE(Lemon_LS).LS2 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/11661.png|id=ls2a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级战天狂狮|id=ls2a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/11660.png|id=ls2a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=战天狂狮(未拥有)|id=ls2a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls2a4>
+;------------------麒麟
+#IF
+EQUAL $TABLE(Lemon_LS).LS3 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/21661.png|id=ls3a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级暗月妖狼|id=ls3a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/21660.png|id=ls3a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=暗月妖狼(未拥有)|id=ls3a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls3a4>
+;------------------虎
+#IF
+EQUAL $TABLE(Lemon_LS).LS4 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/31661.png|id=ls4a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级怒啸神光虎|id=ls4a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/31660.png|id=ls4a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=怒啸神光虎(未拥有)|id=ls4a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls4a4>
+;------------------凤凰
+#IF
+EQUAL $TABLE(Lemon_LS).LS5 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/41661.png|id=ls5a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级黄金圣龙|id=ls5a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/41660.png|id=ls5a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=黄金圣龙(未拥有)|id=ls5a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls5a4>
+;==========================================================
+;---------------------------------------当前灵兽
+#IF
+LARGE $TABLE(Lemon_LS).LS 0
+!LARGE $PETMAKEINDEX(2) 0
+!CHECKPETFOLLOW
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&<$TABLE(Lemon_LS).LS>|id=ls<$TABLE(Lemon_LS).LS>a4>
+
+#IF
+LARGE $TABLE(Lemon_LS).LS 0
+!LARGE $PETMAKEINDEX(2) 0
+CHECKPETFOLLOW
+#SAY
+<Button|x=90.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=骑    乘|link=@Lemon骑乘|id=ls<$TABLE(Lemon_LS).LS>a3>
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=收    回|link=@Lemon收回&<$TABLE(Lemon_LS).LS>|id=ls<$TABLE(Lemon_LS).LS>a4>
+
+#IF
+LARGE $TABLE(Lemon_LS).LS 0
+LARGE $PETMAKEINDEX(2) 0
+!CHECKPETFOLLOW
+#SAY
+<Button|x=90.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=跟    随|link=@Lemon跟随|id=ls<$TABLE(Lemon_LS).LS>a3>
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=收    回|link=@Lemon收回&<$TABLE(Lemon_LS).LS>|id=ls<$TABLE(Lemon_LS).LS>a4>
+
+;---------------------------------------可出战灵兽
+#IF
+EQUAL $TABLE(Lemon_LS).LS1 1
+!EQUAL $TABLE(Lemon_LS).LS 1
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&1|id=ls1a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS2 1
+!EQUAL $TABLE(Lemon_LS).LS 2
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&2|id=ls2a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS3 1
+!EQUAL $TABLE(Lemon_LS).LS 3
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&3|id=ls3a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS4 1
+!EQUAL $TABLE(Lemon_LS).LS 4
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&4|id=ls4a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS5 1
+!EQUAL $TABLE(Lemon_LS).LS 5
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&5|id=ls5a4>
+;======================================================
+;--------------------------------灵兽升级
+#IFONE
+EQUAL $TABLE(Lemon_LS).LS 0
+EQUAL $TABLE(Lemon_LS).LS 1
+#SAY
+<GoodsShow|x=240.0|y=250.0|index=<$ITEMMAKEINDEX[豹魔石]>|showtips=1|bgtype=1>
+#IF
+EQUAL $TABLE(Lemon_LS).LS 2
+#SAY
+<GoodsShow|x=240.0|y=250.0|index=<$ITEMMAKEINDEX[狮魔石]>|showtips=1|bgtype=1>
+#IF
+EQUAL $TABLE(Lemon_LS).LS 3
+#SAY
+<GoodsShow|x=240.0|y=250.0|index=<$ITEMMAKEINDEX[暗月妖狼石]>|showtips=1|bgtype=1>
+#IF
+EQUAL $TABLE(Lemon_LS).LS 4
+#SAY
+<GoodsShow|x=240.0|y=250.0|index=<$ITEMMAKEINDEX[怒啸神光虎石]>|showtips=1|bgtype=1>
+#IF
+EQUAL $TABLE(Lemon_LS).LS 5
+#SAY
+<GoodsShow|x=240.0|y=250.0|index=<$ITEMMAKEINDEX[黄金圣龙石]>|showtips=1|bgtype=1>
+;======================================================
+
+
+#IF
+!EQUAL N$灵兽材料购买 1
+#ACT
+BREAK
+#ELSESAY
+<Img|x=337.0|y=230.0|scale=1|img=public/bg_npc_01.png|esc=0>
+<Img|x=438.0|y=236.0|scale=1|img=public/bg_title_02.png|esc=0>
+<Text|x=532.0|y=240.0|color=67|size=20|text=快捷购买>
+<Img|x=385.0|y=288.0|scale=1|img=public/fjfqk.png|esc=0>
+<ItemShow|x=385.0|y=287.0|width=70|height=70|itemid=1493|itemcount=1|name=灵兽精粹|bgtype=1|showtips=1>
+<Text|x=466.0|y=292.0|color=67|size=20|text=灵兽精粹>
+<Button|x=747.0|y=227.0|pimg=public/btn_close_01.png|scale=1|color=255|size=18|nimg=public/btn_close_01.png|link=@关闭灵兽材料购买>
+<Text|x=583.0|y=292.0|color=67|size=20|text=元宝：>
+<Text|x=644.0|y=292.0|color=255|size=18|text=<$MULT.$STR(N$灵兽材料购买数量).100>>
+<Button|x=651.0|y=329.0|width=120|scale=1|nimg=public/btn_push_03.png|pimg=public/btn_push_03.png|size=20|color=67|text=购买|link=@灵兽材料购买>
+
+#IF
+LARGE $STR(N$灵兽材料购买数量) 0
+#SAY
+<Button|x=465|y=329.0|color=255|size=18|scale=1|pimg=private/page_store_ui/bg_store_input.png|nimg=private/page_store_ui/bg_store_input.png|link=@点击输入数量|text=<$STR(N$灵兽材料购买数量)>>
+#ELSESAY
+<Button|x=465|y=329.0|color=255|size=18|scale=1|pimg=private/page_store_ui/bg_store_input.png|nimg=private/page_store_ui/bg_store_input.png|link=@点击输入数量|text=点击输入>
+
+
+
+
+[@点击输入数量]
+#IF
+True
+#ACT
+QueryVal 66 1 3 @灵兽材料输入购买 输入购买数量：
+Break
+
+[@灵兽材料输入购买]
+#IF
+SMALL M66 1
+#ACT
+SENDMSG 19 最少购买1个
+GOTO @灵兽系统
+Break
+#ELSEACT
+MOV N$灵兽材料购买数量 $STR(M66)
+MOV N$灵兽材料购买总价 $MULT.$STR(N$灵兽材料购买数量).100
+GOTO @灵兽系统
+Break
+
+[@灵兽材料购买]
+#IF
+SMALL $STR(N$灵兽材料购买数量) 1
+#act
+SENDMSG 19 最少购买1个
+break
+
+#IF
+SMALL $INC.$Money(2).$Money(4) $MULT.$STR(N$灵兽材料购买数量).100
+#ACT
+SENDMSG 19 元宝数量不足
+BREAK
+
+#IF
+!SMALL $Money(4) $MULT.$STR(N$灵兽材料购买数量).100
+#ACT
+Money 4 - $MULT.$STR(N$灵兽材料购买数量).100
+GIVE 灵兽精粹 $STR(N$灵兽材料购买数量) 1
+MOV N$灵兽材料购买 0
+GOTO @灵兽系统
+MOV N$灵兽材料购买数量 0
+BREAK
+#ELSEACT
+Money 2 - <$DEC.<$MULT.$STR(N$灵兽材料购买数量).100>.$Money(4)>
+Money 4 - $Money(4)
+GIVE 灵兽精粹 $STR(N$灵兽材料购买数量) 1
+MOV N$灵兽材料购买 0
+GOTO @灵兽系统
+MOV N$灵兽材料购买数量 0
+BREAK
+
+
+[@关闭灵兽材料购买]
+#IF
+TRUE
+#ACT
+MOV N$灵兽材料购买数量 0
+MOV N$灵兽材料购买 0
+GOTO @灵兽系统
+BREAK
+
+[@Lemon灵兽ZB]
+#IFONE
+SMALL $TABLE(Lemon_LS2).ZB 1
+LARGE $TABLE(Lemon_LS2).ZB 4
+#ACT
+TABLE Lemon_LS2 ZB = 1
+
+#IF
+TRUE
+#SAY
+<Img|x=86.0|y=-5.0|show=0|bg=1|move=0|img=private/lingshou/lingshoudamb.png|loadDelay=0|reset=1>
+<Button|x=621.0|y=43.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=124.0|y=93.0|img=private/lingshou/lingshouzhuangbeimb.png>
+;=================================================================
+<Button|x=50.0|y=90.0|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png>
+<Button|x=50.0|y=245.0|nimg=private/lingshou/fenlei1.png|pimg=private/lingshou/fenlei1.png>
+<Button|x=50.0|y=400.0|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png>
+<RText|x=68.0|y=110.0|color=67|size=20|text=灵\兽\升\级>
+<RText|x=68.0|y=265.0|color=67|size=20|text=灵\兽\装\备>
+<RText|x=68.0|y=420.0|color=67|size=20|text=灵\兽\品\阶>
+;--------------
+<Layout|x=58.0|y=91.0|width=40|height=150|rotate=0|link=@灵兽系统>
+<Layout|x=58.0|y=247.0|width=40|height=150|rotate=0|link=@XXX>
+<Layout|x=58.0|y=402.0|width=40|height=150|rotate=0|link=@Lemon灵兽PJ>
+;=================================================================
+<Text|x=155.0|y=470.0|color=67|size=18|text=攻击>
+<Text|x=200.0|y=470.0|color=255|size=18|text=<$STR(P1)>-<$STR(P2)>>
+<Text|x=310.0|y=470.0|color=222|size=18|text=<$STR(P11)>-<$STR(P12)>>
+;-----------
+<Text|x=155.0|y=500.0|color=67|size=18|text=防御>
+<Text|x=200.0|y=500.0|color=255|size=18|text=<$STR(P3)>-<$STR(P4)>>
+<Text|x=310.0|y=500.0|color=222|size=18|text=<$STR(P13)>-<$STR(P14)>>
+;-----------
+<Text|x=155.0|y=530.0|color=67|size=18|text=魔御>
+<Text|x=200.0|y=530.0|color=255|size=18|text=<$STR(P5)>-<$STR(P6)>>
+<Text|x=310.0|y=530.0|color=222|size=18|text=<$STR(P15)>-<$STR(P16)>>
+;-----------
+<Text|x=155.0|y=560.0|color=67|size=18|text=血量>
+<Text|x=200.0|y=560.0|color=255|size=18|text=<$STR(P7)>>
+<Text|x=310.0|y=560.0|color=222|size=18|text=<$STR(P17)>>
+;-----------
+<Img|x=288.0|y=473.0|img=picpackage/3/17174.png>
+<Img|x=288.0|y=503.0|img=picpackage/3/17174.png>
+<Img|x=288.0|y=533.0|img=picpackage/3/17174.png>
+<Img|x=288.0|y=563.0|img=picpackage/3/17174.png>
+;=================================================================
+<Img|x=356.0|y=95.0|scale=1|img=private/lingshou/bg_treasure_monster.png>
+<Img|x=373.0|y=110.0|scale=1|img=private/lingshou/28030<$STR(P31)>.png>
+<RText|x=350.0|y=110.0|color=255|size=24|text=<color=~<$TABLE(Lemon_LS2).ZB1>级马蹄#0xfff0b42a$当前攻击：<$STR(P1)>-<$STR(P2)>#0xffffffff$下级攻击：<$STR(P11)>-<$STR(P12)>#0xffffffff$ 　　　　>>
+<Img|x=333.0|y=205.0|width=120|height=25|scale=1|img=private/duanzao/chenggong.png>
+<RText|x=353.0|y=204.0|color=222|size=18|text=<$TABLE(Lemon_LS2).ZB1>级马蹄>
+;---------------
+<Img|x=526.0|y=200.0|scale=1|img=private/lingshou/bg_treasure_monster.png>
+<Img|x=543.0|y=215.0|scale=1|img=private/lingshou/28040<$STR(P32)>.png>
+<RText|x=520.0|y=215.0|color=255|size=24|text=<color=~<$TABLE(Lemon_LS2).ZB2>级马鞍#0xfff0b42a$当前防御：<$STR(P3)>-<$STR(P4)>#0xffffffff$下级防御：<$STR(P13)>-<$STR(P14)>#0xffffffff$ 　　　　>>
+<Img|x=500.0|y=311.0|width=120|height=25|scale=1|img=private/duanzao/chenggong.png>
+<RText|x=520.0|y=310.0|color=222|size=18|text=<$TABLE(Lemon_LS2).ZB2>级马鞍>
+;---------------
+<Img|x=356.0|y=295.0|scale=1|img=private/lingshou/bg_treasure_monster.png>
+<Img|x=373.0|y=310.0|scale=1|img=private/lingshou/28060<$STR(P33)>.png>
+<RText|x=350.0|y=310.0|color=255|size=24|text=<color=~<$TABLE(Lemon_LS2).ZB3>级马鞭#0xfff0b42a$当前魔防：<$STR(P5)>-<$STR(P6)>#0xffffffff$下级魔防：<$STR(P15)>-<$STR(P16)>#0xffffffff$ 　　　　>>
+<Img|x=333.0|y=401.0|width=120|height=25|scale=1|img=private/duanzao/chenggong.png>
+<RText|x=353.0|y=400.0|color=222|size=18|text=<$TABLE(Lemon_LS2).ZB3>级马鞭>
+;---------------
+<Img|x=186.0|y=200.0|scale=1|img=private/lingshou/bg_treasure_monster.png>
+<Img|x=203.0|y=215.0|scale=1|img=private/lingshou/28050<$STR(P34)>.png>
+<RText|x=180.0|y=215.0|color=255|size=24|text=<color=~<$TABLE(Lemon_LS2).ZB4>级马镫#0xfff0b42a$当前血量：<$STR(P7)>#0xffffffff$下级血量：<$STR(P17)>#0xffffffff$ 　　　　>>
+<Img|x=162.0|y=311.0|width=120|height=25|scale=1|img=private/duanzao/chenggong.png>
+<RText|x=182.0|y=310.0|color=222|size=18|text=<$TABLE(Lemon_LS2).ZB4>级马镫>
+;=================================================================
+<ListView|children=<ls1,ls2,ls3,ls4,ls5>|x=702.0|y=100.0|width=310|height=390|direction=1|bounce=1|reload=1|margin=0|loadDelay=0|img=picpackage/3/9998.png>
+;--------------------
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls1|children=<ls1a1,ls1a2,ls1a3,ls1a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls2|children=<ls2a1,ls2a2,ls2a3,ls2a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls3|children=<ls3a1,ls3a2,ls3a3,ls3a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls4|children=<ls4a1,ls4a2,ls4a3,ls4a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls5|children=<ls5a1,ls5a2,ls5a3,ls5a4>>
+;=================================================================
+<Text|x=715.0|y=500.0|color=67|size=18|text=灵兽来源:\通过升级VIP等级、连充奖励获得更\酷炫的灵兽>
+#ACT
+MOV N$Lemon灵兽选择 1
+MOV S$Lemon界面刷新 Lemon灵兽ZB
+CLEARVAR P0 40
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB1>.1>
+MOV P1 $996(EXCEL).1
+MOV P2 $996(EXCEL).2
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB2>.1>
+MOV P3 $996(EXCEL).3
+MOV P4 $996(EXCEL).4
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB3>.1>
+MOV P5 $996(EXCEL).5
+MOV P6 $996(EXCEL).6
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB4>.1>
+MOV P7 $996(EXCEL).7
+;------------------------------
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB1>.2>
+MOV P11 $996(EXCEL).1
+MOV P12 $996(EXCEL).2
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB2>.2>
+MOV P13 $996(EXCEL).3
+MOV P14 $996(EXCEL).4
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB3>.2>
+MOV P15 $996(EXCEL).5
+MOV P16 $996(EXCEL).6
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB4>.2>
+MOV P17 $996(EXCEL).7
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB<$TABLE(Lemon_LS2).ZB>>.2>
+MOV P19 $996(EXCEL).9
+
+
+
+;=====================================================================
+#IF
+SMALL $TABLE(Lemon_LS2).ZB4 80
+#SAY
+<Button|x=313.0|y=233.0|width=155|pimg=public/btn_push_01.png|nimg=public/btn_push_01.png|size=18|color=67|text=<$MULT.$STR(P19).100>元宝升级|link=@Lemon升级ZB&灵兽装备升级费用=<$STR(P19)>>
+
+;=====================================================================
+#IF
+EQUAL N$Lemon升级成功 1
+#SAY
+<Frames|x=150.0|y=143.0|speed=10|count=13|prefix=public/sj_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon升级成功 0
+
+;=====================================================================
+#IF
+EQUAL $TABLE(Lemon_LS2).ZB 1
+#SAY
+<Img|x=345.0|y=125.0|scale=1|img=private/lingshou/bg_inscriptions_05.png>
+#IF
+EQUAL $TABLE(Lemon_LS2).ZB 2
+#SAY
+<Img|x=515.0|y=230.0|scale=1|img=private/lingshou/bg_inscriptions_05.png>
+#IF
+EQUAL $TABLE(Lemon_LS2).ZB 3
+#SAY
+<Img|x=345.0|y=325.0|scale=1|img=private/lingshou/bg_inscriptions_05.png>
+#IF
+EQUAL $TABLE(Lemon_LS2).ZB 4
+#SAY
+<Img|x=175.0|y=230.0|scale=1|img=private/lingshou/bg_inscriptions_05.png>
+;=====================================================================
+#IF
+SMALL $TABLE(Lemon_LS2).ZB1 20
+#ACT
+MOV P31 1
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB1 20
+#ACT
+MOV P31 2
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB1 40
+#ACT
+MOV P31 3
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB1 60
+#ACT
+MOV P31 4
+;-------------------------
+#IF
+SMALL $TABLE(Lemon_LS2).ZB2 20
+#ACT
+MOV P32 1
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB2 20
+#ACT
+MOV P32 2
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB2 40
+#ACT
+MOV P32 3
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB2 60
+#ACT
+MOV P32 4
+;-------------------------
+#IF
+SMALL $TABLE(Lemon_LS2).ZB3 20
+#ACT
+MOV P33 1
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB3 20
+#ACT
+MOV P33 2
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB3 40
+#ACT
+MOV P33 3
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB3 60
+#ACT
+MOV P33 4
+;-------------------------
+#IF
+SMALL $TABLE(Lemon_LS2).ZB4 20
+#ACT
+MOV P34 1
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB4 20
+#ACT
+MOV P34 2
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB4 40
+#ACT
+MOV P34 3
+#IF
+!SMALL $TABLE(Lemon_LS2).ZB4 60
+#ACT
+MOV P34 4
+;=====================================================================
+
+#IF
+LARGE $TABLE(Lemon_LS2).ZB3 $TABLE(Lemon_LS2).ZB4
+POS -0-9-19-29-39-49-59-69-79- -<$TABLE(Lemon_LS2).ZB4>-
+#SAY
+<Text|x=435.0|y=470.0|color=67|size=18|text=攻击+>
+<Text|x=490.0|y=470.0|color=255|size=18|text=<$STR(P21)>%>
+<Text|x=590.0|y=470.0|color=222|size=18|text=<$STR(P22)>%>
+;-----------
+<Text|x=435.0|y=500.0|color=67|size=18|text=双防+>
+<Text|x=490.0|y=500.0|color=255|size=18|text=<$STR(P21)>%>
+<Text|x=590.0|y=500.0|color=222|size=18|text=<$STR(P22)>%>
+;-----------
+<Text|x=435.0|y=530.0|color=67|size=18|text=血量+>
+<Text|x=490.0|y=530.0|color=255|size=18|text=<$STR(P21)>%>
+<Text|x=590.0|y=530.0|color=222|size=18|text=<$STR(P22)>%>
+;-----------
+<Img|x=565.0|y=473.0|img=picpackage/3/17174.png>
+<Img|x=565.0|y=503.0|img=picpackage/3/17174.png>
+<Img|x=565.0|y=533.0|img=picpackage/3/17174.png>
+#ACT
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB4>.1>
+MOV P21 $996(EXCEL).8
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB4>.2>
+MOV P22 $996(EXCEL).8
+#ELSESAY
+<Text|x=485.0|y=470.0|color=67|size=18|text=攻击+>
+<Text|x=540.0|y=470.0|color=255|size=18|text=<$STR(P21)>%>
+;-----------
+<Text|x=485.0|y=500.0|color=67|size=18|text=双防+>
+<Text|x=540.0|y=500.0|color=255|size=18|text=<$STR(P21)>%>
+;-----------
+<Text|x=485.0|y=530.0|color=67|size=18|text=血量+>
+<Text|x=540.0|y=530.0|color=255|size=18|text=<$STR(P21)>%>
+#ELSEACT
+READEXCEL ..\QUESTDIARY\数据文件\灵兽装备数据.XLS <$INC.<$TABLE(Lemon_LS2).ZB4>.1>
+MOV P21 $996(EXCEL).8
+
+
+
+;-----------------------------------------------灵兽选择界面
+;------------------豹
+#IF
+EQUAL $TABLE(Lemon_LS).LS1 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/01661.png|id=ls1a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级迅天雷豹|id=ls1a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/01660.png|id=ls1a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=迅天雷豹(未拥有)|id=ls1a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls1a4>
+;------------------狮
+#IF
+EQUAL $TABLE(Lemon_LS).LS2 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/11661.png|id=ls2a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级战天狂狮|id=ls2a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/11660.png|id=ls2a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=战天狂狮(未拥有)|id=ls2a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls2a4>
+;------------------麒麟
+#IF
+EQUAL $TABLE(Lemon_LS).LS3 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/21661.png|id=ls3a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级暗月妖狼|id=ls3a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/21660.png|id=ls3a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=暗月妖狼(未拥有)|id=ls3a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls3a4>
+;------------------虎
+#IF
+EQUAL $TABLE(Lemon_LS).LS4 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/31661.png|id=ls4a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级怒啸神光虎|id=ls4a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/31660.png|id=ls4a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=怒啸神光虎(未拥有)|id=ls4a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls4a4>
+;------------------凤凰
+#IF
+EQUAL $TABLE(Lemon_LS).LS5 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/41661.png|id=ls5a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级黄金圣龙|id=ls5a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/41660.png|id=ls5a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=黄金圣龙(未拥有)|id=ls5a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls5a4>
+;==========================================================
+;---------------------------------------当前灵兽
+#IF
+LARGE $TABLE(Lemon_LS).LS 0
+!LARGE $PETMAKEINDEX(2) 0
+!CHECKPETFOLLOW
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&<$TABLE(Lemon_LS).LS>|id=ls<$TABLE(Lemon_LS).LS>a4>
+
+#IF
+LARGE $TABLE(Lemon_LS).LS 0
+!LARGE $PETMAKEINDEX(2) 0
+CHECKPETFOLLOW
+#SAY
+<Button|x=90.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=骑    乘|link=@Lemon骑乘|id=ls<$TABLE(Lemon_LS).LS>a3>
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=收    回|link=@Lemon收回&<$TABLE(Lemon_LS).LS>|id=ls<$TABLE(Lemon_LS).LS>a4>
+
+#IF
+LARGE $TABLE(Lemon_LS).LS 0
+LARGE $PETMAKEINDEX(2) 0
+!CHECKPETFOLLOW
+#SAY
+<Button|x=90.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=跟    随|link=@Lemon跟随|id=ls<$TABLE(Lemon_LS).LS>a3>
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=收    回|link=@Lemon收回&<$TABLE(Lemon_LS).LS>|id=ls<$TABLE(Lemon_LS).LS>a4>
+
+;---------------------------------------可出战灵兽
+#IF
+EQUAL $TABLE(Lemon_LS).LS1 1
+!EQUAL $TABLE(Lemon_LS).LS 1
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&1|id=ls1a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS2 1
+!EQUAL $TABLE(Lemon_LS).LS 2
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&2|id=ls2a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS3 1
+!EQUAL $TABLE(Lemon_LS).LS 3
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&3|id=ls3a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS4 1
+!EQUAL $TABLE(Lemon_LS).LS 4
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&4|id=ls4a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS5 1
+!EQUAL $TABLE(Lemon_LS).LS 5
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&5|id=ls5a4>
+;======================================================
+
+
+
+
+
+[@Lemon灵兽PJ]
+#IF
+TRUE
+#SAY
+<Img|x=86.0|y=-5.0|show=0|bg=1|move=0|img=private/lingshou/lingshoudamb.png|loadDelay=0|reset=1>
+<Button|x=621.0|y=43.0|nimg=public/button/btn_close_01.png|pimg=public/button/btn_close_01.png|link=@exit>
+<Img|x=263.0|y=103.0|img=private/lingshou/lingshoupinjiemb.png>
+;=================================================================
+<ListView|children=<zq1,zq2,zq3,zq4,zq5>|x=120.0|y=103.0|width=150|height=423|direction=1|bounce=1|reload=1|margin=0|loadDelay=0|img=picpackage/3/9998.png>
+;--------------------
+<Img|x=0.0|y=0.0|img=private/lingshou/<$INC.$STR(P31).30925>.png|link=@Lemon灵兽XZ&1|id=zq1|children=<zq1a1,zq1a2,zq1a3,zq1a4,zq1a5>>
+<Img|x=0.0|y=0.0|img=private/lingshou/<$INC.$STR(P32).30925>.png|link=@Lemon灵兽XZ&2|id=zq2|children=<zq2a1,zq2a2,zq2a3,zq2a4,zq2a5>>
+<Img|x=0.0|y=0.0|img=private/lingshou/<$INC.$STR(P33).30925>.png|link=@Lemon灵兽XZ&3|id=zq3|children=<zq3a1,zq3a2,zq3a3,zq3a4,zq3a5>>
+<Img|x=0.0|y=0.0|img=private/lingshou/<$INC.$STR(P34).30925>.png|link=@Lemon灵兽XZ&4|id=zq4|children=<zq4a1,zq4a2,zq4a3,zq4a4,zq4a5>>
+<Img|x=0.0|y=0.0|img=private/lingshou/<$INC.$STR(P35).30925>.png|link=@Lemon灵兽XZ&5|id=zq5|children=<zq5a1,zq5a2,zq5a3,zq5a4,zq5a5>>
+;=================================================================
+<Button|x=50.0|y=90.0|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png>
+<Button|x=50.0|y=245.0|nimg=private/lingshou/fenlei2.png|pimg=private/lingshou/fenlei2.png>
+<Button|x=50.0|y=400.0|nimg=private/lingshou/fenlei1.png|pimg=private/lingshou/fenlei1.png>
+;--------------
+<RText|x=68.0|y=110.0|color=67|size=20|text=灵\兽\升\级>
+<RText|x=68.0|y=265.0|color=67|size=20|text=灵\兽\装\备>
+<RText|x=68.0|y=420.0|color=67|size=20|text=灵\兽\品\阶>
+;--------------
+<Layout|x=58.0|y=91.0|width=40|height=150|rotate=0|link=@灵兽系统>
+<Layout|x=58.0|y=247.0|width=40|height=150|rotate=0|link=@Lemon灵兽ZB>
+<Layout|x=58.0|y=402.0|width=40|height=150|rotate=0|link=@XXX>
+;=================================================================
+<Img|x=315.0|y=120.0|img=private/lingshou/star<$INC.$STR(P21).1>.png>
+<Img|x=365.0|y=120.0|img=private/lingshou/star<$INC.$STR(P22).1>.png>
+<Img|x=415.0|y=120.0|img=private/lingshou/star<$INC.$STR(P23).1>.png>
+<Img|x=465.0|y=120.0|img=private/lingshou/star<$INC.$STR(P24).1>.png>
+<Img|x=515.0|y=120.0|img=private/lingshou/star<$INC.$STR(P25).1>.png>
+<Img|x=565.0|y=120.0|img=private/lingshou/star<$INC.$STR(P26).1>.png>
+;-----------------------
+<Img|x=620.0|y=100.0|img=private/lingshou/<$INC.31327.$STR(P27)>.png>
+;=================================================================
+;=================================================================灵兽选择
+<ListView|children=<ls1,ls2,ls3,ls4,ls5>|x=702.0|y=100.0|width=310|height=390|direction=1|bounce=1|reload=1|margin=0|loadDelay=0|img=picpackage/3/9998.png>
+;--------------------
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls1|children=<ls1a1,ls1a2,ls1a3,ls1a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls2|children=<ls2a1,ls2a2,ls2a3,ls2a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls3|children=<ls3a1,ls3a2,ls3a3,ls3a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls4|children=<ls4a1,ls4a2,ls4a3,ls4a4>>
+<Img|x=0.0|y=0.0|img=private/lingshou/lingshouxuanzhetiao.png|id=ls5|children=<ls5a1,ls5a2,ls5a3,ls5a4>>
+;=================================================================
+<Text|x=715.0|y=500.0|color=67|size=18|text=灵兽来源:\通过升级VIP等级、连充奖励获得更\酷炫的灵兽>
+#ACT
+MOV S$Lemon界面刷新 Lemon灵兽PJ
+CLEARVAR P0 40
+READEXCEL ..\QUESTDIARY\数据文件\灵兽品阶数据.XLS <$INC^<$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>>^1>
+MOV P1 $996(EXCEL).1
+MOV P2 $996(EXCEL).2
+MOV P3 $996(EXCEL).3
+MOV P4 $996(EXCEL).4
+READEXCEL ..\QUESTDIARY\数据文件\灵兽品阶数据.XLS <$INC^<$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>>^2>
+MOV P11 $996(EXCEL).1
+MOV P12 $996(EXCEL).2
+MOV P13 $996(EXCEL).3
+MOV P14 $996(EXCEL).4
+MOV P15 $996(EXCEL).5
+MOV P3<$STR(N$Lemon灵兽选择)> 1
+MOV P27 <$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>>
+
+
+#IF
+CHECKITEM 坐骑升星石 $STR(P15)
+#ACT
+MOV P16 222
+#ELSEACT
+MOV P16 249
+
+#IF
+SMALL <$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>> 6
+#SAY
+<RText|x=190.0|y=550.0|color=67|size=18|text=消耗坐骑升星石 <<$STR(P15)>/FCOLOR=<$STR(P16)>>>
+<Button|x=390.0|y=545.0|pimg=public/btn_push_11.png|nimg=public/btn_push_11.png|size=20|color=67|text=升     级|link=@Lemon升级PJ&<$STR(N$Lemon灵兽选择)>&<$STR(P15)>>
+;=================================================================
+#IF
+EQUAL $TABLE(Lemon_LS).LS1 1
+#SAY
+<Img|x=36.0|y=17.0|img=private/lingshou/01661.png||id=zq1a1>
+#ELSESAY
+<Img|x=36.0|y=17.0|img=private/lingshou/01660.png||id=zq1a1>
+
+#IF
+EQUAL $TABLE(Lemon_LS).LS2 1
+#SAY
+<Img|x=36.0|y=17.0|img=private/lingshou/11661.png||id=zq2a1>
+#ELSESAY
+<Img|x=36.0|y=17.0|img=private/lingshou/11660.png||id=zq2a1>
+
+#IF
+EQUAL $TABLE(Lemon_LS).LS3 1
+#SAY
+<Img|x=36.0|y=17.0|img=private/lingshou/21661.png||id=zq3a1>
+#ELSESAY
+<Img|x=36.0|y=17.0|img=private/lingshou/21660.png||id=zq3a1>
+;--------------------------------------------------------------------------------老虎 凤凰
+#IF
+EQUAL $TABLE(Lemon_LS).LS4 1
+#SAY
+<Img|x=36.0|y=17.0|img=private/lingshou/31661.png||id=zq4a1>
+#ELSESAY
+<Img|x=36.0|y=17.0|img=private/lingshou/31660.png||id=zq4a1>
+
+#IF
+EQUAL $TABLE(Lemon_LS).LS5 1
+#SAY
+<Img|x=36.0|y=17.0|img=private/lingshou/41661.png||id=zq5a1>
+#ELSESAY
+<Img|x=36.0|y=17.0|img=private/lingshou/41660.png||id=zq5a1>
+;=================================================================
+#IF
+EQUAL N$Lemon灵兽选择 1
+EQUAL $TABLE(Lemon_LS).LS1 1
+#SAY
+<Img|x=330.0|y=125.0|img=private/lingshou/01771.png>
+<Img|x=23.0|y=6.0|img=private/lingshou/bg_glow.png|id=zq1a2>
+
+#IF
+EQUAL N$Lemon灵兽选择 1
+!EQUAL $TABLE(Lemon_LS).LS1 1
+#SAY
+<Img|x=330.0|y=125.0|img=private/lingshou/01770.png>
+<Img|x=23.0|y=6.0|img=private/lingshou/bg_glow.png|id=zq1a2>
+
+
+#IF
+EQUAL N$Lemon灵兽选择 2
+#SAY
+<Img|x=310.0|y=115.0|img=private/lingshou/11771.png>
+<Img|x=23.0|y=6.0|img=private/lingshou/bg_glow.png|id=zq2a2>
+#IF
+EQUAL N$Lemon灵兽选择 3
+#SAY
+<Img|x=300.0|y=105.0|img=private/lingshou/21771.png>
+<Img|x=23.0|y=6.0|img=private/lingshou/bg_glow.png|id=zq3a2>
+;--------------------------------------------------------------------------------老虎 凤凰
+#IF
+EQUAL N$Lemon灵兽选择 4
+#SAY
+<Img|x=310.0|y=115.0|img=private/lingshou/31771.png>
+<Img|x=23.0|y=6.0|img=private/lingshou/bg_glow.png|id=zq4a2>
+#IF
+EQUAL N$Lemon灵兽选择 5
+#SAY
+<Img|x=320.0|y=105.0|img=private/lingshou/41771.png>
+<Img|x=23.0|y=6.0|img=private/lingshou/bg_glow.png|id=zq5a2>
+;=================================================================
+#IF
+EQUAL <$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>> 1
+#SAY
+<Text|x=420.0|y=422.0|color=67|size=18|text=切割 +100>
+<Text|x=290.0|y=500.0|color=222|size=18|text=攻防1% 暴击概率1% 暴击伤害1% 切割100>
+#ACT
+MOV P21 1
+
+#IF
+LARGE <$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>> 1
+SMALL <$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>> 6
+#SAY
+<Text|x=290.0|y=422.0|color=67|size=18|text=攻防<$STR(P1)>% 暴击概率<$STR(P2)>% 暴击伤害<$STR(P3)>% 切割<$STR(P4)>>
+<Text|x=290.0|y=500.0|color=222|size=18|text=攻防<$STR(P11)>% 暴击概率<$STR(P12)>% 暴击伤害<$STR(P13)>% 切割<$STR(P14)>>
+
+#IF
+EQUAL <$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>> 2
+#ACT
+MOV P21 1
+MOV P22 1
+#IF
+EQUAL <$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>> 3
+#ACT
+MOV P21 1
+MOV P22 1
+MOV P23 1
+#IF
+EQUAL <$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>> 4
+#ACT
+MOV P21 1
+MOV P22 1
+MOV P23 1
+MOV P24 1
+#IF
+EQUAL <$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>> 5
+#ACT
+MOV P21 1
+MOV P22 1
+MOV P23 1
+MOV P24 1
+MOV P25 1
+#IF
+EQUAL <$TABLE(Lemon_LS3).LS<$STR(N$Lemon灵兽选择)>> 6
+#SAY
+<Text|x=290.0|y=422.0|color=67|size=18|text=攻防<$STR(P1)>% 暴击概率<$STR(P2)>% 暴击伤害<$STR(P3)>% 切割<$STR(P4)>>
+<Img|x=405.0|y=537.0|scale=0.9|img=private/fabao/yimanji.png>
+#ACT
+MOV P21 1
+MOV P22 1
+MOV P23 1
+MOV P24 1
+MOV P25 1
+MOV P26 1
+
+
+#IF
+EQUAL N$Lemon升级成功 1
+#SAY
+<Frames|x=180.0|y=180.0|speed=10|count=15|prefix=public/jjcg_|loop=0|suffix=.png>
+#ACT
+MOV N$Lemon升级成功 0
+
+
+;=================================================================
+;------------------豹
+#IF
+EQUAL $TABLE(Lemon_LS).LS1 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/01661.png|id=ls1a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级迅天雷豹|id=ls1a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/01660.png|id=ls1a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=迅天雷豹(未拥有)|id=ls1a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls1a4>
+;------------------狮
+#IF
+EQUAL $TABLE(Lemon_LS).LS2 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/11661.png|id=ls2a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级战天狂狮|id=ls2a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/11660.png|id=ls2a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=战天狂狮(未拥有)|id=ls2a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls2a4>
+;------------------麒麟
+#IF
+EQUAL $TABLE(Lemon_LS).LS3 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/21661.png|id=ls3a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级暗月妖狼|id=ls3a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/21660.png|id=ls3a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=暗月妖狼(未拥有)|id=ls3a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls3a4>
+;------------------虎
+#IF
+EQUAL $TABLE(Lemon_LS).LS4 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/31661.png|id=ls4a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级怒啸神光虎|id=ls4a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/31660.png|id=ls4a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=怒啸神光虎(未拥有)|id=ls4a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls4a4>
+;------------------凤凰
+#IF
+EQUAL $TABLE(Lemon_LS).LS5 1
+#SAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/41661.png|id=ls5a1>
+<Text|x=130.0|y=10.0|color=67|size=18|text=<$TABLE(Lemon_LS).DJ>级黄金圣龙|id=ls5a2>
+#ELSESAY
+<Img|x=17.0|y=18.0|scale=1.05|img=private/lingshou/41660.png|id=ls5a1>
+<Text|x=130.0|y=10.0|color=10|size=18|text=黄金圣龙(未拥有)|id=ls5a2>
+<Button|x=200.0|y=55.0|color=10|size=18|nimg=public/btn_lingshou_02.png|pimg=public/btn_lingshou_02.png|text=出    战|link=@xxx|id=ls5a4>
+;==========================================================
+;---------------------------------------当前灵兽
+#IF
+LARGE $TABLE(Lemon_LS).LS 0
+!LARGE $PETMAKEINDEX(2) 0
+!CHECKPETFOLLOW
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&<$TABLE(Lemon_LS).LS>|id=ls<$TABLE(Lemon_LS).LS>a4>
+
+#IF
+LARGE $TABLE(Lemon_LS).LS 0
+!LARGE $PETMAKEINDEX(2) 0
+CHECKPETFOLLOW
+#SAY
+<Button|x=90.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=骑    乘|link=@Lemon骑乘|id=ls<$TABLE(Lemon_LS).LS>a3>
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=收    回|link=@Lemon收回&<$TABLE(Lemon_LS).LS>|id=ls<$TABLE(Lemon_LS).LS>a4>
+
+#IF
+LARGE $TABLE(Lemon_LS).LS 0
+LARGE $PETMAKEINDEX(2) 0
+!CHECKPETFOLLOW
+#SAY
+<Button|x=90.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=跟    随|link=@Lemon跟随|id=ls<$TABLE(Lemon_LS).LS>a3>
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=收    回|link=@Lemon收回&<$TABLE(Lemon_LS).LS>|id=ls<$TABLE(Lemon_LS).LS>a4>
+
+;---------------------------------------可出战灵兽
+#IF
+EQUAL $TABLE(Lemon_LS).LS1 1
+!EQUAL $TABLE(Lemon_LS).LS 1
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&1|id=ls1a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS2 1
+!EQUAL $TABLE(Lemon_LS).LS 2
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&2|id=ls2a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS3 1
+!EQUAL $TABLE(Lemon_LS).LS 3
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&3|id=ls3a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS4 1
+!EQUAL $TABLE(Lemon_LS).LS 4
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&4|id=ls4a4>
+#IF
+EQUAL $TABLE(Lemon_LS).LS5 1
+!EQUAL $TABLE(Lemon_LS).LS 5
+#SAY
+<Button|x=200.0|y=55.0|color=251|size=18|nimg=public/btn_lingshou_01.png|pimg=public/btn_lingshou_01.png|text=出    战|link=@Lemon出战&5|id=ls5a4>
+;======================================================
+
+
+
+
+
+
+
+;ls1=豹子  ls2=狮子 ls3=麒麟 ls4=老虎 ls5=凤凰
+
+;--------LS=当前出战灵兽   LS1-5=是否拥有此灵兽  DJ=灵兽等级  PJ1-5=指定灵兽星级  
+
+;Lemon_LS	LS:INT	DJ:INT	LS1:INT	PJ1:INT	LS2:INT	PJ2:INT	LS3:INT	PJ3:INT	LS4:INT	PJ4:INT	LS5:INT	PJ5:INT	
+;-------------------------------
+;Lemon_LS2	ZB1:INT	ZB2:INT	ZB3:INT	ZB4:INT
+
+
+
+
+[@Lemon升级PJ]
+#IF
+!LARGE $TABLE(Lemon_LS).LS1 0
+!LARGE $TABLE(Lemon_LS).LS2 0
+!LARGE $TABLE(Lemon_LS).LS3 0
+!LARGE $TABLE(Lemon_LS).LS4 0
+!LARGE $TABLE(Lemon_LS).LS5 0
+#ACT
+SENDMSG 5 你还没有坐骑
+SENDMSG 19 你还没有坐骑
+BREAK
+
+#IFONE
+!POS -1-2-3-4-5- -<$SCRIPTPARAM(1)>-
+SMALL $SCRIPTPARAM(2) 1
+#ACT
+KICK
+BREAK
+
+#IF
+!SMALL <$TABLE(Lemon_LS3).LS<$SCRIPTPARAM(1)>> 6
+#ACT
+SENDMSG 19 此灵兽已达到6星,无法继续升级!!
+BREAK
+
+#IF
+CHECKITEM 坐骑升星石 $SCRIPTPARAM(2)
+#ACT
+TAKE 坐骑升星石 $SCRIPTPARAM(2)
+TABLE Lemon_LS3 LS<$SCRIPTPARAM(1)> + 1
+MOV N$Lemon升级成功 1
+#ELSEACT
+SENDMSG 19 你的坐骑升星石不足<$SCRIPTPARAM(2)>个!!
+BREAK
+
+#IF
+LARGE $PETMAKEINDEX(2) 0
+#ACT
+GOTO @临时属性
+GOTO @Lemon灵兽PJ
+BREAK
+#ELSEACT
+GOTO @Lemon灵兽PJ
+BREAK
+
+
+[@Lemon灵兽XZ]
+#IF
+EQUAL N$Lemon灵兽选择 $SCRIPTPARAM(1)
+#ACT
+BREAK
+
+#IF
+SMALL <$TABLE(Lemon_LS).LS<$SCRIPTPARAM(1)>> 1
+#ACT
+SENDMSG 19 你还未拥有此灵兽!
+BREAK
+#ELSEACT
+MOV N$Lemon灵兽选择 $SCRIPTPARAM(1)
+GOTO @Lemon灵兽PJ
+BREAK
+
+
+;================================================
+[@Lemon升级ZB]
+#IF
+SMALL $STR(S$灵兽装备升级费用) 1
+#ACT
+KICK
+SENDMSG 5 数据非法!
+BREAK
+
+#IF
+!LARGE $TABLE(Lemon_LS).LS1 0
+!LARGE $TABLE(Lemon_LS).LS2 0
+!LARGE $TABLE(Lemon_LS).LS3 0
+!LARGE $TABLE(Lemon_LS).LS4 0
+!LARGE $TABLE(Lemon_LS).LS5 0
+#ACT
+SENDMSG 5 你还没有坐骑
+SENDMSG 19 你还没有坐骑
+BREAK
+
+
+#IFONE
+SMALL $TABLE(Lemon_LS2).ZB 1
+LARGE $TABLE(Lemon_LS2).ZB 4
+#ACT
+SENDMSG 19 升级数据异常!
+
+BREAK
+
+#IF
+SMALL G0 7
+!SMALL <$TABLE(Lemon_LS2).ZB<$TABLE(Lemon_LS2).ZB>> 25
+#ACT
+MESSAGEBOX 开区7日内灵兽装备最高可升级至25级!!
+BREAK
+
+#IF
+!SMALL <$TABLE(Lemon_LS2).ZB<$TABLE(Lemon_LS2).ZB>> 80
+#ACT
+SENDMSG 19 此灵兽装备已经升级到顶级!!
+BREAK
+
+#IF
+EQUAL $TABLE(Lemon_LS2).ZB 1
+#ACT
+MOV S44 马蹄
+#IF
+EQUAL $TABLE(Lemon_LS2).ZB 2
+#ACT
+MOV S44 马鞍
+#IF
+EQUAL $TABLE(Lemon_LS2).ZB 3
+#ACT
+MOV S44 马鞭
+#IF
+EQUAL $TABLE(Lemon_LS2).ZB 4
+#ACT
+MOV S44 马镫
+
+#IF
+SMALL <$INC.$Money(2).$Money(4)> <$MULT.$STR(S$灵兽装备升级费用).100>
+#ACT
+SENDMSG 19 元宝不足
+BREAK
+
+#IF
+!SMALL $Money(4) <$MULT.$STR(S$灵兽装备升级费用).100>
+#ACT
+Money 4 - <$MULT.$STR(S$灵兽装备升级费用).100>
+TABLE Lemon_LS2 ZB<$TABLE(Lemon_LS2).ZB> + 1
+MOV N$Lemon升级成功 1
+SENDMSG 16 恭喜<%s>的灵兽装备<$STR(S44)>等级提升至:<$TABLE(Lemon_LS2).ZB<$TABLE(Lemon_LS2).ZB>>级!!
+TABLE Lemon_LS2 ZB + 1
+GOTO @顶部七日狂欢红点
+#ELSEACT
+Money 2 - <$DEC.<$MULT.$STR(S$灵兽装备升级费用).100>.$Money(4)>
+Money 4 - $Money(4)
+TABLE Lemon_LS2 ZB<$TABLE(Lemon_LS2).ZB> + 1
+MOV N$Lemon升级成功 1
+SENDMSG 16 恭喜<%s>的灵兽装备<$STR(S44)>等级提升至:<$TABLE(Lemon_LS2).ZB<$TABLE(Lemon_LS2).ZB>>级!!
+TABLE Lemon_LS2 ZB + 1
+GOTO @顶部七日狂欢红点
+
+#IF
+LARGE $PETMAKEINDEX(2) 0
+#ACT
+GOTO @临时属性
+GOTO @Lemon灵兽ZB
+BREAK
+#ELSEACT
+GOTO @Lemon灵兽ZB
+BREAK
+
+
+
+[@Lemon升级]
+#IF
+!LARGE $TABLE(Lemon_LS).LS1 0
+!LARGE $TABLE(Lemon_LS).LS2 0
+!LARGE $TABLE(Lemon_LS).LS3 0
+!LARGE $TABLE(Lemon_LS).LS4 0
+!LARGE $TABLE(Lemon_LS).LS5 0
+#ACT
+SENDMSG 5 你还没有坐骑
+SENDMSG 19 你还没有坐骑
+BREAK
+
+#IF
+SMALL $SCRIPTPARAM(1) 2
+#ACT
+KICK
+BREAK
+
+#IF
+SMALL G0 7
+!SMALL $TABLE(Lemon_LS).DJ 35
+#ACT
+MESSAGEBOX 开区7日内灵兽最高可升级至35级!!
+BREAK
+
+#IF
+SMALL G0 15
+!SMALL $TABLE(Lemon_LS).DJ 60
+#ACT
+MESSAGEBOX 开区15日内灵兽最高可升级至60级!!
+BREAK
+
+#IF
+!SMALL $TABLE(Lemon_LS).DJ 100
+#ACT
+MESSAGEBOX 灵兽最高可升级至100级!!
+BREAK
+
+#IFONE
+LARGE $PETMAKEINDEX(2) 0
+CHECKPETFOLLOW
+#ACT
+SENDMSG 19 请先收回灵兽后再来进行灵兽升级!!
+BREAK
+
+
+#IF
+!CHECKITEM 灵兽精粹 $SCRIPTPARAM(1)
+#ACT
+MOV N$灵兽材料购买 1
+SENDMSG 19 灵兽精粹不足
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+#ELSEACT
+TAKE 灵兽精粹 $SCRIPTPARAM(1)
+TABLE Lemon_LS DJ + 1
+MOV N$Lemon升级成功 1
+SENDMSG 16 恭喜<%s>的灵兽等级提升至:<$TABLE(Lemon_LS).DJ>级!!
+GOTO @Lemon刷新LS
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+
+
+
+[@Lemon刷新LS]
+#IF
+CHECKITEM 豹魔石 1
+#ACT
+UPGRADEUSERITEM $ITEMMAKEINDEX[豹魔石] 4 = $TABLE(Lemon_LS).DJ		;//等级
+BREAK
+#IF
+CHECKITEM 狮魔石 1
+#ACT
+UPGRADEUSERITEM $ITEMMAKEINDEX[狮魔石] 4 = $TABLE(Lemon_LS).DJ		;//等级
+BREAK
+#IF
+CHECKITEM 暗月妖狼石 1
+#ACT
+UPGRADEUSERITEM $ITEMMAKEINDEX[暗月妖狼石] 4 = $TABLE(Lemon_LS).DJ		;//等级
+BREAK
+#IF
+CHECKITEM 怒啸神光虎石 1
+#ACT
+UPGRADEUSERITEM $ITEMMAKEINDEX[怒啸神光虎石] 4 = $TABLE(Lemon_LS).DJ		;//等级
+BREAK
+#IF
+CHECKITEM 黄金圣龙石 1
+#ACT
+UPGRADEUSERITEM $ITEMMAKEINDEX[黄金圣龙石] 4 = $TABLE(Lemon_LS).DJ		;//等级
+BREAK
+
+
+
+[@Lemon骑乘]
+#IF
+EQUAL $M DTS
+#ACT
+SENDMSG 5 当前地图不允许骑乘灵兽
+SENDMSG 19 当前地图不允许骑乘灵兽
+BREAK
+
+#IF
+CHECKPETFOLLOW
+#ACT
+RIDEON
+SENDMSG 19 灵兽骑乘成功!
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+#ELSEACT
+SENDMSG 19 请先释放出灵兽至跟随状态,才可以骑乘!
+BREAK
+
+[@Lemon跟随]
+#IF
+LARGE $PETMAKEINDEX(2) 0
+#ACT
+GMEXECUTE 下马
+SENDMSG 19 灵兽跟随模式!
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+#ELSEACT
+SENDMSG 19 请先骑乘灵兽才可以执行跟随!
+BREAK
+
+[@Lemon收回]
+#IF
+!POS -1-2-3-4-5- -<$SCRIPTPARAM(1)>-
+#ACT
+KICK
+SENDMSG 19 数据非法!
+BREAK
+
+#IF
+!LARGE $PETMAKEINDEX(2) 0
+!CHECKPETFOLLOW
+#ACT
+SENDMSG 19 没有可收回的灵兽!
+BREAK
+
+#IF
+EQUAL $SCRIPTPARAM(1) 1
+#ACT
+GMEXECUTE 使用物品 豹魔石
+SENDMSG 19 灵兽收回成功!
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+
+#IF
+EQUAL $SCRIPTPARAM(1) 2
+#ACT
+GMEXECUTE 使用物品 狮魔石
+SENDMSG 19 灵兽收回成功!
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+
+#IF
+EQUAL $SCRIPTPARAM(1) 3
+#ACT
+GMEXECUTE 使用物品 暗月妖狼石
+SENDMSG 19 灵兽收回成功!
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+
+#IF
+EQUAL $SCRIPTPARAM(1) 4
+#ACT
+GMEXECUTE 使用物品 怒啸神光虎石
+SENDMSG 19 灵兽收回成功!
+GOTO @灵兽系统
+BREAK
+
+#IF
+EQUAL $SCRIPTPARAM(1) 5
+#ACT
+GMEXECUTE 使用物品 黄金圣龙石
+SENDMSG 19 灵兽收回成功!
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+
+
+
+[@Lemon出战]
+#IF
+!POS -1-2-3-4-5- -<$SCRIPTPARAM(1)>-
+#ACT
+KICK
+SENDMSG 19 数据非法!
+BREAK
+
+#IF
+EQUAL $M DTS
+#ACT
+SENDMSG 5 当前地图不允许放出灵兽
+SENDMSG 19 当前地图不允许放出灵兽
+BREAK
+
+#IF
+!EQUAL <$TABLE(Lemon_LS).LS<$SCRIPTPARAM(1)>> 1
+#ACT
+SENDMSG 19 你还未拥有此灵兽，无法出战！
+BREAK
+#ELSEACT
+MOV S44 $ITEMMAKEINDEX[豹魔石]
+#IF
+EQUAL $TABLE(Lemon_LS).LS 1
+#ACT
+MOV S44 $ITEMMAKEINDEX[豹魔石]
+#IF
+EQUAL $TABLE(Lemon_LS).LS 2
+#ACT
+MOV S44 $ITEMMAKEINDEX[狮魔石]
+#IF
+EQUAL $TABLE(Lemon_LS).LS 3
+#ACT
+MOV S44 $ITEMMAKEINDEX[暗月妖狼石]
+#IF
+EQUAL $TABLE(Lemon_LS).LS 4
+#ACT
+MOV S44 $ITEMMAKEINDEX[怒啸神光虎石]
+#IF
+EQUAL $TABLE(Lemon_LS).LS 5
+#ACT
+MOV S44 $ITEMMAKEINDEX[黄金圣龙石]
+;------------------------------------------------
+#IF
+EQUAL $ITEMINFO[$STR(S44)].VALUE(14) 0
+#ACT
+ReLivePet $STR(S44)
+
+#IFONE
+LARGE $PETMAKEINDEX(2) 0
+CHECKPETFOLLOW
+#ACT
+GMEXECUTE 使用物品 $ITEMINFO[$STR(S44)].STDNAME
+
+#IF
+EQUAL $SCRIPTPARAM(1) 1
+#ACT
+TABLE Lemon_LS LS = 1
+UPGRADEUSERITEM $STR(S44) 13 = $STDITEM(豹魔石).idx
+UPGRADEUSERITEM $STR(S44) 4 = $TABLE(Lemon_LS).DJ		//等级
+UPGRADEUSERITEM $STR(S44) 9 = 2				//转生
+UPGRADEUSERITEM $STR(S44) 8 = 1				//颜色
+SENDMSG 19 你的迅天雷豹出战成功!
+GMEXECUTE 使用物品 豹魔石
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+
+#IF
+EQUAL $SCRIPTPARAM(1) 2
+#ACT
+TABLE Lemon_LS LS = 2
+UPGRADEUSERITEM $STR(S44) 13 = $STDITEM(狮魔石).idx
+UPGRADEUSERITEM $STR(S44) 4 = $TABLE(Lemon_LS).DJ		//等级
+UPGRADEUSERITEM $STR(S44) 9 = 2				//转生
+UPGRADEUSERITEM $STR(S44) 8 = 1				//颜色
+SENDMSG 19 你的战天狂狮出战成功!
+GMEXECUTE 使用物品 狮魔石
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+
+#IF
+EQUAL $SCRIPTPARAM(1) 3
+#ACT
+TABLE Lemon_LS LS = 3
+UPGRADEUSERITEM $STR(S44) 13 = $STDITEM(暗月妖狼石).idx
+UPGRADEUSERITEM $STR(S44) 4 = $TABLE(Lemon_LS).DJ		//等级
+UPGRADEUSERITEM $STR(S44) 9 = 2				//转生
+UPGRADEUSERITEM $STR(S44) 8 = 1				//颜色
+SENDMSG 19 你的暗月妖狼出战成功!
+GMEXECUTE 使用物品 暗月妖狼石
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+
+#IF
+EQUAL $SCRIPTPARAM(1) 4
+#ACT
+TABLE Lemon_LS LS = 4
+UPGRADEUSERITEM $STR(S44) 13 = $STDITEM(怒啸神光虎石).idx
+UPGRADEUSERITEM $STR(S44) 4 = $TABLE(Lemon_LS).DJ		//等级
+UPGRADEUSERITEM $STR(S44) 9 = 2				//转生
+UPGRADEUSERITEM $STR(S44) 8 = 1				//颜色
+SENDMSG 19 你的怒啸神光虎出战成功!
+GMEXECUTE 使用物品 怒啸神光虎石
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+
+#IF
+EQUAL $SCRIPTPARAM(1) 5
+#ACT
+TABLE Lemon_LS LS = 5
+UPGRADEUSERITEM $STR(S44) 13 = $STDITEM(黄金圣龙石).idx
+UPGRADEUSERITEM $STR(S44) 4 = $TABLE(Lemon_LS).DJ		//等级
+UPGRADEUSERITEM $STR(S44) 9 = 2				//转生
+UPGRADEUSERITEM $STR(S44) 8 = 1				//颜色
+SENDMSG 19 你的黄金圣龙出战成功!
+GMEXECUTE 使用物品 黄金圣龙石
+GOTO @<$STR(S$Lemon界面刷新)>
+BREAK
+
+
+
+
+
+}
+
+

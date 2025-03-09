@@ -1,0 +1,20 @@
+[@main]
+勇士,我可以帮你快速返回到镖师那里,需要我给你帮助吗\
+　\
+<返回运镖处/@LemonGO>
+
+
+[@LemonGO]
+#IF
+TRUE
+#ACT
+MAPMOVE 0 445 242 3
+DELAYGOTO 100 @LemonGO2
+BREAK
+
+[@LemonGO2]
+#IF
+TRUE
+#ACT
+GONPC 448 241 0
+BREAK

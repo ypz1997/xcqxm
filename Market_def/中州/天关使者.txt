@@ -1,0 +1,729 @@
+#CALL [\活动功能\天关挑战成功.txt] @天关挑战成功_Main
+[@main]
+#IF
+EQUAL <$M> ntg2100
+LARGE <$MAPMONCOUNT[SELF].ALL> 0
+#ACT
+sendmsg 1 附近有怪物,请先消灭怪物
+sendmsg 19 附近有怪物,请先消灭怪物
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+NEWREADCSV ..\Data\tianguan\cfg_tianguanMain.csv
+NEWREADCSV ..\Data\tianguan\cfg_tianguanOther.csv
+NEWREADCSV ..\Data\tianguan\cfg_tianguanReward.csv
+NEWREADCSV ..\Data\tianguan\cfg_tianguanMonster.csv
+MOV N$天关_天关总层数 <$DEC.<$Getcsv(cfg_tianguanMain,Row)>.1>
+MOV N$天关_每页关卡数 8
+MOV N$天关_总页数 <$CEIL.N$天关_天关总层数.N$天关_每页关卡数>
+MOV N$天关_排行榜开关 0
+MOV N$天关_排行榜显示容量 12
+MOV N$天关_循环子节点ID增量 500 
+
+GOTO @天关_初始化
+
+[@天关_初始化]
+#IF
+RANDOM 1 
+#ACT
+MOV N$天关_当前所选关卡序号 <$MOD.<$INC.<$HUMAN(天关_今日通关层数)>.1>.N$天关_天关总层数>
+MOV N$天关_当前页码 <$CEIL.N$天关_当前所选关卡序号.N$天关_每页关卡数>
+GOTO @天关_更新全部
+
+[@天关_更新全部]
+#IF
+RANDOM 1
+#ACT
+GOTO @天关_更新数据
+GOTO @天关_更新界面
+
+[@天关_更新数据]
+#IF
+RANDOM 1
+#ACT
+MOV S$天关_必要条件ID数组字符串 <$cfg_tianguanMain(<$STR(N$天关_当前所选关卡序号)>_1)>
+MOV S$天关_必要条件数值数组字符串 <$cfg_tianguanMain(<$STR(N$天关_当前所选关卡序号)>_2)>
+MOV S$天关_建议条件ID数组字符串 <$cfg_tianguanMain(<$STR(N$天关_当前所选关卡序号)>_3)>
+MOV S$天关_建议条件数值数组字符串 <$cfg_tianguanMain(<$STR(N$天关_当前所选关卡序号)>_4)>
+MOV S$天关_扫荡条件ID数组字符串 <$cfg_tianguanMain(<$STR(N$天关_当前所选关卡序号)>_5)>
+MOV S$天关_扫荡条件数值数组字符串 <$cfg_tianguanMain(<$STR(N$天关_当前所选关卡序号)>_6)>
+MOV S$天关_首通奖励数组字符串 <$cfg_tianguanReward(<$STR(N$天关_当前所选关卡序号)>_<$INC.<$JOBID>.1>)>
+MOV S$天关_每日奖励数组字符串 <$cfg_tianguanReward(<$STR(N$天关_当前所选关卡序号)>_<$INC.<$JOBID>.4>)>
+MOV S$天关_刷怪数组字符串 <$cfg_tianguanMonster(<$STR(N$天关_当前所选关卡序号)>_1)>
+SPLIT <$STR(S$天关_必要条件ID数组字符串)> | S$天关_必要条件ID数组 N$天关_必要条件ID数组长度
+SPLIT <$STR(S$天关_必要条件数值数组字符串)> | S$天关_必要条件数值数组
+SPLIT <$STR(S$天关_建议条件ID数组字符串)> | S$天关_建议条件ID数组 N$天关_建议条件ID数组长度
+SPLIT <$STR(S$天关_建议条件数值数组字符串)> | S$天关_建议条件数值数组 
+SPLIT <$STR(S$天关_扫荡条件ID数组字符串)> | S$天关_扫荡条件ID数组 N$天关_扫荡条件ID数组长度
+SPLIT <$STR(S$天关_扫荡条件数值数组字符串)> | S$天关_扫荡条件数值数组 
+SPLIT <$STR(S$天关_刷怪数组字符串)> | S$天关_刷怪数组 N$天关_刷怪数组长度
+
+
+SPLIT <$STR(S$天关_首通奖励数组字符串)> | S$天关_首通奖励数组 N$天关_首通奖励数组长度
+SPLIT <$STR(S$天关_每日奖励数组字符串)> | S$天关_每日奖励数组 N$天关_每日奖励数组长度
+MOV N$天关_必要条件满足 1 ;0不满足 1满足
+MOV N$天关_建议条件满足 1 ;0不满足 1满足
+MOV N$天关_扫荡条件满足 1 ;0不满足 1满足
+MOV S$天关_扫荡条件不满足提示 扫荡条件未达成:
+
+
+#IF
+LARGE <$STR(N$天关_当前所选关卡序号)> <$HUMAN(天关_历史最高层数)>
+#ACT
+MOV N$天关_循环增量 0
+FOR N$天关_循环增量 = <$STR(N$天关_首通奖励数组长度)>
+SPLIT <$STR(S$天关_首通奖励数组_<$STR(N$天关_循环增量)>)> * S$天关_单首通奖励
+MOV S$天关_首通奖励名称<$STR(N$天关_循环增量)> <$STR(S$天关_单首通奖励_0)>
+MOV N$天关_首通奖励数量<$STR(N$天关_循环增量)> <$STR(S$天关_单首通奖励_1)>
+INC N$天关_循环增量 1
+ENDFOR
+#ELSEACT
+MOV N$天关_首通奖励数组长度 0
+
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_循环增量 0
+FOR N$天关_循环增量 = <$STR(N$天关_每日奖励数组长度)>
+SPLIT <$STR(S$天关_每日奖励数组_<$STR(N$天关_循环增量)>)> * S$天关_单每日奖励
+MOV S$天关_每日奖励名称<$STR(N$天关_循环增量)> <$STR(S$天关_单每日奖励_0)>
+MOV N$天关_每日奖励数量<$STR(N$天关_循环增量)> <$STR(S$天关_单每日奖励_1)>
+INC N$天关_循环增量 1
+ENDFOR
+#ELSEACT
+MOV N$天关_每日奖励数组长度 0
+
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_循环增量 0
+FOR N$天关_循环增量 = <$STR(N$天关_刷怪数组长度)>
+SPLIT <$STR(S$天关_刷怪数组_<$STR(N$天关_循环增量)>)> * S$天关_单刷怪
+MOV S$天关_刷怪名称<$STR(N$天关_循环增量)> <$STR(S$天关_单刷怪_0)>
+MOV N$天关_刷怪数量<$STR(N$天关_循环增量)> <$STR(S$天关_单刷怪_1)>
+INC N$天关_循环增量 1
+ENDFOR
+
+
+#IF
+LARGE <$STR(N$天关_必要条件ID数组长度)> 0
+#ACT
+MOV N$天关_循环增量 0
+LOOPGOTO @天关_更新必要条件 <$STR(N$天关_必要条件ID数组长度)>
+#IF
+LARGE <$STR(N$天关_建议条件ID数组长度)> 0
+#ACT
+MOV N$天关_循环增量 0
+LOOPGOTO @天关_更新建议条件 <$STR(N$天关_建议条件ID数组长度)>
+#IF
+LARGE <$STR(N$天关_扫荡条件ID数组长度)> 0
+#ACT
+MOV N$天关_循环增量 0
+LOOPGOTO @天关_更新扫荡条件 <$STR(N$天关_扫荡条件ID数组长度)>
+#IF
+EQUAL N$天关_排行榜开关 1
+#ACT
+MOV N$天关_循环增量 0
+GOTO @天关_更新排行榜 
+
+#IF
+RANDOM 1
+#ACT
+MOV S$天关_跨脚本参数传递_挑战开始日期 <$DATE>
+MOV N$天关_跨脚本参数传递_当前挑战关卡 <$STR(N$天关_当前所选关卡序号)>
+MOV N$天关_跨脚本参数传递_天关总层数 <$STR(N$天关_天关总层数)>
+MOV S$天关_跨脚本参数传递_首通奖励数组字符串 <$STR(S$天关_首通奖励数组字符串)>
+MOV S$天关_跨脚本参数传递_每日奖励数组字符串 <$STR(S$天关_每日奖励数组字符串)>
+
+
+#IF
+!EQUAL N$天关_建议条件满足 1
+#ACT
+MOV N$天关_跨脚本参数传递_被攻击附加伤害 <$DIV.<$MULT.$MAXHP.15>.100>
+#ELSEACT
+MOV N$天关_跨脚本参数传递_被攻击附加伤害 0
+
+
+[@天关_更新扫荡条件]
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_扫荡条件所需值<$STR(N$天关_循环增量)> <$STR(S$天关_扫荡条件数值数组_<$STR(N$天关_循环增量)>)>
+
+
+#IF
+EQUAL <$cfg_tianguanOther(<$STR(S$天关_扫荡条件ID数组_<$STR(N$天关_循环增量)>)>_1)>
+#ACT
+MOV N$天关_扫荡条件当前值<$STR(N$天关_循环增量)> 0
+#ELSEACT
+MOV N$天关_扫荡条件当前值<$STR(N$天关_循环增量)> <$cfg_tianguanOther(<$STR(S$天关_扫荡条件ID数组_<$STR(N$天关_循环增量)>)>_1)>
+
+
+#IF
+RANDOM  1
+#ACT
+FormatStr S$天关_扫荡条件描述<$STR(N$天关_循环增量)> <$cfg_tianguanOther(<$STR(S$天关_扫荡条件ID数组_<$STR(N$天关_循环增量)>)>_2)> <$STR(N$天关_扫荡条件当前值<$STR(N$天关_循环增量)>)>|<$STR(S$天关_扫荡条件数值数组_<$STR(N$天关_循环增量)>)>
+
+#IF
+!SMALL <$DEC.N$天关_扫荡条件当前值<$STR(N$天关_循环增量)>.N$天关_扫荡条件所需值<$STR(N$天关_循环增量)>> 0
+#ACT
+#ELSEACT
+INC S$天关_扫荡条件不满足提示 <$INC.N$天关_循环增量.1>:<$STR(S$天关_扫荡条件描述<$STR(N$天关_循环增量)>)>.
+MOV N$天关_扫荡条件满足 0
+
+#IF
+RANDOM 1
+#ACT
+INC N$天关_循环增量 1
+
+[@天关_更新必要条件]
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_必要条件所需值<$STR(N$天关_循环增量)> <$STR(S$天关_必要条件数值数组_<$STR(N$天关_循环增量)>)>
+
+
+#IF
+EQUAL <$cfg_tianguanOther(<$STR(S$天关_必要条件ID数组_<$STR(N$天关_循环增量)>)>_1)>
+#ACT
+MOV N$天关_必要条件当前值<$STR(N$天关_循环增量)> 0
+#ELSEACT
+MOV N$天关_必要条件当前值<$STR(N$天关_循环增量)> <$cfg_tianguanOther(<$STR(S$天关_必要条件ID数组_<$STR(N$天关_循环增量)>)>_1)>
+
+#IF
+RANDOM  1
+#ACT
+FormatStr S$天关_必要条件描述<$STR(N$天关_循环增量)> <$cfg_tianguanOther(<$STR(S$天关_必要条件ID数组_<$STR(N$天关_循环增量)>)>_2)> <$STR(N$天关_必要条件当前值<$STR(N$天关_循环增量)>)>|<$STR(S$天关_必要条件数值数组_<$STR(N$天关_循环增量)>)>
+
+#IF
+!SMALL <$DEC.N$天关_必要条件当前值<$STR(N$天关_循环增量)>.N$天关_必要条件所需值<$STR(N$天关_循环增量)>> 0
+#ACT
+MOV S$天关_必要条件颜色<$STR(N$天关_循环增量)> 218
+MOV S$天关_必要条件颜色PC<$STR(N$天关_循环增量)> 4ae74a
+MOV S$天关_必要条件描述后缀<$STR(N$天关_循环增量)> (已达成)
+#ELSEACT
+MOV N$天关_必要条件满足 0
+MOV S$天关_必要条件颜色<$STR(N$天关_循环增量)> 58
+MOV S$天关_必要条件颜色PC<$STR(N$天关_循环增量)> fb0000
+MOV S$天关_必要条件描述后缀<$STR(N$天关_循环增量)> (未达成)
+
+#IF
+RANDOM 1
+#ACT
+; sendmsg 1 <$STR(N$天关_必要条件当前值<$STR(N$天关_循环增量)>)>
+; sendmsg 1 <$STR(N$天关_必要条件所需值<$STR(N$天关_循环增量)>)>
+; sendmsg 1 <$STR(S$天关_必要条件描述<$STR(N$天关_循环增量)>)>
+INC N$天关_循环增量 1
+
+[@天关_更新建议条件]
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_建议条件所需值<$STR(N$天关_循环增量)> <$STR(S$天关_建议条件数值数组_<$STR(N$天关_循环增量)>)>
+
+#IF
+EQUAL <$cfg_tianguanOther(<$STR(S$天关_建议条件ID数组_<$STR(N$天关_循环增量)>)>_1)>
+#ACT
+MOV N$天关_建议条件当前值<$STR(N$天关_循环增量)> 0
+#ELSEACT
+MOV N$天关_建议条件当前值<$STR(N$天关_循环增量)> <$cfg_tianguanOther(<$STR(S$天关_建议条件ID数组_<$STR(N$天关_循环增量)>)>_1)>
+
+#IF
+RANDOM  1
+#ACT
+FormatStr S$天关_建议条件描述<$STR(N$天关_循环增量)> <$cfg_tianguanOther(<$STR(S$天关_建议条件ID数组_<$STR(N$天关_循环增量)>)>_2)> <$STR(N$天关_建议条件当前值<$STR(N$天关_循环增量)>)>|<$STR(S$天关_建议条件数值数组_<$STR(N$天关_循环增量)>)>
+
+
+#IF
+!SMALL <$DEC.N$天关_建议条件当前值<$STR(N$天关_循环增量)>.N$天关_建议条件所需值<$STR(N$天关_循环增量)>> 0
+#ACT
+MOV S$天关_建议条件颜色<$STR(N$天关_循环增量)> 218
+MOV S$天关_建议条件颜色PC<$STR(N$天关_循环增量)> 4ae74a
+MOV S$天关_建议条件描述后缀<$STR(N$天关_循环增量)> (已达成)
+#ELSEACT
+MOV N$天关_建议条件满足 0
+MOV S$天关_建议条件颜色<$STR(N$天关_循环增量)> 58
+MOV S$天关_建议条件颜色PC<$STR(N$天关_循环增量)> fb0000
+MOV S$天关_建议条件描述后缀<$STR(N$天关_循环增量)> (未达成)
+
+#IF
+RANDOM 1
+#ACT
+; sendmsg 1 <$STR(N$天关_建议条件当前值<$STR(N$天关_循环增量)>)>
+; sendmsg 1 <$STR(N$天关_建议条件所需值<$STR(N$天关_循环增量)>)>
+; sendmsg 1 <$STR(S$天关_建议条件描述<$STR(N$天关_循环增量)>)>
+INC N$天关_循环增量 1
+
+[@天关_更新排行榜]
+#IF
+SMALL <$TXTLINE(../QuestDiary/数据文件/排名数据/天关排行榜.txt)> <$STR(N$天关_排行榜显示容量)>
+#ACT
+MOV N$天关_排行榜长度 <$TXTLINE(../QuestDiary/数据文件/排名数据/天关排行榜.txt)>
+#ELSEACT
+MOV N$天关_排行榜长度 <$STR(N$天关_排行榜显示容量)>
+
+#IF
+RANDOM 1
+#ACT
+MOV S$天关_排行榜玩家排行<$USERID> 未上榜
+FOR N$天关_循环增量 = <$STR(N$天关_排行榜长度)>
+ReadRandomStr ../QuestDiary/数据文件/排名数据/天关排行榜.txt S$天关_排行榜玩家信息数组 <$STR(N$天关_循环增量)> 0 1 |
+SPLIT <$STR(S$天关_排行榜玩家信息数组)> | S$天关_排行榜玩家信息
+MOV S$天关_排行榜玩家名称<$STR(N$天关_循环增量)> <$STR(S$天关_排行榜玩家信息_2)>
+MOV S$天关_排行榜玩家层数<$STR(N$天关_循环增量)> <$STR(S$天关_排行榜玩家信息_1)>
+MOV S$天关_排行榜玩家排行<$STR(S$天关_排行榜玩家信息_0)> <$INC.N$天关_循环增量.1>
+INC N$天关_循环增量 1
+ENDFOR
+
+[@天关_更新界面]
+#IF
+RANDOM 1
+#ACT
+GOTO @天关_重置天关选中状态
+GOTO @天关_重置天关开启状态
+GOTO @天关_重置天关通关状态
+GOTO @天关_关卡列表UI
+GOTO @天关_关卡详情UI
+GOTO @天关_排行榜UI
+
+
+#IF
+EQUAL $CLIENTFLAG 1
+#ACT
+GOTO @天关_PC界面
+#ELSEACT
+GOTO @天关_手机界面
+
+
+
+[@天关_手机界面]
+;==========================================主界面
+#IF
+RANDOM 1
+#SAY
+<Img|children={2,3,4,5,<$STR(S$天关_关卡列表节点ID字符串)>,6,7,<$STR(S$天关_关卡详情节点ID字符串)>,8,9,10,11,12,13,14,15,16,<$STR(S$天关_排行榜节点ID字符串)>,17,18,19}|show=5|img=private/tianguan/img_bg.png|loadDelay=0|bg=1|reset=1|_localZOrder=-2|move=0>
+<Button|id=5|x=793.0|y=0|color=255|scale=1|size=18|nimg=public/00030.png|link=@exit>
+;==========================================关卡列表
+#IF
+RANDOM 1
+#SAY
+<$STR(S$天关_关卡列表UI字符串)>
+
+#IF 
+LARGE N$天关_总页数 1
+#SAY
+<Button|id=6|x=18|y=299|ax=0.5|ay=0.5|color=255|scale=1|size=18|nimg=public/btn_fanye_1.png|link=@天关_切换页码&天关_参数_页码=<$INC.<$MOD.<$DEC.<$INC.N$天关_当前页码.N$天关_总页数>.2>.N$天关_总页数>.1>>
+<Button|id=7|x=474|y=299|ax=0.5|ay=0.5|rotate=180|color=255|scale=1|size=18|nimg=public/btn_fanye_1.png|link=@天关_切换页码&天关_参数_页码=<$INC.<$MOD.N$天关_当前页码.N$天关_总页数>.1>>
+
+;==========================================关卡详情
+#IF
+RANDOM 1
+#SAY
+<$STR(S$天关_关卡详情UI字符串)>
+<Button|id=8|x=749|y=395|color=255|scale=1|size=18|nimg=private/tianguan/btn_phb.png|link=@天关_排行榜打开>
+
+#IF
+!LARGE N$天关_当前所选关卡序号 <$HUMAN(天关_今日通关层数)>
+#SAY
+<Text|id=9|x=519|y=499|color=218|size=18|text=今天已完成此关卡,明天再来挑战吧>
+#IF
+LARGE N$天关_当前所选关卡序号 <$INC.<$HUMAN(天关_今日通关层数)>.1>
+#SAY
+<Text|id=10|x=555|y=499|color=58|size=18|text=前置关卡未完成,无法挑战>
+
+#IF
+EQUAL N$天关_当前所选关卡序号 <$INC.<$HUMAN(天关_今日通关层数)>.1>
+#SAY
+<Button|id=11|x=512|y=492|color=255|scale=1|size=18|nimg=public/btn_bg2.png|link=@天关_开始挑战>
+<Img|id=12|x=536|y=503|scale=1|esc=0|img=private/tianguan/img_kstz.png>
+<Button|id=13|x=666|y=492|color=255|scale=1|size=18|nimg=public/btn_bg2.png|link=@天关_一键扫荡>
+<Img|id=14|x=690|y=503|scale=1|esc=0|img=private/tianguan/img_yjsd.png>
+
+#IF
+EQUAL N$天关_排行榜开关 1
+#SAY
+<Img|id=15|x=165|y=18|scale=1|esc=0|img=private/tianguan/img_bg2.png>
+<Button|id=16|x=627.0|y=18|color=255|scale=1|size=18|nimg=public/00030.png|link=@天关_排行榜关闭>
+<$STR(S$天关_排行榜UI字符串)>
+<Text|id=17|x=266|y=462|color=161|size=18|text=提示:排行榜只显示前<$STR(N$天关_排行榜显示容量)>名,每天0点清零>
+<Text|id=18|x=313|y=513|ax=0.5|ay=0.5|color=149|size=18|text=<$STR(S$天关_排行榜玩家排行<$USERID>)>>
+<Text|id=19|x=531|y=513|ax=0.5|ay=0.5|color=149|size=18|text=<$HUMAN(天关_今日通关层数)>>
+
+
+
+
+[@天关_PC界面]NPC(63198)
+;==========================================主界面
+#IF
+RANDOM 1
+#SAY
+<@@!XYBTN 1,00030,1,00032,1,00031,769,-18,/@exit>\
+;==========================================关卡列表
+#IF
+RANDOM 1
+#ACT
+MOV S$天关_关卡列表UI字符串TEMP <$STR(S$天关_关卡列表UI字符串PC)>
+ReplaceText S$天关_关卡列表UI字符串TEMP ~ #32
+#SAY
+<$STR(S$天关_关卡列表UI字符串TEMP)>
+
+#IF 
+LARGE N$天关_总页数 1
+#SAY
+<@@!XYBTN 1,00073,1,00073,1,00073,-24,257,/@天关_切换页码&天关_参数_页码=<$INC.<$MOD.<$DEC.<$INC.N$天关_当前页码.N$天关_总页数>.2>.N$天关_总页数>.1>>\
+<@@!XYBTN 1,00074,1,00074,1,00074,432,257,/@天关_切换页码&天关_参数_页码=<$INC.<$MOD.N$天关_当前页码.N$天关_总页数>.1>>\
+
+;==========================================关卡详情
+#IF
+RANDOM 1
+#ACT
+MOV S$天关_关卡详情UI字符串TEMP <$STR(S$天关_关卡详情UI字符串PC)>
+ReplaceText S$天关_关卡详情UI字符串TEMP ~ #32
+#SAY
+<$STR(S$天关_关卡详情UI字符串TEMP)>
+<@@!XYBTN 1,60004,1,60005,1,60006,724,377,/@天关_排行榜打开>\
+
+#IF
+!LARGE N$天关_当前所选关卡序号 <$HUMAN(天关_今日通关层数)>
+#SAY
+<offx=|495|y=|481|fontsize=|18|xy=|1|><COLOR=4ae74a 今天已完成此关卡,明天再来挑战吧><|off>\
+#IF
+LARGE N$天关_当前所选关卡序号 <$INC.<$HUMAN(天关_今日通关层数)>.1>
+#SAY
+<offx=|531|y=|481|fontsize=|18|xy=|1|><COLOR=fb0000 前置关卡未完成,无法挑战><|off>\
+
+#IF
+EQUAL N$天关_当前所选关卡序号 <$INC.<$HUMAN(天关_今日通关层数)>.1>
+#SAY
+<@@!XYBTN 1,00080,1,00081,1,00082,488,474,/@天关_开始挑战>\
+<@@!XYITM 1,60010,512,485>\
+<@@!XYBTN 1,00080,1,00081,1,00082,642,474,/@天关_一键扫荡>\
+<@@!XYITM 1,60014,666,485>\
+
+#IF
+EQUAL N$天关_排行榜开关 1
+#ACT
+MOV S$天关_排行榜UI字符串TEMP <$STR(S$天关_排行榜UI字符串PC)>
+ReplaceText S$天关_排行榜UI字符串TEMP ~ #32
+MOV N$天关_我的排名文本X坐标 <$DEC.289.<$DIV.<$MULT.<$LENGTH.<$STR(S$天关_排行榜玩家排行<$USERID>)>>.10>.2>>
+MOV N$天关_我的层数文本X坐标 <$DEC.507.<$DIV.<$MULT.<$LENGTH.<$HUMAN(天关_今日通关层数)>>.10>.2>>
+#SAY
+<@@!XYITM 1,60007,141,0>\
+<@@!XYBTN 1,00030,1,00032,1,00031,603,0,/@天关_排行榜关闭>\
+<$STR(S$天关_排行榜UI字符串TEMP)>
+<offx=|242|y=|444|fontsize=|18|xy=|1|><COLOR=f7f7de 提示:排行榜只显示前12名,每天0点清零><|off>\
+<offx=|<$STR(N$天关_我的排名文本X坐标)>|y=|482|fontsize=|18|xy=|1|><COLOR=f7f7de <$STR(S$天关_排行榜玩家排行<$USERID>)>><|off>\
+<offx=|<$STR(N$天关_我的层数文本X坐标)>|y=|482|fontsize=|18|xy=|1|><COLOR=f7f7de <$HUMAN(天关_今日通关层数)>><|off>\
+
+[@天关_排行榜打开]
+#IF
+EQUAL N$天关_排行榜开关 1
+#ACT
+BREAK
+
+#IF
+RANDOM 1 
+#ACT
+MOV N$天关_排行榜开关 1
+GOTO @天关_更新全部
+
+[@天关_排行榜关闭]
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_排行榜开关 0
+GOTO @天关_更新界面
+
+[@天关_开始挑战]
+#IF
+!EQUAL N$天关_当前所选关卡序号 <$INC.<$HUMAN(天关_今日通关层数)>.1>
+#ACT
+GOTO @天关_初始化
+BREAK
+#IF
+EQUAL N$天关_排行榜开关 1
+#ACT
+BREAK
+#IF
+EQUAL N$天关_必要条件满足 0
+#ACT
+sendmsg 7 必要条件未达成,无法挑战
+sendmsg 19 必要条件未达成,无法挑战
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+MAPMOVE ntg2100 17 51 0
+PARAM1 SELF
+PARAM2 17
+PARAM3 51
+MOV N$天关_循环增量 0
+FOR N$天关_循环增量 = <$STR(N$天关_刷怪数组长度)>
+MonGen <$STR(S$天关_刷怪名称<$STR(N$天关_循环增量)>)> <$STR(N$天关_刷怪数量<$STR(N$天关_循环增量)>)> 5 第<$STR(N$天关_当前所选关卡序号)>层天关守卫
+INC N$天关_循环增量 1
+ENDFOR
+close
+
+
+[@天关_一键扫荡]
+#IF
+!EQUAL N$天关_当前所选关卡序号 <$INC.<$HUMAN(天关_今日通关层数)>.1>
+#ACT
+GOTO @天关_初始化
+BREAK
+#IF
+EQUAL N$天关_排行榜开关 1
+#ACT
+BREAK
+#IF
+EQUAL N$天关_扫荡条件满足 0
+#ACT
+sendmsg 5 <$STR(S$天关_扫荡条件不满足提示)>
+sendmsg 19 <$STR(S$天关_扫荡条件不满足提示)>
+BREAK
+
+#IF
+RANDOM 1
+#ACT
+GOTO @天关挑战成功_Main
+
+
+
+
+[@天关_关卡列表UI]
+#IF
+RANDOM 1
+#ACT
+MOV S$天关_关卡列表节点ID字符串 
+MOV S$天关_关卡列表UI字符串
+MOV S$天关_关卡列表UI字符串PC
+MOV N$天关_循环增量 1
+FOR N$天关_循环增量 > <$STR(N$天关_每页关卡数)> 
+MOV N$天关_关卡序号 <$FORMULATION[(<$STR(N$天关_当前页码)>-1)*<$STR(N$天关_每页关卡数)>+<$STR(N$天关_循环增量)>]>
+INC S$天关_关卡列表UI字符串 <Img|id=<$STR(N$天关_循环子节点ID增量)>|children={<$STR(N$天关_循环子节点ID增量)>.1,<$STR(N$天关_循环子节点ID增量)>.2,<$STR(N$天关_循环子节点ID增量)>.3,<$STR(N$天关_循环子节点ID增量)>.4}|x=<$INC.<$MULT.<$MOD.<$DEC.N$天关_循环增量.1>.2>.234>.14>|y=<$INC.<$MULT.<$DIV.<$DEC.N$天关_循环增量.1>.2>.127>.47>|img=private/tianguan/img_content.png|link=@天关_切换关卡&天关_参数_关卡序号=<$STR(N$天关_关卡序号)>>
+INC S$天关_关卡列表UI字符串 <Img|id=<$STR(N$天关_循环子节点ID增量)>.1|x=115|y=62|ax=0.5|ay=0.5|scale=1|esc=0|img=private/tianguan/img_xuanzhong<$STR(S$天关_关卡选中图片<$STR(N$天关_关卡序号)>)>.png>
+INC S$天关_关卡列表UI字符串 <Text|id=<$STR(N$天关_循环子节点ID增量)>.2|x=115|y=101|ax=0.5|ay=0.5|color=149|size=20|text=第<$STR(N$天关_关卡序号)>层>
+INC S$天关_关卡列表UI字符串 <Img|id=<$STR(N$天关_循环子节点ID增量)>.3|x=115|y=42|ax=0.5|ay=0.5|scale=1|esc=0|img=private/tianguan/img_suo<$STR(S$天关_关卡锁图片<$STR(N$天关_关卡序号)>)>.png>
+INC S$天关_关卡列表UI字符串 <Img|id=<$STR(N$天关_循环子节点ID增量)>.4|x=115|y=42|ax=0.5|ay=0.5|scale=1|esc=0|img=private/tianguan/img_yitongguan<$STR(S$天关_关卡通关图片<$STR(N$天关_关卡序号)>)>.png>
+INC S$天关_关卡列表节点ID字符串 <$STR(N$天关_循环子节点ID增量)>,
+INC N$天关_循环子节点ID增量 1
+;==========================PC
+INC S$天关_关卡列表UI字符串PC <@@!XYBTN~1,60008,1,60008,1,60008,<$DEC.<$MULT.<$MOD.<$DEC.N$天关_循环增量.1>.2>.234>.10>,<$INC.<$MULT.<$DIV.<$DEC.N$天关_循环增量.1>.2>.127>.29>,/@天关_切换关卡&天关_参数_关卡序号=<$STR(N$天关_关卡序号)>>\
+INC S$天关_关卡列表UI字符串PC <@@!XYITM~1,6000<$STR(S$天关_关卡选中图片<$STR(N$天关_关卡序号)>)>,<$DEC.<$MULT.<$MOD.<$DEC.N$天关_循环增量.1>.2>.234>.15>,<$INC.<$MULT.<$DIV.<$DEC.N$天关_循环增量.1>.2>.127>.24>>\
+INC S$天关_关卡列表UI字符串PC <offx=|<$INC.<$MULT.<$MOD.<$DEC.N$天关_循环增量.1>.2>.234>.78>|y=|<$INC.<$MULT.<$DIV.<$DEC.N$天关_循环增量.1>.2>.127>.118>|fontsize=|20|xy=|1|><COLOR=f7de39~第<$STR(N$天关_关卡序号)>层><|off>\
+INC S$天关_关卡列表UI字符串PC <@@!XYITM~1,6000<$STR(S$天关_关卡锁图片<$STR(N$天关_关卡序号)>)>,<$INC.<$MULT.<$MOD.<$DEC.N$天关_循环增量.1>.2>.234>.69>,<$INC.<$MULT.<$DIV.<$DEC.N$天关_循环增量.1>.2>.127>.34>>\
+INC S$天关_关卡列表UI字符串PC <@@!XYITM~1,6000<$STR(S$天关_关卡通关图片<$STR(N$天关_关卡序号)>)>,<$INC.<$MULT.<$MOD.<$DEC.N$天关_循环增量.1>.2>.234>.36>,<$INC.<$MULT.<$DIV.<$DEC.N$天关_循环增量.1>.2>.127>.54>>\
+INC N$天关_循环增量 1
+ENDFOR
+
+[@天关_关卡详情UI]
+#IF
+RANDOM 1 
+#ACT
+MOV S$天关_关卡详情节点ID字符串 
+MOV S$天关_关卡详情UI字符串
+MOV S$天关_关卡详情UI字符串PC
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_Y坐标间隔 20
+MOV N$天关_循环增量 0
+FOR N$天关_循环增量 = <$STR(N$天关_必要条件ID数组长度)> 
+INC S$天关_关卡详情UI字符串 <Text|id=<$STR(N$天关_循环子节点ID增量)>|children={<$STR(N$天关_循环子节点ID增量)>.1}|x=505|y=<$INC.<$MULT.N$天关_循环增量.N$天关_Y坐标间隔>.94>|color=<$STR(S$天关_必要条件颜色<$STR(N$天关_循环增量)>)>|size=18|text=<$STR(S$天关_必要条件描述<$STR(N$天关_循环增量)>)>>
+INC S$天关_关卡详情UI字符串 <Text|id=<$STR(N$天关_循环子节点ID增量)>.1|x=246|y=0|color=<$STR(S$天关_必要条件颜色<$STR(N$天关_循环增量)>)>|size=18|text=<$STR(S$天关_必要条件描述后缀<$STR(N$天关_循环增量)>)>>
+INC S$天关_关卡详情节点ID字符串 <$STR(N$天关_循环子节点ID增量)>,
+INC N$天关_循环子节点ID增量 1
+;==========================PC
+MOV S$天关_必要条件描述TEMP <$STR(S$天关_必要条件描述<$STR(N$天关_循环增量)>)>
+ReplaceText S$天关_必要条件描述TEMP / |
+INC S$天关_关卡详情UI字符串PC <offx=|481|y=|<$INC.<$MULT.N$天关_循环增量.N$天关_Y坐标间隔>.76>|fontsize=|18|xy=|1|><COLOR=<$STR(S$天关_必要条件颜色PC<$STR(N$天关_循环增量)>)>~<$STR(S$天关_必要条件描述TEMP)>><|off>\
+INC S$天关_关卡详情UI字符串PC <offx=|720|y=|<$INC.<$MULT.N$天关_循环增量.N$天关_Y坐标间隔>.76>|fontsize=|18|xy=|1|><COLOR=<$STR(S$天关_必要条件颜色PC<$STR(N$天关_循环增量)>)>~<$STR(S$天关_必要条件描述后缀<$STR(N$天关_循环增量)>)>><|off>\
+INC N$天关_循环增量 1
+ENDFOR
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_Y坐标间隔 20
+MOV N$天关_循环增量 0
+FOR N$天关_循环增量 = <$STR(N$天关_建议条件ID数组长度)> 
+INC S$天关_关卡详情UI字符串 <Text|id=<$STR(N$天关_循环子节点ID增量)>|children={<$STR(N$天关_循环子节点ID增量)>.1}|x=505|y=<$INC.<$MULT.N$天关_循环增量.N$天关_Y坐标间隔>.157>|color=<$STR(S$天关_建议条件颜色<$STR(N$天关_循环增量)>)>|size=18|text=<$STR(S$天关_建议条件描述<$STR(N$天关_循环增量)>)>>
+INC S$天关_关卡详情UI字符串 <Text|id=<$STR(N$天关_循环子节点ID增量)>.1|x=246|y=0|color=<$STR(S$天关_建议条件颜色<$STR(N$天关_循环增量)>)>|size=18|text=<$STR(S$天关_建议条件描述后缀<$STR(N$天关_循环增量)>)>>
+INC S$天关_关卡详情节点ID字符串 <$STR(N$天关_循环子节点ID增量)>,
+INC N$天关_循环子节点ID增量 1
+;==========================PC
+MOV S$天关_建议条件描述TEMP <$STR(S$天关_建议条件描述<$STR(N$天关_循环增量)>)>
+ReplaceText S$天关_建议条件描述TEMP / |
+INC S$天关_关卡详情UI字符串PC <offx=|481|y=|<$INC.<$MULT.N$天关_循环增量.N$天关_Y坐标间隔>.139>|fontsize=|18|xy=|1|><COLOR=<$STR(S$天关_建议条件颜色PC<$STR(N$天关_循环增量)>)>~<$STR(S$天关_建议条件描述TEMP)>><|off>\
+INC S$天关_关卡详情UI字符串PC <offx=|720|y=|<$INC.<$MULT.N$天关_循环增量.N$天关_Y坐标间隔>.139>|fontsize=|18|xy=|1|><COLOR=<$STR(S$天关_建议条件颜色PC<$STR(N$天关_循环增量)>)>~<$STR(S$天关_建议条件描述后缀<$STR(N$天关_循环增量)>)>><|off>\
+INC N$天关_循环增量 1
+ENDFOR
+;通关奖励
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_X坐标 529
+MOV N$天关_X坐标PC 505
+MOV N$天关_X坐标间隔 72
+;首通
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_循环增量 0
+FOR N$天关_循环增量 = <$STR(N$天关_首通奖励数组长度)> 
+MOV N$天关_奖励LOOKS <$STDITEM(<$STR(S$天关_首通奖励名称<$STR(N$天关_循环增量)>)>).Looks>
+INC S$天关_关卡详情UI字符串 <Img|id=<$STR(N$天关_循环子节点ID增量)>|children={<$STR(N$天关_循环子节点ID增量)>.1,<$STR(N$天关_循环子节点ID增量)>.2}|x=<$STR(N$天关_X坐标)>|y=397|scale=1|esc=0|img=private/tianguan/img_grid.png>
+INC S$天关_关卡详情UI字符串 <ItemShow|id=<$STR(N$天关_循环子节点ID增量)>.1|x=0|y=0|itemid=<$STR(N$天关_奖励LOOKS)>|itemcount=<$STR(N$天关_首通奖励数量<$STR(N$天关_循环增量)>)>|name=<$STR(S$天关_首通奖励名称<$STR(N$天关_循环增量)>)>|bgtype=1|showtips=1>
+INC S$天关_关卡详情UI字符串 <Img|id=<$STR(N$天关_循环子节点ID增量)>.2|x=0|y=0|scale=1|esc=0|img=private/tianguan/img_st.png>
+INC S$天关_关卡详情节点ID字符串 <$STR(N$天关_循环子节点ID增量)>,
+INC N$天关_循环子节点ID增量 1
+INC N$天关_X坐标 <$STR(N$天关_X坐标间隔)>
+;==========================PC
+INC S$天关_关卡详情UI字符串PC <@@!XYITM~1,60009,<$STR(N$天关_X坐标PC)>,379>\
+INC S$天关_关卡详情UI字符串PC <@@!XYPIC~<$STR(S$天关_首通奖励名称<$STR(N$天关_循环增量)>)>,1,<$INC.N$天关_X坐标PC.15>,395>\
+INC S$天关_关卡详情UI字符串PC <@@!XYITM~1,60011,<$STR(N$天关_X坐标PC)>,379>\
+INC S$天关_关卡详情UI字符串PC <offx=|<$DEC.<$INC.N$天关_X坐标PC.62>.<$MULT.<$LENGTH.<$STR(N$天关_首通奖励数量<$STR(N$天关_循环增量)>)>>.8>>|y=|425|fontsize=|16|xy=|1|><COLOR=f7f7de~<$STR(N$天关_首通奖励数量<$STR(N$天关_循环增量)>)>><|off>\
+INC N$天关_X坐标PC <$STR(N$天关_X坐标间隔)>
+INC N$天关_循环增量 1
+ENDFOR
+;每日通关
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_循环增量 0
+FOR N$天关_循环增量 = <$STR(N$天关_每日奖励数组长度)> 
+MOV N$天关_奖励LOOKS <$STDITEM(<$STR(S$天关_每日奖励名称<$STR(N$天关_循环增量)>)>).Looks>
+INC S$天关_关卡详情UI字符串 <Img|id=<$STR(N$天关_循环子节点ID增量)>|children={<$STR(N$天关_循环子节点ID增量)>.1}|x=<$STR(N$天关_X坐标)>|y=397|scale=1|esc=0|img=private/tianguan/img_grid.png>
+INC S$天关_关卡详情UI字符串 <ItemShow|id=<$STR(N$天关_循环子节点ID增量)>.1|x=0|y=0|itemid=<$STR(N$天关_奖励LOOKS)>|itemcount=<$STR(N$天关_每日奖励数量<$STR(N$天关_循环增量)>)>|name=<$STR(S$天关_每日奖励名称<$STR(N$天关_循环增量)>)>|bgtype=1|showtips=1>
+INC S$天关_关卡详情节点ID字符串 <$STR(N$天关_循环子节点ID增量)>,
+INC N$天关_循环子节点ID增量 1
+INC N$天关_X坐标 <$STR(N$天关_X坐标间隔)>
+;==========================PC
+INC S$天关_关卡详情UI字符串PC <@@!XYITM~1,60009,<$STR(N$天关_X坐标PC)>,379>\
+INC S$天关_关卡详情UI字符串PC <@@!XYPIC~<$STR(S$天关_每日奖励名称<$STR(N$天关_循环增量)>)>,1,<$INC.N$天关_X坐标PC.15>,395>\
+INC S$天关_关卡详情UI字符串PC <offx=|<$DEC.<$INC.N$天关_X坐标PC.62>.<$MULT.<$LENGTH.<$STR(N$天关_每日奖励数量<$STR(N$天关_循环增量)>)>>.8>>|y=|425|fontsize=|16|xy=|1|><COLOR=f7f7de~<$STR(N$天关_每日奖励数量<$STR(N$天关_循环增量)>)>><|off>\
+INC N$天关_X坐标PC <$STR(N$天关_X坐标间隔)>
+INC N$天关_循环增量 1
+ENDFOR
+
+[@天关_排行榜UI]
+#IF
+RANDOM 1
+#ACT
+MOV S$天关_排行榜节点ID字符串 
+MOV S$天关_排行榜UI字符串
+MOV S$天关_排行榜UI字符串PC
+MOV N$天关_循环增量 0
+FOR N$天关_循环增量 = <$STR(N$天关_排行榜长度)>
+INC S$天关_排行榜UI字符串 <Text|id=<$STR(N$天关_循环子节点ID增量)>|children={<$STR(N$天关_循环子节点ID增量)>.1,<$STR(N$天关_循环子节点ID增量)>.2}|x=212|y=<$INC.<$MULT.N$天关_循环增量.30>.101>|ax=0.5|ay=1|color=161|size=18|text=<$INC.N$天关_循环增量.1>>
+INC S$天关_排行榜UI字符串 <Text|id=<$STR(N$天关_循环子节点ID增量)>.1|x=147|y=0|ax=0.5|ay=1|color=161|size=18|text=<$STR(S$天关_排行榜玩家名称<$STR(N$天关_循环增量)>)>>
+INC S$天关_排行榜UI字符串 <Text|id=<$STR(N$天关_循环子节点ID增量)>.2|x=358|y=0|ax=0.5|ay=1|color=161|size=18|text=<$STR(S$天关_排行榜玩家层数<$STR(N$天关_循环增量)>)>>
+INC S$天关_排行榜节点ID字符串 <$STR(N$天关_循环子节点ID增量)>,
+INC N$天关_循环子节点ID增量 1
+;==========================PC
+MOV N$天关_排名文本X坐标 <$DEC.188.<$DIV.<$MULT.<$LENGTH.<$INC.N$天关_循环增量.1>>.10>.2>>
+MOV N$天关_名称文本X坐标 <$DEC.334.<$DIV.<$MULT.<$LENGTH.<$STR(S$天关_排行榜玩家名称<$STR(N$天关_循环增量)>)>>.10>.2>>
+MOV N$天关_层数文本X坐标 <$DEC.545.<$DIV.<$MULT.<$LENGTH.<$STR(S$天关_排行榜玩家层数<$STR(N$天关_循环增量)>)>>.10>.2>>
+INC S$天关_排行榜UI字符串PC <offx=|<$STR(N$天关_排名文本X坐标)>|y=|<$INC.<$MULT.N$天关_循环增量.30>.83>|fontsize=|18|xy=|1|><COLOR=f7f7de~<$INC.N$天关_循环增量.1>><|off>\
+INC S$天关_排行榜UI字符串PC <offx=|<$STR(N$天关_名称文本X坐标)>|y=|<$INC.<$MULT.N$天关_循环增量.30>.83>|fontsize=|18|xy=|1|><COLOR=f7f7de~<$STR(S$天关_排行榜玩家名称<$STR(N$天关_循环增量)>)>><|off>\
+INC S$天关_排行榜UI字符串PC <offx=|<$STR(N$天关_层数文本X坐标)>|y=|<$INC.<$MULT.N$天关_循环增量.30>.83>|fontsize=|18|xy=|1|><COLOR=f7f7de~<$STR(S$天关_排行榜玩家层数<$STR(N$天关_循环增量)>)>><|off>\
+INC N$天关_循环增量 1
+ENDFOR
+
+[@天关_重置天关选中状态]
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_循环增量 1
+FOR N$天关_循环增量 > <$STR(N$天关_天关总层数)>
+MOV S$天关_关卡选中图片<$STR(N$天关_循环增量)> xx
+INC N$天关_循环增量 1
+ENDFOR
+MOV S$天关_关卡选中图片<$STR(N$天关_当前所选关卡序号)> 1
+
+[@天关_重置天关开启状态]
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_循环增量 1
+FOR N$天关_循环增量 > <$STR(N$天关_天关总层数)>
+MOV S$天关_关卡锁图片<$STR(N$天关_循环增量)> 2
+INC N$天关_循环增量 1
+ENDFOR
+
+#IF
+EQUAL <$HUMAN(天关_今日通关层数)> <$STR(N$天关_天关总层数)>
+#ACT
+MOV N$天关_已解锁关卡数 <$HUMAN(天关_今日通关层数)>
+#ELSEACT
+MOV N$天关_已解锁关卡数 <$INC.<$HUMAN(天关_今日通关层数)>.1>
+
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_循环增量 1
+FOR N$天关_循环增量 > <$STR(N$天关_已解锁关卡数)>
+MOV S$天关_关卡锁图片<$STR(N$天关_循环增量)> xx
+INC N$天关_循环增量 1
+ENDFOR
+
+[@天关_重置天关通关状态]
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_循环增量 1
+FOR N$天关_循环增量 > <$STR(N$天关_天关总层数)>
+MOV S$天关_关卡通关图片<$STR(N$天关_循环增量)> xx
+INC N$天关_循环增量 1
+ENDFOR
+
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_循环增量 1
+FOR N$天关_循环增量 > <$HUMAN(天关_今日通关层数)>
+MOV S$天关_关卡通关图片<$STR(N$天关_循环增量)> 3
+INC N$天关_循环增量 1
+ENDFOR
+
+;参数 天关_参数_关卡序号
+[@天关_切换关卡]
+#IF
+EQUAL N$天关_排行榜开关 1
+#ACT
+BREAK
+#IF
+EQUAL N$天关_当前所选关卡序号 <$STR(S$天关_参数_关卡序号)>
+#ACT
+BREAK
+
+#IF
+LARGE <$STR(S$天关_参数_关卡序号)> <$STR(N$天关_天关总层数)>
+#ACT
+MOV N$天关_当前所选关卡序号 <$STR(N$天关_天关总层数)>
+#ELSEACT
+MOV N$天关_当前所选关卡序号 <$STR(S$天关_参数_关卡序号)>
+
+#IF
+!EQUAL <$CEIL.S$天关_参数_关卡序号.N$天关_每页关卡数> <$STR(N$天关_当前页码)>
+#ACT
+GOTO @天关_切换页码&天关_参数_页码=<$CEIL.S$天关_参数_关卡序号.N$天关_每页关卡数>
+
+#IF
+RANDOM 1
+#ACT
+GOTO @天关_更新全部
+
+;天关_参数_页码
+[@天关_切换页码]
+#IF
+EQUAL N$天关_排行榜开关 1
+#ACT
+BREAK
+#IF
+RANDOM 1
+#ACT
+MOV N$天关_当前页码 <$STR(S$天关_参数_页码)>
+GOTO @天关_更新界面

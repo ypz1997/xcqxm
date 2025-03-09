@@ -1,0 +1,629 @@
+[@MAIN]
+#IF
+HasTask 12
+EQUAL $TASK(12) 1
+#ACT
+GOTO @新手任务激活附件
+BREAK
+
+#IF
+CheckUseItem 2
+#ACT
+GOTO @选择勋章&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(2)>].NAME>
+BREAK
+#IF
+CheckUseItem 11
+#ACT
+GOTO @选择宝石&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(11)>].NAME>
+BREAK
+
+#IF
+CheckUseItem 12
+#ACT
+GOTO @选择护符&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(12)>].NAME>
+BREAK
+
+#IF
+CheckUseItem 13
+#ACT
+GOTO @选择盾牌&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME>
+BREAK
+
+#IF
+CheckUseItem 14
+#ACT
+GOTO @选择魂珠&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(14)>].NAME>
+BREAK
+
+#IF
+CheckUseItem 19
+#ACT
+GOTO @选择面具&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(19)>].NAME>
+BREAK
+
+#IF
+!CheckUseItem 2
+!CheckUseItem 11
+!CheckUseItem 12
+!CheckUseItem 13
+!CheckUseItem 14
+!CheckUseItem 19
+#ACT
+SENDMSG 19 没有可升级附件
+BREAK
+
+
+[@附件升级主面板]
+
+#IF
+HasTask 28
+!EQUAL $TASK(28) 3
+#ACT
+Navigation 80 10012 打开锻造#996#1 1 0
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(<$STR(N$附件升级位置)>)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$附件升级抽取
+#ACT
+SPLIT $STR(S$附件升级抽取) | S$附件升级分割
+#SAY
+<Img|id=fj1|children={fj2,fj3,fj7,fj10,fj13,fj16,fj19,fj20,fj22,fj23,fj24,fj25,fj26,fj27,fj28,fj29,fj30,fj31,fj32,fj33,xfj32,xfj33,fj34,fj35,fj36,fj37,fj38,fj39,fj40,fj41,fj42,fj43,fj44,fj45,fj46}|x=-17.0|y=7.0|esc=1|scale=1|bg=1|move=0|img=public/frame_squared_outside.png|_localZOrder=-1|show=5|link=0>
+<Img|id=fj2|x=21.0|y=45.0|rotate=0|reset=1|_localZOrder=-2|img=private/duanzao/fjbjb.png|loadDelay=0|show=0>
+<Button|id=fj3|x=805.0|y=-3.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+; <Button|id=fj7|children={fj8,10009}|x=853.0|y=35.0|pimg=public/btn_push_08.png|color=255|scale=1|nimg=public/btn_push_0{$STR(N$附件升级钮名字)}.png|size=18|mimg=public/btn_push_08.png>
+; <RText|id=fj8|x=18.0|y=16.0|size=20|color=255|text=<附/FCOLOR=67>\<件/FCOLOR=67>>
+; <Layout|id=10009|x=15.0|y=16.0|width=25|height=56|link=@强化锻造>
+; <Button|id=fj10|children={1111,10012}|x=853.0|y=112.0|nimg=public/btn_push_0{$STR(N$装备强化钮名字)}.png|pimg=public/btn_push_08.png|color=255|mimg=public/btn_push_08.png|size=18|scale=1>
+; <RText|id=1111|x=18.0|y=16.0|size=20|color=255|text=<强/FCOLOR=67>\<化/FCOLOR=67>>
+; <Layout|id=10012|x=15.0|y=16.0|width=25|height=56|link=@强化主按钮>
+; <Button|id=fj16|children={1069,fj18}|x=853.0|y=189.0|nimg=public/btn_push_0{$STR(N$符石镶嵌钮名字)}.png|pimg=public/btn_push_08.png|color=255|mimg=public/btn_push_08.png|size=18|scale=1>
+; <RText|id=1069|x=18.0|y=16.0|size=20|color=255|text=<符/FCOLOR=67>\<石/FCOLOR=67>>
+; <Layout|id=fj18|x=15.0|y=16.0|width=25|height=56|link=@符石主按钮>
+; <Button|id=fj13|children={1014,fj15}|x=853.0|y=266.0|nimg=public/btn_push_0{$STR(N$洗炼主按钮名字)}.png|pimg=public/btn_push_08.png|color=255|mimg=public/btn_push_08.png|size=18|scale=1>
+; <RText|id=1014|x=18.0|y=16.0|size=20|color=255|text=<洗/FCOLOR=67>\<炼/FCOLOR=67>>
+; <Layout|id=fj15|x=15.0|y=16.0|width=25|height=56|link=@洗炼主按钮>
+
+<RText|id=fj19|x=566.0|y=295.0|color=255|size=18|text=<下一级/FCOLOR=67>>
+<RText|id=fj20|x=548.0|y=55.0|size=20|color=67|text=<升级预览/FCOLOR=67>>
+<Img|id=fj22|children={fj22-1,fj22-2,fj22-3}|x=46.0|y=130.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj22-1|x=0.0|y=2.0|width=66|height=66|esc=0|img=private/duanzao/xuanqu<$STR(N$附件选取1)>.png|scale=1>
+<EquipShow|id=fj22-2|x=0.0|y=2.0|width=70|height=70|index=2|showtips=1|bgtype=1>
+<Layout|id=fj22-3|x=-1.4|y=1.1|width=68|height=68|link=@选择勋章&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(2)>].NAME>&附件返回面板=选择勋章>
+<Img|id=fj23|children={fj23-1,fj23-2,fj23-3}|x=135.0|y=130.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj23-1|x=0.0|y=2.0|width=66|height=66|esc=0|img=private/duanzao/xuanqu<$STR(N$附件选取2)>.png|scale=1>
+<EquipShow|id=fj23-2|x=0.0|y=2.0|width=70|height=70|index=11|showtips=1|bgtype=1>
+<Layout|id=fj23-3|x=-0.4|y=1.1|width=68|height=68|link=@选择宝石&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(11)>].NAME>&附件返回面板=选择宝石>
+<Img|id=fj24|children={fj24-1,fj24-2,fj24-3}|x=228.0|y=130.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj24-1|x=0.0|y=2.0|width=66|height=66|esc=0|img=private/duanzao/xuanqu<$STR(N$附件选取3)>.png|scale=1>
+<EquipShow|id=fj24-2|x=0.0|y=2.0|width=70|height=70|index=14|showtips=1|bgtype=1>
+<Layout|id=fj24-3|x=-0.4|y=1.1|width=68|height=68|link=@选择魂珠&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(14)>].NAME>&附件返回面板=选择魂珠>
+<Img|id=fj25|children={fj25-1,fj25-2,fj25-3}|x=46.0|y=230.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj25-1|x=0.0|y=2.0|width=66|height=66|esc=0|img=private/duanzao/xuanqu<$STR(N$附件选取4)>.png|scale=1>
+<EquipShow|id=fj25-2|x=0.0|y=2.0|width=70|height=70|index=12|showtips=1|bgtype=1>
+<Layout|id=fj25-3|x=-1.4|y=1.1|width=68|height=68|link=@选择护符&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(12)>].NAME>&附件返回面板=选择护符>
+<Img|id=fj26|children={fj26-1,fj26-2,fj26-3}|x=135.0|y=230.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj26-1|x=0.0|y=2.0|width=66|height=66|esc=0|img=private/duanzao/xuanqu<$STR(N$附件选取5)>.png|scale=1>
+<EquipShow|id=fj26-2|x=0.0|y=2.0|width=70|height=70|index=13|showtips=1|bgtype=1>
+<Layout|id=fj26-3|x=-0.4|y=1.1|width=68|height=68|link=@选择盾牌&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME>&附件返回面板=选择盾牌>
+<Img|id=fj27|children={fj27-1,fj27-2,fj27-3}|x=228.0|y=230.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj27-1|x=0.0|y=2.0|width=66|height=66|esc=0|img=private/duanzao/xuanqu<$STR(N$附件选取6)>.png|scale=1>
+<EquipShow|id=fj27-2|x=0.0|y=2.0|width=70|height=70|index=19|showtips=1|bgtype=1>
+<Layout|id=fj27-3|x=-0.4|y=1.1|width=68|height=68|link=@选择面具&附件升级选择=<$ITEMINFO[<$USEITEMMAKEINDEX(19)>].NAME>&附件返回面板=选择面具>
+<Img|id=fj28|x=38.0|y=73.0|width=260|height=35|esc=0|img=public/huangdi.png|scale=1>
+<Text|id=fj29|x=128.0|y=78.0|size=20|color=67|text=选择装备>
+<Img|id=fj30|x=30.0|y=335.0|width=280|height=35|scale=1|img=public/hongdi1.png|esc=0>
+<Text|id=fj31|x=110.0|y=340.0|size=20|color=67|text=升级所需材料>
+
+
+#IF
+!SMALL <$ITEMVALSUM(<$STR(S$附件消耗材料)>).DURA> <$STR(S$附件升级分割_4)>
+#ACT
+MOV N$附件材料颜色1 222
+#ELSEACT
+MOV N$附件材料颜色1 249
+
+#IF
+!SMALL <$GOLDCOUNT> <$STR(S$附件升级分割_5)>
+#ACT
+MOV N$附件材料颜色2 222
+#ELSEACT
+MOV N$附件材料颜色2 249
+
+#IF
+TRUE
+#SAY
+<RText|id=fj32|x=75|y=420|color=67|size=18|text=<<$STR(S$附件消耗材料)>：/FCOLOR=67><<$ITEMVALSUM(<$STR(S$附件消耗材料)>).DURA>/<$STR(S$附件升级分割_4)>/FCOLOR=<$STR(N$附件材料颜色1)>>>
+<RText|id=fj33|x=75|y=460|color=255|size=18|text=<金币：/FCOLOR=67><<$GOLDCOUNT>/<$STR(S$附件升级分割_5)>/FCOLOR=<$STR(N$附件材料颜色2)>>>
+<Img|id=fj34|x=511.7|y=76.0|img=public/dzfjfqk.png|esc=0|scale=0.65>
+<EquipShow|id=fj35|x=559.4|y=123.0|width=70|height=70|index=<$STR(N$附件升级位置)>|showtips=1|bgtype=1>
+<$STR(S$附件属性显示1)>
+<$STR(S$附件属性显示2)>
+<$STR(S$附件属性显示3)>
+<$STR(S$附件属性显示4)>
+<$STR(S$附件属性显示5)>
+<$STR(S$附件属性显示6)>
+<$STR(S$附件属性显示7)>
+<$STR(S$附件属性显示8)>
+<$STR(S$附件属性显示9)>
+<$STR(S$附件属性显示10)>
+<Button|id=fj46|x=546.3|y=486.1|scale=1|mimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=67|nimg=public/btn_push_10.png|size=20|text=升    级|link=@附件升级按钮>
+
+[@选择勋章]
+#IF
+!CheckUseItem 2
+#ACT
+SENDMSG 19 没有佩戴装备
+BREAK
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$附件职业属性显示 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$附件职业属性显示 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$附件职业属性显示 道术
+
+
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(2)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$附件升级抽取
+#ACT
+SPLIT $STR(S$附件升级抽取) | S$附件升级分割
+MOV N$附件选取1 2
+MOV N$附件选取2 1
+MOV N$附件选取3 1
+MOV N$附件选取4 1
+MOV N$附件选取5 1
+MOV N$附件选取6 1
+MOV S$附件消耗材料 特装精粹(攻)
+MOV N$附件升级位置 2
+MOV S$附件属性显示1 <RText|id=fj36|x=400.0|y=335.0|color=255|size=18|text=<<$STR(S$附件职业属性显示)>　　　/FCOLOR=67><<$STR(S$附件升级分割_6)>-<$STR(S$附件升级分割_7)>/FCOLOR=222>>
+MOV S$附件属性显示2 <RText|id=fj37|x=400.0|y=373.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_8)>-<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示3 <RText|id=fj38|x=400.0|y=411.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_8)>-<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示4 
+MOV S$附件属性显示5 
+MOV S$附件属性显示6 <RText|id=fj41|x=670.0|y=335.0|color=255|size=18|text=<<$STR(S$附件职业属性显示)>　　　/FCOLOR=67><<$STR(S$附件升级分割_10)>-<$STR(S$附件升级分割_11)>/FCOLOR=222>>
+MOV S$附件属性显示7 <RText|id=fj42|x=670.0|y=373.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_12)>-<$STR(S$附件升级分割_13)>/FCOLOR=222>>
+MOV S$附件属性显示8 <RText|id=fj43|x=670.0|y=411.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_12)>-<$STR(S$附件升级分割_13)>/FCOLOR=222>>
+MOV S$附件属性显示9 
+MOV S$附件属性显示10 
+GOTO @附件升级主面板
+BREAK
+
+
+[@选择宝石]
+#IF
+!CheckUseItem 11
+#ACT
+SENDMSG 19 没有佩戴装备
+BREAK
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$附件职业属性显示 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$附件职业属性显示 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$附件职业属性显示 道术
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(11)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$附件升级抽取
+#ACT
+SPLIT $STR(S$附件升级抽取) | S$附件升级分割
+MOV N$附件选取1 1
+MOV N$附件选取2 2
+MOV N$附件选取3 1
+MOV N$附件选取4 1
+MOV N$附件选取5 1
+MOV N$附件选取6 1
+MOV S$附件消耗材料 特装精粹(攻)
+MOV N$附件升级位置 11
+MOV S$附件属性显示1 <RText|id=fj36|x=400.0|y=330.0|color=255|size=18|text=<<$STR(S$附件职业属性显示)>　　　/FCOLOR=67><<$STR(S$附件升级分割_6)>-<$STR(S$附件升级分割_7)>/FCOLOR=222>>
+MOV S$附件属性显示2 <RText|id=fj37|x=400.0|y=360.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_8)>-<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示3 <RText|id=fj38|x=400.0|y=390.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_8)>-<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示4 <RText|id=fj39|x=400.0|y=420.0|color=255|size=18|text=<切割　　　/FCOLOR=67><<$STR(S$附件升级分割_10)>/FCOLOR=222>>
+MOV S$附件属性显示5 
+MOV S$附件属性显示6 <RText|id=fj41|x=670.0|y=330.0|color=255|size=18|text=<<$STR(S$附件职业属性显示)>　　　/FCOLOR=67><<$STR(S$附件升级分割_11)>-<$STR(S$附件升级分割_12)>/FCOLOR=222>>
+MOV S$附件属性显示7 <RText|id=fj42|x=670.0|y=360.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_13)>-<$STR(S$附件升级分割_14)>/FCOLOR=222>>
+MOV S$附件属性显示8 <RText|id=fj43|x=670.0|y=390.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_13)>-<$STR(S$附件升级分割_14)>/FCOLOR=222>>
+MOV S$附件属性显示9 <RText|id=fj44|x=670.0|y=420.0|color=255|size=18|text=<切割　　　/FCOLOR=67><<$STR(S$附件升级分割_15)>/FCOLOR=222>>
+MOV S$附件属性显示10 
+GOTO @附件升级主面板
+BREAK
+
+
+[@选择魂珠]
+#IF
+!CheckUseItem 14
+#ACT
+SENDMSG 19 没有佩戴装备
+BREAK
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$附件职业属性显示 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$附件职业属性显示 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$附件职业属性显示 道术
+
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(14)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$附件升级抽取
+#ACT
+SPLIT $STR(S$附件升级抽取) | S$附件升级分割
+MOV N$附件选取1 1
+MOV N$附件选取2 1
+MOV N$附件选取3 2
+MOV N$附件选取4 1
+MOV N$附件选取5 1
+MOV N$附件选取6 1
+MOV N$附件升级位置 14
+MOV S$附件消耗材料 特装精粹(攻)
+MOV S$附件属性显示1 <RText|id=fj36|x=400.0|y=330.0|color=255|size=18|text=<<$STR(S$附件职业属性显示)>　　　/FCOLOR=67><<$STR(S$附件升级分割_6)>-<$STR(S$附件升级分割_7)>/FCOLOR=222>>
+MOV S$附件属性显示2 <RText|id=fj37|x=400.0|y=353.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_8)>-<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示3 <RText|id=fj38|x=400.0|y=376.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_8)>-<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示4 <RText|id=fj39|x=400.0|y=399.0|color=255|size=18|text=<暴击率　　/FCOLOR=67><<$STR(S$附件升级分割_10)>%/FCOLOR=222>>
+MOV S$附件属性显示5 <RText|id=fj40|x=400.0|y=422.0|color=255|size=18|text=<暴击伤害　/FCOLOR=67><<$STR(S$附件升级分割_11)>%/FCOLOR=222>>
+MOV S$附件属性显示6 <RText|id=fj41|x=670.0|y=330.0|color=255|size=18|text=<<$STR(S$附件职业属性显示)>　　　/FCOLOR=67><<$STR(S$附件升级分割_12)>-<$STR(S$附件升级分割_13)>/FCOLOR=222>>
+MOV S$附件属性显示7 <RText|id=fj42|x=670.0|y=353.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_14)>-<$STR(S$附件升级分割_15)>/FCOLOR=222>>
+MOV S$附件属性显示8 <RText|id=fj43|x=670.0|y=376.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_14)>-<$STR(S$附件升级分割_15)>/FCOLOR=222>>
+MOV S$附件属性显示9 <RText|id=fj44|x=670.0|y=399.0|color=255|size=18|text=<暴击率　　/FCOLOR=67><<$STR(S$附件升级分割_16)>%/FCOLOR=222>>
+MOV S$附件属性显示10 <RText|id=fj45|x=670.0|y=422.0|color=255|size=18|text=<暴击伤害　/FCOLOR=67><<$STR(S$附件升级分割_17)>%/FCOLOR=222>>
+GOTO @附件升级主面板
+BREAK
+
+
+[@选择护符]
+
+
+#IF
+!CheckUseItem 12
+#ACT
+SENDMSG 19 没有佩戴装备
+BREAK
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(12)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$附件升级抽取
+#ACT
+SPLIT $STR(S$附件升级抽取) | S$附件升级分割
+MOV N$附件选取1 1
+MOV N$附件选取2 1
+MOV N$附件选取3 1
+MOV N$附件选取4 2
+MOV N$附件选取5 1
+MOV N$附件选取6 1
+MOV S$附件消耗材料 特装精粹(防)
+MOV N$附件升级位置 12
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$附件属性显示1 <RText|id=fj36|x=400.0|y=330.0|color=255|size=18|text=<生命值　　/FCOLOR=67><<$STR(S$附件升级分割_6)>%/FCOLOR=222>>
+MOV S$附件属性显示2 <RText|id=fj37|x=400.0|y=360.0|color=255|size=18|text=<魔法值　　/FCOLOR=67><<$STR(S$附件升级分割_7)>/FCOLOR=222>>
+MOV S$附件属性显示3 <RText|id=fj38|x=400.0|y=390.0|color=255|size=18|text=<<$STR(S$附件升级分割_8)>/FCOLOR=222>>
+MOV S$附件属性显示4 <RText|id=fj39|x=400.0|y=420.0|color=255|size=18|text=<<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示5 
+MOV S$附件属性显示6 <RText|id=fj41|x=670.0|y=330.0|color=255|size=18|text=<生命值　　/FCOLOR=67><<$STR(S$附件升级分割_18)>%/FCOLOR=222>>
+MOV S$附件属性显示7 <RText|id=fj42|x=670.0|y=360.0|color=255|size=18|text=<魔法值　　/FCOLOR=67><<$STR(S$附件升级分割_19)>/FCOLOR=222>>
+MOV S$附件属性显示8 <RText|id=fj43|x=670.0|y=390.0|color=255|size=18|text=<<$STR(S$附件升级分割_20)>/FCOLOR=222>>
+MOV S$附件属性显示9 <RText|id=fj44|x=670.0|y=420.0|color=255|size=18|text=<<$STR(S$附件升级分割_21)>/FCOLOR=222>>
+MOV S$附件属性显示10 
+GOTO @附件升级主面板
+BREAK
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$附件属性显示1 <RText|id=fj36|x=400.0|y=330.0|color=255|size=18|text=<生命值　　/FCOLOR=67><<$STR(S$附件升级分割_10)>%/FCOLOR=222>>
+MOV S$附件属性显示2 <RText|id=fj37|x=400.0|y=360.0|color=255|size=18|text=<魔法值　　/FCOLOR=67><<$STR(S$附件升级分割_11)>/FCOLOR=222>>
+MOV S$附件属性显示3 <RText|id=fj38|x=400.0|y=390.0|color=255|size=18|text=<<$STR(S$附件升级分割_12)>/FCOLOR=222>>
+MOV S$附件属性显示4 <RText|id=fj39|x=400.0|y=420.0|color=255|size=18|text=<<$STR(S$附件升级分割_13)>/FCOLOR=222>>
+MOV S$附件属性显示5 
+MOV S$附件属性显示6 <RText|id=fj41|x=670.0|y=330.0|color=255|size=18|text=<生命值　　/FCOLOR=67><<$STR(S$附件升级分割_22)>%/FCOLOR=222>>
+MOV S$附件属性显示7 <RText|id=fj42|x=670.0|y=360.0|color=255|size=18|text=<魔法值　　/FCOLOR=67><<$STR(S$附件升级分割_23)>/FCOLOR=222>>
+MOV S$附件属性显示8 <RText|id=fj43|x=670.0|y=390.0|color=255|size=18|text=<<$STR(S$附件升级分割_24)>/FCOLOR=222>>
+MOV S$附件属性显示9 <RText|id=fj44|x=670.0|y=420.0|color=255|size=18|text=<<$STR(S$附件升级分割_25)>/FCOLOR=222>>
+MOV S$附件属性显示10 
+GOTO @附件升级主面板
+BREAK
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$附件属性显示1 <RText|id=fj36|x=400.0|y=330.0|color=255|size=18|text=<生命值　　/FCOLOR=67><<$STR(S$附件升级分割_14)>%/FCOLOR=222>>
+MOV S$附件属性显示2 <RText|id=fj37|x=400.0|y=360.0|color=255|size=18|text=<魔法值　　/FCOLOR=67><<$STR(S$附件升级分割_15)>/FCOLOR=222>>
+MOV S$附件属性显示3 <RText|id=fj38|x=400.0|y=390.0|color=255|size=18|text=<<$STR(S$附件升级分割_16)>/FCOLOR=222>>
+MOV S$附件属性显示4 <RText|id=fj39|x=400.0|y=420.0|color=255|size=18|text=<<$STR(S$附件升级分割_17)>/FCOLOR=222>>
+MOV S$附件属性显示5 
+MOV S$附件属性显示6 <RText|id=fj41|x=670.0|y=330.0|color=255|size=18|text=<生命值　　/FCOLOR=67><<$STR(S$附件升级分割_26)>%/FCOLOR=222>>
+MOV S$附件属性显示7 <RText|id=fj42|x=670.0|y=360.0|color=255|size=18|text=<魔法值　　/FCOLOR=67><<$STR(S$附件升级分割_27)>/FCOLOR=222>>
+MOV S$附件属性显示8 <RText|id=fj43|x=670.0|y=390.0|color=255|size=18|text=<<$STR(S$附件升级分割_28)>/FCOLOR=222>>
+MOV S$附件属性显示9 <RText|id=fj44|x=670.0|y=420.0|color=255|size=18|text=<<$STR(S$附件升级分割_29)>/FCOLOR=222>>
+MOV S$附件属性显示10 
+GOTO @附件升级主面板
+
+BREAK
+
+[@选择盾牌]
+#IF
+!CheckUseItem 13
+#ACT
+SENDMSG 19 没有佩戴装备
+BREAK
+
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$附件职业属性显示 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$附件职业属性显示 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$附件职业属性显示 道术
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$附件升级抽取
+#ACT
+SPLIT $STR(S$附件升级抽取) | S$附件升级分割
+MOV N$附件选取1 1
+MOV N$附件选取2 1
+MOV N$附件选取3 1
+MOV N$附件选取4 1
+MOV N$附件选取5 2
+MOV N$附件选取6 1
+MOV N$附件升级位置 13
+MOV S$附件消耗材料 特装精粹(防)
+#IFONE
+EQUAL <$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME> 太初盾牌
+EQUAL <$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME> 两仪盾牌
+EQUAL <$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME> 三才盾牌
+EQUAL <$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME> 四象盾牌
+EQUAL <$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME> 五行盾牌
+EQUAL <$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME> 六合盾牌
+EQUAL <$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME> 七星盾牌
+EQUAL <$ITEMINFO[<$USEITEMMAKEINDEX(13)>].NAME> 八荒盾牌
+#ACT
+MOV S$附件属性显示1 <RText|id=fj36|x=400.0|y=335.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_8)>-<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示2 <RText|id=fj37|x=400.0|y=373.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_8)>-<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示3 <RText|id=fj38|x=400.0|y=411.0|color=255|size=18|text=<切割抵抗　/FCOLOR=67><<$STR(S$附件升级分割_10)>/FCOLOR=222>>
+MOV S$附件属性显示4 
+MOV S$附件属性显示5 
+MOV S$附件属性显示6 <RText|id=fj41|x=670.0|y=335.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_13)>-<$STR(S$附件升级分割_14)>/FCOLOR=222>>
+MOV S$附件属性显示7 <RText|id=fj42|x=670.0|y=373.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_13)>-<$STR(S$附件升级分割_14)>/FCOLOR=222>>
+MOV S$附件属性显示8 <RText|id=fj43|x=670.0|y=411.0|color=255|size=18|text=<切割抵抗　/FCOLOR=67><<$STR(S$附件升级分割_15)>/FCOLOR=222>>
+MOV S$附件属性显示9 
+MOV S$附件属性显示10 
+GOTO @附件升级主面板
+BREAK
+#ELSEACT
+MOV S$附件属性显示1 <RText|id=fj36|x=400.0|y=330.0|color=255|size=18|text=<<$STR(S$附件职业属性显示)>　　　/FCOLOR=67><<$STR(S$附件升级分割_6)>-<$STR(S$附件升级分割_7)>/FCOLOR=222>>
+MOV S$附件属性显示2 <RText|id=fj37|x=400.0|y=360.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_8)>-<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示3 <RText|id=fj38|x=400.0|y=390.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_8)>-<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示4 <RText|id=fj39|x=400.0|y=420.0|color=255|size=18|text=<切割抵抗　/FCOLOR=67><<$STR(S$附件升级分割_10)>/FCOLOR=222>>
+MOV S$附件属性显示5 
+MOV S$附件属性显示6 <RText|id=fj41|x=670.0|y=330.0|color=255|size=18|text=<<$STR(S$附件职业属性显示)>　　　/FCOLOR=67><<$STR(S$附件升级分割_11)>-<$STR(S$附件升级分割_12)>/FCOLOR=222>>
+MOV S$附件属性显示7 <RText|id=fj42|x=670.0|y=360.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_13)>-<$STR(S$附件升级分割_14)>/FCOLOR=222>>
+MOV S$附件属性显示8 <RText|id=fj43|x=670.0|y=390.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_13)>-<$STR(S$附件升级分割_14)>/FCOLOR=222>>
+MOV S$附件属性显示9 <RText|id=fj44|x=670.0|y=420.0|color=255|size=18|text=<切割抵抗　/FCOLOR=67><<$STR(S$附件升级分割_15)>/FCOLOR=222>>
+MOV S$附件属性显示10 
+GOTO @附件升级主面板
+BREAK
+
+
+[@选择面具]
+#IF
+!CheckUseItem 19
+#ACT
+SENDMSG 19 没有佩戴装备
+BREAK
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(19)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$附件升级抽取
+#ACT
+SPLIT $STR(S$附件升级抽取) | S$附件升级分割
+MOV N$附件选取1 1
+MOV N$附件选取2 1
+MOV N$附件选取3 1
+MOV N$附件选取4 1
+MOV N$附件选取5 1
+MOV N$附件选取6 2
+MOV S$附件消耗材料 特装精粹(防)
+MOV N$附件升级位置 19
+MOV S$附件属性显示1 <RText|id=fj36|x=400.0|y=330.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_6)>-<$STR(S$附件升级分割_7)>/FCOLOR=222>>
+MOV S$附件属性显示2 <RText|id=fj37|x=400.0|y=360.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_6)>-<$STR(S$附件升级分割_7)>/FCOLOR=222>>
+MOV S$附件属性显示3 <RText|id=fj38|x=400.0|y=390.0|color=255|size=18|text=<生命值　　/FCOLOR=67><<$STR(S$附件升级分割_8)>%/FCOLOR=222>>
+MOV S$附件属性显示4 <RText|id=fj39|x=400.0|y=420.0|color=255|size=18|text=<暴伤抵抗　/FCOLOR=67><<$STR(S$附件升级分割_9)>/FCOLOR=222>>
+MOV S$附件属性显示5 
+MOV S$附件属性显示6 <RText|id=fj41|x=670.0|y=330.0|color=255|size=18|text=<防御　　　/FCOLOR=67><<$STR(S$附件升级分割_10)>-<$STR(S$附件升级分割_11)>/FCOLOR=222>>
+MOV S$附件属性显示7 <RText|id=fj42|x=670.0|y=360.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><<$STR(S$附件升级分割_10)>-<$STR(S$附件升级分割_11)>/FCOLOR=222>>
+MOV S$附件属性显示8 <RText|id=fj43|x=670.0|y=390.0|color=255|size=18|text=<生命值　　/FCOLOR=67><<$STR(S$附件升级分割_12)>%/FCOLOR=222>>
+MOV S$附件属性显示9 <RText|id=fj44|x=670.0|y=420.0|color=255|size=18|text=<暴伤抵抗　/FCOLOR=67><<$STR(S$附件升级分割_13)>/FCOLOR=222>>
+MOV S$附件属性显示10 
+GOTO @附件升级主面板
+BREAK
+
+
+[@附件升级按钮]
+#IF
+POS $STR(S$附件升级选择) 混沌
+#ACT
+SENDMSG 19 装备已满级
+BREAK
+
+#IF
+PosInlist ~<$ITEMINFO[<$USEITEMMAKEINDEX(<$STR(N$附件升级位置)>)>].NAME> ..\QuestDiary\文本读取\附件升级文本.txt S$附件升级抽取
+#ACT
+SPLIT $STR(S$附件升级抽取) | S$附件升级分割
+#ELSEACT
+SENDMSG 19 非法数据，请联系客服
+BREAK
+
+#IF
+SMALL <$ITEMVALSUM(<$STR(S$附件消耗材料)>).DURA> <$STR(S$附件升级分割_4)>
+#ACT
+SENDMSG 19 升级材料不足
+BREAK
+
+#IF
+SMALL <$GOLDCOUNT> <$STR(S$附件升级分割_5)>
+#ACT
+SENDMSG 19 金币不足
+BREAK
+
+#IF
+TRUE
+#ACT
+TAKE 金币 $STR(S$附件升级分割_5)
+TAKE $STR(S$附件消耗材料) $STR(S$附件升级分割_4)
+UPGRADEUSERITEM <$USEITEMMAKEINDEX(<$STR(N$附件升级位置)>)> 13 = $STR(S$附件升级分割_3) 0
+GOTO @<$STR(S$附件返回面板)>
+GOTO @临时属性
+BREAK
+
+
+[@新手任务激活附件]
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$附件职业属性显示 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$附件职业属性显示 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$附件职业属性显示 道术
+
+#IF
+TRUE
+#SAY
+<Img|id=fj1|children={fj2,fj3,fj7,fj10,fj16,fj13,fj19,fj20,fj22,fj23,fj24,fj25,fj26,fj27,fj28,fj29,fj30,fj31,fj32,fj33,xfj32,xfj33,fj34,fj35,fj36,fj37,fj38,fj39,fj40,fj41,fj42,fj43,fj44,fj45,1046}|x=-17.0|y=7.0|esc=1|scale=1|bg=1|move=0|img=public/frame_squared_outside.png|_localZOrder=-1|show=5|link=0>
+<Img|id=fj2|x=21.0|y=45.0|rotate=0|reset=1|_localZOrder=-2|img=private/duanzao/fjbjb.png|loadDelay=0|show=0>
+<Button|id=fj3|x=805.0|y=-3.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+; <Button|id=fj7|children={fj8,10009}|x=853.0|y=35.0|pimg=public/btn_push_08.png|color=255|scale=1|nimg=public/btn_push_0{$STR(N$附件升级钮名字)}.png|size=18|mimg=public/btn_push_08.png>
+; <RText|id=fj8|x=18.0|y=16.0|size=20|color=255|text=<附/FCOLOR=67>\<件/FCOLOR=67>>
+; <Layout|id=10009|x=15.0|y=16.0|width=25|height=56|link=@强化锻造>
+; <Button|id=fj10|children={1111,10012}|x=853.0|y=112.0|nimg=public/btn_push_0{$STR(N$装备强化钮名字)}.png|pimg=public/btn_push_08.png|color=255|mimg=public/btn_push_08.png|size=18|scale=1>
+; <RText|id=1111|x=18.0|y=16.0|size=20|color=255|text=<强/FCOLOR=67>\<化/FCOLOR=67>>
+; <Layout|id=10012|x=15.0|y=16.0|width=25|height=56|link=@强化主按钮>
+; <Button|id=fj16|children={1069,fj18}|x=853.0|y=189.0|nimg=public/btn_push_0{$STR(N$符石镶嵌钮名字)}.png|pimg=public/btn_push_08.png|color=255|mimg=public/btn_push_08.png|size=18|scale=1>
+; <RText|id=1069|x=18.0|y=16.0|size=20|color=255|text=<符/FCOLOR=67>\<石/FCOLOR=67>>
+; <Layout|id=fj18|x=15.0|y=16.0|width=25|height=56|link=@符石主按钮>
+; <Button|id=fj13|children={1014,fj15}|x=853.0|y=266.0|nimg=public/btn_push_0{$STR(N$洗炼主按钮名字)}.png|pimg=public/btn_push_08.png|color=255|mimg=public/btn_push_08.png|size=18|scale=1>
+; <RText|id=1014|x=18.0|y=16.0|size=20|color=255|text=<洗/FCOLOR=67>\<炼/FCOLOR=67>>
+; <Layout|id=fj15|x=15.0|y=16.0|width=25|height=56|link=@洗炼主按钮>
+<RText|id=fj19|x=566.0|y=295.0|color=255|size=18|text=<下一级/FCOLOR=67>>
+<RText|id=fj20|x=548.0|y=55.0|size=20|color=67|text=<升级预览/FCOLOR=67>>
+<Img|id=fj22|children={fj22-1,fj22-2,fj22-3}|x=46.0|y=130.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj22-2|x=20.0|y=20.0|scale=1|esc=0|img=private/duanzao/00214.png>
+<Layout|id=fj22-3|x=-1.4|y=1.1|width=68|height=68|link=@选择勋章&<$ITEMINFO[<$USEITEMMAKEINDEX(2)>].NAME>>
+<Img|id=fj22-1|x=0.0|y=2.0|width=66|height=66|esc=0|img=private/duanzao/xuanqu2.png|scale=1>
+<Img|id=fj23|children={fj23-1,fj23-2,fj23-3}|x=135.0|y=130.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj23-2|x=20.0|y=20.0|scale=1|esc=0|img=private/duanzao/25849.png>
+<Img|id=fj24|children={fj24-1,fj24-2,fj24-3}|x=228.0|y=130.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj24-2|x=17.0|y=17.0|scale=1|esc=0|img=private/duanzao/06534.png>
+<Img|id=fj25|children={fj25-1,fj25-2,fj25-3}|x=46.0|y=230.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj25-2|x=20.0|y=20.0|scale=1|esc=0|img=private/duanzao/11118.png>
+<Img|id=fj26|children={fj26-1,fj26-2,fj26-3}|x=135.0|y=230.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj26-2|x=20.0|y=20.0|scale=1|esc=0|img=private/duanzao/01166.png>
+<Img|id=fj27|children={fj27-1,fj27-2,fj27-3}|x=228.0|y=230.0|scale=1|esc=0|img=public/fjfqk.png>
+<Img|id=fj27-2|x=20.0|y=25.0|scale=1|esc=0|img=private/duanzao/10373.png>
+<Img|id=fj28|x=38.0|y=73.0|width=260|height=35|esc=0|img=public/huangdi.png|scale=1>
+<Text|id=fj29|x=128.0|y=78.0|size=20|color=67|text=选择装备>
+<Img|id=fj30|x=30.0|y=335.0|width=280|height=35|scale=1|img=public/hongdi1.png|esc=0>
+<Text|id=fj31|x=110.0|y=340.0|size=20|color=67|text=升级所需材料>
+
+
+#IF
+LARGE <$ITEMVALSUM(<$STR(S$附件消耗材料)>).DURA> <$STR(S$附件升级分割_4)>
+#ACT
+MOV N$附件材料颜色1 222
+#ELSEACT
+MOV N$附件材料颜色1 249
+
+#IF
+LARGE <$GOLDCOUNT> <$STR(S$附件升级分割_5)>
+#ACT
+MOV N$附件材料颜色2 222
+#ELSEACT
+MOV N$附件材料颜色2 249
+
+#IF
+TRUE
+#SAY
+<Img|id=fj34|x=511.7|y=76.0|img=public/dzfjfqk.png|esc=0|scale=0.65>
+<ItemShow|id=fj35|x=556.4|y=120.2|width=70|height=70|itemid=0|itemcount=1|name=太初勋章|showtips=1|bgtype=1>
+<RText|id=fj36|x=400.0|y=335.0|color=255|size=18|text=<<$STR(S$附件职业属性显示)>　　　/FCOLOR=67><0-0/FCOLOR=222>>
+<RText|id=fj37|x=400.0|y=373.0|color=255|size=18|text=<防御　　　/FCOLOR=67><0-0/FCOLOR=222>>
+<RText|id=fj38|x=400.0|y=411.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><0-0/FCOLOR=222>>
+<RText|id=fj41|x=670.0|y=335.0|color=255|size=18|text=<<$STR(S$附件职业属性显示)>　　　/FCOLOR=67><7-0/FCOLOR=222>>
+<RText|id=fj42|x=670.0|y=373.0|color=255|size=18|text=<防御　　　/FCOLOR=67><4-0/FCOLOR=222>>
+<RText|id=fj43|x=670.0|y=411.0|color=255|size=18|text=<魔防　　　/FCOLOR=67><4-0/FCOLOR=222>>
+<Button|id=1046|x=546.3|y=486.1|scale=1|mimg=public/btn_push_10.png|pimg=public/btn_push_10.png|color=67|nimg=public/btn_push_10.png|size=20|text=一键激活|link=@一键激活>
+
+#IF
+HasTask 12
+EQUAL $TASK(12) 1
+#ACT
+Navigation 80 1046 一键激活全部附件#5058#3 1 0
+break
+
+
+[@一键激活]
+#IF
+!CheckBagSize 6
+#ACT
+SENDMSG 19 包裹空间不足6个空位
+BREAK
+
+#IF
+CHECK [112] 0
+#ACT
+SET [112] 1
+
+#IF
+HasTask 12
+EQUAL $TASK(12) 1
+#ACT
+GIVE 太初勋章 1 1
+TakeON 2 太初勋章
+GIVE 太初宝石 1 1
+TakeON 11 太初宝石
+GIVE 太初魂珠 1 1
+TakeON 14 太初魂珠
+GIVE 太初护符 1 1
+TakeON 12 太初护符
+GIVE 太初盾牌 1 1
+TakeON 13 太初盾牌
+GIVE 太初面具 1 1
+TakeON 19 太初面具
+UpdateTask 12 2
+Navigation 160 12 点击领取#5059#5 0 0
+BREAK
+CLOSE

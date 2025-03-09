@@ -1,0 +1,369 @@
+[@装备回收]
+{
+
+
+
+
+
+;===========================回收成功提示
+[@Lemon回收TS]
+#IF
+TRUE
+#SAY
+<Layout|x=0|y=0|width=1500|height=680|link=@exit>
+<Img|x=280.0|y=126.0|bg=1|loadDelay=0|img=private/zhenyingzhan/bg_recycle_01.png|link=@exit>
+<Button|x=760.0|y=189.0|pimg=public/btn_fitstpay_close.png|nimg=public/btn_fitstpay_close.png|link=@exit>
+<Img|x=495.0|y=165.0|bg=1|loadDelay=0|img=private/huishou/word_quickrecycle_01.png|link=@exit>
+;===========================
+<Button|x=515.0|y=370.0|color=222|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=额外回收绑元:<$STR(N$额外绑元)>>
+;=======================================================
+;#IF
+;!LARGE N$绑定元宝 0
+;LARGE N$吞噬经验 0
+;LARGE N$游戏经验 0
+;!LARGE N$回收钻石 0
+;!LARGE N$强化石 0
+;#SAY
+;<Button|x=515.0|y=230.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=吞噬经验:<$STR(N$吞噬经验)>>
+;<Button|x=515.0|y=255.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=游戏经验:<$STR(N$游戏经验)>>
+
+;#IF
+;LARGE N$绑定元宝 0
+;LARGE N$吞噬经验 0
+;LARGE N$游戏经验 0
+;!LARGE N$回收钻石 0
+;;!LARGE N$强化石 0
+;#SAY
+;<Button|x=515.0|y=230.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=绑定元宝:<$STR(N$绑定元宝)>>
+;<Button|x=515.0|y=255.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=吞噬经验:<$STR(N$吞噬经验)>>
+;<Button|x=515.0|y=280.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=游戏经验:<$STR(N$游戏经验)>>
+
+;#IF
+;LARGE N$绑定元宝 0
+;LARGE N$吞噬经验 0
+;LARGE N$游戏经验 0
+;LARGE N$回收钻石 0
+;!LARGE N$强化石 0
+;#SAY
+;<Button|x=515.0|y=230.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=绑定元宝:<$STR(N$绑定元宝)>>
+;<Button|x=515.0|y=255.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=吞噬经验:<$STR(N$吞噬经验)>>
+;<Button|x=515.0|y=280.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=游戏经验:<$STR(N$游戏经验)>>
+;<Button|x=515.0|y=305.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=钻         石:<$STR(N$回收钻石)>>
+
+
+;#IF
+;LARGE N$绑定元宝 0
+;LARGE N$吞噬经验 0
+;LARGE N$游戏经验 0
+;!LARGE N$回收钻石 0
+;LARGE N$强化石 0
+;#SAY
+;<Button|x=515.0|y=230.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=绑定元宝:<$STR(N$绑定元宝)>>
+;<Button|x=515.0|y=255.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=吞噬经验:<$STR(N$吞噬经验)>>
+;<Button|x=515.0|y=280.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=游戏经验:<$STR(N$游戏经验)>>
+;<Button|x=515.0|y=305.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=强化材料:<$STR(N$强化石)>>
+
+
+;=======================================================
+
+;#IF
+;large N$金币 0
+;LARGE N$绑定元宝 0
+;LARGE N$吞噬经验 0
+;LARGE N$游戏经验 0
+;LARGE N$回收钻石 0
+;LARGE N$强化石 0
+;#SAY
+<Button|x=515.0|y=230.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=绑定元宝:<$STR(N$绑定元宝)>>
+<Button|x=515.0|y=255.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=吞噬经验:<$STR(N$吞噬经验)>>
+<Button|x=515.0|y=280.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=游戏经验:<$STR(N$游戏经验)>>
+<Button|x=515.0|y=305.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=强化材料:<$STR(N$强化石)>>
+<Button|x=515.0|y=325.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=钻         石:<$STR(N$回收钻石)>>
+<Button|x=515.0|y=350.0|color=67|size=18|nimg=private/gonghuizhan/1.png|pimg=private/gonghuizhan/1.png|text=金         币:<$STR(N$金币)>>
+;=======================================================
+
+
+
+
+;==========================双击穿戴或丢弃=取消勾选
+[@Lemon回收QX]
+#IF
+!EQUAL S$回收IDX      ; 检查是否有选中装备索引
+POS $STR(S$Lemon包裹BL) <$STR(S$回收IDX)>,  ; 检查包裹中是否存在该索引
+#ACT
+DEC S$Lemon包裹BL <$STR(S$回收IDX)>,  ; 从勾选列表中移除
+SELECTBAGITEMS - $STR(S$回收IDX)      ; 取消选中背包物品
+MOV S77 <$ITEMINFO[<$STR(S$回收IDX)>].STDNAME>  ; 获取装备标准名
+MOV P77 <$STDITEM[<$STR(S77)>].GC1>   ; 获取装备GC1属性
+LOADEXVAR S71 回收价格 $STR(S77) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt  ; 加载价格配置
+SPLIT $STR(S71) | S71  ; 分割价格数据（格式：绑元|吞噬经验|钻石|游戏经验）
+DEC N$吞噬经验 $STR(S72)  ; 减少总吞噬经验
+DEC N$游戏经验 $STR(S74)  ; 减少总游戏经验
+
+#ELSEACT
+MOV S$回收IDX 
+BREAK
+
+#IF
+large p77 5
+POS $STR(S$充值装备) <$STR(S$回收IDX)>,
+#ACT
+DEC N$绑定元宝 $STR(S71)
+DEC N$回收钻石 $STR(S73)
+DEC S$充值装备 <$STR(S$回收IDX)>,
+
+#if
+!large p77 5
+POS $STR(S$充值装备) <$STR(S$回收IDX)>,
+#ACT
+DEC N$金币 $STR(S71)
+DEC S$充值装备 <$STR(S$回收IDX)>,
+
+
+#IF
+large p77 5
+!POS $STR(S$充值装备) <$STR(S$回收IDX)>,
+#ACT
+DEC N$绑定元宝 $STR(S71)
+
+#if
+!large p77 5
+!POS $STR(S$充值装备) <$STR(S$回收IDX)>,
+#ACT
+DEC N$金币 $STR(S71)
+
+
+#IF
+CHECK [662] 1
+LARGE <$ITEMINFO[<$STR(S$回收IDX)>].VALUEEX(172)> 0
+#ACT
+MOV P71 0 
+LOADEXVAR P71 强化数量 <$ITEMINFO[<$STR(S$回收IDX)>].VALUEEX(172)> ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+DEC N$强化石 $STR(P71)
+
+#IF
+TRUE
+#ACT
+MOV S$回收IDX 
+MOV N$遍历勾选 1
+BREAK
+
+;==========================拾取进包自动勾选
+[@Lemon回收SQ]
+#IF
+!EQUAL S$回收IDX      ; 检查是否有选中装备索引
+!POS $STR(S$Lemon包裹BL) <$STR(S$回收IDX)>,
+POS $TABLE(HS_BL).ZBM <$ITEMINFO[<$STR(S$回收IDX)>].STDNAME>,
+#ACT
+INC S$Lemon包裹BL <$STR(S$回收IDX)>,
+SELECTBAGITEMS + $STR(S$回收IDX)
+MOV S77 <$ITEMINFO[<$STR(S$回收IDX)>].STDNAME>
+MOV P77 <$STDITEM[<$STR(S77)>].GC1>
+LOADEXVAR S71 回收价格 $STR(S77) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S71) | S71
+INC N$吞噬经验 $STR(S72)
+INC N$游戏经验 $STR(S74)
+#ELSEACT
+MOV S$回收IDX 
+BREAK
+
+#IF
+!LARGE p77 5
+#ACT
+INC N$金币 $STR(S71)
+
+#IF
+LARGE p77 5
+#ACT
+INC N$绑定元宝 $STR(S71)
+INC N$回收钻石 $STR(S73)
+INC S$充值装备 <$STR(S$回收IDX)>,
+
+
+#IF
+TRUE
+#ACT
+MOV S$回收IDX 
+MOV N$遍历勾选 1
+BREAK
+
+
+
+
+
+
+
+
+[@SelectBagItems]
+#IF
+CHECK [662] 0
+LARGE <$ITEMINFO[$996(SelectBagItems).1].VALUEEX(172)> 0
+#ACT
+SENDMSG 19 该<$ITEMINFO[$996(SelectBagItems).1].NAME>带有强化属性，请谨慎回收
+BREAK
+#ELSEACT
+MOV P66 0
+;======================================单击取勾
+#IF
+POS $STR(S$Lemon包裹BL) <$996(SelectBagItems).1>,
+#ACT
+DEC S$Lemon包裹BL <$996(SelectBagItems).1>,
+SELECTBAGITEMS - $996(SelectBagItems).1
+MOV S77 <$ITEMINFO[<$996(SelectBagItems).1>].STDNAME>
+MOV P77 <$STDITEM[<$STR(S77)>].GC1>
+LOADEXVAR S71 回收价格 $STR(S77) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S71) | S71
+DEC N$吞噬经验 $STR(S72)
+DEC N$游戏经验 $STR(S74)
+MOV P66 666666
+
+#IF
+POS $STR(S$充值装备) <$996(SelectBagItems).1>,
+large p77 5
+EQUAL P66 666666
+#ACT
+DEC N$绑定元宝 $STR(S71)
+DEC N$回收钻石 $STR(S73)
+DEC S$充值装备 <$996(SelectBagItems).1>,
+
+#IF
+!POS $STR(S$充值装备) <$996(SelectBagItems).1>,
+!large p77 5
+EQUAL P66 666666
+#ACT
+DEC N$金币 $STR(S71)
+
+#IF
+EQUAL P66 666666
+CHECK [662] 1
+LARGE <$ITEMINFO[<$996(SelectBagItems).1>].VALUEEX(172)> 0
+#ACT
+MOV P71 0 
+LOADEXVAR P71 强化数量 <$ITEMINFO[<$996(SelectBagItems).1>].VALUEEX(172)> ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+DEC N$强化石 $STR(P71)
+
+#IF
+EQUAL P66 666666
+#ACT
+MOV N$遍历勾选 1
+BREAK
+
+;======================================单击勾选
+#IF
+!POS $STR(S$Lemon包裹BL) <$996(SelectBagItems).1>,
+POSINLIST <$ITEMINFO[<$996(SelectBagItems).1>].NAME>= ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+#ACT
+INC S$Lemon包裹BL <$996(SelectBagItems).1>,
+SELECTBAGITEMS + $996(SelectBagItems).1
+MOV S77 <$ITEMINFO[<$996(SelectBagItems).1>].STDNAME>
+MOV P77 <$STDITEM[<$STR(S77)>].GC1>
+LOADEXVAR S71 回收价格 $STR(S77) ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+SPLIT $STR(S71) | S71
+INC N$吞噬经验 $STR(S72)
+INC N$游戏经验 $STR(S74)
+
+#ELSEACT
+BREAK
+
+#IF
+!LARGE p77 5
+#ACT
+INC N$金币 $STR(S71)
+
+#IF
+LARGE p77 5
+#ACT
+INC N$绑定元宝 $STR(S71)
+INC N$回收钻石 $STR(S73)
+INC S$充值装备 <$996(SelectBagItems).1>,
+
+
+
+
+
+
+
+;-----------------------------检测极品状态 给强化石
+#IF
+CHECK [662] 1
+LARGE <$ITEMINFO[<$996(SelectBagItems).1>].VALUEEX(172)> 0
+#ACT
+MOV P71 0 
+LOADEXVAR P71 强化数量 <$ITEMINFO[<$996(SelectBagItems).1>].VALUEEX(172)> ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt
+INC N$强化石 $STR(P71)
+
+
+#IF
+TRUE
+#ACT
+MOV N$遍历勾选 1
+BREAK
+
+;===============================自动回收
+[@LemonHS自动]
+#IF
+TRUE
+#ACT
+MOV S$自动回收物品名字 <$PARAM(22)>  ; 获取自动回收物品名称
+MOV N$自动回收物品ID <$PARAM(21)>   ; 获取物品ID
+#IF
+!EQUAL $PARAM(23) 1  ; 检查是否非首次回收
+POS $TABLE(HS_BL).ZBM <$STR(S$自动回收物品名字)>,  ; 检查是否在白名单
+#ACT
+LOADEXVAR S$回收抽取 回收价格 <$STR(S$自动回收物品名字)> ..\QUESTDIARY\猪头回收\装备价格总览<$STR(G99)>.txt  ; 加载回收配置
+SPLIT $STR(S$回收抽取) | S$回收分割  ; 分割价格数据
+MOV P77 <$STDITEM[<$STR(S$自动回收物品名字)>].GC1>  ; 获取装备GC1属性
+#ELSEACT
+BREAK
+
+#IF
+LARGE p77 5
+#ACT
+BINDGAMEGOLD + $STR(S$回收分割_0)
+MONEY 6 + $STR(S$回收分割_3)
+MONEY 33 + $STR(S$回收分割_2)
+SENDMSG 16 玩家<%s>使用自动回收功能,回收"<$STR(S$自动回收物品名字)>",获得钻石+<$STR(S$回收分割_2)>,获得绑元+<$STR(S$回收分割_0)>
+TAKEM <$STR(N$自动回收物品ID)>
+
+#IF
+!LARGE p77 5
+#ACT
+money 1 + $STR(S$回收分割_0)
+MONEY 6 + $STR(S$回收分割_3)
+SENDMSG 16 玩家<%s>使用自动回收功能,回收"<$STR(S$自动回收物品名字)>",获得金币+<$STR(S$回收分割_0)>,获得经验+<$STR(S$回收分割_3)>
+TAKEM <$STR(N$自动回收物品ID)>
+
+#IF
+SMALL $CUSTOMVALUE(95) 100
+#ACT
+CHANGECUSTOMVALUE 96 + $STR(S$回收分割_1)
+MOV P44 0
+LOADEXVAR P44 吞噬经验 $INC.$CUSTOMVALUE(95).1 ..\QUESTDIARY\数据文件\吞噬升级数据.txt
+#ELSEACT
+BREAK
+
+#IF
+LARGE P44 0
+!SMALL $CUSTOMVALUE(96) $STR(P44)
+#ACT
+CHANGECUSTOMVALUE 96 - $STR(P44)
+CHANGECUSTOMVALUE 95 + 1
+GOTO @临时属性
+SENDMSG 19 恭喜你,你的吞噬等级提升了!!
+BREAK
+#ELSEACT
+SENDMSG 5 你当前吞噬等级:<$CUSTOMVALUE(95)>,经验:<$CUSTOMVALUE(96)>／<$STR(P44)>
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+}

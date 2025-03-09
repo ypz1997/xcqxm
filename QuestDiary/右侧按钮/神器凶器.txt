@@ -1,0 +1,3136 @@
+[@神器凶器]
+{
+#IF
+EQUAL $JOBID 0
+#ACT
+MOV S$神器属性区分 攻击
+
+#IF
+EQUAL $JOBID 1
+#ACT
+MOV S$神器属性区分 魔法
+
+#IF
+EQUAL $JOBID 2
+#ACT
+MOV S$神器属性区分 道术
+
+#IF
+TRUE
+#ACT
+MOV N$右侧按钮1 9
+MOV N$右侧按钮2 8
+
+
+
+#IF
+TRUE
+#ACT
+MOV N$图片编号 0
+GOTO @属性和名字
+GOTO @神器内部红点判断
+BREAK
+
+[@神器主面板]
+#IF
+TRUE
+#ACT
+MOV N$右侧按钮1 9
+MOV N$右侧按钮2 8
+GOTO @神器内部红点判断
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 0
+#ACT
+MOV S$神器激活 激　　活
+MOV S$神器升级材料 $STR(S$神器名字)
+#ELSEACT
+MOV S$神器激活 升　　级
+MOV S$神器升级材料 凶器精粹
+
+#IF
+!LARGE <$Human(<$STR(S$神器名字)>等级)> 27
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt S$神凶器抽取 <$Human(<$STR(S$神器名字)>等级)>
+SPLIT $STR(S$神凶器抽取) | N$神凶器分割
+MOV N$神凶器坐标 <$DEC.375.<$MULT.<$INC^<$INC^$LENGTH.$STR(N$神凶器分割_0)^$LENGTH.$STR(S$神器升级材料)>^$LENGTH.$ITEMVALSUM(<$STR(S$神器升级材料)>).DURA>.5>>
+
+
+#IF
+!SMALL <$ITEMVALSUM(<$STR(S$神器升级材料)>).DURA> $STR(N$神凶器分割_0)
+#ACT
+RedDot 5 sx22 134 18
+#ELSEACT
+RedDel 5 sx22
+
+#IF
+TRUE
+#SAY
+
+<Img|id=sx1|children={sx40,sx41,sx42,sx43,sx2,sx3,sx4,sx5,sx6,sx7,sx8,sx9,sx10,sx11,sx12,sx13,sx14,sx15,sx16,sx17,sx18,sx19,sx20,sx55,sx56,sx57,sx21,sx22}|x=-17.0|y=-3.0|loadDelay=0|esc=1|bg=1|show=5|move=1|scale=1|_localZOrder=-1|img=private/shenxiongqi/shenxiongqidiban.png|link=0>
+<Button|id=sx2|x=717.0|y=-7.0|mimg=public/btn_close_01.png|scale=1|pimg=public/btn_close_01.png|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<Img|id=sx40|children={sx40-1}|x=755.0|y=29.0|scale=1|esc=0|img=public/btn_push_0<$STR(N$右侧按钮1)>.png>
+<Text|id=sx40-1|x=19.0|y=17.0|rotate=0|size=20|color=67|text=凶\器>
+<Img|id=sx41|children={sx41-1}|x=755.0|y=108.0|scale=1|esc=0|img=public/btn_push_0<$STR(N$右侧按钮2)>.png>
+<Text|id=sx41-1|ay=1|x=19.0|y=18.0|color=67|size=20|text=拆\解>
+<Layout|id=sx42|x=755.0|bg=1|y=31.0|width=50|height=80|link=@神器凶器>
+<Layout|id=sx43|x=755.0|bg=1|y=112.0|width=50|height=80|link=@分解撼天&撼天>
+<Img|id=sx3|x=62.0|y=296.0|height=30|scale=1|img=public/bg_charge_price.png|esc=0>
+<Img|id=sx4|x=558.0|y=296.0|height=30|scale=1|img=public/bg_charge_price.png|esc=0>
+<Img|id=sx5|x=307.0|y=77.0|height=30|scale=1|img=public/bg_charge_price.png|esc=0>
+<Text|id=sx6|x=97.0|y=80.0|size=20|color=67|text=当前属性>
+<Text|id=sx7|x=<$STR(N$神器坐标)>|y=78.0|size=20|color=67|text=<$STR(S$神器名字)>>
+<Text|id=sx8|x=595.0|y=80.0|size=20|color=67|text=下级属性>
+<Text|id=sx9|x=97.0|y=297.0|rotate=0|size=20|color=67|text=凶器介绍>
+<Text|id=sx10|x=595.0|y=298.0|rotate=0|size=20|color=67|text=凶器等级>
+<RText|id=sx11|x=<$STR(N$神凶器坐标)>|y=430.0|color=255|size=18|text=<<$STR(S$神器升级材料)>  /FCOLOR=67><<$ITEMVALSUM(<$STR(S$神器升级材料)>).DURA>/<$STR(N$神凶器分割_0)>/FCOLOR=222>>
+<Img|id=sx12|x=300.0|y=150.0|img=private/shenxiongqi/0028<$STR(N$图片编号)>.png|esc=0|scale=1>
+<Button|id=sx13|x=282.0|y=225.0|rotate=90|nimg=public/31052.png|scale=1|pimg=public/31052.png|mimg=public/31052.png|size=18|color=255|link=@上一个>
+<Button|id=sx14|rotate=270|x=491.0|y=292.0|mimg=public/31052.png|pimg=public/31052.png|scale=1|color=255|nimg=public/31052.png|size=18|link=@下一个>
+<Img|id=sx40|children={sx40-1}|x=755.0|y=29.0|esc=0|img=public/btn_push_08.png|scale=1>
+<Text|id=sx40-1|x=19.0|y=17.0|rotate=0|size=20|color=67|text=凶\器>
+<Img|id=sx41|children={sx41-1}|x=755.0|y=108.0|esc=0|img=public/btn_push_08.png|scale=1>
+<Text|id=sx41-1|ay=1|x=19.0|y=18.0|color=67|size=20|text=拆\解>
+<Button|id=sx15|x=50.0|y=490.0|mimg=private/shenxiongqi/sqzsx.png|pimg=private/shenxiongqi/sqzsx.png|scale=1|color=255|nimg=private/shenxiongqi/sqzsx.png|size=18|link=@神器属性>
+#IF
+!EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 27
+#SAY
+<Img|id=sx16|x=567.0|y=371.0|img=public/<$STR(S$等级图片1)>.png|esc=0|scale=0.9>
+<Img|id=sx17|x=595.0|y=371.0|img=public/<$STR(S$等级图片2)>.png|esc=0|scale=0.9>
+<Img|id=sx18|x=642.0|y=376.0|img=private/shenxiongqi/word_devildom_02.png|scale=1>
+#ELSESAY
+<Img|id=sx16|x=540.0|y=330.0|img=private/shenxiongqi/yimanji.png|esc=0|scale=0.7>
+
+#IF
+TRUE
+#SAY
+<$STR(S$神器当前属性)>
+<$STR(S$神器下级属性)>
+<Button|id=sx22|children={sxhd2}|x=310.0|y=488.0|width=150|height=57|scale=1|size=20|color=67|mimg=public/btn_push_10.png|nimg=public/btn_push_10.png|pimg=public/btn_push_10.png|text=<$STR(S$神器激活)>|link=@激活和升级>
+<Img|id=sx55|x=63.0|y=333.0|scale=1|img=private/shenxiongqi/xiongqijieshaob.png|esc=0>
+<Img|id=sx21|x=110.0|y=370.0|width=50|height=40|img=public/shu<$STR(D82)>.png|scale=1|esc=0>
+
+#IF
+!LARGE N$穿透护盾阶数 9
+#SAY
+<Img|id=sx56|x=125.0|y=422.0|width=30|height=20|img=public/shu<$STR(N$穿透护盾阶数)>.png|scale=1|esc=0>
+#ELSESAY
+<Img|id=sx56|x=116.0|y=422.0|width=30|height=20|img=public/shu<$STR(N$穿透十位)>.png|scale=1|esc=0>
+<Img|id=sx57|x=130.0|y=422.0|width=30|height=20|img=public/shu<$STR(N$穿透个位)>.png|scale=1|esc=0>
+
+
+
+
+#IF
+EQUAL $STR(N$神兵总属性) 1
+#SAY
+<Img|id=sx23|x=174.0|y=180.0|width=400|height=210|scale=1|img=public/bg_npc_01.png|esc=0>
+<Button|id=sx24|x=524.0|y=178.0|scale=1|color=255|size=18|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|nimg=public/btn_close_01.png|link=@关闭二级面板>
+<Img|id=sx25|x=252.0|y=192.0|img=public/bg_title_02.png|scale=1|esc=0>
+<RText|id=sx26|x=320.0|y=200.0|color=255|size=20|text=<神器总属性/FCOLOR=67>>
+<RText|id=sx27|x=243.0|y=245.0|color=255|size=18|text=<<$STR(S$神器属性区分)>加成：/FCOLOR=95><<$STR(N$神器攻击)>%/FCOLOR=255>>
+<RText|id=sx28|x=243.0|y=290.0|color=255|size=18|text=<防御加成：/FCOLOR=95><<$STR(N$神器双防)>%/FCOLOR=255>>
+<RText|id=sx29|x=243.0|y=335.0|color=255|size=18|text=<血量加成：/FCOLOR=95><<$STR(N$神器血量)>%/FCOLOR=255>>
+<RText|id=sx30|x=405.0|y=245.0|color=255|size=18|text=<暴击几率：/FCOLOR=95><<$STR(N$神器暴击)>%/FCOLOR=255>>
+<RText|id=sx31|x=405.0|y=290.0|color=255|size=18|text=<暴击伤害：/FCOLOR=95><<$STR(N$神器爆伤)>%/FCOLOR=255>>
+<RText|id=sx32|x=405.0|y=335.0|color=255|size=18|text=<暴击抵抗：/FCOLOR=95><<$STR(N$神器抵抗)>%/FCOLOR=255>>
+
+
+[@下一个]
+#IF
+EQUAL $STR(N$图片编号) 7
+#ACT
+SENDMSG 19 已经是最后了
+GOTO @属性和名字
+BREAK
+#ELSEACT
+INC N$图片编号 1
+GOTO @属性和名字
+BREAK
+
+
+[@上一个]
+#IF
+EQUAL $STR(N$图片编号) 0
+#ACT
+SENDMSG 19 已经是最顶部了
+GOTO @属性和名字
+BREAK
+#ELSEACT
+DEC N$图片编号 1
+GOTO @属性和名字
+BREAK
+
+
+
+[@属性和名字]
+#IF
+TRUE
+#ACT
+MOV D82 0
+
+#IF
+LARGE $HUMAN(撼天等级) 0
+#ACT
+INC D82 1
+
+#IF
+LARGE $HUMAN(暗月等级) 0
+#ACT
+INC D82 1
+
+#IF
+LARGE $HUMAN(冥日等级) 0
+#ACT
+INC D82 1
+
+#IF
+LARGE $HUMAN(鬼炎等级) 0
+#ACT
+INC D82 1
+
+#IF
+LARGE $HUMAN(碧海天王等级) 0
+#ACT
+INC D82 1
+
+#IF
+LARGE $HUMAN(紫月圣君等级) 0
+#ACT
+INC D82 1
+
+#IF
+LARGE $HUMAN(赤明天帝等级) 0
+#ACT
+INC D82 1
+
+#IF
+LARGE $HUMAN(耀阳圣尊等级) 0
+#ACT
+INC D82 1
+
+#IF
+EQUAL D82 0
+#ACT
+MOV N$穿透护盾阶数 4
+
+#IF
+LARGE D82 0
+SMALL D82 3
+#ACT
+MOV N$穿透护盾阶数 6
+
+#IF
+EQUAL D82 3
+#ACT
+MOV N$穿透护盾阶数 9
+
+#IF
+EQUAL D82 4
+#ACT
+MOV N$穿透护盾阶数 12
+
+#IF
+EQUAL D82 5
+#ACT
+MOV N$穿透护盾阶数 15
+
+#IF
+EQUAL D82 6
+#ACT
+MOV N$穿透护盾阶数 17
+
+#IF
+EQUAL D82 7
+#ACT
+MOV N$穿透护盾阶数 17
+
+#IF
+EQUAL D82 8
+#ACT
+MOV N$穿透护盾阶数 18
+
+#IF
+LARGE N$穿透护盾阶数 9
+#ACT
+COPYTEXT $str(N$穿透护盾阶数) 1 1 N$穿透十位
+COPYTEXT $str(N$穿透护盾阶数) 2 1 N$穿透个位
+#IF
+EQUAL $STR(N$图片编号) 0
+#ACT
+MOV S$神器名字 撼天
+MOV N$神器坐标 363
+GOTO @神凶器红点判断
+
+#IF
+EQUAL $STR(N$图片编号) 1
+#ACT
+MOV S$神器名字 暗月
+MOV N$神器坐标 363
+GOTO @神凶器红点判断
+
+#IF
+EQUAL $STR(N$图片编号) 2
+#ACT
+MOV S$神器名字 冥日
+MOV N$神器坐标 363
+GOTO @神凶器红点判断
+
+#IF
+EQUAL $STR(N$图片编号) 3
+#ACT
+MOV S$神器名字 鬼炎
+MOV N$神器坐标 363
+GOTO @神凶器红点判断
+
+#IF
+EQUAL $STR(N$图片编号) 4
+#ACT
+MOV S$神器名字 碧海天王
+MOV N$神器坐标 350
+GOTO @神凶器红点判断
+
+#IF
+EQUAL $STR(N$图片编号) 5
+#ACT
+MOV S$神器名字 赤明天帝
+MOV N$神器坐标 350
+GOTO @神凶器红点判断
+
+#IF
+EQUAL $STR(N$图片编号) 6
+#ACT
+MOV S$神器名字 紫月圣君
+MOV N$神器坐标 350
+GOTO @神凶器红点判断
+
+#IF
+EQUAL $STR(N$图片编号) 7
+#ACT
+MOV S$神器名字 耀阳圣尊
+MOV N$神器坐标 350
+GOTO @神凶器红点判断
+
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 0
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=171.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><0%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=171.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$等级图片1 
+MOV S$等级图片2 shu0
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 1
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=171.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=158.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><2%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 
+MOV S$等级图片2 shu1
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 2
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=158.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><2%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=145.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><2%/FCOLOR=255>\<双防增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 
+MOV S$等级图片2 shu2
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 3
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=145.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><2%/FCOLOR=255>\<双防增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=132.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><2%/FCOLOR=255>\<双防增加：/FCOLOR=95><1%/FCOLOR=255>\<血量增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 
+MOV S$等级图片2 shu3
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 4
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=132.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><2%/FCOLOR=255>\<双防增加：/FCOLOR=95><1%/FCOLOR=255>\<血量增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=132.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><3%/FCOLOR=255>\<双防增加：/FCOLOR=95><1%/FCOLOR=255>\<血量增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 
+MOV S$等级图片2 shu4
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 5
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=132.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><3%/FCOLOR=255>\<双防增加：/FCOLOR=95><1%/FCOLOR=255>\<血量增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=119.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><3%/FCOLOR=255>\<双防增加：/FCOLOR=95><1%/FCOLOR=255>\<血量增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 
+MOV S$等级图片2 shu5
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 6
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=119.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><3%/FCOLOR=255>\<双防增加：/FCOLOR=95><1%/FCOLOR=255>\<血量增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=119.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><3%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 
+MOV S$等级图片2 shu6
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 7
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=119.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><3%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><3%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$等级图片1 
+MOV S$等级图片2 shu7
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 8
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><3%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><3%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$等级图片1 
+MOV S$等级图片2 shu8
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 9
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><3%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$等级图片1 
+MOV S$等级图片2 shu9
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 10
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击增加：/FCOLOR=95><1%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击增加：/FCOLOR=95><2%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$等级图片1 shu1
+MOV S$等级图片2 shu0
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 11
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击增加：/FCOLOR=95><2%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><3%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击增加：/FCOLOR=95><2%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$等级图片1 shu1
+MOV S$等级图片2 shu1
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 12
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><2%/FCOLOR=255>\<血量增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击增加：/FCOLOR=95><2%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><3%/FCOLOR=255>\<血量增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击增加：/FCOLOR=95><2%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$等级图片1 shu1
+MOV S$等级图片2 shu2
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 13
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><3%/FCOLOR=255>\<血量增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击增加：/FCOLOR=95><2%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><3%/FCOLOR=255>\<血量增加：/FCOLOR=95><5%/FCOLOR=255>\<暴击增加：/FCOLOR=95><2%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$等级图片1 shu1
+MOV S$等级图片2 shu3
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 14
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><3%/FCOLOR=255>\<血量增加：/FCOLOR=95><5%/FCOLOR=255>\<暴击增加：/FCOLOR=95><2%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><3%/FCOLOR=255>\<血量增加：/FCOLOR=95><5%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$等级图片1 shu1
+MOV S$等级图片2 shu4
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 15
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><4%/FCOLOR=255>\<双防增加：/FCOLOR=95><3%/FCOLOR=255>\<血量增加：/FCOLOR=95><5%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><5%/FCOLOR=255>\<双防增加：/FCOLOR=95><3%/FCOLOR=255>\<血量增加：/FCOLOR=95><5%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$等级图片1 shu1
+MOV S$等级图片2 shu5
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 16
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><5%/FCOLOR=255>\<双防增加：/FCOLOR=95><3%/FCOLOR=255>\<血量增加：/FCOLOR=95><5%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><2%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><5%/FCOLOR=255>\<双防增加：/FCOLOR=95><3%/FCOLOR=255>\<血量增加：/FCOLOR=95><5%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片2 shu6
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 17
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><5%/FCOLOR=255>\<双防增加：/FCOLOR=95><3%/FCOLOR=255>\<血量增加：/FCOLOR=95><5%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><5%/FCOLOR=255>\<双防增加：/FCOLOR=95><4%/FCOLOR=255>\<血量增加：/FCOLOR=95><5%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 shu1
+MOV S$等级图片2 shu7
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 18
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><5%/FCOLOR=255>\<双防增加：/FCOLOR=95><4%/FCOLOR=255>\<血量增加：/FCOLOR=95><5%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><5%/FCOLOR=255>\<双防增加：/FCOLOR=95><4%/FCOLOR=255>\<血量增加：/FCOLOR=95><6%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 shu1
+MOV S$等级图片2 shu8
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 19
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><5%/FCOLOR=255>\<双防增加：/FCOLOR=95><4%/FCOLOR=255>\<血量增加：/FCOLOR=95><6%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><6%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><5%/FCOLOR=255>\<双防增加：/FCOLOR=95><4%/FCOLOR=255>\<血量增加：/FCOLOR=95><6%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 shu1
+MOV S$等级图片2 shu9
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 20
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><5%/FCOLOR=255>\<双防增加：/FCOLOR=95><4%/FCOLOR=255>\<血量增加：/FCOLOR=95><6%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><6%/FCOLOR=255>\<双防增加：/FCOLOR=95><4%/FCOLOR=255>\<血量增加：/FCOLOR=95><6%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 shu2
+MOV S$等级图片2 shu0
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 21
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><6%/FCOLOR=255>\<双防增加：/FCOLOR=95><4%/FCOLOR=255>\<血量增加：/FCOLOR=95><6%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><6%/FCOLOR=255>\<双防增加：/FCOLOR=95><5%/FCOLOR=255>\<血量增加：/FCOLOR=95><6%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 shu2
+MOV S$等级图片2 shu1
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 22
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><6%/FCOLOR=255>\<双防增加：/FCOLOR=95><5%/FCOLOR=255>\<血量增加：/FCOLOR=95><6%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><6%/FCOLOR=255>\<双防增加：/FCOLOR=95><5%/FCOLOR=255>\<血量增加：/FCOLOR=95><7%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 shu2
+MOV S$等级图片2 shu2
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 23
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><6%/FCOLOR=255>\<双防增加：/FCOLOR=95><5%/FCOLOR=255>\<血量增加：/FCOLOR=95><7%/FCOLOR=255>\<暴击增加：/FCOLOR=95><3%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><6%/FCOLOR=255>\<双防增加：/FCOLOR=95><5%/FCOLOR=255>\<血量增加：/FCOLOR=95><7%/FCOLOR=255>\<暴击增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 shu2
+MOV S$等级图片2 shu3
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 24
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><6%/FCOLOR=255>\<双防增加：/FCOLOR=95><5%/FCOLOR=255>\<血量增加：/FCOLOR=95><7%/FCOLOR=255>\<暴击增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><7%/FCOLOR=255>\<双防增加：/FCOLOR=95><5%/FCOLOR=255>\<血量增加：/FCOLOR=95><7%/FCOLOR=255>\<暴击增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$等级图片1 shu2
+MOV S$等级图片2 shu4
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 25
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><7%/FCOLOR=255>\<双防增加：/FCOLOR=95><5%/FCOLOR=255>\<血量增加：/FCOLOR=95><7%/FCOLOR=255>\<暴击增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><3%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><7%/FCOLOR=255>\<双防增加：/FCOLOR=95><5%/FCOLOR=255>\<血量增加：/FCOLOR=95><7%/FCOLOR=255>\<暴击增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><5%/FCOLOR=255>>
+MOV S$等级图片1 shu2
+MOV S$等级图片2 shu5
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 26
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><7%/FCOLOR=255>\<双防增加：/FCOLOR=95><5%/FCOLOR=255>\<血量增加：/FCOLOR=95><7%/FCOLOR=255>\<暴击增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><5%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><7%/FCOLOR=255>\<双防增加：/FCOLOR=95><6%/FCOLOR=255>\<血量增加：/FCOLOR=95><7%/FCOLOR=255>\<暴击增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><5%/FCOLOR=255>>
+MOV S$等级图片1 shu2
+MOV S$等级图片2 shu6
+GOTO @神器主面板
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 27
+#ACT
+MOV S$神器当前属性 <RText|id=sx19|x=72.0|y=106.0|color=255|size=18|text=<<$STR(S$神器属性区分)>增加：/FCOLOR=95><7%/FCOLOR=255>\<双防增加：/FCOLOR=95><6%/FCOLOR=255>\<血量增加：/FCOLOR=95><7%/FCOLOR=255>\<暴击增加：/FCOLOR=95><4%/FCOLOR=255>\<暴击伤害：/FCOLOR=95><9%/FCOLOR=255>\<暴击抵抗：/FCOLOR=95><5%/FCOLOR=255>>
+MOV S$神器下级属性 <RText|id=sx20|x=570.0|y=171.0|color=255|size=18|text=<等待开放/FCOLOR=67>>
+MOV S$等级图片1 shu2
+MOV S$等级图片2 shu7
+GOTO @神器主面板
+BREAK
+
+
+[@神器属性]
+#IF
+TRUE
+#ACT
+MOV N$神器攻击 0
+MOV N$神器双防 0
+MOV N$神器血量 0
+MOV N$神器暴击 0
+MOV N$神器爆伤 0
+MOV N$神器抵抗 0
+MOV N$神兵总属性 1
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 1
+#ACT
+INC N$神器攻击 2
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 2
+#ACT
+INC N$神器攻击 2
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 3
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 4
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 5
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 6
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 7
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 8
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 9
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 10
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 11
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 12
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 13
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 14
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 15
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 16
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 17
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 18
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 19
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 20
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 21
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 22
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 23
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 24
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 25
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 26
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(撼天等级)> 27
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 6
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 1
+#ACT
+INC N$神器攻击 2
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 2
+#ACT
+INC N$神器攻击 2
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 3
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 4
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 5
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 6
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 7
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 8
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 9
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 10
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 11
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 12
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 13
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 14
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 15
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 16
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 17
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 18
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 19
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 20
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 21
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 22
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 23
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 24
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 25
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 26
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(暗月等级)> 27
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 6
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 1
+#ACT
+INC N$神器攻击 2
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 2
+#ACT
+INC N$神器攻击 2
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 3
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 4
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 5
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 6
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 7
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 8
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 9
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 10
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 11
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 12
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 13
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 14
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 15
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 16
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 17
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 18
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 19
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 20
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 21
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 22
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 23
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 24
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 25
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 26
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(冥日等级)> 27
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 6
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 1
+#ACT
+INC N$神器攻击 2
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 2
+#ACT
+INC N$神器攻击 2
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 3
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 4
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 5
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 6
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 7
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 8
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 9
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 10
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 11
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 12
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 13
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 14
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 15
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 16
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 17
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 18
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 19
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 20
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 21
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 22
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 23
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 24
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 25
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 26
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(鬼炎等级)> 27
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 6
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 1
+#ACT
+INC N$神器攻击 2
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 2
+#ACT
+INC N$神器攻击 2
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 3
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 4
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 5
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 6
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 7
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 8
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 9
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 10
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 11
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 12
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 13
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 14
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 15
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 16
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 17
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 18
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 19
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 20
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 21
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 22
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 23
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 24
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 25
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 26
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(碧海天王等级)> 27
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 6
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 1
+#ACT
+INC N$神器攻击 2
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 2
+#ACT
+INC N$神器攻击 2
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 3
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 4
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 5
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 6
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 7
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 8
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 9
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 10
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 11
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 12
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 13
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 14
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 15
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 16
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 17
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 18
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 19
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 20
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 21
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 22
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 23
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 24
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 25
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 26
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(赤明天帝等级)> 27
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 6
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 1
+#ACT
+INC N$神器攻击 2
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 2
+#ACT
+INC N$神器攻击 2
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 3
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 4
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 5
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 6
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 7
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 8
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 9
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 10
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 11
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 12
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 13
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 14
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 15
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 16
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 17
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 18
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 19
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 20
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 21
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 22
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 23
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 24
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 25
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 26
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(紫月圣君等级)> 27
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 6
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 1
+#ACT
+INC N$神器攻击 2
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 2
+#ACT
+INC N$神器攻击 2
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 3
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 4
+#ACT
+INC N$神器攻击 2
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 5
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 6
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 1
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 7
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 8
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 3
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 9
+#ACT
+INC N$神器攻击 3
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 10
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 1
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 11
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 3
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 12
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 2
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 13
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 4
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 14
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 2
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 15
+#ACT
+INC N$神器攻击 4
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 16
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 2
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 17
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 3
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 18
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 5
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 19
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 6
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 20
+#ACT
+INC N$神器攻击 5
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 21
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 4
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 22
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 6
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 23
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 3
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 24
+#ACT
+INC N$神器攻击 6
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 25
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 3
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 26
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 5
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL <$HUMAN(耀阳圣尊等级)> 27
+#ACT
+INC N$神器攻击 7
+INC N$神器双防 6
+INC N$神器血量 7
+INC N$神器暴击 4
+INC N$神器爆伤 9
+INC N$神器抵抗 5
+
+#IF
+EQUAL N$神兵总属性 1
+#ACT
+GOTO @神器凶器
+MOV N$神兵总属性 0
+BREAK
+
+[@关闭二级面板]
+#IF
+TRUE
+#ACT
+GOTO @神器凶器
+BREAK
+
+
+[@激活和升级]
+#IF
+!SMALL <$HUMAN(<$STR(S$神器名字)>等级)> 27
+#ACT
+SENDMSG 19 神器已满级
+BREAK
+
+
+#IF
+LARGE <$HUMAN(<$STR(S$神器名字)>等级)> 0
+SMALL <$ITEMVALSUM(<$STR(S$神器升级材料)>).DURA> <$STR(N$神凶器分割_0)>
+#ACT
+SENDMSG 19 升级所需材料不足
+BREAK
+
+#IF
+LARGE <$HUMAN(<$STR(S$神器名字)>等级)> 0
+!SMALL <$ITEMVALSUM(<$STR(S$神器升级材料)>).DURA> <$STR(N$神凶器分割_0)>
+#ACT
+CALCVAR HUMAN <$STR(S$神器名字)>等级 + 1 1
+TAKE 凶器精粹 <$STR(N$神凶器分割_0)>
+SENDMSG 19 升级成功
+GOTO @临时属性
+GOTO @属性和名字
+GOTO @神凶器红点判断
+GOTO @顶部七日狂欢红点
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 0
+!CHECKITEM <$STR(S$神器名字)> 1
+#ACT
+SENDMSG 19 激活所需材料不足
+BREAK
+
+#IF
+EQUAL <$HUMAN(<$STR(S$神器名字)>等级)> 0
+CHECKITEM <$STR(S$神器名字)> 1
+#ACT
+TAKE <$STR(S$神器名字)> 1
+CALCVAR HUMAN <$STR(S$神器名字)>等级 = 1 1
+SENDMSG 19 激活成功
+GOTO @临时属性
+GOTO @属性和名字
+GOTO @包裹红点判断
+GOTO @神凶器红点判断
+GOTO @顶部七日狂欢红点
+BREAK
+
+
+
+
+
+[@神器分解界面]
+#IF
+TRUE
+#ACT
+GOTO @神器内部红点判断
+
+#IF
+LARGE <$ITEMCOUNT[撼天]> 0
+#ACT
+MOV S$神器分解红点1 <Img|id=sx4-3|x=233.0|y=4.0|img=public/icon_reddot_01.png|scale=1|esc=0>
+#ELSEACT
+MOV S$神器分解红点1 
+
+#IF
+LARGE <$ITEMCOUNT[暗月]> 0
+#ACT
+MOV S$神器分解红点2 <Img|id=sx5-3|x=233.0|y=4.0|img=public/icon_reddot_01.png|scale=1|esc=0>
+#ELSEACT
+MOV S$神器分解红点2 
+
+#IF
+LARGE <$ITEMCOUNT[冥日]> 0
+#ACT
+MOV S$神器分解红点3 <Img|id=sx6-3|x=233.0|y=4.0|img=public/icon_reddot_01.png|scale=1|esc=0>
+#ELSEACT
+MOV S$神器分解红点3 
+
+#IF
+LARGE <$ITEMCOUNT[鬼炎]> 0
+#ACT
+MOV S$神器分解红点4 <Img|id=sx7-3|x=233.0|y=4.0|img=public/icon_reddot_01.png|scale=1|esc=0>
+#ELSEACT
+MOV S$神器分解红点4 
+
+#IF
+LARGE <$ITEMCOUNT[碧海天王]> 0
+#ACT
+MOV S$神器分解红点5 <Img|id=sx8-3|x=233.0|y=4.0|img=public/icon_reddot_01.png|scale=1|esc=0>
+#ELSEACT
+MOV S$神器分解红点5 
+
+#IF
+LARGE <$ITEMCOUNT[赤明天帝]> 0
+#ACT
+MOV S$神器分解红点6 <Img|id=sx9-3|x=233.0|y=4.0|img=public/icon_reddot_01.png|scale=1|esc=0>
+#ELSEACT
+MOV S$神器分解红点6 
+
+#IF
+LARGE <$ITEMCOUNT[紫月圣君]> 0
+#ACT
+MOV S$神器分解红点7 <Img|id=sx10-3|x=233.0|y=4.0|img=public/icon_reddot_01.png|scale=1|esc=0>
+#ELSEACT
+MOV S$神器分解红点7 
+
+#IF
+LARGE <$ITEMCOUNT[耀阳圣尊]> 0
+#ACT
+MOV S$神器分解红点8 <Img|id=sx11-3|x=233.0|y=4.0|img=public/icon_reddot_01.png|scale=1|esc=0>
+#ELSEACT
+MOV S$神器分解红点8 
+
+#IF
+TRUE
+#SAY
+<Img|id=sx1|children={sx40,sx41,sx42,sx43,sx2,sx3,sx12,sx13,sx14}|x=-17.0|y=-3.0|loadDelay=0|esc=1|bg=1|show=5|move=0|scale=1|_localZOrder=-1|img=private/shenxiongqi/shenxiongqifenjie.png|link=1>
+<Img|id=sx40|children={sx40-1}|x=755.0|y=29.0|esc=0|scale=1|img=public/btn_push_0<$STR(N$右侧按钮1)>.png>
+<Text|id=sx40-1|x=19.0|y=17.0|rotate=0|size=20|color=67|text=凶\器>
+<Img|id=sx41|children={sx41-1}|x=755.0|y=108.0|esc=0|scale=1|img=public/btn_push_0<$STR(N$右侧按钮2)>.png>
+<Text|id=sx41-1|ay=1|x=19.0|y=18.0|color=67|size=20|text=拆\解>
+<Layout|id=sx42|x=755.0|y=31.0|width=50|height=80|link=@神器凶器>
+<Layout|id=sx43|x=755.0|y=112.0|width=50|height=80|link=@分解撼天&撼天>
+<Button|id=sx2|x=717.0|y=-7.0|mimg=public/btn_close_01.png|pimg=public/btn_close_01.png|scale=1|color=255|nimg=public/btn_close_01.png|size=18|link=@exit>
+<ListView|id=sx3|children={sx4,sx5,sx6,sx7,sx8,sx9,sx10,sx11}|x=14.0|y=49.0|width=255|height=510>
+<Button|id=sx4|children={sx4-1,sx4-2,sx4-3}|x=278.0|y=133.0|scale=1|size=18|color=255|nimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮1)>.png|pimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮1)>.png|link=@分解撼天&撼天>
+<ItemShow|id=sx4-1|x=25.0|y=23.0|width=70|height=70|rotate=0|itemid=283|itemcount=1|showtips=1|bgtype=1|name=撼天>
+<Text|id=sx4-2|x=153.0|y=44.0|color=67|size=20|text=撼天>
+<$STR(S$神器分解红点1)>
+
+<Button|id=sx5|children={sx5-1,sx5-2,sx5-3}|x=278.0|y=133.0|scale=1|size=18|color=255|nimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮2)>.png|pimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮2)>.png|link=@分解暗月&暗月>
+<ItemShow|id=sx5-1|x=25.0|y=23.0|width=70|height=70|rotate=0|itemid=284|itemcount=1|showtips=1|bgtype=1|name=暗月>
+<Text|id=sx5-2|x=153.0|y=44.0|color=67|size=20|text=暗月>
+<$STR(S$神器分解红点2)>
+
+<Button|id=sx6|children={sx6-1,sx6-2,sx6-3}|x=278.0|y=133.0|scale=1|size=18|color=255|nimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮3)>.png|pimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮3)>.png|link=@分解冥日&冥日>
+<ItemShow|id=sx6-1|x=25.0|y=23.0|width=70|height=70|rotate=0|itemid=285|itemcount=1|showtips=1|bgtype=1|name=冥日>
+<Text|id=sx6-2|x=153.0|y=44.0|color=67|size=20|text=冥日>
+<$STR(S$神器分解红点3)>
+
+<Button|id=sx7|children={sx7-1,sx7-2,sx7-3}|x=278.0|y=133.0|scale=1|size=18|color=255|nimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮4)>.png|pimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮4)>.png|link=@分解鬼炎&鬼炎>
+<ItemShow|id=sx7-1|x=25.0|y=23.0|width=70|height=70|rotate=0|itemid=286|itemcount=1|showtips=1|bgtype=1|name=鬼炎>
+<Text|id=sx7-2|x=153.0|y=44.0|color=67|size=20|text=鬼炎>
+<$STR(S$神器分解红点4)>
+
+<Button|id=sx8|children={sx8-1,sx8-2,sx8-3}|x=278.0|y=133.0|scale=1|size=18|color=255|nimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮5)>.png|pimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮5)>.png|link=@分解碧海天王&碧海天王>
+<ItemShow|id=sx8-1|x=25.0|y=23.0|width=70|height=70|rotate=0|itemid=288|itemcount=1|showtips=1|bgtype=1|name=碧海天王>
+<Text|id=sx8-2|x=133.0|y=44.0|color=67|size=20|text=碧海天王>
+<$STR(S$神器分解红点5)>
+
+<Button|id=sx9|children={sx9-1,sx9-2,sx9-3}|x=278.0|y=133.0|scale=1|size=18|color=255|nimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮6)>.png|pimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮6)>.png|link=@分解赤明天帝&赤明天帝>
+<ItemShow|id=sx9-1|x=25.0|y=23.0|width=70|height=70|rotate=0|itemid=738|itemcount=1|showtips=1|bgtype=1|name=赤明天帝>
+<Text|id=sx9-2|x=133.0|y=44.0|color=67|size=20|text=赤明天帝>
+<$STR(S$神器分解红点6)>
+
+<Button|id=sx10|children={sx10-1,sx10-2,sx10-3}|x=278.0|y=133.0|scale=1|size=18|color=255|nimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮7)>.png|pimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮7)>.png|link=@分解紫月圣君&紫月圣君>
+<ItemShow|id=sx10-1|x=25.0|y=23.0|width=70|height=70|rotate=0|itemid=943|itemcount=1|showtips=1|bgtype=1|name=紫月圣君>
+<Text|id=sx10-2|x=133.0|y=44.0|color=67|size=20|text=紫月圣君>
+<$STR(S$神器分解红点7)>
+
+<Button|id=sx11|children={sx11-1,sx11-2,sx11-3}|x=278.0|y=133.0|scale=1|size=18|color=255|nimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮8)>.png|pimg=private/shenxiongqi/bg_playerchoose<$STR(N$神器分解选择按钮8)>.png|link=@分解耀阳圣尊&耀阳圣尊>
+<ItemShow|id=sx11-1|x=25.0|y=23.0|width=70|height=70|rotate=0|itemid=944|itemcount=1|showtips=1|bgtype=1|name=耀阳圣尊>
+<Text|id=sx11-2|x=133.0|y=44.0|color=67|size=20|text=耀阳圣尊>
+<$STR(S$神器分解红点8)>
+
+<ItemShow|id=sx12|x=480.0|y=186.0|width=70|height=70|rotate=0|itemid=<$STR(S$分解的神器ID)>|itemcount=1|showtips=1|bgtype=1|name=<$STR(S$分解的神器)>>
+<ItemShow|id=sx13|x=480.0|y=384.0|width=70|height=70|itemid=25898|itemcount=800|name=凶器精粹|showtips=1|bgtype=1>
+<Layout|id=sx14|x=448.0|y=499.0|width=130|height=40|link=@凶器分解>
+
+[@凶器分解]
+#IF
+!LARGE <$ITEMCOUNT[<$SCRIPTPARAM(1)>]> 0
+#ACT
+SENDMSG 19 没有可分解的物品
+BREAK
+
+#IF
+LARGE <$ITEMCOUNT[<$SCRIPTPARAM(1)>]> 0
+#ACT
+TAKE <$SCRIPTPARAM(1)> 1
+GIVE 凶器精粹 800 1
+GOTO @神器分解界面
+GOTO @神凶器红点判断
+BREAK
+
+
+
+
+[@分解撼天]
+#IF
+TRUE
+#ACT
+MOV N$右侧按钮1 8
+MOV N$右侧按钮2 9
+MOV N$神器分解选择按钮1 2
+MOV N$神器分解选择按钮2 1
+MOV N$神器分解选择按钮3 1
+MOV N$神器分解选择按钮4 1
+MOV N$神器分解选择按钮5 1
+MOV N$神器分解选择按钮6 1
+MOV N$神器分解选择按钮7 1
+MOV N$神器分解选择按钮8 1
+MOV S$分解的神器 撼天
+MOV S$分解的神器ID 283
+GOTO @神器分解界面
+BREAK
+
+[@分解暗月]
+#IF
+TRUE
+#ACT
+MOV N$右侧按钮1 8
+MOV N$右侧按钮2 9
+MOV N$神器分解选择按钮1 1
+MOV N$神器分解选择按钮2 2
+MOV N$神器分解选择按钮3 1
+MOV N$神器分解选择按钮4 1
+MOV N$神器分解选择按钮5 1
+MOV N$神器分解选择按钮6 1
+MOV N$神器分解选择按钮7 1
+MOV N$神器分解选择按钮8 1
+MOV S$分解的神器 暗月
+MOV S$分解的神器ID 284
+GOTO @神器分解界面
+BREAK
+
+[@分解冥日]
+#IF
+TRUE
+#ACT
+MOV N$右侧按钮1 8
+MOV N$右侧按钮2 9
+MOV N$神器分解选择按钮1 1
+MOV N$神器分解选择按钮2 1
+MOV N$神器分解选择按钮3 2
+MOV N$神器分解选择按钮4 1
+MOV N$神器分解选择按钮5 1
+MOV N$神器分解选择按钮6 1
+MOV N$神器分解选择按钮7 1
+MOV N$神器分解选择按钮8 1
+MOV S$分解的神器 冥日
+MOV S$分解的神器ID 285
+GOTO @神器分解界面
+BREAK
+
+[@分解鬼炎]
+#IF
+TRUE
+#ACT
+MOV N$右侧按钮1 8
+MOV N$右侧按钮2 9
+MOV N$神器分解选择按钮1 1
+MOV N$神器分解选择按钮2 1
+MOV N$神器分解选择按钮3 1
+MOV N$神器分解选择按钮4 2
+MOV N$神器分解选择按钮5 1
+MOV N$神器分解选择按钮6 1
+MOV N$神器分解选择按钮7 1
+MOV N$神器分解选择按钮8 1
+MOV S$分解的神器 鬼炎
+MOV S$分解的神器ID 286
+GOTO @神器分解界面
+BREAK
+
+[@分解碧海天王]
+#IF
+TRUE
+#ACT
+MOV N$右侧按钮1 8
+MOV N$右侧按钮2 9
+MOV N$神器分解选择按钮1 1
+MOV N$神器分解选择按钮2 1
+MOV N$神器分解选择按钮3 1
+MOV N$神器分解选择按钮4 1
+MOV N$神器分解选择按钮5 2
+MOV N$神器分解选择按钮6 1
+MOV N$神器分解选择按钮7 1
+MOV N$神器分解选择按钮8 1
+MOV S$分解的神器 碧海天王
+MOV S$分解的神器ID 288
+GOTO @神器分解界面
+BREAK
+
+[@分解赤明天帝]
+#IF
+TRUE
+#ACT
+MOV N$右侧按钮1 8
+MOV N$右侧按钮2 9
+MOV N$神器分解选择按钮1 1
+MOV N$神器分解选择按钮2 1
+MOV N$神器分解选择按钮3 1
+MOV N$神器分解选择按钮4 1
+MOV N$神器分解选择按钮5 1
+MOV N$神器分解选择按钮6 2
+MOV N$神器分解选择按钮7 1
+MOV N$神器分解选择按钮8 1
+MOV S$分解的神器 赤明天帝
+MOV S$分解的神器ID 738
+GOTO @神器分解界面
+BREAK
+
+[@分解紫月圣君]
+#IF
+TRUE
+#ACT
+MOV N$右侧按钮1 8
+MOV N$右侧按钮2 9
+MOV N$神器分解选择按钮1 1
+MOV N$神器分解选择按钮2 1
+MOV N$神器分解选择按钮3 1
+MOV N$神器分解选择按钮4 1
+MOV N$神器分解选择按钮5 1
+MOV N$神器分解选择按钮6 1
+MOV N$神器分解选择按钮7 2
+MOV N$神器分解选择按钮8 1
+MOV S$分解的神器 紫月圣君
+MOV S$分解的神器ID 943
+GOTO @神器分解界面
+BREAK
+
+[@分解耀阳圣尊]
+#IF
+TRUE
+#ACT
+MOV N$右侧按钮1 8
+MOV N$右侧按钮2 9
+MOV N$神器分解选择按钮1 1
+MOV N$神器分解选择按钮2 1
+MOV N$神器分解选择按钮3 1
+MOV N$神器分解选择按钮4 1
+MOV N$神器分解选择按钮5 1
+MOV N$神器分解选择按钮6 1
+MOV N$神器分解选择按钮7 1
+MOV N$神器分解选择按钮8 2
+MOV S$分解的神器 耀阳圣尊
+MOV S$分解的神器ID 944
+GOTO @神器分解界面
+BREAK
+
+[@神器内部红点判断]
+#IFONE
+LARGE <$ITEMCOUNT[撼天]> 0
+LARGE <$ITEMCOUNT[暗月]> 0
+LARGE <$ITEMCOUNT[鬼炎]> 0
+LARGE <$ITEMCOUNT[冥日]> 0
+LARGE <$ITEMCOUNT[碧海天王]> 0
+LARGE <$ITEMCOUNT[紫月圣君]> 0
+LARGE <$ITEMCOUNT[耀阳圣尊]> 0
+LARGE <$ITEMCOUNT[赤明天帝]> 0
+#ACT
+RedDot 5 sx43 40 15
+#ELSEACT
+RedDel 5 sx43
+
+#IF
+TRUE
+#ACT
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$撼天抽取 <$Human(撼天等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$暗月抽取 <$Human(暗月等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$冥日抽取 <$Human(冥日等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$鬼炎抽取 <$Human(鬼炎等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$碧海天王抽取 <$Human(碧海天王等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$赤明天帝抽取 <$Human(赤明天帝等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$紫月圣君抽取 <$Human(紫月圣君等级)>
+
+ReadRandomStr ..\QuestDiary\文本读取\神凶器消耗.txt N$耀阳圣尊抽取 <$Human(耀阳圣尊等级)>
+
+#IF
+!SMALL $Human(撼天等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$撼天抽取)
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+!SMALL $Human(暗月等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$暗月抽取)
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+!SMALL $Human(冥日等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$冥日抽取)
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+!SMALL $Human(鬼炎等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$鬼炎抽取)
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+!SMALL $Human(碧海天王等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$碧海天王抽取)
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+!SMALL $Human(赤明天帝等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$赤明天帝抽取)
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+!SMALL $Human(紫月圣君等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$紫月圣君抽取)
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+!SMALL $Human(耀阳圣尊等级) 1
+!SMALL <$ITEMVALSUM(凶器精粹).DURA> $STR(N$耀阳圣尊抽取)
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+EQUAL $Human(撼天等级) 0
+CHECKITEM 撼天
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+EQUAL $Human(暗月等级) 0
+CHECKITEM 暗月
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+EQUAL $Human(冥日等级) 0
+CHECKITEM 冥日
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+EQUAL $Human(鬼炎等级) 0
+CHECKITEM 鬼炎
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+EQUAL $Human(碧海天王等级) 0
+CHECKITEM 碧海天王
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+EQUAL $Human(赤明天帝等级) 0
+CHECKITEM 赤明天帝
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+EQUAL $Human(紫月圣君等级) 0
+CHECKITEM 紫月圣君
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+#IF
+EQUAL $Human(耀阳圣尊等级) 0
+CHECKITEM 耀阳圣尊
+#ACT
+RedDot 5 sx42 40 15
+BREAK
+
+
+
+#IF
+TRUE
+#ACT
+RedDel 5 sx42
+BREAK
+
+
+
+
+}

@@ -1,0 +1,49 @@
+[@main]
+
+#IF
+SMALL <$ITEMCOUNT[秘境挑战卷]> 1
+#ACT
+MOV N$技能神殿显示 58
+#ELSEACT
+MOV N$技能神殿显示 250
+
+
+#IF
+RANDOM 1
+#SAY
+<Img|show=5|img=private/jinengshendian/img_bg.png|loadDelay=0|bg=1|reset=1|_localZOrder=-2|move=0>
+<Button|x=815.0|y=-5.0|color=255|scale=1|size=18|nimg=public/btn_close_01.png|link=@exit>
+<RText|x=67.0|y=425.0|color=255|size=16|text=本地图每8小时刷新9只技能书BOSS\技能书BOSS击杀后必定掉落大量书页\书页用于高等级技能合成\9只BOSS其中有1只真·技能书BOSS,开\服7日内击杀后必定掉落成品技能书>
+<ItemShow|x=418.0|y=450|width=70|height=70|itemid=1|itemcount=1|name=书页|itemid=25894|bgtype=1|showtips=1>
+<ItemShow|ay=1|x=469.0|y=450.0|width=70|height=70|itemid=887|itemcount=1|bgtype=1|showtips=1|name=烈火剑法(专家级)>
+<ItemShow|x=520.0|y=450.0|width=70|height=70|itemid=887|itemcount=1|name=攻杀剑法(专家级)|bgtype=1|showtips=1>
+<ItemShow|x=571.0|y=450.0|width=70|height=70|itemid=887|itemcount=1|name=雷电术(专家级)|bgtype=1|showtips=1>
+<ItemShow|x=622.0|y=450.0|width=70|height=70|itemid=887|itemcount=1|name=火墙(专家级)|bgtype=1|showtips=1>
+<ItemShow|x=673.0|y=450.0|width=70|height=70|itemid=887|itemcount=1|name=施毒术(专家级)|bgtype=1|showtips=1>
+<ItemShow|x=724.0|y=450.0|width=70|height=70|itemid=887|itemcount=1|name=幽冥火咒(专家级)|bgtype=1|showtips=1>
+<Text|ax=0.5|ay=0.5|x=435.0|y=395.0|color=<$STR(N$技能神殿显示)>|size=18|text=进入所需：技能神殿传送卷*1>
+
+#IF
+!SMALL <$LONGDATE> <$STR(G12)>
+#ELSEACT
+MOV N$技能神殿_倒计时 <$DEC.<$STR(G12)>.<$LONGDATE>>
+#SAY
+<Button|children={2}|x=382.0|y=343.0|pimg=public/btn1.png|color=255|size=18|scale=1|nimg=public/btn1.png|mimg=public/btn1.png|link=@技能神殿_进入>
+<Img|id=2|ax=0.5|ay=1|x=56.0|y=10.0|width=43|height=15|scale=1|esc=0|img=public/jinru.png>
+#ELSESAY
+<Button|children={2}|x=382.0|y=343.0|pimg=public/btn1.png|color=255|grey=1|size=18|scale=1|nimg=public/btn1.png|mimg=public/btn1.png|link=@xx>
+<Img|id=2|ax=0.5|ay=1|x=56.0|y=10.0|width=43|height=15|scale=1|esc=0|grey=1|img=public/jinru.png>
+<Text|id=3|x=-140|y=0|color=250|size=18|text=BOSS刷新倒计时:>
+<TIMETIPS|children={3}|x=507|y=333|ax=0.5|ay=0.5|color=250|size=18|time=<$STR(N$技能神殿_倒计时)>|link=@main>
+
+[@技能神殿_进入]
+#IF
+SMALL <$ITEMCOUNT[秘境挑战卷]> 1
+#ACT
+SENDMSG 19 物品不足
+#ELSEACT
+TAKE 秘境挑战卷 1
+MapMove HJQGD 10 10
+CLOSE
+
+

@@ -1,0 +1,365 @@
+[@MAIN]
+#IF
+TRUE
+#ACT
+GOTO @泡点使者
+
+[@泡点使者]
+#IF
+TRUE
+#ACT
+MOV N$泡点一区背景图 1
+MOV N$泡点二区背景图 1
+MOV N$泡点三区背景图 1
+MOV N$泡点四区背景图 1
+
+
+#IF
+!SMALL $CustomValue(90) 4
+!SMALL <$LEVEL> 70
+#ACT
+MOV N$泡点二区背景图 0
+
+#IF
+!SMALL $CustomValue(90) 5
+!SMALL <$LEVEL> 80
+#ACT
+MOV N$泡点三区背景图 0
+
+#IF
+!SMALL $CustomValue(90) 6
+!SMALL <$LEVEL> 85
+#ACT
+MOV N$泡点四区背景图 0
+
+#IF
+!SMALL <$HUMAN(泡点剩余时间)> 5
+#ACT
+MOV N$泡点剩余分钟 <$DIV.<$HUMAN(泡点剩余时间)>.60>
+Mod <$HUMAN(泡点剩余时间)> 60
+MOV N$泡点剩余秒数 
+
+
+#IF
+TRUE
+#SAY
+<Img|children={PD1,PD2,PD3,PD4,PD5,PD6,PD7,PD8,PD9,PD10,PD11,PD12,PD13,PD14,PD15,PD16,PD17,PD18,PD19,xPD18,xPD19,PD20,PD21,PD22,PD23,PD24,PD25,PD26,PD27,PD28,PD29,xPD28,xPD29,PD30,PD31,PD32,PD33,PD34,PD35,PD36,PD37,PD38,PD39,xPD38,xPD39,PD40,PD41,PD42,PD43,PD44,PD45,PD46,PD47,PD48}|x=124.0|y=35.0|bg=1|loadDelay=0|esc=0|scale=1|img=private/paodian/58400.png>
+<Button|id=PD1|x=797.0|y=-4.0|scale=1|color=255|size=18|nimg=public/btn_close_01.png|link=@EXIT>
+<Img|id=PD2|x=23.0|y=47.0|scale=1|esc=0|img=private/paodian/5840<$STR(N$泡点一区背景图)>.png|link=@选择泡点一区>
+;-------------------------
+<Img|id=PD10|grey=<$STR(N$泡点二区背景图)>|x=231.0|y=47.0|scale=1|esc=0|img=private/paodian/58403.png|link=@选择泡点二区>
+;-------------------------
+<Img|id=PD20|grey=<$STR(N$泡点三区背景图)>|x=439.0|y=47.0|scale=1|esc=0|img=private/paodian/58405.png|link=@选择泡点三区>
+;-------------------------
+<Img|id=PD30|grey=<$STR(N$泡点四区背景图)>|x=646.0|y=47.0|scale=1|esc=0|img=private/paodian/58407.png|link=@选择泡点四区>
+;-------------------------
+<RText|id=PD40|x=91.0|y=427.0|size=16|color=255|text=<1.每日所有玩家均有60分钟免费泡点时间，30分钟付费泡点时间/FCOLOR=150>\<2.进入泡点地图消耗泡点时间及对应元宝/FCOLOR=150>\<3.泡点时获得大量经验、魔体经验/FCOLOR=150>\<4.地图中心火源点经验倍率为1.1倍/FCOLOR=150><（开通年卡后付费泡点地图收费五折）/FCOLOR=218>\<5.泡点地图享受各类经验加成，如羽翼皮肤、年卡月卡季卡等/FCOLOR=150>>
+<Text|id=PD46|x=685.0|y=432.0|size=20|color=218|text=免费泡点时间>
+<Text|id=PD41|x=711.0|y=457.0|size=20|color=218|text=<$DIV.$HUMAN(泡点剩余时间).60>分<$MOD.$HUMAN(泡点剩余时间).60>秒>
+<Text|id=PD47|x=685.0|y=494.0|size=20|color=218|text=付费泡点时间>
+<Text|id=PD48|x=711.0|y=518.0|size=20|color=218|text=<$DIV.$HUMAN(泡点付费剩余时间).60>分<$MOD.$HUMAN(泡点付费剩余时间).60>秒>
+
+
+
+#IF
+EQUAL N$泡点二区背景图 1
+EQUAL N$点击灰色泡点二区 0
+#SAY
+<Img|id=PD42|x=254|y=70|scale=1|esc=0|img=private/paodian/58411.png|link=@选择泡点二区>
+
+#IF
+EQUAL N$泡点三区背景图 1
+EQUAL N$点击灰色泡点三区 0
+#SAY
+<Img|id=PD43|x=461|y=70|scale=1|esc=0|img=private/paodian/58412.png|link=@选择泡点三区>
+
+#IF
+EQUAL N$泡点四区背景图 1
+EQUAL N$点击灰色泡点四区 0
+#SAY
+<Img|id=PD44|x=669|y=70|scale=1|esc=0|img=private/paodian/58410.png|link=@选择泡点四区>
+
+#IF
+EQUAL S$点击泡点一区 1
+#SAY
+<Img|id=PD3|x=24.0|y=48.0|scale=1|esc=0|img=private/paodian/58409.png|link=@取消选择>
+<Text|id=PD4|x=110.0|y=120.0|size=17|color=150|text=免费>
+<Text|id=PD5|x=67.0|y=237.0|size=18|color=150|text=人物经验 5250>
+<Text|id=PD6|x=74.0|y=269.0|size=18|color=150|text=魔体经验 900>
+<Img|id=PD7|x=72.0|y=344.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=PD8|x=107.0|y=355.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=PD9|x=51.0|y=326.0|width=150|height=70|link=@进入泡点&泡点秘境地图=QGD001>
+
+
+#ACT
+MOV S$点击泡点一区 0
+;-------------------------
+;#IF
+;EQUAL S$点击泡点二区 1
+;!SMALL $CustomValue(90) 21
+;#SAY
+;<Text|id=PD12|x=324.0|y=118.0|size=17|color=150|text=无>
+
+#IF
+CHECK [226] 1
+#ACT
+MOV S$二区泡点消耗展示元宝 10
+#ELSEACT
+MOV S$二区泡点消耗展示元宝 20
+
+
+#IFONE
+EQUAL S$点击泡点二区 1
+EQUAL N$点击灰色泡点二区 1
+#SAY
+<Img|id=PD18|grey=<$STR(N$进入地图条件颜色1)>|x=284.0|y=110.0|img=public/icon_currency_ingot_02.png|scale=1|esc=0>
+<Text|id=PD19|x=318.0|y=108.0|size=17|color=<$STR(N$进入地图条件颜色2)>|text=原价：<$DIV.20.5>>
+<Img|id=xPD18|grey=<$STR(N$进入地图条件颜色1)>|x=284.0|y=135.0|img=public/icon_currency_ingot_02.png|scale=1|esc=0>
+<Text|id=xPD19|x=318.0|y=133.0|size=17|color=<$STR(N$进入地图条件颜色2)>|text=年卡：<$DIV.<$STR(S$二区泡点消耗展示元宝)>.5>>
+;-------------------------
+#IF
+EQUAL N$点击灰色泡点二区 1
+#SAY
+<Img|id=PD11|grey=1|x=232.0|y=48.0|scale=1|esc=0|img=private/paodian/58409.png|link=@取消选择>
+<Text|id=PD13|x=275.0|y=237.0|size=18|color=7|text=人物经验 8140>
+<Text|id=PD14|x=276.0|y=269.0|size=18|color=7|text=魔体经验 1200>
+<Img|id=PD15|grey=1|x=280.0|y=344.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=PD16|grey=1|x=315.0|y=355.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=PD17|grey=1|x=259.0|y=326.0|width=150|height=70|link=@条件不足&等级要求=70&VIP要求=4&进入泡点地图需要元宝=<$STR(S$二区泡点消耗展示元宝)>>
+
+#ACT
+MOV N$点击灰色泡点二区 0
+;-------------------------
+#IF
+EQUAL S$点击泡点二区 1
+#SAY
+<Img|id=PD11|x=232.0|y=48.0|scale=1|esc=0|img=private/paodian/58409.png|link=@取消选择>
+<Text|id=PD13|x=275.0|y=237.0|size=18|color=150|text=人物经验 8140>
+<Text|id=PD14|x=276.0|y=269.0|size=18|color=150|text=魔体经验 1200>
+<Img|id=PD15|x=280.0|y=344.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=PD16|x=315.0|y=355.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=PD17|x=259.0|y=326.0|width=150|height=70|link=@进入泡点&泡点秘境地图=QGD002&进入泡点地图需要元宝=<$STR(S$二区泡点消耗展示元宝)>>
+
+#ACT
+MOV S$点击泡点二区 0
+;-------------------------
+;#IF
+;EQUAL S$点击泡点三区 1
+;!SMALL $CustomValue(90) 21
+;#SAY
+;<Text|id=PD22|x=530.0|y=118.0|size=17|color=150|text=无>
+
+#IF
+CHECK [226] 1
+#ACT
+MOV S$三区泡点消耗展示元宝 20
+#ELSEACT
+MOV S$三区泡点消耗展示元宝 40
+
+#IFONE
+EQUAL S$点击泡点三区 1
+EQUAL N$点击灰色泡点三区 1
+#SAY
+<Img|id=PD28|grey=<$STR(N$进入地图条件颜色1)>|x=490.0|y=110.0|img=public/icon_currency_ingot_02.png|scale=1|esc=0>
+<Text|id=PD29|x=524.0|y=108.0|size=17|color=<$STR(N$进入地图条件颜色2)>|text=原价：<$DIV.40.5>>
+<Img|id=xPD28|grey=<$STR(N$进入地图条件颜色1)>|x=490.0|y=135.0|img=public/icon_currency_ingot_02.png|scale=1|esc=0>
+<Text|id=xPD29|x=524.0|y=133.0|size=17|color=<$STR(N$进入地图条件颜色2)>|text=年卡：<$DIV.<$STR(S$三区泡点消耗展示元宝)>.5>>
+#IF
+EQUAL N$点击灰色泡点三区 1
+#SAY
+<Img|id=PD21|grey=1|x=438.0|y=48.0|scale=1|esc=0|img=private/paodian/58409.png|link=@取消选择>
+<Text|id=PD23|x=475.0|y=237.0|size=18|color=7|text=人物经验 11550>
+<Text|id=PD24|x=482.0|y=269.0|size=18|color=7|text=魔体经验 1800>
+<Img|id=PD25|grey=1|x=486.0|y=344.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=PD26|grey=1|x=521.0|y=355.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=PD27|grey=1|x=465.0|y=326.0|width=150|height=70|link=@条件不足&等级要求=80&VIP要求=5&进入泡点地图需要元宝=<$STR(S$三区泡点消耗展示元宝)>>
+
+#ACT
+MOV N$点击灰色泡点三区 0
+;-------------------------
+#IF
+EQUAL S$点击泡点三区 1
+#SAY
+<Img|id=PD21|x=438.0|y=48.0|scale=1|esc=0|img=private/paodian/58409.png|link=@取消选择>
+<Text|id=PD23|x=475.0|y=237.0|size=18|color=150|text=人物经验 11550>
+<Text|id=PD24|x=482.0|y=269.0|size=18|color=150|text=魔体经验 1800>
+<Img|id=PD25|x=486.0|y=344.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=PD26|x=521.0|y=355.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=PD27|x=465.0|y=326.0|width=150|height=70|link=@进入泡点&泡点秘境地图=QGD003&进入泡点地图需要元宝=<$STR(S$三区泡点消耗展示元宝)>>
+
+#ACT
+MOV S$点击泡点三区 0
+;-------------------------
+;#IF
+;EQUAL S$点击泡点四区 1
+;!SMALL $CustomValue(90) 21
+;#SAY
+;<Text|id=PD32|x=739.0|y=118.0|size=17|color=150|text=无>
+#IF
+CHECK [226] 1
+#ACT
+MOV S$四区泡点消耗展示元宝 50
+#ELSEACT
+MOV S$四区泡点消耗展示元宝 100
+
+
+#IFONE
+EQUAL S$点击泡点四区 1
+EQUAL N$点击灰色泡点四区 1
+#SAY
+<Img|id=PD38|grey=<$STR(N$进入地图条件颜色1)>|x=698.0|y=110.0|img=public/icon_currency_ingot_02.png|scale=1|esc=0>
+<Text|id=PD39|x=732.0|y=108.0|size=17|color=<$STR(N$进入地图条件颜色2)>|text=原价：<$DIV.100.5>>
+<Img|id=xPD38|grey=<$STR(N$进入地图条件颜色1)>|x=698.0|y=135.0|img=public/icon_currency_ingot_02.png|scale=1|esc=0>
+<Text|id=xPD39|x=732.0|y=133.0|size=17|color=<$STR(N$进入地图条件颜色2)>|text=年卡：<$DIV.<$STR(S$四区泡点消耗展示元宝)>.5>>
+;-------------------------
+#IF
+EQUAL N$点击灰色泡点四区 1
+#SAY
+<Img|id=PD31|grey=1|x=647.0|y=48.0|scale=1|esc=0|img=private/paodian/58409.png|link=@取消选择>
+<Text|id=PD33|x=684.0|y=237.0|size=18|color=7|text=人物经验 16850>
+<Text|id=PD34|x=691.0|y=269.0|size=18|color=7|text=魔体经验 3000>
+<Img|id=PD35|grey=1|x=695.0|y=344.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=PD36|grey=1|x=730.0|y=355.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=PD37|grey=1|x=674.0|y=326.0|width=150|height=70|link=@条件不足&等级要求=85&VIP要求=6&进入泡点地图需要元宝=<$STR(S$四区泡点消耗展示元宝)>>
+
+#ACT
+MOV N$点击灰色泡点四区 0
+;-------------------------
+#IF
+EQUAL S$点击泡点四区 1
+#SAY
+<Img|id=PD31|x=647.0|y=48.0|scale=1|esc=0|img=private/paodian/58409.png|link=@取消选择>
+<Text|id=PD33|x=684.0|y=237.0|size=18|color=150|text=人物经验 16850>
+<Text|id=PD34|x=691.0|y=269.0|size=18|color=150|text=魔体经验 3000>
+<Img|id=PD35|x=695.0|y=344.0|img=public/btn1.png|scale=1|esc=0>
+<Img|id=PD36|x=730.0|y=355.0|img=public/jinru.png|scale=1|esc=0>
+<Layout|id=PD37|x=674.0|y=326.0|width=150|height=70|link=@进入泡点&泡点秘境地图=QGD004&进入泡点地图需要元宝=<$STR(S$四区泡点消耗展示元宝)>>
+
+#ACT
+MOV S$点击泡点四区 0
+
+;-------------------------
+
+[@选择泡点一区]
+#IF
+EQUAL N$泡点一区背景图 1
+#ACT
+MOV S$点击泡点一区 1
+GOTO @泡点使者
+BREAK
+
+[@选择泡点二区]
+#IF
+EQUAL N$泡点二区背景图 1
+#ACT
+MOV N$点击灰色泡点二区 1
+MOV N$进入地图条件颜色1 1
+MOV N$进入地图条件颜色2 7
+GOTO @泡点使者
+break
+
+#IF
+EQUAL N$泡点二区背景图 0
+#ACT
+MOV S$点击泡点二区 1
+MOV N$进入地图条件颜色1 0
+MOV N$进入地图条件颜色2 150
+GOTO @泡点使者
+break
+
+[@选择泡点三区]
+#IF
+EQUAL N$泡点三区背景图 1
+#ACT
+MOV N$点击灰色泡点三区 1
+MOV N$进入地图条件颜色1 1
+MOV N$进入地图条件颜色2 7
+GOTO @泡点使者
+break
+
+#IF
+EQUAL N$泡点三区背景图 0
+#ACT
+MOV S$点击泡点三区 1
+MOV N$进入地图条件颜色1 0
+MOV N$进入地图条件颜色2 150
+GOTO @泡点使者
+break
+
+[@选择泡点四区]
+#IF
+EQUAL N$泡点四区背景图 1
+#ACT
+MOV N$点击灰色泡点四区 1
+MOV N$进入地图条件颜色1 1
+MOV N$进入地图条件颜色2 7
+GOTO @泡点使者
+break
+
+#IF
+EQUAL N$泡点四区背景图 0
+#ACT
+MOV S$点击泡点四区 1
+MOV N$进入地图条件颜色1 0
+MOV N$进入地图条件颜色2 150
+GOTO @泡点使者
+break
+
+[@条件不足]
+#IF
+SMALL $LEVEL <$Str(S$等级要求)>
+#ACT
+SENDMSG 19 当前等级小于<$Str(S$等级要求)>级
+BREAK
+
+#IF
+SMALL $CustomValue(90) <$Str(S$VIP要求)>
+#ACT
+SENDMSG 19 VIP等级小于<$Str(S$VIP要求)>级
+BREAK
+
+[@进入泡点]
+#IF
+!EQUAL $STR(S$泡点秘境地图) QGD001
+SMALL <$Money(2)> <$Str(S$进入泡点地图需要元宝)>
+#ACT
+SENDMSG 19 元宝不足！
+BREAK
+
+#IF
+SMALL <$HUMAN(泡点剩余时间)> 5
+EQUAL <$STR(S$泡点秘境地图)> QGD001
+#ACT
+SENDMSG 19 今日泡点时间不足
+BREAK
+
+#IF
+SMALL <$HUMAN(泡点付费剩余时间)> 5
+!EQUAL <$STR(S$泡点秘境地图)> QGD001
+#ACT
+SENDMSG 19 今日元宝泡点时间不足
+BREAK
+
+#IF
+!SMALL <$HUMAN(泡点剩余时间)> 5
+EQUAL <$STR(S$泡点秘境地图)> QGD001
+#ACT
+Map <$STR(S$泡点秘境地图)>
+CLOSE
+BREAK
+
+#IF
+!SMALL <$HUMAN(泡点付费剩余时间)> 5
+!EQUAL <$STR(S$泡点秘境地图)> QGD001
+!SMALL <$Money(2)> <$Str(S$进入泡点地图需要元宝)>
+#ACT
+Map <$STR(S$泡点秘境地图)>
+CLOSE
+BREAK
+
+
+
+
+
+
+

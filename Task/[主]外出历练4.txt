@@ -1,0 +1,8 @@
+[setup]
+MainTitle = 主线任务
+MainID=4
+IsMain=0
+stepcount =1
+title = [　]外出历练
+ID = 4
+stepstitle1 = <color=green 去找><老兵/@@goto 1 老兵 250,250><color=green 做一些行走江湖的历练吧>\<color=green 任务奖励：>\　\　\<color=graygolden 新手提示：>\<color=graygolden 沿着主线任务可快速发育>\<Img|x=25.0|y=20.0|img=custom/main.png|esc=0><ItemShow|x=26.0|y=115.0|width=70|height=70|itemid=223|itemcount=199|name=太阳神水|showtips=1|bgtype=private/dataosha/laminated1.png|scale=1><ItemShow|x=96.0|y=115.0|width=70|height=70|itemid=888|itemcount=1|name=随机神石|showtips=1|bgtype=private/dataosha/laminated1.png|scale=1><ItemShow|x=166.0|y=115.0|width=70|height=70|itemid=942|itemcount=1|name=回城神石|showtips=1|bgtype=private/dataosha/laminated1.png|scale=1>
